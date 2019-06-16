@@ -24,7 +24,7 @@ setup(
         ],
     },
     install_requires=[
-       'qtpyvcp',
+       # 'qtpyvcp',
        # 'docopt',
     ],
     # dependency_links=[

@@ -1,0 +1,57 @@
+# this allows to move the carousel widget from gcode using motion pins
+#
+# motion pins
+#
+# D 10 > home
+# D 11 > homing
+#
+# A 09 > goto
+# D 12 > goto-enable
+#
+# A 10 > steps
+# D 13 > steps-fwd
+# D 14 > steps-rev
+#
+# D 15 > jog-fwd
+# D 16 > jog-rev
+#
+# A 11 > pocket_1
+# A 12 > pocket_2
+# A 13 > pocket_3
+# A 14 > pocket_4
+# A 15 > pocket_5
+# A 16 > pocket_6
+# A 17 > pocket_7
+# A 18 > pocket_8
+# A 19 > pocket_9
+# A 20 > pocket_10
+# A 21 > pocket_11
+# A 22 > pocket_12
+
+
+net atc-home-in-bit atc-widget.home <= motion.digital-out-10
+net atc-homimg-in-bit atc-widget.homing <= motion.digital-out-11
+
+net atc-goto-in-float atc-widget.goto <= motion.analog-out-09
+net atc-goto-enable-in-bit atc-widget.goto-enable <= motion.digital-out-12
+
+net atc-steps-in-float atc-widget.steps <= motion.analog-out-10
+net atc-steps-fwd-in-bit atc-widget.steps-fwd <= motion.digital-out-13
+net atc-steps-rev-in-bit atc-widget.steps-rev <= motion.digital-out-14
+
+net atc-jog-fwd-in-bit atc-widget.jog-fwd <= motion.digital-out-15
+net atc-jog-rev-in-bit atc-widget.jog-rev <= motion.digital-out-16
+
+net pocket-1 atc-widget.pocket-1 <= motion.analog-out-11
+net pocket-2 atc-widget.pocket-2 <= motion.analog-out-12
+net pocket-3 atc-widget.pocket-3 <= motion.analog-out-13
+net pocket-4 atc-widget.pocket-4 <= motion.analog-out-14
+net pocket-5 atc-widget.pocket-5 <= motion.analog-out-15
+net pocket-6 atc-widget.pocket-6 <= motion.analog-out-16
+net pocket-7 atc-widget.pocket-7 <= motion.analog-out-17
+net pocket-8 atc-widget.pocket-8 <= motion.analog-out-18
+net pocket-9 atc-widget.pocket-9 <= motion.analog-out-19
+net pocket-10 atc-widget.pocket-10 <= motion.analog-out-20
+net pocket-11 atc-widget.pocket-11 <= motion.analog-out-21
+net pocket-12 atc-widget.pocket-12 <= motion.analog-out-22
+
