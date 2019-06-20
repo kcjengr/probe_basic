@@ -1,3 +1,6 @@
+# Still under development don't use in production
+follow development on QtPyVCP project
+
 # Probe Basic - QtPyVCP user interface for linuxcnc
 
 Probe Basic is a QtPyVCP based interface for the LinuxCNC machine control.
