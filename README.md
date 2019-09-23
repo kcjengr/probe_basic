@@ -1,7 +1,6 @@
 ![](probe_basic/images/probe_basic_icon.png)
 
 # Probe Basic
-User interface for linuxcnc
 
 Probe Basic is a interface for the LinuxCNC machine control.
 
