@@ -2,7 +2,7 @@
 
 # Form implementation generated from reading ui file '/home/turboss/Proyectos/qtpyvcp/examples/probe_basic/probe_basic.ui'
 #
-# Created by: PyQt5 UI code generator 5.7
+# Created by: PyQt5 UI code generator 5.11.3
 #
 # WARNING! All changes made in this file will be lost!
 
@@ -107,7 +107,6 @@ class Ui_Form(object):
         self.main_tab = QtWidgets.QWidget()
         self.main_tab.setObjectName("main_tab")
         self.horizontalLayout = QtWidgets.QHBoxLayout(self.main_tab)
-        self.horizontalLayout.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout.setObjectName("horizontalLayout")
         self.frame_24 = QtWidgets.QFrame(self.main_tab)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
@@ -462,7 +461,6 @@ class Ui_Form(object):
         self.file_tab = QtWidgets.QWidget()
         self.file_tab.setObjectName("file_tab")
         self.verticalLayout_5 = QtWidgets.QVBoxLayout(self.file_tab)
-        self.verticalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.verticalLayout_5.setObjectName("verticalLayout_5")
         self.horizontalLayout_120 = QtWidgets.QHBoxLayout()
         self.horizontalLayout_120.setSizeConstraint(QtWidgets.QLayout.SetNoConstraint)
@@ -972,7 +970,6 @@ class Ui_Form(object):
         self.atc_tab = QtWidgets.QWidget()
         self.atc_tab.setObjectName("atc_tab")
         self.horizontalLayout_36 = QtWidgets.QHBoxLayout(self.atc_tab)
-        self.horizontalLayout_36.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_36.setObjectName("horizontalLayout_36")
         self.verticalLayout_18 = QtWidgets.QVBoxLayout()
         self.verticalLayout_18.setContentsMargins(12, -1, 6, -1)
@@ -1792,7 +1789,6 @@ class Ui_Form(object):
         self.tool_tab = QtWidgets.QWidget()
         self.tool_tab.setObjectName("tool_tab")
         self.horizontalLayout_41 = QtWidgets.QHBoxLayout(self.tool_tab)
-        self.horizontalLayout_41.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_41.setObjectName("horizontalLayout_41")
         self.tabWidget1 = QtWidgets.QTabWidget(self.tool_tab)
         font = QtGui.QFont()
@@ -1813,7 +1809,6 @@ class Ui_Form(object):
         self.TOOLTABLE = QtWidgets.QWidget()
         self.TOOLTABLE.setObjectName("TOOLTABLE")
         self.horizontalLayout_20 = QtWidgets.QHBoxLayout(self.TOOLTABLE)
-        self.horizontalLayout_20.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_20.setObjectName("horizontalLayout_20")
         self.verticalLayout_19 = QtWidgets.QVBoxLayout()
         self.verticalLayout_19.setContentsMargins(12, 2, 2, 23)
@@ -2049,7 +2044,6 @@ class Ui_Form(object):
         self.toollibrary = QtWidgets.QWidget()
         self.toollibrary.setObjectName("toollibrary")
         self.horizontalLayout_15 = QtWidgets.QHBoxLayout(self.toollibrary)
-        self.horizontalLayout_15.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_15.setObjectName("horizontalLayout_15")
         self.verticalLayout_15 = QtWidgets.QVBoxLayout()
         self.verticalLayout_15.setContentsMargins(12, 2, 2, 23)
@@ -2317,7 +2311,6 @@ class Ui_Form(object):
         self.offsets_tab = QtWidgets.QWidget()
         self.offsets_tab.setObjectName("offsets_tab")
         self.horizontalLayout_8 = QtWidgets.QHBoxLayout(self.offsets_tab)
-        self.horizontalLayout_8.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_8.setObjectName("horizontalLayout_8")
         self.verticalLayout_11 = QtWidgets.QVBoxLayout()
         self.verticalLayout_11.setContentsMargins(0, 18, 5, 18)
@@ -3872,7 +3865,6 @@ class Ui_Form(object):
         self.tab = QtWidgets.QWidget()
         self.tab.setObjectName("tab")
         self.horizontalLayout_43 = QtWidgets.QHBoxLayout(self.tab)
-        self.horizontalLayout_43.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_43.setObjectName("horizontalLayout_43")
         self.widget_44 = QtWidgets.QWidget(self.tab)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
@@ -3885,7 +3877,7 @@ class Ui_Form(object):
         self.widget_44.setStyleSheet("")
         self.widget_44.setObjectName("widget_44")
         self.verticalLayout_41 = QtWidgets.QVBoxLayout(self.widget_44)
-        self.verticalLayout_41.setContentsMargins(0, 6, 6, 9)
+        self.verticalLayout_41.setContentsMargins(-1, 6, 6, 9)
         self.verticalLayout_41.setObjectName("verticalLayout_41")
         self.label_81 = QtWidgets.QLabel(self.widget_44)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -4564,6 +4556,45 @@ class Ui_Form(object):
 "}")
         self.label_95.setObjectName("label_95")
         self.horizontalLayout_57.addWidget(self.label_95)
+        self.reset_all_data = SubCallButton(self.widget_19)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.reset_all_data.sizePolicy().hasHeightForWidth())
+        self.reset_all_data.setSizePolicy(sizePolicy)
+        self.reset_all_data.setMinimumSize(QtCore.QSize(120, 27))
+        self.reset_all_data.setMaximumSize(QtCore.QSize(120, 27))
+        self.reset_all_data.setStyleSheet(".SubCallButton{\n"
+"    border-top-left-radius: 0px;\n"
+"    border-bottom-left-radius: 0px;\n"
+"    border-top-right-radius: 0px;\n"
+"    border-bottom-right-radius: 0px;\n"
+"    font: 14pt \"Bebas Kai\";\n"
+"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));\n"
+"}\n"
+"\n"
+".SubCallButton:disabled {\n"
+"    border-color: gray;\n"
+"}\n"
+"\n"
+".SubCallButton:hover {\n"
+"    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,\n"
+"                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);\n"
+"}\n"
+"\n"
+".SubCallButton:pressed {\n"
+"    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));\n"
+"}\n"
+"\n"
+".SubCallButton:checked[option=\"true\"] {\n"
+"    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));\n"
+"}\n"
+"\n"
+".SubCallButton:checked {\n"
+"    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));\n"
+"}")
+        self.reset_all_data.setObjectName("reset_all_data")
+        self.horizontalLayout_57.addWidget(self.reset_all_data)
         self.x_data_reset1 = SubCallButton(self.widget_19)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
@@ -5434,7 +5465,6 @@ class Ui_Form(object):
         self.widget_11 = QtWidgets.QWidget(self.widget_13)
         self.widget_11.setObjectName("widget_11")
         self.horizontalLayout_31 = QtWidgets.QHBoxLayout(self.widget_11)
-        self.horizontalLayout_31.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_31.setObjectName("horizontalLayout_31")
         self.verticalLayout_3 = QtWidgets.QVBoxLayout()
         self.verticalLayout_3.setContentsMargins(-1, 0, -1, 9)
@@ -5456,7 +5486,6 @@ class Ui_Form(object):
         self.Page1 = QtWidgets.QWidget()
         self.Page1.setObjectName("Page1")
         self.horizontalLayout_1321 = QtWidgets.QHBoxLayout(self.Page1)
-        self.horizontalLayout_1321.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_1321.setObjectName("horizontalLayout_1321")
         self.widget_40 = QtWidgets.QWidget(self.Page1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -5469,7 +5498,6 @@ class Ui_Form(object):
         self.widget_40.setStyleSheet("")
         self.widget_40.setObjectName("widget_40")
         self.gridLayout_7 = QtWidgets.QGridLayout(self.widget_40)
-        self.gridLayout_7.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_7.setObjectName("gridLayout_7")
         self.probe_back_left_top_corner = SubCallButton(self.widget_40)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -5629,7 +5657,6 @@ class Ui_Form(object):
         self.Page2 = QtWidgets.QWidget()
         self.Page2.setObjectName("Page2")
         self.horizontalLayout_1351 = QtWidgets.QHBoxLayout(self.Page2)
-        self.horizontalLayout_1351.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_1351.setObjectName("horizontalLayout_1351")
         self.widget_41 = QtWidgets.QWidget(self.Page2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -5644,7 +5671,6 @@ class Ui_Form(object):
 "}")
         self.widget_41.setObjectName("widget_41")
         self.gridLayout_16 = QtWidgets.QGridLayout(self.widget_41)
-        self.gridLayout_16.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_16.setObjectName("gridLayout_16")
         self.probe_front_right_inside_corner = SubCallButton(self.widget_41)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -5793,7 +5819,6 @@ class Ui_Form(object):
         self.Page3 = QtWidgets.QWidget()
         self.Page3.setObjectName("Page3")
         self.horizontalLayout_138 = QtWidgets.QHBoxLayout(self.Page3)
-        self.horizontalLayout_138.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_138.setObjectName("horizontalLayout_138")
         self.widget_42 = QtWidgets.QWidget(self.Page3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -5970,7 +5995,6 @@ class Ui_Form(object):
         self.Page4 = QtWidgets.QWidget()
         self.Page4.setObjectName("Page4")
         self.horizontalLayout_141 = QtWidgets.QHBoxLayout(self.Page4)
-        self.horizontalLayout_141.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_141.setObjectName("horizontalLayout_141")
         self.widget_43 = QtWidgets.QWidget(self.Page4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -6123,7 +6147,6 @@ class Ui_Form(object):
         self.Page5 = QtWidgets.QWidget()
         self.Page5.setObjectName("Page5")
         self.horizontalLayout_4 = QtWidgets.QHBoxLayout(self.Page5)
-        self.horizontalLayout_4.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_4.setObjectName("horizontalLayout_4")
         self.widget_16 = QtWidgets.QWidget(self.Page5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -6147,7 +6170,6 @@ class Ui_Form(object):
         self.widget_45.setStyleSheet("")
         self.widget_45.setObjectName("widget_45")
         self.gridLayout_8 = QtWidgets.QGridLayout(self.widget_45)
-        self.gridLayout_8.setContentsMargins(0, 0, 0, 0)
         self.gridLayout_8.setObjectName("gridLayout_8")
         self.probe_top_left_edge_angle = SubCallButton(self.widget_45)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -6333,47 +6355,10 @@ class Ui_Form(object):
         self.probe_tab_widget.addWidget(self.Page5)
         self.Page6 = QtWidgets.QWidget()
         self.Page6.setObjectName("Page6")
-        self.y_data_reset = MDIButton(self.Page6)
-        self.y_data_reset.setGeometry(QtCore.QRect(110, 270, 110, 27))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.y_data_reset.sizePolicy().hasHeightForWidth())
-        self.y_data_reset.setSizePolicy(sizePolicy)
-        self.y_data_reset.setMinimumSize(QtCore.QSize(110, 27))
-        self.y_data_reset.setMaximumSize(QtCore.QSize(110, 27))
-        self.y_data_reset.setStyleSheet("QPushButton {\n"
-"    border-top-left-radius: 0px;\n"
-"    border-bottom-left-radius: 0px;\n"
-"    border-top-right-radius: 5px;\n"
-"    border-bottom-right-radius: 5px;\n"
-"    font: 14pt \"Bebas Kai\";\n"
-"      background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));\n"
-"}")
-        self.y_data_reset.setObjectName("y_data_reset")
-        self.x_data_reset = MDIButton(self.Page6)
-        self.x_data_reset.setGeometry(QtCore.QRect(110, 240, 110, 27))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.x_data_reset.sizePolicy().hasHeightForWidth())
-        self.x_data_reset.setSizePolicy(sizePolicy)
-        self.x_data_reset.setMinimumSize(QtCore.QSize(110, 27))
-        self.x_data_reset.setMaximumSize(QtCore.QSize(110, 27))
-        self.x_data_reset.setStyleSheet("QPushButton {\n"
-"    border-top-left-radius: 0px;\n"
-"    border-bottom-left-radius: 0px;\n"
-"    border-top-right-radius: 0px;\n"
-"    border-bottom-right-radius: 0px;\n"
-"    font: 14pt \"Bebas Kai\";\n"
-"    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));\n"
-"}")
-        self.x_data_reset.setObjectName("x_data_reset")
         self.probe_tab_widget.addWidget(self.Page6)
         self.Page7 = QtWidgets.QWidget()
         self.Page7.setObjectName("Page7")
         self.horizontalLayout_55 = QtWidgets.QHBoxLayout(self.Page7)
-        self.horizontalLayout_55.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_55.setObjectName("horizontalLayout_55")
         self.frame_47 = QtWidgets.QFrame(self.Page7)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Preferred)
@@ -6696,7 +6681,6 @@ class Ui_Form(object):
         self.Page8 = QtWidgets.QWidget()
         self.Page8.setObjectName("Page8")
         self.horizontalLayout_5 = QtWidgets.QHBoxLayout(self.Page8)
-        self.horizontalLayout_5.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_5.setObjectName("horizontalLayout_5")
         self.frame = QtWidgets.QFrame(self.Page8)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -6739,7 +6723,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page1 = QtWidgets.QWidget()
         self.stackedWidget_4Page1.setObjectName("stackedWidget_4Page1")
         self.horizontalLayout_146 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page1)
-        self.horizontalLayout_146.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_146.setObjectName("horizontalLayout_146")
         self.label_77 = QtWidgets.QLabel(self.stackedWidget_4Page1)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -6766,7 +6749,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page2 = QtWidgets.QWidget()
         self.stackedWidget_4Page2.setObjectName("stackedWidget_4Page2")
         self.horizontalLayout_148 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page2)
-        self.horizontalLayout_148.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_148.setObjectName("horizontalLayout_148")
         self.label_78 = QtWidgets.QLabel(self.stackedWidget_4Page2)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -6795,7 +6777,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page3 = QtWidgets.QWidget()
         self.stackedWidget_4Page3.setObjectName("stackedWidget_4Page3")
         self.horizontalLayout_39 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page3)
-        self.horizontalLayout_39.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_39.setObjectName("horizontalLayout_39")
         self.label_79 = QtWidgets.QLabel(self.stackedWidget_4Page3)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -6825,7 +6806,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page4 = QtWidgets.QWidget()
         self.stackedWidget_4Page4.setObjectName("stackedWidget_4Page4")
         self.horizontalLayout_34 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page4)
-        self.horizontalLayout_34.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_34.setObjectName("horizontalLayout_34")
         self.label_105 = QtWidgets.QLabel(self.stackedWidget_4Page4)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -6855,7 +6835,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page5 = QtWidgets.QWidget()
         self.stackedWidget_4Page5.setObjectName("stackedWidget_4Page5")
         self.horizontalLayout_42 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page5)
-        self.horizontalLayout_42.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_42.setObjectName("horizontalLayout_42")
         self.label_80 = QtWidgets.QLabel(self.stackedWidget_4Page5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -6885,7 +6864,6 @@ class Ui_Form(object):
         self.stackedWidget_4Page6 = QtWidgets.QWidget()
         self.stackedWidget_4Page6.setObjectName("stackedWidget_4Page6")
         self.horizontalLayout_35 = QtWidgets.QHBoxLayout(self.stackedWidget_4Page6)
-        self.horizontalLayout_35.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_35.setObjectName("horizontalLayout_35")
         self.label_106 = QtWidgets.QLabel(self.stackedWidget_4Page6)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Preferred, QtWidgets.QSizePolicy.Fixed)
@@ -7031,7 +7009,6 @@ class Ui_Form(object):
         self.conversational_tab = QtWidgets.QWidget()
         self.conversational_tab.setObjectName("conversational_tab")
         self.horizontalLayout_131 = QtWidgets.QHBoxLayout(self.conversational_tab)
-        self.horizontalLayout_131.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_131.setObjectName("horizontalLayout_131")
         self.operation = QtWidgets.QTabWidget(self.conversational_tab)
         self.operation.setLayoutDirection(QtCore.Qt.LeftToRight)
@@ -7078,7 +7055,6 @@ class Ui_Form(object):
         self.holeop_tab = QtWidgets.QWidget()
         self.holeop_tab.setObjectName("holeop_tab")
         self.horizontalLayout_151 = QtWidgets.QHBoxLayout(self.holeop_tab)
-        self.horizontalLayout_151.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_151.setObjectName("horizontalLayout_151")
         self.tabWidget_3 = QtWidgets.QTabWidget(self.holeop_tab)
         self.tabWidget_3.setFocusPolicy(QtCore.Qt.TabFocus)
@@ -7123,7 +7099,6 @@ class Ui_Form(object):
         self.drill_tab = QtWidgets.QWidget()
         self.drill_tab.setObjectName("drill_tab")
         self.horizontalLayout_12 = QtWidgets.QHBoxLayout(self.drill_tab)
-        self.horizontalLayout_12.setContentsMargins(0, 0, 0, 0)
         self.horizontalLayout_12.setObjectName("horizontalLayout_12")
         self.widget_31 = QtWidgets.QWidget(self.drill_tab)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -7692,6 +7667,9 @@ class Ui_Form(object):
         self.sq_cal_axis.setObjectName("sq_cal_axis")
         self.horizontalLayout_59.addWidget(self.sq_cal_axis)
         self.verticalLayout_25.addLayout(self.horizontalLayout_59)
+        self.notificationwidget = NotificationWidget(self.status_tab)
+        self.notificationwidget.setGeometry(QtCore.QRect(10, 10, 1011, 581))
+        self.notificationwidget.setObjectName("notificationwidget")
         self.tabWidget.addTab(self.status_tab, "")
         self.verticalLayout_30.addWidget(self.tabWidget)
         self.horizontalLayout_101.addLayout(self.verticalLayout_30)
@@ -8314,7 +8292,7 @@ class Ui_Form(object):
         self.widget_6.setStyleSheet("")
         self.widget_6.setObjectName("widget_6")
         self.horizontalLayout_33 = QtWidgets.QHBoxLayout(self.widget_6)
-        self.horizontalLayout_33.setContentsMargins(3, 9, 2, 0)
+        self.horizontalLayout_33.setContentsMargins(3, 9, 2, -1)
         self.horizontalLayout_33.setSpacing(12)
         self.horizontalLayout_33.setObjectName("horizontalLayout_33")
         self.vtk_control_buttons_3 = QtWidgets.QWidget(self.widget_6)
@@ -11192,13 +11170,13 @@ class Ui_Form(object):
         self.menuBar.addAction(self.menuView.menuAction())
 
         self.retranslateUi(Form)
-        self.tabWidget.setCurrentIndex(1)
+        self.tabWidget.setCurrentIndex(8)
         self.tabWidget1.setCurrentIndex(0)
         self.probe_tab_widget.setCurrentIndex(0)
         self.probe_help_widget.setCurrentIndex(0)
         self.operation.setCurrentIndex(0)
         self.tabWidget_3.setCurrentIndex(1)
-        self.tabWidget_24.setCurrentIndex(1)
+        self.tabWidget_24.setCurrentIndex(0)
         self.main_tool_number_entry_box.returnPressed.connect(self.m6_button_main.click)
         self.main_delete_item_button.clicked.connect(self.filesystemtable.deleteItem)
         self.main_folder_up_button.clicked.connect(self.filesystemtable.viewParentDirectory)
@@ -11746,6 +11724,8 @@ class Ui_Form(object):
         self.label_94.setText(_translate("Form", "EDGE WIDTH:"))
         self.edge_width.setText(_translate("Form", "0.5000"))
         self.label_95.setText(_translate("Form", " Probe Results"))
+        self.reset_all_data.setText(_translate("Form", "RESET ALL DATA"))
+        self.reset_all_data.setProperty("filename", _translate("Form", "reset_all_data.ngc"))
         self.x_data_reset1.setText(_translate("Form", "X DATA RESET"))
         self.x_data_reset1.setProperty("filename", _translate("Form", "x_data_reset.ngc"))
         self.y_data_reset1.setText(_translate("Form", "Y DATA RESET"))
@@ -11842,10 +11822,6 @@ class Ui_Form(object):
         self.probe_top_back_edge_angle.setProperty("filename", _translate("Form", "probe_top_back_edge_angle.ngc"))
         self.probe_top_front_edge_angle.setProperty("filename", _translate("Form", "probe_top_front_edge_angle.ngc"))
         self.set_wco_offset_Btn.setText(_translate("Form", "SET WCO ROTATION FOR ANGLE PROBE OPERATIONS"))
-        self.y_data_reset.setText(_translate("Form", "Y DATA RESET"))
-        self.y_data_reset.setProperty("MDICommand", _translate("Form", "M68E1Q0\\nM68E2Q0\\nM68E3Q0M68E4Q0\\nM68E6Q0\\nM68E7Q0\\nM68E9Q0\\nM68E11Q0"))
-        self.x_data_reset.setText(_translate("Form", "X DATA RESET"))
-        self.x_data_reset.setProperty("MDICommand", _translate("Form", "M68E0Q0\\nM68E2Q0\\nM68E3Q0\\nM68E4Q0\\nM68E5Q0\\nM68E7Q0\\nM68E8Q0\\nM68E10Q0"))
         self.label_93.setText(_translate("Form", "PROBE CALIBRATION OFFSET:"))
         self.calibration_offset.setText(_translate("Form", "0.000000"))
         self.calibration_offset.setProperty("rules", _translate("Form", "[{\"channels\": [{\"url\": \"status:aout\", \"trigger\": true}], \"property\": \"Text\", \"expression\": \"\\\"{:6.6f}\\\".format(ch[0][12])\", \"name\": \"auto_cal_offset\"}]"))
@@ -12268,6 +12244,7 @@ from qtpyvcp.widgets.button_widgets.mdi_button import MDIButton
 from qtpyvcp.widgets.button_widgets.subcall_button import SubCallButton
 from qtpyvcp.widgets.display_widgets.atc_widget.atc import DynATC
 from qtpyvcp.widgets.display_widgets.load_meter import LoadMeter
+from qtpyvcp.widgets.display_widgets.notification_widget import NotificationWidget
 from qtpyvcp.widgets.display_widgets.status_label import StatusLabel
 from qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot import VTKBackPlot
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
