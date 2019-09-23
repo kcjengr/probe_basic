@@ -12,7 +12,7 @@ def main(opts=None):
 
     if opts is None:
         from qtpyvcp.utilities.opt_parser import parse_opts
-        opts = parse_opts(vcp_cmd='probebasic',
+        opts = parse_opts(vcp_cmd='probe_basic',
                           vcp_name='Probe Basic',
                           vcp_version=__version__)
 
