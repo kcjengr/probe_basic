@@ -178,11 +178,11 @@ o<probe_cal_square_boss> sub
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
   o<140> if [#<sq_cal_axis> EQ 0]
-    M68 E12 Q[#<new_avg_cal_offset>]
+    M68 E12 Q[ABS[#<new_avg_cal_offset>]]
   o<140> else if [#<sq_cal_axis> EQ 1]
-    M68 E12 Q[#<new_x_cal_offset>]
+    M68 E12 Q[ABS[#<new_x_cal_offset>]]
   o<140> else
-    M68 E12 Q[#<new_y_cal_offset>]
+    M68 E12 Q[ABS[#<new_y_cal_offset>]]
   o<140> endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]
