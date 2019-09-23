@@ -1,9 +1,9 @@
-# Still under development don't use in production
-follow development on QtPyVCP project
+![](probe_basic/images/probe_basic_icon.png)
 
-# Probe Basic - QtPyVCP user interface for linuxcnc
+# Probe Basic
+User interface for linuxcnc
 
-Probe Basic is a QtPyVCP based interface for the LinuxCNC machine control.
+Probe Basic is a interface for the LinuxCNC machine control.
 
 ## Installation and Usage
 
@@ -12,20 +12,21 @@ See the [documentation](https://kcjengr.github.io/qtpyvcp/).
 
 ## Resources
 
-* [Development](https://github.com/kcjengr/probe_basic/)
+* [Development](https://github.com/kcjengr/ProbeBasic/)
 * [Documentation](https://kcjengr.github.io/qtpyvcp/)
 * [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy)
 * [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org)
-* [Gitter](https://gitter.im/KurtJacobson/hazzy)
-* [Issue Tracker](https://github.com/kcjengr/probe_basic/issues)
+* [Gitter](https://gitter.im/kcjengr/qtpyvcp)
+* [Discord](https://discord.gg/463hMhd)
+* [Issue Tracker](https://github.com/kcjengr/ProbeBasic/issues)
 
 
 ## Dependancies
 
-* LinuxCNC 2.8
+* [LinuxCNC](https://linuxcnc.org)
 * Python 2.7
 * PyQt5 or PySide2
-* QtPyVCP
+* [QtPyVCP](https://qtpyvcp.kcjengr.com/)
 
 Probe Basic is developed and tested using the LinuxCNC Debian 9 x64 (stretch)
 [Live ISO](http://www.linuxcnc.org/testing-stretch-rtpreempt/) and Ubuntu 18.10 x64 SIM. It should run
