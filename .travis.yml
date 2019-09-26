@@ -6,10 +6,11 @@ install:
 - pip install --upgrade setuptools
 - sudo apt-get install pyqt5-dev-tools
 
-#script:
+script:
 #- sphinx-build -Wv docs/source docs/html
+- echo "maybe this will work"
 
-#deploy:
+deploy:
 # publish docs on push
 #- provider: pages
 #  skip_cleanup: true
@@ -29,11 +30,11 @@ install:
 #    tags: true
 
 # publish release to GitHub
-#- provider: script
-#  script: bash .travis/do_release.sh
-#  skip_cleanup: true
-#  on:
-#    tags: true
+- provider: script
+  script: bash .travis/do_release.sh
+  skip_cleanup: true
+  on:
+    tags: true
 
 notifications:
   irc:
