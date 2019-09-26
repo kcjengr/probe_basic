@@ -1,3 +1,4 @@
+import versioneer
 from setuptools import setup, find_packages
 
 with open("README.md", "r") as fh:
@@ -5,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="probe_basic",
-    version="0.0.1",
+    versioneer.get_version(),
     author="Chris Polanski",
     author_email="",
     description="Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC",
