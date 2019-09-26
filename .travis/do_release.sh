@@ -10,4 +10,4 @@ echo '------------ Publishing GitHub Release ------------'
 ./.travis/publish_github_release.sh
 
 echo '------------- Publishing PyPi Release -------------'
-# ./.travis/publish_pypi_release.sh
+./.travis/publish_pypi_release.sh
