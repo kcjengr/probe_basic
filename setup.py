@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
 
 setup(
     name="probe_basic",
-    versioneer.get_version(),
+    version=versioneer.get_version(),
     author="Chris Polanski",
     author_email="",
     description="Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC",
