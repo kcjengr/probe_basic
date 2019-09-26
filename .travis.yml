@@ -9,7 +9,7 @@ install:
 #script:
 #- sphinx-build -Wv docs/source docs/html
 
-deploy:
+#deploy:
 # publish docs on push
 #- provider: pages
 #  skip_cleanup: true
@@ -29,11 +29,11 @@ deploy:
 #    tags: true
 
 # publish release to GitHub
-- provider: script
-  script: bash .travis/do_release.sh
-  skip_cleanup: true
-  on:
-    tags: true
+#- provider: script
+#  script: bash .travis/do_release.sh
+#  skip_cleanup: true
+#  on:
+#    tags: true
 
 notifications:
   irc:
