@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>6</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -10572,7 +10572,7 @@ color: white;
                       <enum>Qt::ClickFocus</enum>
                      </property>
                      <property name="text">
-                      <string>0.5000</string>
+                      <string>0.0000</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -10649,7 +10649,7 @@ color: white;
                       <enum>Qt::ClickFocus</enum>
                      </property>
                      <property name="text">
-                      <string>0.5000</string>
+                      <string>1.0000</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -16278,12 +16278,12 @@ border-radius: 8px;
     margin-right: 0px;
     margin-bottom:0px;
     min-width: 35px;
-    min-height: 200px;
+    min-height: 100px;
     font: 15pt &quot;bebas kai&quot;;
 }
 
 QTabBar::tab:first {
-    margin-top: 100px;
+    margin-top: 45px;
     border-left-width: 2px;
     border-bottom-width: 1px;
     border-right-width: 2px;
@@ -16322,7 +16322,7 @@ QTabBar::tab:only-one {
               </property>
               <widget class="QWidget" name="holeop_tab">
                <attribute name="title">
-                <string>   HOLE OPERATIONS   </string>
+                <string>   HOLE OPS   </string>
                </attribute>
                <layout class="QHBoxLayout" name="horizontalLayout_15">
                 <item>
@@ -17072,9 +17072,24 @@ QAbstractSpinBox:selected {
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="pocket_tab">
+              <widget class="QWidget" name="facing_tab">
                <attribute name="title">
-                <string>   POCKET OPERATIONS   </string>
+                <string>FACING</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="perimeter_tab">
+               <attribute name="title">
+                <string>PERIMETER</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="pockets_tab">
+               <attribute name="title">
+                <string>POCKETS</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="misc_tab">
+               <attribute name="title">
+                <string>MISC</string>
                </attribute>
               </widget>
              </widget>
@@ -17879,7 +17894,7 @@ QAbstractSpinBox:selected {
           <property name="minimumSize">
            <size>
             <width>251</width>
-            <height>0</height>
+            <height>600</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -17907,7 +17922,7 @@ QAbstractSpinBox:selected {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -17928,6 +17943,12 @@ QAbstractSpinBox:selected {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
     background-color: rgb(51, 57, 59);
@@ -17941,19 +17962,19 @@ QAbstractSpinBox:selected {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_32">
              <property name="spacing">
-              <number>12</number>
+              <number>20</number>
              </property>
              <property name="leftMargin">
               <number>9</number>
              </property>
              <property name="topMargin">
-              <number>5</number>
+              <number>15</number>
              </property>
              <property name="rightMargin">
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>4</number>
+              <number>12</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_106">
@@ -18797,8 +18818,14 @@ QAbstractSpinBox:selected {
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
+              <verstretch>1</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
             </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
@@ -18813,439 +18840,442 @@ QAbstractSpinBox:selected {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_40">
              <property name="spacing">
-              <number>20</number>
+              <number>12</number>
              </property>
              <property name="leftMargin">
               <number>9</number>
              </property>
              <property name="topMargin">
-              <number>5</number>
+              <number>15</number>
              </property>
              <property name="rightMargin">
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>13</number>
+              <number>12</number>
              </property>
              <item>
-              <widget class="QWidget" name="widget" native="true">
-               <widget class="QWidget" name="widget_5" native="true">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>30</y>
-                  <width>171</width>
-                  <height>480</height>
-                 </rect>
+              <widget class="QWidget" name="widget_5" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>171</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>171</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <property name="leftMargin">
+                 <number>2</number>
                 </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="topMargin">
+                 <number>6</number>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>171</width>
-                  <height>0</height>
-                 </size>
+                <property name="rightMargin">
+                 <number>2</number>
                 </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>171</width>
-                  <height>16777215</height>
-                 </size>
+                <property name="bottomMargin">
+                 <number>6</number>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_14">
-                 <property name="spacing">
-                  <number>20</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>30</number>
-                 </property>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g54_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <item row="4" column="0">
+                 <widget class="ActionButton" name="actionbutton_g58_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G54</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G54</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g55_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G58</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G58</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="ActionButton" name="actionbutton_g59_11">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G55</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G55</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g56_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59.2</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0">
+                 <widget class="ActionButton" name="actionbutton_g59_8">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G56</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G56</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g57_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59.3</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.3</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="ActionButton" name="actionbutton_g54_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G57</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G57</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g58_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G54</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G54</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="ActionButton" name="actionbutton_g56_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G58</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G58</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_10">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G56</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G56</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="ActionButton" name="actionbutton_g55_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_9">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G55</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G55</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="ActionButton" name="actionbutton_g57_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.1</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.1</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_11">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G57</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G57</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="ActionButton" name="actionbutton_g59_10">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.2</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.2</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_8">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="ActionButton" name="actionbutton_g59_9">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.3</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.3</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ProbeSim" name="probesim">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>47</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
+                  </property>
+                  <property name="text">
+                   <string>G59.1</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.1</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="ProbeSim" name="probesim">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>47</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
     min-height: 35px;
 }</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
+               </property>
               </widget>
              </item>
              <item>
@@ -19426,6 +19456,12 @@ QAbstractSpinBox:selected {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
     background-color: rgb(51, 57, 59);
@@ -19451,7 +19487,7 @@ QAbstractSpinBox:selected {
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>13</number>
+              <number>12</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_6" native="true">
@@ -19476,6 +19512,9 @@ QAbstractSpinBox:selected {
                 </property>
                 <property name="rightMargin">
                  <number>2</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>6</number>
                 </property>
                 <item>
                  <widget class="QWidget" name="vtk_control_buttons_3" native="true">
@@ -19540,13 +19579,13 @@ QPushButton:checked {
                     <number>1</number>
                    </property>
                    <property name="topMargin">
-                    <number>30</number>
+                    <number>15</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>20</number>
+                    <number>10</number>
                    </property>
                    <item>
                     <widget class="QPushButton" name="iso_view_button_plot">
@@ -19971,13 +20010,13 @@ QPushButton:checked {
                     <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>30</number>
+                    <number>15</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>20</number>
+                    <number>12</number>
                    </property>
                    <item>
                     <widget class="QPushButton" name="program_boundry_button">
@@ -26969,13 +27008,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
