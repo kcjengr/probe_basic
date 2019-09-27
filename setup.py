@@ -1,8 +1,12 @@
 import versioneer
 from setuptools import setup, find_packages
+from qtpyvcp.tools.qcompile import compile
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
+
+# compile .qrc and .ui files
+compile(['probe_basic',])
 
 setup(
     name="probe_basic",
