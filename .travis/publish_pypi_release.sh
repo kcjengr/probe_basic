@@ -10,4 +10,4 @@ echo 'Uploading files to PyPi...'
 twine upload \
     --username kcjengr \
     --password $PYPI_PASS \
-    'dist/qtpyvcp*.tar.gz'
+    'dist/probe_basic*.tar.gz'
