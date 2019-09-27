@@ -3,8 +3,8 @@
 echo '------------- Building Python Package -------------'
 python setup.py sdist
 
-echo '------------- Building Debian Package -------------'
-./.travis/build_deb.sh
+#echo '------------- Building Debian Package -------------'
+#./.travis/build_deb.sh
 
 echo '------------ Publishing GitHub Release ------------'
 ./.travis/publish_github_release.sh
