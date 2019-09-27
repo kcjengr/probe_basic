@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -3521,10 +3521,7 @@ font: 16pt &quot;Bebas Kai&quot;;
                     <number>2</number>
                    </property>
                    <item>
-                    <widget class="QLineEdit" name="load_spindle_tool_number">
-                     <property name="enabled">
-                      <bool>true</bool>
-                     </property>
+                    <widget class="VCPLineEdit" name="load_spindle_tool_number">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>200</horstretch>
@@ -3533,7 +3530,7 @@ font: 16pt &quot;Bebas Kai&quot;;
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>128</width>
+                       <width>0</width>
                        <height>43</height>
                       </size>
                      </property>
@@ -3543,6 +3540,9 @@ font: 16pt &quot;Bebas Kai&quot;;
                        <height>43</height>
                       </size>
                      </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::ClickFocus</enum>
+                     </property>
                      <property name="styleSheet">
                       <string notr="true">font: 17pt;</string>
                      </property>
@@ -3551,6 +3551,9 @@ font: 16pt &quot;Bebas Kai&quot;;
                      </property>
                      <property name="placeholderText">
                       <string>0</string>
+                     </property>
+                     <property name="rules" stdset="0">
+                      <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
                      </property>
                     </widget>
                    </item>
@@ -10572,7 +10575,7 @@ color: white;
                       <enum>Qt::ClickFocus</enum>
                      </property>
                      <property name="text">
-                      <string>0.5000</string>
+                      <string>0.0000</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -10649,7 +10652,7 @@ color: white;
                       <enum>Qt::ClickFocus</enum>
                      </property>
                      <property name="text">
-                      <string>0.5000</string>
+                      <string>1.0000</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -16278,12 +16281,12 @@ border-radius: 8px;
     margin-right: 0px;
     margin-bottom:0px;
     min-width: 35px;
-    min-height: 200px;
+    min-height: 100px;
     font: 15pt &quot;bebas kai&quot;;
 }
 
 QTabBar::tab:first {
-    margin-top: 100px;
+    margin-top: 45px;
     border-left-width: 2px;
     border-bottom-width: 1px;
     border-right-width: 2px;
@@ -16322,7 +16325,7 @@ QTabBar::tab:only-one {
               </property>
               <widget class="QWidget" name="holeop_tab">
                <attribute name="title">
-                <string>   HOLE OPERATIONS   </string>
+                <string>   HOLE OPS   </string>
                </attribute>
                <layout class="QHBoxLayout" name="horizontalLayout_15">
                 <item>
@@ -17072,9 +17075,24 @@ QAbstractSpinBox:selected {
                 </item>
                </layout>
               </widget>
-              <widget class="QWidget" name="pocket_tab">
+              <widget class="QWidget" name="facing_tab">
                <attribute name="title">
-                <string>   POCKET OPERATIONS   </string>
+                <string>FACING</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="perimeter_tab">
+               <attribute name="title">
+                <string>PERIMETER</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="pockets_tab">
+               <attribute name="title">
+                <string>POCKETS</string>
+               </attribute>
+              </widget>
+              <widget class="QWidget" name="misc_tab">
+               <attribute name="title">
+                <string>MISC</string>
                </attribute>
               </widget>
              </widget>
@@ -17879,7 +17897,7 @@ QAbstractSpinBox:selected {
           <property name="minimumSize">
            <size>
             <width>251</width>
-            <height>0</height>
+            <height>600</height>
            </size>
           </property>
           <property name="maximumSize">
@@ -17907,7 +17925,7 @@ QAbstractSpinBox:selected {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -17928,6 +17946,12 @@ QAbstractSpinBox:selected {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
     background-color: rgb(51, 57, 59);
@@ -17941,19 +17965,19 @@ QAbstractSpinBox:selected {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_32">
              <property name="spacing">
-              <number>12</number>
+              <number>20</number>
              </property>
              <property name="leftMargin">
               <number>9</number>
              </property>
              <property name="topMargin">
-              <number>5</number>
+              <number>15</number>
              </property>
              <property name="rightMargin">
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>4</number>
+              <number>12</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_106">
@@ -18797,8 +18821,14 @@ QAbstractSpinBox:selected {
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
               <horstretch>0</horstretch>
-              <verstretch>0</verstretch>
+              <verstretch>1</verstretch>
              </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
             </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
@@ -18813,439 +18843,442 @@ QAbstractSpinBox:selected {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_40">
              <property name="spacing">
-              <number>20</number>
+              <number>12</number>
              </property>
              <property name="leftMargin">
               <number>9</number>
              </property>
              <property name="topMargin">
-              <number>5</number>
+              <number>15</number>
              </property>
              <property name="rightMargin">
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>13</number>
+              <number>12</number>
              </property>
              <item>
-              <widget class="QWidget" name="widget" native="true">
-               <widget class="QWidget" name="widget_5" native="true">
-                <property name="geometry">
-                 <rect>
-                  <x>0</x>
-                  <y>30</y>
-                  <width>171</width>
-                  <height>480</height>
-                 </rect>
+              <widget class="QWidget" name="widget_5" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>171</width>
+                 <height>0</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>171</width>
+                 <height>16777215</height>
+                </size>
+               </property>
+               <layout class="QGridLayout" name="gridLayout_3">
+                <property name="leftMargin">
+                 <number>2</number>
                 </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                  <horstretch>0</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
+                <property name="topMargin">
+                 <number>6</number>
                 </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>171</width>
-                  <height>0</height>
-                 </size>
+                <property name="rightMargin">
+                 <number>2</number>
                 </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>171</width>
-                  <height>16777215</height>
-                 </size>
+                <property name="bottomMargin">
+                 <number>6</number>
                 </property>
-                <layout class="QVBoxLayout" name="verticalLayout_14">
-                 <property name="spacing">
-                  <number>20</number>
-                 </property>
-                 <property name="leftMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="topMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="rightMargin">
-                  <number>10</number>
-                 </property>
-                 <property name="bottomMargin">
-                  <number>30</number>
-                 </property>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g54_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                <property name="spacing">
+                 <number>15</number>
+                </property>
+                <item row="4" column="0">
+                 <widget class="ActionButton" name="actionbutton_g58_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G54</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G54</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g55_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G58</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G58</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="0">
+                 <widget class="ActionButton" name="actionbutton_g59_11">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G55</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G55</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g56_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59.2</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.2</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="8" column="0">
+                 <widget class="ActionButton" name="actionbutton_g59_8">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G56</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G56</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g57_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59.3</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.3</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="0">
+                 <widget class="ActionButton" name="actionbutton_g54_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G57</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G57</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g58_3">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G54</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G54</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="0">
+                 <widget class="ActionButton" name="actionbutton_g56_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G58</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G58</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_10">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G56</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G56</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="0" column="1">
+                 <widget class="ActionButton" name="actionbutton_g55_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_9">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G55</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G55</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="2" column="1">
+                 <widget class="ActionButton" name="actionbutton_g57_3">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.1</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.1</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_11">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G57</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G57</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="4" column="1">
+                 <widget class="ActionButton" name="actionbutton_g59_10">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.2</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.2</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ActionButton" name="actionbutton_g59_8">
-                   <property name="enabled">
-                    <bool>false</bool>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="maximumSize">
-                    <size>
-                     <width>75</width>
-                     <height>35</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton {
+                  </property>
+                  <property name="text">
+                   <string>G59</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59</string>
+                  </property>
+                 </widget>
+                </item>
+                <item row="7" column="1">
+                 <widget class="ActionButton" name="actionbutton_g59_9">
+                  <property name="enabled">
+                   <bool>false</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>75</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-                   </property>
-                   <property name="text">
-                    <string>G59.3</string>
-                   </property>
-                   <property name="autoExclusive">
-                    <bool>true</bool>
-                   </property>
-                   <property name="actionName" stdset="0">
-                    <string>machine.set-work-coord:G59.3</string>
-                   </property>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="ProbeSim" name="probesim">
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="minimumSize">
-                    <size>
-                     <width>0</width>
-                     <height>47</height>
-                    </size>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QPushButton{
+                  </property>
+                  <property name="text">
+                   <string>G59.1</string>
+                  </property>
+                  <property name="autoExclusive">
+                   <bool>true</bool>
+                  </property>
+                  <property name="actionName" stdset="0">
+                   <string>machine.set-work-coord:G59.1</string>
+                  </property>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="ProbeSim" name="probesim">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>0</width>
+                 <height>47</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton{
     min-height: 35px;
 }</string>
-                   </property>
-                  </widget>
-                 </item>
-                </layout>
-               </widget>
+               </property>
               </widget>
              </item>
              <item>
@@ -19426,6 +19459,12 @@ QAbstractSpinBox:selected {
               <verstretch>0</verstretch>
              </sizepolicy>
             </property>
+            <property name="minimumSize">
+             <size>
+              <width>201</width>
+              <height>600</height>
+             </size>
+            </property>
             <property name="styleSheet">
              <string notr="true">.QFrame{
     background-color: rgb(51, 57, 59);
@@ -19451,7 +19490,7 @@ QAbstractSpinBox:selected {
               <number>9</number>
              </property>
              <property name="bottomMargin">
-              <number>13</number>
+              <number>12</number>
              </property>
              <item>
               <widget class="QWidget" name="widget_6" native="true">
@@ -19476,6 +19515,9 @@ QAbstractSpinBox:selected {
                 </property>
                 <property name="rightMargin">
                  <number>2</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>6</number>
                 </property>
                 <item>
                  <widget class="QWidget" name="vtk_control_buttons_3" native="true">
@@ -19540,13 +19582,13 @@ QPushButton:checked {
                     <number>1</number>
                    </property>
                    <property name="topMargin">
-                    <number>30</number>
+                    <number>15</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>20</number>
+                    <number>10</number>
                    </property>
                    <item>
                     <widget class="QPushButton" name="iso_view_button_plot">
@@ -19971,13 +20013,13 @@ QPushButton:checked {
                     <number>0</number>
                    </property>
                    <property name="topMargin">
-                    <number>30</number>
+                    <number>15</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>20</number>
+                    <number>12</number>
                    </property>
                    <item>
                     <widget class="QPushButton" name="program_boundry_button">
@@ -25774,7 +25816,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>738</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -25806,7 +25848,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>995</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -25822,7 +25864,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>403</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -25838,7 +25880,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>610</x>
-     <y>323</y>
+     <y>324</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -25854,7 +25896,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>854</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -25870,7 +25912,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>146</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -25886,7 +25928,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>610</x>
-     <y>485</y>
+     <y>487</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -25982,27 +26024,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>262</x>
-     <y>630</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
      <y>146</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>load_spindle_tool_number</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_current_tool</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>213</x>
-     <y>89</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>215</x>
-     <y>91</y>
     </hint>
    </hints>
   </connection>
@@ -26013,12 +26039,12 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>88</y>
+     <x>198</x>
+     <y>621</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>85</y>
+     <x>167</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
@@ -26029,12 +26055,12 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>88</y>
+     <x>806</x>
+     <y>621</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>85</y>
+     <x>167</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
@@ -26045,12 +26071,12 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>168</x>
-     <y>88</y>
+     <x>978</x>
+     <y>621</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>85</y>
+     <x>167</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
@@ -26061,11 +26087,11 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>184</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26077,11 +26103,11 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26093,11 +26119,11 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>320</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26109,12 +26135,12 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>148</x>
-     <y>88</y>
+     <x>350</x>
+     <y>621</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>85</y>
+     <x>167</x>
+     <y>190</y>
     </hint>
    </hints>
   </connection>
@@ -26125,11 +26151,11 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26141,11 +26167,11 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26157,11 +26183,11 @@ font: 11pt bebas kai;
    <slot>setViewP()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26173,11 +26199,11 @@ font: 11pt bebas kai;
    <slot>setViewPath()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>508</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26189,11 +26215,11 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>362</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26205,11 +26231,11 @@ font: 11pt bebas kai;
    <slot>toggleProgramBounds()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26221,11 +26247,11 @@ font: 11pt bebas kai;
    <slot>toggleMachineBounds()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>182</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26237,12 +26263,12 @@ font: 11pt bebas kai;
    <slot>toggleProgramBounds()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>134</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26253,11 +26279,11 @@ font: 11pt bebas kai;
    <slot>toggleMachineTicks()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26269,11 +26295,11 @@ font: 11pt bebas kai;
    <slot>toggleProgramTicks()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26285,11 +26311,11 @@ font: 11pt bebas kai;
    <slot>toggleMachineLabels()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26301,11 +26327,11 @@ font: 11pt bebas kai;
    <slot>toggleProgramLabels()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26317,11 +26343,11 @@ font: 11pt bebas kai;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>644</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26333,11 +26359,11 @@ font: 11pt bebas kai;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>79</y>
+     <x>781</x>
+     <y>602</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26353,7 +26379,7 @@ font: 11pt bebas kai;
      <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26365,11 +26391,11 @@ font: 11pt bebas kai;
    <slot>showGrid(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26381,11 +26407,11 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26397,11 +26423,11 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>180</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26413,11 +26439,11 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>388</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26429,11 +26455,11 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>342</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26445,11 +26471,11 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26461,11 +26487,11 @@ font: 11pt bebas kai;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>527</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26477,11 +26503,11 @@ font: 11pt bebas kai;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>573</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26493,11 +26519,11 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>572</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26509,11 +26535,11 @@ font: 11pt bebas kai;
    <slot>printView()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>524</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26529,8 +26555,8 @@ font: 11pt bebas kai;
      <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26541,12 +26567,12 @@ font: 11pt bebas kai;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>573</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26557,12 +26583,12 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>180</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26573,12 +26599,12 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>226</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26589,12 +26615,12 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>342</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26605,12 +26631,12 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>388</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26621,12 +26647,12 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26637,12 +26663,12 @@ font: 11pt bebas kai;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>527</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26653,12 +26679,12 @@ font: 11pt bebas kai;
    <slot>toggleMachineTicks()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>290</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26669,12 +26695,12 @@ font: 11pt bebas kai;
    <slot>showGrid(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>458</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26685,12 +26711,12 @@ font: 11pt bebas kai;
    <slot>toggleMachineLabels()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26701,12 +26727,12 @@ font: 11pt bebas kai;
    <slot>toggleMachineBounds()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>182</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26717,12 +26743,12 @@ font: 11pt bebas kai;
    <slot>toggleProgramTicks()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>242</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26733,12 +26759,12 @@ font: 11pt bebas kai;
    <slot>toggleProgramLabels()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26749,12 +26775,12 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>572</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26765,12 +26791,12 @@ font: 11pt bebas kai;
    <slot>printView()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1835</x>
+     <y>524</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26781,11 +26807,11 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
+     <x>881</x>
      <y>76</y>
     </hint>
    </hints>
@@ -26797,12 +26823,12 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1733</x>
-     <y>102</y>
+     <x>1738</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>76</y>
+     <x>1249</x>
+     <y>207</y>
     </hint>
    </hints>
   </connection>
@@ -26813,12 +26839,12 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1044</x>
-     <y>611</y>
+     <x>1101</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1042</x>
-     <y>578</y>
+     <x>738</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -26829,12 +26855,12 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>456</x>
-     <y>613</y>
+     <x>509</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>572</y>
+     <x>146</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -26845,12 +26871,12 @@ font: 11pt bebas kai;
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1078</x>
-     <y>317</y>
+     <x>738</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1175</x>
-     <y>317</y>
+     <x>1253</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -26861,12 +26887,12 @@ font: 11pt bebas kai;
    <slot>setText(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1092</x>
-     <y>246</y>
+     <x>738</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1282</x>
-     <y>129</y>
+     <x>1453</x>
+     <y>141</y>
     </hint>
    </hints>
   </connection>
@@ -26877,12 +26903,12 @@ font: 11pt bebas kai;
    <slot>setFilename(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1015</x>
-     <y>381</y>
+     <x>738</x>
+     <y>146</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1215</x>
-     <y>379</y>
+     <x>1253</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -26893,12 +26919,12 @@ font: 11pt bebas kai;
    <slot>setEditable(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1228</x>
-     <y>611</y>
+     <x>1259</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1213</x>
-     <y>550</y>
+     <x>1253</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -26909,12 +26935,12 @@ font: 11pt bebas kai;
    <slot>saveAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1521</x>
-     <y>615</y>
+     <x>1595</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1525</x>
-     <y>453</y>
+     <x>1253</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -26925,12 +26951,12 @@ font: 11pt bebas kai;
    <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1439</x>
-     <y>621</y>
+     <x>1483</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1438</x>
-     <y>476</y>
+     <x>1253</x>
+     <y>179</y>
     </hint>
    </hints>
   </connection>
@@ -26941,12 +26967,28 @@ font: 11pt bebas kai;
    <slot>find_replace()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1335</x>
-     <y>622</y>
+     <x>1371</x>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1309</x>
-     <y>485</y>
+     <x>1253</x>
+     <y>179</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>load_spindle_tool_number</sender>
+   <signal>returnPressed()</signal>
+   <receiver>load_current_tool</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1417</x>
+     <y>152</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1509</x>
+     <y>157</y>
     </hint>
    </hints>
   </connection>
@@ -26969,13 +27011,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probemodeGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
