@@ -3,6 +3,7 @@
 import os
 
 from qtpy.QtCore import Slot
+from qtpy.QtGui import QFontDatabase
 from qtpy.QtWidgets import QAbstractButton
 
 from qtpyvcp.utilities import logger
@@ -12,6 +13,9 @@ import probe_basic_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
+
+# Add custom fonts
+QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
 
 class ProbeBasic(VCPMainWindow):
