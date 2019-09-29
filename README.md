@@ -48,7 +48,7 @@ $ cd probe_basic
 $ pip install -e .
 ```
 
-now you can edit the files fron the cloned folder and run editvcp to edit the interface
+now you can edit the files from the cloned directory and run editvcp to edit the interface
 
 ```bash
 $ editvcp probe_basic
