@@ -6,47 +6,56 @@ Probe Basic is a interface for the LinuxCNC machine control.
 
 ## Quick install
 
-install linuxcnc using the stretch iso
+install linuxcnc using the 64 bits stretch iso
 
 http://www.linuxcnc.org/testing-stretch-rtpreempt/ 
 
 once boot upgrade to linuxcnc version 2.8 or master
 
+* Upgrade linuxcnc
+
+```bash
+$ sudo apt update
+$ sudo apt upgrade
+```
+
+
 * Dependencies
 
-```
+```bash
 $ sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
 ```
 
 * install pip package
 
-```
-$ pip install git+https://github.com/kcjengr/probe_basic.git
+```bash
+$ pip install qtpyvcp
+$ pip install probe_basic
 ```
 
 ## Development install
 
-clone the jcnc repository
+clone the Probe Basic repository
 
-```
+```bash
 $ git clone https://github.com/kcjengr/probe_basic.git
 ```
 
 install the dev version using pip
 
-```
+```bash
 $ cd probe_basic
 $ pip install -e .
 ```
 
 now you can edit the files fron the cloned folder and run editvcp to edit the interface
 
-```
+```bash
 $ editvcp probe_basic
 ```
 
 
-## Installation and Usage
+## Documentation
 
 See the [documentation](https://kcjengr.github.io/qtpyvcp/).
 
