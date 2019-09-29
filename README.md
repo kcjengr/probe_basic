@@ -10,13 +10,19 @@ install linuxcnc using the 64 bits stretch iso
 
 http://www.linuxcnc.org/testing-stretch-rtpreempt/ 
 
-once boot upgrade to linuxcnc version 2.8 or master
-
 * Upgrade linuxcnc
 
 ```bash
 $ sudo apt update
 $ sudo apt upgrade
+$ sudo apt dist-upgrade
+$ sudo apt install dirmngr
+$ sudo apt install software-properties-common
+$ sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
+$ sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
+$ sudo apt update
+$ sudo apt upgrade
+$ sudo apt dist-upgrade
 ```
 
 
