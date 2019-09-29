@@ -8,27 +8,27 @@ install:
 - sudo apt-get install pyqt5-dev-tools
 
 script:
-#- sphinx-build -Wv docs/source docs/html
-- echo "maybe this will work"
+- sphinx-build -Wv docs/source docs/html
 
 deploy:
+
 # publish docs on push
-#- provider: pages
-#  skip_cleanup: true
-#  keep-history: false
-#  github_token: $GH_TOKEN
-#  local_dir: docs/html
-#  on:
-#    branch: master
+- provider: pages
+  skip_cleanup: true
+  keep-history: false
+  github_token: $GH_TOKEN
+  local_dir: docs/html
+  on:
+    branch: master
 
 # publish docs on new release
-#- provider: pages
-#  skip_cleanup: true
-#  keep-history: false
-#  github_token: $GH_TOKEN
-#  local_dir: docs/html
-#  on:
-#    tags: true
+- provider: pages
+  skip_cleanup: true
+  keep-history: false
+  github_token: $GH_TOKEN
+  local_dir: docs/html
+  on:
+    tags: true
 
 # publish release to GitHub
 - provider: script
