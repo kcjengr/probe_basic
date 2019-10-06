@@ -7,42 +7,41 @@ Development Install
 
 1- Install Linuxcnc
    
-	http://www.linuxcnc.org/testing-stretch-rtpreempt/
+		http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
-Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option.
-you will need to make a bootable dvd or USB thumb drive depending on
-your machine and preference. For USB Thumb drive installation, BalenaEtcher
-is extremely easy and works flawlessly with linux debian OS images.below
-is the link for it. recommend using 2-4gb USB drive for quicker flashing.
+   Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option.
+   you will need to make a bootable dvd or USB thumb drive depending on
+   is extremely easy and works flawlessly with linux debian OS images.below
+   is the link for it. recommend using 2-4gb USB drive for quicker flashing.
 
-	https://www.balena.io/etcher/?ref=etcher_update
+		https://www.balena.io/etcher/?ref=etcher_update
 
-Once you have created your flash stick for linuxcnc proceed to install and
-boot the system. (note: It is advised to have an ethernet cable internet 
-connection during install).  Select the graphical installation option.  
-follow the steps on screen to complete installation.
+   Once you have created your flash stick for linuxcnc proceed to install and
+   boot the system. (note: It is advised to have an ethernet cable internet 
+   connection during install).  Select the graphical installation option.  
+   follow the steps on screen to complete installation.
 
-After installation, copy the following in the main terminal one line at a 
-time and hit enter, select Y for yes if asked at any point during installation.
+   After installation, copy the following in the main terminal one line at a 
+   time and hit enter, select Y for yes if asked at any point during installation.
 
-	sudo apt update
+		sudo apt update
 
-	sudo apt upgrade
+		sudo apt upgrade
 
 
 2- Upgrade to master version 2.8, copy the following in the main terminal one
    line at a time and hit enter, select Y for yes if asked at any point during
    installation.
 	
-	sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
+		sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
 
-	sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
+		sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
 
-	sudo apt update
+		sudo apt update
 
-	sudo apt upgrade
+		sudo apt upgrade
 
-	sudo apt dist-upgrade
+		sudo apt dist-upgrade
 
 
 3- Now linuxcnc needs to be started for the first time for it to create its directory
@@ -53,26 +52,26 @@ time and hit enter, select Y for yes if asked at any point during installation.
 4- Install qtpyvcp dependencies, copy the following in the main terminal it is all
    one line, hit enter, select Y for yes if asked at any point during installation.
 
-	sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
+		sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
 
 
 5- Install qtpyvcp, copy the following in the main terminal, hit enter, select Y for 
    yes if asked at any point during installation.
 
-	pip install qtpyvcp
+		pip install qtpyvcp
 
 
 6- Install probe_basic, copy the following in the main terminal, hit enter.
    
-	git clone https://github.com/kcjengr/probe_basic.git
+		git clone https://github.com/kcjengr/probe_basic.git
 
 
 7- Setup the probe_basic directory and install using pip.  From the main terminal paste
    the following and press enter after each, if asked, type Y and enter to continue install.
 
-	cd probe_basic
+		cd probe_basic
 
-	pip install -e .
+		pip install -e .
 
 
 8- Copy the config files from the probe_basic folder to the linuxcnc/configs folder.  this will
@@ -82,28 +81,28 @@ time and hit enter, select Y for yes if asked at any point during installation.
 
 9- To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
-	editvcp probe_basic
+		editvcp probe_basic
 
 
 10- This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the
     sim to get to know it, as well open and play with the GUI design.  If you would like to make a
     launcher for editing probe_basic, then follow the below instructions:
 
-	right click on the desktop and select "Create Launcher"
+		right click on the desktop and select "Create Launcher"
 
-	In the field entries you can put the following information:
+		In the field entries you can put the following information:
 
-	Name: QTDesigner
+			Name: QTDesigner
 
-	Comment: probe_basic gui editor
+			Comment: probe_basic gui editor
 
-	Command: editvcp probe_basic
+			Command: editvcp probe_basic
 
-	Working Directory: /home/(name used during installation)/probe_basic/probe_basic
+			Working Directory: /home/(name used during installation)/probe_basic/probe_basic
 
-	Press the Save button once completed.
+		Press the Save button once completed.
 
-	The first launch select Mark Executable when prompted.
+		The first launch select Mark Executable when prompted.
 
 
 11- Congratualtions you have made it through and should be ready to start having fun!
