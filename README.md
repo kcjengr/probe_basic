@@ -7,13 +7,13 @@
    
 		http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
-    Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
+	Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive 		depending on is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend 		using 2-4gb USB drive for quicker flashing.
 
 		https://www.balena.io/etcher/?ref=etcher_update
 
-    Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.
+	Once you have created your flash stick for linuxcnc proceed to install and boot the system.  (note: It is advised to have 	  an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on 	screen to complete installation.
 
-    After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
+	After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked 	at any point during installation.
 
 		sudo apt update
 
@@ -22,7 +22,7 @@
 
 2- Upgrade to master version 2.8
 
-	Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
+	Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during 	installation.
 
 		sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
 
@@ -37,14 +37,14 @@
 
 3- Start Linuxcnc first time
 
-	Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
+	Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop 	 down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
 
 
 4- Install qtpyvcp dependencies
 	
-	Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.
+	Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during 		installation.
 
-		sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
+		sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-			pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-			plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
 
 
 5- Install qtpyvcp
@@ -72,7 +72,7 @@
 
 8- Copy probe_basic config files
 
- 	Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
+	Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them 		available for selection when starting linuxcnc.  A launcher icon can be created on the desktop by checking the box at the 	  bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going 	 forward.
 
 9- Edit probe_basic
 
@@ -83,7 +83,7 @@
 
 10- You are Finished with Installation!
 
-	This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a launcher for editing probe_basic, then follow the below instructions:
+	This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as 	well open and play with the GUI design.  If you would like to make a launcher for editing probe_basic, then follow the 		below instructions:
 
 		right click on the desktop and select "Create Launcher"
 
@@ -102,8 +102,8 @@
 		The first launch select Mark Executable when prompted.
 
 
-11- Congratualtions you have made it through and should be ready to start having fun!
-11- Congratualtions you have made it through and should be ready to start having fun!
+11- Congratulations you have made it through and should be ready to start having fun!
+
 
 
 ## Documentation
