@@ -3,9 +3,9 @@ Development Install
 ===================
 
 
-<blockquote>*********************** Probe Basic Installation Guide ********************</blockquote>
+<bold>*********************** Probe Basic Installation Guide ********************</bold>
 
-<blockquote>1- Install Linuxcnc</blockquote>
+<bold>1- Install Linuxcnc</bold>
    
 		http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
@@ -22,7 +22,7 @@ Development Install
 		sudo apt upgrade
 
 
-<blockquote>2- Upgrade to master version 2.8</blockquote>
+<bold>2- Upgrade to master version 2.8</bold>
 
 	Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
@@ -37,33 +37,33 @@ Development Install
 		sudo apt dist-upgrade
 
 
-<blockquote><blockquote>3- Start Linuxcnc first time</blockquote>
+<bold><bold>3- Start Linuxcnc first time</bold>
 
 	Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
 
 
-<blockquote>4- Install qtpyvcp dependencies</blockquote>
+<bold>4- Install qtpyvcp dependencies</bold>
 	
 	Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.
 
 		sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git
 
 
-<blockquote>5- Install qtpyvcp</blockquote>
+<bold>5- Install qtpyvcp</bold>
 	
 	Copy the following in the main terminal, hit enter, select Y for yes if asked at any point during installation.
 
 		pip install qtpyvcp
 
 
-<blockquote>6- Install probe_basic</blockquote>
+<bold>6- Install probe_basic</bold>
 
 	Copy the following in the main terminal, hit enter.
    
 		git clone https://github.com/kcjengr/probe_basic.git
 
 
-<blockquote>7- Setup the probe_basic directory and install using pip.</blockquote>
+<bold>7- Setup the probe_basic directory and install using pip.</bold>
 	
 	From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.
 
@@ -72,18 +72,18 @@ Development Install
 		pip install -e .
 
 
-<blockquote>8- Copy probe_basic config files</blockquote>
+<bold>8- Copy probe_basic config files</bold>
 
  	Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
 
-<blockquote>9- Edit probe_basic</blockquote>
+<bold>9- Edit probe_basic</bold>
 
 	To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
 		editvcp probe_basic
 
 
-<blockquote>10- You are Finished with Installation!</blockquote>
+<bold>10- You are Finished with Installation!</bold>
 
 	This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a launcher for editing probe_basic, then follow the below instructions:
 
@@ -104,4 +104,4 @@ Development Install
 		The first launch select Mark Executable when prompted.
 
 
-<blockquote>11- Congratualtions you have made it through and should be ready to start having fun!</blockquote>
+<bold>11- Congratualtions you have made it through and should be ready to start having fun!</bold>
