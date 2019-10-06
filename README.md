@@ -77,7 +77,7 @@ See the [documentation](https://kcjengr.github.io/qtpyvcp/).
 * [Issue Tracker](https://github.com/kcjengr/ProbeBasic/issues)
 
 
-## Dependancies
+## Dependencies
 
 * [LinuxCNC](https://linuxcnc.org)
 * Python 2.7
