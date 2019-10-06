@@ -60,6 +60,7 @@ After installation, copy the following in the main terminal one line at a time a
 
 8- Copy probe_basic config files, Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
 
+
 9- Edit probe_basic, To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
 		editvcp probe_basic
