@@ -1,9 +1,5 @@
 ![](probe_basic/images/probe_basic_icon.png)
 
-===================
-Development Install
-===================
-
 
 *********************** Probe Basic Installation Guide ********************
 
