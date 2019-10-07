@@ -135,6 +135,8 @@ right click on the desktop and select "Create Launcher"
 
 In the field entries you can put the following information:
 
+**NOTE: for the command line be sure to change the "YOUR_COMPUTER_NAME_HERE" for you actual computer name, for example /home/jacob/.local/bin/editvcp probe_basic or the launcher will give an error!**
+
 ::
 
     Name: QTDesigner
