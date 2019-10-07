@@ -57,6 +57,10 @@ Copy the following in the main terminal it is all one line, hit enter, select Y 
 
     sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git:
 
+::
+
+    sudo apt install qttools5.dev qttools5-dev-tools python-pip
+
 
 **5- Install qtpyvcp**
 
@@ -64,7 +68,9 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
 ::
 
-    pip install qtpyvcp
+    sudo apt install qttools5.dev qttools5-dev-tools python-pip
+
+    pip install --editable .
 
 
 **6- Install probe_basic**
