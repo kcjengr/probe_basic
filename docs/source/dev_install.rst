@@ -141,7 +141,7 @@ In the field entries you can put the following information:
 
     Comment: probe_basic gui editor
 
-    Command: /home/**put_your_computer_name_here**/.local/bin/editvcp probe_basic
+    Command: /home/YOUR_COMPUTER_NAME_HERE/.local/bin/editvcp probe_basic
 
     Working Directory:
 
