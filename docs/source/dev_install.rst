@@ -6,35 +6,35 @@ Development Install
 ** Probe Basic Installation Guide **
 
 **1- Install Linuxcnc**
-   
-		http://www.linuxcnc.org/testing-stretch-rtpreempt/
+
+		::http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
     Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
-		.. seealso:https://www.balena.io/etcher/?ref=etcher_update:
+		::https://www.balena.io/etcher/?ref=etcher_update
 
     Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.
 
     After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
-		seealso:sudo apt update:
+		::sudo apt update
 
-		seealso:sudo apt upgrade:
+		::sudo apt upgrade
 
 
 **2- Upgrade to master version 2.8**
 
 	Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
-		seealso:sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E:
+		::sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
 
-		seealso:sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt":
+		::sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
 
-		seealso:sudo apt update:
+		::sudo apt update
 
-		seealso:sudo apt upgrade:
+		::sudo apt upgrade
 
-		seealso:sudo apt dist-upgrade:
+		::sudo apt dist-upgrade
 
 
 **3- Start Linuxcnc first time**
@@ -46,30 +46,30 @@ Development Install
 	
 	Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.
 
-		seealso:sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git:
+		::sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git:
 
 
 **5- Install qtpyvcp**
 	
 	Copy the following in the main terminal, hit enter, select Y for yes if asked at any point during installation.
 
-		seealso:pip install qtpyvcp:
+		::pip install qtpyvcp
 
 
 **6- Install probe_basic**
 
 	Copy the following in the main terminal, hit enter.
    
-		seealso:git clone https://github.com/kcjengr/probe_basic.git:
+		::git clone https://github.com/kcjengr/probe_basic.git
 
 
 **7- Setup the probe_basic directory and install using pip.**
 	
 	From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.
 
-		seealso:cd probe_basic:
+		::cd probe_basic
 
-		seealso:pip install -e .:
+		::pip install -e .
 
 
 **8- Copy probe_basic config files**
@@ -80,7 +80,7 @@ Development Install
 
 	To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
-		seealso:editvcp probe_basic:
+		::editvcp probe_basic
 
 
 **10- You are Finished with Installation!**
