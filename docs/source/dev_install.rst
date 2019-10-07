@@ -36,7 +36,8 @@ Copy the following in the main terminal one line at a time and hit enter, select
     sudo apt-get update
     sudo apt-get dist-upgrade
     sudo apt-get install dirmngr
-    sudo apt-get install software-properties-commonsudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
+    sudo apt-get install software-properties-common
+    sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
     sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
     sudo apt update
     sudo apt upgrade
