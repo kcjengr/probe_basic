@@ -155,7 +155,7 @@ See the [documentation](https://kcjengr.github.io/qtpyvcp/).
 ## Resources
 
 * [Development](https://github.com/kcjengr/ProbeBasic/)
-* [Documentation](https://kcjengr.github.io/qtpyvcp/)
+* [Documentation](https://kcjengr.github.io/probe_basic/)
 * [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy)
 * [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org)
 * [Gitter](https://gitter.im/kcjengr/qtpyvcp)
