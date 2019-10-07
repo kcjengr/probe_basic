@@ -24,6 +24,7 @@ After installation, copy the following in the main terminal one line at a time a
 ::
 
     sudo apt update
+
     sudo apt upgrade
 
 
@@ -34,13 +35,21 @@ Copy the following in the main terminal one line at a time and hit enter, select
 ::
 
     sudo apt-get update
+
     sudo apt-get dist-upgrade
+
     sudo apt-get install dirmngr
+
     sudo apt-get install software-properties-common
+
     sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
+
     sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
+
     sudo apt update
+
     sudo apt upgrade
+
     sudo apt dist-upgrade
 
 
@@ -97,6 +106,7 @@ From the main terminal paste the following and press enter after each, if asked,
 ::
 
     cd probe_basic
+
     pip install -e .
 
 
@@ -124,8 +134,11 @@ In the field entries you can put the following information:
 ::
 
     Name: QTDesigner
+
     Comment: probe_basic gui editor
+
     Command: editvcp probe_basic
+
     Working Directory: /home/(name used during installation)/probe_basic/probe_basic
 
 Press the Save button once completed.
