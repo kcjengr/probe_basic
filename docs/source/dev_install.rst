@@ -68,7 +68,7 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
 ::
 
-    sudo apt install qttools5.dev qttools5-dev-tools python-pip
+    git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
 
     pip install --editable .
 
