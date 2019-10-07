@@ -109,6 +109,10 @@ From the main terminal paste the following and press enter after each, if asked,
 
     pip install -e .
 
+    cd
+
+    cp ~/probe_basic/probe_basic/fonts ~/.local/share/
+
 
 **8- Copy probe_basic config files**
 
