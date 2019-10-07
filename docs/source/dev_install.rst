@@ -85,6 +85,8 @@ Copy the following in the main terminal, hit enter.
 
 ::
 
+    cd
+
     git clone https://github.com/kcjengr/probe_basic.git
 
 
