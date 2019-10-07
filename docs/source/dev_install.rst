@@ -27,7 +27,7 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt upgrade
 
 
-**2- Upgrade to master version 2.8**
+**2- Upgrade to LinuxCNC version 2.8**
 
 Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
@@ -84,7 +84,7 @@ From the main terminal paste the following and press enter after each, if asked,
 
 **8- Copy probe_basic config files**
 
-Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
+Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A Desktop launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
 
 **9- Edit probe_basic**
 
@@ -97,7 +97,7 @@ To be able to edit the probe_basic gui, you will enter the following in the main
 
 **10- You are Finished with Installation!**
 
-This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a launcher for editing probe_basic, then follow the below instructions:
+This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a Desktop Icon to launch the editor for probe_basic,  follow the below instructions:
 
 right click on the desktop and select "Create Launcher"
 
