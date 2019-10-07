@@ -70,7 +70,11 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
 
+    cd qtpyvcp
+
     pip install --editable .
+
+    cd ~/qtpyvcp/pyqt5designer/Qt5.7.1-64bit/
 
     sudo ./install.sh
 
