@@ -1,25 +1,25 @@
 ![](probe_basic/images/probe_basic_icon.png)
 
 
+
 **Probe Basic Installation Guide**
 
 **1- Install Linuxcnc**
 
-::
+
 
     http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
 Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
-::
 
     https://www.balena.io/etcher/?ref=etcher_update
+
 
 Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.
 
 After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
-::
 
     sudo apt update
 
@@ -30,7 +30,6 @@ After installation, copy the following in the main terminal one line at a time a
 
 Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
-::
 
     sudo apt-get update
 
@@ -60,11 +59,9 @@ Now linuxcnc needs to be started for the first time for it to create its directo
 
 Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.
 
-::
 
     sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-setuptools python-pip git:
 
-::
 
     sudo apt install qttools5.dev qttools5-dev-tools python-pip
 
@@ -73,7 +70,6 @@ Copy the following in the main terminal it is all one line, hit enter, select Y 
 
 Copy the following in the main terminal, hit enter, select Y for yes if asked at any point during installation.
 
-::
 
     git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
 
@@ -90,7 +86,6 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
 Copy the following in the main terminal, hit enter.
 
-::
 
     cd
 
@@ -101,7 +96,6 @@ Copy the following in the main terminal, hit enter.
 
 From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.
 
-::
 
     cd probe_basic
 
@@ -120,7 +114,6 @@ Copy the probe_basic config files from the probe_basic folder to the linuxcnc/co
 
 To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
-::
 
     editvcp probe_basic
 
@@ -135,7 +128,6 @@ In the field entries you can put the following information:
 
 **NOTE: for the command line be sure to change the "YOUR_COMPUTER_NAME_HERE" for you actual computer name, for example /home/jacob/.local/bin/editvcp probe_basic or the launcher will give an error!**
 
-::
 
     Name: QTDesigner
 
