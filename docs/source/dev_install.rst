@@ -72,6 +72,8 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     pip install --editable .
 
+    sudo ./install.sh
+
 
 **6- Install probe_basic**
 
