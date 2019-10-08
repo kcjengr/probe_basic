@@ -104,6 +104,8 @@ From the main terminal paste the following and press enter after each, if asked,
     cd
 
     cp -r ~/probe_basic/probe_basic/fonts/ ~/.local/share/
+    
+    cp -r ~/probe_basic/config/xyzab/ ~/linuxcnc/configs/
 
 
 **8- Copy probe_basic config files**
