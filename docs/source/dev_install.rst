@@ -83,9 +83,15 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     pip install --editable .
 
+    cd
+
     cd ~/qtpyvcp/pyqt5designer/Qt5.7.1-64bit/
 
     sudo ./install.sh
+
+    cp ~/qtpyvcp/scripts/.xsessionrc ~/
+
+**IMPORTANT: now Log Off and Log back in for the previous installation to take effect, then continue with step 6 after logging back in in a main terminal!**
 
 
 **6- Install probe_basic**
@@ -93,8 +99,6 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 Copy the following in the main terminal, hit enter.
 
 ::
-
-    cd
 
     git clone https://github.com/kcjengr/probe_basic.git
 
