@@ -113,6 +113,9 @@ From the main terminal paste the following and press enter after each, if asked,
 
     cp -r ~/probe_basic/probe_basic/fonts/ ~/.local/share/
 
+    cp -r ~/probe_basic/config/xyzab/ ~/linuxcnc/configs/?
+    
+
 
 **8- Copy probe_basic config files**
 
@@ -153,3 +156,4 @@ The first launch select Mark Executable when prompted.
 
 
 **11- Congratualtions you have made it through and should be ready to start having fun!**
+
