@@ -91,7 +91,7 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     cp ~/qtpyvcp/scripts/.xsessionrc ~/
 
-**IMPORTANT: now Log Off and Log back in for the previous installation to take effect, then continue with step 6 after logging back in in a main terminal!**
+**IMPORTANT: now Log Off of Linux, then Log In again for the previous installation to take effect, then continue with step 6 after in a main terminal!**
 
 
 **6- Install probe_basic**
