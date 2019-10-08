@@ -3,7 +3,7 @@ Development Install
 ===================
 
 
-**Probe Basic Installation Guide**
+**Probe Basic Development Installation Guide**
 
 **1- Install Linuxcnc**
 
