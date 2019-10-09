@@ -1,17 +1,17 @@
 ![](probe_basic/images/probe_basic_icon.png)
 
 
+
 **Probe Basic Development Installation Guide**
 
 **1- Install Linuxcnc**
 
 
+
     http://www.linuxcnc.org/testing-stretch-rtpreempt/
 
-
 Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
-Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
     https://www.balena.io/etcher/?ref=etcher_update
 
@@ -94,6 +94,8 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 Copy the following in the main terminal, hit enter.
 
 
+    cd
+
     git clone https://github.com/kcjengr/probe_basic.git
 
 
@@ -109,8 +111,8 @@ From the main terminal paste the following and press enter after each, if asked,
     cd
 
     cp -r ~/probe_basic/probe_basic/fonts/ ~/.local/share/
-
-    cp -r ~/probe_basic/config/xyzab/ ~/linuxcnc/configs/    
+    
+    cp -r ~/probe_basic/config/xyzab/ ~/linuxcnc/configs/
 
 
 **8- Copy probe_basic config files**
