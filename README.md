@@ -74,17 +74,17 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
     git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
 
     cd qtpyvcp
-
+    
     pip install --editable .
-
+    
     cd
-
+    
     cd ~/qtpyvcp/pyqt5designer/Qt5.7.1-64bit/
-
+    
     sudo ./install.sh
-
+    
     cp ~/qtpyvcp/scripts/.xsessionrc ~/
-
+    
 
 **IMPORTANT: now Log Off of Linux, then Log In again for the previous installation to take effect, then continue with step 6 after in a main terminal!**
 
@@ -150,6 +150,7 @@ The first launch select Mark Executable when prompted.
 
 
 **11- Congratualtions you have made it through and should be ready to start having fun!**
+
 
 
 
