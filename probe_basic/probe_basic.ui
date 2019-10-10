@@ -16512,7 +16512,7 @@ QAbstractSpinBox:selected {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>2</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -19845,9 +19845,9 @@ border-radius: 1px;
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="label_26">
+            <widget class="StatusLabel" name="timer">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
@@ -19861,11 +19861,11 @@ border-radius: 1px;
              <property name="maximumSize">
               <size>
                <width>90</width>
-               <height>33</height>
+               <height>16777215</height>
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">QLabel {
+              <string notr="true">StatusLabel {
     border-style: solid;
     border-color: silver;
     border-width: 1px;
@@ -19876,11 +19876,11 @@ border-radius: 1px;
     padding-right: 2px;
 }</string>
              </property>
-             <property name="text">
-              <string>0:00:00</string>
-             </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="rules" stdset="0">
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:cycle_time&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;cycle_timer&quot;}]</string>
              </property>
             </widget>
            </item>
@@ -25697,13 +25697,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
