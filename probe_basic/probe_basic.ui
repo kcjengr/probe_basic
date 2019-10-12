@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -15339,7 +15339,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="holeop_tab">
                <attribute name="title">
@@ -15717,352 +15717,6 @@ QTabBar::tab:only-one {
                    <attribute name="title">
                     <string>REAM</string>
                    </attribute>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox">
-                    <property name="geometry">
-                     <rect>
-                      <x>330</x>
-                      <y>360</y>
-                      <width>241</width>
-                      <height>50</height>
-                     </rect>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QAbstractSpinBox {
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-    border: 2px solid black;
-    color: white;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 6px;
-    font: 17pt &quot;bebas kai&quot;;
-}
-
-
-QAbstractSpinBox:up-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: border;
-    subcontrol-position: center right;
-    width: 50px;
-    height: 60px;
-    border-left: 1px solid black;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-QAbstractSpinBox::up-arrow,
-QAbstractSpinBox::up-arrow:disabled,
-QAbstractSpinBox::up-arrow:off {
-    image: url(:/images/up_arrow.png);
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::up-arrow:hover {
-    image: url(:/images/up_arrow.png);
-}
-
-QAbstractSpinBox:down-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: border;
-    subcontrol-position: center left;
-    width: 50px;
-    height: 60px;
-    border-right: 1px solid black;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-QAbstractSpinBox::down-arrow,
-QAbstractSpinBox::down-arrow:disabled,
-QAbstractSpinBox::down-arrow:off {
-    image: url(:/images/down_arrow.png);
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::down-arrow:hover {
-    image: url(:/images/down_arrow.png);
-}
-
-QAbstractSpinBox:hover{
-    border: 1px solid #148CD2;
-    color: #F0F0F0;
-}
-
-QAbstractSpinBox:selected {
-    background: #1464A0;
-    color: #32414B;
-}
-</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="decimals">
-                     <number>4</number>
-                    </property>
-                   </widget>
-                   <widget class="QComboBox" name="comboBox">
-                    <property name="geometry">
-                     <rect>
-                      <x>330</x>
-                      <y>250</y>
-                      <width>241</width>
-                      <height>50</height>
-                     </rect>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">
-QLineEdit,
-QComboBox:!editable,
-QSpinBox {
-    border: solid;
-    border-width: 2px;
-    border-color: black;
-    border-radius: 6px;
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-    padding: 3px;
-    min-height: 20px;
-    color: white;
-}
-
-QLineEdit:disabled,
-QComboBox:disabled,
-QSpinBox:disabled {
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-    border-color: silver;
-}
-
-QComboBox:!editable {
-    padding-right: 5px;
-}
-
-/* QComboBox gets the &quot;on&quot; state when the popup is open */
-QComboBox:!editable:on, QToolBar &gt; QComboBox::drop-down:editable:on {
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QComboBox:on { /* shift the text when the popup opens */
-    padding-top: 3px;
-    padding-left: 4px;
-}
-
-QComboBox::drop-down {
-    subcontrol-origin: padding;
-    subcontrol-position: top right;
-    width: 45px;
-    border: solid;
-    border color: black;
-    border-left-width: 2px;
-    border-top-right-radius: 4px; /* same radius as the QComboBox */
-    border-bottom-right-radius: 4px;
-    padding-left: 4px;
-    padding-right: 4px;
-}
-
-QComboBox::down-arrow {
-    image: url(:/images/down_arrow.png);
-    width: 30px;
-    height: 30px;
-}
-
-QComboBox::down-arrow:disabled {
-    image: none;
-}
-
-QComboBox::down-arrow:on { /* shift the arrow when popup is open */
-    top: 1px;
-    left: 1px;
-}</string>
-                    </property>
-                    <property name="editable">
-                     <bool>false</bool>
-                    </property>
-                   </widget>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_2">
-                    <property name="geometry">
-                     <rect>
-                      <x>670</x>
-                      <y>340</y>
-                      <width>81</width>
-                      <height>131</height>
-                     </rect>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QAbstractSpinBox {
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-    border: 2px solid black;
-    color: white;
-    padding-left: 4px;
-    padding-right: 4px;
-    border-radius: 6px;
-    font: 17pt &quot;bebas kai&quot;;
-}
-
-QAbstractSpinBox:up-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: border;
-    subcontrol-position: center top;
-    width: 100px;
-    height: 35px;
-    border-bottom: 1px solid black;
-    padding-left: 4px;
-    padding-right: 4px;    
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
-
-QAbstractSpinBox::up-arrow,
-QAbstractSpinBox::up-arrow:disabled,
-QAbstractSpinBox::up-arrow:off {
-    image: url(:/images/up_arrow.png)1;
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::up-arrow:hover {
-    image: url(:/images/up_arrow.png)1;
-}
-
-QAbstractSpinBox:down-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: margin;
-    subcontrol-position: center bottom;
-    width: 100px;
-    height: 35px;    
-    border-top: 1px solid black;
-    padding-left: 4px;
-    padding-right: 4px;
-    padding-top: 4px;
-    padding-bottom: 4px;
-}
-
-QAbstractSpinBox::down-arrow,
-QAbstractSpinBox::down-arrow:disabled,
-QAbstractSpinBox::down-arrow:off {
-    image: url(:/images/down_arrow.png)1;
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::down-arrow:hover {
-    image: url(:/images/down_arrow.png)1;
-}
-
-QAbstractSpinBox:hover{
-    border: 1px solid #148CD2;
-    color: #F0F0F0;
-}
-
-QAbstractSpinBox:selected {
-    background: #1464A0;
-    color: #32414B;
-}
-</string>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignCenter</set>
-                    </property>
-                    <property name="decimals">
-                     <number>4</number>
-                    </property>
-                   </widget>
-                   <widget class="QDoubleSpinBox" name="doubleSpinBox_3">
-                    <property name="geometry">
-                     <rect>
-                      <x>640</x>
-                      <y>190</y>
-                      <width>140</width>
-                      <height>90</height>
-                     </rect>
-                    </property>
-                    <property name="layoutDirection">
-                     <enum>Qt::LeftToRight</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QAbstractSpinBox {
-    background-color: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-    border: 2px solid black;
-    color: white;
-    border-radius: 6px;
-    font: 17pt &quot;bebas kai&quot;;
-    padding-top: 9px;
-}
-
-QAbstractSpinBox:up-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: border;
-    subcontrol-position: bottom;
-    border-top: 1px solid black;
-    border-left: 1px solid black;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 70px;
-    height: 35px;
-    margin-left: 70px;
-}
-
-QAbstractSpinBox::up-arrow,
-QAbstractSpinBox::up-arrow:disabled,
-QAbstractSpinBox::up-arrow:off {
-    image: url(:/images/up_arrow.png);
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::up-arrow:hover {
-    image: url(:/images/up_arrow.png);
-}
-
-QAbstractSpinBox:down-button {
-    background-color: transparent #19232D;
-    subcontrol-origin: border;
-    subcontrol-position: bottom;
-    border-top: 1px solid black;
-    border-right: 1px solid black;
-    padding-top: 4px;
-    padding-bottom: 4px;
-    width: 70px;
-    height: 35px;
-    margin-right: 70px;
-}
-
-QAbstractSpinBox::down-arrow,
-QAbstractSpinBox::down-arrow:disabled,
-QAbstractSpinBox::down-arrow:off {
-    image: url(:/images/down_arrow.png);
-    width: 30px;
-    height: 30px;
-}
-
-QAbstractSpinBox::down-arrow:hover {
-    border-image: url(:/images/down_arrow.png);
-}
-
-QAbstractSpinBox:hover{
-    border: 1px solid #148CD2;
-    color: #F0F0F0;
-}
-
-QAbstractSpinBox:selected {
-    background: #1464A0;
-    color: #32414B;
-}
-</string>
-                    </property>
-                    <property name="frame">
-                     <bool>true</bool>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignHCenter|Qt::AlignTop</set>
-                    </property>
-                    <property name="showGroupSeparator" stdset="0">
-                     <bool>false</bool>
-                    </property>
-                    <property name="decimals">
-                     <number>4</number>
-                    </property>
-                   </widget>
                   </widget>
                   <widget class="QWidget" name="chamfer_tab">
                    <attribute name="title">
@@ -16097,21 +15751,385 @@ QAbstractSpinBox:selected {
                <attribute name="title">
                 <string>FACING</string>
                </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_49">
+                <item>
+                 <widget class="QTabWidget" name="tabWidget_10">
+                  <property name="focusPolicy">
+                   <enum>Qt::TabFocus</enum>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QTabWidget QTabBar::tab {
+    margin-top: 5px;
+    margin-right: 0px;
+    min-width: 130px;
+    min-height: 23px;
+    font: 14pt &quot;bebas kai&quot;;
+}
+
+QTabBar::tab:first {
+    margin-left: 300px;
+    border-left-width: 2px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+}
+
+QTabBar::tab:last {
+    border-left-width: 1px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:only-one {
+    border-width: 2px;
+    border-radius: 4px;
+}</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>2</number>
+                  </property>
+                  <widget class="QWidget" name="widget_36">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_37">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_71"/>
+                  </widget>
+                  <widget class="QWidget" name="widget_39">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_46">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_47">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_48">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_49">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_50">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
               </widget>
               <widget class="QWidget" name="perimeter_tab">
                <attribute name="title">
                 <string>PERIMETER</string>
                </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_63">
+                <item>
+                 <widget class="QTabWidget" name="tabWidget_9">
+                  <property name="focusPolicy">
+                   <enum>Qt::TabFocus</enum>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QTabWidget QTabBar::tab {
+    margin-top: 5px;
+    margin-right: 0px;
+    min-width: 130px;
+    min-height: 23px;
+    font: 14pt &quot;bebas kai&quot;;
+}
+
+QTabBar::tab:first {
+    margin-left: 300px;
+    border-left-width: 2px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+}
+
+QTabBar::tab:last {
+    border-left-width: 1px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:only-one {
+    border-width: 2px;
+    border-radius: 4px;
+}</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>2</number>
+                  </property>
+                  <widget class="QWidget" name="widget_28">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_29">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_70"/>
+                  </widget>
+                  <widget class="QWidget" name="widget_30">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_31">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_32">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_33">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_34">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_35">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
               </widget>
               <widget class="QWidget" name="pockets_tab">
                <attribute name="title">
                 <string>POCKETS</string>
                </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_65">
+                <item>
+                 <widget class="QTabWidget" name="tabWidget_8">
+                  <property name="focusPolicy">
+                   <enum>Qt::TabFocus</enum>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QTabWidget QTabBar::tab {
+    margin-top: 5px;
+    margin-right: 0px;
+    min-width: 130px;
+    min-height: 23px;
+    font: 14pt &quot;bebas kai&quot;;
+}
+
+QTabBar::tab:first {
+    margin-left: 300px;
+    border-left-width: 2px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+}
+
+QTabBar::tab:last {
+    border-left-width: 1px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:only-one {
+    border-width: 2px;
+    border-radius: 4px;
+}</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>2</number>
+                  </property>
+                  <widget class="QWidget" name="widget_2">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_20">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_69"/>
+                  </widget>
+                  <widget class="QWidget" name="widget_22">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_23">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_24">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_25">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_26">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget_27">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
               </widget>
               <widget class="QWidget" name="misc_tab">
                <attribute name="title">
                 <string>MISC</string>
                </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_68">
+                <item>
+                 <widget class="QTabWidget" name="tabWidget_7">
+                  <property name="focusPolicy">
+                   <enum>Qt::TabFocus</enum>
+                  </property>
+                  <property name="layoutDirection">
+                   <enum>Qt::LeftToRight</enum>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QTabWidget QTabBar::tab {
+    margin-top: 5px;
+    margin-right: 0px;
+    min-width: 130px;
+    min-height: 23px;
+    font: 14pt &quot;bebas kai&quot;;
+}
+
+QTabBar::tab:first {
+    margin-left: 300px;
+    border-left-width: 2px;
+    border-right-width: 1px;
+    border-bottom-width: 2px;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 0px;
+    border-bottom-left-radius: 4px;
+    border-bottom-right-radius: 0px;
+}
+
+QTabBar::tab:last {
+    border-left-width: 1px;
+    border-right-width: 2px;
+    border-top-width: 2px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+}
+
+QTabBar::tab:only-one {
+    border-width: 2px;
+    border-radius: 4px;
+}</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>0</number>
+                  </property>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_67"/>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                  <widget class="QWidget" name="widget">
+                   <attribute name="title">
+                    <string/>
+                   </attribute>
+                  </widget>
+                 </widget>
+                </item>
+               </layout>
               </widget>
              </widget>
             </item>
@@ -16512,7 +16530,7 @@ QAbstractSpinBox:selected {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -23656,10 +23674,10 @@ border-radius: 4px;
               <number>100</number>
              </property>
              <property name="value">
-              <number>100</number>
+              <number>50</number>
              </property>
              <property name="sliderPosition">
-              <number>100</number>
+              <number>50</number>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
@@ -23695,7 +23713,7 @@ border-radius: 4px;
 }</string>
              </property>
              <property name="text">
-              <string>30%</string>
+              <string>50%</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -25948,13 +25966,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
