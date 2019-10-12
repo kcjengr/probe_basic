@@ -27,6 +27,7 @@ o<Probe_top_right_edge_angle> sub
   #<edge_width> = #14          (=0.5000)
   #<probe_mode> = #15          (=0)
   #<wco_rotation> = #16        (=0)
+  #<max_vel_slider> = #17      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -52,11 +53,12 @@ o<Probe_top_right_edge_angle> sub
 
   (Probe X Positioning Move, Step Off Width)
   G91
-  G0 X[#<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_minus" to Probe x- side of Workpiece)
   o<probe_x_minus> call [#1][#3][#4][#8][#9][#10]
@@ -72,7 +74,7 @@ o<Probe_top_right_edge_angle> sub
   (edge width move to edge second probing point)
   G91
   F[#<probe_fast_fr>]
-  G1 Y[#<edge_width>]
+  G38.3 Y[#<edge_width>]
 
   (Call sub "probe_x_minus" to Probe x- side of Workpiece)
   o<probe_x_minus> call [#1][#3][#4][#8][#9][#10]
@@ -95,9 +97,11 @@ o<Probe_top_right_edge_angle> sub
 
   (Probe Completion Move to Z Clearance Plane, and Y Zero)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
   G90
-  G0 X[#<x_minus_zero_edge_start>] Y[#<y_start_position>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<x_minus_zero_edge_start>] Y[#<y_start_position>]
 
   (probe mode rules for WCO, Rotation and probe position measuring only)
   o<140> if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]

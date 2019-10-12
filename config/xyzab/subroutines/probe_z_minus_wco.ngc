@@ -25,6 +25,7 @@ o<probe_z_minus_wco> sub
   #<diameter_hint> = #13       (=1.0000)
   #<edge_width> = #14          (=0.5000)
   #<probe_mode> = #15          (=0)
+  #<max_vel_slider> = #16      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -50,7 +51,8 @@ o<probe_z_minus_wco> sub
   o<120> if [#5070 EQ 0]
     (back to start point and feed)
     G90
-    G0 Z#<z>
+    F[#<max_vel_slider>]
+    G38.3 Z#<z>
     F[#<probe_fast_fr>]
     (return from sub)
     o<probe_z_minus_wco> return
@@ -58,7 +60,8 @@ o<probe_z_minus_wco> sub
 
   (Move to z_clearance height for slow probe)
   G90
-  G0 Z[#<z_minus_probed> + #<z_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_minus_probed> + #<z_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o<130> if [#<probe_slow_fr> GT 0]
@@ -69,7 +72,8 @@ o<probe_z_minus_wco> sub
     #<z_minus_probed> = #5063
     (debug, Probed Pos: #5063 Z Pos: #<_z>)
     G90
-    G0 Z[#<z_minus_probed> + #<z_clearance>]
+    F[#<max_vel_slider>]
+    G38.3 Z[#<z_minus_probed> + #<z_clearance>]
   o<130> endif
 
   (defines the edge as z_probed_position for DRO reporting)

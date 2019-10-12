@@ -17,6 +17,7 @@ o<probe_y_plus> sub
   #<probe_slow_fr> = #4
   #<probe_fast_fr> = #5
   #<calibration_offset> = #6
+  #<max_vel_slider> = #7      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -49,7 +50,8 @@ o<probe_y_plus> sub
   o<120> if [#5070 EQ 0]
     (back to start point and feed)
     G90
-    G0 Y#<y>
+    F[#<max_vel_slider>]
+    G38.3 Y#<y>
     F[#<probe_fast_fr>]
     (return from sub)
     o<probe_y_plus> return
@@ -57,7 +59,8 @@ o<probe_y_plus> sub
 
   (Move to xy_clearance distance for slow probe)
   G90
-  G0 Y[#<y_plus_probed> - #<xy_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 Y[#<y_plus_probed> - #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o<130> if [#<probe_slow_fr> GT 0]
@@ -68,7 +71,8 @@ o<probe_y_plus> sub
     #<y_plus_probed> = #5062
     (debug, Probed Pos: #5062 Y Pos: #<_y>)
     G90
-    G0 Y[#<y_plus_probed> - #<xy_clearance>]
+    F[#<max_vel_slider>]
+    G38.3 Y[#<y_plus_probed> - #<xy_clearance>]
   o<130> endif
 
   #<y_plus_zero_edge> = [#5062 + #<probe_center_offset>]
