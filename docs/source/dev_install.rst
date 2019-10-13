@@ -121,11 +121,7 @@ From the main terminal paste the following and press enter after each, if asked,
     
 
 
-**8- Copy probe_basic config files**
-
-Copy the probe_basic config files from the probe_basic folder to the linuxcnc/configs folder.  This will make them available for selection when starting linuxcnc.  A Desktop launcher icon can be created on the desktop by checking the box at the bottom of the screen prior to launching the probe_basic xyzab.ini sim. This will make it easier starting the sim going forward.
-
-**9- Edit probe_basic**
+**8- Edit probe_basic**
 
 To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
@@ -134,7 +130,7 @@ To be able to edit the probe_basic gui, you will enter the following in the main
     editvcp probe_basic
 
 
-**10- You are Finished with Installation!**
+**9- You are Finished with Installation!**
 
 This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a Desktop Icon to launch the editor for probe_basic,  follow the below instructions:
 
@@ -159,5 +155,5 @@ Press the Save button once completed.
 The first launch select Mark Executable when prompted.
 
 
-**11- Congratualtions you have made it through and should be ready to start having fun!**
+**10- Congratualtions you have made it through and should be ready to start having fun!**
 
