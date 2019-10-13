@@ -13858,7 +13858,7 @@ color: rgb(255, 255, 255);
                               </widget>
                              </item>
                              <item>
-                              <widget class="VCPLineEdit" name="calibration_offset">
+                              <widget class="VCPSettingsLineEdit" name="calibration_offset">
                                <property name="sizePolicy">
                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                  <horstretch>0</horstretch>
@@ -13897,6 +13897,12 @@ color: rgb(255, 255, 255);
                                </property>
                                <property name="rules" stdset="0">
                                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.6f}\&quot;.format(ch[0][12])&quot;, &quot;name&quot;: &quot;auto_cal_offset&quot;}]</string>
+                               </property>
+                               <property name="settingName" stdset="0">
+                                <string>touch-probe.calibration-offset</string>
+                               </property>
+                               <property name="textFormat" stdset="0">
+                                <string>%0.6f</string>
                                </property>
                               </widget>
                              </item>
@@ -24608,6 +24614,11 @@ font: 11pt bebas kai;
    <class>RecentFileComboBox</class>
    <extends>QComboBox</extends>
    <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
    <class>SubCallButton</class>
