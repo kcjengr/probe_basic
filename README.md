@@ -3,7 +3,9 @@
 
 ## Documentation
 
-See the [documentation](https://kcjengr.github.io/qtpyvcp/) for installation.
+Development Installation Here: https://kcjengr.github.io/probe_basic/dev_install.html
+
+See the [documentation](https://kcjengr.github.io/qtpyvcp/).
 
 
 ## Resources
