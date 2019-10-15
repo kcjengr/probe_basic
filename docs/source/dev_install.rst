@@ -33,30 +33,23 @@ After installation, copy the following in the main terminal one line at a time a
 Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
 
 ::
+
     sudo apt-get update
 
-::
     sudo apt-get dist-upgrade
 
-::
     sudo apt-get install dirmngr
 
-::
     sudo apt-get install software-properties-common
 
-::
     sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
 
-::
     sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
 
-::
     sudo apt update
 
-::
     sudo apt upgrade
 
-::
     sudo apt dist-upgrade
 
 
