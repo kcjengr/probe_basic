@@ -3,9 +3,9 @@
 
 ## Documentation
 
-[probe_basic Development Installation] (https://kcjengr.github.io/probe_basic/dev_install.html)
+**probe_basic development installation** https://kcjengr.github.io/probe_basic/dev_install.html
 
-[QtPyVCP use Documentation] (https://kcjengr.github.io/qtpyvcp/).
+**QtPyVCP use documentation** https://kcjengr.github.io/qtpyvcp/
 
 
 ## Resources
