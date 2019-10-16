@@ -17617,7 +17617,7 @@ QTabBar::tab:only-one {
                    <bool>true</bool>
                   </property>
                   <property name="rules" stdset="0">
-                   <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes?string&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;'G54' in ch[0]&quot;, &quot;name&quot;: &quot;g54_offset_status&quot;}]</string>
+                   <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_line?string&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot; 'm2, M2, m02, M02, m30, M30' in ch[0]&quot;, &quot;name&quot;: &quot;g54_offset_status&quot;}]</string>
                   </property>
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G54</string>
