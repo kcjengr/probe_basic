@@ -21,11 +21,12 @@ o<probe_rect_pocket> sub
   #<probe_slow_fr> = #8        (=0.0)
   #<probe_fast_fr> = #9        (=10.0)
   #<calibration_offset> = #10  (=0.0000)
-  #<x_hint> = #11              (=1.0000)
-  #<y_hint> = #12              (=1.0000)
+  #<x_hint_0> = #11            (=1.0000)
+  #<y_hint_0> = #12            (=1.0000)
   #<diameter_hint> = #13       (=1.0000)
   #<edge_width> = #14          (=0.5000)
   #<probe_mode> = #15          (=0)
+  #<max_vel_slider> = #16      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -52,11 +53,12 @@ o<probe_rect_pocket> sub
 
   (Probe X Positioning Move, Step Off Width)
   G91
-  G0 X[#<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_minus" to Probe x- side of Workpiece)
   o<probe_x_minus> call [#1][#3][#4][#8][#9][#10]
@@ -83,7 +85,8 @@ o<probe_rect_pocket> sub
 
   (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
   G90
-  G0 X[#<x_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+ side of Workpiece)
   o<probe_y_plus> call [#1][#3 + #12 / 2][#4][#8][#9][#10]
@@ -109,9 +112,11 @@ o<probe_rect_pocket> sub
   M68 E11 Q[#<y_center_probed>]
 
   G90
-  G0 Y[#<y_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 Y[#<y_center_probed>]
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (probe mode rules for WCO or probe position measuring only)
   o<120> if [#<probe_mode> EQ 0]

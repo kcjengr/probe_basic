@@ -28,6 +28,7 @@ o<probe_cal_round_boss> sub
   #<probe_mode> = #15          (=0)
   #<cal_diameter> = #16        (=1.0000)
   #<sq_cal_axis> = #17         (=0)
+  #<max_vel_slider> = #18      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -61,11 +62,12 @@ o<probe_cal_round_boss> sub
 
   (Probe X Positioning Move, X hint/2 + Step Off Width)
   G91
-  G0 X-[#<cal_diameter>/2 + #<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 X-[#<cal_diameter>/2 + #<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_plus" to Probe x+ side of Workpiece)
   o<probe_x_plus> call [#1][#3][#4][#8][#9][#10]
@@ -74,15 +76,17 @@ o<probe_cal_round_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in X, X Hint + Step Off Width at Rapid Speed)
   G91
-  G0 X[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_minus" to Probe x- side of Workpiece)
   o<probe_x_minus> call [#1][#3][#4][#8][#9][#10]
@@ -95,17 +99,20 @@ o<probe_cal_round_boss> sub
   M68 E10 Q[#<x_center_probed>]
 
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
   G90
-  G0 X[#<x_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<x_center_probed>]
 
   (Probe Y Positioning Move, Y hint/2 + Step Off Width)
   G91
-  G0 Y-[#<cal_diameter>/2 + #<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 Y-[#<cal_diameter>/2 + #<step_off_width>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_plus" to Probe y+ side of Workpiece)
   o<probe_y_plus> call [#1][#3][#4][#8][#9][#10]
@@ -114,15 +121,18 @@ o<probe_cal_round_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in Y, Y Hint + Step Off Width at Rapid Speed)
   G91
-  G0 Y[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 Y[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G0 Z-[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
   o<probe_y_minus> call [#1][#3][#4][#8][#9][#10]
@@ -136,19 +146,22 @@ o<probe_cal_round_boss> sub
 
   (Move to z clearance plane)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (Move to Y Center)
   G90
-  G0 Y[#<y_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 Y[#<y_center_probed>]
 
   (Probe X Positioning Move, X hint/2 + Step Off Width)
   G91
-  G0 X-[#<cal_diameter>/2 + #<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 X-[#<cal_diameter>/2 + #<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_plus" to Probe x+ side of Workpiece)
   o<probe_x_plus> call [#1][#3][#4][#8][#9][#10]
@@ -157,14 +170,16 @@ o<probe_cal_round_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in X, X Hint + Step Off Width at Rapid Speed)
-  G0 X[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_minus" to Probe x- side of Workpiece)
   o<probe_x_minus> call [#1][#3][#4][#8][#9][#10]
@@ -189,17 +204,20 @@ o<probe_cal_round_boss> sub
   M68 E10 Q[#<x_center_probed>]
 
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
   G90
-  G0 X[#<x_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<x_center_probed>]
 
   (Probe Y Positioning Move, Y hint/2 + Step Off Width)
   G91
-  G0 Y-[#<cal_diameter>/2 + #<step_off_width>]
+  F[#<max_vel_slider>]
+  G38.3 Y-[#<cal_diameter>/2 + #<step_off_width>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  G1 Z-[#<z_probe_stack>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_plus" to Probe y+ side of Workpiece)
   o<probe_y_plus> call [#1][#3][#4][#8][#9][#10]
@@ -208,14 +226,16 @@ o<probe_cal_round_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in Y, Y Hint + Step Off Width at Rapid Speed)
-  G0 Y[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
+  F[#<max_vel_slider>]
+  G38.3 Y[#<cal_diameter> + #<step_off_width> + #<xy_clearance>]
 
   (Probe Y Positioning Move, to Probing Depth)
-  F[#<probe_fast_fr>]
-  G0 Z-[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
   o<probe_y_minus> call [#1][#3][#4][#8][#9][#10]
@@ -245,9 +265,11 @@ o<probe_cal_round_boss> sub
   M68 E2 Q[#<averaged_diam>]
 
   G91
-  G0 Z[#<z_probe_stack>]
+  F[#<max_vel_slider>]
+  G38.3 Z[#<z_probe_stack>]
   G90
-  G0 X[#<x_center_probed>] Y[#<y_center_probed>]
+  F[#<max_vel_slider>]
+  G38.3 X[#<x_center_probed>] Y[#<y_center_probed>]
 
   o<140> if [#<cal_diameter> GT #<x_probed_width>]
     (calculate calibration error and adjust calibration offset)
@@ -270,11 +292,11 @@ o<probe_cal_round_boss> sub
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
   o<160> if [#<sq_cal_axis> EQ 0]
-    M68 E12 Q[#<new_avg_cal_offset>]
+    M68 E12 Q[ABS[#<new_avg_cal_offset>]]
   o<160> else if [#<sq_cal_axis> EQ 1]
-    M68 E12 Q[#<new_x_cal_offset>]
+    M68 E12 Q[ABS[#<new_x_cal_offset>]]
   o<160> else
-    M68 E12 Q[#<new_y_cal_offset>]
+    M68 E12 Q[ABS[#<new_y_cal_offset>]]
   o<160> endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]
