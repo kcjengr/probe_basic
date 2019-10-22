@@ -16539,7 +16539,7 @@ QTabBar::tab:only-one {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -21289,11 +21289,127 @@ border-radius: 1px;
              </property>
             </widget>
            </item>
+          </layout>
+         </item>
+        </layout>
+       </widget>
+      </item>
+      <item>
+       <widget class="QFrame" name="main_dro_qframe">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>486</width>
+          <height>340</height>
+         </size>
+        </property>
+        <property name="maximumSize">
+         <size>
+          <width>486</width>
+          <height>340</height>
+         </size>
+        </property>
+        <property name="focusPolicy">
+         <enum>Qt::NoFocus</enum>
+        </property>
+        <property name="styleSheet">
+         <string notr="true">.QFrame{
+    padding-left: 6px;
+    padding-right: 6px;
+    padding-top: -1px;
+    padding-bottom:-1px;
+}</string>
+        </property>
+        <layout class="QVBoxLayout" name="verticalLayout_4">
+         <property name="spacing">
+          <number>13</number>
+         </property>
+         <property name="topMargin">
+          <number>15</number>
+         </property>
+         <property name="bottomMargin">
+          <number>11</number>
+         </property>
+         <item>
+          <layout class="QHBoxLayout" name="horizontalLayout_58">
+           <property name="spacing">
+            <number>8</number>
+           </property>
            <item>
-            <widget class="ActionButton" name="axisactionbutton_5">
+            <widget class="MDIButton" name="zero_all_button">
+             <property name="enabled">
+              <bool>false</bool>
+             </property>
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>60</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>60</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">MDIButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+             </property>
+             <property name="text">
+              <string>ALL</string>
+             </property>
+             <property name="icon">
+              <iconset resource="probe_basic.qrc">
+               <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+             </property>
+             <property name="iconSize">
+              <size>
+               <width>20</width>
+               <height>20</height>
+              </size>
+             </property>
+             <property name="rules" stdset="0">
+              <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+             </property>
+             <property name="MDICommand" stdset="0">
+              <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0 A0.0 B0.0</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QFrame" name="frame_25">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-               <horstretch>1</horstretch>
+               <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
@@ -21310,89 +21426,7 @@ border-radius: 1px;
               </size>
              </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-             </property>
-             <property name="text">
-              <string>HOME ALL</string>
-             </property>
-             <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'HOME ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
-             </property>
-             <property name="actionName" stdset="0">
-              <string>machine.home.all</string>
-             </property>
-            </widget>
-           </item>
-          </layout>
-         </item>
-        </layout>
-       </widget>
-      </item>
-      <item>
-       <widget class="QFrame" name="main_dro_qframe">
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="minimumSize">
-         <size>
-          <width>482</width>
-          <height>340</height>
-         </size>
-        </property>
-        <property name="maximumSize">
-         <size>
-          <width>482</width>
-          <height>340</height>
-         </size>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">.QFrame{
-    padding-left: 7px;
-    padding-right: 7px;
-    padding-top: -1px;
-    padding-bottom:-1px;
-}</string>
-        </property>
-        <layout class="QVBoxLayout" name="verticalLayout_4">
-         <property name="spacing">
-          <number>13</number>
-         </property>
-         <property name="topMargin">
-          <number>15</number>
-         </property>
-         <property name="bottomMargin">
-          <number>11</number>
-         </property>
-         <item>
-          <widget class="QFrame" name="frame_25">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">.QFrame{
+              <string notr="true">.QFrame{
     border-style: solid;
     border-color: rgb(176, 179,172);
     border-width: 1px;
@@ -21400,198 +21434,169 @@ border-radius: 1px;
     background-color: rgb(90, 90, 90);
     padding: -5px;
 }</string>
-           </property>
-           <property name="frameShape">
-            <enum>QFrame::StyledPanel</enum>
-           </property>
-           <property name="frameShadow">
-            <enum>QFrame::Raised</enum>
-           </property>
-           <layout class="QHBoxLayout" name="horizontalLayout_103">
-            <property name="spacing">
-             <number>8</number>
-            </property>
-            <property name="leftMargin">
-             <number>5</number>
-            </property>
-            <property name="rightMargin">
-             <number>7</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="axis_column_header">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::StyledPanel</enum>
+             </property>
+             <property name="frameShadow">
+              <enum>QFrame::Raised</enum>
+             </property>
+             <layout class="QHBoxLayout" name="horizontalLayout_103">
+              <property name="spacing">
+               <number>8</number>
               </property>
-              <property name="minimumSize">
-               <size>
-                <width>55</width>
-                <height>17</height>
-               </size>
+              <property name="leftMargin">
+               <number>5</number>
               </property>
-              <property name="maximumSize">
-               <size>
-                <width>65</width>
-                <height>17</height>
-               </size>
+              <property name="rightMargin">
+               <number>7</number>
               </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
+              <item>
+               <widget class="StatusLabel" name="statuslabel_12">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+    padding-left: 6px;
+}</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+                <property name="rules" stdset="0">
+                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_index?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0] + ' WORK'\n&quot;, &quot;name&quot;: &quot;WCS Header&quot;}]</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="work_column_header_2">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
     color: rgb(238, 238, 236);
 	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
-              </property>
-              <property name="text">
-               <string>AXIS</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="StatusLabel" name="statuslabel_12">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
+                </property>
+                <property name="text">
+                 <string>MACHINE</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="dtg_column_header">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                  <horstretch>0</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>100</width>
+                  <height>17</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
     color: rgb(238, 238, 236);
 	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-              <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_index?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0] + ' WORK'\n&quot;, &quot;name&quot;: &quot;WCS Header&quot;}]</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="work_column_header_2">
-              <property name="enabled">
-               <bool>true</bool>
-              </property>
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
+                </property>
+                <property name="text">
+                 <string>DTG</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item>
+            <widget class="ActionButton" name="ref_all_button">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>1</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>62</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>62</width>
+               <height>40</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
 }</string>
-              </property>
-              <property name="text">
-               <string>MACHINE</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="dtg_column_header">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>100</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>DTG</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="dtg_column_header_3">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>60</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>60</width>
-                <height>17</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>REF</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
+             </property>
+             <property name="text">
+              <string>REF ALL</string>
+             </property>
+             <property name="rules" stdset="0">
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+             </property>
+             <property name="actionName" stdset="0">
+              <string>machine.home.all</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
          </item>
          <item>
           <layout class="QHBoxLayout" name="x_axis_dro_layout">
@@ -21604,20 +21609,20 @@ border-radius: 1px;
               <bool>false</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>58</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
@@ -21802,7 +21807,7 @@ StatusLabel[style=&quot;homing&quot;]{
               </font>
              </property>
              <property name="mouseTracking">
-              <bool>false</bool>
+              <bool>true</bool>
              </property>
              <property name="styleSheet">
               <string notr="true">StatusLabel{
@@ -21830,20 +21835,20 @@ StatusLabel[style=&quot;homing&quot;]{
            <item>
             <widget class="ActionButton" name="axisactionbutton_6">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
@@ -21873,20 +21878,20 @@ StatusLabel[style=&quot;homing&quot;]{
               <bool>false</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>55</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
@@ -22090,20 +22095,20 @@ StatusLabel[style=&quot;homing&quot;]{
            <item>
             <widget class="ActionButton" name="axisactionbutton_3">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
@@ -22133,20 +22138,20 @@ StatusLabel[style=&quot;homing&quot;]{
               <bool>false</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>55</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
@@ -22350,20 +22355,20 @@ StatusLabel[style=&quot;homing&quot;]{
            <item>
             <widget class="ActionButton" name="axisactionbutton">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
@@ -22393,20 +22398,20 @@ StatusLabel[style=&quot;homing&quot;]{
               <bool>false</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>55</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
@@ -22609,20 +22614,20 @@ StatusLabel[style=&quot;homing&quot;]{
            <item>
             <widget class="ActionButton" name="axisactionbutton_2">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
@@ -22652,20 +22657,20 @@ StatusLabel[style=&quot;homing&quot;]{
               <bool>false</bool>
              </property>
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>50</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>55</width>
+               <width>60</width>
                <height>40</height>
               </size>
              </property>
@@ -22869,20 +22874,20 @@ StatusLabel[style=&quot;homing&quot;]{
            <item>
             <widget class="ActionButton" name="axisactionbutton_4">
              <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>60</width>
+               <width>62</width>
                <height>40</height>
               </size>
              </property>
@@ -23639,7 +23644,7 @@ border-radius: 4px;
 }</string>
            </property>
            <property name="text">
-            <string>MV 100%</string>
+            <string>V 100%</string>
            </property>
            <property name="actionName" stdset="0">
             <string>machine.max-velocity.reset</string>
@@ -26134,13 +26139,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotviewGroup"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotviewGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
