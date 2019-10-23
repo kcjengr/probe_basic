@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -7923,13 +7923,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_2">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="x_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -7943,7 +7937,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -7953,20 +7947,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][13])&quot;, &quot;name&quot;: &quot;g30_x_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][13])&quot;, &quot;name&quot;: &quot;x_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.x-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>%0.4f</string>
                       </property>
                      </widget>
                     </item>
@@ -8007,13 +8001,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_4">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="y_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -8027,7 +8015,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -8037,20 +8025,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][14])&quot;, &quot;name&quot;: &quot;g30_y_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][14])&quot;, &quot;name&quot;: &quot;y_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.y-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>%0.4f</string>
                       </property>
                      </widget>
                     </item>
@@ -8091,13 +8079,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_3">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="z_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -8111,7 +8093,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -8121,20 +8103,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][15])&quot;, &quot;name&quot;: &quot;g30_z_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][15])&quot;, &quot;name&quot;: &quot;z_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.z-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>%0.4f</string>
                       </property>
                      </widget>
                     </item>
@@ -11609,7 +11591,7 @@ QPushButton:checked {
                        <string notr="true"/>
                       </property>
                       <property name="currentIndex">
-                       <number>5</number>
+                       <number>0</number>
                       </property>
                       <widget class="QWidget" name="Page1">
                        <layout class="QHBoxLayout" name="horizontalLayout_132">
@@ -26211,13 +26193,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probemodeGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probemodeGroup"/>
   <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
