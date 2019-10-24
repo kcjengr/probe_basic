@@ -26,8 +26,8 @@ o<probe_cal_square_boss> sub
   #<diameter_hint> = #13       (=1.0000)
   #<edge_width> = #14          (=0.5000)
   #<probe_mode> = #15          (=0)
-  #<x_cal_width> = #16         (=1.0000)
-  #<y_cal_width> = #17         (=1.0000)
+  #<x_cal_width> = #16         (=0)
+  #<y_cal_width> = #17         (=0)
   #<sq_cal_axis> = #18         (=0)
   #<max_vel_slider> = #19      (=50)
 
@@ -51,10 +51,10 @@ o<probe_cal_square_boss> sub
   #<probe_radius> = [#<probe_diameter> / 2]
 
   (Probe Centerline Offset)
-  #<probe_center_offset> = [#<probe_radius> - #<calibration_offset>]
+  #<probe_center_offset> = [#<probe_radius>]
 
   (remove probe tip diam and cal offset from probed width calculations)
-  #<probe_diameter_offset> = [#<probe_diameter> - [#<calibration_offset> * 2]]
+  #<probe_diameter_offset> = [#<probe_diameter>]
 
   #<z_probe_stack> = [#<z_clearance> + #<probe_diameter> + #<extra_probe_depth>]
 
@@ -64,7 +64,7 @@ o<probe_cal_square_boss> sub
   (Probe X Positioning Move, X hint/2 + Step Off Width)
   G91
   F[#<max_vel_slider>]
-  G38.3 X-[#<x_hint>/2 + #<step_off_width>]
+  G38.3 X-[#<x_cal_width>/2 + #<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
@@ -83,7 +83,7 @@ o<probe_cal_square_boss> sub
   (Positioning move in X, X Hint + Step Off Width at Rapid Speed)
   G91
   F[#<max_vel_slider>]
-  G38.3 X[#<x_hint> + #<step_off_width> + #<xy_clearance>]
+  G38.3 X[#<x_cal_width> + #<step_off_width> + #<xy_clearance>]
 
   (Probe X Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
@@ -117,7 +117,7 @@ o<probe_cal_square_boss> sub
   (Probe Y Positioning Move, Y hint/2 + Step Off Width)
   G91
   F[#<max_vel_slider>]
-  G38.3 Y-[#<y_hint>/2 + #<step_off_width>]
+  G38.3 Y-[#<y_cal_width>/2 + #<step_off_width>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
@@ -136,7 +136,7 @@ o<probe_cal_square_boss> sub
   (Positioning move in Y, Y Hint + Step Off Width at Rapid Speed)
   G91
   F[#<max_vel_slider>]
-  G38.3 Y[#<y_hint> + #<step_off_width> + #<xy_clearance>]
+  G38.3 Y[#<y_cal_width> + #<step_off_width> + #<xy_clearance>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
@@ -171,19 +171,19 @@ o<probe_cal_square_boss> sub
   o<120> if [#<x_cal_width> GT #<x_probed_width>]
     (calculate calibration error and adjust calibration offset)
     #<x_cal_error> = [[#<x_cal_width> - #<x_probed_width>] / 2]
-    #<new_x_cal_offset> = [#<calibration_offset> - #<x_cal_error>]
+    #<new_x_cal_offset> = [#<x_cal_error>]
   o<120> else
     #<x_cal_error> = [[#<x_probed_width> - #<x_cal_width>] / 2]
-    #<new_x_cal_offset> = [#<calibration_offset> + #<x_cal_error>]
+    #<new_x_cal_offset> = [#<x_cal_error>]
   o<120> endif
 
   o<130> if [#<y_cal_width> GT #<y_probed_width>]
     (calculate calibration error and adjust calibration offset)
     #<y_cal_error> = [[#<y_cal_width> - #<y_probed_width>] / 2]
-    #<new_y_cal_offset> = [#<calibration_offset> - #<y_cal_error>]
+    #<new_y_cal_offset> = [#<y_cal_error>]
   o<130> else
     #<y_cal_error> = [[#<y_probed_width> - #<y_cal_width>] / 2]
-    #<new_y_cal_offset> = [#<calibration_offset> + #<y_cal_error>]
+    #<new_y_cal_offset> = [#<y_cal_error>]
   o<130> endif
 
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]

@@ -47,7 +47,7 @@ o<probe_cal_square_pocket> sub
   #<probe_diameter> = #5410
 
   (remove probe tip diam and cal offset from probed width calculations)
-  #<probe_diameter_offset> = [#<probe_diameter> - [#<calibration_offset> * 2]]
+  #<probe_diameter_offset> = [#<probe_diameter>]
 
   #<z_probe_stack> = [#<z_clearance> + #<probe_diameter> + #<extra_probe_depth>]
 
@@ -124,19 +124,19 @@ o<probe_cal_square_pocket> sub
   o<120> if [#<x_cal_width> GT #<x_probed_width>]
     (calculate calibration error and adjust calibration offset)
     #<x_cal_error> = [[#<x_cal_width> - #<x_probed_width>] / 2]
-    #<new_x_cal_offset> = [#<calibration_offset> + #<x_cal_error>]
+    #<new_x_cal_offset> = [#<x_cal_error>]
   o<120> else
     #<x_cal_error> = [[#<x_probed_width> - #<x_cal_width>] / 2]
-    #<new_x_cal_offset> = [#<calibration_offset> - #<x_cal_error>]
+    #<new_x_cal_offset> = [#<x_cal_error>]
   o<120> endif
 
   o<130> if [#<y_cal_width> GT #<y_probed_width>]
     (calculate calibration error and adjust calibration offset)
     #<y_cal_error> = [[#<y_cal_width> - #<y_probed_width>] / 2]
-    #<new_y_cal_offset> = [#<calibration_offset> + #<y_cal_error>]
+    #<new_y_cal_offset> = [#<y_cal_error>]
   o<130> else
     #<y_cal_error> = [[#<y_probed_width> - #<y_cal_width>] / 2]
-    #<new_y_cal_offset> = [#<calibration_offset> - #<y_cal_error>]
+    #<new_y_cal_offset> = [#<y_cal_error>]
   o<130> endif
 
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]

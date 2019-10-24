@@ -7923,13 +7923,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_2">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="x_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -7943,7 +7937,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -7953,20 +7947,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][13])&quot;, &quot;name&quot;: &quot;g30_x_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Value&quot;, &quot;expression&quot;: &quot;ch[0][13]&quot;, &quot;name&quot;: &quot;x_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.x-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>{:0.4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -8007,13 +8001,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_4">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="y_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -8027,7 +8015,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -8037,20 +8025,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][14])&quot;, &quot;name&quot;: &quot;g30_y_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Value&quot;, &quot;expression&quot;: &quot;ch[0][14]&quot;, &quot;name&quot;: &quot;y_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.y-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>{:0.4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -8091,13 +8079,7 @@ padding-left: 5px;
                      </widget>
                     </item>
                     <item>
-                     <widget class="StatusLabel" name="tool_length_3">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="VCPSettingsLineEdit" name="z_tool_change_position">
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
@@ -8111,7 +8093,7 @@ padding-left: 5px;
                        </size>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true">QLabel {
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -8121,20 +8103,20 @@ padding-left: 5px;
 	font: 75 15pt &quot;Bebas Kai&quot;;
 }</string>
                       </property>
-                      <property name="text">
-                       <string>0.0000</string>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
+                      <property name="placeholderText">
+                       <string>0.0000</string>
+                      </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.4f}\&quot;.format(ch[0][15])&quot;, &quot;name&quot;: &quot;g30_z_position&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Value&quot;, &quot;expression&quot;: &quot;ch[0][15]&quot;, &quot;name&quot;: &quot;z_axis_g30_set_position&quot;}]</string>
                       </property>
-                      <property name="format" stdset="0">
-                       <string>{:.3f}</string>
+                      <property name="settingName" stdset="0">
+                       <string>tool-change-position.z-tool-change-position</string>
                       </property>
-                      <property name="statusItem" stdset="0">
-                       <string>tool_offset.3</string>
+                      <property name="textFormat" stdset="0">
+                       <string>{:0.4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -8865,7 +8847,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="probe_tool_number">
+                    <widget class="VCPSettingsLineEdit" name="probe_tool_number">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -8887,11 +8869,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>99</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.probe-tool-number</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.0f}</string>
                      </property>
                     </widget>
                    </item>
@@ -8942,7 +8930,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="step_off_width">
+                    <widget class="VCPSettingsLineEdit" name="step_off_width">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -8964,11 +8952,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>0.5000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.step-off-width</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9042,7 +9036,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="probe_fast_fr">
+                    <widget class="VCPSettingsLineEdit" name="probe_fast_fr">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9064,11 +9058,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>10.0</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.probe-fast-fr</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.1f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9119,7 +9119,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="probe_slow_fr">
+                    <widget class="VCPSettingsLineEdit" name="probe_slow_fr">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9141,11 +9141,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>0.0</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.probe-slow-fr</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.1f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9219,7 +9225,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="max_xy_distance">
+                    <widget class="VCPSettingsLineEdit" name="max_xy_distance">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9241,11 +9247,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>1.0000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.max-xy-distance</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9296,7 +9308,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="xy_clearance">
+                    <widget class="VCPSettingsLineEdit" name="xy_clearance">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9318,11 +9330,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>0.1000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.xy-clearance</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9396,7 +9414,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="max_z_distance">
+                    <widget class="VCPSettingsLineEdit" name="max_z_distance">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9418,11 +9436,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>1.0000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.max-z-distance</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9473,7 +9497,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="z_clearance">
+                    <widget class="VCPSettingsLineEdit" name="z_clearance">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9495,11 +9519,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>0.1000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.z-clearance</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9579,7 +9609,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="extra_probe_depth">
+                    <widget class="VCPSettingsLineEdit" name="extra_probe_depth">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9601,11 +9631,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>0.0000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.extra-probe-depth</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -9656,7 +9692,7 @@ color: white;
                     </widget>
                    </item>
                    <item>
-                    <widget class="VCPLineEdit" name="edge_width">
+                    <widget class="VCPSettingsLineEdit" name="edge_width">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -9678,11 +9714,17 @@ color: white;
                      <property name="focusPolicy">
                       <enum>Qt::ClickFocus</enum>
                      </property>
-                     <property name="text">
-                      <string>1.0000</string>
-                     </property>
                      <property name="alignment">
                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="placeholderText">
+                      <string>0.0000</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>probe-parameters.edge-width</string>
+                     </property>
+                     <property name="textFormat" stdset="0">
+                      <string>{:0.4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -13806,16 +13848,16 @@ padding-left: 5px;
                            <item>
                             <layout class="QHBoxLayout" name="horizontalLayout_61">
                              <property name="spacing">
-                              <number>12</number>
+                              <number>6</number>
                              </property>
                              <property name="leftMargin">
-                              <number>20</number>
+                              <number>90</number>
                              </property>
                              <property name="topMargin">
                               <number>3</number>
                              </property>
                              <property name="rightMargin">
-                              <number>20</number>
+                              <number>90</number>
                              </property>
                              <property name="bottomMargin">
                               <number>3</number>
@@ -13830,13 +13872,13 @@ padding-left: 5px;
                                </property>
                                <property name="minimumSize">
                                 <size>
-                                 <width>185</width>
+                                 <width>210</width>
                                  <height>30</height>
                                 </size>
                                </property>
                                <property name="maximumSize">
                                 <size>
-                                 <width>185</width>
+                                 <width>210</width>
                                  <height>30</height>
                                 </size>
                                </property>
@@ -13848,7 +13890,7 @@ padding-left: 5px;
                                </property>
                                <property name="styleSheet">
                                 <string notr="true">QLabel{
-font: 15pt &quot;Bebas Kai&quot;;
+font: 17pt &quot;Bebas Kai&quot;;
 color: rgb(255, 255, 255);
 }</string>
                                </property>
@@ -13867,7 +13909,7 @@ color: rgb(255, 255, 255);
                               </widget>
                              </item>
                              <item>
-                              <widget class="VCPLineEdit" name="calibration_offset">
+                              <widget class="VCPSettingsLineEdit" name="calibration_offset">
                                <property name="sizePolicy">
                                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                  <horstretch>0</horstretch>
@@ -13905,35 +13947,13 @@ color: rgb(255, 255, 255);
                                 <bool>false</bool>
                                </property>
                                <property name="rules" stdset="0">
-                                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:6.6f}\&quot;.format(ch[0][12])&quot;, &quot;name&quot;: &quot;auto_cal_offset&quot;}]</string>
+                                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:aout&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Value&quot;, &quot;expression&quot;: &quot;ch[0][12]&quot;, &quot;name&quot;: &quot;auto_cal_offset&quot;}]</string>
                                </property>
-                              </widget>
-                             </item>
-                             <item>
-                              <widget class="MDIButton" name="mdibutton">
-                               <property name="sizePolicy">
-                                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                 <horstretch>0</horstretch>
-                                 <verstretch>0</verstretch>
-                                </sizepolicy>
+                               <property name="settingName" stdset="0">
+                                <string>touch-probe.calibration-offset</string>
                                </property>
-                               <property name="minimumSize">
-                                <size>
-                                 <width>120</width>
-                                 <height>37</height>
-                                </size>
-                               </property>
-                               <property name="maximumSize">
-                                <size>
-                                 <width>120</width>
-                                 <height>35</height>
-                                </size>
-                               </property>
-                               <property name="text">
-                                <string>CLEAR OFFSET</string>
-                               </property>
-                               <property name="MDICommand" stdset="0">
-                                <string>M68 E12 Q0</string>
+                               <property name="textFormat" stdset="0">
+                                <string>{:0.6f}</string>
                                </property>
                               </widget>
                              </item>
@@ -16539,7 +16559,7 @@ QTabBar::tab:only-one {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -24783,6 +24803,11 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
   </customwidget>
   <customwidget>
+   <class>VCPSettingsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
    <class>SubCallButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.button_widgets.subcall_button</header>
@@ -24846,6 +24871,7 @@ font: 11pt bebas kai;
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="probe_basic.qrc"/>
   <include location="probe_basic.qrc"/>
   <include location="probe_basic.qrc"/>
   <include location="probe_basic.qrc"/>
@@ -26139,13 +26165,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
