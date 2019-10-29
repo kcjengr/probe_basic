@@ -17115,8 +17115,8 @@ QTabBar::tab:only-one {
            <widget class="QFrame" name="frame_20">
             <property name="geometry">
              <rect>
-              <x>1370</x>
-              <y>320</y>
+              <x>1350</x>
+              <y>340</y>
               <width>250</width>
               <height>210</height>
              </rect>
@@ -17268,7 +17268,7 @@ QTabBar::tab:only-one {
               <x>1350</x>
               <y>10</y>
               <width>270</width>
-              <height>290</height>
+              <height>320</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -17280,13 +17280,13 @@ QTabBar::tab:only-one {
             <property name="minimumSize">
              <size>
               <width>270</width>
-              <height>290</height>
+              <height>320</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>270</width>
-              <height>290</height>
+              <height>320</height>
              </size>
             </property>
             <property name="styleSheet">
@@ -17355,7 +17355,7 @@ QTabBar::tab:only-one {
 }</string>
                </property>
                <property name="text">
-                <string>  MACHINE BOUNDARY OFF STARTUP</string>
+                <string>  MACHINE BOUNDARY ON STARTUP</string>
                </property>
                <property name="tristate">
                 <bool>false</bool>
@@ -17442,6 +17442,22 @@ QTabBar::tab:only-one {
                </property>
                <property name="settingName" stdset="0">
                 <string>backplot-settings.program-labels</string>
+               </property>
+              </widget>
+             </item>
+             <item row="7" column="0">
+              <widget class="VCPSettingsCheckBox" name="plot_grid_checkbox">
+               <property name="styleSheet">
+                <string notr="true">VCPSettingsCheckBox {
+    color: white;
+    font: 14pt &quot;BebasKai&quot;
+}</string>
+               </property>
+               <property name="text">
+                <string>  PLOT GRID ON STARTUP</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>backplot-settings.plot-grid</string>
                </property>
               </widget>
              </item>
@@ -19990,9 +20006,6 @@ QPushButton:checked {
                      <property name="checkable">
                       <bool>true</bool>
                      </property>
-                     <property name="checked">
-                      <bool>false</bool>
-                     </property>
                      <property name="autoExclusive">
                       <bool>false</bool>
                      </property>
@@ -20031,9 +20044,6 @@ QPushButton:checked {
                       <string>MCH BDRY</string>
                      </property>
                      <property name="checkable">
-                      <bool>true</bool>
-                     </property>
-                     <property name="checked">
                       <bool>true</bool>
                      </property>
                     </widget>
@@ -27485,12 +27495,108 @@ font: 11pt bebas kai;
    <slot>toggle()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1405</x>
-     <y>139</y>
+     <x>1434</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
      <x>1798</x>
      <y>162</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>machine_ticks_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>machine_ticks_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1562</x>
+     <y>158</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1790</x>
+     <y>271</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>machine_labels_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>machine_labels_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1584</x>
+     <y>199</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1767</x>
+     <y>381</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>program_boundary_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>program_boundry_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1599</x>
+     <y>232</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1773</x>
+     <y>118</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>program_ticks_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>program_ticks_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1533</x>
+     <y>266</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1779</x>
+     <y>221</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>program_labels_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>program_labels_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1566</x>
+     <y>301</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1789</x>
+     <y>319</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>plot_grid_checkbox</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>plot_grid_button</receiver>
+   <slot>toggle()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1530</x>
+     <y>338</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1770</x>
+     <y>440</y>
     </hint>
    </hints>
   </connection>
@@ -27513,13 +27619,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
  </buttongroups>
 </ui>
