@@ -67,14 +67,12 @@ https://github.com/kcjengr/pb-installer/releases/download/v0.1.0/ProbeBasic-Inst
 
 
 
-.. image:: images/properties.png
+.. image:: https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/properties.png
    :align: center
-   :scale: 40 %
 
 
-.. image:: images/permissions.png
+.. image:: https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/permissions.png
    :align: center
-   :scale: 40 %
 
 
 
