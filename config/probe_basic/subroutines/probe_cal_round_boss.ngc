@@ -96,7 +96,7 @@ o<probe_cal_round_boss> sub
   (probed center calulation)
   #<x_center_probed> = [[#<x_minus_probed> + #<x_plus_probed>] / 2]
 
-  M68 E10 Q[#<x_center_probed>]
+  M68 E41 Q[#<x_center_probed>]
 
   G91
   F[#<max_vel_slider>]
@@ -142,7 +142,7 @@ o<probe_cal_round_boss> sub
   (probed center calulation)
   #<y_center_probed> = [[#<y_minus_probed> + #<y_plus_probed>] / 2]
 
-  M68 E11 Q[#<y_center_probed>]
+  M68 E42 Q[#<y_center_probed>]
 
   (Move to z clearance plane)
   G91
@@ -199,9 +199,9 @@ o<probe_cal_round_boss> sub
   (Completed probed width calculations)
   #<x_probed_width> = [#<x_raw_width> - #<probe_diameter_offset>]
 
-  M68 E0 Q[#<x_probed_width>]
+  M68 E31 Q[#<x_probed_width>]
 
-  M68 E10 Q[#<x_center_probed>]
+  M68 E41 Q[#<x_center_probed>]
 
   G91
   F[#<max_vel_slider>]
@@ -256,13 +256,13 @@ o<probe_cal_round_boss> sub
   (Completed probed width calculations)
   #<y_probed_width> = [#<y_raw_width> - #<probe_diameter_offset>]
 
-  M68 E1 Q[#<y_probed_width>]
+  M68 E32 Q[#<y_probed_width>]
 
-  M68 E11 Q[#<y_center_probed>]
+  M68 E42 Q[#<y_center_probed>]
 
   #<averaged_diam> = [[#<x_probed_width> + #<y_probed_width>] / 2]
 
-  M68 E2 Q[#<averaged_diam>]
+  M68 E33 Q[#<averaged_diam>]
 
   G91
   F[#<max_vel_slider>]
@@ -292,11 +292,11 @@ o<probe_cal_round_boss> sub
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
   o<160> if [#<sq_cal_axis> EQ 0]
-    M68 E12 Q[ABS[#<new_avg_cal_offset>]]
+    M68 E43 Q[ABS[#<new_avg_cal_offset>]]
   o<160> else if [#<sq_cal_axis> EQ 1]
-    M68 E12 Q[ABS[#<new_x_cal_offset>]]
+    M68 E43 Q[ABS[#<new_x_cal_offset>]]
   o<160> else
-    M68 E12 Q[ABS[#<new_y_cal_offset>]]
+    M68 E43 Q[ABS[#<new_y_cal_offset>]]
   o<160> endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]

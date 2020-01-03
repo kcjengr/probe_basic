@@ -103,9 +103,9 @@ o<probe_cal_square_boss> sub
   (Completed probed width calculations)
   #<x_probed_width> = [#<raw_width> - #<probe_diameter_offset>]
 
-  M68 E0 Q[#<x_probed_width>]
+  M68 E31 Q[#<x_probed_width>]
 
-  M68 E10 Q[#<x_center_probed>]
+  M68 E41 Q[#<x_center_probed>]
 
   G91
   F[#<max_vel_slider>]
@@ -157,9 +157,9 @@ o<probe_cal_square_boss> sub
   (Completed probed width calculations)
   #<y_probed_width> = [#<raw_width> - #<probe_diameter_offset>]
 
-  M68 E1 Q[#<y_probed_width>]
+  M68 E32 Q[#<y_probed_width>]
 
-  M68 E11 Q[#<y_center_probed>]
+  M68 E42 Q[#<y_center_probed>]
 
   G91
   F[#<max_vel_slider>]
@@ -189,11 +189,11 @@ o<probe_cal_square_boss> sub
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
   o<140> if [#<sq_cal_axis> EQ 0]
-    M68 E12 Q[ABS[#<new_avg_cal_offset>]]
+    M68 E43 Q[ABS[#<new_avg_cal_offset>]]
   o<140> else if [#<sq_cal_axis> EQ 1]
-    M68 E12 Q[ABS[#<new_x_cal_offset>]]
+    M68 E43 Q[ABS[#<new_x_cal_offset>]]
   o<140> else
-    M68 E12 Q[ABS[#<new_y_cal_offset>]]
+    M68 E43 Q[ABS[#<new_y_cal_offset>]]
   o<140> endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]
