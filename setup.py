@@ -24,9 +24,11 @@ setup(
     entry_points={
         'gui_scripts': [
             'probe_basic=probe_basic:main',
+            'probe_basic_lathe=probe_basic_lathe:main',
         ],
         'qtpyvcp.vcp': [
             'probe_basic=probe_basic',
+            'probe_basic_lathe=probe_basic_lathe',
         ],
     },
     install_requires=[
