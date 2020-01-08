@@ -1,0 +1,28 @@
+{% include "menubar.yml" %}
+
+qtdesigner:
+  ui_file: ( windows.mainwindow.kwargs.ui_file )
+  qss_file: ( application.kwargs.stylesheet )
+
+vcp:
+  name: Probe Basic Vertical
+  version: v0.0.1
+  author: Chris Polanski
+  description: |
+    Probe Basic Vertical Layout
+
+data_plugins:
+  status:
+    kwargs:
+      cycle_time: 75
+
+windows:
+  mainwindow:
+    provider: probe_basic:ProbeBasic
+    kwargs:
+      menu: ( menubar )
+      ui_file: {{ file.dir }}/probe_basic.ui
+
+application:
+  kwargs:
+    stylesheet: {{ file.dir }}/probe_basic.qss

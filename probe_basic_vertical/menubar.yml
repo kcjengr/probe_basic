@@ -1,0 +1,116 @@
+# Window Menu Bar items
+menubar:
+  # File Menu
+  - title: File
+    items:
+    - title: "&Open ..."
+      action: win.openFile
+      shortcut: ctrl+o
+
+    - title: "&Recent Files"
+      provider: qtpyvcp.widgets.recent_files_menu:RecentFilesMenu
+
+    - title: "&Reload"
+      action: program.reload
+
+    - title: "&Close"
+      action: program.clear
+
+    - title: "Save &As"
+      action:
+
+    - separator
+
+    - title: Exit
+      action: app.exit # or win.close
+      shortcut: ctrl+q
+
+  # Machine Menu
+  - title: Machine
+    items:
+    - title: Toggle E-Stop
+      action: machine.estop.toggle
+      shortcut: F1
+
+    - title: Toggle Power
+      action: machine.power.toggle
+      shortcut: F2
+
+    - separator
+
+    - title: Run Program
+      action: program.run
+      shortcut: R
+
+    - title: Step
+      action: program.step
+      shortcut: T
+
+    - title: Pause
+      action: program.pause
+      shortcut: P
+
+    - title: Resume
+      action: program.resume
+      shortcut: R
+
+    - title: Abort
+      action: program.abort
+      shortcut: esc
+
+    - title: Optional Stop
+      action: program.optional_stop.toggle
+
+    - title: Optional Skip
+      action: program.optional_skip.toggle
+
+    - separator
+
+    - title: Homing
+      provider: qtpyvcp.widgets.menus.homing_menu:HomingMenu
+
+    - title: Cooling
+      items:
+        - title: Flood
+          action: coolant.flood.toggle
+          shortcut: F7
+
+        - title: Mist
+          action: coolant.mist.toggle
+          shortcut: F8
+
+    - title: Set Work Offsets
+      action: win.showDialog
+      args: set_work_offsets
+
+    - separator
+
+    - title: Override Limits
+      action: machine.override_limits
+
+  - title: Tools
+    items:
+      - title: HAL Meter
+        action: tool.halmeter
+
+      - title: HAL Scope
+        action: tool.halscope
+
+      - title: HAL Show
+        action: tool.halshow
+
+      - title: LCNC Status
+        action: tool.status
+
+      - title: Calibration
+        action: tool.calibration
+
+      - title: Classicladder PLC
+        action: tool.classicladder
+
+  - title: About
+    items:
+      - title: About Probe Basic
+      - title: About QtPyVCP
+      - title: About Qt
+        action: app.aboutQt
