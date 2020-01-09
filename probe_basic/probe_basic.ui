@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>3</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -6382,35 +6382,55 @@ color: rgb(255, 255, 255);
                      <number>2</number>
                     </property>
                     <item>
-                     <widget class="ActionButton" name="m01_break_button_29">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="SubCallButton" name="tool_touch_off_button">
                       <property name="minimumSize">
                        <size>
-                        <width>150</width>
+                        <width>145</width>
                         <height>45</height>
                        </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>45</height>
-                       </size>
-                      </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::NoFocus</enum>
                       </property>
                       <property name="styleSheet">
                        <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                       </property>
                       <property name="text">
                        <string>TOUCH OFF CURRENT TOOL</string>
+                      </property>
+                      <property name="filename" stdset="0">
+                       <string>tool_touch_off.ngc</string>
                       </property>
                      </widget>
                     </item>
@@ -27633,12 +27653,12 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotviewGroup"/>
  </buttongroups>
 </ui>
