@@ -55,6 +55,13 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.wco_rotation.setText('0')
 
+    def on_tool_diameter_probe_clicked(self):
+        if self.tool_diameter_probe.isChecked():
+            self.tool_diameter_probe_mode.setText('1')
+        else:
+            self.tool_diameter_probe_mode.setText('0')
+
+
     @Slot(QAbstractButton)
     def on_xycalbtnGroup_buttonClicked(self, button):
         if button.isChecked():
