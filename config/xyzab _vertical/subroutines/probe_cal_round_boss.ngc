@@ -96,7 +96,8 @@ o<probe_cal_round_boss> sub
   (probed center calulation)
   #<x_center_probed> = [[#<x_minus_probed> + #<x_plus_probed>] / 2]
 
-  M68 E41 Q[#<x_center_probed>]
+  #1002 = #<x_center_probed>
+  (DEBUG, EVAL[vcp.getWidget{"x_center_probed"}.setValue{#1002}])
 
   G91
   F[#<max_vel_slider>]
@@ -142,7 +143,8 @@ o<probe_cal_round_boss> sub
   (probed center calulation)
   #<y_center_probed> = [[#<y_minus_probed> + #<y_plus_probed>] / 2]
 
-  M68 E42 Q[#<y_center_probed>]
+  #1004 = #<y_center_probed>
+  (DEBUG, EVAL[vcp.getWidget{"y_center_probed"}.setValue{#1004}])
 
   (Move to z clearance plane)
   G91
@@ -199,9 +201,11 @@ o<probe_cal_round_boss> sub
   (Completed probed width calculations)
   #<x_probed_width> = [#<x_raw_width> - #<probe_diameter_offset>]
 
-  M68 E31 Q[#<x_probed_width>]
+  #1001 = #<x_probed_width>
+  (DEBUG, EVAL[vcp.getWidget{"x_probed_width"}.setValue{#1001}])
 
-  M68 E41 Q[#<x_center_probed>]
+  #1002 = #<x_center_probed>
+  (DEBUG, EVAL[vcp.getWidget{"x_center_probed"}.setValue{#1002}])
 
   G91
   F[#<max_vel_slider>]
@@ -256,13 +260,16 @@ o<probe_cal_round_boss> sub
   (Completed probed width calculations)
   #<y_probed_width> = [#<y_raw_width> - #<probe_diameter_offset>]
 
-  M68 E32 Q[#<y_probed_width>]
+  #1003 = #<y_probed_width>
+  (DEBUG, EVAL[vcp.getWidget{"y_probed_width"}.setValue{#1003}])
 
-  M68 E42 Q[#<y_center_probed>]
+  #1004 = #<y_center_probed>
+  (DEBUG, EVAL[vcp.getWidget{"y_center_probed"}.setValue{#1004}])
 
   #<averaged_diam> = [[#<x_probed_width> + #<y_probed_width>] / 2]
 
-  M68 E33 Q[#<averaged_diam>]
+  #1010 = #<averaged_diam>
+  (DEBUG, EVAL[vcp.getWidget{"averaged_diam"}.setValue{#1010}])
 
   G91
   F[#<max_vel_slider>]
@@ -292,11 +299,14 @@ o<probe_cal_round_boss> sub
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
   o<160> if [#<sq_cal_axis> EQ 0]
-    M68 E43 Q[ABS[#<new_avg_cal_offset>]]
+    #1000 = [ABS[#<new_avg_cal_offset>]]
+    (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#1000}])
   o<160> else if [#<sq_cal_axis> EQ 1]
-    M68 E43 Q[ABS[#<new_x_cal_offset>]]
+    #1000 = [ABS[#<new_x_cal_offset>]]
+    (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#1000}])
   o<160> else
-    M68 E43 Q[ABS[#<new_y_cal_offset>]]
+    #1000 = [ABS[#<new_y_cal_offset>]]
+    (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#1000}])
   o<160> endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]

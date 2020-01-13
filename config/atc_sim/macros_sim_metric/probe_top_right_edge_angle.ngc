@@ -91,9 +91,11 @@ o<Probe_top_right_edge_angle> sub
 
   #<edge_angle> = [ATAN [#<edge_delta>] / [#<edge_width>]]
 
-  M68 E35 Q[#<edge_delta>]
+  #1011 = #<edge_delta>
+  (DEBUG, EVAL[vcp.getWidget{"edge_delta"}.setValue{#1011}])
 
-  M68 E34 Q[#<edge_angle>]
+  #1012 = #<edge_angle>
+  (DEBUG, EVAL[vcp.getWidget{"edge_angle"}.setValue{#1012}])
 
   (Probe Completion Move to Z Clearance Plane, and Y Zero)
   G91

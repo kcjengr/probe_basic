@@ -76,8 +76,9 @@ o<probe_y_minus> sub
   (defines the edge as y_probed_position for DRO reporting)
   #<y_minus_probed_position> = #<y_minus_zero_edge>
 
-  (analog aio output to gui DRO "Y PROBED POSITION")
-  M68 E37 Q[#<y_minus_probed_position>]
+  (output to gui DRO "Y PROBED POSITION")
+  #1007 = #<y_minus_probed_position>
+  (DEBUG, EVAL[vcp.getWidget{"y_minus_probed_position"}.setValue{#1007}])
 
 o<probe_y_minus> endsub [#<y_minus_zero_edge>]
 

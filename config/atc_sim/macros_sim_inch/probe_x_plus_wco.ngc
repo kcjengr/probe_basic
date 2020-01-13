@@ -87,8 +87,9 @@ o<probe_x_plus_wco> sub
   (defines the edge as x_probed_position for DRO reporting)
   #<x_plus_probed_position> = #<x_plus_zero_edge>
 
-  (analog aio output to gui DRO "X PROBED POSITION")
-  M68 E39 Q[#<x_plus_probed_position>]
+  (output to gui DRO "X PROBED POSITION")
+  #1006 = #<x_plus_probed_position>
+  (DEBUG, EVAL[vcp.getWidget{"x_plus_probed_position"}.setValue{#1006}])
 
   (probe mode rule for WCO or probe position measuring only)
   o<140> if [#<probe_mode> EQ 0]
