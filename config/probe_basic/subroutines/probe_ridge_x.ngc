@@ -98,9 +98,11 @@ o<probe_ridge_x> sub
   (Completed probed width calculations)
   #<x_probed_width> = [#<raw_width> - #<probe_diameter_offset>]
 
-  M68 E31 Q[#<x_probed_width>]
+  #1001 = #<x_probed_width>
+  (DEBUG, EVAL[vcp.getWidget{"x_probed_width"}.setValue{#1001}])
 
-  M68 E41 Q[#<x_center_probed>]
+  #1002 = #<x_center_probed>
+  (DEBUG, EVAL[vcp.getWidget{"x_center_probed"}.setValue{#1002}])
 
   (Probe Completion Move to Z Clearance Plane, and X Zero)
   G91
