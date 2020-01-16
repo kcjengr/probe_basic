@@ -63,7 +63,7 @@ Now linuxcnc needs to be started for the first time for it to create its directo
 Cick the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and selecxt properties.  Select the Permissions Tab in the window that appears and check the box for "Allow this file to run as a program", see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.
 
 
-https://github.com/kcjengr/probe_basic/releases/download/v0.1.2/ProbeBasic-Installer-v0.1.2.run
+https://github.com/kcjengr/probe_basic/releases/download/v0.1.2/ProbeBasic-Installer-v0.1.2
 
 
 
