@@ -6,6 +6,8 @@ Probe Basic Quick Start Install
 **Probe Basic Quick Start Installation Guide**
 
 
+**Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
+
 
 ::
 

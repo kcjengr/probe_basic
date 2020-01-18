@@ -5,6 +5,8 @@ Development Install
 
 **Probe Basic Development Installation Guide**
 
+**Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
+
 **1- Install Linuxcnc**
 
 ::
