@@ -4,7 +4,7 @@ o<m13> sub
 ; ; Parameter #5170 is used to track the current tool pocket (persistently)
 (print, o<M13> P#<p>)
 
-(DEBUG, EVAL[vcp.getWidget{"dynatc"}.homing_message{1}])
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{"REFERENCING"}])
 
 M64 P3 ; Move Motor FWD
 M66 P3 L1 Q20
@@ -16,16 +16,17 @@ O120 endif
 M65 P3 ; Stop motor
 #5171 = 1
 
-(DEBUG, EVAL[vcp.getWidget{"dynatc"}.homing_message{0}])
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{}])
 
 #1 = 0
-o101 while [#1 LT 12]
+o130 while [#1 LT 12]
     #1 = [#1+1]
     #2 = #[5189+#1]
     (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#1, #2}])
-o101 endwhile
+o130 endwhile
 
 m61 q#5210
+
 o<m13> endsub [1]
 
 M2
