@@ -16,8 +16,10 @@ O110 if [#5171 NE 1]
       M13
 O110 endif
 
-M68 E10 Q#<Steps_to_move> (tells the atc widget how many steps to move)
-M64 P14 (sets the direction and start moving)
+(tells the atc widget how many steps to move)
+(and start moving reverse)
+
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.steps_fwd{#<Steps_to_move>}])
 
 M64 P3 ; Move atc motor FWD
 
@@ -32,7 +34,7 @@ O120 do
 O120 while [#<Steps_to_move> GT 0]
 
 M65 P3 ; Stop motor
-M65 P14
+
 #<_my_current_pocket> = #5170
 
 o<m12> endsub [1]
