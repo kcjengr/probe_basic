@@ -65,6 +65,7 @@ O180 IF [#110 GT 0] ; checks if there is a valid tool in the spindle
 
 	M10 P[#<open_pocket>] ; move carousel to an open pocket 
     	M21 ; puts the tool in spindle away into the open pocket
+    	(DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
         #30 = #<open_pocket>
 	##30 = #110 ; save tool number in pocket
 	#5210= 0 ; empty tool in the spindle
@@ -84,6 +85,7 @@ O200 IF [#100 GT 0] ; selected tool is not tool0
     O205 endif
     M65 P0
 
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<next_pocket>, 0}])
     M22 ;Carousel out
     #25 = #<next_pocket>
     ##25 =0 ; empty the pocket 
