@@ -9,7 +9,8 @@ O100 if [EXISTS[#<p>]]
    #<Steps_to_move> = #<p>
 O100 else
    #<Steps_to_move>=1
-   (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate_ccw{1}])
+    (tells the atc widget move 1 step reverse)
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{1, "cw"}])
 O100 endif
 
 O110 if [#5171 NE 1]

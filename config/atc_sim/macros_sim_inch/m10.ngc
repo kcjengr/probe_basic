@@ -20,12 +20,12 @@ o1001 endif
 
 o1003 if [#<steps> GT 0]
     M12 P[#<steps>]
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate_ccw{#<Steps>}])
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps>, "ccw"}])
 
 o1003 elseif [#<steps> LT 0]
     #<steps>=[#<steps> * -1]
     M11 P[#<steps>]
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate_cw{#<Steps>}])
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps>, "cw"}])
 o1003 endif
 
 o<m10> endsub [1]
