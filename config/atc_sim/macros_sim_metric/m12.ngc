@@ -15,11 +15,12 @@ O110 if [EXISTS[#<p>]]
 O110 else
    #<Steps_to_move>=1
     (tells the atc widget move 1 step forward)
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{1, "ccw"}])
 O110 endif
 
 
 (tells the atc widget how many steps to move and start moving forward)
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps_to_move>, "ccw"}])
+
 M64 P3 ; Move atc motor FWD
 
 O120 do
