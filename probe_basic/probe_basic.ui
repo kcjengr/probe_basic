@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -3587,19 +3587,10 @@ font: 16pt &quot;Bebas Kai&quot;;
                     </widget>
                    </item>
                    <item>
-                    <widget class="MDIButton" name="load_current_tool">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                       <horstretch>200</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
+                    <widget class="SubCallButton" name="load_spindle_button">
                      <property name="minimumSize">
                       <size>
-                       <width>130</width>
+                       <width>125</width>
                        <height>45</height>
                       </size>
                      </property>
@@ -3609,28 +3600,48 @@ font: 16pt &quot;Bebas Kai&quot;;
                        <height>45</height>
                       </size>
                      </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
                      <property name="styleSheet">
-                      <string notr="true">MDIButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
+                      <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                      </property>
                      <property name="text">
                       <string>LOAD SPINDLE</string>
                      </property>
-                     <property name="checkable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                     <property name="rules" stdset="0">
-                      <string>[]</string>
-                     </property>
-                     <property name="MDICommand" stdset="0">
-                      <string>M61 Q#&lt;load_spindle_tool_number&gt;</string>
+                     <property name="filename" stdset="0">
+                      <string>load_spindle_safety.ngc</string>
                      </property>
                     </widget>
                    </item>
@@ -5795,13 +5806,10 @@ color: rgb(255, 255, 255);
                      </widget>
                     </item>
                     <item>
-                     <widget class="MDIButton" name="load_current_tool_2">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
+                     <widget class="SubCallButton" name="load_spindle_button_2">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>1</horstretch>
+                        <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
@@ -5817,28 +5825,48 @@ color: rgb(255, 255, 255);
                         <height>45</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::NoFocus</enum>
-                      </property>
                       <property name="styleSheet">
-                       <string notr="true">MDIButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
+                       <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                       </property>
                       <property name="text">
                        <string>LOAD SPINDLE</string>
                       </property>
-                      <property name="checkable">
-                       <bool>false</bool>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[]</string>
-                      </property>
-                      <property name="MDICommand" stdset="0">
-                       <string>M61 Q#&lt;load_spindle_tool_number_2&gt;</string>
+                      <property name="filename" stdset="0">
+                       <string>load_spindle_safety_2.ngc</string>
                       </property>
                      </widget>
                     </item>
@@ -28331,22 +28359,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>load_spindle_tool_number</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_current_tool</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>185</x>
-     <y>88</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>215</x>
-     <y>90</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>x_axis_button_11</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
@@ -28427,22 +28439,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>load_spindle_tool_number_2</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_current_tool_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>483</x>
-     <y>168</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>503</x>
-     <y>170</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>removabledevicecombobox</sender>
    <signal>currentIndexChanged(QString)</signal>
    <receiver>filesystemtable_2</receiver>
@@ -28509,13 +28505,13 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="plotviewGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
