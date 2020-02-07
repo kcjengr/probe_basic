@@ -33,7 +33,7 @@ o<100> else if [#<load_spindle_tool_number_2> EQ #5200]
 o<100> else if [#<load_spindle_tool_number_2> EQ #5201]
   (MSG, the tool you are trying to load is already stored in carousel pocket 12)
 o<100> else
-  M61 Q#<load_spindle_tool_number_2>
+  M61 Q#<load_spindle_tool_number_2> G43 H#<load_spindle_tool_number_2>
 o<100> endif
 
 o<load_spindle_safet_2y> endsub
