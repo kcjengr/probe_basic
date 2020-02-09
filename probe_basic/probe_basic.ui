@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1914</width>
+    <width>1918</width>
     <height>1139</height>
    </rect>
   </property>
@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -2097,7 +2097,7 @@ QHeaderView {
 }</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_5">
                     <layout class="QVBoxLayout" name="verticalLayout_50">
@@ -2312,18 +2312,14 @@ QHeaderView {
                    <widget class="QWidget" name="page_6">
                     <layout class="QVBoxLayout" name="verticalLayout_52">
                      <item>
-                      <widget class="GcodeEditor" name="gcodeeditor_4">
-                       <property name="styleSheet">
-                        <string notr="true">GcodeEditor {
-	color: black;
-   	border: 4px;
-	border-color: rgb(120, 120, 120);
-	border-style: solid;
-	background-color: rgb(238, 238, 236);
-}</string>
+                      <widget class="QWebView" name="webView">
+                       <property name="url">
+                        <url>
+                         <string>file:///home/chris/linuxcnc/nc_files/ngc_test_folder/rotating nozzle boss left v40.html</string>
+                        </url>
                        </property>
-                       <property name="is_editor" stdset="0">
-                        <bool>true</bool>
+                       <property name="zoomFactor">
+                        <double>0.458000004291534</double>
                        </property>
                       </widget>
                      </item>
@@ -26993,7 +26989,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1914</width>
+     <width>1918</width>
      <height>26</height>
     </rect>
    </property>
@@ -27309,6 +27305,11 @@ font: 11pt bebas kai;
    <extends>QWidget</extends>
    <header>QtQuickWidgets/QQuickWidget</header>
   </customwidget>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
+  </customwidget>
  </customwidgets>
  <resources>
   <include location="probe_basic.qrc"/>
@@ -27553,7 +27554,7 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>198</x>
+     <x>199</x>
      <y>620</y>
     </hint>
     <hint type="destinationlabel">
@@ -27585,7 +27586,7 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>806</x>
+     <x>811</x>
      <y>620</y>
     </hint>
     <hint type="destinationlabel">
@@ -27617,7 +27618,7 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>978</x>
+     <x>984</x>
      <y>620</y>
     </hint>
     <hint type="destinationlabel">
@@ -27649,7 +27650,7 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>350</x>
+     <x>352</x>
      <y>620</y>
     </hint>
     <hint type="destinationlabel">
@@ -28401,8 +28402,8 @@ font: 11pt bebas kai;
    <slot>find_replace()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1374</x>
-     <y>623</y>
+     <x>1376</x>
+     <y>661</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -28417,8 +28418,8 @@ font: 11pt bebas kai;
    <slot>saveAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1592</x>
-     <y>623</y>
+     <x>1596</x>
+     <y>661</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -28433,8 +28434,8 @@ font: 11pt bebas kai;
    <slot>setEditable(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1265</x>
-     <y>623</y>
+     <x>1266</x>
+     <y>661</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -28449,8 +28450,8 @@ font: 11pt bebas kai;
    <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1483</x>
-     <y>623</y>
+     <x>1486</x>
+     <y>661</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -28641,8 +28642,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>459</x>
-     <y>781</y>
+     <x>482</x>
+     <y>794</y>
     </hint>
     <hint type="destinationlabel">
      <x>513</x>
@@ -28701,14 +28702,14 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotviewGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
