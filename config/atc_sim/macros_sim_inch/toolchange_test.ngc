@@ -20,6 +20,10 @@ o<toolchange> sub
 #110 = #<tool_in_spindle>
 #120 = #<selected_pocket>
 
+T#<selected_tool> G49
+
+T#<tool_in_spindle> G49
+
 O10 if [#100 EQ #110] ; checks if tool in the spindle is same as requested
  o<toolchange> endsub [1]
 M2
@@ -60,7 +64,7 @@ O180 IF [#110 GT 0] ; checks if there is a valid tool in the spindle
     	(DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
       #30 = #<open_pocket>
 	##30 = #110 ; save tool number in pocket
-	#5210 = 0 ; empty tool in the spindle
+	#5231 = 0 ; empty tool in the spindle
 O180 ENDIF
 
 G0 G53 Z0
@@ -81,7 +85,7 @@ O200 IF [#100 GT 0] ; selected tool is not tool0
     #25 = #<next_pocket>
     ##25 = 0 ; empty the pocket
 
-    #5210 = #100 ;Set persistent variable to remember tool in spindle after power cycle
+    #5231 = #100 ;Set persistent variable to remember tool in spindle after power cycle
 
 O200 Else
 
@@ -111,7 +115,7 @@ O200 ENDIF
 #5200= #11
 #5201= #12
 
-M61 Q#100
+M61 Q#<tool_in_spindle> G43 H#<tool_in_spindle>
 
 o<toolchange> endsub [1]
 
