@@ -67,4 +67,9 @@ class ProbeBasic(VCPMainWindow):
         if button.isChecked():
             self.sq_cal_axis.setText(button.property('checkedAction'))
 
+    @Slot(QAbstractButton)
+    def on_fileviewerbtnGroup_buttonClicked(self, button):
+        self.file_viewer_widget.setCurrentIndex(button.property('page'))
+
+
             
