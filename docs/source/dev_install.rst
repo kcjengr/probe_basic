@@ -7,6 +7,10 @@ Development Install
 
 **Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
 
+
+**For Whatever reason mesa ehternet setups go much more smoothly when a wired ethernet internet connection is used during linux installation.  The debian installer does some magic that sets up the network perfectly with only one minor tweak once installed.  The wireless setup after install is much easier to get working.  I HIGHLY RECOMMEND using the wired internet connection and choosing to setup that connection during installation to avoid unforeseen issues in connecting to the mesa card(s) post install.**
+
+
 **1- Install Linuxcnc**
 
 ::
