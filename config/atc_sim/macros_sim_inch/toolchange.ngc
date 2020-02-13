@@ -114,6 +114,14 @@ O200 ENDIF
 
 M61 Q#100
 
+(run program_coolant sub if selected to be active in settings page with value 1)
+o<210> if [#<activate_pogrammable_coolant> EQ 1]
+  (run program_coolant.ngc)
+  o<program_coolant> call
+0<210> else
+  o<toolchange> return
+o<210> endif
+
 o<toolchange> endsub [1]
 
 M2

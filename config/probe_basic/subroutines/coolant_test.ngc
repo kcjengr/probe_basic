@@ -1,0 +1,32 @@
+
+(programmable coolant subroutine for aiming the coolant nozzle)
+(settings for setup are located on probe basic setting page)
+(in the programmable coolant constants container.)
+(calculations assume coolant nozzle is on axis b and has been homed)
+(to 0 degrees rotation aiming perpendicular to the spindle center line)
+(coolant nozzle is located on the right side of the spindle head and)
+(rotates counter clockwise from home position with commands)
+
+o<program_coolant> sub
+
+  (uses NGCGUI style arg spec)
+  (number after equals sign in comment is default value)
+  #<pc_tool_length> = #1
+  #<horizontal_spindle_nozzle_dist> = #2
+  #<vertical_spindle_nozzle_dist> = #3
+
+  #temp_var1 =  [#<vertical_spindle_nozzle_dist> + #<pc_tool_length>]
+
+  #<tool_tip_position> = #tmp_var1
+
+  #temp_var2 =  [ATAN[#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
+  #<coolant_abs_angle> = #temp_var2
+
+  G0 G53 B[#<coolant_abs_angle>]
+
+  #<coolant_abs_angle> = #1000
+
+  (output to gui settings page calculated_coolant_angle status label)
+  (DEBUG, EVAL[vcp.getWidget{"calculated_coolant_angle"}.setValue{#1000}])
+
+o<program_coolant> endsub

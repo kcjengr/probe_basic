@@ -7,10 +7,28 @@
 o<M6_tool_call_main_panel> sub
 
 #<tool_number_entry_main_panel> = #1
+#<activate_pogrammable_coolant> = #2
+#<horizontal_spindle_nozzle_dist> = #3
+#<vertical_spindle_nozzle_dist> = #4
 
 T#<tool_number_entry_main_panel> M6
 
 G43 H#<tool_number_entry_main_panel>
+
+#<pc_tool_length> = #5
+
+(run program_coolant sub if selected to be active in settings page with value 1)
+o<100> if [#<activate_pogrammable_coolant> EQ 1]
+  (run program_coolant.ngc)
+  o<program_coolant> call [#3][#4][#5]
+o<100> else
+  o<M6_tool_call_main_panel> return
+o<100> endif
+
+#<coolant_abs_angle> = #1000
+
+(output to gui settings page calculated_coolant_angle status label)
+(DEBUG, EVAL[vcp.getWidget{"calculated_coolant_angle"}.setValue{#1000}])
 
 o<m6_tool_call_main_Panel> endsub
 
