@@ -24,8 +24,6 @@ o<program_coolant> sub
 
   G0 G53 B[#<coolant_abs_angle>]
 
-  (print, #<coolant_abs_angle>)
-
   #1000 = #<coolant_abs_angle>
   (DEBUG, EVAL[vcp.getWidget{"calculated_coolant_angle"}.setValue{#1000}])
 

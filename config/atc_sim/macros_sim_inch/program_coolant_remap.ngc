@@ -10,25 +10,27 @@
 (coolant nozzle is located on the right side of the spindle head and)
 (rotates counter clockwise from home position with commands)
 
-o<program_coolant> sub
+o<program_coolant_remap> sub
 
   (uses NGCGUI style arg spec)
   (number after equals sign in comment is default value)
-  #<horizontal_spindle_nozzle_dist> = #1
-  #<vertical_spindle_nozzle_dist> = #2
-  #<pc_tool_length> = #3
+  #<horizontal_spindle_nozzle_dist> = 10 (manually entered number from your measurements)
+  #<vertical_spindle_nozzle_dist> = 5 (manually entered number from your measurements)
+  #<pc_tool_length> = #5403
 
   #<tool_tip_position> = [#<vertical_spindle_nozzle_dist> + #<pc_tool_length>]
 
-  #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
+  #<coolant_abs_angle> = [ATAN [#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
 
   #<test_move_x> = [#<coolant_abs_angle> / 10]
 
   G0 G53 X[#<test_move_x>]
 
-  #1000 = #<coolant_abs_angle>
+  (print, #<test_move_x>)
+
+  #1000 = #<test_move_x>
   (DEBUG, EVAL[vcp.getWidget{"calculated_coolant_angle"}.setValue{#1000}])
 
-o<program_coolant> endsub
+o<program_coolant_remap> endsub
 
 M2 (end program)
