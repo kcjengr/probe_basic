@@ -27,7 +27,7 @@ F #<slow_probe_fr>    (set probe slow feedrate)
 G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
 
 o<110> if [#5070]    (verify probe event was succesful)
-  #<z_slow_probe> = #5063    (save slow probe result to parameters)
+  #<z_slow_probe> = [#5063 + #<workspace_z>]    (save slow probe result to parameters)
 o<110> else
   (MSG,Tool Length Offset Probe Failed)
 o<110> endif
@@ -43,7 +43,7 @@ G90    (set absolute coordinates)
 G53 G0 Z0 (Send Spindle to home zero position)
 
 (define new tool length offset parameters)
-#<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #<z_slow_probe>]]
+#<new_tool_length_offset> = [ABS[#<spindle_zero_height> - #<z_slow_probe>]]
 
 G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
 G43  (enable tool length offset)
