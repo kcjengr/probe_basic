@@ -174,3 +174,25 @@ dialogs:
     provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
     kwargs:
       ui_file: {{ file.dir }}/about.ui
+
+virtual_keyboards:
+  engine:
+    provider: qtpyvcp.widgets.virtual_keyboards.vkb_engine:VKBEngine
+    kwargs:
+      enabled: True
+
+  default:
+    provider: qtpyvcp.widgets.virtual_keyboards.vkb_base:VKBBase
+    kwargs:
+      ui_file: {{ file.dir }}/virtual_keyboards/full_keyboard.ui
+
+  mdi:
+    provider: qtpyvcp.widgets.virtual_keyboards.vkb_base:VKBBase
+    kwargs:
+      ui_file: {{ file.dir }}/virtual_keyboards/mdi_keyboard.ui
+
+  int:
+    provider: qtpyvcp.widgets.virtual_keyboards.vkb_base:VKBBase
+    kwargs:
+      ui_file: {{ file.dir }}/virtual_keyboards/int_keyboard.ui
+
