@@ -169,6 +169,11 @@ settings:
     min_value: -1000
     max_value: 1000
 
+  virtual-keyboard.enable:
+    description: Enable the on screen virtual keyboard.
+    default_value: True
+    persistent: true
+
 dialogs:
   about_probebasic:
     provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
@@ -195,4 +200,9 @@ virtual_keyboards:
     provider: qtpyvcp.widgets.virtual_keyboards.vkb_base:VKBBase
     kwargs:
       ui_file: {{ file.dir }}/virtual_keyboards/int_keyboard.ui
+
+  float:
+    provider: qtpyvcp.widgets.virtual_keyboards.vkb_base:VKBBase
+    kwargs:
+      ui_file: {{ file.dir }}/virtual_keyboards/float_keyboard.ui
 
