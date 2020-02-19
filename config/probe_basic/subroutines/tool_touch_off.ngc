@@ -12,10 +12,15 @@ G92.1    (Cancel G92 offset)
 
 #<workspace_z> = #[5203 + [20 * #5220]]
 
+#<tool_touch_x_coords> = #5181
+#<tool_touch_y_coords> = #5182
+#<tool_touch_z_coords> = #5183
+
 G49    (cancel tlo)
 G90    (set absolute coordinates)
 G53 G0 Z0    (move to z0 home position)
-G30    (move to tool change position specified in offsets page)
+G53 G0 X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+G53 G0 Z#<tool_touch_z_coords>
 
 G91
 F #<fast_probe_fr>
