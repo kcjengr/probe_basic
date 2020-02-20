@@ -7,15 +7,29 @@ o<tool_touch_off> sub
 #<retract_distance> = #6    (distance the tool retracts after making contact during fast feed mode)
 #<spindle_zero_height> = #5    (G53 distance from home to spindle nose triggering point on touch plate)
 #<tool_diameter_probe_mode> = #8    (activates the tool diameter probe subroutine section)
+#<tool_diameter_offset_mode> = #9    (activates the tool diameter offset position for probe subroutine section)
+#<tool_diameter> = #10    (current tool's diameter used for offseting probe position in x axis)
 
 G92.1    (Cancel G92 offset)
 
 #<workspace_z> = #[5203 + [20 * #5220]]
 
+#<tool_touch_x_coords> = #5181
+#<tool_touch_y_coords> = #5182
+#<tool_touch_z_coords> = #5183
+
+#<tool_radius_offset> = [#<tool_diameter> / 2]
+#<offset_probing_position> = [#<tool_touch_x_coords> - #<tool_radius_offset>]
+
+o<100> if [#<tool_diameter_offset_mode> EQ 1]
+  #<tool_touch_x_coords> = #<offset_probing_position>
+o<100> endif
+
 G49    (cancel tlo)
 G90    (set absolute coordinates)
 G53 G0 Z0    (move to z0 home position)
-G30    (move to tool change position specified in offsets page)
+G53 G0 X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+G53 G0 Z#<tool_touch_z_coords>
 
 G91
 F #<fast_probe_fr>
@@ -23,30 +37,38 @@ G38.2 Z-[#<z_max_travel>]    (fast tool probe)
 #<z_fast_probe> = #5063    (save probe result of fast probe to parameters)
 G0 Z[#<retract_distance>]    (retract tool retract distance amount)
 
-F #<slow_probe_fr>    (set probe slow feedrate)
-G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
-
-o<110> if [#5070]    (verify probe event was succesful)
-  #<z_slow_probe> = #5063    (save slow probe result to parameters)
-o<110> else
-  (MSG,Tool Length Offset Probe Failed)
+(Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
+o<110> if [#<slow_probe_fr> GT 0]
+  (Initiate Slow Z- Probe)
+  G91
+  F[#<slow_probe_fr>]    (set probe slow feedrate)
+  G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
+  #<z_slow_probe> = #5063
+  (debug, Probed Pos: #5063 Z Pos: #<_z>)
+  G90
+  G0 Z[#<z_slow_probe> + #<retract_distance>]
 o<110> endif
 
-G0 Z[#<retract_distance>]    (move tool the retract distance amount)
-
-(Tool Diameter Probe Mode Section, User must define this section as needed)
-o<120> if [#<tool_diameter_probe_mode> EQ 1]
-  (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+o<120> if [#5070 EQ 1]    (verify probe event was succesful)
+  #<z_slow_probe> = #5063    (save slow probe result to parameters)
+o<120> else
+  (MSG,Tool Length Offset Probe Failed)
 o<120> endif
 
+(Tool Diameter Probe Mode Section, User must define this section as needed)
+o<130> if [#<tool_diameter_probe_mode> EQ 1]
+  (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+o<130> endif
+
+G49
 G90    (set absolute coordinates)
 G53 G0 Z0 (Send Spindle to home zero position)
 
 (define new tool length offset parameters)
-#<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #<z_slow_probe>]]
+#<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063]]
 
 G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
-G43  (enable tool length offset)
+T #5400 G43  H #5400    (enable tool length offset)
 
 o<tool_touch_off> endsub
 
