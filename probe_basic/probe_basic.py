@@ -17,7 +17,6 @@ VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
-
 class ProbeBasic(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
@@ -55,12 +54,17 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.wco_rotation.setText('0')
 
-    def on_tool_diameter_probe_clicked(self):
-        if self.tool_diameter_probe.isChecked():
+    def on_tool_diameter_probe_Btn_clicked(self):
+        if self.tool_diameter_probe_Btn.isChecked():
             self.tool_diameter_probe_mode.setText('1')
         else:
             self.tool_diameter_probe_mode.setText('0')
 
+    def on_tool_diameter_offset_Btn_clicked(self):
+        if self.tool_diameter_offset_Btn.isChecked():
+            self.tool_diameter_offset_mode.setText('1')
+        else:
+            self.tool_diameter_offset_mode.setText('0')
 
     @Slot(QAbstractButton)
     def on_xycalbtnGroup_buttonClicked(self, button):
