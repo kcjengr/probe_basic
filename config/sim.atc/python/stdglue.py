@@ -19,9 +19,8 @@
 
 import os
 import sys
-import emccanon 
+import emccanon
 from interpreter import *
-from gscreen import preferences
 throw_exceptions = 1
 
 debug = False
@@ -31,7 +30,7 @@ if debug:
     # the 'emctask' module is present only in the milltask instance, otherwise both the UI and
     # milltask would try to connect to the debug server.
 
-    if os.path.isdir( pydevdir ) and  'emctask' in sys.builtin_module_names:
+    if os.path.isdir( pydevdir ) and 'emctask' in sys.builtin_module_names:
         sys.path.append( pydevdir )
         sys.path.insert( 0, pydevdir )
         try:
@@ -65,6 +64,7 @@ def change_prolog(self, **words):
         if self.cutter_comp_side:
             self.set_errormsg("Cannot change tools with cutter radius compensation on")
             return INTERP_ERROR
+
         self.params["tool_in_spindle"] = self.current_tool
         self.params["selected_tool"] = self.selected_tool
         self.params["current_pocket"] = self.current_pocket # this is probably nonsense
@@ -74,6 +74,7 @@ def change_prolog(self, **words):
     except Exception, e:
         self.set_errormsg("M6/change_prolog: %s" % (e))
         return INTERP_ERROR
+
 
 def change_epilog(self, **words):
     try:
@@ -115,7 +116,7 @@ _compat = {
     emccanon.CANON_PLANE_XZ : (("y","r"),_uvw,"XZ"),
     emccanon.CANON_PLANE_UV : (("w","r"),_xyz,"UV"),
     emccanon.CANON_PLANE_VW : (("u","r"),_xyz,"VW"),
-    emccanon.CANON_PLANE_UW : (("v","r"),_xyz,"UW")}           
+    emccanon.CANON_PLANE_UW : (("v","r"),_xyz,"UW")}
 
 # extract and pass parameters from current block, merged with extra paramters on a continuation line
 # keep tjose parameters across invocations
@@ -124,7 +125,7 @@ def cycle_prolog(self,**words):
     # self.sticky_params is assumed to have been initialized by the
     # init_stgdlue() method below
     global _compat
-    try:    
+    try:
         # determine whether this is the first or a subsequent call
         c = self.blocks[self.remap_level]
         r = c.executing_remap
@@ -133,7 +134,7 @@ def cycle_prolog(self,**words):
             self.sticky_params[r.name] = dict()
 
         self.params["motion_code"] = c.g_modes[1]
-        
+
         (sw,incompat,plane_name) =_compat[self.plane]
         for (word,value) in words.items():
             # inject current parameters
@@ -161,7 +162,7 @@ def cycle_prolog(self,**words):
             # checked in interpreter during block parsing
             # if l <= 0 or l not near an int
             self.params["l"] = words["l"]
-            
+
         if "p" in words:
             p = words["p"]
             if p < 0.0:
@@ -175,7 +176,7 @@ def cycle_prolog(self,**words):
         if self.cutter_comp_side:
             return "%s: Cannot use canned cycles with cutter compensation on" % (r.name)
         return INTERP_OK
-    
+
     except Exception, e:
         raise
         return "cycle_prolog failed: %s" % (e)
