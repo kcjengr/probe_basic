@@ -1,0 +1,41 @@
+(author: Chris P)
+(version: 0.1)
+(date: 01/31/20)
+
+(load tool in spindle safety macro)
+
+o<load_spindle_safety_2> sub
+
+#<load_spindle_tool_number_2> = #1
+
+o<100> if [#<load_spindle_tool_number_2> EQ #5190]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 1)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5191]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 2)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5192]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 3)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5193]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 4)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5194]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 5)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5195]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 6)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5196]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 7)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5197]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 8)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5198]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 9)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5199]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 10)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5200]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 11)
+o<100> else if [#<load_spindle_tool_number_2> EQ #5201]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 12)
+o<100> else
+  M61 Q#<load_spindle_tool_number_2> G43 H#<load_spindle_tool_number_2>
+o<100> endif
+
+o<load_spindle_safet_2y> endsub
+
+M2 (end program)
