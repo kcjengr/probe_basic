@@ -23,6 +23,8 @@ import emccanon
 from interpreter import *
 throw_exceptions = 1
 
+from atc_util import readToolTable, getToolPocket
+
 debug = False
 if debug:
     pydevdir = '/home/emcmesa/Aptana_Studio_3/plugins/org.python.pydev_2.7.0.2013032300/pysrc'
@@ -67,8 +69,13 @@ def change_prolog(self, **words):
 
         self.params["tool_in_spindle"] = self.current_tool
         self.params["selected_tool"] = self.selected_tool
+
+        readToolTable()
+
+        self.params["current_tool"] = self.current_tool
         self.params["current_pocket"] = self.current_pocket # this is probably nonsense
-        self.params["selected_pocket"] = self.selected_pocket
+
+        self.params["selected_pocket"] = getToolPocket(self.selected_tool)
         return INTERP_OK
 
     except Exception, e:
