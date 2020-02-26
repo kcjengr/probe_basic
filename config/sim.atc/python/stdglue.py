@@ -51,6 +51,9 @@ if debug:
 #    #<selected_pocket>
 
 def change_prolog(self, **words):
+
+    print "\n****** Change Prolog ******"
+
     try:
         # this is relevant only when using iocontrol-v2.
         if self.params[5600] > 0.0:
@@ -84,6 +87,9 @@ def change_prolog(self, **words):
 
 
 def change_epilog(self, **words):
+
+    print "\n****** Change Epilog ******"
+
     try:
         if not self.value_returned:
             r = self.blocks[self.remap_level].executing_remap
