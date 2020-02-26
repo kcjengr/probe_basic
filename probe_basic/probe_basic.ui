@@ -29981,7 +29981,7 @@ border-radius: 1px;
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.speed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;Speed&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.speed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}\&quot;.format(ch[0] * ch[1])&quot;, &quot;name&quot;: &quot;Speed&quot;}]</string>
              </property>
              <property name="format" stdset="0">
               <string>{:.0f}</string>
