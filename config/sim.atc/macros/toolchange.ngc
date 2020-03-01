@@ -1,54 +1,40 @@
 o<toolchange> sub
 (print, o<toolchange>)
 
-(print, Current Tool: #<tool_in_spindle>)
+(print, Current Tool: #<current_tool>)
 (print, Current Pocket: #<current_pocket>)
 
 (print, Selected Tool: #<selected_tool>)
 (print, Selected Pocket: #<selected_pocket>)
 
+(print, ****** ATC INFO ******)
+(print, Number of Pockets: #<atc_num_pockets>)
+(print, Open Pocket: #<atc_open_pocket>)
 
-;assign the tool numbers held in parameters to the pocket numbers
-#1 = #5190
-#2 = #5191
-#3 = #5192
-#4 = #5193
-#5 = #5194
-#6 = #5195
-#7 = #5196
-#8 = #5197
-#9 = #5198
-#10 = #5199
-#11 = #5200
-#12 = #5201
 
-;assign the variables passed by M6 to some parameters
-#100 = #<selected_tool>
-#110 = #<tool_in_spindle>
-#120 = #<selected_pocket>
-
-O10 if [#100 EQ #110] ; checks if tool in the spindle is same as requested
+; End if tool in spindle is same as requested
+O100 if [#<current_tool> EQ #<selected_tool>]
  o<toolchange> endsub [1]
 M2
-O10 endif
+O100 endif
 
-#<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
-#<open_pocket> = 0
 
-#15 = 12 ;assign test parameter the number of pockets in the carousel
+; Request manual removal if no pocket in ATC
+O110 if [#<atc_open_pocket> LT 0]
+ (print, No open pocket in the ATC, please remove manually.)
+ o<toolchange> endsub [1]
+M2
+O110 endif
 
-O100 do
- 	O110 if [#[5189 + #15] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
-		#<next_pocket> = #15 ; if tool is found in pocket, assigns the next pocket
 
-	O110 endif
+; checks if requested tool is in the ATC
+O11 if [#<selected_pocket> LT 0]
+ (abort, tool not in carousel)
+ o<toolchange> endsub [1]
+M2
+O11 endif
 
-	O115 if [#[5189 + #15] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
-		#<open_pocket> = #15
 
-	O115 endif
-  #15= [#15 - 1]
-O100 while [#15 GT 0]
 
 O120 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, tool not in carousel)
@@ -56,19 +42,25 @@ O120 endif
 
 ;now we know which pocket the next tool is sitting in
 ;we need to know if we need to put a tool away
-;or if there is not tool in the spindle
+;or if there is no tool in the spindle
 
-O180 IF [#110 GT 0] ; checks if there is a valid tool in the spindle
-    	O190 if [#<open_pocket> EQ 0] ;If there is a tool in the spindle, checks if there is an open pocket
-		(abort, carousel is full, cant put away tool in into carousel)
-	O190 endif
 
-	M10 P[#<open_pocket>] ; move carousel to an open pocket
-    	M21 ; puts the tool in spindle away into the open pocket
-    	(DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
-      #30 = #<open_pocket>
-	##30 = #110 ; save tool number in pocket
-	#5231 = 0 ; empty tool in the spindle
+; Check if there is a valid tool in the spindle
+O180 IF [#<current_tool> GT 0]
+
+    ; If there is a tool in the spindle, checks if there is an open pocket
+    O190 if [#<open_pocket> EQ 0]
+        (abort, carousel is full, cant put away tool in into carousel)
+    O190 endif
+
+    ; move carousel to an open pocket
+    M10 P[#<open_pocket>]
+        M21 ; puts the tool in spindle away into the open pocket
+        (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
+        #30 = #<open_pocket>
+    ##30 = #110 ; save tool number in pocket
+    #5231 = 0 ; empty tool in the spindle
+
 O180 ENDIF
 
 G0 G53 Z0

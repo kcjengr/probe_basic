@@ -23,7 +23,7 @@ import emccanon
 from interpreter import *
 throw_exceptions = 1
 
-from atc_util import readToolTable, getToolPocket
+import atc_util
 
 debug = False
 if debug:
@@ -70,15 +70,18 @@ def change_prolog(self, **words):
             self.set_errormsg("Cannot change tools with cutter radius compensation on")
             return INTERP_ERROR
 
-        self.params["tool_in_spindle"] = self.current_tool
-        self.params["selected_tool"] = self.selected_tool
-
-        readToolTable()
+        # initialize the tool table data
+        atc_util.read_tool_table()
 
         self.params["current_tool"] = self.current_tool
         self.params["current_pocket"] = self.current_pocket # this is probably nonsense
 
-        self.params["selected_pocket"] = getToolPocket(self.selected_tool)
+        self.params["selected_tool"] = self.selected_tool
+        self.params["selected_pocket"] = atc_util.get_tool_pocket(self.selected_tool)
+
+        self.params["atc_num_pockets"] = int(atc_util.getATCInfo("NUM_POCKETS"))
+        self.params['atc_open_pocket'] = int(atc_util.find_open_pocket())
+
         return INTERP_OK
 
     except Exception, e:
