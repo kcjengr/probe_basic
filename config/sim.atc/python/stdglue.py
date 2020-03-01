@@ -23,7 +23,7 @@ import emccanon
 from interpreter import *
 throw_exceptions = 1
 
-import atc_util
+# import atc_util
 
 debug = False
 if debug:
@@ -50,76 +50,76 @@ if debug:
 #    #<current_pocket>
 #    #<selected_pocket>
 
-def change_prolog(self, **words):
-
-    print "\n****** Change Prolog ******"
-
-    try:
-        # this is relevant only when using iocontrol-v2.
-        if self.params[5600] > 0.0:
-            if self.params[5601] < 0.0:
-                self.set_errormsg("Toolchanger hard fault %d" % (int(self.params[5601])))
-                return INTERP_ERROR
-            print "change_prolog: Toolchanger soft fault %d" % int(self.params[5601])
-
-        if self.selected_pocket < 0:
-            self.set_errormsg("M6: no tool prepared")
-            return INTERP_ERROR
-
-        if self.cutter_comp_side:
-            self.set_errormsg("Cannot change tools with cutter radius compensation on")
-            return INTERP_ERROR
-
-        # initialize the tool table data
-        atc_util.read_tool_table()
-
-        self.params["current_tool"] = self.current_tool
-        self.params["current_pocket"] = self.current_pocket # this is probably nonsense
-
-        self.params["selected_tool"] = self.selected_tool
-        self.params["selected_pocket"] = atc_util.get_tool_pocket(self.selected_tool)
-
-        self.params["atc_num_pockets"] = int(atc_util.getATCInfo("NUM_POCKETS"))
-        self.params['atc_open_pocket'] = int(atc_util.find_open_pocket())
-
-        return INTERP_OK
-
-    except Exception, e:
-        self.set_errormsg("M6/change_prolog: %s" % (e))
-        return INTERP_ERROR
-
-
-def change_epilog(self, **words):
-
-    print "\n****** Change Epilog ******"
-
-    try:
-        if not self.value_returned:
-            r = self.blocks[self.remap_level].executing_remap
-            self.set_errormsg("the %s remap procedure %s did not return a value"
-                             % (r.name,r.remap_ngc if r.remap_ngc else r.remap_py))
-            return INTERP_ERROR
-
-        if self.return_value > 0.0:
-            if self.return_value == 3:
-                message = "No tool measurement ! Please take care of the entry in the tool table"
-                emccanon.MESSAGE(message)
-            return INTERP_OK
-        else:
-            if self.return_value == -1:
-                message = "Searchvel <= 0, not permitted!, Please correct INI Settings."
-            elif self.return_value == -2:
-                message = "Probevel <= 0, not permitted!, Please correct INI Settings."
-            elif self.return_value == -3:
-                message = "Probe contact failiure !!"
-            else:
-                message = "M6 aborted (return code %.1f)" % (self.return_value)
-            self.set_errormsg(message)
-            return INTERP_ERROR
-
-    except Exception, e:
-        self.set_errormsg("M6/change_epilog: %s" % (e))
-        return INTERP_ERROR
+# def change_prolog(self, **words):
+#
+#     print "\n****** Change Prolog ******"
+#
+#     try:
+#         # this is relevant only when using iocontrol-v2.
+#         if self.params[5600] > 0.0:
+#             if self.params[5601] < 0.0:
+#                 self.set_errormsg("Toolchanger hard fault %d" % (int(self.params[5601])))
+#                 return INTERP_ERROR
+#             print "change_prolog: Toolchanger soft fault %d" % int(self.params[5601])
+#
+#         if self.selected_pocket < 0:
+#             self.set_errormsg("M6: no tool prepared")
+#             return INTERP_ERROR
+#
+#         if self.cutter_comp_side:
+#             self.set_errormsg("Cannot change tools with cutter radius compensation on")
+#             return INTERP_ERROR
+#
+#         # initialize the tool table data
+#         atc_util.read_tool_table()
+#
+#         self.params["current_tool"] = self.current_tool
+#         self.params["current_pocket"] = self.current_pocket # this is probably nonsense
+#
+#         self.params["selected_tool"] = self.selected_tool
+#         self.params["selected_pocket"] = atc_util.get_tool_pocket(self.selected_tool)
+#
+#         self.params["atc_num_pockets"] = int(atc_util.getATCInfo("NUM_POCKETS"))
+#         self.params['atc_open_pocket'] = int(atc_util.find_open_pocket())
+#
+#         return INTERP_OK
+#
+#     except Exception, e:
+#         self.set_errormsg("M6/change_prolog: %s" % (e))
+#         return INTERP_ERROR
+#
+#
+# def change_epilog(self, **words):
+#
+#     print "\n****** Change Epilog ******"
+#
+#     try:
+#         if not self.value_returned:
+#             r = self.blocks[self.remap_level].executing_remap
+#             self.set_errormsg("the %s remap procedure %s did not return a value"
+#                              % (r.name,r.remap_ngc if r.remap_ngc else r.remap_py))
+#             return INTERP_ERROR
+#
+#         if self.return_value > 0.0:
+#             if self.return_value == 3:
+#                 message = "No tool measurement ! Please take care of the entry in the tool table"
+#                 emccanon.MESSAGE(message)
+#             return INTERP_OK
+#         else:
+#             if self.return_value == -1:
+#                 message = "Searchvel <= 0, not permitted!, Please correct INI Settings."
+#             elif self.return_value == -2:
+#                 message = "Probevel <= 0, not permitted!, Please correct INI Settings."
+#             elif self.return_value == -3:
+#                 message = "Probe contact failiure !!"
+#             else:
+#                 message = "M6 aborted (return code %.1f)" % (self.return_value)
+#             self.set_errormsg(message)
+#             return INTERP_ERROR
+#
+#     except Exception, e:
+#         self.set_errormsg("M6/change_epilog: %s" % (e))
+#         return INTERP_ERROR
 
 
 _uvw = ("u","v","w","a","b","c")

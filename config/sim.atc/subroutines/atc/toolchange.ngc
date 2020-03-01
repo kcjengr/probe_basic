@@ -1,0 +1,109 @@
+o<toolchange> sub
+(print, o<toolchange>)
+
+(print, Current Tool:    #<current_tool>)
+(print, Current Pocket:  #<current_pocket>)
+
+(print, Selected Tool:   #<selected_tool>)
+(print, Selected Pocket: #<selected_pocket>)
+
+(print, ****** ATC INFO ******)
+(print, Number of Pockets: #<atc_num_pockets>)
+(print, Open Pocket: #<open_pocket>)
+
+
+; End if tool in spindle is same as requested
+O100 if [#<current_tool> EQ #<selected_tool>]
+ o<toolchange> endsub [1]
+M2
+O100 endif
+
+
+; Request manual removal if no pocket in ATC
+O110 if [#<open_pocket> LT 0]
+ (print, No open pocket in the ATC, please remove manually.)
+ o<toolchange> endsub [1]
+M2
+O110 endif
+
+
+; checks if requested tool is in the ATC
+O11 if [#<selected_pocket> LT 0]
+ (abort, tool not in carousel)
+ o<toolchange> endsub [0]
+M2
+O11 endif
+
+
+;now we know which pocket the next tool is sitting in
+;we need to know if we need to put a tool away
+;or if there is no tool in the spindle
+
+; Check if there is a valid tool in the spindle
+O180 IF [#<current_tool> GT 0]
+
+    ; If there is a tool in the spindle, checks if there is an open pocket
+    O190 if [#<open_pocket> EQ 0]
+        (abort, carousel is full, cant put away tool in into carousel)
+    O190 endif
+
+    ; move carousel to open pocket
+    M10 P[#<open_pocket>]
+
+    ; put current tool into open pocket
+    M21
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<current_tool>}])
+
+    ; return where we stored the tool
+    #<stored_tool> = #<current_tool>
+    #<stored_pocket> = #<open_pocket>
+
+    ; no tool in spindle
+    #<current_tool> = 0
+
+
+    #5231 = 0 ; no tool in spindle
+
+O180 ENDIF
+
+G0 G53 Z0
+
+O200 IF [#<selected_tool> GT 0] ; selected tool is not tool0
+    M10 P#<selected_pocket> ; move carousel to selected tool pocket
+    M65 P1
+    M64 P0
+    M66 P1 L3 Q5 ;check carousel out position sensor
+    O205 if [#5399 LT 0]
+        M65 P0 ; turn off the solenoid to send atc to tool change
+        (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
+    O205 endif
+    M65 P0
+
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<selected_pocket>, 0}])
+    M22 ;Carousel out
+
+    #5231 = #<selected_tool> ;Set persistent variable to remember tool in spindle after power cycle
+
+O200 Else
+    M65 P2 ; deactive drawbar
+    M65 P0 ; make sure ATC out solenoid is off
+    M64 P1 ; move carousel home
+
+    M66 P0 L3 Q4 ;check carousel in position sensor
+       O210 if [#5399 LT 0]
+         M65 P1 ; turn off the solenoid to send atc home
+          (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
+       O210 endif
+    M65 P1
+O200 ENDIF
+
+(print, selected tool, #<selected_tool>)
+(print, current tool, #<current_tool>)
+
+#<current_tool> = #<selected_tool>
+
+M61 Q#<selected_tool>
+
+o<toolchange> endsub [1]
+
+M2
