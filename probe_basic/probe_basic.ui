@@ -18255,7 +18255,7 @@ QTabBar::tab:only-one {
               <x>1150</x>
               <y>20</y>
               <width>471</width>
-              <height>271</height>
+              <height>361</height>
              </rect>
             </property>
             <property name="frameShape">
@@ -18564,6 +18564,93 @@ color: white;
               </layout>
              </item>
              <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_171">
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="label_132">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>140</width>
+                   <height>31</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>31</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+font: 75 14pt &quot;Bebas Kai&quot;;
+color: white;
+}</string>
+                 </property>
+                 <property name="lineWidth">
+                  <number>0</number>
+                 </property>
+                 <property name="text">
+                  <string>NOZZLE ANGLE OFFSET</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="indent">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="VCPSettingsLineEdit" name="pc_angle_offset">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>31</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>31</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="placeholderText">
+                  <string>0.0</string>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>programmable-coolant.pc-angle-offset</string>
+                 </property>
+                 <property name="textFormat" stdset="0">
+                  <string>{:0.4f}</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
               <layout class="QHBoxLayout" name="horizontalLayout_168">
                <property name="topMargin">
                 <number>1</number>
@@ -18710,7 +18797,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="StatusLabel" name="calculated_coolant_angle">
+                <widget class="StatusLabel" name="coolant_final_angle">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -18751,9 +18838,6 @@ color: white;
                  </property>
                  <property name="format" stdset="0">
                   <string>{:.3f}</string>
-                 </property>
-                 <property name="statusItem" stdset="0">
-                  <string>tool_offset.3</string>
                  </property>
                 </widget>
                </item>
@@ -29213,14 +29297,14 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="plotviewGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
  </buttongroups>
 </ui>
