@@ -16,14 +16,16 @@ o<program_coolant> sub
   (number after equals sign in comment is default value)
   #<horizontal_spindle_nozzle_dist> = #1
   #<vertical_spindle_nozzle_dist> = #2
-  #<pc_tool_length> = #3
-  #<pc_angle_offset> = #4
+  #<pc_angle_offset> = #3
+  #<pc_tool_length> = #4
 
-  #<tool_tip_position> = [#<vertical_spindle_nozzle_dist> + #<pc_tool_length>]
+
+
+  #<tool_tip_position> = [[#<vertical_spindle_nozzle_dist>] + [#<pc_tool_length>]]
 
   #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
 
-  #<coolant_final_angle> = [#<coolant_abs_angle> + #<pc_angle_offset>]
+  #<coolant_final_angle> = [[#<coolant_abs_angle>] + [#<pc_angle_offset>]]
 
   #1000 = #<coolant_final_angle>
   (DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
