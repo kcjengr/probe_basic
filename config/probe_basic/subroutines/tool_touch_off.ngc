@@ -12,7 +12,7 @@ o<tool_touch_off> sub
 
 G92.1    (Cancel G92 offset)
 
-#<workspace_z> = #[5203 + [20 * #5220]]
+(#<workspace_z> = #[5203 + [20 * #5220]])
 
 #<tool_touch_x_coords> = #5181
 #<tool_touch_y_coords> = #5182
@@ -25,7 +25,10 @@ o<100> if [#<tool_diameter_offset_mode> EQ 1]
   #<tool_touch_x_coords> = #<offset_probing_position>
 o<100> endif
 
-G49    (cancel tlo)
+o<110> if [2 EQ 2]
+  G49
+o<110> endif
+
 G90    (set absolute coordinates)
 G53 G0 Z0    (move to z0 home position)
 G53 G0 X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
@@ -38,7 +41,7 @@ G38.2 Z-[#<z_max_travel>]    (fast tool probe)
 G0 Z[#<retract_distance>]    (retract tool retract distance amount)
 
 (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
-o<110> if [#<slow_probe_fr> GT 0]
+o<120> if [#<slow_probe_fr> GT 0]
   (Initiate Slow Z- Probe)
   G91
   F[#<slow_probe_fr>]    (set probe slow feedrate)
@@ -47,27 +50,30 @@ o<110> if [#<slow_probe_fr> GT 0]
   (debug, Probed Pos: #5063 Z Pos: #<_z>)
   G90
   G0 Z[#<z_slow_probe> + #<retract_distance>]
-o<110> endif
-
-o<120> if [#5070 EQ 1]    (verify probe event was succesful)
-  #<z_slow_probe> = #5063    (save slow probe result to parameters)
-o<120> else
-  (MSG,Tool Length Offset Probe Failed)
 o<120> endif
 
-(Tool Diameter Probe Mode Section, User must define this section as needed)
-o<130> if [#<tool_diameter_probe_mode> EQ 1]
-  (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+o<130> if [#5070 EQ 1]    (verify probe event was succesful)
+  #<z_slow_probe> = #5063    (save slow probe result to parameters)
+o<130> else
+  (MSG,Tool Length Offset Probe Failed)
 o<130> endif
 
-G49
+(Tool Diameter Probe Mode Section, User must define this section as needed)
+o<140> if [#<tool_diameter_probe_mode> EQ 1]
+  (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+o<140> endif
+
+o<150> if [3 EQ 3]
+  G49
+o<150> endif
+
 G90    (set absolute coordinates)
 G53 G0 Z0 (Send Spindle to home zero position)
 
 (define new tool length offset parameters)
 #<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063]]
 
-G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
+G10 L11 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
 T #5400 G43  H #5400    (enable tool length offset)
 
 o<tool_touch_off> endsub
