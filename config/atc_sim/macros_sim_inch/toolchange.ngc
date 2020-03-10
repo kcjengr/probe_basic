@@ -112,7 +112,14 @@ O200 ENDIF
 #5200= #11
 #5201= #12
 
-M61 Q#100
+M61 Q#<selected_tool>
+
+o<220> if [1 EQ 1]
+  G43 H#<selected_tool>
+o<220> endif
+
+(run program_coolant.ngc)
+o<program_coolant_remap> call
 
 o<toolchange> endsub [1]
 
