@@ -17,7 +17,7 @@ o<toolchange> sub
 #<activate_pogrammable_coolant> = #13
 #<horizontal_spindle_nozzle_dist> = #14
 #<vertical_spindle_nozzle_dist> = #15
-
+#<pc_angle_offset> = #16
 
 ;assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -127,7 +127,7 @@ o<010> endif
 (run program_coolant sub if selected to be active in settings page with value 1)
 o<220> if [#<activate_pogrammable_coolant> EQ 1]
   (run program_coolant.ngc)
-  o<program_coolant> call [#14][#15][#<pc_tool_length>]
+  o<program_coolant> call [#14][#15][#16][#<pc_tool_length>]
 0<220> else
   o<toolchange> return
 o<220> endif
