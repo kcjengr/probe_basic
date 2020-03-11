@@ -7,6 +7,9 @@
 o<load_spindle_safety> sub
 
 #<load_spindle_tool_number> = #1
+#<activate_pogrammable_coolant>  = #2
+#<horizontal_spindle_nozzle_dist> = #3
+#<vertical_spindle_nozzle_dist> = #4
 
 o<100> if [#<load_spindle_tool_number> EQ #5190]
   (MSG, the tool you are trying to load is already stored in carousel pocket 1)
@@ -35,6 +38,16 @@ o<100> else if [#<load_spindle_tool_number> EQ #5201]
 o<100> else
   M61 Q#<load_spindle_tool_number> G43 H#<load_spindle_tool_number>
 o<100> endif
+
+#<pc_tool_length> = #5403
+
+(run program_coolant sub if selected to be active in settings page with value 1)
+o<110> if [#<activate_pogrammable_coolant> EQ 1]
+  (run program_coolant.ngc)
+  o<program_coolant> call [#3][#4][#<pc_tool_length>]
+o<110> else
+  o<load_spindle_safety> return
+o<110> endif
 
 o<load_spindle_safety> endsub
 
