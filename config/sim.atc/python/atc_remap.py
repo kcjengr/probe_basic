@@ -154,7 +154,6 @@ def _write_tool_table():
         os.fsync(fh.fileno())
 
 
-
 def _find_tool_pocket(tnum):
     """Returns the pocket the specified tool is in."""
     tool_table = _read_tool_table()
@@ -253,22 +252,29 @@ def prepare_epilog(self, **words):
 def change_prolog(self, **words):
     try:
         if self.selected_pocket < 0:
-            return "M6: no tool prepared"
+            self.set_errormsg("M6 prolog: No tool prepared")
+            return INTERP_ERROR
 
         if self.cutter_comp_side:
-            return "Cannot change tools with cutter radius compensation on"
+            self.set_errormsg("M6 prolog: Cannot change tool with radius compensation on")
+            return INTERP_ERROR
+
+        self.params["atc_open_pocket"] = _find_open_pocket()
+        self.params["atc_num_pockets"] = ATC_NUM_POCKETS
 
         self.params["current_tool"] = self.current_tool
         self.params["current_pocket"] = self.params[5171]
         self.params["selected_tool"] = self.selected_tool
         self.params["selected_pocket"] = self.selected_pocket
 
-        self.params['open_pocket'] = _find_open_pocket()
-        self.params['atc_num_pockets'] = ATC_NUM_POCKETS
+        self.params["stored_tool"] = self.selected_tool
+        self.params["stored_pocket"] = self.params["atc_open_pocket"]
 
         return INTERP_OK
+
     except Exception, e:
-        return "M6 change_prolog: %s" % e
+        self.set_errormsg("M6 prolog: %s" % e)
+        return INTERP_ERROR
 
 
 def change_epilog(self, **words):
@@ -278,13 +284,11 @@ def change_epilog(self, **words):
 
             print "current tool", self.current_tool
             _update_tool_table(int(self.params['stored_tool']), 'P', int(self.params['stored_pocket']))
-
-            self.current_tool = int(self.params['current_tool'])
-            # self.current_pocket = self.params['']
-
             _update_tool_table(self.selected_tool, 'P', 0)
             _write_tool_table()
 
+            self.current_tool = int(self.params['current_tool'])
+            # self.current_pocket = self.params['stored_pocket']
 
             self.selected_tool = int(self.params["selected_tool"])
             self.selected_pocket = int(self.params["selected_pocket"])
@@ -303,4 +307,5 @@ def change_epilog(self, **words):
             return "M6 aborted (return code %.1f)" % self.return_value
 
     except Exception, e:
-        return "M6 change_epilog: %s" % e
+        self.set_errormsg("M6 epilog: %s" % e)
+        return INTERP_ERROR
