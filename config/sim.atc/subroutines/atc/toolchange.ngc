@@ -9,7 +9,7 @@ o<toolchange> sub
 
 (print, ****** ATC INFO ******)
 (print, Number of Pockets: #<atc_num_pockets>)
-(print, Open Pocket: #<open_pocket>)
+(print, Open Pocket: #<atc_open_pocket>)
 
 
 ; End if tool in spindle is same as requested
@@ -20,7 +20,7 @@ O100 endif
 
 
 ; Request manual removal if no pocket in ATC
-O110 if [#<open_pocket> LT 0]
+O110 if [#<atc_open_pocket> LT 0]
  (print, No open pocket in the ATC, please remove manually.)
  o<toolchange> endsub [1]
 M2
@@ -43,24 +43,23 @@ O11 endif
 O180 IF [#<current_tool> GT 0]
 
     ; If there is a tool in the spindle, checks if there is an open pocket
-    O190 if [#<open_pocket> EQ 0]
-        (abort, carousel is full, cant put away tool in into carousel)
+    O190 if [#<atc_open_pocket> EQ -1]
+        (abort, carousel is full, can't store tool)
     O190 endif
 
     ; move carousel to open pocket
-    M10 P[#<open_pocket>]
+    M10 P[#<atc_open_pocket>]
 
     ; put current tool into open pocket
     M21
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<current_tool>}])
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<atc_open_pocket>, #<current_tool>}])
 
     ; return where we stored the tool
     #<stored_tool> = #<current_tool>
-    #<stored_pocket> = #<open_pocket>
+    #<stored_pocket> = #<atc_open_pocket>
 
     ; no tool in spindle
     #<current_tool> = 0
-
 
     #5231 = 0 ; no tool in spindle
 
