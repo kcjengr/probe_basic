@@ -224,7 +224,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -321,7 +321,7 @@ background-color: transparent;
                  <widget class="RecentFileComboBox" name="recentfilecombobox">
                   <property name="minimumSize">
                    <size>
-                    <width>142</width>
+                    <width>148</width>
                     <height>30</height>
                    </size>
                   </property>
@@ -2134,7 +2134,7 @@ QHeaderView {
 }</string>
                    </property>
                    <property name="currentIndex">
-                    <number>0</number>
+                    <number>1</number>
                    </property>
                    <widget class="QWidget" name="page_5">
                     <layout class="QVBoxLayout" name="verticalLayout_50">
@@ -2349,18 +2349,11 @@ QHeaderView {
                    <widget class="QWidget" name="page_6">
                     <layout class="QVBoxLayout" name="verticalLayout_52">
                      <item>
-                      <widget class="GcodeEditor" name="gcodeeditor_4">
-                       <property name="styleSheet">
-                        <string notr="true">GcodeEditor {
-	color: black;
-   	border: 4px;
-	border-color: rgb(120, 120, 120);
-	border-style: solid;
-	background-color: rgb(238, 238, 236);
-}</string>
-                       </property>
-                       <property name="is_editor" stdset="0">
-                        <bool>true</bool>
+                      <widget class="QWebView" name="setupsheet_webView">
+                       <property name="url">
+                        <url>
+                         <string>about:blank</string>
+                        </url>
                        </property>
                       </widget>
                      </item>
@@ -30924,7 +30917,7 @@ border-radius: 1px;
      <x>0</x>
      <y>0</y>
      <width>1918</width>
-     <height>26</height>
+     <height>27</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -31249,6 +31242,11 @@ font: 11pt bebas kai;
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
    <header>QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>QWebView</class>
+   <extends>QWidget</extends>
+   <header>QtWebKitWidgets/QWebView</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -32658,17 +32656,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="guiaxisdisplayGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
   <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="guiaxisdisplayGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
