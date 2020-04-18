@@ -29,7 +29,7 @@ setup(
             'probe_basic=probe_basic',
         ],
         'qtpyvcp.widgets': [
-            'atc_widget=probe_basic.widgets.atc_widget'
+            'Probe Basic Widgets=widgets.atc_widget'
         ]
     },
     install_requires=[
