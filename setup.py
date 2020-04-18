@@ -28,6 +28,9 @@ setup(
         'qtpyvcp.vcp': [
             'probe_basic=probe_basic',
         ],
+	'qtpyvcp.widgets': [
+	    'atc_widget=probe_basic.widgets.dynatc'
+	]
     },
     install_requires=[
        # 'qtpyvcp',
