@@ -32495,7 +32495,7 @@ font: 11pt bebas kai;
   </connection>
   <connection>
    <sender>removabledevicecombobox</sender>
-   <signal>currentIndexChanged(QString)</signal>
+   <signal>currentPathChanged(QString)</signal>
    <receiver>filesystemtable_2</receiver>
    <slot>setRootPath(QString)</slot>
    <hints>
@@ -32628,12 +32628,44 @@ font: 11pt bebas kai;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>744</x>
-     <y>261</y>
+     <x>146</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1210</x>
-     <y>355</y>
+     <x>110</x>
+     <y>67</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable_2</sender>
+   <signal>atDeviceRoot(bool)</signal>
+   <receiver>device_folder_up_button</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>105</x>
+     <y>142</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>112</x>
+     <y>91</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removabledevicecombobox</sender>
+   <signal>currentDeviceEjectable(bool)</signal>
+   <receiver>device_eject_usb_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>388</x>
+     <y>90</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>444</x>
+     <y>89</y>
     </hint>
    </hints>
   </connection>
@@ -32656,17 +32688,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="guiaxisdisplayGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="plotviewGroup"/>
   <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
  </buttongroups>
 </ui>
