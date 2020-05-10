@@ -208,7 +208,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>8</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -467,6 +467,12 @@ QComboBox QAbstractItemView{
                      <string>PAN</string>
                     </property>
                     <property name="checkable">
+                     <bool>true</bool>
+                    </property>
+                    <property name="checked">
+                     <bool>false</bool>
+                    </property>
+                    <property name="autoExclusive">
                      <bool>false</bool>
                     </property>
                    </widget>
@@ -501,6 +507,9 @@ QComboBox QAbstractItemView{
                      <string>ZOOM +</string>
                     </property>
                     <property name="checkable">
+                     <bool>false</bool>
+                    </property>
+                    <property name="checked">
                      <bool>false</bool>
                     </property>
                    </widget>
@@ -3079,7 +3088,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;rel_pos_x_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3106,7 +3115,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:position&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:position&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;position_dro_x&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3133,7 +3142,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;g5x_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3160,7 +3169,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g92_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;g92_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3187,7 +3196,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;tool_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3308,7 +3317,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;rel_pos_z_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3335,7 +3344,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:position&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:position&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;pos_dro_z&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3362,7 +3371,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;g5x_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3389,7 +3398,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g92_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;g92_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3416,7 +3425,7 @@ OFFSET</string>
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;tool offset&quot;}]</string>
+                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;tool_offset_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -6408,7 +6417,7 @@ border-style: none;
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?z_offset&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;Tool Length&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?z_offset&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_length&quot;}]</string>
                       </property>
                       <property name="format" stdset="0">
                        <string>{:.3f}</string>
@@ -6550,7 +6559,7 @@ border-style: none;
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?diameter&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;Tool Diameter&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?diameter&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_diameter&quot;}]</string>
                       </property>
                       <property name="format" stdset="0">
                        <string>{:.3f}</string>
@@ -6911,7 +6920,7 @@ border-style: none;
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                       </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?z_offset&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;Tool Length&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?z_offset&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_length&quot;}]</string>
                       </property>
                       <property name="format" stdset="0">
                        <string>{:.3f}</string>
@@ -7019,7 +7028,7 @@ border-style: none;
                        <set>Qt::AlignCenter</set>
                       </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current tool&quot;}]</string>
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current_tool&quot;}]</string>
                       </property>
                       <property name="format" stdset="0">
                        <string>{:.3f}</string>
@@ -11932,7 +11941,7 @@ border-radius: 1px;
         </property>
         <property name="minimumSize">
          <size>
-          <width>482</width>
+          <width>520</width>
           <height>340</height>
          </size>
         </property>
@@ -12341,20 +12350,7 @@ border-radius: 1px;
                <bool>true</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:g5x_index&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;int&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;&quot;,
-        &quot;name&quot;: &quot;G5x Index&quot;,
-        &quot;property&quot;: &quot;None&quot;
-    }
-]</string>
+               <string>[]</string>
               </property>
               <property name="MDICommand" stdset="0">
                <string>G7</string>
@@ -12411,20 +12407,7 @@ border-radius: 1px;
                <bool>true</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:g5x_index&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;int&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;&quot;,
-        &quot;name&quot;: &quot;G5x Index&quot;,
-        &quot;property&quot;: &quot;None&quot;
-    }
-]</string>
+               <string>[]</string>
               </property>
               <property name="MDICommand" stdset="0">
                <string>G8</string>
@@ -12587,13 +12570,13 @@ border-radius: 1px;
               </property>
               <layout class="QHBoxLayout" name="horizontalLayout_151">
                <property name="spacing">
-                <number>8</number>
+                <number>18</number>
                </property>
                <property name="leftMargin">
-                <number>5</number>
+                <number>9</number>
                </property>
                <property name="rightMargin">
-                <number>7</number>
+                <number>0</number>
                </property>
                <item>
                 <widget class="StatusLabel" name="statuslabel_29">
@@ -12815,18 +12798,12 @@ border-radius: 1px;
             <item>
              <widget class="StatusLabel" name="statuslabel_87">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -12857,25 +12834,19 @@ border-radius: 1px;
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;REL axis position&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;rel_axis_position&quot;}]</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="StatusLabel" name="statuslabel_88">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -12917,25 +12888,19 @@ StatusLabel[style=&quot;homing&quot;]{
                <string>unhomed</string>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:abs?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;axis position&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;homed\&quot; if ch[0] else \&quot;homing\&quot; if ch[1] else \&quot;unhomed\&quot;&quot;, &quot;name&quot;: &quot;homing indicator&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:abs?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;axis_position&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;homed\&quot; if ch[0] else \&quot;homing\&quot; if ch[1] else \&quot;unhomed\&quot;&quot;, &quot;name&quot;: &quot;homing_indicator&quot;}]</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="StatusLabel" name="statuslabel_89">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -12972,7 +12937,7 @@ StatusLabel[style=&quot;homing&quot;]{
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:dtg?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;REL axis position&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:dtg?string&amp;axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;rel_axis_position&quot;}]</string>
               </property>
              </widget>
             </item>
@@ -13095,18 +13060,12 @@ StatusLabel[style=&quot;homing&quot;]{
             <item>
              <widget class="StatusLabel" name="statuslabel_93">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -13137,25 +13096,19 @@ StatusLabel[style=&quot;homing&quot;]{
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;REL axis position&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;rel_axis_position&quot;}]</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="StatusLabel" name="statuslabel_94">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -13197,25 +13150,19 @@ StatusLabel[style=&quot;homing&quot;]{
                <string>unhomed</string>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:abs?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;axis position&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.1.homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;homed\&quot; if ch[0] else \&quot;homing\&quot; if ch[1] else \&quot;unhomed\&quot;&quot;, &quot;name&quot;: &quot;homing indicator&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:abs?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;axis_position&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.1.homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;homed\&quot; if ch[0] else \&quot;homing\&quot; if ch[1] else \&quot;unhomed\&quot;&quot;, &quot;name&quot;: &quot;homing_indicator&quot;}]</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="StatusLabel" name="statuslabel_95">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>35</height>
-               </size>
-              </property>
-              <property name="maximumSize">
                <size>
                 <width>100</width>
                 <height>35</height>
@@ -13246,7 +13193,7 @@ StatusLabel[style=&quot;homing&quot;]{
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:dtg?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;REL axis position&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:dtg?string&amp;axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;rel_axis_position&quot;}]</string>
               </property>
              </widget>
             </item>
@@ -13605,20 +13552,7 @@ padding-right: 7px;
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:feedrate&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;, &quot;name&quot;: &quot;feedrate_percentage&quot;}]</string>
            </property>
            <property name="statusItem" stdset="0">
             <string>feedrate</string>
@@ -13668,20 +13602,7 @@ padding-right: 7px;
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:rapidrate&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;, &quot;name&quot;: &quot;rapid_rate_percentage&quot;}]</string>
            </property>
            <property name="statusItem" stdset="0">
             <string>rapidrate</string>
@@ -13879,20 +13800,7 @@ border-radius: 4px;
             <number>-6</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:max_velocity&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0f}'.format(ch[0] * 60)&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:max_velocity&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0f}'.format(ch[0] * 60)&quot;, &quot;name&quot;: &quot;max_velocity&quot;}]</string>
            </property>
            <property name="statusItem" stdset="0">
             <string>max_velocity</string>
@@ -14211,7 +14119,7 @@ border-radius: 4px;
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;, &quot;name&quot;: &quot;spindle_override_percentage&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -16790,7 +16698,7 @@ font: 11pt bebas kai;
   </connection>
   <connection>
    <sender>pan_button</sender>
-   <signal>clicked(bool)</signal>
+   <signal>toggled(bool)</signal>
    <receiver>vtkbackplot</receiver>
    <slot>enable_panning(bool)</slot>
    <hints>
@@ -16887,7 +16795,7 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlespeedbtngroup"/>
   <buttongroup name="diamradbtngroup"/>
+  <buttongroup name="spindlespeedbtngroup"/>
  </buttongroups>
 </ui>
