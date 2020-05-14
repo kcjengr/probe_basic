@@ -14,10 +14,6 @@ o<toolchange> sub
 #10 = #5199
 #11 = #5200
 #12 = #5201
-#<activate_pogrammable_coolant> = #13
-#<horizontal_spindle_nozzle_dist> = #14
-#<vertical_spindle_nozzle_dist> = #15
-#<pc_angle_offset> = #16
 
 ;assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -124,13 +120,18 @@ o<010> endif
 
 #<pc_tool_length> = #5403
 
-(run program_coolant sub if selected to be active in settings page with value 1)
-o<220> if [#<activate_pogrammable_coolant> EQ 1]
-  (run program_coolant.ngc)
-  o<program_coolant> call [#14][#15][#16][#<pc_tool_length>]
-0<220> else
-  o<toolchange> return
-o<220> endif
+#<pc_tool_length> = #5403
+
+#<tool_tip_position> = [[4] + [#<pc_tool_length>]]
+
+#<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [8]]
+
+#<coolant_final_angle> = [[#<coolant_abs_angle>] + [0]]
+
+#1000 = #<coolant_final_angle>
+(DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
+
+M68 E20 Q[#<coolant_final_angle>]
 
 o<toolchange> endsub [1]
 
