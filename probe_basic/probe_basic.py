@@ -80,5 +80,9 @@ class ProbeBasic(VCPMainWindow):
     def on_fileviewerbtnGroup_buttonClicked(self, button):
         self.file_viewer_widget.setCurrentIndex(button.property('page'))
 
+    @Slot(QAbstractButton)
+    def on_guiaxisdisplayGroup_buttonClicked(self, button):
+        self.gui_axis_display_widget.setCurrentIndex(button.property('page'))
+
 
             
