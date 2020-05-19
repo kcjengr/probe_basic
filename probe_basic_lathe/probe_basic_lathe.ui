@@ -208,7 +208,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -410,7 +410,7 @@ QComboBox QAbstractItemView{
                    <number>0</number>
                   </property>
                   <property name="bottomMargin">
-                   <number>250</number>
+                   <number>200</number>
                   </property>
                   <item>
                    <widget class="QLabel" name="label_30">
@@ -728,6 +728,40 @@ QComboBox QAbstractItemView{
                     </property>
                     <property name="text">
                      <string>CLEAR</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>false</bool>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QPushButton" name="xz_view">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>75</width>
+                      <height>33</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>75</width>
+                      <height>33</height>
+                     </size>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true"/>
+                    </property>
+                    <property name="text">
+                     <string>X Z View</string>
                     </property>
                     <property name="checkable">
                      <bool>false</bool>
@@ -1694,35 +1728,25 @@ border-radius: 6px;
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_128">
                    <item>
-                    <widget class="QPlainTextEdit" name="plainTextEdit">
-                     <property name="font">
-                      <font>
-                       <family>Bebas Kai</family>
-                       <pointsize>12</pointsize>
-                       <weight>50</weight>
-                       <italic>false</italic>
-                       <bold>false</bold>
-                      </font>
-                     </property>
+                    <widget class="GcodeEditor" name="gcodeeditor_2">
                      <property name="styleSheet">
-                      <string notr="true">QPlainTextEdit {
+                      <string notr="true">GcodeEditor {
 	color: black;
    	border: 4px;
 	border-color: rgb(120, 120, 120);
 	border-style: solid;
 	background-color: rgb(238, 238, 236);
-    font: 12pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
-                     <property name="placeholderText">
-                      <string>Select a text file to preview</string>
+                     <property name="is_editor" stdset="0">
+                      <bool>true</bool>
                      </property>
                     </widget>
                    </item>
                   </layout>
                  </item>
                  <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_129">
+                  <layout class="QHBoxLayout" name="horizontalLayout_134">
                    <item>
                     <widget class="QPushButton" name="edit_gcode_button">
                      <property name="sizePolicy">
@@ -1733,13 +1757,13 @@ border-radius: 6px;
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>150</width>
+                       <width>100</width>
                        <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>150</width>
+                       <width>100</width>
                        <height>30</height>
                       </size>
                      </property>
@@ -1753,6 +1777,108 @@ border-radius: 6px;
                      </property>
                      <property name="text">
                       <string>EDIT G-CODE</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="find_replace_button">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>FIND/REPLACE</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="save_button">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>SAVE</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="save_as_button">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>100</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>SAVE AS</string>
                      </property>
                     </widget>
                    </item>
@@ -10045,7 +10171,7 @@ color: white;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -16408,11 +16534,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>752</x>
-     <y>106</y>
+     <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16424,11 +16550,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>738</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16440,11 +16566,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>403</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16456,11 +16582,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>995</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16472,11 +16598,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>610</x>
-     <y>477</y>
+     <y>474</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16488,11 +16614,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>610</x>
-     <y>318</y>
+     <y>317</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16504,11 +16630,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>146</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16519,12 +16645,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16540,7 +16666,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16552,11 +16678,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16568,11 +16694,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>854</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
-     <x>776</x>
-     <y>250</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16584,11 +16710,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>262</x>
-     <y>650</y>
+     <y>616</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>250</y>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16603,8 +16729,8 @@ font: 11pt bebas kai;
      <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1094</x>
-     <y>253</y>
+     <x>1114</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -16616,43 +16742,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1114</x>
-     <y>232</y>
+     <y>116</y>
     </hint>
     <hint type="destinationlabel">
      <x>1110</x>
      <y>107</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>filePreviewText(QString)</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>setPlainText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1114</x>
-     <y>520</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1207</x>
-     <y>379</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>filePreviewText(QString)</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>setPlainText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>566</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1210</x>
-     <y>451</y>
     </hint>
    </hints>
   </connection>
@@ -16664,7 +16758,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>403</y>
+     <y>383</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -16680,7 +16774,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>145</y>
+     <y>139</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -16696,7 +16790,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>191</y>
+     <y>183</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -16712,7 +16806,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>99</y>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>1264</x>
@@ -16727,12 +16821,12 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>282</x>
-     <y>622</y>
+     <x>358</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>301</x>
-     <y>532</y>
+     <x>51</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -16743,12 +16837,12 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>745</x>
-     <y>624</y>
+     <x>835</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>745</x>
-     <y>573</y>
+     <x>51</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -16759,12 +16853,12 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>933</x>
-     <y>625</y>
+     <x>1014</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>934</x>
-     <y>555</y>
+     <x>51</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -16775,12 +16869,108 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>625</y>
+     <x>199</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>187</x>
-     <y>533</y>
+     <x>51</x>
+     <y>87</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xz_view</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>setViewXZ()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>756</x>
+     <y>416</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>812</x>
+     <y>477</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_gcode_button</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>gcodeeditor_2</receiver>
+   <slot>setEditable(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1237</x>
+     <y>604</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1231</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>find_replace_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeeditor_2</receiver>
+   <slot>find_replace()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1336</x>
+     <y>607</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1332</x>
+     <y>553</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeeditor_2</receiver>
+   <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1462</x>
+     <y>601</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1461</x>
+     <y>560</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_as_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeeditor_2</receiver>
+   <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1554</x>
+     <y>610</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1559</x>
+     <y>547</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_number_entry_box</sender>
+   <signal>returnPressed()</signal>
+   <receiver>m6_button_7</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>768</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>485</x>
+     <y>776</y>
     </hint>
    </hints>
   </connection>
