@@ -1,0 +1,139 @@
+{% include "menubar.yml" %}
+
+qtdesigner:
+  ui_file: ( windows.mainwindow.kwargs.ui_file )
+  qss_file: ( application.kwargs.stylesheet )
+
+vcp:
+  name: Probe Basic Lathe
+  version: v0.0.1
+  author: Chris Polanski
+  description: |
+    Probe Basic lathe VCP.
+
+data_plugins:
+  status:
+    kwargs:
+      cycle_time: 75
+
+  tooltable:
+    provider: qtpyvcp.plugins.tool_table:ToolTable
+    kwargs:
+        columns: TPXZIJDQR
+
+windows:
+  mainwindow:
+    provider: probe_basic_lathe.probe_basic_lathe:ProbeBasicLathe
+    kwargs:
+      menu: ( menubar )
+      fullscreen: true
+      ui_file: {{ file.dir }}/probe_basic_lathe.ui
+
+application:
+  kwargs:
+    stylesheet: {{ file.dir }}/probe_basic_lathe.qss
+
+settings:
+  touch-probe.calibration-offset:
+    description: Probe trigger point offset.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
+
+  probe-parameters.probe-tool-number:
+    description: probe tool number.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 9999
+
+  probe-parameters.step-off-width:
+    description: probe step off width.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.probe-fast-fr:
+    description: probe fast feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.probe-slow-fr:
+    description: probe slow feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.max-xy-distance:
+    description: max x and y probe travel distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  probe-parameters.xy-clearance:
+    description: x and y clearance distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.max-z-distance:
+    description: max z probe travel distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  probe-parameters.z-clearance:
+    description: z clearance distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.extra-probe-depth:
+    description: extra probe depth.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  probe-parameters.edge-width:
+    description: edge width probing distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  tool-change-position.x-tool-change-position:
+    description: x axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -1000
+    max_value: 1000
+
+  tool-change-position.y-tool-change-position:
+    description: y axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -1000
+    max_value: 1000
+
+  tool-change-position.z-tool-change-position:
+    description: z axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -1000
+    max_value: 1000
+
+dialogs:
+  about_probebasic:
+    provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
+    kwargs:
+      ui_file: {{ file.dir }}/about.ui
