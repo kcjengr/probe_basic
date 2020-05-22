@@ -2,6 +2,7 @@
 
 import os
 
+from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
@@ -16,3 +17,49 @@ class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasicLathe, self).__init__(*args, **kwargs)
+
+        self.feed_unit_per_minute = 0.0
+        self.feed_per_rev = 0.0
+        self.css_sword = 0.0
+        self.rpm_mode = 0.0
+
+    def on_feed_unit_per_minute_entry_textChanged(self, value):
+        if value:
+            self.feed_unit_per_minute = float(value)
+        else:
+            self.feed_unit_per_minute = 0.0
+
+    def on_feed_unit_per_minute_entry_returnPressed(self):
+        cmd = "F{}".format(self.feed_unit_per_minute)
+        issue_mdi(cmd)
+
+    def on_feed_per_rev_entry_textChanged(self, value):
+        if value:
+            self.feed_per_rev = float(value)
+        else:
+            self.feed_per_rev = 0.0
+
+    def on_feed_per_rev_entry_returnPressed(self):
+        cmd = "F{}".format(self.feed_per_rev)
+        issue_mdi(cmd)
+
+    def on_css_sword_entry_textChanged(self, value):
+        if value:
+            self.css_sword = float(value)
+        else:
+            self.css_sword = 0.0
+
+    def on_css_sword_entry_returnPressed(self):
+        cmd = "G96 S{}".format(self.css_sword)
+        issue_mdi(cmd)
+
+    def on_rpm_mode_entry_textChanged(self, value):
+        if value:
+            self.rpm_mode = float(value)
+        else:
+            self.rpm_mode = 0.0
+
+    def on_rpm_mode_entry_returnPressed(self):
+        cmd = "S{}".format(self.rpm_mode)
+        issue_mdi(cmd)
+
