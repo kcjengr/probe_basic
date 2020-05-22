@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1946</width>
+    <width>1938</width>
     <height>1127</height>
    </rect>
   </property>
@@ -208,7 +208,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -14965,13 +14965,13 @@ border-radius: 4px;
         </property>
         <property name="minimumSize">
          <size>
-          <width>480</width>
+          <width>500</width>
           <height>340</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>380</width>
+          <width>500</width>
           <height>340</height>
          </size>
         </property>
@@ -15224,7 +15224,7 @@ LOAD</string>
           <widget class="QWidget" name="widget_65" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_76">
             <property name="spacing">
-             <number>6</number>
+             <number>7</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -15240,15 +15240,21 @@ LOAD</string>
             </property>
             <item>
              <widget class="MDIButton" name="feed_per_rev_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>52</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
@@ -15264,24 +15270,21 @@ LOAD</string>
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="autoExclusive">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;g95\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g95&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G95\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g95&quot;}]</string>
               </property>
               <property name="MDICommand" stdset="0">
-               <string>G95 F#&lt;feed_per_rev_entry&gt;</string>
+               <string>G95</string>
               </property>
-              <attribute name="buttonGroup">
-               <string notr="true">feedratemodebtngroup</string>
-              </attribute>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="feed_per_rev_entry">
+             <widget class="VCPLineEdit" name="commanded_feed_rev">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -15290,259 +15293,18 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
-              <property name="palette">
-               <palette>
-                <active>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </active>
-                <inactive>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </inactive>
-                <disabled>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </disabled>
-               </palette>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bebas Kai</family>
-                <pointsize>17</pointsize>
-                <weight>9</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::ClickFocus</enum>
-              </property>
-              <property name="contextMenuPolicy">
-               <enum>Qt::NoContextMenu</enum>
-              </property>
               <property name="styleSheet">
-               <string notr="true">QLineEdit {
+               <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -15552,31 +15314,28 @@ LOAD</string>
 	font: 75 17pt &quot;Bebas Kai&quot;;
 }</string>
               </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="placeholderText">
-               <string>0.0000</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="MDIButton" name="feed_upm_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>52</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
@@ -15586,27 +15345,27 @@ LOAD</string>
 }</string>
               </property>
               <property name="text">
-               <string>F/IPM</string>
+               <string>F MM/M</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
               <property name="autoExclusive">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;g94\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g94&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G94\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g94&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:program_units&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'F IPM' if ch[0] == 1 else 'F MM/M'\n&quot;, &quot;name&quot;: &quot;inch_metric_display&quot;}]</string>
               </property>
               <property name="MDICommand" stdset="0">
-               <string>G94 F#&lt;feed_unit_per_minute_entry&gt;</string>
+               <string>G94 F#&lt;commanded_f_word&gt;</string>
               </property>
-              <attribute name="buttonGroup">
-               <string notr="true">feedratemodebtngroup</string>
-              </attribute>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="feed_unit_per_minute_entry">
+             <widget class="VCPLineEdit" name="commanded_f_word">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -15615,259 +15374,18 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
-              <property name="palette">
-               <palette>
-                <active>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </active>
-                <inactive>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </inactive>
-                <disabled>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </disabled>
-               </palette>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bebas Kai</family>
-                <pointsize>17</pointsize>
-                <weight>9</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::ClickFocus</enum>
-              </property>
-              <property name="contextMenuPolicy">
-               <enum>Qt::NoContextMenu</enum>
-              </property>
               <property name="styleSheet">
-               <string notr="true">QLineEdit {
+               <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -15878,16 +15396,13 @@ LOAD</string>
 }</string>
               </property>
               <property name="text">
-               <string/>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
+               <string>0</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="placeholderText">
-               <string>0.0000</string>
+              <property name="rules" stdset="0">
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings?feed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;current_f_word&quot;}]</string>
               </property>
              </widget>
             </item>
@@ -15897,21 +15412,21 @@ LOAD</string>
                <bool>true</bool>
               </property>
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>30</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
-                <height>30</height>
+                <width>40</width>
+                <height>38</height>
                </size>
               </property>
               <property name="styleSheet">
@@ -15955,7 +15470,7 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>80</width>
                 <height>38</height>
                </size>
               </property>
@@ -15997,7 +15512,7 @@ LOAD</string>
           <widget class="QWidget" name="widget_66" native="true">
            <layout class="QHBoxLayout" name="horizontalLayout_150">
             <property name="spacing">
-             <number>6</number>
+             <number>7</number>
             </property>
             <property name="leftMargin">
              <number>0</number>
@@ -16013,15 +15528,21 @@ LOAD</string>
             </property>
             <item>
              <widget class="MDIButton" name="constant_surface_speed">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>52</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
@@ -16037,21 +15558,18 @@ LOAD</string>
                <bool>true</bool>
               </property>
               <property name="autoExclusive">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;g96\&quot; in ch[0] else False\n&quot;, &quot;name&quot;: &quot;check_g96&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G96\&quot; in ch[0] else False\n&quot;, &quot;name&quot;: &quot;check_g96&quot;}]</string>
               </property>
               <property name="MDICommand" stdset="0">
-               <string>G96 S#&lt;css_sword_entry&gt;</string>
+               <string>G96 S#&lt;commanded_css_feed&gt;</string>
               </property>
-              <attribute name="buttonGroup">
-               <string notr="true">spindlecontrolmodebtngroup</string>
-              </attribute>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="css_sword_entry">
+             <widget class="VCPLineEdit" name="commanded_css_feed">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -16060,259 +15578,18 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
-              <property name="palette">
-               <palette>
-                <active>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </active>
-                <inactive>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </inactive>
-                <disabled>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </disabled>
-               </palette>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bebas Kai</family>
-                <pointsize>17</pointsize>
-                <weight>9</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::ClickFocus</enum>
-              </property>
-              <property name="contextMenuPolicy">
-               <enum>Qt::NoContextMenu</enum>
-              </property>
               <property name="styleSheet">
-               <string notr="true">QLineEdit {
+               <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -16322,31 +15599,28 @@ LOAD</string>
 	font: 75 17pt &quot;Bebas Kai&quot;;
 }</string>
               </property>
-              <property name="text">
-               <string/>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
-              </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-              </property>
-              <property name="placeholderText">
-               <string>0</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="MDIButton" name="rpm_mode_button">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
               <property name="minimumSize">
                <size>
-                <width>52</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>60</width>
                 <height>40</height>
                </size>
               </property>
@@ -16365,21 +15639,18 @@ LOAD</string>
                <bool>true</bool>
               </property>
               <property name="autoExclusive">
-               <bool>true</bool>
+               <bool>false</bool>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;g97\&quot; in ch[0] else False\n&quot;, &quot;name&quot;: &quot;check_g97&quot;}]</string>
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G97\&quot; in ch[0] else False\n&quot;, &quot;name&quot;: &quot;check_g97&quot;}]</string>
               </property>
               <property name="MDICommand" stdset="0">
-               <string>G97 S#&lt;rpm_mode_entry&gt;</string>
+               <string>G97 S#&lt;commanded_s_word&gt;</string>
               </property>
-              <attribute name="buttonGroup">
-               <string notr="true">spindlecontrolmodebtngroup</string>
-              </attribute>
              </widget>
             </item>
             <item>
-             <widget class="QLineEdit" name="rpm_mode_entry">
+             <widget class="VCPLineEdit" name="commanded_s_word">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -16388,259 +15659,18 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>85</width>
+                <width>95</width>
                 <height>38</height>
                </size>
               </property>
-              <property name="palette">
-               <palette>
-                <active>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </active>
-                <inactive>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </inactive>
-                <disabled>
-                 <colorrole role="WindowText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Button">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Text">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="ButtonText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Base">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Window">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>235</red>
-                    <green>235</green>
-                    <blue>235</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="Highlight">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>65</red>
-                    <green>84</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                 <colorrole role="HighlightedText">
-                  <brush brushstyle="SolidPattern">
-                   <color alpha="255">
-                    <red>255</red>
-                    <green>255</green>
-                    <blue>255</blue>
-                   </color>
-                  </brush>
-                 </colorrole>
-                </disabled>
-               </palette>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bebas Kai</family>
-                <pointsize>17</pointsize>
-                <weight>9</weight>
-                <italic>false</italic>
-                <bold>false</bold>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::ClickFocus</enum>
-              </property>
-              <property name="contextMenuPolicy">
-               <enum>Qt::NoContextMenu</enum>
-              </property>
               <property name="styleSheet">
-               <string notr="true">QLineEdit {
+               <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -16651,36 +15681,33 @@ LOAD</string>
 }</string>
               </property>
               <property name="text">
-               <string/>
-              </property>
-              <property name="frame">
-               <bool>true</bool>
+               <string>0</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
               </property>
-              <property name="placeholderText">
-               <string>0</string>
+              <property name="rules" stdset="0">
+               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings?speed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;current_s_word&quot;}]</string>
               </property>
              </widget>
             </item>
             <item>
              <widget class="QLabel" name="rpm_label_7">
               <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
                 <verstretch>0</verstretch>
                </sizepolicy>
               </property>
               <property name="minimumSize">
                <size>
-                <width>50</width>
+                <width>40</width>
                 <height>38</height>
                </size>
               </property>
               <property name="maximumSize">
                <size>
-                <width>16777215</width>
+                <width>40</width>
                 <height>38</height>
                </size>
               </property>
@@ -16719,7 +15746,7 @@ LOAD</string>
               </property>
               <property name="minimumSize">
                <size>
-                <width>85</width>
+                <width>80</width>
                 <height>38</height>
                </size>
               </property>
@@ -16739,6 +15766,9 @@ LOAD</string>
     background: rgb(86, 86, 87);
 	font: 50 17pt &quot;Bebas Kai&quot;;
 }</string>
+              </property>
+              <property name="text">
+               <string>0</string>
               </property>
               <property name="alignment">
                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -16935,7 +15965,7 @@ LOAD</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1946</width>
+     <width>1938</width>
      <height>26</height>
     </rect>
    </property>
@@ -17210,6 +16240,11 @@ font: 11pt bebas kai;
    <class>VTKBackPlot</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.line_edit</header>
   </customwidget>
   <customwidget>
    <class>ActionButton</class>
@@ -17684,6 +16719,38 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>commanded_f_word</sender>
+   <signal>returnPressed()</signal>
+   <receiver>feed_upm_button</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1694</x>
+     <y>895</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1667</x>
+     <y>896</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>commanded_s_word</sender>
+   <signal>returnPressed()</signal>
+   <receiver>rpm_mode_button</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1708</x>
+     <y>962</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1640</x>
+     <y>966</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -17703,8 +16770,6 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="feedratemodebtngroup"/>
-  <buttongroup name="spindlecontrolmodebtngroup"/>
   <buttongroup name="diamradbtngroup"/>
  </buttongroups>
 </ui>
