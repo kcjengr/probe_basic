@@ -30,17 +30,17 @@ class ProbeBasicLathe(VCPMainWindow):
             self.feed_unit_per_minute = 0.0
 
     def on_feed_unit_per_minute_entry_returnPressed(self):
-        cmd = "F{}".format(self.feed_unit_per_minute)
+        cmd = "G94 F{}".format(self.feed_unit_per_minute)
         issue_mdi(cmd)
 
     def on_feed_per_rev_entry_textChanged(self, value):
         if value:
             self.feed_per_rev = float(value)
         else:
-            self.feed_per_rev = 0.0
+            self.feed_per_rev = 0.0000
 
     def on_feed_per_rev_entry_returnPressed(self):
-        cmd = "F{}".format(self.feed_per_rev)
+        cmd = "G95 F{}".format(self.feed_per_rev)
         issue_mdi(cmd)
 
     def on_css_sword_entry_textChanged(self, value):
@@ -57,9 +57,9 @@ class ProbeBasicLathe(VCPMainWindow):
         if value:
             self.rpm_mode = float(value)
         else:
-            self.rpm_mode = 0.0
+            self.rpm_mode = 0
 
     def on_rpm_mode_entry_returnPressed(self):
-        cmd = "S{}".format(self.rpm_mode)
+        cmd = "G97 S{}".format(self.rpm_mode)
         issue_mdi(cmd)
 
