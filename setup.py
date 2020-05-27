@@ -30,6 +30,9 @@ setup(
             'probe_basic=probe_basic',
             'probe_basic_lathe=probe_basic_lathe',
         ],
+        'qtpyvcp.widgets': [
+            'Probe Basic Widgets=widgets'
+        ]
     },
     install_requires=[
        # 'qtpyvcp',
