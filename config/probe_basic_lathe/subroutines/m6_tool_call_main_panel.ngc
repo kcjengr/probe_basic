@@ -1,0 +1,22 @@
+(author: Chris P)
+(version: 0.1)
+(date: 05/30/20)
+
+(m6 tool call with g43 offset applied)
+
+o<M6_tool_call_main_panel> sub
+
+#<tool_number_entry_main_panel> = #1
+#<x_tool_change_position> = #2
+#<z_tool_change_position> = #3
+
+G49
+G90
+G53 G0 Z#<z_tool_change_position>
+G53 G0 X#<x_tool_change_position>
+
+T#<tool_number_entry_main_panel> M6 g43
+
+o<m6_tool_call_main_Panel> endsub
+
+M2 (end program)
