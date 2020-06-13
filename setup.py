@@ -6,7 +6,7 @@ with open("README.md", "r") as fh:
     long_description = fh.read()
 
 # compile .qrc and .ui files
-compile(['probe_basic',])
+compile(['probe_basic', ])
 
 setup(
     name="probe_basic",
@@ -35,8 +35,8 @@ setup(
         ]
     },
     install_requires=[
-       # 'qtpyvcp',
-       # 'docopt',
+        'qtpyvcp',
+        # 'docopt',
     ],
     # dependency_links=[
     #     'https://github.com/kcjengr/qtpyvcp/tarball/master#egg=qtpyvcp-0.0.1'
