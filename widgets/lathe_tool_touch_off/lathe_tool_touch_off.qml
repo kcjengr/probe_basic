@@ -15,13 +15,13 @@ Rectangle {
         id: holder
         x: 0
         y: 140
-        width: 302
+        width: 452
         height: 321
         fillMode: Image.PreserveAspectCrop
         z: 0
         rotation: 0
         transformOrigin: Item.Center
-        source: "images/lathe_chuck_stock.png"
+        source: "images/lathe_chuck_dim_lines.png"
     }
 
     Row {
@@ -66,7 +66,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 0; y: 100 }
+                                PropertyChanges { target: upper_tools.itemAt(index); x: 65; y: 135 }
                             }
                         ]
                         transitions: Transition {
@@ -118,7 +118,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 0; y: 0 }
+                                PropertyChanges { target: lower_tools.itemAt(index); x: 65; y: 5 }
                             }
                         ]
                         transitions: Transition {
@@ -170,7 +170,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 0; y: 100 }
+                                PropertyChanges { target: right_tools.itemAt(index); x: 65; y: 160 }
                             }
                         ]
                         transitions: Transition {
@@ -230,10 +230,10 @@ Rectangle {
             }
         }
         else {
-            for (var i = 0; i < 5; i++){
-                upper_tools.itemAt(i).state = "hidden"
-                lower_tools.itemAt(i).state = "hidden"
-                right_tools.itemAt(i).state = "hidden"
+            for (var j = 0; j < 5; j++){
+                upper_tools.itemAt(j).state = "hidden"
+                lower_tools.itemAt(j).state = "hidden"
+                right_tools.itemAt(j).state = "hidden"
             }
             tool.state  = "selected"
         }
