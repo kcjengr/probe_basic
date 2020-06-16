@@ -45,9 +45,10 @@ Rectangle {
                         fillMode: Image.PreserveAspectFit
                         z: 0
                         rotation: 0
-                        transformOrigin: Item.Center
                         state: "released"
                         source: "images/lathe_center_turning_rp_bs.png"
+                        property real origin_x: 0.0
+                        property real origin_y: 0.0
 
                         MouseArea {
                             anchors.fill: parent
@@ -66,7 +67,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 65; y: 135 }
+                                PropertyChanges { target: upper_tools.itemAt(index); x: 65 + origin_x; y: 135 + origin_y }
                             }
                         ]
                         transitions: Transition {
@@ -97,9 +98,10 @@ Rectangle {
                         fillMode: Image.PreserveAspectFit
                         z: 0
                         rotation: 0
-                        transformOrigin: Item.Center
                         state: "released"
                         source: "images/lathe_center_turning_fp_ts.png"
+                        property real origin_x: 0.0
+                        property real origin_y: 0.0
 
                         MouseArea {
                             anchors.fill: parent
@@ -118,7 +120,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 65; y: 5 }
+                                PropertyChanges { target: lower_tools.itemAt(index); x: 65 + origin_x; y: 5 + origin_y }
                             }
                         ]
                         transitions: Transition {
@@ -149,9 +151,11 @@ Rectangle {
                         fillMode: Image.PreserveAspectFit
                         z: 0
                         rotation: 0
-                        transformOrigin: Item.Center
                         state: "released"
                         source: "images/lathe_internal_threading_bs.png"
+                        property real origin_x: 0.0
+                        property real origin_y: 0.0
+
 
                         MouseArea {
                             anchors.fill: parent
@@ -170,7 +174,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 65; y: 160 }
+                                PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 160 + origin_y }
                             }
                         ]
                         transitions: Transition {
@@ -181,11 +185,7 @@ Rectangle {
         }
 
 
-    function set_images(element, pics) {
-        for (var i = 0; i < 5; i++) {
-            element.itemAt(i).source = pics[i];
-        }
-    }
+
 
     Component.onCompleted: {
 
@@ -213,10 +213,45 @@ Rectangle {
             "images/lathe_internal_threading_ts.png"
         ];
 
-        set_images(upper_tools, upper_tool_pics);
-        set_images(lower_tools, lower_tool_pics);
-        set_images(right_tools, right_tool_pics);
+        var upper_tool_origins = [
+                    [-50, 0],
+                    [-25, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+        ];
+
+        var lower_tool_origins = [
+                    [-50, 0],
+                    [-25, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+        ];
+
+        var right_tool_origins = [
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0],
+                    [0, 0]
+        ];
+
+        set_element_properties(upper_tools, upper_tool_pics, upper_tool_origins);
+        set_element_properties(lower_tools, lower_tool_pics, lower_tool_origins);
+        set_element_properties(right_tools, right_tool_pics, right_tool_origins);
     }
+
+
+    function set_element_properties(element, pics, origin) {
+        for (var i = 0; i < 5; i++) {
+            console.log(origin[i]);
+            element.itemAt(i).origin_x = origin[i][0];
+            element.itemAt(i).origin_y = origin[i][1];
+            element.itemAt(i).source = pics[i];
+        }
+    }
+
 
     function tool_selected(tool, group, index) {
 
