@@ -66,7 +66,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 100; y: 200 }
+                                PropertyChanges { target: upper_tools.itemAt(index); x: 65; y: 135 }
                             }
                         ]
                         transitions: Transition {
@@ -118,7 +118,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 0; y: 0 }
+                                PropertyChanges { target: lower_tools.itemAt(index); x: 65; y: 5 }
                             }
                         ]
                         transitions: Transition {
@@ -170,7 +170,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 0; y: 100 }
+                                PropertyChanges { target: right_tools.itemAt(index); x: 65; y: 160 }
                             }
                         ]
                         transitions: Transition {
