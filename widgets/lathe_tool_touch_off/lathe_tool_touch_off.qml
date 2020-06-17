@@ -78,7 +78,7 @@ Rectangle {
         }
 
     Row {
-        id: right_row
+        id: lower_row
         x: 308
         y: 351
         width: 467
@@ -174,7 +174,7 @@ Rectangle {
                             },
                             State {
                                 name: "selected"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 160 + origin_y }
+                                PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 116 + origin_y }
                             }
                         ]
                         transitions: Transition {
@@ -230,11 +230,11 @@ Rectangle {
         ];
 
         var right_tool_origins = [
+                    [0, -29],
+                    [0, -29],
                     [0, 0],
-                    [0, 0],
-                    [0, 0],
-                    [0, 0],
-                    [0, 0]
+                    [0, 29],
+                    [0, 29]
         ];
 
         set_element_properties(upper_tools, upper_tool_pics, upper_tool_origins);
