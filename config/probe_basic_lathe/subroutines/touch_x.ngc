@@ -1,14 +1,21 @@
 o<touch_x> sub
 
-#<set_mt_x> = #1    (current x axis position)
+ #<set_mt_x> = #1    (current x axis position)
+ #<gage_thickness> = #2    (=0.0000)(gage thickness, gage block or paper thickness etc.)
 
-#<current_tool_x_position> = #5420
+ G8
 
-#<touch_x> = [#<set_mt_x> - #<current_tool_x_position>]
+ #<total_x_position> = [#<set_mt_x> + #<gage_thickness>]
 
-G10 L1 P #5400 X [#<touch_x>]  (5400 = tool number)
+ #<current_tool_x_position> = #5420
 
-T #5400 G43  H #5400    (enable tool length offset)
+ #<touch_x> = [#<current_tool_x_position> - #<total_x_position>]
+
+ G10 L1 P #5400 X [#<touch_x>]  (5400 = tool number)
+
+ T #5400 G43  H #5400    (enable tool length offset)
+
+ G7
 
 o<touch_x> endsub
 
