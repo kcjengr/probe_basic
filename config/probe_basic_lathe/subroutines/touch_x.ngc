@@ -1,0 +1,15 @@
+o<touch_x> sub
+
+#<set_mt_x> = #1    (current x axis position)
+
+#<current_tool_x_position> = #5420
+
+#<touch_x> = [#<set_mt_x> - #<current_tool_x_position>]
+
+G10 L1 P #5400 X [#<touch_x>]  (5400 = tool number)
+
+T #5400 G43  H #5400    (enable tool length offset)
+
+o<touch_x> endsub
+
+M2 (end program)

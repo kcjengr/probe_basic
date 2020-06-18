@@ -8,7 +8,7 @@ Rectangle {
     clip: false
     transformOrigin: Item.Center
     height: 600
-    color: "#919191"
+    color: "#939695"
     border.color: "#00000000"
 
     Image {
