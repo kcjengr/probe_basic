@@ -63,3 +63,8 @@ class ProbeBasicLathe(VCPMainWindow):
         cmd = "G97 S{}".format(self.rpm_mode)
         issue_mdi(cmd)
 
+    def on_use_tcp_clicked(self):
+        if self.use_tcp.isChecked():
+            self.use_tcp_mode.setText('1')
+        else:
+            self.use_tcp_mode.setText('0')
