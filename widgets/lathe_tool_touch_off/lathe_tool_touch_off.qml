@@ -50,12 +50,12 @@ Rectangle {
                         property real origin_x: 0.0
                         property real origin_y: 0.0
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(upper_tools.itemAt(index), "upper", index)
-                            }
-                        }
+//                        MouseArea {
+//                            anchors.fill: parent
+//                            onClicked: {
+//                                tool_selected(upper_tools.itemAt(index), "upper", index)
+//                            }
+//                        }
                         states: [
                             State {
                                 name: "hidden"
@@ -103,12 +103,12 @@ Rectangle {
                         property real origin_x: 0.0
                         property real origin_y: 0.0
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(lower_tools.itemAt(index), "lower", index)
-                            }
-                        }
+//                        MouseArea {
+//                            anchors.fill: parent
+//                            onClicked: {
+//                                tool_selected(lower_tools.itemAt(index), "lower", index)
+//                            }
+//                        }
                         states: [
                             State {
                                 name: "hidden"
@@ -157,12 +157,12 @@ Rectangle {
                         property real origin_y: 0.0
 
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(right_tools.itemAt(index), "right", index)
-                            }
-                        }
+//                        MouseArea {
+//                            anchors.fill: parent
+//                            onClicked: {
+//                                tool_selected(right_tools.itemAt(index), "right", index)
+//                            }
+//                        }
                         states: [
                             State {
                                 name: "hidden"
