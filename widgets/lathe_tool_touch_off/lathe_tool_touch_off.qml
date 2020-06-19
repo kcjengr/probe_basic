@@ -255,7 +255,7 @@ Rectangle {
 
     function tool_selected(tool, group, index) {
 
-        handler.selected_tool(group, index)
+        // handler.selected_tool(group, index)
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -277,20 +277,20 @@ Rectangle {
     Connections {
         target: handler
 
-        onPocketSig: {
-            var pocket = 0
+        onToolSig: {
+            var tool_in_spindle = 0
 
-            if ((pocket_number >= 0) && (pocket_number <= 4)){
-                pocket = pocket_number
-                tool_selected(upper_tools.itemAt(pocket))
+            if ((active_tool >= 0) && (active_tool <= 4)){
+                tool_in_spindle = active_tool
+                tool_selected(lower_tools.itemAt(tool_in_spindle), "lower", tool_in_spindle)
             }
-            else if ((pocket_number >= 5) && (pocket_number <= 9)){
-                pocket = pocket_number - 5
-                tool_selected(lower_tools.itemAt(pocket))
+            else if ((active_tool >= 5) && (active_tool <= 9)){
+                tool_in_spindle = active_tool - 5
+                tool_selected(upper_tools.itemAt(tool_in_spindle), "upper", tool_in_spindle)
             }
-            else if ((pocket_number >= 10) && (pocket_number <= 14)){
-                pocket = pocket_number - 10
-                tool_selected(right_tools.itemAt(pocket))
+            else if ((active_tool >= 10) && (active_tool <= 14)){
+                tool_in_spindle = active_tool - 10
+                tool_selected(right_tools.itemAt(tool_in_spindle), "right", tool_in_spindle)
             }
 
         }
