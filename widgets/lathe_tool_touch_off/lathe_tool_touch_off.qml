@@ -59,7 +59,7 @@ Rectangle {
                         states: [
                             State {
                                 name: "hidden"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: -80 }
+                                PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: -180 }
                             },
                             State {
                                 name: "released"
@@ -112,7 +112,7 @@ Rectangle {
                         states: [
                             State {
                                 name: "hidden"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 70*index ; y: +200 }
+                                PropertyChanges { target: lower_tools.itemAt(index); x: 70*index ; y: +300 }
                             },
                             State {
                                 name: "released"
@@ -166,7 +166,7 @@ Rectangle {
                         states: [
                             State {
                                 name: "hidden"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 600 ; y: 58*index }
+                                PropertyChanges { target: right_tools.itemAt(index); x: 800 ; y: 58*index }
                             },
                             State {
                                 name: "released"
