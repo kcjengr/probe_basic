@@ -1,0 +1,29 @@
+(author: Chris P)
+(version: 0.1)
+(date: 05/30/20)
+
+(m6 tool call with g43 offset applied)
+
+o<M6_tool_call_mt_touch_panel> sub
+
+#<tool_number_entry_mt_touch_panel> = #1
+#<x_tool_change_position> = #2
+#<z_tool_change_position> = #3
+#<use_tcp_mode> = #4
+
+G49
+
+(probe mode rules for WCO, Rotation and probe position measuring only)
+o<100> if [#<use_tcp_mode> EQ 1]
+  (move to stored tool change position for m6 call)
+  G90
+  G53 G0 Z#<z_tool_change_position>
+  G53 G0 X#<x_tool_change_position>
+  o<M6_tool_call_mt_touch_panel> return
+o<100> endif
+
+T#<tool_number_entry_mt_touch_panel> M6 g43
+
+o<m6_tool_call_mt_touch_Panel> endsub
+
+M2 (end program)
