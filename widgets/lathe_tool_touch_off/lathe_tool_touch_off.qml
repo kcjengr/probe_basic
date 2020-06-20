@@ -32,50 +32,50 @@ Rectangle {
         height: 336
         spacing: 20; // a simple layout do avoid overlapping
 
-            Repeater {
-                id: upper_tools
-                model: 5; // just define the number you want, can be a variable too
+        Repeater {
+            id: upper_tools
+            model: 5; // just define the number you want, can be a variable too
 
-                delegate:
-                    Image {
-                        x: 380
-                        y: 0
-                        width: 50
-                        height: 200
-                        fillMode: Image.PreserveAspectFit
-                        z: 0
-                        rotation: 0
-                        state: "released"
-                        source: "images/lathe_center_turning_rp_bs.png"
-                        property real origin_x: 0.0
-                        property real origin_y: 0.0
+            delegate:
+                Image {
+                x: 380
+                y: 0
+                width: 50
+                height: 200
+                fillMode: Image.PreserveAspectFit
+                z: 0
+                rotation: 0
+                state: "released"
+                source: "images/lathe_center_turning_rp_bs.png"
+                property real origin_x: 0.0
+                property real origin_y: 0.0
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(upper_tools.itemAt(index), "upper", index)
-                            }
-                        }
-                        states: [
-                            State {
-                                name: "hidden"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: -180 }
-                            },
-                            State {
-                                name: "released"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: 0 }
-                            },
-                            State {
-                                name: "selected"
-                                PropertyChanges { target: upper_tools.itemAt(index); x: 65 + origin_x; y: 135 + origin_y }
-                            }
-                        ]
-                        transitions: Transition {
-                            NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
-                        }
-                   }
+                //                        MouseArea {
+                //                            anchors.fill: parent
+                //                            onClicked: {
+                //                                tool_selected(upper_tools.itemAt(index), "upper", index)
+                //                            }
+                //                        }
+                states: [
+                    State {
+                        name: "hidden"
+                        PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: -180 }
+                    },
+                    State {
+                        name: "released"
+                        PropertyChanges { target: upper_tools.itemAt(index); x: 70*index ; y: 0 }
+                    },
+                    State {
+                        name: "selected"
+                        PropertyChanges { target: upper_tools.itemAt(index); x: 65 + origin_x; y: 135 + origin_y }
+                    }
+                ]
+                transitions: Transition {
+                    NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
+                }
             }
         }
+    }
 
     Row {
         id: lower_row
@@ -85,50 +85,50 @@ Rectangle {
         height: 389
         spacing: 20; // a simple layout do avoid overlapping
 
-            Repeater {
-                id: lower_tools
-                model: 5; // just define the number you want, can be a variable too
+        Repeater {
+            id: lower_tools
+            model: 5; // just define the number you want, can be a variable too
 
-                delegate:
-                    Image {
-                        x: 380
-                        y: 0
-                        width: 50
-                        height: 200
-                        fillMode: Image.PreserveAspectFit
-                        z: 0
-                        rotation: 0
-                        state: "released"
-                        source: "images/lathe_center_turning_fp_ts.png"
-                        property real origin_x: 0.0
-                        property real origin_y: 0.0
+            delegate:
+                Image {
+                x: 380
+                y: 0
+                width: 50
+                height: 200
+                fillMode: Image.PreserveAspectFit
+                z: 0
+                rotation: 0
+                state: "released"
+                source: "images/lathe_center_turning_fp_ts.png"
+                property real origin_x: 0.0
+                property real origin_y: 0.0
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(lower_tools.itemAt(index), "lower", index)
-                            }
-                        }
-                        states: [
-                            State {
-                                name: "hidden"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 70*index ; y: +300 }
-                            },
-                            State {
-                                name: "released"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 70*index; y: 100 }
-                            },
-                            State {
-                                name: "selected"
-                                PropertyChanges { target: lower_tools.itemAt(index); x: 65 + origin_x; y: 5 + origin_y }
-                            }
-                        ]
-                        transitions: Transition {
-                            NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
-                        }
-                   }
+                //                        MouseArea {
+                //                            anchors.fill: parent
+                //                            onClicked: {
+                //                                tool_selected(lower_tools.itemAt(index), "lower", index)
+                //                            }
+                //                        }
+                states: [
+                    State {
+                        name: "hidden"
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 70*index ; y: +300 }
+                    },
+                    State {
+                        name: "released"
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 70*index; y: 100 }
+                    },
+                    State {
+                        name: "selected"
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 65 + origin_x; y: 5 + origin_y }
+                    }
+                ]
+                transitions: Transition {
+                    NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
+                }
             }
         }
+    }
 
     Column {
         id: right_column
@@ -142,47 +142,47 @@ Rectangle {
                 id: right_tools
                 model: 7; // just define the number you want, can be a variable too
 
-                delegate:
-                    Image {
-                        x: 0
-                        y: 0
-                        width: 200
-                        height: 38
-                        fillMode: Image.PreserveAspectFit
-                        z: 0
-                        rotation: 0
-                        state: "released"
-                        source: "images/lathe_internal_threading_bs.png"
-                        property real origin_x: 0.0
-                        property real origin_y: 0.0
+            delegate:
+                Image {
+                x: 0
+                y: 0
+                width: 200
+                height: 38
+                fillMode: Image.PreserveAspectFit
+                z: 0
+                rotation: 0
+                state: "released"
+                source: "images/lathe_internal_threading_bs.png"
+                property real origin_x: 0.0
+                property real origin_y: 0.0
 
 
-                        MouseArea {
-                            anchors.fill: parent
-                            onClicked: {
-                                tool_selected(right_tools.itemAt(index), "right", index)
-                            }
-                        }
-                        states: [
-                            State {
-                                name: "hidden"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 800 ; y: 58*index }
-                            },
-                            State {
-                                name: "released"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 500; y: 58*index }
-                            },
-                            State {
-                                name: "selected"
-                                PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 116 + origin_y }
-                            }
-                        ]
-                        transitions: Transition {
-                            NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
-                        }
+                //                        MouseArea {
+                //                            anchors.fill: parent
+                //                            onClicked: {
+                //                                tool_selected(right_tools.itemAt(index), "right", index)
+                //                            }
+                //                        }
+                states: [
+                    State {
+                        name: "hidden"
+                        PropertyChanges { target: right_tools.itemAt(index); x: 800 ; y: 58*index }
+                    },
+                    State {
+                        name: "released"
+                        PropertyChanges { target: right_tools.itemAt(index); x: 500; y: 58*index }
+                    },
+                    State {
+                        name: "selected"
+                        PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 116 + origin_y }
                     }
+                ]
+                transitions: Transition {
+                    NumberAnimation{ properties: "x,y"; easing.type: Easing.OutExpo }
+                }
             }
         }
+    }
 
 
 
@@ -190,20 +190,20 @@ Rectangle {
     Component.onCompleted: {
 
         var upper_tool_pics = [
-            "images/lathe_lh_turning_rp_bs.png",
-            "images/lathe_center_turning_rp_bs.png",
-            "images/lathe_rh_turning_rp_bs.png",
-            "images/lathe_lh_threading_rp_ts.png",
-            "images/lathe_rh_parting_rp_bs.png"
-        ];
+                    "images/lathe_lh_turning_rp_bs.png",
+                    "images/lathe_center_turning_rp_bs.png",
+                    "images/lathe_rh_turning_rp_bs.png",
+                    "images/lathe_lh_threading_rp_ts.png",
+                    "images/lathe_rh_parting_rp_bs.png"
+                ];
 
         var lower_tool_pics = [
-            "images/lathe_lh_turning_fp_ts.png",
-            "images/lathe_center_turning_fp_ts.png",
-            "images/lathe_rh_turning_fp_ts.png",
-            "images/lathe_rh_threading_fp_ts.png",
-            "images/lathe_parting_fp_ts.png"
-        ];
+                    "images/lathe_lh_turning_fp_ts.png",
+                    "images/lathe_center_turning_fp_ts.png",
+                    "images/lathe_rh_turning_fp_ts.png",
+                    "images/lathe_rh_threading_fp_ts.png",
+                    "images/lathe_parting_fp_ts.png"
+                ];
 
         var right_tool_pics = [
             "images/lathe_rh_internal_grooving_bs.png",
@@ -221,7 +221,7 @@ Rectangle {
                     [0, 0],
                     [0, 0],
                     [0, 0]
-        ];
+                ];
 
         var lower_tool_origins = [
                     [-50, 0],
@@ -229,7 +229,7 @@ Rectangle {
                     [0, 0],
                     [0, 0],
                     [0, 0]
-        ];
+                ];
 
         var right_tool_origins = [
                     [0, -29],
@@ -239,7 +239,7 @@ Rectangle {
                     [0, 29],
                     [0, 29],
                     [0, 29]
-        ];
+                ];
 
         set_element_properties(upper_tools, upper_tool_pics, upper_tool_origins);
         set_element_properties(lower_tools, lower_tool_pics, lower_tool_origins);
@@ -258,7 +258,7 @@ Rectangle {
 
     function tool_selected(tool, group, index) {
 
-        handler.selected_tool(group, index)
+        // handler.selected_tool(group, index)
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -284,20 +284,39 @@ Rectangle {
     Connections {
         target: handler
 
-        onPocketSig: {
-            var pocket = 0
+        onToolOrientationSig: {
+            var tool_orientation = 0
 
-            if ((pocket_number >= 0) && (pocket_number <= 4)){
-                pocket = pocket_number
-                tool_selected(upper_tools.itemAt(pocket))
+            if (active_tool_orientation === 1){
+                tool_selected(lower_tools.itemAt(0), "lower", 0)
             }
-            else if ((pocket_number >= 5) && (pocket_number <= 9)){
-                pocket = pocket_number - 5
-                tool_selected(lower_tools.itemAt(pocket))
+            else if (active_tool_orientation === 2){
+                tool_selected(lower_tools.itemAt(2), "lower", 2)
             }
-            else if ((pocket_number >= 10) && (pocket_number <= 14)){
-                pocket = pocket_number - 10
-                tool_selected(right_tools.itemAt(pocket))
+            else if (active_tool_orientation === 3){
+                tool_selected(upper_tools.itemAt(2), "upper", 2)
+            }
+            else if (active_tool_orientation === 4){
+                tool_selected(upper_tools.itemAt(0), "upper", 0)
+            }
+            /*
+            else if (active_tool_orientation === 5){
+                tool_selected(upper_tools.itemAt(2), "upper", 2)
+            }
+            */
+            else if (active_tool_orientation === 6){
+                tool_selected(lower_tools.itemAt(1), "lower", 1)
+            }
+            /*
+            else if (active_tool_orientation === 7){
+                tool_selected(upper_tools.itemAt(2), "upper", 2)
+            }
+            */
+            else if (active_tool_orientation === 8){
+                tool_selected(upper_tools.itemAt(1), "upper", 1)
+            }
+            else if (active_tool_orientation === 9) {
+                tool_selected(right_tools.itemAt(2), "right", 2)
             }
 
         }
