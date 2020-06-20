@@ -248,8 +248,7 @@ Rectangle {
 
 
     function set_element_properties(element, pics, origin) {
-        for (var i = 0; i < 5; i++) {
-            console.log(origin[i]);
+        for (var i = 0; i < element.model; i++) {
             element.itemAt(i).origin_x = origin[i][0];
             element.itemAt(i).origin_y = origin[i][1];
             element.itemAt(i).source = pics[i];
@@ -265,14 +264,18 @@ Rectangle {
             for (var i = 0; i < 5; i++){
                 upper_tools.itemAt(i).state = "released"
                 lower_tools.itemAt(i).state = "released"
-                right_tools.itemAt(i).state = "released"
+            }
+            for (var j = 0; j < 7; j++){
+                right_tools.itemAt(j).state = "released"
             }
         }
         else {
-            for (var j = 0; j < 5; j++){
-                upper_tools.itemAt(j).state = "hidden"
-                lower_tools.itemAt(j).state = "hidden"
-                right_tools.itemAt(j).state = "hidden"
+            for (var k = 0; k < 5; k++){
+                upper_tools.itemAt(k).state = "hidden"
+                lower_tools.itemAt(k).state = "hidden"
+            }
+            for (var l = 0; l < 7; l++){
+                right_tools.itemAt(l).state = "hidden"
             }
             tool.state  = "selected"
         }
