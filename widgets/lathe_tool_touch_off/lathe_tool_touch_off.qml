@@ -133,7 +133,7 @@ Rectangle {
     Column {
         id: right_column
         x: 308
-        y: 166
+        y: 90
         width: 199
         height: 269
         spacing: 20; // a simple layout do avoid overlapping
