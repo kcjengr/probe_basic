@@ -147,7 +147,7 @@ Rectangle {
                 x: 0
                 y: 0
                 width: 200
-                height: 38
+                height: 42
                 fillMode: Image.PreserveAspectFit
                 z: 0
                 rotation: 0
