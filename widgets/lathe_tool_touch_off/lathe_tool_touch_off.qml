@@ -138,9 +138,9 @@ Rectangle {
         height: 269
         spacing: 20; // a simple layout do avoid overlapping
 
-            Repeater {
-                id: right_tools
-                model: 7; // just define the number you want, can be a variable too
+        Repeater {
+            id: right_tools
+            model: 7; // just define the number you want, can be a variable too
 
             delegate:
                 Image {
@@ -206,14 +206,14 @@ Rectangle {
                 ];
 
         var right_tool_pics = [
-            "images/lathe_rh_internal_grooving_bs.png",
-            "images/lathe_internal_threading_bs.png",
-            "images/lathe_internal_boring_bs.png",
-            "images/lathe_internal_drilling_ts.png",
-            "images/lathe_internal_boring_ts.png",
-            "images/lathe_internal_threading_ts.png",
-            "images/lathe_rh_internal_grooving.png"
-        ];
+                    "images/lathe_rh_internal_grooving_bs.png",
+                    "images/lathe_internal_threading_bs.png",
+                    "images/lathe_internal_boring_bs.png",
+                    "images/lathe_internal_drilling_ts.png",
+                    "images/lathe_internal_boring_ts.png",
+                    "images/lathe_internal_threading_ts.png",
+                    "images/lathe_rh_internal_grooving.png"
+                ];
 
         var upper_tool_origins = [
                     [-50, 0],
