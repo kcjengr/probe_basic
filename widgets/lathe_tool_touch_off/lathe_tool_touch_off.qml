@@ -140,7 +140,7 @@ Rectangle {
 
             Repeater {
                 id: right_tools
-                model: 5; // just define the number you want, can be a variable too
+                model: 7; // just define the number you want, can be a variable too
 
                 delegate:
                     Image {
@@ -206,11 +206,13 @@ Rectangle {
         ];
 
         var right_tool_pics = [
+            "images/lathe_rh_internal_grooving_bs.png",
             "images/lathe_internal_threading_bs.png",
             "images/lathe_internal_boring_bs.png",
             "images/lathe_internal_drilling_ts.png",
             "images/lathe_internal_boring_ts.png",
-            "images/lathe_internal_threading_ts.png"
+            "images/lathe_internal_threading_ts.png",
+            "images/lathe_rh_internal_grooving.png"
         ];
 
         var upper_tool_origins = [
@@ -232,7 +234,9 @@ Rectangle {
         var right_tool_origins = [
                     [0, -29],
                     [0, -29],
+                    [0, -29],
                     [0, 0],
+                    [0, 29],
                     [0, 29],
                     [0, 29]
         ];
