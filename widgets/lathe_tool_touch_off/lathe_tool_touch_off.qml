@@ -174,7 +174,7 @@ Rectangle {
                     },
                     State {
                         name: "selected"
-                        PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 116 + origin_y }
+                        PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 192 + origin_y }
                     }
                 ]
                 transitions: Transition {
