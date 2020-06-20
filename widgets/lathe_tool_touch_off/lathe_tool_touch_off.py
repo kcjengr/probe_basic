@@ -23,7 +23,7 @@ WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class LatheToolTouchOff(QQuickWidget):
 
-    toolSig = Signal(int, arguments=['active_tool'])
+    toolOrientationSig = Signal(int, arguments=['active_tool_orientation'])
 
     def __init__(self, parent=None):
         super(LatheToolTouchOff, self).__init__(parent)
@@ -41,4 +41,4 @@ class LatheToolTouchOff(QQuickWidget):
     def set_active_tool(self):
         num = self.stat.tool_in_spindle.getValue()
         orientation = self.stat.tool_table[num].orientation
-        self.toolSig.emit(orientation)
+        self.toolOrientationSig.emit(orientation)
