@@ -41,16 +41,25 @@ class LatheToolTouchOff(QQuickWidget):
         self.tool_image_setting = getSetting('tool-touch-off.tool-image-table')
         self.tool_image = self.tool_image_setting.getValue()
 
+        self.current_group = ""
+        self.current_index = 0
+
         self.stat.tool_in_spindle.onValueChanged(self.set_active_tool)
 
     def set_active_tool(self):
         tool_num = self.stat.tool_in_spindle.getValue()
-        
+
+        group, index = self.tool_image[tool_num]
+        if (group == self.current_group) & (index == self.current_index):
+            return
+
         if tool_num not in self.tool_image.keys():
             self.toolResetSig.emit()
         else:
-            group, index = self.tool_image[tool_num]
             self.toolActiveImageSig.emit(group, index)
+
+            self.current_group = group
+            self.current_index = index
 
     @Slot()
     def reset_tools(self):

@@ -285,6 +285,7 @@ Rectangle {
         target: handler
 
         onToolResetSig: {
+
             for (var i = 0; i < 5; i++){
                 upper_tools.itemAt(i).state = "released"
                 lower_tools.itemAt(i).state = "released"
@@ -297,13 +298,13 @@ Rectangle {
         onToolActiveImageSig: {
 
             if (group === "lower"){
-                tool_selected(lower_tools.itemAt(index), "lower", index)
+                tool_selected(lower_tools.itemAt(index), group, index)
             }
             else if (group === "upper"){
-                tool_selected(upper_tools.itemAt(index), "upper", index)
+                tool_selected(upper_tools.itemAt(index), group, index)
             }
             else if (group === "right"){
-                tool_selected(right_tools.itemAt(index), "right", index)
+                tool_selected(right_tools.itemAt(index), group, index)
             }
         }
     }
