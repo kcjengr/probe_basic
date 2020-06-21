@@ -258,7 +258,7 @@ Rectangle {
 
     function tool_selected(tool, group, index) {
 
-        // handler.selected_tool(group, index)
+        handler.tool_select(group, index)
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -284,41 +284,27 @@ Rectangle {
     Connections {
         target: handler
 
-        onToolOrientationSig: {
-            var tool_orientation = 0
+        onToolResetSig: {
+            for (var i = 0; i < 5; i++){
+                upper_tools.itemAt(i).state = "released"
+                lower_tools.itemAt(i).state = "released"
+            }
+            for (var j = 0; j < 7; j++){
+                right_tools.itemAt(j).state = "released"
+            }
+        }
 
-            if (active_tool_orientation === 1){
-                tool_selected(lower_tools.itemAt(0), "lower", 0)
-            }
-            else if (active_tool_orientation === 2){
-                tool_selected(lower_tools.itemAt(2), "lower", 2)
-            }
-            else if (active_tool_orientation === 3){
-                tool_selected(upper_tools.itemAt(2), "upper", 2)
-            }
-            else if (active_tool_orientation === 4){
-                tool_selected(upper_tools.itemAt(0), "upper", 0)
-            }
-            /*
-            else if (active_tool_orientation === 5){
-                tool_selected(upper_tools.itemAt(2), "upper", 2)
-            }
-            */
-            else if (active_tool_orientation === 6){
-                tool_selected(lower_tools.itemAt(1), "lower", 1)
-            }
-            /*
-            else if (active_tool_orientation === 7){
-                tool_selected(upper_tools.itemAt(2), "upper", 2)
-            }
-            */
-            else if (active_tool_orientation === 8){
-                tool_selected(upper_tools.itemAt(1), "upper", 1)
-            }
-            else if (active_tool_orientation === 9) {
-                tool_selected(right_tools.itemAt(2), "right", 2)
-            }
+        onToolActiveImageSig: {
 
+            if (group === "lower"){
+                tool_selected(lower_tools.itemAt(index), "lower", index)
+            }
+            else if (group === "upper"){
+                tool_selected(upper_tools.itemAt(index), "upper", index)
+            }
+            else if (group === "right"){
+                tool_selected(right_tools.itemAt(index), "right", index)
+            }
         }
     }
 }
