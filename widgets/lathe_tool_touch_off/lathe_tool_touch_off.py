@@ -16,7 +16,6 @@ from qtpy.QtCore import Signal, Slot, QUrl, QObject
 from qtpy.QtQuickWidgets import QQuickWidget
 
 from qtpyvcp.plugins import getPlugin
-from qtpyvcp.utilities.settings import getSetting, setSetting
 
 STATUS = getPlugin('status')
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
@@ -33,13 +32,17 @@ class LatheToolTouchOff(QQuickWidget):
         if parent is None:
             return
 
+        self.dm = getPlugin('persistent_data_manager')
+        print(self.dm)
+
         self.stat = STATUS
         self.engine().rootContext().setContextProperty("handler", self)
         url = QUrl.fromLocalFile(os.path.join(WIDGET_PATH, "lathe_tool_touch_off.qml"))
         self.setSource(url)
 
-        self.tool_image_setting = getSetting('tool-touch-off.tool-image-table')
-        self.tool_image = self.tool_image_setting.getValue()
+        self.tool_image = self.dm.getData('tool-touch-off.tool-image-table') or dict()
+
+        print(self.tool_image)
 
         self.current_group = ""
         self.current_index = 0
@@ -48,11 +51,12 @@ class LatheToolTouchOff(QQuickWidget):
 
     def set_active_tool(self):
         tool_num = self.stat.tool_in_spindle.getValue()
-        
-        if tool_num not in self.tool_image.keys():
+
+        if self.tool_image is None:
+            self.toolResetSig.emit()
+        elif tool_num not in self.tool_image.keys():
             self.toolResetSig.emit()
         else:
-
             group, index = self.tool_image[tool_num]
             if (group == self.current_group) & (index == self.current_index):
                 return
@@ -73,5 +77,4 @@ class LatheToolTouchOff(QQuickWidget):
 
         tool_num = self.stat.tool_in_spindle.getValue()
         self.tool_image[tool_num] = [group, index]
-        print("Save Tool Image")
-        setSetting('tool-touch-off.tool-image-table', self.tool_image)
+        self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
