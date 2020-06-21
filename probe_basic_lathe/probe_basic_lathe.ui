@@ -5128,7 +5128,7 @@ padding-right: 10px;
                           <number>6</number>
                          </property>
                          <item>
-                          <widget class="ActionButton" name="touch_off_x">
+                          <widget class="SubCallButton" name="touch_off_x">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>100</horstretch>
@@ -5137,34 +5137,65 @@ padding-right: 10px;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>85</width>
-                             <height>45</height>
+                             <width>0</width>
+                             <height>42</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>85</width>
-                             <height>45</height>
+                             <width>100</width>
+                             <height>42</height>
                             </size>
                            </property>
                            <property name="focusPolicy">
                             <enum>Qt::NoFocus</enum>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
+                            <string notr="true">.SubCallButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+.SubCallButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+.SubCallButton:disabled {
+    border-color: gray;
+}
+
+.SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+.SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                            </property>
                            <property name="text">
                             <string>TOUCH  X</string>
                            </property>
+                           <property name="filename" stdset="0">
+                            <string>touch_off_x.ngc</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLineEdit" name="x_offset_touch_position">
-                           <property name="enabled">
-                            <bool>true</bool>
-                           </property>
+                          <widget class="VCPLineEdit" name="x_offset_touch_position">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>100</horstretch>
@@ -5184,18 +5215,22 @@ padding-right: 10px;
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QLineEdit {
+                            <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
+	font: 17pt &quot;Bebas Kai&quot;;
+}
+</string>
                            </property>
                            <property name="alignment">
-                            <set>Qt::AlignCenter</set>
+                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           </property>
+                           <property name="placeholderText">
+                            <string>0.0000</string>
                            </property>
                           </widget>
                          </item>
@@ -5230,7 +5265,7 @@ padding-right: 10px;
                           <number>6</number>
                          </property>
                          <item>
-                          <widget class="ActionButton" name="touch_off_z">
+                          <widget class="SubCallButton" name="touch_off_z">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>100</horstretch>
@@ -5239,34 +5274,65 @@ padding-right: 10px;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>85</width>
-                             <height>45</height>
+                             <width>0</width>
+                             <height>42</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>85</width>
-                             <height>45</height>
+                             <width>100</width>
+                             <height>42</height>
                             </size>
                            </property>
                            <property name="focusPolicy">
                             <enum>Qt::NoFocus</enum>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
+                            <string notr="true">.SubCallButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+.SubCallButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+.SubCallButton:disabled {
+    border-color: gray;
+}
+
+.SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+.SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                            </property>
                            <property name="text">
                             <string>TOUCH  Z</string>
                            </property>
+                           <property name="filename" stdset="0">
+                            <string>touch_off_z.ngc</string>
+                           </property>
                           </widget>
                          </item>
                          <item>
-                          <widget class="QLineEdit" name="z_offset_touch_position">
-                           <property name="enabled">
-                            <bool>true</bool>
-                           </property>
+                          <widget class="VCPLineEdit" name="z_offset_touch_position">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>100</horstretch>
@@ -5286,18 +5352,22 @@ padding-right: 10px;
                             </size>
                            </property>
                            <property name="styleSheet">
-                            <string notr="true">QLineEdit {
+                            <string notr="true">VCPLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
+	font: 17pt &quot;Bebas Kai&quot;;
+}
+</string>
                            </property>
                            <property name="alignment">
-                            <set>Qt::AlignCenter</set>
+                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           </property>
+                           <property name="placeholderText">
+                            <string>0.0000</string>
                            </property>
                           </widget>
                          </item>
@@ -5954,7 +6024,7 @@ padding-right: 10px;
                              <number>1</number>
                             </property>
                             <item>
-                             <widget class="SubCallButton" name="touch_z">
+                             <widget class="SubCallButton" name="touch_x">
                               <property name="sizePolicy">
                                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                                 <horstretch>100</horstretch>
@@ -17635,12 +17705,44 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1504</x>
-     <y>155</y>
+     <x>1330</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1557</x>
-     <y>155</y>
+     <x>1210</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_offset_touch_position</sender>
+   <signal>returnPressed()</signal>
+   <receiver>touch_off_x</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1554</x>
+     <y>157</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1491</x>
+     <y>160</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_offset_touch_position</sender>
+   <signal>returnPressed()</signal>
+   <receiver>touch_off_z</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1538</x>
+     <y>226</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1496</x>
+     <y>223</y>
     </hint>
    </hints>
   </connection>
@@ -17663,7 +17765,7 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="diamradbtngroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="diamradbtngroup"/>
  </buttongroups>
 </ui>

@@ -1,0 +1,11 @@
+o<touch_off_z> sub
+
+ #<z_offset_touch_position> = #1
+
+ G10 L1 P #5400 Z [#<z_offset_touch_position>]  (5400 = tool number)
+
+ T #5400 G43 (enable tool length offset)
+
+o<touch_off_z> endsub
+
+M2 (end program)
