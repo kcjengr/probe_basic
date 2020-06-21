@@ -4034,13 +4034,13 @@ padding-left: 5px;
                     <property name="minimumSize">
                      <size>
                       <width>0</width>
-                      <height>160</height>
+                      <height>90</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
                       <width>280</width>
-                      <height>200</height>
+                      <height>90</height>
                      </size>
                     </property>
                     <property name="styleSheet">
@@ -4236,60 +4236,6 @@ padding-right: 10px;
                        </layout>
                       </widget>
                      </item>
-                     <item>
-                      <widget class="StatusLabel" name="tool_length_8">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>40</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>55</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
-}</string>
-                       </property>
-                       <property name="text">
-                        <string>No Tool Loaded</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                       </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                       <property name="indent">
-                        <number>4</number>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?Remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;tool_remark&quot;}]</string>
-                       </property>
-                       <property name="format" stdset="0">
-                        <string>{:.3f}</string>
-                       </property>
-                       <property name="statusItem" stdset="0">
-                        <string>tool_offset.3</string>
-                       </property>
-                      </widget>
-                     </item>
                     </layout>
                    </widget>
                   </item>
@@ -4347,7 +4293,7 @@ padding-right: 10px;
                    </widget>
                   </item>
                   <item>
-                   <widget class="QWidget" name="widget_82" native="true">
+                   <widget class="QStackedWidget" name="stackedWidget_82">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -4366,47 +4312,51 @@ padding-right: 10px;
                       <height>250</height>
                      </size>
                     </property>
-                    <layout class="QGridLayout" name="gridLayout_8">
-                     <property name="leftMargin">
-                      <number>5</number>
-                     </property>
-                     <property name="topMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="rightMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="bottomMargin">
-                      <number>0</number>
-                     </property>
-                     <property name="spacing">
-                      <number>0</number>
-                     </property>
-                     <item row="2" column="1">
-                      <widget class="ActionButton" name="lathe_control_point_9">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                    <property name="currentIndex">
+                     <number>0</number>
+                    </property>
+                    <widget class="QWidget" name="stackedWidget_82Page1">
+                     <layout class="QGridLayout" name="gridLayout_8">
+                      <property name="leftMargin">
+                       <number>5</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="spacing">
+                       <number>0</number>
+                      </property>
+                      <item row="2" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_9">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4423,56 +4373,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_9.png</normaloff>:/images/lathe_control_point_9.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>50</width>
-                         <height>50</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 9 else False&quot;, &quot;name&quot;: &quot;orientation_9&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="2" column="0">
-                      <widget class="ActionButton" name="lathe_control_point_5">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_9.png</normaloff>:/images/lathe_control_point_9.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 9 else False&quot;, &quot;name&quot;: &quot;orientation_9&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_5">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4489,56 +4439,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_5.png</normaloff>:/images/lathe_control_point_5.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 5 else False&quot;, &quot;name&quot;: &quot;orientation_5&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="2" column="2">
-                      <widget class="ActionButton" name="lathe_control_point_7">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_5.png</normaloff>:/images/lathe_control_point_5.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 5 else False&quot;, &quot;name&quot;: &quot;orientation_5&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="2" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_7">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4555,56 +4505,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_7.png</normaloff>:/images/lathe_control_point_7.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 7 else False&quot;, &quot;name&quot;: &quot;orientation_7&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="3" column="2">
-                      <widget class="ActionButton" name="lathe_control_point_2">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_7.png</normaloff>:/images/lathe_control_point_7.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 7 else False&quot;, &quot;name&quot;: &quot;orientation_7&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="3" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_2">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4621,56 +4571,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_2.png</normaloff>:/images/lathe_control_point_2.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 2 else False&quot;, &quot;name&quot;: &quot;orientation_2&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="1" column="2">
-                      <widget class="ActionButton" name="lathe_control_point_3">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_2.png</normaloff>:/images/lathe_control_point_2.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 2 else False&quot;, &quot;name&quot;: &quot;orientation_2&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="1" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_3">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4687,56 +4637,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_3.png</normaloff>:/images/lathe_control_point_3.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 3 else False&quot;, &quot;name&quot;: &quot;orientation_3&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="1" column="0">
-                      <widget class="ActionButton" name="lathe_control_point_4">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_3.png</normaloff>:/images/lathe_control_point_3.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 3 else False&quot;, &quot;name&quot;: &quot;orientation_3&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="3" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_6">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4753,56 +4703,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_4.png</normaloff>:/images/lathe_control_point_4.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation ==4 else False&quot;, &quot;name&quot;: &quot;orientation_4&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="3" column="1">
-                      <widget class="ActionButton" name="lathe_control_point_6">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_6.png</normaloff>:/images/lathe_control_point_6.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 6 else False&quot;, &quot;name&quot;: &quot;orientation_6&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="1" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_4">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4819,56 +4769,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_6.png</normaloff>:/images/lathe_control_point_6.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 6 else False&quot;, &quot;name&quot;: &quot;orientation_6&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="1" column="1">
-                      <widget class="ActionButton" name="lathe_control_point_8">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_4.png</normaloff>:/images/lathe_control_point_4.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation ==4 else False&quot;, &quot;name&quot;: &quot;orientation_4&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="3" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_1">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4885,56 +4835,56 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_8.png</normaloff>:/images/lathe_control_point_8.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 8 else False&quot;, &quot;name&quot;: &quot;orientation_8&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="3" column="0">
-                      <widget class="ActionButton" name="lathe_control_point_1">
-                       <property name="enabled">
-                        <bool>false</bool>
-                       </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>70</width>
-                         <height>70</height>
-                        </size>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">ActionButton{
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_1.png</normaloff>:/images/lathe_control_point_1.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 1 else False&quot;, &quot;name&quot;: &quot;orientation_1&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_8">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
     border: none;
     background: none;
 }
@@ -4951,32 +4901,604 @@ ActionButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 </string>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic_lathe.qrc">
-                         <normaloff>:/images/lathe_control_point_1.png</normaloff>:/images/lathe_control_point_1.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>65</width>
-                         <height>65</height>
-                        </size>
-                       </property>
-                       <property name="checkable">
-                        <bool>true</bool>
-                       </property>
-                       <property name="autoExclusive">
-                        <bool>true</bool>
-                       </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 1 else False&quot;, &quot;name&quot;: &quot;orientation_1&quot;}]</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">lathecontrolpointbtngroup</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                    </layout>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_8.png</normaloff>:/images/lathe_control_point_8.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 8 else False&quot;, &quot;name&quot;: &quot;orientation_8&quot;}]</string>
+                        </property>
+                        <attribute name="buttonGroup">
+                         <string notr="true">lathecontrolpointbtngroup</string>
+                        </attribute>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                    <widget class="QWidget" name="page">
+                     <layout class="QGridLayout" name="gridLayout">
+                      <item row="1" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_5_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_5_inverse.png</normaloff>:/images/lathe_control_point_5_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 5 else False&quot;, &quot;name&quot;: &quot;orientation_5&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_1_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_1_inverse.png</normaloff>:/images/lathe_control_point_1_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 1 else False&quot;, &quot;name&quot;: &quot;orientation_1&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_9_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_9_inverse.png</normaloff>:/images/lathe_control_point_9_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>50</width>
+                          <height>50</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 9 else False&quot;, &quot;name&quot;: &quot;orientation_9&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="1" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_7_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_7_inverse.png</normaloff>:/images/lathe_control_point_7_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 7 else False&quot;, &quot;name&quot;: &quot;orientation_7&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_6_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_6_inverse.png</normaloff>:/images/lathe_control_point_6_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 6 else False&quot;, &quot;name&quot;: &quot;orientation_6&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="0" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_2_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_2_inverse.png</normaloff>:/images/lathe_control_point_2_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 2 else False&quot;, &quot;name&quot;: &quot;orientation_2&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="2">
+                       <widget class="ActionButton" name="lathe_control_point_3_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_3_inverse.png</normaloff>:/images/lathe_control_point_3_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 3 else False&quot;, &quot;name&quot;: &quot;orientation_3&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="1">
+                       <widget class="ActionButton" name="lathe_control_point_8_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_8_inverse.png</normaloff>:/images/lathe_control_point_8_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation == 8 else False&quot;, &quot;name&quot;: &quot;orientation_8&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item row="2" column="0">
+                       <widget class="ActionButton" name="lathe_control_point_4_inverse">
+                        <property name="enabled">
+                         <bool>false</bool>
+                        </property>
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>70</width>
+                          <height>70</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">ActionButton{
+    border: none;
+    background: none;
+}
+
+ActionButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+ActionButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                        </property>
+                        <property name="icon">
+                         <iconset resource="probe_basic_lathe.qrc">
+                          <normaloff>:/images/lathe_control_point_4_inverse.png</normaloff>:/images/lathe_control_point_4_inverse.png</iconset>
+                        </property>
+                        <property name="iconSize">
+                         <size>
+                          <width>65</width>
+                          <height>65</height>
+                         </size>
+                        </property>
+                        <property name="checkable">
+                         <bool>true</bool>
+                        </property>
+                        <property name="autoExclusive">
+                         <bool>true</bool>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}, {&quot;url&quot;: &quot;status:tool_in_spindle&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if ch[0][ch[1]].orientation ==4 else False&quot;, &quot;name&quot;: &quot;orientation_4&quot;}]</string>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
                    </widget>
                   </item>
                   <item>
@@ -5375,23 +5897,821 @@ padding-right: 10px;
                        </widget>
                       </item>
                       <item>
-                       <widget class="QWidget" name="widget_75" native="true"/>
+                       <widget class="QWidget" name="widget_20" native="true"/>
                       </item>
                       <item>
-                       <widget class="QWidget" name="widget_77" native="true">
+                       <widget class="StatusLabel" name="tool_length_8">
                         <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                           <horstretch>0</horstretch>
                           <verstretch>0</verstretch>
                          </sizepolicy>
                         </property>
-                        <layout class="QHBoxLayout" name="horizontalLayout_88">
-                         <property name="topMargin">
-                          <number>30</number>
-                         </property>
-                         <property name="bottomMargin">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>40</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>55</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 14pt &quot;Bebas Kai&quot;;
+}</string>
+                        </property>
+                        <property name="text">
+                         <string>No Tool Loaded</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                        </property>
+                        <property name="wordWrap">
+                         <bool>true</bool>
+                        </property>
+                        <property name="indent">
+                         <number>4</number>
+                        </property>
+                        <property name="rules" stdset="0">
+                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?Remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;tool_remark&quot;}]</string>
+                        </property>
+                        <property name="format" stdset="0">
+                         <string>{:.3f}</string>
+                        </property>
+                        <property name="statusItem" stdset="0">
+                         <string>tool_offset.3</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QWidget" name="widget_75" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <layout class="QVBoxLayout" name="verticalLayout_15">
+                         <property name="spacing">
                           <number>9</number>
                          </property>
+                         <property name="leftMargin">
+                          <number>6</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>12</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>6</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>12</number>
+                         </property>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_29">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_61">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>T - TOOL NUMBER</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_length_13">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;current_tool&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_32">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_54">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>X - OFFSET</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_diameter_7">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0.0000</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?x&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;x_offset&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_30">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_53">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Z - OFFSET</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_diameter_6">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0.0000</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?z&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;z_offset&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_31">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_66">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>I - FRONT ANGLE</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_length_14">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0.00</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?I&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.2f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.2f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_front_angle&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_24">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_64">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>J - BACK ANGLE</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_length_11">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0.00</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?J&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.2f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.2f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_back_angle&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_26">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_52">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>D - DIAMETER</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_diameter_5">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>0.0000</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?diameter&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_diameter&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.3f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
+                         <item>
+                          <layout class="QHBoxLayout" name="horizontalLayout_25">
+                           <property name="spacing">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>2</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>0</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>2</number>
+                           </property>
+                           <item>
+                            <widget class="QLabel" name="label_65">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>0</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>35</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>16777215</width>
+                               <height>33</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>Q - ORIENTATION</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                             </property>
+                             <property name="wordWrap">
+                              <bool>true</bool>
+                             </property>
+                            </widget>
+                           </item>
+                           <item>
+                            <widget class="StatusLabel" name="tool_length_12">
+                             <property name="sizePolicy">
+                              <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                               <horstretch>1</horstretch>
+                               <verstretch>0</verstretch>
+                              </sizepolicy>
+                             </property>
+                             <property name="minimumSize">
+                              <size>
+                               <width>90</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="maximumSize">
+                              <size>
+                               <width>70</width>
+                               <height>35</height>
+                              </size>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true">QLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                             </property>
+                             <property name="text">
+                              <string>1</string>
+                             </property>
+                             <property name="alignment">
+                              <set>Qt::AlignCenter</set>
+                             </property>
+                             <property name="rules" stdset="0">
+                              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?q&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:linear_units?text&quot;, &quot;trigger&quot;: false}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}\&quot;.format(ch[0]) if ch[1] == 'in' else \&quot;{:.0f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;tool_orientation&quot;}]</string>
+                             </property>
+                             <property name="format" stdset="0">
+                              <string>{:.0f}</string>
+                             </property>
+                             <property name="statusItem" stdset="0">
+                              <string>tool_offset.3</string>
+                             </property>
+                            </widget>
+                           </item>
+                          </layout>
+                         </item>
                         </layout>
                        </widget>
                       </item>
@@ -17177,12 +18497,12 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>752</x>
-     <y>107</y>
+     <x>129</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17193,12 +18513,12 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>738</x>
-     <y>694</y>
+     <x>109</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17209,12 +18529,12 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>403</x>
-     <y>694</y>
+     <x>144</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17225,12 +18545,12 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>995</x>
-     <y>694</y>
+     <x>144</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17241,12 +18561,12 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>610</x>
-     <y>474</y>
+     <x>79</x>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17257,12 +18577,12 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>610</x>
-     <y>317</y>
+     <x>79</x>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17273,12 +18593,12 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>694</y>
+     <x>109</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17289,12 +18609,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17305,12 +18625,12 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>160</x>
-     <y>107</y>
+     <x>129</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17321,12 +18641,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17337,12 +18657,12 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>854</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17353,12 +18673,12 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>262</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>146</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17369,12 +18689,12 @@ font: 11pt bebas kai;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1110</x>
-     <y>107</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17385,12 +18705,12 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>738</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1110</x>
-     <y>107</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17401,12 +18721,12 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>443</y>
+     <x>146</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
    </hints>
   </connection>
@@ -17417,12 +18737,12 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>139</y>
+     <x>146</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
    </hints>
   </connection>
@@ -17433,12 +18753,12 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>180</y>
+     <x>146</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
    </hints>
   </connection>
@@ -17449,12 +18769,12 @@ font: 11pt bebas kai;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>95</y>
+     <x>146</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
    </hints>
   </connection>
@@ -17465,12 +18785,12 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>366</x>
-     <y>689</y>
+     <x>139</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>116</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17481,12 +18801,12 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>855</x>
-     <y>689</y>
+     <x>139</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>116</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17497,12 +18817,12 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1038</x>
-     <y>689</y>
+     <x>159</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>116</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17513,12 +18833,12 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>203</x>
-     <y>689</y>
+     <x>139</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>135</x>
-     <y>116</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17529,12 +18849,12 @@ font: 11pt bebas kai;
    <slot>setViewXZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>781</x>
-     <y>493</y>
+     <x>146</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
    </hints>
   </connection>
@@ -17545,12 +18865,12 @@ font: 11pt bebas kai;
    <slot>setEditable(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1272</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1253</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17561,12 +18881,12 @@ font: 11pt bebas kai;
    <slot>find_replace()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1397</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1253</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17577,12 +18897,12 @@ font: 11pt bebas kai;
    <slot>save()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1522</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1253</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17593,12 +18913,12 @@ font: 11pt bebas kai;
    <slot>saveAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1647</x>
-     <y>694</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1253</x>
-     <y>145</y>
+     <x>119</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -17609,8 +18929,8 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>539</x>
-     <y>560</y>
+     <x>119</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>505</x>
@@ -17625,8 +18945,8 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>407</x>
-     <y>560</y>
+     <x>119</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>408</x>
@@ -17641,8 +18961,8 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>274</x>
-     <y>560</y>
+     <x>119</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>258</x>
@@ -17657,8 +18977,8 @@ font: 11pt bebas kai;
    <slot>clearSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>560</y>
+     <x>119</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>137</x>
@@ -17746,6 +19066,22 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>m01_break_button_20</sender>
+   <signal>pressed()</signal>
+   <receiver>lathetooltouchoff</receiver>
+   <slot>reset_tools()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1155</x>
+     <y>635</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>976</x>
+     <y>608</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -17765,7 +19101,7 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="diamradbtngroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
  </buttongroups>
 </ui>
