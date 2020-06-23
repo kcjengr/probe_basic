@@ -29,12 +29,13 @@ Rectangle {
         visible: false
         x: 400
         y: 120
-        width: 125
-        height: 200
+        width: 150
+        height: 225
         border.color: "black"
         border.width: 4
         radius: 10
         color: "white"
+        transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
@@ -44,13 +45,15 @@ Rectangle {
         }
 
         Image {
+            x: 25
+            y: 20
             z: 0
-            anchors.fill: parent
+            width: 100
+            height: 183
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
             source: "images/groove_tool_2.png"
-            scale: 0.5
         }
     }
 
@@ -59,8 +62,9 @@ Rectangle {
         visible: false
         x: 650
         y: 120
-        width: 125
-        height: 200
+        z: 0
+        width: 150
+        height: 225
         border.color: "black"
         border.width: 4
         radius: 10
@@ -74,13 +78,14 @@ Rectangle {
         }
 
         Image {
+            x: 25
+            y: 20
             z: 0
-            anchors.fill: parent
+            width: 100
+            height: 183
             fillMode: Image.PreserveAspectCrop
             rotation: 0
-            transformOrigin: Item.Center
             source: "images/groove_tool_1.png"
-            scale: 0.5
         }
     }
 
@@ -89,12 +94,14 @@ Rectangle {
         visible: false
         x: 400
         y: 120
-        width: 125
-        height: 200
+        z: 0
+        width: 150
+        height: 225
         border.color: "black"
         border.width: 4
         radius: 10
         color: "white"
+        transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
@@ -104,13 +111,12 @@ Rectangle {
         }
 
         Image {
-            z: 0
-            anchors.fill: parent
+            width: 100
+            height: 183
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
             source: "images/groove_tool_3.png"
-            scale: 0.5
         }
     }
 
@@ -119,12 +125,14 @@ Rectangle {
         visible: false
         x: 650
         y: 120
-        width: 125
-        height: 200
+        z: 0
+        width: 150
+        height: 225
         border.color: "black"
         border.width: 4
         radius: 10
         color: "white"
+        transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
@@ -134,13 +142,12 @@ Rectangle {
         }
 
         Image {
-            z: 0
-            anchors.fill: parent
+            width: 100
+            height: 183
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
             source: "images/groove_tool_4.png"
-            scale: 0.5
         }
     }
 
