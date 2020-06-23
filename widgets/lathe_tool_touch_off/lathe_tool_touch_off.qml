@@ -24,19 +24,17 @@ Rectangle {
         source: "images/lathe_chuck_stock.png"
     }
 
-    Image {
+    Rectangle{
         id: tool_origin_top_left
         visible: false
-        x: 260
-        y: -22
-        z: 0
-        width: 100
-        height: 183
-        fillMode: Image.PreserveAspectCrop
-        rotation: 0
-        transformOrigin: Item.Center
-        source: "images/groove_tool_1.png"
-
+        x: 400
+        y: 120
+        width: 125
+        height: 200
+        border.color: "black"
+        border.width: 4
+        radius: 10
+        color: "white"
 
         MouseArea {
             anchors.fill: parent
@@ -44,21 +42,29 @@ Rectangle {
                 tool_selected(upper_tools.itemAt(index), "upper", index)
             }
         }
+
+        Image {
+            z: 0
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            rotation: 0
+            transformOrigin: Item.Center
+            source: "images/groove_tool_2.png"
+            scale: 0.5
+        }
     }
 
-    Image {
+    Rectangle{
         id: tool_origin_top_right
         visible: false
-        x: 372
-        y: -22
-        z: 0
-        width: 100
-        height: 183
-        fillMode: Image.PreserveAspectCrop
-        rotation: 0
-        transformOrigin: Item.Center
-        source: "images/groove_tool_2.png"
-
+        x: 650
+        y: 120
+        width: 125
+        height: 200
+        border.color: "black"
+        border.width: 4
+        radius: 10
+        color: "white"
 
         MouseArea {
             anchors.fill: parent
@@ -66,21 +72,29 @@ Rectangle {
                 tool_selected(upper_tools.itemAt(index), "upper", index)
             }
         }
+
+        Image {
+            z: 0
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            rotation: 0
+            transformOrigin: Item.Center
+            source: "images/groove_tool_1.png"
+            scale: 0.5
+        }
     }
 
-    Image {
+    Rectangle{
         id: tool_origin_bot_left
         visible: false
-        x: 435
-        y: 176
-        z: 0
-        width: 100
-        height: 183
-        fillMode: Image.PreserveAspectCrop
-        rotation: 0
-        transformOrigin: Item.Center
-        source: "images/groove_tool_3.png"
-
+        x: 400
+        y: 120
+        width: 125
+        height: 200
+        border.color: "black"
+        border.width: 4
+        radius: 10
+        color: "white"
 
         MouseArea {
             anchors.fill: parent
@@ -88,26 +102,45 @@ Rectangle {
                 tool_selected(upper_tools.itemAt(index), "upper", index)
             }
         }
+
+        Image {
+            z: 0
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            rotation: 0
+            transformOrigin: Item.Center
+            source: "images/groove_tool_3.png"
+            scale: 0.5
+        }
     }
 
-    Image {
+    Rectangle{
         id: tool_origin_bot_right
         visible: false
-        x: 642
-        y: 176
-        z: 0
-        width: 100
-        height: 183
-        fillMode: Image.PreserveAspectCrop
-        rotation: 0
-        transformOrigin: Item.Center
-        source: "images/groove_tool_4.png"
+        x: 650
+        y: 120
+        width: 125
+        height: 200
+        border.color: "black"
+        border.width: 4
+        radius: 10
+        color: "white"
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
                 tool_selected(upper_tools.itemAt(index), "upper", index)
             }
+        }
+
+        Image {
+            z: 0
+            anchors.fill: parent
+            fillMode: Image.PreserveAspectCrop
+            rotation: 0
+            transformOrigin: Item.Center
+            source: "images/groove_tool_4.png"
+            scale: 0.5
         }
     }
 
@@ -215,7 +248,7 @@ Rectangle {
                     },
                     State {
                         name: "option"
-                        PropertyChanges { target: lower_tools.itemAt(index); x: 260 + origin_x; y: -200 + origin_y }
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 260 + origin_x; y: -100 + origin_y }
                     }
                 ]
                 transitions: Transition {
