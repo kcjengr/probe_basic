@@ -24,6 +24,93 @@ Rectangle {
         source: "images/lathe_chuck_stock.png"
     }
 
+    Image {
+        id: tool_origin_top_left
+        visible: false
+        x: 260
+        y: -22
+        z: 0
+        width: 100
+        height: 183
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/groove_tool_1.png"
+
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tool_selected(upper_tools.itemAt(index), "upper", index)
+            }
+        }
+    }
+
+    Image {
+        id: tool_origin_top_right
+        visible: false
+        x: 372
+        y: -22
+        z: 0
+        width: 100
+        height: 183
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/groove_tool_2.png"
+
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tool_selected(upper_tools.itemAt(index), "upper", index)
+            }
+        }
+    }
+
+    Image {
+        id: tool_origin_bot_left
+        visible: false
+        x: 435
+        y: 176
+        z: 0
+        width: 100
+        height: 183
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/groove_tool_3.png"
+
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tool_selected(upper_tools.itemAt(index), "upper", index)
+            }
+        }
+    }
+
+    Image {
+        id: tool_origin_bot_right
+        visible: false
+        x: 642
+        y: 176
+        z: 0
+        width: 100
+        height: 183
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/groove_tool_4.png"
+
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                tool_selected(upper_tools.itemAt(index), "upper", index)
+            }
+        }
+    }
+
     Row {
         id: upper_row
         x: 308
@@ -71,7 +158,7 @@ Rectangle {
                     },
                     State {
                         name: "option"
-                        PropertyChanges { target: upper_tools.itemAt(index); x: 140 + origin_x; y: 140 + origin_y }
+                        PropertyChanges { target: upper_tools.itemAt(index); x: 260 + origin_x; y: 100 + origin_y }
                     }
                 ]
                 transitions: Transition {
@@ -128,7 +215,7 @@ Rectangle {
                     },
                     State {
                         name: "option"
-                        PropertyChanges { target: lower_tools.itemAt(index); x: 250 + origin_x; y: -20 + origin_y; scale: 2 }
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 260 + origin_x; y: -200 + origin_y }
                     }
                 ]
                 transitions: Transition {
@@ -282,29 +369,46 @@ Rectangle {
             }
         }
         else if (tool.state === "option"){
-            tool.state = "selected"
+
+            for (var k = 0; k < 5; k++){
+                upper_tools.itemAt(k).state = "released"
+                lower_tools.itemAt(k).state = "released"
+            }
+            for (var l = 0; l < 7; l++){
+                right_tools.itemAt(l).state = "released"
+            }
+
+            tool_origin_top_left.visible = false
+            tool_origin_top_right.visible = false
+
+            tool_origin_bot_left.visible = false
+            tool_origin_bot_right.visible = false
         }
 
         else {
-            for (var k = 0; k < 5; k++){
-                upper_tools.itemAt(k).state = "hidden"
-                lower_tools.itemAt(k).state = "hidden"
+            for (var m = 0; m < 5; m++){
+                upper_tools.itemAt(m).state = "hidden"
+                lower_tools.itemAt(m).state = "hidden"
             }
-            for (var l = 0; l < 7; l++){
-                right_tools.itemAt(l).state = "hidden"
+            for (var n = 0; n < 7; n++){
+                right_tools.itemAt(n).state = "hidden"
             }
 
             if (group === "upper"){
-                if ((index === 4) || (index === 5)){
+                if (index === 4){
                     tool.state = "option"
+                    tool_origin_bot_left.visible = true
+                    tool_origin_bot_right.visible = true
                 }
                 else{
                     tool.state  = "selected"
                 }
             }
             else if (group === "lower"){
-                if ((index === 4) || (index === 5)){
+                if (index === 4){
                     tool.state = "option"
+                    tool_origin_top_left.visible = true
+                    tool_origin_top_right.visible = true
                 }
                 else{
                     tool.state  = "selected"
@@ -349,3 +453,8 @@ Rectangle {
         }
     }
 }
+
+/*##^## Designer {
+    D{i:2;anchors_height:651;anchors_width:351;anchors_x:260;anchors_y:-22}
+}
+ ##^##*/
