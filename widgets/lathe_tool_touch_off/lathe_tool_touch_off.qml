@@ -461,6 +461,7 @@ Rectangle {
                     tool_origin_bot_right.visible = true
                 }
                 else{
+                    handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
                 }
             }
@@ -473,6 +474,7 @@ Rectangle {
                     tool_origin_top_right.visible = true
                 }
                 else{
+                    handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
                 }
             }
@@ -492,11 +494,11 @@ Rectangle {
                     tool_origin_bot_right.visible = true
                 }
                 else{
+                    handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
                 }
             }
 
-            handler.tool_select(group, index, orientation)
         }
     }
 
