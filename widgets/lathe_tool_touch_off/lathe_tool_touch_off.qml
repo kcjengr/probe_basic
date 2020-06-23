@@ -15,13 +15,13 @@ Rectangle {
         id: holder
         x: 0
         y: 140
-        width: 452
+        width: 304
         height: 321
         fillMode: Image.PreserveAspectCrop
         z: 0
         rotation: 0
         transformOrigin: Item.Center
-        source: "images/lathe_chuck_dim_lines.png"
+        source: "images/lathe_chuck_stock.png"
     }
 
     Row {
@@ -68,6 +68,10 @@ Rectangle {
                     State {
                         name: "selected"
                         PropertyChanges { target: upper_tools.itemAt(index); x: 65 + origin_x; y: 135 + origin_y }
+                    },
+                    State {
+                        name: "option"
+                        PropertyChanges { target: upper_tools.itemAt(index); x: 140 + origin_x; y: 140 + origin_y }
                     }
                 ]
                 transitions: Transition {
@@ -121,6 +125,10 @@ Rectangle {
                     State {
                         name: "selected"
                         PropertyChanges { target: lower_tools.itemAt(index); x: 65 + origin_x; y: 5 + origin_y }
+                    },
+                    State {
+                        name: "option"
+                        PropertyChanges { target: lower_tools.itemAt(index); x: 250 + origin_x; y: -20 + origin_y; scale: 2 }
                     }
                 ]
                 transitions: Transition {
@@ -175,6 +183,10 @@ Rectangle {
                     State {
                         name: "selected"
                         PropertyChanges { target: right_tools.itemAt(index); x: 65 + origin_x; y: 192 + origin_y }
+                    },
+                    State {
+                        name: "option"
+                        PropertyChanges { target: right_tools.itemAt(index); x: 140 + origin_x; y: 140 + origin_y }
                     }
                 ]
                 transitions: Transition {
@@ -269,6 +281,10 @@ Rectangle {
                 right_tools.itemAt(j).state = "released"
             }
         }
+        else if (tool.state === "option"){
+            tool.state = "selected"
+        }
+
         else {
             for (var k = 0; k < 5; k++){
                 upper_tools.itemAt(k).state = "hidden"
@@ -277,7 +293,31 @@ Rectangle {
             for (var l = 0; l < 7; l++){
                 right_tools.itemAt(l).state = "hidden"
             }
-            tool.state  = "selected"
+
+            if (group === "upper"){
+                if ((index === 4) || (index === 5)){
+                    tool.state = "option"
+                }
+                else{
+                    tool.state  = "selected"
+                }
+            }
+            else if (group === "lower"){
+                if ((index === 4) || (index === 5)){
+                    tool.state = "option"
+                }
+                else{
+                    tool.state  = "selected"
+                }
+            }
+            else if (group === "right"){
+                if ((index === 1) || (index === 2) || (index === 6) || (index === 7)){
+                    tool.state = "option"
+                }
+                else{
+                    tool.state  = "selected"
+                }
+            }
         }
     }
 

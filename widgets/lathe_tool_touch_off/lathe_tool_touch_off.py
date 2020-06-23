@@ -33,7 +33,6 @@ class LatheToolTouchOff(QQuickWidget):
             return
 
         self.dm = getPlugin('persistent_data_manager')
-        print(self.dm)
 
         self.stat = STATUS
         self.engine().rootContext().setContextProperty("handler", self)
@@ -41,8 +40,6 @@ class LatheToolTouchOff(QQuickWidget):
         self.setSource(url)
 
         self.tool_image = self.dm.getData('tool-touch-off.tool-image-table') or dict()
-
-        print(self.tool_image)
 
         self.current_group = ""
         self.current_index = 0
