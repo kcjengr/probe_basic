@@ -40,7 +40,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-
+                choose_option("left")
             }
         }
 
@@ -73,7 +73,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
-
+                choose_option("right")
             }
         }
 
@@ -106,6 +106,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                choose_option("left")
             }
         }
 
@@ -139,6 +140,7 @@ Rectangle {
         MouseArea {
             anchors.fill: parent
             onClicked: {
+                choose_option("right")
             }
         }
 
@@ -317,7 +319,7 @@ Rectangle {
                     },
                     State {
                         name: "option"
-                        PropertyChanges { target: right_tools.itemAt(index); x: 140 + origin_x; y: 140 + origin_y }
+                        PropertyChanges { target: right_tools.itemAt(index); x: 240 + origin_x; y: 240 + origin_y }
                     }
                 ]
                 transitions: Transition {
@@ -327,8 +329,16 @@ Rectangle {
         }
     }
 
-
-
+    Item {
+        id: options
+        property string selected_group: ""
+        property int selected_index: 0
+        property var orientation_table: {
+            "upper": {'0':4, '1':8, '2':3, '3':8},
+            "lower": {'0':1, '1':6, '2':2, '3':6},
+            "right": {'0':4, '1':8, '2':3, '3':8}
+        }
+    }
 
     Component.onCompleted: {
 
@@ -387,13 +397,15 @@ Rectangle {
         set_element_properties(upper_tools, upper_tool_pics, upper_tool_origins);
         set_element_properties(lower_tools, lower_tool_pics, lower_tool_origins);
         set_element_properties(right_tools, right_tool_pics, right_tool_origins);
-    }
 
+
+
+    }
 
     function set_element_properties(element, pics, origin) {
         for (var i = 0; i < element.model; i++) {
-            element.itemAt(i).origin_x = origin[i][0];
-            element.itemAt(i).origin_y = origin[i][1];
+            element.itemAt(i).origin_x = origin[i][0]
+            element.itemAt(i).origin_y = origin[i][1]
             element.itemAt(i).source = pics[i];
         }
     }
@@ -401,7 +413,9 @@ Rectangle {
 
     function tool_selected(tool, group, index) {
 
-        handler.tool_select(group, index)
+        var orientation = options.orientation_table[group][String(index)]
+
+        handler.tool_select(group, index, orientation)
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -441,6 +455,8 @@ Rectangle {
             if (group === "upper"){
                 if (index === 4){
                     tool.state = "option"
+                    options.selected_group = group
+                    options.selected_index = index
                     tool_origin_bot_left.visible = true
                     tool_origin_bot_right.visible = true
                 }
@@ -451,6 +467,8 @@ Rectangle {
             else if (group === "lower"){
                 if (index === 4){
                     tool.state = "option"
+                    options.selected_group = group
+                    options.selected_index = index
                     tool_origin_top_left.visible = true
                     tool_origin_top_right.visible = true
                 }
@@ -459,14 +477,84 @@ Rectangle {
                 }
             }
             else if (group === "right"){
-                if ((index === 1) || (index === 2) || (index === 6) || (index === 7)){
+                if (index === 0) {
                     tool.state = "option"
+                    options.selected_group = group
+                    options.selected_index = index
+                    tool_origin_top_left.visible = true
+                    tool_origin_top_right.visible = true
+                }
+                else if (index === 6) {
+                    tool.state = "option"
+                    options.selected_group = group
+                    options.selected_index = index
+                    tool_origin_bot_left.visible = true
+                    tool_origin_bot_right.visible = true
                 }
                 else{
                     tool.state  = "selected"
                 }
             }
         }
+    }
+
+
+    function choose_option(side) {
+
+        tool_origin_top_left.visible = false
+        tool_origin_top_right.visible = false
+
+        tool_origin_bot_left.visible = false
+        tool_origin_bot_right.visible = false
+
+        var orientation = 0
+
+        if (options.selected_group === "upper") {
+            upper_tools.itemAt(options.selected_index).state = "selected"
+            if (side === "left") {
+                orientation = 4
+            }
+            else if (side === "right"){
+                orientation = 3
+            }
+            handler.tool_select(options.selected_group, options.selected_index, orientation)
+
+        }
+        else if (options.selected_group === "lower") {
+            lower_tools.itemAt(options.selected_index).state = "selected"
+            if (side === "left") {
+                orientation = 1
+            }
+            else if (side === "right"){
+                orientation = 2
+            }
+            handler.tool_select(options.selected_group, options.selected_index, orientation)
+        }
+        else if (options.selected_group === "right") {
+            right_tools.itemAt(options.selected_index).state = "selected"
+
+            if (options.selected_index === 0) {
+
+                if (side === "left") {
+                    orientation = 1
+                }
+                else if (side === "right"){
+                    orientation = 2
+                }
+            }
+            else if (options.selected_index === 6) {
+
+                if (side === "left") {
+                    orientation = 4
+                }
+                else if (side === "right"){
+                    orientation = 3
+                }
+            }
+
+            handler.tool_select(options.selected_group, options.selected_index, orientation)
+        }
+
     }
 
     Connections {

@@ -69,9 +69,9 @@ class LatheToolTouchOff(QQuickWidget):
         self.tool_image.pop(tool_num, None)
         self.toolResetSig.emit()
 
-    @Slot(str, int)
-    def tool_select(self, group, index):
-
+    @Slot(str, int, int)
+    def tool_select(self, group, index, orientation):
+        print(orientation)
         tool_num = self.stat.tool_in_spindle.getValue()
         self.tool_image[tool_num] = [group, index]
         self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
