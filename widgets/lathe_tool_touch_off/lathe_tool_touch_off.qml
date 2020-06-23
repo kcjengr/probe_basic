@@ -415,7 +415,6 @@ Rectangle {
 
         var orientation = options.orientation_table[group][String(index)]
 
-        handler.tool_select(group, index, orientation)
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -425,6 +424,7 @@ Rectangle {
             for (var j = 0; j < 7; j++){
                 right_tools.itemAt(j).state = "released"
             }
+            handler.tool_select(group, index, orientation)
         }
         else if (tool.state === "option"){
 
@@ -495,6 +495,8 @@ Rectangle {
                     tool.state  = "selected"
                 }
             }
+
+            handler.tool_select(group, index, orientation)
         }
     }
 
