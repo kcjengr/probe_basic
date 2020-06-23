@@ -29,27 +29,27 @@ Rectangle {
         visible: false
         x: 400
         y: 120
-        width: 150
-        height: 225
+        width: 125
+        height: 125
         border.color: "black"
-        border.width: 4
-        radius: 10
+        border.width: 2
+        radius: 16
         color: "white"
         transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                tool_selected(upper_tools.itemAt(index), "upper", index)
+
             }
         }
 
         Image {
-            x: 25
-            y: 20
+            x: 10
+            y: 10
             z: 0
             width: 100
-            height: 183
+            height: 100
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
@@ -63,26 +63,26 @@ Rectangle {
         x: 650
         y: 120
         z: 0
-        width: 150
-        height: 225
+        width: 125
+        height: 125
         border.color: "black"
-        border.width: 4
-        radius: 10
+        border.width: 2
+        radius: 16
         color: "white"
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                tool_selected(upper_tools.itemAt(index), "upper", index)
+
             }
         }
 
         Image {
-            x: 25
-            y: 20
+            x: 10
+            y: 10
             z: 0
             width: 100
-            height: 183
+            height: 100
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             source: "images/groove_tool_1.png"
@@ -93,26 +93,28 @@ Rectangle {
         id: tool_origin_bot_left
         visible: false
         x: 400
-        y: 120
+        y: 140
         z: 0
-        width: 150
-        height: 225
+        width: 125
+        height: 125
         border.color: "black"
-        border.width: 4
-        radius: 10
+        border.width: 2
+        radius: 16
         color: "white"
         transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                tool_selected(upper_tools.itemAt(index), "upper", index)
             }
         }
 
         Image {
+            x: 10
+            y: 10
+            z: 0
             width: 100
-            height: 183
+            height: 100
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
@@ -124,26 +126,28 @@ Rectangle {
         id: tool_origin_bot_right
         visible: false
         x: 650
-        y: 120
+        y: 140
         z: 0
-        width: 150
-        height: 225
+        width: 125
+        height: 125
         border.color: "black"
-        border.width: 4
-        radius: 10
+        border.width: 2
+        radius: 16
         color: "white"
         transformOrigin: Item.Center
 
         MouseArea {
             anchors.fill: parent
             onClicked: {
-                tool_selected(upper_tools.itemAt(index), "upper", index)
             }
         }
 
         Image {
+            x: 10
+            y: 10
+            z: 0
             width: 100
-            height: 183
+            height: 100
             fillMode: Image.PreserveAspectCrop
             rotation: 0
             transformOrigin: Item.Center
@@ -493,8 +497,3 @@ Rectangle {
         }
     }
 }
-
-/*##^## Designer {
-    D{i:2;anchors_height:651;anchors_width:351;anchors_x:260;anchors_y:-22}
-}
- ##^##*/
