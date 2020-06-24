@@ -19,7 +19,9 @@ from qtpy.QtCore import Signal, Slot, QUrl, QObject
 from qtpy.QtQuickWidgets import QQuickWidget
 
 from qtpyvcp.plugins import getPlugin
+from qtpyvcp.utilities import logger
 
+LOG = logger.getLogger(__name__)
 STATUS = getPlugin('status')
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 
@@ -74,12 +76,9 @@ class LatheToolTouchOff(QQuickWidget):
 
     @Slot(str, int, int)
     def tool_select(self, group, index, orientation):
-        if self.stat.interp_state != linuxcnc.INTERP_IDLE:
-            return
-        
-        if orientation > 1:
-            tool_num = self.stat.tool_in_spindle.getValue()
-            issue_mdi("G10 L1 P{} Q{}".format(tool_num, orientation))
 
-            self.tool_image[tool_num] = [group, index]
-            self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
+        tool_num = self.stat.tool_in_spindle.getValue()
+        issue_mdi("G10 L1 P{} Q{}".format(tool_num, orientation))
+
+        self.tool_image[tool_num] = [group, index]
+        self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
