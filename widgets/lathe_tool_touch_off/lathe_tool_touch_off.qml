@@ -498,7 +498,6 @@ Rectangle {
                     tool.state  = "selected"
                 }
             }
-
         }
     }
 
@@ -516,10 +515,10 @@ Rectangle {
         if (options.selected_group === "upper") {
             upper_tools.itemAt(options.selected_index).state = "selected"
             if (side === "left") {
-                orientation = 4
+                orientation = 3
             }
             else if (side === "right"){
-                orientation = 3
+                orientation = 4
             }
             handler.tool_select(options.selected_group, options.selected_index, orientation)
 
@@ -527,10 +526,10 @@ Rectangle {
         else if (options.selected_group === "lower") {
             lower_tools.itemAt(options.selected_index).state = "selected"
             if (side === "left") {
-                orientation = 1
+                orientation = 2
             }
             else if (side === "right"){
-                orientation = 2
+                orientation = 1
             }
             handler.tool_select(options.selected_group, options.selected_index, orientation)
         }
@@ -540,19 +539,19 @@ Rectangle {
             if (options.selected_index === 0) {
 
                 if (side === "left") {
-                    orientation = 1
+                    orientation = 2
                 }
                 else if (side === "right"){
-                    orientation = 2
+                    orientation = 1
                 }
             }
             else if (options.selected_index === 6) {
 
                 if (side === "left") {
-                    orientation = 4
+                    orientation = 3
                 }
                 else if (side === "right"){
-                    orientation = 3
+                    orientation = 4
                 }
             }
 
