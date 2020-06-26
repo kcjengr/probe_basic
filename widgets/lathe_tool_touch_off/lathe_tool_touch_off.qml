@@ -415,6 +415,8 @@ Rectangle {
 
         var orientation = options.orientation_table[group][String(index)]
 
+        options.selected_group = group
+        options.selected_index = index
 
         if (tool.state === "selected") {
             for (var i = 0; i < 5; i++){
@@ -455,8 +457,6 @@ Rectangle {
             if (group === "upper"){
                 if (index === 4){
                     tool.state = "option"
-                    options.selected_group = group
-                    options.selected_index = index
                     tool_origin_bot_left.visible = true
                     tool_origin_bot_right.visible = true
                 }
@@ -468,8 +468,6 @@ Rectangle {
             else if (group === "lower"){
                 if (index === 4){
                     tool.state = "option"
-                    options.selected_group = group
-                    options.selected_index = index
                     tool_origin_top_left.visible = true
                     tool_origin_top_right.visible = true
                 }
@@ -481,15 +479,11 @@ Rectangle {
             else if (group === "right"){
                 if (index === 0) {
                     tool.state = "option"
-                    options.selected_group = group
-                    options.selected_index = index
                     tool_origin_top_left.visible = true
                     tool_origin_top_right.visible = true
                 }
                 else if (index === 6) {
                     tool.state = "option"
-                    options.selected_group = group
-                    options.selected_index = index
                     tool_origin_bot_left.visible = true
                     tool_origin_bot_right.visible = true
                 }
