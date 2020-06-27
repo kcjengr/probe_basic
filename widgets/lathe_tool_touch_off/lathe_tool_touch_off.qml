@@ -53,7 +53,7 @@ Rectangle {
     }
 
     Image {
-        id: vertical_horizontal_dimensions
+        id: vertical_dimensions
         x: 372
         y: 197
         z: 0
@@ -472,7 +472,7 @@ Rectangle {
 
             top_horizontal_dimensions.visible = false
             bottom_horizontal_dimensions.visible = false
-            vertical_horizontal_dimensions.visible = false
+            vertical_dimensions.visible = false
         }
         else if (tool.state === "option"){
 
@@ -505,7 +505,7 @@ Rectangle {
                     if (tool_options === false){
                         tool.state  = "selected"
                         bottom_horizontal_dimensions.visible = true
-                        vertical_horizontal_dimensions.visible = true
+                        vertical_dimensions.visible = true
                     }
                     else{
                         tool.state = "option"
@@ -517,7 +517,7 @@ Rectangle {
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
                     bottom_horizontal_dimensions.visible = true
-                    vertical_horizontal_dimensions.visible = true
+                    vertical_dimensions.visible = true
 
                 }
             }
@@ -527,7 +527,7 @@ Rectangle {
                     if (tool_options === false){
                         tool.state  = "selected"
                         top_horizontal_dimensions.visible = true
-                        vertical_horizontal_dimensions.visible = true
+                        vertical_dimensions.visible = true
                     }
                     else{
                         tool.state = "option"
@@ -540,7 +540,7 @@ Rectangle {
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = true
-                    vertical_horizontal_dimensions.visible = true
+                    vertical_dimensions.visible = true
                 }
             }
             else if (group === "right"){
@@ -548,6 +548,7 @@ Rectangle {
 
                     if (tool_options === false){
                         tool.state  = "selected"
+                        top_horizontal_dimensions.visible = true
                     }
                     else{
 
@@ -572,6 +573,7 @@ Rectangle {
                 else{
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
+                    top_horizontal_dimensions.visible = true
                 }
             }
         }
@@ -591,7 +593,7 @@ Rectangle {
         if (options.selected_group === "upper") {
             upper_tools.itemAt(options.selected_index).state = "selected"
             bottom_horizontal_dimensions.visible = true
-            vertical_horizontal_dimensions.visible = true
+            vertical_dimensions.visible = true
             if (side === "left") {
                 orientation = 3
             }
@@ -604,7 +606,7 @@ Rectangle {
         else if (options.selected_group === "lower") {
             lower_tools.itemAt(options.selected_index).state = "selected"
             top_horizontal_dimensions.visible = true
-            vertical_horizontal_dimensions.visible = true
+            vertical_dimensions.visible = true
             if (side === "left") {
                 orientation = 2
             }
@@ -655,7 +657,7 @@ Rectangle {
 
             top_horizontal_dimensions.visible = false
             bottom_horizontal_dimensions.visible = false
-            vertical_horizontal_dimensions.visible = false
+            vertical_dimensions.visible = false
         }
 
         onToolActiveImageSig: {
