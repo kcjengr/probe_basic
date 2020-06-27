@@ -186,7 +186,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        tool_selected(upper_tools.itemAt(index), "upper", index)
+                        tool_selected(upper_tools.itemAt(index), "upper", index, true)
                     }
                 }
                 states: [
@@ -243,7 +243,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        tool_selected(lower_tools.itemAt(index), "lower", index)
+                        tool_selected(lower_tools.itemAt(index), "lower", index, true)
                     }
                 }
                 states: [
@@ -301,7 +301,7 @@ Rectangle {
                 MouseArea {
                     anchors.fill: parent
                     onClicked: {
-                        tool_selected(right_tools.itemAt(index), "right", index)
+                        tool_selected(right_tools.itemAt(index), "right", index, true)
                     }
                 }
                 states: [
@@ -411,7 +411,7 @@ Rectangle {
     }
 
 
-    function tool_selected(tool, group, index) {
+    function tool_selected(tool, group, index, tool_options) {
 
         var orientation = options.orientation_table[group][String(index)]
 
@@ -456,9 +456,14 @@ Rectangle {
 
             if (group === "upper"){
                 if (index === 4){
-                    tool.state = "option"
-                    tool_origin_bot_left.visible = true
-                    tool_origin_bot_right.visible = true
+                    if (tool_options === false){
+                        tool.state  = "selected"
+                    }
+                    else{
+                        tool.state = "option"
+                        tool_origin_bot_left.visible = true
+                        tool_origin_bot_right.visible = true
+                    }
                 }
                 else{
                     handler.tool_select(group, index, orientation)
@@ -467,9 +472,16 @@ Rectangle {
             }
             else if (group === "lower"){
                 if (index === 4){
-                    tool.state = "option"
-                    tool_origin_top_left.visible = true
-                    tool_origin_top_right.visible = true
+
+                    if (tool_options === false){
+                        tool.state  = "selected"
+                    }
+                    else{
+                        tool.state = "option"
+                        tool_origin_top_left.visible = true
+                        tool_origin_top_right.visible = true
+                    }
+
                 }
                 else{
                     handler.tool_select(group, index, orientation)
@@ -478,14 +490,29 @@ Rectangle {
             }
             else if (group === "right"){
                 if (index === 0) {
-                    tool.state = "option"
-                    tool_origin_top_left.visible = true
-                    tool_origin_top_right.visible = true
+
+                    if (tool_options === false){
+                        tool.state  = "selected"
+                    }
+                    else{
+
+                        tool.state = "option"
+                        tool_origin_top_left.visible = true
+                        tool_origin_top_right.visible = true
+                    }
+
                 }
                 else if (index === 6) {
-                    tool.state = "option"
-                    tool_origin_bot_left.visible = true
-                    tool_origin_bot_right.visible = true
+                    if (tool_options === false){
+                        tool.state  = "selected"
+                    }
+                    else{
+                        tool.state = "option"
+                        tool_origin_bot_left.visible = true
+                        tool_origin_bot_right.visible = true
+
+                    }
+
                 }
                 else{
                     handler.tool_select(group, index, orientation)
@@ -569,15 +596,16 @@ Rectangle {
         }
 
         onToolActiveImageSig: {
+            var tool_options = false
 
             if (group === "lower"){
-                tool_selected(lower_tools.itemAt(index), group, index)
+                tool_selected(lower_tools.itemAt(index), group, index, tool_options)
             }
             else if (group === "upper"){
-                tool_selected(upper_tools.itemAt(index), group, index)
+                tool_selected(upper_tools.itemAt(index), group, index, tool_options)
             }
             else if (group === "right"){
-                tool_selected(right_tools.itemAt(index), group, index)
+                tool_selected(right_tools.itemAt(index), group, index, tool_options)
             }
         }
     }
