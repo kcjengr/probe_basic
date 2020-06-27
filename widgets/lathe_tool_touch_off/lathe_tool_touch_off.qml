@@ -25,9 +25,11 @@ Rectangle {
     }
 
     Image {
+        id: bottom_horizontal_dimensions
         x: 257
         y: 351
         z: 0
+        visible: false
         width: 165
         height: 90
         fillMode: Image.PreserveAspectCrop
@@ -37,9 +39,11 @@ Rectangle {
     }
 
     Image {
+        id: top_horizontal_dimensions
         x: 260
         y: 159
         z: 0
+        visible: false
         width: 165
         height: 90
         fillMode: Image.PreserveAspectCrop
@@ -49,9 +53,11 @@ Rectangle {
     }
 
     Image {
+        id: vertical_horizontal_dimensions
         x: 372
         y: 197
         z: 0
+        visible: false
         width: 87
         height: 207
         fillMode: Image.PreserveAspectCrop
@@ -463,6 +469,10 @@ Rectangle {
                 right_tools.itemAt(j).state = "released"
             }
             handler.tool_select(group, index, orientation)
+
+            top_horizontal_dimensions.visible = false
+            bottom_horizontal_dimensions.visible = false
+            vertical_horizontal_dimensions.visible = false
         }
         else if (tool.state === "option"){
 
@@ -494,6 +504,8 @@ Rectangle {
                 if (index === 4){
                     if (tool_options === false){
                         tool.state  = "selected"
+                        bottom_horizontal_dimensions.visible = true
+                        vertical_horizontal_dimensions.visible = true
                     }
                     else{
                         tool.state = "option"
@@ -504,6 +516,9 @@ Rectangle {
                 else{
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
+                    bottom_horizontal_dimensions.visible = true
+                    vertical_horizontal_dimensions.visible = true
+
                 }
             }
             else if (group === "lower"){
@@ -511,6 +526,8 @@ Rectangle {
 
                     if (tool_options === false){
                         tool.state  = "selected"
+                        top_horizontal_dimensions.visible = true
+                        vertical_horizontal_dimensions.visible = true
                     }
                     else{
                         tool.state = "option"
@@ -522,6 +539,8 @@ Rectangle {
                 else{
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
+                    top_horizontal_dimensions.visible = true
+                    vertical_horizontal_dimensions.visible = true
                 }
             }
             else if (group === "right"){
@@ -571,6 +590,8 @@ Rectangle {
 
         if (options.selected_group === "upper") {
             upper_tools.itemAt(options.selected_index).state = "selected"
+            bottom_horizontal_dimensions.visible = true
+            vertical_horizontal_dimensions.visible = true
             if (side === "left") {
                 orientation = 3
             }
@@ -582,6 +603,8 @@ Rectangle {
         }
         else if (options.selected_group === "lower") {
             lower_tools.itemAt(options.selected_index).state = "selected"
+            top_horizontal_dimensions.visible = true
+            vertical_horizontal_dimensions.visible = true
             if (side === "left") {
                 orientation = 2
             }
