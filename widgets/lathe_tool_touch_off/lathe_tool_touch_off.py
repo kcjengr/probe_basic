@@ -50,6 +50,18 @@ class LatheToolTouchOff(QQuickWidget):
         self.current_index = 0
 
         self.stat.tool_in_spindle.onValueChanged(self.set_active_tool)
+        # self.stat.tool_table.onValueChanged(self.update_tools)
+
+        issue_mdi.bindOk(widget=self)
+
+    def update_tools(self, args):
+
+        for key, value in self.tool_image.items():
+            group, index = value
+
+            self.tool_image[int(key)] = [group, index]
+
+        self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
 
     def set_active_tool(self):
         tool_num = self.stat.tool_in_spindle.getValue()

@@ -24,6 +24,42 @@ Rectangle {
         source: "images/lathe_chuck_stock.png"
     }
 
+    Image {
+        x: 257
+        y: 351
+        z: 0
+        width: 165
+        height: 90
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/lathe_horizontal_dimension.png"
+    }
+
+    Image {
+        x: 260
+        y: 159
+        z: 0
+        width: 165
+        height: 90
+        fillMode: Image.PreserveAspectCrop
+        rotation: 180
+        transformOrigin: Item.Center
+        source: "images/lathe_horizontal_dimension.png"
+    }
+
+    Image {
+        x: 372
+        y: 197
+        z: 0
+        width: 87
+        height: 207
+        fillMode: Image.PreserveAspectCrop
+        rotation: 0
+        transformOrigin: Item.Center
+        source: "images/lathe_vertical_dimension.png"
+    }
+
     Rectangle{
         id: tool_origin_top_left
         visible: false
