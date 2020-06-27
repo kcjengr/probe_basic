@@ -652,6 +652,10 @@ Rectangle {
             for (var j = 0; j < 7; j++){
                 right_tools.itemAt(j).state = "released"
             }
+
+            top_horizontal_dimensions.visible = false
+            bottom_horizontal_dimensions.visible = false
+            vertical_horizontal_dimensions.visible = false
         }
 
         onToolActiveImageSig: {
