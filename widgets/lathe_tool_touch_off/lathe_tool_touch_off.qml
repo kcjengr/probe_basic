@@ -554,7 +554,7 @@ Rectangle {
                         tool.state  = "selected"
                         top_horizontal_dimensions.visible = true
                         bottom_horizontal_dimensions.visible = false
-                        vertical_dimensions.visible = false
+                        vertical_dimensions.visible = true
                     }
                     else{
 
@@ -567,6 +567,9 @@ Rectangle {
                 else if (index === 6) {
                     if (tool_options === false){
                         tool.state  = "selected"
+                        top_horizontal_dimensions.visible = true
+                        bottom_horizontal_dimensions.visible = false
+                        vertical_dimensions.visible = true
                     }
                     else{
                         tool.state = "option"
@@ -576,6 +579,26 @@ Rectangle {
                     }
 
                 }
+
+                else if (index < 3){
+                    handler.tool_select(group, index, orientation)
+                    tool.state  = "selected"
+                    top_horizontal_dimensions.visible = true
+                    bottom_horizontal_dimensions.visible = false
+                    vertical_dimensions.visible = true
+
+                }
+
+                else if (index >= 3){
+                    handler.tool_select(group, index, orientation)
+                    tool.state  = "selected"
+                    top_horizontal_dimensions.visible = false
+                    bottom_horizontal_dimensions.visible = true
+                    vertical_dimensions.visible = true
+
+                }
+
+
                 else{
                     handler.tool_select(group, index, orientation)
                     tool.state  = "selected"
@@ -630,6 +653,10 @@ Rectangle {
 
             if (options.selected_index === 0) {
 
+                top_horizontal_dimensions.visible = true
+                bottom_horizontal_dimensions.visible = false
+                vertical_dimensions.visible = true
+
                 if (side === "left") {
                     orientation = 2
                 }
@@ -638,6 +665,10 @@ Rectangle {
                 }
             }
             else if (options.selected_index === 6) {
+
+                top_horizontal_dimensions.visible = true
+                bottom_horizontal_dimensions.visible = false
+                vertical_dimensions.visible = true
 
                 if (side === "left") {
                     orientation = 3
