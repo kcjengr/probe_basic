@@ -666,8 +666,8 @@ Rectangle {
             }
             else if (options.selected_index === 6) {
 
-                top_horizontal_dimensions.visible = true
-                bottom_horizontal_dimensions.visible = false
+                top_horizontal_dimensions.visible = false
+                bottom_horizontal_dimensions.visible = true
                 vertical_dimensions.visible = true
 
                 if (side === "left") {
