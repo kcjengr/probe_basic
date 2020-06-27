@@ -504,6 +504,7 @@ Rectangle {
                 if (index === 4){
                     if (tool_options === false){
                         tool.state  = "selected"
+                        top_horizontal_dimensions.visible = false
                         bottom_horizontal_dimensions.visible = true
                         vertical_dimensions.visible = true
                     }
@@ -528,6 +529,7 @@ Rectangle {
                     if (tool_options === false){
                         tool.state  = "selected"
                         top_horizontal_dimensions.visible = true
+                        bottom_horizontal_dimensions.visible = false
                         vertical_dimensions.visible = true
                     }
                     else{
@@ -598,6 +600,7 @@ Rectangle {
 
         if (options.selected_group === "upper") {
             upper_tools.itemAt(options.selected_index).state = "selected"
+            top_horizontal_dimensions.visible = false
             bottom_horizontal_dimensions.visible = true
             vertical_dimensions.visible = true
             if (side === "left") {
@@ -612,6 +615,7 @@ Rectangle {
         else if (options.selected_group === "lower") {
             lower_tools.itemAt(options.selected_index).state = "selected"
             top_horizontal_dimensions.visible = true
+            bottom_horizontal_dimensions.visible = false
             vertical_dimensions.visible = true
             if (side === "left") {
                 orientation = 2
