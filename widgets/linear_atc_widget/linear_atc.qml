@@ -5,34 +5,20 @@ import QtQuick.Layouts 1.3
 Rectangle {
     id: rectangle
     visible: true
-    width: 550
+    width: 1024
+    height: 340
     color: "#939695"
     opacity: 1
-    height: 550
 
-    Image {
-        id: atc_holder
-        width: 550
-        height: 550
-        visible: true
-        x: parent.width / 2 - width / 2
-        y: parent.height / 2 - height / 2
-        antialiasing: true
-        z: 0
-        rotation: 90
-        transformOrigin: Item.Center
-        source: "images/carousel_12.png"
-
-
-        RotationAnimator {
-            id: atc_anim
-            target: atc_holder;
-            duration: 500
-            running: false
-        }
-
+    Row{
+        width: 1024
+        height: 340
         Repeater {
             id: pocket_slot
+            x: 40
+            y: 140
+            width: 200
+            height: 200
             model: 12
 
             delegate: Item {
@@ -41,7 +27,6 @@ Rectangle {
 
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 30
                 x: atc_holder.width/2
                 y: 0
 
@@ -60,8 +45,12 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 90
                     border.width: 2
-                    rotation: 30 * index - 90
+                    x: 120 * index
 
+                    Image {
+                        id: fork
+                        source: "images/linear_atc_fork.png"
+                    }
 
                     Text {
                         id: pocket_text
@@ -85,9 +74,14 @@ Rectangle {
                 }
             }
         }
-
+    }
+    Row {
+        width: 1024
+        height: 340
         Repeater {
             id: tool_slot
+            width: 200
+            height: 200
             model: 12
 
             delegate: Item {
@@ -95,7 +89,6 @@ Rectangle {
                 id: tool_item
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 30
                 x: atc_holder.width/2
                 y: 0
 
@@ -116,7 +109,6 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 4
                     border.width: 2
-                    rotation: 30 * index - 90
 
                     Text {
                         id: tool_text
@@ -152,7 +144,6 @@ Rectangle {
             }
         }
     }
-
 
     Text {
         id: msg_text

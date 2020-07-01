@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1918</width>
+    <width>1928</width>
     <height>1139</height>
    </rect>
   </property>
@@ -2074,9 +2074,6 @@ QHeaderView {
                      <property name="page" stdset="0">
                       <number>0</number>
                      </property>
-                     <attribute name="buttonGroup">
-                      <string notr="true">fileviewerbtnGroup</string>
-                     </attribute>
                     </widget>
                    </item>
                    <item>
@@ -2119,9 +2116,6 @@ QHeaderView {
                      <property name="page" stdset="0">
                       <number>1</number>
                      </property>
-                     <attribute name="buttonGroup">
-                      <string notr="true">fileviewerbtnGroup</string>
-                     </attribute>
                     </widget>
                    </item>
                   </layout>
@@ -4625,7 +4619,7 @@ QPushButton:checked {
 }</string>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <widget class="QWidget" name="tab_4">
                <attribute name="title">
@@ -4896,17 +4890,7 @@ QPushButton:checked {
                        <number>3</number>
                       </property>
                       <item>
-                       <widget class="QLabel" name="label_5">
-                        <property name="text">
-                         <string/>
-                        </property>
-                        <property name="pixmap">
-                         <pixmap resource="probe_basic.qrc">:/images/linear_atc_rack_10.png</pixmap>
-                        </property>
-                        <property name="alignment">
-                         <set>Qt::AlignCenter</set>
-                        </property>
-                       </widget>
+                       <widget class="LinearATC" name="linearatc"/>
                       </item>
                      </layout>
                     </widget>
@@ -22668,9 +22652,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G58</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="9" column="0">
@@ -22716,9 +22697,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G59.3</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="0" column="0">
@@ -22764,9 +22742,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G54</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="2" column="0">
@@ -22812,9 +22787,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G56</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="0" column="1">
@@ -22860,9 +22832,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G55</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="2" column="1">
@@ -22908,9 +22877,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G57</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="4" column="1">
@@ -22956,9 +22922,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G59</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="7" column="1">
@@ -23004,9 +22967,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G59.2</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                 <item row="7" column="0">
@@ -23052,9 +23012,6 @@ color: white;
                   <property name="actionName" stdset="0">
                    <string>machine.set-work-coord:G59.1</string>
                   </property>
-                  <attribute name="buttonGroup">
-                   <string notr="true">customwcsbtnGroup</string>
-                  </attribute>
                  </widget>
                 </item>
                </layout>
@@ -31466,7 +31423,7 @@ LOAD</string>
             <string notr="true"/>
            </property>
            <property name="value" stdset="0">
-            <double>150.000000000000000</double>
+            <double>100.000000000000000</double>
            </property>
            <property name="maximum" stdset="0">
             <double>150.000000000000000</double>
@@ -32764,7 +32721,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1918</width>
+     <width>1928</width>
      <height>26</height>
     </rect>
    </property>
@@ -32964,6 +32921,16 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
   </customwidget>
   <customwidget>
+   <class>LinearATC</class>
+   <extends>QQuickWidget</extends>
+   <header>widgets.linear_atc_widget.linear_atc</header>
+  </customwidget>
+  <customwidget>
+   <class>DynATC</class>
+   <extends>QQuickWidget</extends>
+   <header>widgets.atc_widget.atc</header>
+  </customwidget>
+  <customwidget>
    <class>FileSystemTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
@@ -33002,11 +32969,6 @@ font: 11pt bebas kai;
    <class>StatusLabel</class>
    <extends>QLabel</extends>
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
-  </customwidget>
-  <customwidget>
-   <class>DynATC</class>
-   <extends>QQuickWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.atc_widget.atc</header>
   </customwidget>
   <customwidget>
    <class>VCPStackedWidget</class>
@@ -34542,19 +34504,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotviewGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
