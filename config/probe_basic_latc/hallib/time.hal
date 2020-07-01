@@ -1,0 +1,11 @@
+loadrt time
+loadrt not
+
+addf time.0 servo-thread
+addf not.0 servo-thread
+
+net prog-running not.0.in <= halui.program.is-idle
+net cycle-timer time.0.start <= not.0.out
+net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
+net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
+net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
