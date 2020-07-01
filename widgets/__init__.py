@@ -9,3 +9,8 @@ from atc_widget.atc import DynATC
 class DynATC_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return DynATC
+
+from linear_atc_widget.linear_atc import LinearATC
+class LinearATC_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return LinearATC
