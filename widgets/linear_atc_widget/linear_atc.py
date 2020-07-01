@@ -45,7 +45,7 @@ class LinearATC(QQuickWidget):
         self.pocket_slots = 12
 
         self.engine().rootContext().setContextProperty("atc_spiner", self)
-        qml_path = os.path.join(WIDGET_PATH, "atc.qml")
+        qml_path = os.path.join(WIDGET_PATH, "linear_atc.qml")
         url = QUrl.fromLocalFile(qml_path)
 
         self.setSource(url)  # Fixme fails on qtdesigner
