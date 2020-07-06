@@ -22,7 +22,7 @@ Rectangle {
                     id: fork
                     scale: 0.20
                     source: "images/linear_atc_fork.png"
-                    x: (width/6 * index) -200
+                    x: (width/6 * index) - 200
                     y: 20
                     Rectangle {
                         id: pocket_rectangle
@@ -58,35 +58,27 @@ Rectangle {
     Row {
         Repeater {
             id: tool_slot
-            width: 200
-            height: 200
             model: 12
 
             delegate: Item {
 
                 id: tool_item
-                height: atc_holder.height/2
-                transformOrigin: Item.Bottom
-                x: atc_holder.width/2
-                y: 0
+                state: "visible"
 
-                state: "hidden"
-
-                property int tool_num: index
-                property var anim: tool_anim
+                property int tool_num: index +1
 
                 Rectangle {
                     id: tool_rectangle
 
-                    height: atc_holder.height*0.135
-                    width: height
+                    width: 42
+                    height: 42
                     radius: width/2
                     color: "white"
                     border.color: "grey"
-                    anchors.horizontalCenter: parent.horizontalCenter
-                    anchors.top: parent.top
-                    anchors.topMargin: 4
-                    border.width: 2
+                    border.width: 4
+
+                    x: (83.4 * index) + 29
+                    y: 230
 
                     Text {
                         id: tool_text
