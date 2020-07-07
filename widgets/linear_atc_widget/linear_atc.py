@@ -25,8 +25,6 @@ WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 
 class LinearATC(QQuickWidget):
 
-    rotateSig = Signal(int, int, arguments=['steps', 'direction'])
-
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
     hideToolSig = Signal(float, arguments=['pocket'])
 
@@ -38,7 +36,6 @@ class LinearATC(QQuickWidget):
         if IN_DESIGNER:
             return
 
-        self.atc_position = 0
         self.pocket = 1
         self.home = 0
         self.homing = 0
@@ -87,8 +84,3 @@ class LinearATC(QQuickWidget):
     def atc_message(self, msg=""):
         self.homeMsgSig.emit(msg)
 
-    def rotate(self, steps, direction):
-        if direction == "cw":
-            self.rotateSig.emit(steps, 1)
-        elif direction == "ccw":
-            self.rotateSig.emit(steps, -1)
