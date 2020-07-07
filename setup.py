@@ -33,9 +33,8 @@ setup(
             'probe_basic_latc=probe_basic_latc',
         ],
         'qtpyvcp.widgets': [
-            'Probe Basic ATC Widgets=widgets:atc_widget'
-            'Probe Basic ATC Widgets=widgets.linear_atc'
-            'Probe Basic Lathe Widgets=widgets.lathe_tool_touch_off'
+            'Probe Basic ATC Widgets=widgets.atc_plugins',
+            'Probe Basic Lathe Widgets=widgets.lathe_plugins'
         ]
     },
     install_requires=[
