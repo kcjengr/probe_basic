@@ -25,10 +25,12 @@ setup(
         'gui_scripts': [
             'probe_basic=probe_basic:main',
             'probe_basic_lathe=probe_basic_lathe:main',
+            'probe_basic_latc=probe_basic_latc:main',
         ],
         'qtpyvcp.vcp': [
             'probe_basic=probe_basic',
             'probe_basic_lathe=probe_basic_lathe',
+            'probe_basic_latc=probe_basic_latc',
         ],
         'qtpyvcp.widgets': [
             'Probe Basic Widgets=widgets'
