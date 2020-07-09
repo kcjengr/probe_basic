@@ -5,10 +5,11 @@ import QtQuick.Layouts 1.3
 Rectangle {
     id: rectangle
     width: 1024
-    height: 340
+    height: 100
     color: "#939695"
 
     Row{
+        visible: true
         Repeater {
             id: pocket_slot
             model: 12
@@ -23,7 +24,7 @@ Rectangle {
                     scale: 0.20
                     source: "images/linear_atc_fork.png"
                     x: (width/6 * index) - 200
-                    y: 20
+                    y: -200
                     Rectangle {
                         id: pocket_rectangle
 
@@ -56,6 +57,7 @@ Rectangle {
     }
 
     Row {
+        visible: true
         Repeater {
             id: tool_slot
             model: 12
@@ -78,7 +80,7 @@ Rectangle {
                     border.width: 4
 
                     x: (83.4 * index) + 29
-                    y: 230
+                    y: 12
 
                     Text {
                         id: tool_text
@@ -103,28 +105,6 @@ Rectangle {
                         PropertyChanges { target: tool_slot.itemAt(index); visible: true}
                     }
                 ]
-            }
-        }
-    }
-
-    Text {
-        id: msg_text
-        width: 206
-        height: 91
-        x: parent.width/2 - width/2
-        y: parent.height/2 - height/2
-        text: qsTr("UN REFERENCED")
-        visible: true
-        font.capitalization: Font.AllUppercase
-        font.pixelSize: 36
-        font.family: "Bebas Kai"
-        fontSizeMode: Text.Fit
-        verticalAlignment: Text.AlignVCenter
-        horizontalAlignment: Text.AlignHCenter
-
-        Behavior on text {
-            FadeAnimation {
-                target: msg_text
             }
         }
     }
