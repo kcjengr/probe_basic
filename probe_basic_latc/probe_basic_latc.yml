@@ -5,11 +5,11 @@ qtdesigner:
   qss_file: ( application.kwargs.stylesheet )
 
 vcp:
-  name: Probe Basic
+  name: Probe Basic Linear ATC
   version: v0.0.1
   author: Chris Polanski
   description: |
-    Probe Basic description ...
+    Probe Basic Linear ATC
 
 data_plugins:
   status:
@@ -18,12 +18,12 @@ data_plugins:
 
 windows:
   mainwindow:
-    provider: probe_basic:ProbeBasic
+    provider: probe_basic_latc.probe_basic_latc:ProbeBasicLATC
     kwargs:
       menu: ( menubar )
       fullscreen: true
-      ui_file: {{ file.dir }}/probe_basic.ui
+      ui_file: {{ file.dir }}/probe_basic_latc.ui
 
 application:
   kwargs:
-    stylesheet: {{ file.dir }}/probe_basic.qss
+    stylesheet: {{ file.dir }}/probe_basic_latc.qss
