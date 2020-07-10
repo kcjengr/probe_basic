@@ -5,7 +5,7 @@ import os
 import qtpyvcp
 
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
-VCP_CONFIG_FILE = os.path.join(VCP_DIR, 'probe_basic.yml')
+VCP_CONFIG_FILE = os.path.join(VCP_DIR, 'probe_basic_vertical.yml')
 
 
 def main(opts=None):
