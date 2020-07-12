@@ -12,8 +12,8 @@ def main(opts=None):
 
     if opts is None:
         from qtpyvcp.utilities.opt_parser import parse_opts
-        opts = parse_opts(vcp_cmd='probebasic',
-                          vcp_name='Probe Basic',
+        opts = parse_opts(vcp_cmd='probe_basic_vertical',
+                          vcp_name='Probe Basic Vertical',
                           vcp_version=__version__)
 
     qtpyvcp.run_vcp(opts, VCP_CONFIG_FILE)
