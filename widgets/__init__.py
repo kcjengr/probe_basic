@@ -9,3 +9,8 @@ from atc_widget.atc import DynATC
 class DynATC_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return DynATC
+
+from vcp_jogging.JogControl import JogControl
+class JogControl_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return JogControl
