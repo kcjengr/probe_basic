@@ -35,5 +35,5 @@ class JogControl(QFrame, VCPWidget):
 
         if parent is None:
             return
-        uic.loadUi(os.path.join(WIDGET_PATH, "jog_control.ui"), self)
+        uic.loadUi(os.path.join(WIDGET_PATH, "JogControl.ui"), self)
         self.show()
