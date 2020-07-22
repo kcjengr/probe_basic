@@ -7,7 +7,7 @@
 o<load_spindle_safety> sub
 
 #<load_spindle_tool_number> = #1
-#<activate_pogrammable_coolant> = #2
+#<activate_programmable_coolant> = #2
 #<horizontal_spindle_nozzle_dist> = #3
 #<vertical_spindle_nozzle_dist> = #4
 #<pc_angle_offset> = #5
@@ -43,7 +43,7 @@ o<100> endif
 #<pc_tool_length> = #5403
 
 (run program_coolant sub if selected to be active in settings page with value 1)
-o<110> if [#<activate_pogrammable_coolant> EQ 1]
+o<110> if [#<activate_programmable_coolant> EQ 1]
   (run program_coolant.ngc)
   o<program_coolant> call [#3][#4][#5][#<pc_tool_length>]
 o<110> else

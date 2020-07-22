@@ -14,7 +14,7 @@ o<toolchange> sub
 #10 = #5199
 #11 = #5200
 #12 = #5201
-#<activate_pogrammable_coolant> = #13
+#<activate_programmable_coolant> = #13
 #<horizontal_spindle_nozzle_dist> = #14
 #<vertical_spindle_nozzle_dist> = #15
 #<pc_angle_offset> = #16
@@ -125,7 +125,7 @@ o<010> endif
 #<pc_tool_length> = #5403
 
 (run program_coolant sub if selected to be active in settings page with value 1)
-o<220> if [#<activate_pogrammable_coolant> EQ 1]
+o<220> if [#<activate_programmable_coolant> EQ 1]
   (run program_coolant.ngc)
   o<program_coolant> call [#14][#15][#16][#<pc_tool_length>]
 0<220> else
