@@ -1,7 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Frame</class>
+ <class>frame_Jog</class>
  <widget class="QFrame" name="frame_Jog">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>250</width>
+    <height>480</height>
+   </rect>
+  </property>
   <property name="sizePolicy">
    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
     <horstretch>0</horstretch>
@@ -52,7 +60,7 @@ border-radius: 6px;
     <number>3</number>
    </property>
    <item>
-    <widget class="QWidget" name="verticalWidget_2" native="true">
+    <widget class="QWidget" name="frame_jogControlsLayout" native="true">
      <property name="minimumSize">
       <size>
        <width>185</width>
@@ -80,8 +88,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/z_plus_jog_button.png</normaloff>images/z_plus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -116,8 +124,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/z_minus_jog_button.png</normaloff>images/z_minus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -164,8 +172,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/y_minus_jog_button.png</normaloff>images/y_minus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -196,8 +204,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/y_plus_jog_button.png</normaloff>images/y_plus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -234,8 +242,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/x_plus_jog_button.png</normaloff>images/x_plus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -272,8 +280,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/x_minus_jog_button.png</normaloff>images/x_minus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -314,8 +322,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/a_minus_jog_button.png</normaloff>images/a_minus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -352,8 +360,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/a_plus_jog_button.png</normaloff>images/a_plus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -394,8 +402,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/b_minus_jog_button.png</normaloff>images/b_minus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -432,8 +440,8 @@ border-radius: 6px;
            <string/>
           </property>
           <property name="icon">
-           <iconset resource="probe_basic_vertical.qrc">
-            <normaloff>images/b_plus_jog_button.png</normaloff>images/b_plus_jog_button.png</iconset>
+           <iconset>
+            <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
           </property>
           <property name="iconSize">
            <size>
@@ -615,24 +623,24 @@ border-radius: 4px;
  </widget>
  <customwidgets>
   <customwidget>
-    <class>JogIncrementWidget</class>
-    <extends>QWidget</extends>
-    <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
+   <class>JogIncrementWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
   </customwidget>
-  <customwidget>
-    <class>VCPSettingsSlider</class>
-    <extends>QSlider</extends>
-    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-   </customwidget>
-   <customwidget>
-    <class>ActionButton</class>
-    <extends>QPushButton</extends>
-    <header>qtpyvcp.widgets.button_widgets.action_button</header>
-   </customwidget>
   <customwidget>
    <class>StatusLabel</class>
    <extends>QLabel</extends>
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>ActionButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
  </customwidgets>
  <resources/>

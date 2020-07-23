@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>Frame</class>
- <widget class="QFrame" name="Frame">
+ <class>main_dro_display_widget</class>
+ <widget class="QFrame" name="main_dro_display_widget">
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -36,7 +36,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="VCPStackedWidget" name="gui_axis_display_widget">
+    <widget class="VCPStackedWidget" name="main_dro_display">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
        <horstretch>0</horstretch>
@@ -69,7 +69,7 @@
 }</string>
      </property>
      <property name="currentIndex">
-      <number>1</number>
+      <number>2</number>
      </property>
      <property name="rules" stdset="0">
       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;ch[0]-3&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
@@ -269,7 +269,7 @@
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="dtg_column_header_3">
+                <widget class="QLabel" name="lbl_xtzDtg">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1318,7 +1318,7 @@ QLabel[style=&quot;homing&quot;]{
      <widget class="QWidget" name="xyza">
       <layout class="QVBoxLayout" name="verticalLayout_54">
        <item>
-        <widget class="QWidget" name="widget_52" native="true">
+        <widget class="QWidget" name="frame_xyza" native="true">
          <layout class="QVBoxLayout" name="verticalLayout_56">
           <property name="spacing">
            <number>5</number>
@@ -1336,7 +1336,7 @@ QLabel[style=&quot;homing&quot;]{
            <number>2</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_77">
+           <layout class="QHBoxLayout" name="frame_xyzaHeader">
             <property name="spacing">
              <number>8</number>
             </property>
@@ -1353,7 +1353,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="QFrame" name="frame_43">
+             <widget class="QFrame" name="frame_xyzaHeaderLabels">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1399,7 +1399,7 @@ QLabel[style=&quot;homing&quot;]{
                 <number>20</number>
                </property>
                <item>
-                <widget class="StatusLabel" name="statuslabel_23">
+                <widget class="StatusLabel" name="stlbl_xyzaAxis">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1438,7 +1438,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="StatusLabel" name="statuslabel_24">
+                <widget class="StatusLabel" name="stlbl_xyzaWorking">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1473,7 +1473,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="work_column_header_9">
+                <widget class="QLabel" name="lbl_xyzaMachine">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -1510,7 +1510,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="dtg_column_header_4">
+                <widget class="QLabel" name="lbl_xyzaDtg">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1544,7 +1544,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="StatusLabel" name="statuslabel_25">
+                <widget class="StatusLabel" name="stlbl_xyzaRef">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -1604,7 +1604,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_x_button_4">
+             <widget class="MDIButton" name="mdibtn_xyzaZeroX">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1672,7 +1672,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_4">
+             <widget class="DROWidget" name="drowidget_xyzaWorkingX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1712,7 +1712,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_7">
+             <widget class="DROLabel" name="drolbl_xyzaMachineX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1775,7 +1775,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_8">
+             <widget class="DROLabel" name="drolbl_xyzaDtgX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1830,7 +1830,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_9">
+             <widget class="ActionButton" name="actbtn_xyzaRefX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1885,7 +1885,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_y_button_4">
+             <widget class="MDIButton" name="mdibtn_xyzaZeroY">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -1950,7 +1950,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_5">
+             <widget class="DROWidget" name="drowidget_xyzaWorkingY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -1993,7 +1993,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_9">
+             <widget class="DROLabel" name="drolbl_xyzaMachineY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2056,7 +2056,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_10">
+             <widget class="DROLabel" name="drolbl_xyzaDtgY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2111,7 +2111,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_5">
+             <widget class="ActionButton" name="actbtn_xyzaRefY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2166,7 +2166,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_z_button_4">
+             <widget class="MDIButton" name="mdibtn_xyzaZeroZ">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -2231,7 +2231,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_6">
+             <widget class="DROWidget" name="drowidget_xyzaWorkingZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2274,7 +2274,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_11">
+             <widget class="DROLabel" name="drolbl_xyzaMachineZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2337,7 +2337,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_12">
+             <widget class="DROLabel" name="drolbl_xyzaDtgZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2392,7 +2392,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_7">
+             <widget class="ActionButton" name="actbtn_xyzaRefZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2447,7 +2447,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_a_button_4">
+             <widget class="MDIButton" name="mdibtn_xyzaZeroA">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -2511,7 +2511,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_7">
+             <widget class="DROWidget" name="drowidget_xyzaWorkingA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2554,7 +2554,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_13">
+             <widget class="DROLabel" name="drolbl_xyzaMachineA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2617,7 +2617,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_14">
+             <widget class="DROLabel" name="drolbl_xyzaDtgA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2672,7 +2672,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_8">
+             <widget class="ActionButton" name="actbtn_xyzaRefA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2710,7 +2710,7 @@ QLabel[style=&quot;homing&quot;]{
            </layout>
           </item>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_140">
+           <layout class="QHBoxLayout" name="frame_xyzaFooterButtons">
             <property name="spacing">
              <number>20</number>
             </property>
@@ -2727,7 +2727,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_all_button_5">
+             <widget class="MDIButton" name="mdibtn_xyzaZeroAll">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -2791,7 +2791,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="ref_all_button_5">
+             <widget class="ActionButton" name="actbtn_xyzaRefAllHome">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>1</horstretch>
@@ -2857,7 +2857,7 @@ QLabel[style=&quot;homing&quot;]{
            <number>1</number>
           </property>
           <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_58">
+           <layout class="QHBoxLayout" name="frame_xyzabHeader">
             <property name="spacing">
              <number>7</number>
             </property>
@@ -2874,7 +2874,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_all_button">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroAll">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -2942,7 +2942,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="QFrame" name="frame_25">
+             <widget class="QFrame" name="frame_xyzabHeaderLabels">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -2988,7 +2988,7 @@ QLabel[style=&quot;homing&quot;]{
                 <number>7</number>
                </property>
                <item>
-                <widget class="StatusLabel" name="statuslabel_12">
+                <widget class="StatusLabel" name="stlbl_xyzabWorking">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -3023,7 +3023,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="work_column_header_2">
+                <widget class="QLabel" name="lbl_xyzabMachine">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -3060,7 +3060,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="QLabel" name="dtg_column_header">
+                <widget class="QLabel" name="lbl_xyzabDtg">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -3097,7 +3097,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="ref_all_button">
+             <widget class="ActionButton" name="actbtn_xyzabRefAllHome">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>1</horstretch>
@@ -3155,7 +3155,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_x_button_3">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroX">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -3223,7 +3223,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_8">
+             <widget class="DROWidget" name="drowidget_xyzabWorkingX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3263,7 +3263,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_15">
+             <widget class="DROLabel" name="drolbl_xyzabMachineX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3326,7 +3326,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_16">
+             <widget class="DROLabel" name="drolbl_xyzabDtgX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3381,7 +3381,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_6">
+             <widget class="ActionButton" name="actbtn_xyzabRefX">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3436,7 +3436,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_y_button_3">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroY">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -3501,7 +3501,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_9">
+             <widget class="DROWidget" name="drowidget_xyzabWorkingY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3544,7 +3544,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_17">
+             <widget class="DROLabel" name="drolbl_xyzabMachineY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3607,7 +3607,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_18">
+             <widget class="DROLabel" name="drolbl_xyzabDtgY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3662,7 +3662,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_3">
+             <widget class="ActionButton" name="actbtn_xyzabRefY">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3714,7 +3714,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_z_button_3">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroZ">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -3779,7 +3779,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_10">
+             <widget class="DROWidget" name="drowidget_xyzabWorkingZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3822,7 +3822,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_19">
+             <widget class="DROLabel" name="drolbl_xyzabMachineZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3885,7 +3885,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_20">
+             <widget class="DROLabel" name="drolbl_xyzabDtgZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3940,7 +3940,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton">
+             <widget class="ActionButton" name="actbtn_xyzabRefZ">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -3995,7 +3995,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_a_button_3">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroA">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -4059,7 +4059,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_11">
+             <widget class="DROWidget" name="drowidget_xyzabWorkingA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4102,7 +4102,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_21">
+             <widget class="DROLabel" name="drolbl_xyzabMachineA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4165,7 +4165,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_22">
+             <widget class="DROLabel" name="drolbl_xyzabDtgA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4220,7 +4220,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_2">
+             <widget class="ActionButton" name="actbtn_xyzabRefA">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4275,7 +4275,7 @@ QLabel[style=&quot;homing&quot;]{
              <number>1</number>
             </property>
             <item>
-             <widget class="MDIButton" name="zero_b_button_3">
+             <widget class="MDIButton" name="mdibtn_xyzabZeroB">
               <property name="enabled">
                <bool>false</bool>
               </property>
@@ -4340,7 +4340,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROWidget" name="drowidget_12">
+             <widget class="DROWidget" name="drowidget_xyzabWorkingB">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4383,7 +4383,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_23">
+             <widget class="DROLabel" name="drolbl_xyzabMachineB">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4446,7 +4446,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLabel" name="drolabel_24">
+             <widget class="DROLabel" name="drolbl_xyzabDtgB">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -4501,7 +4501,7 @@ QLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="ActionButton" name="axisactionbutton_4">
+             <widget class="ActionButton" name="actbtn_xyzabRefB">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
