@@ -19,7 +19,7 @@ Rectangle {
         y: parent.height / 2 - height / 2
         antialiasing: true
         z: 0
-        rotation: 90
+        rotation: 0
         transformOrigin: Item.Center
         source: "images/carousel_"+pocket_slots+".png"
 
@@ -34,6 +34,7 @@ Rectangle {
         Repeater {
             id: pocket_slot
             model: pocket_slots
+            rotation: 0
 
             delegate: Item {
 
@@ -41,7 +42,7 @@ Rectangle {
 
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 360/pocket_slots
+                rotation: -index * 360/pocket_slots + 90
                 x: atc_holder.width/2
                 y: 0
 
@@ -51,15 +52,15 @@ Rectangle {
                 Rectangle {
                     id: pocket_rectangle
 
-                    height: atc_holder.height * 0.1
-                    width: height
-                    radius: width/2
+                    height: pocket_diam
+                    width: pocket_diam
+//                    radius: tool_diam/2
                     color: "white"
-                    border.color: "white"
+//                    border.color: "black"
                     anchors.horizontalCenter: parent.horizontalCenter
                     anchors.top: parent.top
-                    anchors.topMargin: 90
-                    border.width: 2
+                    anchors.topMargin: pocket_position
+                    border.width: 0
                     rotation: 360/pocket_slots * index - 90
 
 
@@ -89,13 +90,14 @@ Rectangle {
         Repeater {
             id: tool_slot
             model: pocket_slots
+            rotation: 0
 
             delegate: Item {
 
                 id: tool_item
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 360/pocket_slots
+                rotation: -index * 360/pocket_slots + 90
                 x: atc_holder.width/2
                 y: 0
 
@@ -107,9 +109,9 @@ Rectangle {
                 Rectangle {
                     id: tool_rectangle
 
-                    height: atc_holder.height*0.135
-                    width: height
-                    radius: width/2
+                    height: tool_diam
+                    width: tool_diam
+                    radius: tool_diam/2
                     color: "white"
                     border.color: "grey"
                     anchors.horizontalCenter: parent.horizontalCenter
@@ -193,11 +195,18 @@ Rectangle {
         widget.anim.restart();
     }
 
+    // Animation Properties
     property int anim_from: 90;
     property int anim_to: 0;
     property int anim_duration: 0;
 
+    // Carousel Properties
     property int pocket_slots: 12;
+
+    property int pocket_position: 100;
+    property int pocket_diam: 32;
+    property int tool_diam: 70;
+
     property int prev_pocket: 1;
 
 
@@ -247,6 +256,51 @@ Rectangle {
 
         onPocketSig: {
             pocket_slots = pockets;
+            if (pocket_slots == 8) {
+                pocket_position = 130;
+                pocket_diam = 32;
+                tool_diam = 85;
+            }
+            else if (pocket_slots == 10){
+                pocket_position = 130;
+                pocket_diam = 32;
+                tool_diam = 85;
+            }
+            else if (pocket_slots == 12){
+                pocket_position = 100;
+                pocket_diam = 32;
+                tool_diam = 70;
+            }
+            else if (pocket_slots == 14){
+                pocket_position = 100;
+                pocket_diam = 32;
+                tool_diam = 63;
+            }
+            else if (pocket_slots == 16){
+                pocket_position = 100;
+                pocket_diam = 32;
+                tool_diam = 67;
+            }
+            else if (pocket_slots == 18){
+                pocket_position = 90;
+                pocket_diam = 32;
+                tool_diam = 60;
+            }
+            else if (pocket_slots == 20){
+                pocket_position = 80;
+                pocket_diam = 32;
+                tool_diam = 55;
+            }
+            else if (pocket_slots == 21){
+                pocket_position = 80;
+                pocket_diam = 32;
+                tool_diam = 50;
+            }
+            else if (pocket_slots == 24){
+                pocket_position = 70;
+                pocket_diam = 32;
+                tool_diam = 45;
+            }
         }
 
         onHideToolSig: {
