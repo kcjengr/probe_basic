@@ -1,5 +1,7 @@
 import os
 
+import linuxcnc
+
 # Workarround for nvidia propietary drivers
 
 import ctypes
@@ -21,10 +23,10 @@ STATUS = getPlugin('status')
 TOOLTABLE = getPlugin('tooltable')
 IN_DESIGNER = os.getenv('DESIGNER', False)
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
-
+INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 class DynATC(QQuickWidget):
-
+    pocketSig = Signal(int, arguments=['pockets'])
     rotateSig = Signal(int, int, arguments=['steps', 'direction'])
 
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
@@ -42,7 +44,7 @@ class DynATC(QQuickWidget):
         self.pocket = 1
         self.home = 0
         self.homing = 0
-        self.pocket_slots = 12
+        self.pocket_slots = int(INIFILE.find("ATC", "POCKETS")) or 12
 
         self.engine().rootContext().setContextProperty("atc_spiner", self)
         qml_path = os.path.join(WIDGET_PATH, "atc.qml")
@@ -55,7 +57,9 @@ class DynATC(QQuickWidget):
         self.pockets = dict()
         self.tools = None
 
-        for pocket in range(1, 13):
+        self.pocketSig.emit(self.pocket_slots)
+
+        for pocket in range(1, self.pocket_slots+1):
             self.hideToolSig.emit(pocket)
 
     def hideEvent(self, *args, **kwargs):

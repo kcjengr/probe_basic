@@ -21,7 +21,7 @@ Rectangle {
         z: 0
         rotation: 90
         transformOrigin: Item.Center
-        source: "images/carousel_12.png"
+        source: "images/carousel_"+pocket_slots+".png"
 
 
         RotationAnimator {
@@ -33,7 +33,7 @@ Rectangle {
 
         Repeater {
             id: pocket_slot
-            model: 12
+            model: pocket_slots
 
             delegate: Item {
 
@@ -41,7 +41,7 @@ Rectangle {
 
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 30
+                rotation: -index * 360/pocket_slots
                 x: atc_holder.width/2
                 y: 0
 
@@ -60,7 +60,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 90
                     border.width: 2
-                    rotation: 30 * index - 90
+                    rotation: 360/pocket_slots * index - 90
 
 
                     Text {
@@ -88,20 +88,20 @@ Rectangle {
 
         Repeater {
             id: tool_slot
-            model: 12
+            model: pocket_slots
 
             delegate: Item {
 
                 id: tool_item
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 30
+                rotation: -index * 360/pocket_slots
                 x: atc_holder.width/2
                 y: 0
 
                 state: "visible"
 
-                property int tool_num: index
+                property int tool_num: index+1
                 property var anim: tool_anim
 
                 Rectangle {
@@ -116,7 +116,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: 4
                     border.width: 2
-                    rotation: 30 * index - 90
+                    rotation: 360/pocket_slots * index - 90
 
                     Text {
                         id: tool_text
@@ -197,6 +197,7 @@ Rectangle {
     property int anim_to: 0;
     property int anim_duration: 0;
 
+    property int pocket_slots: 12;
     property int prev_pocket: 1;
 
 
@@ -207,9 +208,9 @@ Rectangle {
         // console.log("ATC STEPS " + steps)
 
         if (direction === 1)
-            anim_to = anim_from + (360/12 * steps);
+            anim_to = anim_from + (360/pocket_slots * steps);
         else if (direction === -1)
-            anim_to = anim_from - (360/12 * steps);
+            anim_to = anim_from - (360/pocket_slots * steps);
 
         anim_duration = 1000 * steps;
 
@@ -243,6 +244,10 @@ Rectangle {
 
     Connections {
         target: atc_spiner;
+
+        onPocketSig: {
+            pocket_slots = pockets;
+        }
 
         onHideToolSig: {
             tool_slot.itemAt(pocket - 1).state = "hidden";
