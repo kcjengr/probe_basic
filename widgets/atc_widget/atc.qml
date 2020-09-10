@@ -196,7 +196,7 @@ Rectangle {
     }
 
     // Animation Properties
-    property int anim_from: 90;
+    property int anim_from: 0;
     property int anim_to: 0;
     property int anim_duration: 0;
 
@@ -230,8 +230,8 @@ Rectangle {
 
         for (var i = 0; i < (tool_slot.count); i++) {
 
-            var tool_from = -anim_from + 90;
-            var tool_to = -anim_to + 90;
+            var tool_from = -anim_from;
+            var tool_to = -anim_to;
 
             // console.log("ROTATE TOOL FROM " + tool_from + " TO " + tool_to);
             rotate_tool(tool_slot.itemAt(i), anim_duration, tool_from, tool_to);
@@ -241,8 +241,8 @@ Rectangle {
 
         for (var j = 0; j < pocket_slot.count; j++) {
 
-            var pocket_from = -anim_from + 90;
-            var pocket_to = -anim_to + 90;
+            var pocket_from = -anim_from;
+            var pocket_to = -anim_to;
 
             // console.log("ROTATE POCKET SLOT FROM " + pocket_from + " TO " + pocket_to);
             rotate_tool(pocket_slot.itemAt(j), anim_duration, pocket_from, pocket_to);
