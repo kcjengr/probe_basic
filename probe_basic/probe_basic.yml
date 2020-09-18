@@ -21,6 +21,13 @@ data_plugins:
     kwargs:
         columns: TXYZDR
 
+  persistent_data_manager:
+    provider: qtpyvcp.plugins.persistent_data_manager:PersistentDataManager
+    kwargs:
+      # serialization method to use: json or pickle
+      serialization_method: pickle
+      # persistence_file: .vcp_data.json
+
 windows:
   mainwindow:
     provider: probe_basic.probe_basic:ProbeBasic
