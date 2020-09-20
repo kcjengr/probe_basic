@@ -1,12 +1,12 @@
 import versioneer
 from setuptools import setup, find_packages
-from qtpyvcp.tools.qcompile import compile
+# from qtpyvcp.tools.qcompile import compile
 
 with open("README.md", "r") as fh:
     long_description = fh.read()
-
-# compile .qrc and .ui files
-compile(['probe_basic', ])
+#
+# # compile .qrc and .ui files
+# compile(['probe_basic', ])
 
 setup(
     name="probe_basic",
@@ -34,10 +34,10 @@ setup(
             'Probe Basic Widgets=widgets'
         ]
     },
-    # install_requires=[
-    #     'qtpyvcp',
-    # ],
-    dependency_links=[
-        'https://github.com/kcjengr/qtpyvcp'
-    ]
+    install_requires=[
+        'qtpyvcp @ git+https://github.com/kcjengr/qtpyvcp.git',
+    ],
+    # dependency_links=[
+    #     'git+https://github.com/kcjengr/qtpyvcp.git@master'
+    # ]
 )
