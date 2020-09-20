@@ -21,6 +21,7 @@ setup(
     download_url="https://github.com/kcjengr/probe_basic/tarball/master",
     packages=find_packages(),
     include_package_data=True,
+    install_requires=['qtpyvcp>=0.3.9'],
     entry_points={
         'gui_scripts': [
             'probe_basic=probe_basic:main',
@@ -34,10 +35,5 @@ setup(
             'Probe Basic Widgets=widgets'
         ]
     },
-    install_requires=[
-        'qtpyvcp>=0.3.8',
-    ],
-    dependency_links=[
-        'git+https://github.com/kcjengr/qtpyvcp.git@master#egg=qtpyvcp-0.3.9'
-    ]
+
 )
