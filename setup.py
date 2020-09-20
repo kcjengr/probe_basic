@@ -38,6 +38,6 @@ setup(
         'qtpyvcp>=0.4.0',
     ],
     dependency_links=[
-        'git+https://github.com/kcjengr/qtpyvcp.git@master#egg=qtpyvcp-0'
+        'git+https://github.com/kcjengr/qtpyvcp.git@master#egg=qtpyvcp-0.4.0'
     ]
 )
