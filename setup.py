@@ -35,8 +35,7 @@ setup(
         ]
     },
     install_requires=[
-        'git+https://github.com/kcjengr/qtpyvcp.git',
-        # 'docopt',
+        'qtpyvcp @ git+https://github.com/kcjengr/qtpyvcp@master',
     ],
     # dependency_links=[
     #     'https://github.com/kcjengr/qtpyvcp/tarball/master#egg=qtpyvcp-0.0.1'
