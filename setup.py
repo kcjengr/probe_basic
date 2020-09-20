@@ -35,9 +35,9 @@ setup(
         ]
     },
     install_requires=[
-        'qtpyvcp @ git+https://github.com/kcjengr/qtpyvcp.git',
+        'qtpyvcp>=0.4.0',
     ],
-    # dependency_links=[
-    #     'git+https://github.com/kcjengr/qtpyvcp.git@master'
-    # ]
+    dependency_links=[
+        'git+https://github.com/kcjengr/qtpyvcp.git@master#egg=qtpyvcp-0'
+    ]
 )
