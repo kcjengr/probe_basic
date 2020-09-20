@@ -44,7 +44,7 @@ class DynATC(QQuickWidget):
         self.pocket = 1
         self.home = 0
         self.homing = 0
-        self.pocket_slots = int(INIFILE.find("ATC", "POCKETS")) or 12
+        self.pocket_slots = int(INIFILE.find("ATC", "POCKETS") or 12)
 
         self.engine().rootContext().setContextProperty("atc_spiner", self)
         qml_path = os.path.join(WIDGET_PATH, "atc.qml")
