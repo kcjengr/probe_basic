@@ -34,10 +34,10 @@ setup(
             'Probe Basic Widgets=widgets'
         ]
     },
-    install_requires=[
-        'qtpyvcp @ git+https://github.com/kcjengr/qtpyvcp@master',
-    ],
-    # dependency_links=[
-    #     'https://github.com/kcjengr/qtpyvcp/tarball/master#egg=qtpyvcp-0.0.1'
-    # ]
+    # install_requires=[
+    #     'qtpyvcp',
+    # ],
+    dependency_links=[
+        'https://github.com/kcjengr/qtpyvcp'
+    ]
 )
