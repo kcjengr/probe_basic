@@ -17779,7 +17779,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::Rounded</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <widget class="QWidget" name="holeop_tab">
                <attribute name="title">
@@ -18203,93 +18203,7 @@ QTabBar::tab:only-one {
                </attribute>
                <layout class="QHBoxLayout" name="horizontalLayout_49">
                 <item>
-                 <widget class="QTabWidget" name="tabWidget_10">
-                  <property name="focusPolicy">
-                   <enum>Qt::TabFocus</enum>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::LeftToRight</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QTabWidget QTabBar::tab {
-    margin-top: 5px;
-    margin-right: 0px;
-    min-width: 130px;
-    min-height: 23px;
-    font: 14pt &quot;bebas kai&quot;;
-}
-
-QTabBar::tab:first {
-    margin-left: 300px;
-    border-left-width: 2px;
-    border-right-width: 1px;
-    border-bottom-width: 2px;
-    border-top-left-radius: 4px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 4px;
-    border-bottom-right-radius: 0px;
-}
-
-QTabBar::tab:last {
-    border-left-width: 1px;
-    border-right-width: 2px;
-    border-top-width: 2px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 4px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 4px;
-}
-
-QTabBar::tab:only-one {
-    border-width: 2px;
-    border-radius: 4px;
-}</string>
-                  </property>
-                  <property name="currentIndex">
-                   <number>2</number>
-                  </property>
-                  <widget class="QWidget" name="widget_36">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_37">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                   <layout class="QHBoxLayout" name="horizontalLayout_71"/>
-                  </widget>
-                  <widget class="QWidget" name="widget_39">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_46">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_47">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_48">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_49">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                  <widget class="QWidget" name="widget_50">
-                   <attribute name="title">
-                    <string/>
-                   </attribute>
-                  </widget>
-                 </widget>
+                 <widget class="FacingWidget" name="facingwidget"/>
                 </item>
                </layout>
               </widget>
@@ -31060,6 +30974,11 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.line_edit</header>
   </customwidget>
   <customwidget>
+   <class>FacingWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp_conversational_gcode.widgets.facing</header>
+  </customwidget>
+  <customwidget>
    <class>HoleCircleWidget</class>
    <extends>QWidget</extends>
    <header>qtpyvcp_conversational_gcode.widgets.hole_circle</header>
@@ -32316,16 +32235,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
   <buttongroup name="fileviewerbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
