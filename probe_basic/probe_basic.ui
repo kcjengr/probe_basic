@@ -17781,6 +17781,16 @@ QTabBar::tab:only-one {
               <property name="currentIndex">
                <number>1</number>
               </property>
+              <widget class="QWidget" name="facing_tab">
+               <attribute name="title">
+                <string>FACING</string>
+               </attribute>
+               <layout class="QHBoxLayout" name="horizontalLayout_49">
+                <item>
+                 <widget class="FacingWidget" name="facingwidget"/>
+                </item>
+               </layout>
+              </widget>
               <widget class="QWidget" name="holeop_tab">
                <attribute name="title">
                 <string>   HOLE OPS   </string>
@@ -17830,7 +17840,7 @@ QTabBar::tab:only-one {
 }</string>
                   </property>
                   <property name="currentIndex">
-                   <number>7</number>
+                   <number>6</number>
                   </property>
                   <widget class="QWidget" name="spot_drill_tab">
                    <attribute name="title">
@@ -18177,6 +18187,11 @@ QTabBar::tab:only-one {
                    <attribute name="title">
                     <string>XY COORD</string>
                    </attribute>
+                   <layout class="QHBoxLayout" name="horizontalLayout_71">
+                    <item>
+                     <widget class="XYCoordWidget" name="xycoordwidget"/>
+                    </item>
+                   </layout>
                   </widget>
                   <widget class="QWidget" name="PATTERN">
                    <attribute name="title">
@@ -18194,16 +18209,6 @@ QTabBar::tab:only-one {
                    </attribute>
                   </widget>
                  </widget>
-                </item>
-               </layout>
-              </widget>
-              <widget class="QWidget" name="facing_tab">
-               <attribute name="title">
-                <string>FACING</string>
-               </attribute>
-               <layout class="QHBoxLayout" name="horizontalLayout_49">
-                <item>
-                 <widget class="FacingWidget" name="facingwidget"/>
                 </item>
                </layout>
               </widget>
@@ -19683,7 +19688,7 @@ color: white;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tabWidget_24Page1">
            <attribute name="title">
@@ -30322,7 +30327,7 @@ border-radius: 4px;
 }</string>
              </property>
              <property name="text">
-              <string>0.0</string>
+              <string>10.0</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -30482,7 +30487,7 @@ border-radius: 1px;
 }</string>
              </property>
              <property name="text">
-              <string>0.0</string>
+              <string>300.0</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -30982,6 +30987,11 @@ font: 11pt bebas kai;
    <class>HoleCircleWidget</class>
    <extends>QWidget</extends>
    <header>qtpyvcp_conversational_gcode.widgets.hole_circle</header>
+  </customwidget>
+  <customwidget>
+   <class>XYCoordWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp_conversational_gcode.widgets.xy_coord</header>
   </customwidget>
   <customwidget>
    <class>DROLabel</class>
@@ -32235,16 +32245,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
  </buttongroups>
 </ui>
