@@ -35,5 +35,4 @@ setup(
             'Probe Basic Widgets=widgets'
         ]
     },
-
 )
