@@ -15,7 +15,7 @@
 * [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy)
 * [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org)
 * [Gitter](https://gitter.im/kcjengr/qtpyvcp)
-* [Discord](https://discord.gg/463hMhd)
+* [Discord](https://discord.gg/463hMhd) (Issues joining? please try other network)
 * [Issue Tracker](https://github.com/kcjengr/ProbeBasic/issues)
 
 
