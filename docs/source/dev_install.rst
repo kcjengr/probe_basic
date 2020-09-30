@@ -5,19 +5,19 @@ Development Install
 
 **Probe Basic Development Installation Guide**
 
-**Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
 
+**Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
 
 **For Whatever reason mesa ehternet setups go much more smoothly when a wired ethernet internet connection is used during linux installation.  The debian installer does some magic that sets up the network perfectly with only one minor tweak once installed.  The wireless setup after install is much easier to get working.  I HIGHLY RECOMMEND using the wired internet connection and choosing to setup that connection during installation to avoid unforeseen issues in connecting to the mesa card(s) post install.**
 
 
-**1- Install Linuxcnc**
+**1- Download the Linuxcnc ISO Image File**
 
 ::
 
-    http://www.linuxcnc.org/testing-stretch-rtpreempt/
+    http://www.linuxcnc.org/downloads/
 
-Select the "linuxcnc-stretch-uspace-amd64-r13.iso" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
+Select the "LinuxCNC 2.8.0 Debian 10 Buster PREEMPT-RT ISO" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
 ::
 
@@ -34,37 +34,13 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt upgrade
 
 
-**2- Upgrade to LinuxCNC version 2.8**
 
-Copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
-
-::
-
-    sudo apt-get update
-
-    sudo apt-get dist-upgrade
-
-    sudo apt-get install dirmngr
-
-    sudo apt-get install software-properties-common
-
-    sudo apt-key adv --keyserver hkp://keys.gnupg.net --recv-key E0EE663E
-
-    sudo add-apt-repository "deb http://buildbot.linuxcnc.org/ stretch 2.8-rtpreempt"
-
-    sudo apt update
-
-    sudo apt upgrade
-
-    sudo apt dist-upgrade
-
-
-**3- Start Linuxcnc first time**
+**2- Start Linuxcnc first time**
 
 Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
 
 
-**4- Install qtpyvcp dependencies**
+**3- Install qtpyvcp dependencies**
 
 Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.
 
@@ -77,7 +53,7 @@ Copy the following in the main terminal it is all one line, hit enter, select Y 
     sudo apt install qttools5.dev qttools5-dev-tools python-pip
 
 
-**5- Install qtpyvcp**
+**4- Install qtpyvcp**
 
 Copy the following in the main terminal, hit enter, select Y for yes if asked at any point during installation.
 
@@ -100,7 +76,7 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 **IMPORTANT: now Log Off of Linux, then Log In again for the previous installation to take effect, then continue with step 6 after in a main terminal!**
 
 
-**6- Install probe_basic**
+**5- Install probe_basic**
 
 Copy the following in the main terminal, hit enter.
 
@@ -109,7 +85,7 @@ Copy the following in the main terminal, hit enter.
     git clone https://github.com/kcjengr/probe_basic.git
 
 
-**7- Setup the probe_basic directory and install using pip.**
+**6- Setup the probe_basic directory and install using pip.**
 
 From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.
 
@@ -127,7 +103,7 @@ From the main terminal paste the following and press enter after each, if asked,
     
 
 
-**8- Edit probe_basic**
+**7- Edit probe_basic**
 
 To be able to edit the probe_basic gui, you will enter the following in the main terminal.
 
@@ -136,7 +112,7 @@ To be able to edit the probe_basic gui, you will enter the following in the main
     editvcp probe_basic
 
 
-**9- You are Finished with Installation!**
+**8- You are Finished with Installation!**
 
 This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a Desktop Icon to launch the editor for probe_basic,  follow the below instructions:
 
@@ -161,5 +137,5 @@ Press the Save button once completed.
 The first launch select Mark Executable when prompted.
 
 
-**10- Congratualtions you have made it through and should be ready to start having fun!**
+**9- Congratualtions you have made it through and should be ready to start having fun!**
 
