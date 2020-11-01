@@ -63,6 +63,8 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     cd qtpyvcp
 
+    qcompile .
+
     pip install --editable .
 
     cd
