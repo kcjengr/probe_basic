@@ -101,7 +101,7 @@ From the main terminal paste the following and press enter after each, if asked,
 
     cp -r ~/probe_basic/probe_basic/fonts/ ~/.local/share/
 
-    cp -r ~/probe_basic/config/xyzab/ ~/linuxcnc/configs/
+    cp -r ~/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
     
 
 
