@@ -104,6 +104,16 @@ From the main terminal paste the following and press enter after each, if asked,
     cp -r ~/probe_basic/config/probe_basic/ ~/linuxcnc/configs/
     
 
+And install the conversational widgets
+
+::
+
+    pip install git+https://github.com/kcjengr/qtpyvcp.conversational-gcode.git
+
+
+More details about conversational widgets:
+
+https://github.com/kcjengr/qtpyvcp.conversational-gcode
 
 **7- Edit probe_basic**
 
