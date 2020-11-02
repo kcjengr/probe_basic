@@ -63,8 +63,6 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
 
     cd qtpyvcp
 
-    qcompile .
-
     pip install --editable .
 
     cd
@@ -94,6 +92,8 @@ From the main terminal paste the following and press enter after each, if asked,
 ::
 
     cd probe_basic
+
+    qcompile .
 
     pip install -e .
 
