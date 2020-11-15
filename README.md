@@ -3,19 +3,27 @@
 
 ## Documentation
 
-**probe_basic development installation** https://kcjengr.github.io/probe_basic/dev_install.html
+### installation
 
-**QtPyVCP use documentation** https://kcjengr.github.io/qtpyvcp/
+https://kcjengr.github.io/probe_basic/quick_start.html
+
+### Development installation 
+
+https://kcjengr.github.io/probe_basic/dev_install.html
+
+### QtPyVCP use documentation
+
+https://qtpyvcp.com
 
 
 ## Resources
 
 * [Development](https://github.com/kcjengr/Probe_Basic/)
 * [Documentation](https://kcjengr.github.io/probe_basic/)
-* [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy)
-* [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org)
-* [Gitter](https://gitter.im/kcjengr/qtpyvcp)
-* [Discord](https://discord.gg/463hMhd) (Issues joining? please try other network)
+* [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy) (isolated)
+* [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org) (bridged)
+* [Gitter](https://gitter.im/kcjengr/qtpyvcp) (bridged)
+* [Discord](https://discord.gg/463hMhd) (bridged)
 * [Issue Tracker](https://github.com/kcjengr/Probe_Basic/issues)
 
 
@@ -24,7 +32,7 @@
 * [LinuxCNC](https://linuxcnc.org)
 * Python 2.7
 * PyQt5 or PySide2
-* [QtPyVCP](https://qtpyvcp.kcjengr.com/)
+* [QtPyVCP](https://qtpyvcp.com/)
 
 Probe Basic is developed and tested using the LinuxCNC Debian 9 x64 (stretch)
 [Live ISO](http://www.linuxcnc.org/testing-stretch-rtpreempt/) and Ubuntu 18.10 x64 SIM. It should run
