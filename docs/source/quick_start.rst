@@ -40,7 +40,16 @@ After installation, copy the following in the main terminal one line at a time a
 Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
 
 
-**3- Download ProbeBasicInstaller**
+**3- Install Probe Basic requiremens**
+
+On a terminal emulator run:
+
+::
+
+    sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-wheel python-setuptools python-pip git python-pyqtgraph python-pyqt5.qtwebkit
+
+
+**4- Download ProbeBasicInstaller**
 
 Cick the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and selecxt properties.  Select the Permissions Tab in the window that appears and check the box for "Allow this file to run as a program", see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.
 
