@@ -3,6 +3,64 @@ windows:
   mainwindow:
     kwargs:
       confirm_exit: false
+# This sections defines the default Data Sources
+data_plugins:
+  status:
+    provider: qtpyvcp.plugins.status:Status
+    kwargs:
+      cycle_time: 15
+
+  persistent_data_manager:
+    provider: qtpyvcp.plugins.persistent_data_manager:PersistentDataManager
+    kwargs:
+      # serialization method to use: json or pickle
+      serialization_method: pickle
+      # persistence_file: .vcp_data.json
+
+  settings:
+    provider: qtpyvcp.plugins.settings:Settings
+
+  position:
+    provider: qtpyvcp.plugins.positions:Position
+    kwargs:
+      report_actual_pos: True
+      use_program_units: True
+
+  tooltable:
+    provider: qtpyvcp.plugins.tool_table:ToolTable
+
+  offsettable:
+    provider: qtpyvcp.plugins.offset_table:OffsetTable
+
+  notifications:
+    provider: qtpyvcp.plugins.notifications:Notifications
+    kwargs:
+      # show notification popups
+      enabled: True
+      # "native" or "dbus"
+      mode: native
+      # max number of notifications to show
+      max_messages: 5
+      # whether to save messages on exit
+      persistent: True
+
+  file_locations:
+    provider: qtpyvcp.plugins.file_locations:FileLocations
+    log_level: debug
+    kwargs:
+      default_location: NC Files
+      local_locations:
+        # format: Location Name: path
+        Home: ~/
+        Desktop: ~/Desktop
+        NC Files: ~/linuxcnc/nc_files
+      network_locations:
+
+    exportedhal:
+        provider: qtpyvcp.plugins.exported_hal:ExportedHal
+
+  virtual_input:
+    provider: qtpyvcp.plugins.virtual_input_manager:VirtualInputManager
 
 settings:
 
