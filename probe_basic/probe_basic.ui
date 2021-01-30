@@ -22670,7 +22670,7 @@ QPushButton:checked {
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_91">
            <item>
-            <widget class="ActionButton" name="actionbutton_7">
+            <widget class="ActionButton" name="run_from_line_Btn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -22679,13 +22679,13 @@ QPushButton:checked {
              </property>
              <property name="minimumSize">
               <size>
-               <width>130</width>
+               <width>75</width>
                <height>42</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>130</width>
+               <width>75</width>
                <height>42</height>
               </size>
              </property>
@@ -22698,10 +22698,38 @@ QPushButton:checked {
 }</string>
              </property>
              <property name="text">
-              <string>RUN FM HERE</string>
+              <string>RUN FRM:</string>
              </property>
              <property name="actionName" stdset="0">
               <string>program.run-from-line</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="VCPLineEdit" name="run_from_line_Num">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>50</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>50</width>
+               <height>42</height>
+              </size>
+             </property>
+             <property name="text">
+              <string>0</string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -30961,11 +30989,6 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
   </customwidget>
   <customwidget>
-   <class>DynATC</class>
-   <extends>QQuickWidget</extends>
-   <header>widgets.atc_widget.atc</header>
-  </customwidget>
-  <customwidget>
    <class>FileSystemTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
@@ -31004,6 +31027,11 @@ font: 11pt bebas kai;
    <class>StatusLabel</class>
    <extends>QLabel</extends>
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
+  </customwidget>
+  <customwidget>
+   <class>DynATC</class>
+   <extends>QQuickWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.atc_widget.atc</header>
   </customwidget>
   <customwidget>
    <class>VCPStackedWidget</class>
@@ -32335,16 +32363,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
