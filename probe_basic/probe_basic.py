@@ -2,10 +2,11 @@
 
 import os
 
-from qtpy.QtCore import Slot
-from qtpy.QtGui import QFontDatabase
+from qtpy.QtCore import Slot, QRegExp
+from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
 
+from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
@@ -21,6 +22,7 @@ class ProbeBasic(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasic, self).__init__(*args, **kwargs)
+        self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
@@ -83,6 +85,15 @@ class ProbeBasic(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_guiaxisdisplayGroup_buttonClicked(self, button):
         self.gui_axis_display_widget.setCurrentIndex(button.property('page'))
+
+    def on_run_from_line_Btn_clicked(self):
+        try:
+            lineNum = int(self.run_from_line_Num.text())
+        except:
+            return False
+
+        actions.program_actions.run(lineNum)
+
 
 
             
