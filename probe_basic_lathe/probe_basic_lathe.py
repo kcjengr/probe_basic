@@ -2,6 +2,8 @@
 
 import os
 
+from qtpy.QtCore import Slot, QRegExp
+from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
@@ -12,6 +14,8 @@ LOG = logger.getLogger('QtPyVCP.' + __name__)
 
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 
+# Add custom fonts
+QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
 class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
