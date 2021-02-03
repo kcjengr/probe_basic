@@ -5,6 +5,8 @@ import os
 from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpyvcp.actions.machine_actions import issue_mdi
+
+from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
