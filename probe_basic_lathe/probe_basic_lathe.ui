@@ -208,7 +208,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>4</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -14320,12 +14320,79 @@ border-radius: 6px;
              </property>
             </widget>
            </item>
+           <item>
+            <widget class="QLabel" name="ref_coilumn_header_37">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>2</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>2</width>
+               <height>16777215</height>
+              </size>
+             </property>
+             <property name="styleSheet">
+              <string notr="true"/>
+             </property>
+             <property name="text">
+              <string/>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="ActionButton" name="actionbutton_51">
+             <property name="sizePolicy">
+              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+               <horstretch>0</horstretch>
+               <verstretch>0</verstretch>
+              </sizepolicy>
+             </property>
+             <property name="minimumSize">
+              <size>
+               <width>0</width>
+               <height>52</height>
+              </size>
+             </property>
+             <property name="maximumSize">
+              <size>
+               <width>16777215</width>
+               <height>52</height>
+              </size>
+             </property>
+             <property name="focusPolicy">
+              <enum>Qt::NoFocus</enum>
+             </property>
+             <property name="styleSheet">
+              <string notr="true">QPushButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+             </property>
+             <property name="text">
+              <string>STOP</string>
+             </property>
+             <property name="actionName" stdset="0">
+              <string>program.abort</string>
+             </property>
+            </widget>
+           </item>
           </layout>
          </item>
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_153">
            <item>
-            <widget class="ActionButton" name="actionbutton_48">
+            <widget class="ActionButton" name="run_from_line_Btn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -14380,44 +14447,47 @@ border-radius: 6px;
             </widget>
            </item>
            <item>
-            <widget class="ActionButton" name="actionbutton_49">
+            <widget class="VCPLineEdit" name="run_from_line_Num">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
+               <horstretch>130</horstretch>
                <verstretch>0</verstretch>
               </sizepolicy>
              </property>
              <property name="minimumSize">
               <size>
                <width>130</width>
-               <height>42</height>
+               <height>38</height>
               </size>
              </property>
              <property name="maximumSize">
               <size>
-               <width>130</width>
-               <height>42</height>
+               <width>70</width>
+               <height>38</height>
               </size>
              </property>
-             <property name="focusPolicy">
-              <enum>Qt::NoFocus</enum>
-             </property>
              <property name="styleSheet">
-              <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
+              <string notr="true">VCPLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 17pt &quot;Bebas Kai&quot;;
 }</string>
              </property>
              <property name="text">
-              <string>FEED HOLD</string>
+              <string/>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
+             <property name="placeholderText">
+              <string>0</string>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;ch[0] == 'Paused'&quot;, &quot;name&quot;: &quot;check when paused&quot;}]</string>
-             </property>
-             <property name="actionName" stdset="0">
-              <string>program.pause</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
              </property>
             </widget>
            </item>
@@ -14481,7 +14551,7 @@ border-radius: 6px;
             </widget>
            </item>
            <item>
-            <widget class="ActionButton" name="actionbutton_51">
+            <widget class="ActionButton" name="actionbutton_49">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -14509,10 +14579,16 @@ border-radius: 6px;
 }</string>
              </property>
              <property name="text">
-              <string>STOP</string>
+              <string>FEED HOLD</string>
+             </property>
+             <property name="checkable">
+              <bool>true</bool>
+             </property>
+             <property name="rules" stdset="0">
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;ch[0] == 'Paused'&quot;, &quot;name&quot;: &quot;check when paused&quot;}]</string>
              </property>
              <property name="actionName" stdset="0">
-              <string>program.abort</string>
+              <string>program.pause</string>
              </property>
             </widget>
            </item>
