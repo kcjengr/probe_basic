@@ -22738,6 +22738,9 @@ QPushButton:checked {
              <property name="focusPolicy">
               <enum>Qt::NoFocus</enum>
              </property>
+             <property name="statusTip">
+              <string>Warning! this run command does not account for preceding positioning moves or commands!</string>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
@@ -22747,7 +22750,7 @@ QPushButton:checked {
               <string>RUN FROM LINE</string>
              </property>
              <property name="actionName" stdset="0">
-              <string extracomment="Start Spindle Manually Before Running From Line!">program.run-from-line</string>
+              <string>program.run-from-line</string>
              </property>
             </widget>
            </item>
@@ -22789,6 +22792,12 @@ QPushButton:checked {
                <width>130</width>
                <height>39</height>
               </size>
+             </property>
+             <property name="toolTip">
+              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline; color:#ff0000;&quot;&gt;IMPORTANT WARNING!!!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;RUN FROM LINE &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;does &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;NOT &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;account for any&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;preceding commands such as but not limited &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;too the following:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- XYZ positioning move Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Feedrate Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- G5x Work Offset Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool Change Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool length offsets that need to be active&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Spindle or Coolant ON Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- ANY Commands not on the current line&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;It is recommended to be run from a previous&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;tool change line that reissues all of those &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;commands to avoid unexpected behavior!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+             </property>
+             <property name="statusTip">
+              <string>Warning! this run command does not account for preceding positioning moves or commands!</string>
              </property>
              <property name="styleSheet">
               <string notr="true">font: 17pt;</string>
@@ -32375,16 +32384,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
