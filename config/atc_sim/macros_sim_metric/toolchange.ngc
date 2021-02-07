@@ -1,6 +1,11 @@
 o<toolchange> sub
 (print, o<toolchange>)
 
+O001 if [#<_task> EQ 0]
+  (debug, Task is null)
+  o<toolchange> return [999]
+O001 endif (this code eliminates tool missing error on load for multiple use tools)
+
 ;assign the tool numbers held in parameters to the pocket numbers
 #1 = #5190
 #2 = #5191
