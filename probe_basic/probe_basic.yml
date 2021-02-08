@@ -214,3 +214,10 @@ dialogs:
     provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
     kwargs:
       ui_file: {{ file.dir }}/about.ui
+
+  run_from_line_dialog:
+    provider: qtpyvcp.widgets.dialogs.base_dialog:BaseDialog
+    kwargs:
+      ui_file: {{file.dir}}/run_from_line_dialog.ui
+      title: Run From Line      # optional, set the dialog title
+      modal: true               # optional, whether the dialog is modal

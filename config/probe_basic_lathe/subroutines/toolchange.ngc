@@ -1,6 +1,10 @@
 o<toolchange> sub
 (print, o<toolchange>)
 
+O001 if [#<_task> EQ 0]
+  (debug, Task is null)
+  o<toolchange> return [999]
+O001 endif (this code eliminates tool missing error on load for multiple use tools)
 
 ;assign the tool numbers held in parameters to the pocket numbers
 #1 = #5190
@@ -18,10 +22,10 @@ o<toolchange> sub
 
 
 ;assign the variables passed by M6 to some parameters
-#100= #<selected_tool>      
-#110= #<tool_in_spindle>    
-#120= #<selected_pocket>    
-  
+#100= #<selected_tool>
+#110= #<tool_in_spindle>
+#120= #<selected_pocket>
+
 
 O10 if [#100 EQ #110] ; checks if tool in the spindle is same as requested
  o<toolchange> endsub [1]
@@ -37,12 +41,12 @@ O10 endif
 O100 do
  	O110 if [#[5189+#15] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
 		#<next_pocket> = #15 ; if tool is found in pocket, assigns the next pocket
-			
+
 	O110 endif
 
 	O115 if [#[5189+#15] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
 		#<open_pocket> = #15
-		
+
 	O115 endif
   #15= [#15-1]
 O100 while [#15 GT 0]
@@ -63,7 +67,7 @@ O180 IF [#110 GT 0] ; checks if there is a valid tool in the spindle
 		(abort, carousel is full, cant put away tool in into carousel)
 	O190 endif
 
-	M10 P[#<open_pocket>] ; move carousel to an open pocket 
+	M10 P[#<open_pocket>] ; move carousel to an open pocket
     	M21 ; puts the tool in spindle away into the open pocket
         #30 = #<open_pocket>
 	##30 = #110 ; save tool number in pocket
@@ -86,10 +90,10 @@ O200 IF [#100 GT 0] ; selected tool is not tool0
 
     M22 ;Carousel out
     #25 = #<next_pocket>
-    ##25 =0 ; empty the pocket 
-    
+    ##25 =0 ; empty the pocket
+
     #5210 = #100 ;Set persistent variable to remember tool in spindle after power cycle
-	
+
 O200 Else
 
 M65 P2 ; deactive drawbar
@@ -102,11 +106,11 @@ M66 P0 L3 Q4 ;check carousel in position sensor
       (abort, failed to send carousel home) ; abort if the 	sensor does not activate in 5 seconds
    O210 endif
 M65 P1
-O200 ENDIF 
+O200 ENDIF
 
 
 
-;assign the tool numbers in the pockets to the parameters 
+;assign the tool numbers in the pockets to the parameters
 #5190= #1
 #5191= #2
 #5192= #3
