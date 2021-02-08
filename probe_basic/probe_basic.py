@@ -2,6 +2,7 @@
 
 import os
 
+from qtpy import uic
 from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
@@ -9,6 +10,7 @@ from qtpy.QtWidgets import QAbstractButton
 from qtpyvcp import actions, plugins
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
+from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
 
 import probe_basic_rc
 
@@ -30,6 +32,7 @@ class ProbeBasic(VCPMainWindow):
     def __init__(self, *args, **kwargs):
         super(ProbeBasic, self).__init__(*args, **kwargs)
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
+        self.RFLDia = RFLDialog()
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
@@ -92,7 +95,8 @@ class ProbeBasic(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_guiaxisdisplayGroup_buttonClicked(self, button):
         self.gui_axis_display_widget.setCurrentIndex(button.property('page'))
-
+    
+    """
     def on_run_from_line_Btn_clicked(self):
         curFile = STATUS.file()
         curTools = TOOLTABLE.tool_table_file
@@ -114,3 +118,16 @@ class ProbeBasic(VCPMainWindow):
             #actions.machine_actions.issue_mdi("G0 X{0}Y{1}Z{2}A{3}B{4}".format(*pos))
 
         actions.program_actions.run(lineNum)
+    """
+    def on_run_from_line_Btn_clicked(self):
+        self.RFLDia.open()
+
+
+class RFLDialog(BaseDialog):
+    def __init__(self):
+        super(RFLDialog, self).__init__(stay_on_top=True, ui_file=os.path.join(os.path.dirname(__file__), 'run_from_line_dialog.ui'))
+
+        # TODO: Set all the correct coordinate/spindle/coolant variables
+
+    def on_rfl_cycle_start_clicked(self):
+        print("Test")
