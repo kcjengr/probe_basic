@@ -13,14 +13,11 @@ from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 import probe_basic_rc
 
 import run_from_line as rfl
-import time
-import linuxcnc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 STATUS = plugins.status.Status()
 TOOLTABLE = plugins.tool_table.ToolTable()
-COMMAND = linuxcnc.command()
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -105,7 +102,4 @@ class ProbeBasic(VCPMainWindow):
         except:
             return False
 
-        pos = rfl.getEndPos(curFile, curTools, lineNum)
-
-        self.RFLDia.open2(pos)
-        print("G0 X{0}Y{1}Z{2}A{3}B{4}".format(*pos))
+        self.RFLDia.open(curFile, curTools, lineNum)
