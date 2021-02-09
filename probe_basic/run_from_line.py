@@ -2,6 +2,9 @@
 
 import os
 import subprocess
+
+from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
+
 # Temporarily removed requirement for INI and var
 # def getEndPos(ngc, toolTbl, INI, var, endLine):
 def getEndPos(ngc, toolTbl, endLine):
@@ -53,6 +56,23 @@ def getEndPos(ngc, toolTbl, endLine):
 
     rsFile.close()
     return coords
+
+class RFLDialog(BaseDialog):
+    def __init__(self):
+        super(RFLDialog, self).__init__(stay_on_top=True, ui_file=os.path.join(os.path.dirname(__file__), 'run_from_line_dialog.ui'))
+
+        # TODO: Set all the correct coordinate/spindle/coolant variables
+
+    def on_rfl_cycle_start_clicked(self):
+        print("Test")
+    
+    def open2(self, coords):
+        self.rfh_x_pos_coords.setText(str(coords[0]))
+        self.rfh_y_pos_coords.setText(str(coords[1]))
+        self.rfh_z_pos_coords.setText(str(coords[2]))
+        self.rfh_a_pos_coords.setText(str(coords[3]))
+        self.rfh_b_pos_coords.setText(str(coords[4]))
+        self.open()
 
 if __name__ == "__main__":
     home = os.path.expanduser("~")

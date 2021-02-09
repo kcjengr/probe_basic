@@ -236,7 +236,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>8</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -19212,22 +19212,6 @@ color: white;
              </item>
             </layout>
            </widget>
-           <widget class="DialogButton" name="dialogbutton_2">
-            <property name="geometry">
-             <rect>
-              <x>120</x>
-              <y>530</y>
-              <width>291</width>
-              <height>41</height>
-             </rect>
-            </property>
-            <property name="text">
-             <string>RUN FROM LINE DIALOG</string>
-            </property>
-            <property name="dialogName" stdset="0">
-             <string>run_from_line_dialog</string>
-            </property>
-           </widget>
           </widget>
           <widget class="QWidget" name="status_tab">
            <attribute name="title">
@@ -22732,7 +22716,7 @@ QPushButton:checked {
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_91">
            <item>
-            <widget class="DialogButton" name="dialogbutton">
+            <widget class="ActionButton" name="run_from_line_Btn">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -22746,18 +22730,12 @@ QPushButton:checked {
               </size>
              </property>
              <property name="text">
-              <string>RUN FROM LINE</string>
+              <string>run from line</string>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:enabled&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:file&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] and ch[1] and (ch[2] == 1) and (ch[3] != \&quot;No file loaded\&quot;) else False&quot;, &quot;name&quot;: &quot;Is ready&quot;}]</string>
-             </property>
-             <property name="dialogName" stdset="0">
-              <string>run_from_line_dialog</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:enabled&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:file&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] and ch[1] and (ch[2] != \&quot;No file loaded\&quot;) else False&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
              </property>
             </widget>
-           </item>
-           <item>
-            <widget class="ActionButton" name="run_from_line_Btn"/>
            </item>
            <item>
             <widget class="QLabel" name="ref_coilumn_header_14">
@@ -31024,11 +31002,6 @@ font: 11pt bebas kai;
    <header>widgets.atc_widget.atc</header>
   </customwidget>
   <customwidget>
-   <class>DialogButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.button_widgets.dialog_button</header>
-  </customwidget>
-  <customwidget>
    <class>FileSystemTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
@@ -32395,15 +32368,15 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
