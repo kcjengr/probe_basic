@@ -1,10 +1,18 @@
 #!/usr/bin/env python
 
 import os
+import shutil
 import subprocess
+
+import linuxcnc
+import gcode
 
 from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
 from qtpyvcp import plugins
+
+from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import PrintCanon
+
+
 
 STATUS = plugins.status.Status()
 
@@ -14,6 +22,22 @@ STATUS = plugins.status.Status()
 class RFLDialog(BaseDialog):
     def __init__(self):
         super(RFLDialog, self).__init__(stay_on_top=True, ui_file=os.path.join(os.path.dirname(__file__), 'run_from_line_dialog.ui'))
+        
+        inifile = os.getenv("INI_FILE_NAME")
+        
+        self.config_dir = os.path.dirname(inifile)
+        
+        self.ini = linuxcnc.ini(inifile)
+        self.stat = linuxcnc.stat()
+        
+        temp = self.ini.find("RS274NGC", "PARAMETER_FILE") or "linuxcnc.var"
+        
+        self.parameter_file = os.path.join(self.config_dir, temp)
+        self.temp_parameter_file = os.path.join(self.parameter_file + '.temp')
+        
+        self.canon = None
+        self.canon_class = PrintCanon
+        
 
     def on_rfl_cycle_start_clicked(self):
         # TODO:
@@ -25,6 +49,19 @@ class RFLDialog(BaseDialog):
     
     def open(self, ngc, toolTbl, endLine):
         self.ngc = ngc
+        
+        self.canon = self.canon_class()
+        
+        if os.path.exists(self.parameter_file):
+            shutil.copy(self.parameter_file, self.temp_parameter_file)
+
+        self.canon.parameter_file = self.temp_parameter_file
+
+        unitcode = "G%d" % (20 + (self.stat.linear_units == 1))
+        initcode = self.ini.find("RS274NGC", "RS274NGC_STARTUP_CODE") or ""
+        
+        result, seq = gcode.parse(ngc, self.canon, unitcode, initcode)
+
         self.toolTbl = toolTbl
         self.endLine = endLine
 
