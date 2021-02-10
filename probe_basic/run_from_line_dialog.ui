@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
-    <height>508</height>
+    <width>230</width>
+    <height>551</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -45,13 +45,13 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>250</width>
+       <width>230</width>
        <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>270</width>
+       <width>230</width>
        <height>16777215</height>
       </size>
      </property>
@@ -147,7 +147,7 @@
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="placeholderText">
-           <string>0.0</string>
+           <string>0</string>
           </property>
          </widget>
         </item>
@@ -555,7 +555,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>A AXIS GOTO : </string>
+           <string>A AXIS GOTO :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -770,13 +770,14 @@
     color: rgb(238, 238, 236);
 	font: 16pt &quot;Bebas Kai&quot;;
     border: none;
+    margin-right: 3px;
 }</string>
           </property>
           <property name="text">
            <string>M8 FLOOD</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -794,7 +795,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="rfh_spindle">
+         <widget class="QLabel" name="rfh_spindle_dir_2">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -824,7 +825,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>SPINDLE :</string>
+           <string>SPINDLE DIR :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -832,7 +833,59 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_spindle_display">
+         <widget class="QLabel" name="rfh_spindle_dir">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="text">
+           <string>M3 FWD</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="rfh_spindle_speed">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -862,10 +915,49 @@
 }</string>
           </property>
           <property name="text">
-           <string>M3 FWD</string>
+           <string>SPINDLE RPM :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="QLabel" name="rfh_spindle_rpm">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right:3px;
+}</string>
+          </property>
+          <property name="text">
+           <string>0</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
          </widget>
         </item>
@@ -895,18 +987,18 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>130</width>
-            <height>50</height>
+            <width>100</width>
+            <height>45</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>50</height>
+            <height>45</height>
            </size>
           </property>
           <property name="text">
-           <string>RFL CYCLE START</string>
+           <string>CYCLE START</string>
           </property>
           <property name="checkable">
            <bool>false</bool>
@@ -940,7 +1032,7 @@
            <string>Warning! this run command does not account for preceding positioning moves or commands!</string>
           </property>
           <property name="styleSheet">
-           <string notr="true">font: 17pt;</string>
+           <string notr="true">font: 16pt;</string>
           </property>
           <property name="text">
            <string/>
