@@ -10,14 +10,65 @@ import gcode
 from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
 from qtpyvcp import plugins
 
-from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import PrintCanon
-
+from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import BaseCanon
 
 
 STATUS = plugins.status.Status()
 
 # Temporarily removed requirement for INI and var
 # def getEndState(ngc, toolTbl, INI, var, endLine):
+
+class ParseCanon(BaseCanon):
+
+    
+    def change_tool(self, pocket):
+        print("CHANGE TOOL", pocket)
+
+    def check_abort(self):
+        print("ABORT")
+
+    def add_path_point(self, line_type, start_point, end_point):
+        print("LINE", line_type, start_point, end_point)
+
+    def comment(self, msg):
+        print("COMMENT", msg)
+
+    def message(self, msg):
+        print("MESSAGE", message)
+
+    def next_line(self, state):
+        # state attributes
+        # 'block', 'cutter_side', 'distance_mode', 'feed_mode', 'feed_rate',
+        # 'flood', 'gcodes', 'mcodes', 'mist', 'motion_mode', 'origin', 'units',
+        # 'overrides', 'path_mode', 'plane', 'retract_mode', 'sequence_number',
+        # 'speed', 'spindle', 'stopping', 'tool_length_offset', 'toolchange',
+
+        print("NEXT LINE")
+        
+        print('block', state.block)
+        print('cutter_side', state.cutter_side)
+        print('distance_mode', state.distance_mode)
+        print('feed_mode', state.feed_mode)
+        print('feed_rate', state.feed_rate)
+        print('flood', state.flood)
+        print('gcodes', state.gcodes)
+        print('mcodes', state.mcodes)
+        print('mist', state.mist)
+        print('motion_mode', state.motion_mode)
+        print('origin', state.origin)
+        print('units', state.units)
+        print('overrides', state.overrides)
+        print('path_mode', state.path_mode)
+        print('plane', state.plane)
+        print('retract_mode', state.retract_mode)
+        print('sequence_number', state.sequence_number)
+        print('speed', state.speed)
+        print('spindle', state.spindle)
+        print('stopping', state.stopping)
+        print('tool_length_offset', state.tool_length_offset)
+        print('toolchange', state.toolchange)
+
+
 
 class RFLDialog(BaseDialog):
     def __init__(self):
@@ -36,7 +87,7 @@ class RFLDialog(BaseDialog):
         self.temp_parameter_file = os.path.join(self.parameter_file + '.temp')
         
         self.canon = None
-        self.canon_class = PrintCanon
+        self.canon_class = ParseCanon
         
 
     def on_rfl_cycle_start_clicked(self):
@@ -61,6 +112,8 @@ class RFLDialog(BaseDialog):
         initcode = self.ini.find("RS274NGC", "RS274NGC_STARTUP_CODE") or ""
         
         result, seq = gcode.parse(ngc, self.canon, unitcode, initcode)
+
+        print(result)
 
         self.toolTbl = toolTbl
         self.endLine = endLine
