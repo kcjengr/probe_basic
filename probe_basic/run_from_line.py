@@ -3,13 +3,14 @@
 import os
 import subprocess
 
+from qtpyvcp.utilities.info import Info
 from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
 from qtpyvcp import plugins
 
-STATUS = plugins.status.Status()
-
-# Temporarily removed requirement for INI and var
-# def getEndState(ngc, toolTbl, INI, var, endLine):
+STATUS = plugins.getPlugin("status")
+TOOLTABLE = plugins.getPlugin("tooltable")
+POS = plugins.positions.Position()
+INFO = Info()
 
 class RFLDialog(BaseDialog):
     def __init__(self):
@@ -21,29 +22,44 @@ class RFLDialog(BaseDialog):
         # If not, recalculate
         # Step 2: check if machine state is correct. If not, goto
         # Step 3: All is good, start machining
-        print("Test")
+        if not self.endLine == int(self.run_from_line_entry.text()):
+            # Recalculate
+            self.endLine = int(self.run_from_line_entry.text())
+            self.getEndState()
+            self.setTexts()
+        elif not self.isInPos():
+            # Move into position
+            pass
+        else:
+            # Start running! yay!
+            pass
     
-    def open(self, ngc, toolTbl, endLine):
-        self.ngc = ngc
-        self.toolTbl = toolTbl
+    def open(self, endLine):
+        self.ngc = STATUS.file()
+        self.toolTbl = INFO.getToolTableFile()
         self.endLine = endLine
 
         self.getEndState()
         self.setTexts()
 
         super(RFLDialog, self).open()
-    
+
     def setTexts(self):
+        if self.units == 1:
+            fStr = "{0:.3f}"
+        else:
+            fStr = "{0:.4f}"
+
         self.run_from_line_entry.setText(str(self.endLine))
-        
-        self.rfh_x_pos_coords.setText(str(self.coords[0]))
-        self.rfh_y_pos_coords.setText(str(self.coords[1]))
-        self.rfh_z_pos_coords.setText(str(self.coords[2]))
+
+        self.rfh_x_pos_coords.setText(fStr.format(self.coords[0]))
+        self.rfh_y_pos_coords.setText(fStr.format(self.coords[1]))
+        self.rfh_z_pos_coords.setText(fStr.format(self.coords[2]))
         if self.coords[3]:
             self.rfh_a_pos_coords.setText(str(self.coords[3]))
         if self.coords[4]:
             self.rfh_b_pos_coords.setText(str(self.coords[4]))
-        
+
         if self.coolant == 7:
             self.rfh_coolant_display.setText("mist")
         elif self.coolant == 8:
@@ -52,13 +68,18 @@ class RFLDialog(BaseDialog):
             self.rfh_coolant_display.setText("none")
 
         if self.spindle[0] == 3:
-            self.rfh_spindle_display.setText("CW: "+str(self.spindle[1]))
+            self.rfh_spindle_display.setText("CW: " + "{0.0f}".format(self.spindle[1]))
         elif self.spindle[0] == 4:
-            self.rfh_spindle_display.setText("CCW: "+str(self.spindle[1]))
+            self.rfh_spindle_display.setText("CCW: "+ "{0.0f}".format(self.spindle[1]))
         else:
             self.rfh_spindle_display.setText("spindle off")
-    
+
+    def getEndState2(self):
+        # This function is to replace getEndState.
+        pass
+
     def getEndState(self):
+        # To be replaced with BaseCanon
                       #X Y Z A B
         self.coords = [0,0,0,0,0]
         self.spindle = [3, 0.0] # Spindle direction and RPM
@@ -131,6 +152,11 @@ class RFLDialog(BaseDialog):
                 self.tool = int(argList[0])
 
         rsFile.close()
+        
+    def isInPos(self):
+        # TODO: Determine if we're in correct starting position/state
+        #if status
+        return False
 
 if __name__ == "__main__":
     home = os.path.expanduser("~")
