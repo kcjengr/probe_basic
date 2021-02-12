@@ -61,18 +61,20 @@ class RFLDialog(BaseDialog):
             self.rfh_b_pos_coords.setText(str(self.coords[4]))
 
         if self.coolant == 7:
-            self.rfh_coolant_display.setText("mist")
+            self.rfh_coolant_display.setText("M7 MIST")
         elif self.coolant == 8:
-            self.rfh_coolant_display.setText("flood")
+            self.rfh_coolant_display.setText("M8 FLOOD")
         else:
-            self.rfh_coolant_display.setText("none")
+            self.rfh_coolant_display.setText("M9 OFF")
 
         if self.spindle[0] == 3:
-            self.rfh_spindle_display.setText("CW: " + "{0.0f}".format(self.spindle[1]))
+            self.rfh_spindle_dir.setText("M3 FWD")
         elif self.spindle[0] == 4:
-            self.rfh_spindle_display.setText("CCW: "+ "{0.0f}".format(self.spindle[1]))
+            self.rfh_spindle_dir.setText("M4 REV")
         else:
-            self.rfh_spindle_display.setText("spindle off")
+            self.rfh_spindle_dir.setText("OFF")
+
+        self.rfh_spindle_rpm.setText(str(self.spindle[1]))
 
     def getEndState2(self):
         # This function is to replace getEndState.
@@ -83,7 +85,7 @@ class RFLDialog(BaseDialog):
                       #X Y Z A B
         self.coords = [0,0,0,0,0]
         self.spindle = [3, 0.0] # Spindle direction and RPM
-        self.coolant = 9 # 7 = mist, 8 = flood, 9 = none
+        self.coolant = 9 #7 = mist, 8 = flood, 9 = none
         self.tool = 0
 
         # Make a copy of the program only to the required line

@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>270</width>
-    <height>460</height>
+    <width>230</width>
+    <height>599</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -45,13 +45,13 @@
      </property>
      <property name="minimumSize">
       <size>
-       <width>250</width>
+       <width>240</width>
        <height>0</height>
       </size>
      </property>
      <property name="maximumSize">
       <size>
-       <width>270</width>
+       <width>240</width>
        <height>16777215</height>
       </size>
      </property>
@@ -147,7 +147,97 @@
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
           </property>
           <property name="placeholderText">
-           <string>0.0</string>
+           <string>0</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_11">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="rfh_program_tool">
+          <property name="enabled">
+           <bool>false</bool>
+          </property>
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+    border: none;
+}</string>
+          </property>
+          <property name="text">
+           <string>TOOL NUMBER :</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="StatusLabel" name="rfh_tool_number">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 17pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.0f}</string>
           </property>
          </widget>
         </item>
@@ -203,10 +293,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_x_pos_coords">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="StatusLabel" name="rfh_x_pos_coords">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -230,14 +317,17 @@
     color: rgb(238, 238, 236);
 	font: 17pt &quot;Bebas Kai&quot;;
     border: none;
-    margin-right:3px;
+    margin-right: 3px;
 }</string>
-          </property>
-          <property name="text">
-           <string>0.0000</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.4f}</string>
           </property>
          </widget>
         </item>
@@ -293,10 +383,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_y_pos_coords">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="StatusLabel" name="rfh_y_pos_coords">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -320,14 +407,17 @@
     color: rgb(238, 238, 236);
 	font: 17pt &quot;Bebas Kai&quot;;
     border: none;
-    margin-right:3px;
+    margin-right: 3px;
 }</string>
-          </property>
-          <property name="text">
-           <string>0.0000</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.4f}</string>
           </property>
          </widget>
         </item>
@@ -383,10 +473,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_z_pos_coords">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="StatusLabel" name="rfh_z_pos_coords">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -410,14 +497,17 @@
     color: rgb(238, 238, 236);
 	font: 17pt &quot;Bebas Kai&quot;;
     border: none;
-    margin-right:3px;
+    margin-right: 3px;
 }</string>
-          </property>
-          <property name="text">
-           <string>0.0000</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.4f}</string>
           </property>
          </widget>
         </item>
@@ -465,7 +555,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>A AXIS GOTO : </string>
+           <string>A AXIS GOTO :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -473,10 +563,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_a_pos_coords">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="StatusLabel" name="rfh_a_pos_coords">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -500,14 +587,17 @@
     color: rgb(238, 238, 236);
 	font: 17pt &quot;Bebas Kai&quot;;
     border: none;
-    margin-right:3px;
+    margin-right: 3px;
 }</string>
-          </property>
-          <property name="text">
-           <string>0.0000</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.1f}</string>
           </property>
          </widget>
         </item>
@@ -563,7 +653,59 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_b_pos_coords">
+         <widget class="StatusLabel" name="rfh_b_pos_coords">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 17pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.1f}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_13">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="rfh_program_feedrate">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -588,16 +730,54 @@
           <property name="styleSheet">
            <string notr="true">QLabel{
     color: rgb(238, 238, 236);
-	font: 17pt &quot;Bebas Kai&quot;;
+	font: 16pt &quot;Bebas Kai&quot;;
     border: none;
-    margin-right:3px;
 }</string>
           </property>
           <property name="text">
-           <string>0.0000</string>
+           <string>FEEDRATE :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="StatusLabel" name="rfh_prog_feedrate">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 17pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.3f}</string>
           </property>
          </widget>
         </item>
@@ -653,10 +833,7 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_coolant_display">
-          <property name="enabled">
-           <bool>false</bool>
-          </property>
+         <widget class="StatusLabel" name="rfh_coolant_display">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -678,15 +855,19 @@
           <property name="styleSheet">
            <string notr="true">QLabel{
     color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
+	font: 17pt &quot;Bebas Kai&quot;;
     border: none;
+    margin-right: 3px;
 }</string>
           </property>
-          <property name="text">
-           <string>M8 FLOOD</string>
-          </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.3f}</string>
           </property>
          </widget>
         </item>
@@ -704,7 +885,7 @@
          <number>0</number>
         </property>
         <item>
-         <widget class="QLabel" name="rfh_spindle">
+         <widget class="QLabel" name="rfh_spindle_dir_2">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -734,7 +915,7 @@
 }</string>
           </property>
           <property name="text">
-           <string>SPINDLE :</string>
+           <string>SPINDLE DIR :</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -742,7 +923,59 @@
          </widget>
         </item>
         <item>
-         <widget class="QLabel" name="rfh_spindle_display">
+         <widget class="StatusLabel" name="rfh_spindle_dir">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 17pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:.0f}</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_12">
+        <property name="spacing">
+         <number>15</number>
+        </property>
+        <property name="topMargin">
+         <number>0</number>
+        </property>
+        <property name="bottomMargin">
+         <number>0</number>
+        </property>
+        <item>
+         <widget class="QLabel" name="rfh_spindle_speed">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -772,10 +1005,49 @@
 }</string>
           </property>
           <property name="text">
-           <string>M3 FWD</string>
+           <string>SPINDLE RPM :</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item>
+         <widget class="StatusLabel" name="rfh_spindle_rpm">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+            <horstretch>1</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="minimumSize">
+           <size>
+            <width>0</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>40</height>
+           </size>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 17pt &quot;Bebas Kai&quot;;
+    border: none;
+    margin-right: 3px;
+}</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="rules" stdset="0">
+           <string>[]</string>
+          </property>
+          <property name="format" stdset="0">
+           <string>{:0f}</string>
           </property>
          </widget>
         </item>
@@ -805,18 +1077,18 @@
           </property>
           <property name="minimumSize">
            <size>
-            <width>130</width>
-            <height>50</height>
+            <width>100</width>
+            <height>45</height>
            </size>
           </property>
           <property name="maximumSize">
            <size>
             <width>16777215</width>
-            <height>50</height>
+            <height>45</height>
            </size>
           </property>
           <property name="text">
-           <string>RFL CYCLE START</string>
+           <string>CYCLE START</string>
           </property>
           <property name="checkable">
            <bool>false</bool>
@@ -850,7 +1122,7 @@
            <string>Warning! this run command does not account for preceding positioning moves or commands!</string>
           </property>
           <property name="styleSheet">
-           <string notr="true">font: 17pt;</string>
+           <string notr="true">font: 16pt;</string>
           </property>
           <property name="text">
            <string/>
@@ -871,6 +1143,11 @@
   </layout>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>StatusLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.display_widgets.status_label</header>
+  </customwidget>
   <customwidget>
    <class>VCPLineEdit</class>
    <extends>QLineEdit</extends>
