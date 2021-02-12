@@ -6,7 +6,7 @@ from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
 
-from qtpyvcp import actions, plugins
+from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
@@ -16,8 +16,6 @@ import run_from_line as rfl
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
-STATUS = plugins.status.Status()
-TOOLTABLE = plugins.tool_table.ToolTable()
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -92,14 +90,9 @@ class ProbeBasic(VCPMainWindow):
         self.gui_axis_display_widget.setCurrentIndex(button.property('page'))
     
     def on_run_from_line_Btn_clicked(self):
-        curFile = STATUS.file()
-        curTools = TOOLTABLE.tool_table_file
-        #curINI = 
-        #curVars =
-
         try:
             lineNum = int(self.run_from_line_Num.text())
         except:
             return False
 
-        self.RFLDia.open(curFile, curTools, lineNum)
+        self.RFLDia.open(lineNum)

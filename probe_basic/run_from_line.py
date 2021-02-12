@@ -3,18 +3,35 @@
 import os
 import subprocess
 
+import gcode
+
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
-from qtpyvcp import plugins
+from qtpyvcp import plugins, actions
+
+from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import BaseCanon
 
 STATUS = plugins.getPlugin("status")
 TOOLTABLE = plugins.getPlugin("tooltable")
 POS = plugins.positions.Position()
 INFO = Info()
 
+
+class RFLCanon(BaseCanon):
+    def __init__(self):
+        super(RFLCanon, self).__init__()
+        self.tool = 0
+    
+    def change_tool(self, pocket):
+        super(RFLCanon, self).change_tool()
+        self.tool = pocket # How to simply get tool num instead of pocket
+
+
 class RFLDialog(BaseDialog):
+    # TODO: Take into account amount of axis machine has
     def __init__(self):
         super(RFLDialog, self).__init__(stay_on_top=True, ui_file=os.path.join(os.path.dirname(__file__), 'run_from_line_dialog.ui'))
+        self.units = STATUS.stat.program_units # 1=in, 2=mm
 
     def on_rfl_cycle_start_clicked(self):
         # TODO:
@@ -29,10 +46,17 @@ class RFLDialog(BaseDialog):
             self.setTexts()
         elif not self.isInPos():
             # Move into position
-            pass
+            cmdStr = ""
+            if len(self.coords) > 4:
+                cmdStr += ("G0 B" + str(self.coords[4]) + ";")
+            if len(self.coords) > 3:
+                cmdStr += ("G0 A" + str(self.coords[3]) + ";")
+            cmdStr += ("G0 X{}Y{}".format(self.coords[0], self.coords[1]) + ";")
+            cmdStr += ("G0 Z{}".format(self.coords[2]))
+            actions.machine_actions.issue_mdi(cmdStr)
         else:
-            # Start running! yay!
-            pass
+            # Start running
+            actions.program_actions.run(self.endLine)
     
     def open(self, endLine):
         self.ngc = STATUS.file()
@@ -46,9 +70,9 @@ class RFLDialog(BaseDialog):
 
     def setTexts(self):
         if self.units == 1:
-            fStr = "{0:.3f}"
-        else:
             fStr = "{0:.4f}"
+        else:
+            fStr = "{0:.3f}"
 
         self.run_from_line_entry.setText(str(self.endLine))
 
@@ -82,8 +106,8 @@ class RFLDialog(BaseDialog):
 
     def getEndState(self):
         # To be replaced with BaseCanon
-                      #X Y Z A B
-        self.coords = [0,0,0,0,0]
+                      #X  Y  Z  A  B
+        self.coords = [0.,0.,0.,0.,0.]
         self.spindle = [3, 0.0] # Spindle direction and RPM
         self.coolant = 9 #7 = mist, 8 = flood, 9 = none
         self.tool = 0
@@ -156,9 +180,10 @@ class RFLDialog(BaseDialog):
         rsFile.close()
         
     def isInPos(self):
-        # TODO: Determine if we're in correct starting position/state
-        #if status
-        return False
+        for i in range(len(self.coords)):
+            if not (self.coords[i] - 0.1 <= STATUS.stat.position[i] - STATUS.stat.g5x_offset[i] <= self.coords[i] + 0.01): # Bit dirty, needs better solution
+                return False
+        return True
 
 if __name__ == "__main__":
     home = os.path.expanduser("~")
