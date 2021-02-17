@@ -4,12 +4,15 @@ import os
 import subprocess
 
 import gcode
+import linuxcnc
+
+from shutil import copyfile
 
 from qtpyvcp.utilities.info import Info
 from qtpyvcp.widgets.dialogs.base_dialog import BaseDialog
 from qtpyvcp import plugins, actions
 
-from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import BaseCanon
+from qtpyvcp.widgets.display_widgets.vtk_backplot.base_canon import BaseCanon, PrintCanon, StatCanon
 
 STATUS = plugins.getPlugin("status")
 TOOLTABLE = plugins.getPlugin("tooltable")
@@ -17,21 +20,23 @@ POS = plugins.positions.Position()
 INFO = Info()
 
 
-class RFLCanon(BaseCanon):
-    def __init__(self):
-        super(RFLCanon, self).__init__()
-        self.tool = 0
+class RFLCanon(StatCanon):
+        
     
     def change_tool(self, pocket):
-        super(RFLCanon, self).change_tool()
-        self.tool = pocket # How to simply get tool num instead of pocket
+        super(RFLCanon, self).change_tool(pocket)
+        print("TOOL CHANGHE")
+        print(pocket)
 
 
 class RFLDialog(BaseDialog):
     # TODO: Take into account amount of axis machine has
     def __init__(self):
         super(RFLDialog, self).__init__(stay_on_top=True, ui_file=os.path.join(os.path.dirname(__file__), 'run_from_line_dialog.ui'))
+        
         self.units = STATUS.stat.program_units # 1=in, 2=mm
+
+        
 
     def on_rfl_cycle_start_clicked(self):
         # TODO:
@@ -57,14 +62,63 @@ class RFLDialog(BaseDialog):
         else:
             # Start running
             actions.program_actions.run(self.endLine)
-    
+
     def open(self, endLine):
         self.ngc = STATUS.file()
+
+        print("OPEN")        
+        inifile = os.getenv("INI_FILE_NAME")
+        if inifile is None or not os.path.isfile(inifile) and not IN_DESIGNER:
+            raise ValueError("Invalid INI file: %s", inifile)
+
+        self.stat = linuxcnc.stat()
+        self.ini = linuxcnc.ini(inifile)
+        self.config_dir = os.path.dirname(inifile)
+        
+        temp = self.ini.find("EMCIO", "RANDOM_TOOLCHANGER")
+        self.random = int(temp or 0)
+        
+        temp = self.ini.find("DISPLAY", "GEOMETRY") or 'XYZ'
+        self.geometry = temp.upper()
+        
+        temp = self.ini.find("RS274NGC", "PARAMETER_FILE") or "linuxcnc.var"
+        self.parameter_file = os.path.join(self.config_dir, temp)
+        self.temp_parameter_file = os.path.join(self.parameter_file + '.temp')
+        
+        print(self.parameter_file)
+        print(self.temp_parameter_file)
+        
+        if os.path.exists(self.parameter_file):
+            print("COPY PARAM FILE", self.parameter_file, self.temp_parameter_file)
+            copyfile(self.parameter_file, self.temp_parameter_file)
+        
+        self.canon = RFLCanon()
+        self.canon.parameter_file = self.temp_parameter_file
+        self.stat.poll()
+        self.canon.tools = list(self.stat.tool_table)
+                
+        self.unitcode = "G%d" % (20 + (self.stat.linear_units == 1))
+        self.initcode = self.ini.find("RS274NGC", "RS274NGC_STARTUP_CODE") or ""
+        
+        if self.ngc:
+            result, seq = gcode.parse(self.ngc, self.canon, self.unitcode, self.initcode)
+
+            if result > gcode.MIN_ERROR:
+                msg = gcode.strerror(result)
+                fname = os.path.basename(self.ngc)
+                print("MSG", msg)
+                
+            print("Result", result)
+            print("Seq", seq)
+
+        # clean up temp var file and the backup
+        os.unlink(self.temp_parameter_file)
+            
         self.toolTbl = INFO.getToolTableFile()
         self.endLine = endLine
 
-        self.getEndState()
-        self.setTexts()
+        # self.getEndState()
+        # self.setTexts()
 
         super(RFLDialog, self).open()
 
@@ -79,8 +133,10 @@ class RFLDialog(BaseDialog):
         self.rfh_x_pos_coords.setText(fStr.format(self.coords[0]))
         self.rfh_y_pos_coords.setText(fStr.format(self.coords[1]))
         self.rfh_z_pos_coords.setText(fStr.format(self.coords[2]))
+        
         if self.coords[3]:
             self.rfh_a_pos_coords.setText(str(self.coords[3]))
+        
         if self.coords[4]:
             self.rfh_b_pos_coords.setText(str(self.coords[4]))
 
@@ -110,7 +166,7 @@ class RFLDialog(BaseDialog):
         self.coords = [0.,0.,0.,0.,0.]
         self.spindle = [3, 0.0] # Spindle direction and RPM
         self.coolant = 9 #7 = mist, 8 = flood, 9 = none
-        self.tool = 0
+        self.tool_no = 0
 
         # Make a copy of the program only to the required line
         ngcFile = open(self.ngc, "r")
@@ -175,7 +231,7 @@ class RFLDialog(BaseDialog):
             elif command == "START_CHANGE":
                 pass
             elif command == "CHANGE_TOOL": # Most likely only need to handle this and not SELECT_TOOL or START_CHANGE.
-                self.tool = int(argList[0])
+                self.tool_no = int(argList[0])
 
         rsFile.close()
         
