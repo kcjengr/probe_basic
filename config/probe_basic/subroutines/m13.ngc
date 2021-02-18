@@ -3,8 +3,8 @@ o<m13> sub
 ; Move tool carousel CW until ATC zero
 ; ; Parameter #5170 is used to track the current tool pocket (persistently)
 (print, o<M13> P#<p>)
-M65 P10 (set atc widget unhomed)
-M64 P11 (show atc widget referencing msg)
+
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{"REFERENCING"}])
 
 M64 P3 ; Move Motor FWD
 M66 P3 L1 Q20

@@ -6,8 +6,8 @@ o<m12> sub
 (print, o<M12> P#<p>)
 
 O100 if [#5171 NE 1]
-      (print, atc not homed, homing)
-      M13
+    (print, atc not homed, homing)
+    M13
 O100 endif
 
 O110 if [EXISTS[#<p>]]
@@ -17,10 +17,10 @@ O110 else
     (tells the atc widget move 1 step forward)
 O110 endif
 
-
 (tells the atc widget how many steps to move and start moving forward)
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps_to_move>, "ccw"}])
 
+(tells the atc widget how many steps to move and start moving forward)
 M64 P3 ; Move atc motor FWD
 
 O120 do

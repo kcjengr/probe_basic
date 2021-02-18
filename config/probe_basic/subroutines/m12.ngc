@@ -5,19 +5,20 @@ o<m12> sub
 ; Parameter #5170 is used to track the current tool pocket (persistently)
 (print, o<M12> P#<p>)
 
-O100 if [EXISTS[#<p>]]
-   #<Steps_to_move> = #<p>
-O100 else
-   #<Steps_to_move>=1
+O100 if [#5171 NE 1]
+    (print, atc not homed, homing)
+    M13
 O100 endif
 
-O110 if [#5171 NE 1]
-      (print, atc not homed, homing)
-      M13
+O110 if [EXISTS[#<p>]]
+   #<Steps_to_move> = #<p>
+O110 else
+   #<Steps_to_move>=1
+    (tells the atc widget move 1 step forward)
 O110 endif
 
-M68 E10 Q#<Steps_to_move> (tells the atc widget how many steps to move)
-M64 P14 (sets the direction and start moving)
+(tells the atc widget how many steps to move and start moving forward)
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps_to_move>, "ccw"}])
 
 (tells the atc widget how many steps to move and start moving forward)
 M64 P3 ; Move atc motor FWD
@@ -33,7 +34,7 @@ O120 do
 O120 while [#<Steps_to_move> GT 0]
 
 M65 P3 ; Stop motor
-M65 P14
+
 #<_my_current_pocket> = #5170
 
 o<m12> endsub [1]
