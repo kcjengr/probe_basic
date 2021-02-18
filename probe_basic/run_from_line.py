@@ -27,6 +27,20 @@ class RFLCanon(StatCanon):
         super(RFLCanon, self).change_tool(pocket)
         print("TOOL CHANGHE")
         print(pocket)
+        
+    def next_line(self, st):
+        super(RFLCanon, self).next_line(st)
+        print("SEQUENCE", st.sequence_number)
+            
+            
+    def straight_traverse(self, *args):
+        super(RFLCanon, self).straight_traverse(*args)
+        print("TRAVERSE", args)
+            
+            
+    def straight_feed(self, *args):
+        super(RFLCanon, self).straight_traverse(*args)
+        print("FEED", args)
 
 
 class RFLDialog(BaseDialog):
