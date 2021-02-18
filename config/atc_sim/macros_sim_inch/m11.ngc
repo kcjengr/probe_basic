@@ -6,8 +6,8 @@ o<m11> sub
 (print, o<M11> P#<p>)
 
 O100 if [#5171 NE 1]
-      (print, atc not homed, homing)
-      M13
+    (print, atc not homed, homing)
+    M13
 O100 endif
 
 O110 if [EXISTS[#<p>]]
@@ -20,7 +20,8 @@ O110 endif
 (tells the atc widget how many steps to move and start moving reverse)
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps_to_move>, "cw"}])
 
-M64 P4 ; Move atc motor REV
+(tells the atc widget how many steps to move and start moving reverse)
+M64 P4 ; Move atc motor Rev
 
 O120 do
    M66 P4 L1 Q3 ; wait for rising edge on rotation index

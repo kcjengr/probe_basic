@@ -75,8 +75,9 @@ o<probe_z_minus_wco> sub
   (defines the edge as z_probed_position for DRO reporting)
   #<z_minus_probed_position> = #<z_minus_probed>
 
-  (analog aio output to gui DRO "Z PROBED POSITION")
-  M68 E38 Q[#<z_minus_probed_position>]
+  (output to gui DRO "Z PROBED POSITION")
+  #1009 = #<z_minus_probed_position>
+  (DEBUG, EVAL[vcp.getWidget{"z_minus_probed_position"}.setValue{#1009}])
 
   #<z_finish_height> = [#<z_minus_probed> + #<z_clearance>]
 

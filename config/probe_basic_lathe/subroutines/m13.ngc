@@ -8,19 +8,25 @@ M64 P11 (show atc widget referencing msg)
 
 M64 P3 ; Move Motor FWD
 M66 P3 L1 Q20
- O120 if [#5399 LT 0]
-      (abort, failed to home carousel)
-      M65 P3; stop motor
- O120 endif
-   #5170 = 1
+O120 if [#5399 LT 0]
+    (abort, failed to home carousel)
+    M65 P3; stop motor
+O120 endif
+#5170 = 1
 M65 P3 ; Stop motor
 #5171 = 1
 
-M65 P11 (hide atc widget referencing msg)
-M64 P10 (set atc widget homed)
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{}])
 
-M14
-m61 q#5210
+#1 = 0
+o130 while [#1 LT 12]
+    #1 = [#1+1]
+    #2 = #[5189+#1]
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#1, #2}])
+o130 endwhile
+
+m61 q#5231
+
 o<m13> endsub [1]
 
 M2

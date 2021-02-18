@@ -76,8 +76,9 @@ o<probe_x_minus> sub
   (defines the edge as x_probed_position for DRO reporting)
   #<x_minus_probed_position> = #<x_minus_zero_edge>
 
-  (analog aio output to gui DRO "X PROBED POSITION")
-  M68 E36 Q[#<x_minus_probed_position>]
+  (output to gui DRO "X PROBED POSITION")
+  #1005 = #<x_minus_probed_position>
+  (DEBUG, EVAL[vcp.getWidget{"x_minus_probed_position"}.setValue{#1005}])
 
 o<probe_x_minus> endsub [#<x_minus_zero_edge>]
 

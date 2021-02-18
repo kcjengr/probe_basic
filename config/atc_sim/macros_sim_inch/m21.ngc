@@ -2,6 +2,8 @@ o<m21> sub
 
 ; Move Carousel to the tool change poistion - OUT
 (print, o<M21>)
+
+M65 P1; switch off carousel in solonoid
 M66 P1 L3 Q1
 ;   O100 if [#5399 eq 0]
 ;      (abort, carousel aready in out position) ;
@@ -9,7 +11,8 @@ M66 P1 L3 Q1
 ;   O100 endif
 
 M5 M9
-G0 G53 Z-3.9000 ; move to tool change position
+G90
+G0 G53 Z-3.1900 ; move to tool change position
 
 ;M19 R0 Q3 ; oreient spindle
 
