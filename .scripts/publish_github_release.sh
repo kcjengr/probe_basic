@@ -1,8 +1,8 @@
 #!/usr/bin/env bash
 
-REPO=$1
-TAG=$2
-AUTH_TOKEN=$3
+REPO="$1"
+TAG="$2"
+AUTH_TOKEN="$3"
 
 PRERELEASE=false
 # RELEASEFILES=(debs/python-probe_basic_*.deb dist/probe_basic-*.tar.gz)
