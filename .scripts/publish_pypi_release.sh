@@ -10,6 +10,6 @@ python -c "import setuptools; print(setuptools.__version__)"
 
 echo 'Uploading files to PyPi...'
 twine upload \
-    --username kcjengr \
+    --username __token__ \
     --password $PYPI_AUTH \
     'dist/*'
