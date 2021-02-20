@@ -12,4 +12,4 @@ echo 'Uploading files to PyPi...'
 twine upload \
     --username kcjengr \
     --password $PYPI_AUTH \
-    'dist/probe_basic*.tar.gz'
+    'build/dist/probe_basic*.tar.gz'
