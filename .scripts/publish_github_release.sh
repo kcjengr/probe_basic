@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 REPO="$1"
-TAG="$2" | cut -c1-6
+TAG="$2"
 AUTH_TOKEN="$3"
 
 PRERELEASE=false
@@ -106,7 +106,9 @@ if [ "$TRAVIS" = "true" ] && [ -z "$TRAVIS_TAG" ]; then
   exit 0
 fi
 
-echo "Creating GitHub release for $TAG"
+TAG_NAME="$TAG" | cut -c1-6
+
+echo "Creating GitHub release for $TAG_NAME"
 
 # Generate changelog either from last tag or from beginning of time
 if [ -z "$(git tag)" ]
@@ -123,11 +125,13 @@ echo DONE
 FORMAT_CONTENT="$(node -p -e 'JSON.stringify(process.argv[1])' "${CONTENT}")"
 
 echo -n "Creating new draft release... "
+
+
 JSON=$(cat <<EOF
 {
-  "tag_name":         "$TAG",
+  "tag_name":         "$TAG_NAME",
   "target_commitish": "master",
-  "name":             "$TAG",
+  "name":             "$TAG_NAME",
   "body":             $FORMAT_CONTENT,
   "draft":            true,
   "prerelease":       $PRERELEASE
