@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 REPO="$1"
-TAG="$2" | cut -c0-6
+TAG="$2" | cut -c1-6
 AUTH_TOKEN="$3"
 
 PRERELEASE=false
