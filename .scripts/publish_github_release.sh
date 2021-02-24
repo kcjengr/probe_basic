@@ -177,22 +177,22 @@ for FILE in "${RELEASEFILES[@]}"; do
   echo DONE
 done
 
-# echo -n "Publishing release... "
-# JSON=$(cat <<EOF
-# {
-#  "draft": false
-# }
-# EOF
-# )
-# RESULT=`curl -s -w "\n%{http_code}\n"     \
-#  -X PATCH                                \
-#  -H "Authorization: token $AUTH_TOKEN"  \
-#  -d "$JSON"                              \
-#  "https://api.github.com/repos/$REPO/releases/$RELEASEID"`
-# if [ "`echo "$RESULT" | tail -1`" = "200" ]; then
-#  echo DONE
-# else
-#  echo FAILED
-#  echo "$RESULT"
-#  exit 1
-# fi
+echo -n "Publishing release... "
+JSON=$(cat <<EOF
+{
+  "draft": false
+}
+EOF
+)
+RESULT=`curl -s -w "\n%{http_code}\n"     \
+  -X PATCH                                \
+  -H "Authorization: token $AUTH_TOKEN"  \
+  -d "$JSON"                              \
+  "https://api.github.com/repos/$REPO/releases/$RELEASEID"`
+if [ "`echo "$RESULT" | tail -1`" = "200" ]; then
+  echo DONE
+else
+  echo FAILED
+  echo "$RESULT"
+  exit 1
+fi
