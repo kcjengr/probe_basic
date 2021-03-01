@@ -3222,29 +3222,42 @@ OFFSET</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="StatusLabel" name="statuslabel_75">
-                          <property name="maximumSize">
+                         <widget class="DROLineEdit" name="dro_entry_x">
+                          <property name="minimumSize">
                            <size>
-                            <width>16777215</width>
-                            <height>40</height>
+                            <width>100</width>
+                            <height>35</height>
                            </size>
                           </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>17</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">StatusLabel{
+                           <string notr="true">QLineEdit{
     border-style: transparant;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
 }</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=x&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;rel_pos_x_dro&quot;}]</string>
                           </property>
                          </widget>
                         </item>
@@ -3451,29 +3464,45 @@ OFFSET</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="StatusLabel" name="statuslabel_85">
-                          <property name="maximumSize">
+                         <widget class="DROLineEdit" name="dro_entry_z">
+                          <property name="minimumSize">
                            <size>
-                            <width>16777215</width>
-                            <height>40</height>
+                            <width>100</width>
+                            <height>35</height>
                            </size>
                           </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>35</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>17</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">StatusLabel{
+                           <string notr="true">QLineEdit{
     border-style: transparant;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
 }</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
-                          <property name="rules" stdset="0">
-                           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;position:rel?axis=z&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0])&quot;, &quot;name&quot;: &quot;rel_pos_z_dro&quot;}]</string>
+                          <property name="axisNumber" stdset="0">
+                           <number>2</number>
                           </property>
                          </widget>
                         </item>
@@ -15874,7 +15903,7 @@ border-radius: 1px;
              </widget>
             </item>
             <item>
-             <widget class="DROLineEdit" name="dro_entry">
+             <widget class="DROLineEdit" name="dro_entry_x_main">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>1</horstretch>
@@ -16155,7 +16184,7 @@ DROLabel[style=&quot;homing&quot;]{
              </widget>
             </item>
             <item>
-             <widget class="DROLineEdit" name="dro_entry_5">
+             <widget class="DROLineEdit" name="dro_entry_z_main">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>1</horstretch>
