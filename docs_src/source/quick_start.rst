@@ -51,7 +51,7 @@ On a terminal emulator run:
 
 **4- Download ProbeBasicInstaller**
 
-Cick the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and selecxt properties.  Select the Permissions Tab in the window that appears and check the box for "Allow this file to run as a program", see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.
+Click the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and select properties.  Select the Permissions Tab in the window that appears and check the box for "Allow this file to run as a program", see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.
 
 
 https://github.com/kcjengr/probe_basic/releases/download/v0.3.3/ProbeBasic-Installer-0.3.3.run
