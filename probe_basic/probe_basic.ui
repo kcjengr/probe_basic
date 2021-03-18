@@ -1184,10 +1184,10 @@ QPushButton:checked {
            <widget class="QWidget" name="layoutWidget_4">
             <property name="geometry">
              <rect>
-              <x>760</x>
-              <y>30</y>
-              <width>420</width>
-              <height>474</height>
+              <x>1627</x>
+              <y>9</y>
+              <width>16</width>
+              <height>16</height>
              </rect>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_58">
@@ -1198,73 +1198,97 @@ QPushButton:checked {
               <number>0</number>
              </property>
              <property name="topMargin">
-              <number>27</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
-              <number>9</number>
+              <number>0</number>
              </property>
              <property name="bottomMargin">
-              <number>37</number>
+              <number>0</number>
              </property>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="verticalLayoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>705</x>
+              <y>9</y>
+              <width>258</width>
+              <height>229</height>
+             </rect>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_60">
              <item>
-              <widget class="QFrame" name="frame_4">
-               <property name="styleSheet">
-                <string notr="true">.QFrame{
+              <widget class="MDIHistory" name="mdihistory"/>
+             </item>
+             <item>
+              <widget class="MDIEntry" name="mdientry"/>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QFrame" name="frame_4">
+            <property name="geometry">
+             <rect>
+              <x>9</x>
+              <y>9</y>
+              <width>410</width>
+              <height>410</height>
+             </rect>
+            </property>
+            <property name="styleSheet">
+             <string notr="true">.QFrame{
 background-color: rgb(32, 36, 37);
 border-radius: 8px;
 }</string>
+            </property>
+            <property name="frameShape">
+             <enum>QFrame::StyledPanel</enum>
+            </property>
+            <property name="frameShadow">
+             <enum>QFrame::Raised</enum>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_128">
+             <property name="spacing">
+              <number>0</number>
+             </property>
+             <property name="leftMargin">
+              <number>3</number>
+             </property>
+             <property name="topMargin">
+              <number>3</number>
+             </property>
+             <property name="rightMargin">
+              <number>3</number>
+             </property>
+             <property name="bottomMargin">
+              <number>3</number>
+             </property>
+             <item>
+              <widget class="VTKBackPlot" name="vtk_mdi">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                 <horstretch>1</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <property name="frameShape">
-                <enum>QFrame::StyledPanel</enum>
+               <property name="focusPolicy">
+                <enum>Qt::NoFocus</enum>
                </property>
-               <property name="frameShadow">
-                <enum>QFrame::Raised</enum>
-               </property>
-               <layout class="QHBoxLayout" name="horizontalLayout_128">
-                <property name="spacing">
-                 <number>0</number>
-                </property>
-                <property name="leftMargin">
-                 <number>3</number>
-                </property>
-                <property name="topMargin">
-                 <number>3</number>
-                </property>
-                <property name="rightMargin">
-                 <number>3</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>3</number>
-                </property>
-                <item>
-                 <widget class="VTKBackPlot" name="vtk_mdi">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">VTKBackPlot {
+               <property name="styleSheet">
+                <string notr="true">VTKBackPlot {
     border: solid;
     border-color: white;
     border-width: 2px;
     border-radius: 8px;
 }</string>
-                  </property>
-                  <property name="backgroundColor" stdset="0">
-                   <color>
-                    <red>32</red>
-                    <green>36</green>
-                    <blue>37</blue>
-                   </color>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
+               </property>
+               <property name="backgroundColor" stdset="0">
+                <color>
+                 <red>32</red>
+                 <green>36</green>
+                 <blue>37</blue>
+                </color>
+               </property>
               </widget>
              </item>
             </layout>
@@ -31075,6 +31099,11 @@ font: 11pt bebas kai;
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>MDIHistory</class>
+   <extends>QListWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
+  </customwidget>
+  <customwidget>
    <class>VCPMainWindow</class>
    <extends>QMainWindow</extends>
    <header>qtpyvcp.widgets.form_widgets.main_window</header>
@@ -32358,16 +32387,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="plotviewGroup"/>
  </buttongroups>
 </ui>
