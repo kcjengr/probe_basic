@@ -236,7 +236,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -1327,7 +1327,7 @@ border-radius: 8px;
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_60">
                      <property name="spacing">
-                      <number>20</number>
+                      <number>12</number>
                      </property>
                      <property name="leftMargin">
                       <number>12</number>
@@ -1356,12 +1356,401 @@ border-radius: 8px;
     border-color: white;
     border-width: 2px;
     border-radius: 6px;
+    color: black;
 }</string>
+                       </property>
+                       <property name="mdiEntrylineName" stdset="0">
+                        <string>mdiEntry</string>
+                       </property>
+                       <property name="mdiListOrderNatural" stdset="0">
+                        <bool>true</bool>
                        </property>
                       </widget>
                      </item>
                      <item>
-                      <widget class="MDIEntry" name="mdi_entry_box_7">
+                      <widget class="QWidget" name="widget_37" native="true">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_147">
+                        <property name="spacing">
+                         <number>15</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>1</number>
+                        </property>
+                        <item>
+                         <widget class="QPushButton" name="btn_del_history_row">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>DELETE</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_clear_queue">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>clear all</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_pause_mdi">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>PAUSE</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btnMdiRowUp">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>60</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>15</pointsize>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="probe_basic.qrc">
+                            <normaloff>:/images/up_arrow.png</normaloff>:/images/up_arrow.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QWidget" name="widget_39" native="true">
+                       <property name="minimumSize">
+                        <size>
+                         <width>0</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_150">
+                        <property name="spacing">
+                         <number>15</number>
+                        </property>
+                        <property name="leftMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>1</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>1</number>
+                        </property>
+                        <item>
+                         <widget class="QPushButton" name="btn_run_from_line">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>RUN FROM</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btn_run_line">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>RUN LINE</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btnCopyToEditor">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>95</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>16</pointsize>
+                            <weight>50</weight>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">font: 16pt &quot;Bebas Kai&quot;;</string>
+                          </property>
+                          <property name="text">
+                           <string>GCODE</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QPushButton" name="btnMdiRowDown">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>60</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>60</width>
+                            <height>50</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Bebas Kai</family>
+                            <pointsize>15</pointsize>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::NoFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true"/>
+                          </property>
+                          <property name="icon">
+                           <iconset resource="probe_basic.qrc">
+                            <normaloff>:/images/down_arrow.png</normaloff>:/images/down_arrow.png</iconset>
+                          </property>
+                          <property name="iconSize">
+                           <size>
+                            <width>25</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="MDIEntry" name="mdiEntry">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -1371,13 +1760,13 @@ border-radius: 8px;
                        <property name="minimumSize">
                         <size>
                          <width>0</width>
-                         <height>55</height>
+                         <height>50</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
                          <width>16777215</width>
-                         <height>55</height>
+                         <height>50</height>
                         </size>
                        </property>
                        <property name="font">
@@ -1423,7 +1812,7 @@ border-radius: 8px;
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
-                    <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0,0,0,0,0" columnminimumwidth="0,0,0,0,0,0,0,0">
+                    <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0" rowminimumheight="0,0,0,0,0,0,0,0,0" columnminimumwidth="0,0,0,0,0,0,0,0">
                      <property name="leftMargin">
                       <number>9</number>
                      </property>
@@ -1518,6 +1907,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>R</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="0">
@@ -1552,6 +1944,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>G</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="6">
@@ -1593,6 +1988,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>Z</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="2" column="4">
@@ -1630,6 +2028,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>7</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="1">
@@ -1664,6 +2065,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>F</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="3" column="4">
@@ -1701,6 +2105,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>4</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="3" column="6">
@@ -1738,6 +2145,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>6</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="2" column="5">
@@ -1775,6 +2185,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>8</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="5" column="6">
@@ -1812,6 +2225,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>3</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="5" column="5">
@@ -1849,6 +2265,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>2</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="2" column="6">
@@ -1886,6 +2305,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>9</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="3" column="5">
@@ -1923,6 +2345,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>5</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="6" column="6">
@@ -1960,6 +2385,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>.</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="7" column="0">
@@ -1994,6 +2422,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>P</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="6" column="0">
@@ -2028,6 +2459,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>Q</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="5" column="7">
@@ -2068,6 +2502,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>-</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="5" column="1">
@@ -2102,6 +2539,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>D</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="7">
@@ -2143,53 +2583,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>A</string>
                        </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="7">
-                      <widget class="QPushButton" name="backspace">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic.qrc">
-                         <normaloff>:/images/backspace.png</normaloff>:/images/backspace.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>40</width>
-                         <height>40</height>
-                        </size>
-                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="3" column="0">
@@ -2224,6 +2620,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>T</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="3" column="7">
@@ -2278,46 +2677,6 @@ border-radius: 8px;
                        </property>
                       </widget>
                      </item>
-                     <item row="8" column="6">
-                      <widget class="QPushButton" name="enter">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>133</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>133</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>17</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;Bebas Kai&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>ENTER</string>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="2" column="0">
                       <widget class="QPushButton" name="M">
                        <property name="sizePolicy">
@@ -2350,6 +2709,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>M</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="7" column="4">
@@ -2431,6 +2793,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>H</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="5">
@@ -2472,6 +2837,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>Y</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="6" column="4">
@@ -2509,6 +2877,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>0</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="0" column="4">
@@ -2550,6 +2921,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>X</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="6" column="1">
@@ -2584,6 +2958,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>I</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="2" column="1">
@@ -2618,6 +2995,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>S</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="6" column="7">
@@ -2658,6 +3038,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>+</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="8" column="1">
@@ -2692,6 +3075,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>K</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="7" column="1">
@@ -2726,6 +3112,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>J</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="5" column="4">
@@ -2763,6 +3152,9 @@ border-radius: 8px;
                        <property name="text">
                         <string>1</string>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="8" column="0">
@@ -2810,10 +3202,13 @@ border-radius: 8px;
                          <height>35</height>
                         </size>
                        </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
                       </widget>
                      </item>
                      <item row="8" column="3">
-                      <widget class="QPushButton" name="space">
+                      <widget class="QPushButton" name="btnMdiSpace">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -2843,6 +3238,93 @@ border-radius: 8px;
                        </property>
                        <property name="text">
                         <string>SPACE</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="2" column="7">
+                      <widget class="QPushButton" name="btnMdiBksp">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>60</width>
+                         <height>60</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>60</width>
+                         <height>60</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="probe_basic.qrc">
+                         <normaloff>:/images/backspace.png</normaloff>:/images/backspace.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>40</width>
+                         <height>40</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="8" column="6">
+                      <widget class="QPushButton" name="enter">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>133</width>
+                         <height>60</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>133</width>
+                         <height>60</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>17</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 17pt &quot;Bebas Kai&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>ENTER</string>
                        </property>
                       </widget>
                      </item>
@@ -33917,6 +34399,166 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>mdiEntry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>submit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>833</x>
+     <y>571</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>829</x>
+     <y>390</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMdiRowDown</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>moveRowItemDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1047</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>720</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_del_history_row</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>removeSelectedItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>708</x>
+     <y>458</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>770</x>
+     <y>378</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_clear_queue</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>clearQueue()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>805</x>
+     <y>465</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>877</x>
+     <y>354</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_pause_mdi</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mdihistory</receiver>
+   <slot>toggleQueue(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>941</x>
+     <y>446</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1007</x>
+     <y>382</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_run_from_line</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>runFromSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>723</x>
+     <y>510</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>805</x>
+     <y>366</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_run_line</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>runSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>808</x>
+     <y>528</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>901</x>
+     <y>383</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnCopyToEditor</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>copySelectionToGcodeEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>962</x>
+     <y>511</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1044</x>
+     <y>376</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btnMdiRowUp</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>moveRowItemUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1031</x>
+     <y>466</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>681</x>
+     <y>385</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enter</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>submit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1535</x>
+     <y>563</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1028</x>
+     <y>386</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -33936,16 +34578,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

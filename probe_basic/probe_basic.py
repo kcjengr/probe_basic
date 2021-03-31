@@ -23,6 +23,8 @@ class ProbeBasic(VCPMainWindow):
     def __init__(self, *args, **kwargs):
         super(ProbeBasic, self).__init__(*args, **kwargs)
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
+        self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
+        self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
@@ -94,6 +96,27 @@ class ProbeBasic(VCPMainWindow):
 
         actions.program_actions.run(lineNum)
 
+    # MDI Panel
+    @Slot(QAbstractButton)
+    def on_btngrpMdi_buttonClicked(self, button):
+        char = str(button.text())
+        text = self.mdiEntry.text() or 'null'
+        if text != 'null':
+            text += char
+        else:
+            text = char
+        self.mdiEntry.setText(text)
 
+    def mdiBackSpace_clicked(parent):
+        if len(parent.mdiEntry.text()) > 0:
+            text = parent.mdiEntry.text()[:-1]
+            parent.mdiEntry.setText(text)
+
+    def mdiSpace_clicked(parent):
+        text = parent.mdiEntry.text() or 'null'
+        # if no text then do not add a space
+        if text != 'null':
+            text += ' '
+            parent.mdiEntry.setText(text)
 
             
