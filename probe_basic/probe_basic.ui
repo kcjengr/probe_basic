@@ -312,7 +312,7 @@ background-color: transparent;
                </property>
                <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0,0">
                 <property name="spacing">
-                 <number>2</number>
+                 <number>6</number>
                 </property>
                 <property name="sizeConstraint">
                  <enum>QLayout::SetMinimumSize</enum>
@@ -327,7 +327,7 @@ background-color: transparent;
                  <number>1</number>
                 </property>
                 <property name="bottomMargin">
-                 <number>3</number>
+                 <number>6</number>
                 </property>
                 <item>
                  <widget class="RecentFileComboBox" name="recentfilecombobox">
@@ -396,6 +396,9 @@ QComboBox QAbstractItemView{
                   </property>
                   <property name="focusPolicy">
                    <enum>Qt::NoFocus</enum>
+                  </property>
+                  <property name="horizontalScrollBarPolicy">
+                   <enum>Qt::ScrollBarAlwaysOff</enum>
                   </property>
                   <property name="editor" stdset="0">
                    <bool>false</bool>
@@ -1225,7 +1228,7 @@ background-color: rgb(32, 36, 37);
 border-radius: 8px;
 }</string>
                  </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_128">
+                 <layout class="QVBoxLayout" name="verticalLayout_61">
                   <property name="spacing">
                    <number>0</number>
                   </property>
@@ -1267,6 +1270,344 @@ border-radius: 8px;
                       <blue>37</blue>
                      </color>
                     </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="vtk_control_buttons_2" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">.QWidget{
+    background: rgb(32, 36, 37);
+}</string>
+                    </property>
+                    <layout class="QHBoxLayout" name="horizontalLayout_128">
+                     <property name="spacing">
+                      <number>6</number>
+                     </property>
+                     <property name="leftMargin">
+                      <number>1</number>
+                     </property>
+                     <property name="topMargin">
+                      <number>6</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>1</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>9</number>
+                     </property>
+                     <item>
+                      <widget class="QPushButton" name="zoom_out_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>ZOOM -</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="zoom_in_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>ZOOM +</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="x_view_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>X View</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="y_view_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Y View</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="z_view_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>Z View</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="iso_view_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="text">
+                        <string>ISO VW</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="pan_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    color: white;
+    border-color: rgb(74, 77, 81);
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+/*QPushButton[error=&quot;true&quot;] {
+    border-color: red;
+}*/
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>PAN</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>true</bool>
+                       </property>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="QPushButton" name="clear_button_2">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>63</width>
+                         <height>45</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string>CLEAR</string>
+                       </property>
+                       <property name="checkable">
+                        <bool>false</bool>
+                       </property>
+                      </widget>
+                     </item>
+                    </layout>
                    </widget>
                   </item>
                  </layout>
@@ -1358,6 +1699,15 @@ border-radius: 8px;
     border-radius: 6px;
     color: black;
 }</string>
+                       </property>
+                       <property name="alternatingRowColors">
+                        <bool>false</bool>
+                       </property>
+                       <property name="selectionMode">
+                        <enum>QAbstractItemView::MultiSelection</enum>
+                       </property>
+                       <property name="viewMode">
+                        <enum>QListView::ListMode</enum>
                        </property>
                        <property name="mdiEntrylineName" stdset="0">
                         <string>mdiEntry</string>
@@ -1898,11 +2248,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>R</string>
@@ -1935,11 +2291,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>G</string>
@@ -1971,8 +2333,8 @@ border-radius: 8px;
                        </property>
                        <property name="font">
                         <font>
-                         <family>bebas kai</family>
-                         <pointsize>17</pointsize>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -1982,8 +2344,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;bebas kai&quot;;
-</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>Z</string>
@@ -2016,14 +2377,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>7</string>
@@ -2056,11 +2420,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>F</string>
@@ -2093,14 +2463,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>4</string>
@@ -2133,14 +2506,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>6</string>
@@ -2173,14 +2549,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>8</string>
@@ -2213,14 +2592,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>3</string>
@@ -2253,14 +2635,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>2</string>
@@ -2293,14 +2678,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>9</string>
@@ -2333,14 +2721,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>5</string>
@@ -2373,14 +2764,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>21</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>.</string>
@@ -2413,11 +2807,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>P</string>
@@ -2450,11 +2850,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>Q</string>
@@ -2530,11 +2936,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>D</string>
@@ -2566,8 +2978,8 @@ border-radius: 8px;
                        </property>
                        <property name="font">
                         <font>
-                         <family>bebas kai</family>
-                         <pointsize>17</pointsize>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -2577,8 +2989,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;bebas kai&quot;;
-</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>A</string>
@@ -2611,11 +3022,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>T</string>
@@ -2700,11 +3117,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>M</string>
@@ -2784,11 +3207,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>H</string>
@@ -2820,8 +3249,8 @@ border-radius: 8px;
                        </property>
                        <property name="font">
                         <font>
-                         <family>bebas kai</family>
-                         <pointsize>17</pointsize>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -2831,8 +3260,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;bebas kai&quot;;
-</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>Y</string>
@@ -2865,14 +3293,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>0</string>
@@ -2904,8 +3335,8 @@ border-radius: 8px;
                        </property>
                        <property name="font">
                         <font>
-                         <family>bebas kai</family>
-                         <pointsize>17</pointsize>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -2915,8 +3346,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;bebas kai&quot;;
-</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>X</string>
@@ -2949,11 +3379,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>I</string>
@@ -2986,11 +3422,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>S</string>
@@ -3066,11 +3508,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>K</string>
@@ -3103,11 +3551,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string>font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>J</string>
@@ -3140,14 +3594,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>1</string>
@@ -3180,14 +3637,17 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true"/>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>L</string>
@@ -3224,7 +3684,7 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>17</pointsize>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -3234,7 +3694,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>SPACE</string>
@@ -3311,7 +3771,7 @@ border-radius: 8px;
                        <property name="font">
                         <font>
                          <family>Bebas Kai</family>
-                         <pointsize>17</pointsize>
+                         <pointsize>19</pointsize>
                          <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
@@ -3321,7 +3781,7 @@ border-radius: 8px;
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 17pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
                        </property>
                        <property name="text">
                         <string>ENTER</string>
@@ -23261,6 +23721,16 @@ color: white;
                  <verstretch>0</verstretch>
                 </sizepolicy>
                </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}</string>
+               </property>
                <property name="text">
                 <string/>
                </property>
@@ -34559,6 +35029,134 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>zoom_out_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>588</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>78</x>
+     <y>543</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_in_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>153</x>
+     <y>575</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>152</x>
+     <y>518</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_view_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>setViewX()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>588</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>250</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_view_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>setViewY()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>314</x>
+     <y>592</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>313</x>
+     <y>517</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_view_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>setViewZ()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>377</x>
+     <y>581</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>417</x>
+     <y>527</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pan_button_2</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>enable_panning(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>470</x>
+     <y>593</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>467</x>
+     <y>510</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clear_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>clearLivePlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>571</x>
+     <y>583</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>567</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>iso_view_button_2</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk_mdi</receiver>
+   <slot>setViewP()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>425</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>431</x>
+     <y>527</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -34578,17 +35176,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="plotviewGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
