@@ -1859,6 +1859,9 @@ QPushButton:checked {
                           <property name="text">
                            <string>PAUSE</string>
                           </property>
+                          <property name="checkable">
+                           <bool>true</bool>
+                          </property>
                          </widget>
                         </item>
                         <item>
@@ -35141,6 +35144,22 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>mdiEntry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>enter</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1003</x>
+     <y>574</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1484</x>
+     <y>552</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -35160,17 +35179,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="fileviewerbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probemodeGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="probehelpGroup"/>
   <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="plotviewGroup"/>
  </buttongroups>
 </ui>
