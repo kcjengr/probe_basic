@@ -5,6 +5,7 @@ import os
 from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpyvcp.actions.machine_actions import issue_mdi
+from qtpy.QtWidgets import QAbstractButton
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
@@ -28,6 +29,8 @@ class ProbeBasicLathe(VCPMainWindow):
         self.feed_per_rev = 0.0
         self.css_sword = 0.0
         self.rpm_mode = 0.0
+        self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
+        self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
     def on_feed_unit_per_minute_entry_textChanged(self, value):
         if value:
@@ -82,4 +85,27 @@ class ProbeBasicLathe(VCPMainWindow):
             return False
 
         actions.program_actions.run(lineNum)
+
+    # MDI Panel
+    @Slot(QAbstractButton)
+    def on_btngrpMdi_buttonClicked(self, button):
+        char = str(button.text())
+        text = self.mdiEntry.text() or 'null'
+        if text != 'null':
+            text += char
+        else:
+            text = char
+        self.mdiEntry.setText(text)
+
+    def mdiBackSpace_clicked(parent):
+        if len(parent.mdiEntry.text()) > 0:
+            text = parent.mdiEntry.text()[:-1]
+            parent.mdiEntry.setText(text)
+
+    def mdiSpace_clicked(parent):
+        text = parent.mdiEntry.text() or 'null'
+        # if no text then do not add a space
+        if text != 'null':
+            text += ' '
+            parent.mdiEntry.setText(text)
 
