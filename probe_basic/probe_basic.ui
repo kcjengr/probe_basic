@@ -479,6 +479,9 @@ QComboBox QAbstractItemView{
                      <property name="placeholderText">
                       <string>MDI</string>
                      </property>
+                     <property name="mdi_history_size" stdset="0">
+                      <number>0</number>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -2137,6 +2140,9 @@ QPushButton:checked {
                        <property name="placeholderText">
                         <string>MDI</string>
                        </property>
+                       <property name="mdi_history_size" stdset="0">
+                        <number>0</number>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -2165,7 +2171,7 @@ QPushButton:checked {
                     <property name="styleSheet">
                      <string notr="true"/>
                     </property>
-                    <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0,0">
+                    <layout class="QGridLayout" name="gridLayout_4" rowstretch="0,0,0,0,0,0,0,0,0,0,0,0,0" columnstretch="0,0,0,0,0,0,0,0,0">
                      <property name="leftMargin">
                       <number>9</number>
                      </property>
@@ -2181,6 +2187,80 @@ QPushButton:checked {
                      <property name="horizontalSpacing">
                       <number>15</number>
                      </property>
+                     <item row="6" column="5">
+                      <widget class="QPushButton" name="R">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>21</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>R</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
+                      </widget>
+                     </item>
                      <item row="9" column="2">
                       <widget class="QPushButton" name="S">
                        <property name="sizePolicy">
@@ -2191,14 +2271,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2265,14 +2345,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2339,14 +2419,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2362,7 +2442,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>7</string>
@@ -2382,14 +2495,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2405,7 +2518,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>4</string>
@@ -2425,14 +2571,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2448,7 +2594,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>6</string>
@@ -2468,14 +2647,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2491,7 +2670,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>8</string>
@@ -2511,14 +2723,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2534,7 +2746,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>3</string>
@@ -2554,14 +2799,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2577,7 +2822,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>2</string>
@@ -2597,14 +2875,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2620,7 +2898,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>9</string>
@@ -2640,14 +2951,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2663,7 +2974,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>5</string>
@@ -2683,14 +3027,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2757,14 +3101,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2780,7 +3124,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>.</string>
@@ -2788,53 +3165,6 @@ QPushButton:checked {
                        <attribute name="buttonGroup">
                         <string notr="true">btngrpMdi</string>
                        </attribute>
-                      </widget>
-                     </item>
-                     <item row="10" column="6">
-                      <widget class="QPushButton" name="left_arrow">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic.qrc">
-                         <normaloff>:/images/left_arrow.png</normaloff>:/images/left_arrow.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>25</width>
-                         <height>25</height>
-                        </size>
-                       </property>
                       </widget>
                      </item>
                      <item row="6" column="6">
@@ -2847,14 +3177,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2870,7 +3200,40 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>1</string>
@@ -2890,14 +3253,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -2964,14 +3327,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3038,14 +3401,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3112,14 +3475,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3186,14 +3549,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3260,14 +3623,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3334,14 +3697,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3408,14 +3771,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3482,14 +3845,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3546,167 +3909,6 @@ QPushButton:checked {
                        </attribute>
                       </widget>
                      </item>
-                     <item row="2" column="2">
-                      <widget class="QPushButton" name="L">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>21</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton {
-    color: white;    
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton {
-    font-family: &quot;Bebas Kai&quot;;
-    font-size: 21pt;
-}
-
-QPushButton:disabled {
-    border-color: gray;
-}
-
-QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
-}
-
-QPushButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>L</string>
-                       </property>
-                       <property name="icon">
-                        <iconset>
-                         <normaloff>../../../../Desktop/images/left_arrow.png</normaloff>../../../../Desktop/images/left_arrow.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>35</width>
-                         <height>35</height>
-                        </size>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">btngrpMdi</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="2" column="1">
-                      <widget class="QPushButton" name="O">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>21</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton {
-    color: white;    
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton {
-    font-family: &quot;Bebas Kai&quot;;
-    font-size: 21pt;
-}
-
-QPushButton:disabled {
-    border-color: gray;
-}
-
-QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
-}
-
-QPushButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>O</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">btngrpMdi</string>
-                       </attribute>
-                      </widget>
-                     </item>
                      <item row="10" column="5">
                       <widget class="QPushButton" name="B">
                        <property name="sizePolicy">
@@ -3717,14 +3919,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3791,14 +3993,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3855,6 +4057,167 @@ QPushButton:checked {
                        </attribute>
                       </widget>
                      </item>
+                     <item row="2" column="1">
+                      <widget class="QPushButton" name="O">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>21</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>O</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="2" column="2">
+                      <widget class="QPushButton" name="L">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>21</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>L</string>
+                       </property>
+                       <property name="icon">
+                        <iconset>
+                         <normaloff>../../../../Desktop/images/left_arrow.png</normaloff>../../../../Desktop/images/left_arrow.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>35</width>
+                         <height>35</height>
+                        </size>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
+                      </widget>
+                     </item>
                      <item row="10" column="1">
                       <widget class="QPushButton" name="P">
                        <property name="sizePolicy">
@@ -3865,14 +4228,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -3939,14 +4302,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -4003,53 +4366,6 @@ QPushButton:checked {
                        </attribute>
                       </widget>
                      </item>
-                     <item row="10" column="7">
-                      <widget class="QPushButton" name="right_arrow">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>15</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true"/>
-                       </property>
-                       <property name="text">
-                        <string/>
-                       </property>
-                       <property name="icon">
-                        <iconset resource="probe_basic.qrc">
-                         <normaloff>:/images/right_arrow.png</normaloff>:/images/right_arrow.png</iconset>
-                       </property>
-                       <property name="iconSize">
-                        <size>
-                         <width>25</width>
-                         <height>25</height>
-                        </size>
-                       </property>
-                      </widget>
-                     </item>
                      <item row="9" column="7">
                       <widget class="QPushButton" name="NP0">
                        <property name="sizePolicy">
@@ -4060,14 +4376,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -4083,10 +4399,117 @@ QPushButton:checked {
                         <enum>Qt::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
-                        <string notr="true">font: 21pt &quot;Bebas Kai&quot;;</string>
+                        <string notr="true">QPushButton {
+    color: black;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.18 rgba(213, 213, 223, 255), stop:0.3 rgba(213, 213, 223, 255), stop:0.5 rgba(213, 213, 223, 255), stop:0.7 rgba(213, 213, 223, 255), stop:0.82 rgba(213, 213, 213, 255), stop:1 rgba(255, 255, 255, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(255, 255, 255, 255), stop: 1.0 rgb(235, 235, 235, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                        </property>
                        <property name="text">
                         <string>0</string>
+                       </property>
+                       <attribute name="buttonGroup">
+                        <string notr="true">btngrpMdi</string>
+                       </attribute>
+                      </widget>
+                     </item>
+                     <item row="2" column="5">
+                      <widget class="QPushButton" name="F">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>21</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 21pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
+                       </property>
+                       <property name="text">
+                        <string>F</string>
                        </property>
                        <attribute name="buttonGroup">
                         <string notr="true">btngrpMdi</string>
@@ -4103,14 +4526,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>65</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -4169,7 +4592,181 @@ QPushButton:checked {
                        </attribute>
                       </widget>
                      </item>
-                     <item row="10" column="8">
+                     <item row="10" column="6">
+                      <widget class="QPushButton" name="btnMdiSpace">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>211</width>
+                         <height>60</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>211</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>SPACE</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="11" column="1">
+                      <widget class="QPushButton" name="left_arrow">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="probe_basic.qrc">
+                         <normaloff>:/images/left_arrow.png</normaloff>:/images/left_arrow.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>25</width>
+                         <height>25</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="11" column="2">
+                      <widget class="QPushButton" name="right_arrow">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>65</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>15</pointsize>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true"/>
+                       </property>
+                       <property name="text">
+                        <string/>
+                       </property>
+                       <property name="icon">
+                        <iconset resource="probe_basic.qrc">
+                         <normaloff>:/images/right_arrow.png</normaloff>:/images/right_arrow.png</iconset>
+                       </property>
+                       <property name="iconSize">
+                        <size>
+                         <width>25</width>
+                         <height>25</height>
+                        </size>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="11" column="4">
+                      <widget class="QPushButton" name="enter">
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>211</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>211</width>
+                         <height>65</height>
+                        </size>
+                       </property>
+                       <property name="font">
+                        <font>
+                         <family>Bebas Kai</family>
+                         <pointsize>19</pointsize>
+                         <weight>50</weight>
+                         <italic>false</italic>
+                         <bold>false</bold>
+                        </font>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
+                       </property>
+                       <property name="text">
+                        <string>ENTER</string>
+                       </property>
+                      </widget>
+                     </item>
+                     <item row="11" column="7">
                       <widget class="QPushButton" name="btnMdiBksp">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -4179,14 +4776,14 @@ QPushButton:checked {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>138</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>60</width>
-                         <height>60</height>
+                         <width>138</width>
+                         <height>65</height>
                         </size>
                        </property>
                        <property name="font">
@@ -4210,231 +4807,9 @@ QPushButton:checked {
                        </property>
                        <property name="iconSize">
                         <size>
-                         <width>40</width>
-                         <height>40</height>
+                         <width>50</width>
+                         <height>50</height>
                         </size>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="2" column="5">
-                      <widget class="QPushButton" name="F">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>21</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton {
-    color: white;    
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton {
-    font-family: &quot;Bebas Kai&quot;;
-    font-size: 21pt;
-}
-
-QPushButton:disabled {
-    border-color: gray;
-}
-
-QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
-}
-
-QPushButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>F</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">btngrpMdi</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="6" column="5">
-                      <widget class="QPushButton" name="R">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>60</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>21</pointsize>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">QPushButton {
-    color: white;    
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.15 rgba(60, 121, 212, 255), stop:0.3 rgba(60, 121, 212, 255), stop:0.5 rgba(63, 124, 215, 255), stop:0.7 rgba(60, 121, 212, 255), stop:0.85 rgba(60, 121, 212, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton {
-    font-family: &quot;Bebas Kai&quot;;
-    font-size: 21pt;
-}
-
-QPushButton:disabled {
-    border-color: gray;
-}
-
-QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 rgb(136, 177, 238, 255), stop: 1.0 rgb(146, 177, 238, 255));
-}
-
-QPushButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-</string>
-                       </property>
-                       <property name="text">
-                        <string>R</string>
-                       </property>
-                       <attribute name="buttonGroup">
-                        <string notr="true">btngrpMdi</string>
-                       </attribute>
-                      </widget>
-                     </item>
-                     <item row="11" column="1">
-                      <widget class="QPushButton" name="enter">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>133</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>133</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>19</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>ENTER</string>
-                       </property>
-                      </widget>
-                     </item>
-                     <item row="11" column="6">
-                      <widget class="QPushButton" name="btnMdiSpace">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>206</width>
-                         <height>60</height>
-                        </size>
-                       </property>
-                       <property name="font">
-                        <font>
-                         <family>Bebas Kai</family>
-                         <pointsize>19</pointsize>
-                         <weight>50</weight>
-                         <italic>false</italic>
-                         <bold>false</bold>
-                        </font>
-                       </property>
-                       <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">font: 19pt &quot;Bebas Kai&quot;;</string>
-                       </property>
-                       <property name="text">
-                        <string>SPACE</string>
                        </property>
                       </widget>
                      </item>
@@ -35826,17 +36201,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="fileviewerbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="plotviewGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="fileviewerbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
