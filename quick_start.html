@@ -1,0 +1,248 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html4" lang="en" >
+<head>
+  <meta charset="utf-8" />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <title>Probe Basic Quick Start Install &mdash; ProbeBasic v0.3.4+25.ga2ff8ab.dirty documentation</title>
+  
+
+  
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+
+  
+  
+
+  
+  
+
+  
+
+  
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
+
+    
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Development Install" href="dev_install.html" />
+    <link rel="prev" title="Probe Basic" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="index.html" class="icon icon-home"> ProbeBasic
+          
+
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                v0.3.4
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Installation:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Probe Basic Quick Start Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_install.html">Development Install</a></li>
+</ul>
+
+            
+          
+        </div>
+        
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="index.html" class="icon icon-home"></a> &raquo;</li>
+        
+      <li>Probe Basic Quick Start Install</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+          
+            <a href="_sources/quick_start.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="probe-basic-quick-start-install">
+<h1>Probe Basic Quick Start Install<a class="headerlink" href="#probe-basic-quick-start-install" title="Permalink to this headline">¶</a></h1>
+<p><strong>Probe Basic Quick Start Installation Guide</strong></p>
+<p><strong>Note: Probe Basic is currently designed for 1920x1080 screen sizes only!</strong></p>
+<p><strong>For Whatever reason mesa ehternet setups go much more smoothly when a wired ethernet internet connection is used during linux installation.  The debian installer does some magic that sets up the network perfectly with only one minor tweak once installed.  The wireless setup after install is much easier to get working.  I HIGHLY RECOMMEND using the wired internet connection and choosing to setup that connection during installation to avoid unforeseen issues in connecting to the mesa card(s) post install.</strong></p>
+<p><strong>1- Download the Linuxcnc ISO Image File</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">linuxcnc</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Select the “LinuxCNC 2.8.0 Debian 10 Buster PREEMPT-RT ISO” option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.balena.io/etcher/?ref=etcher_update
+</pre></div>
+</div>
+<p>Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.</p>
+<p>After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p><strong>2- Start Linuxcnc first time</strong></p>
+<p>Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.</p>
+<p><strong>3- Install Probe Basic requiremens</strong></p>
+<p>On a terminal emulator run:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtquick</span> <span class="n">python</span><span class="o">-</span><span class="n">dbus</span><span class="o">.</span><span class="n">mainloop</span><span class="o">.</span><span class="n">pyqt5</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtopengl</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qsci</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtmultimedia</span> <span class="n">qml</span><span class="o">-</span><span class="n">module</span><span class="o">-</span><span class="n">qtquick</span><span class="o">-</span><span class="n">controls</span> <span class="n">gstreamer1</span><span class="o">.</span><span class="mi">0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">bad</span> <span class="n">libqt5multimedia5</span><span class="o">-</span><span class="n">plugins</span> <span class="n">pyqt5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">wheel</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">git</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqtgraph</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtwebkit</span>
+</pre></div>
+</div>
+<p><strong>4- Download ProbeBasicInstaller</strong></p>
+<p>Click the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and select properties.  Select the Permissions Tab in the window that appears and check the box for “Allow this file to run as a program”, see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.</p>
+<p><a class="reference external" href="https://github.com/kcjengr/probe_basic/releases/download/v0.3.4/ProbeBasic-Installer-0.3.4.run">https://github.com/kcjengr/probe_basic/releases/download/v0.3.4/ProbeBasic-Installer-0.3.4.run</a></p>
+<img alt="https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/properties.png" class="align-center" src="https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/properties.png" />
+<img alt="https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/permissions.png" class="align-center" src="https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/permissions.png" />
+<p>Congratulations! You now should be able to launch Probe basic!</p>
+<p><strong>4- Removing, Modifying, Updating Probe Basic</strong></p>
+<p>The maintenancetool file in the newly installed probe_basic file can be double clicked to bring up window for removing or modifying the probe basic installation.  we are currently still working on a more convenient update method but will update this page or create a new one as progress is made!</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+        <a href="dev_install.html" class="btn btn-neutral float-right" title="Development Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="index.html" class="btn btn-neutral float-left" title="Probe Basic" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &#169; Copyright 2019, Chris Polanski.
+
+    </p>
+  </div>
+    
+    
+    
+    Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    
+    provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
