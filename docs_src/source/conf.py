@@ -32,6 +32,8 @@ version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
 
+rst_epilog = ".. |version| replace:: %".format(version)
+
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.
