@@ -32,7 +32,8 @@ version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
 
-rst_epilog = '.. |version_tag| replace:: %s' % version
+rst_epilog = '.. |code version| replace:: ``%s``\n' % version
+rst_epilog += '.. |gh_bin_dl_url| replace:: Download Probe Basic Installer:  https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (version, version)
 
 # -- General configuration ---------------------------------------------------
 
