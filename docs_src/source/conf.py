@@ -31,7 +31,6 @@ author = u'Chris Polanski'
 version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
-rst_epilog = f'.. |version| replace:: {version}'
 
 # -- General configuration ---------------------------------------------------
 
