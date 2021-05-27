@@ -24,14 +24,14 @@ import probe_basic
 # -- Project information -----------------------------------------------------
 
 project = u'ProbeBasic'
-copyright = u'2019, Chris Polanski'
+copyright = u'2021, Chris Polanski'
 author = u'Chris Polanski'
 
 # The short X.Y version.
 version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
-
+rst_epilog = f'.. |version| replace:: {version}'
 
 # -- General configuration ---------------------------------------------------
 
