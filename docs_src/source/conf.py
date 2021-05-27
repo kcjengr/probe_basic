@@ -24,7 +24,7 @@ import probe_basic
 # -- Project information -----------------------------------------------------
 
 project = u'ProbeBasic'
-copyright = u'2019, Chris Polanski'
+copyright = u'2021, Chris Polanski'
 author = u'Chris Polanski'
 
 # The short X.Y version.
@@ -32,6 +32,8 @@ version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
 
+rst_epilog = '.. |code version| replace:: ``%s``\n' % version
+rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (version, version)
 
 # -- General configuration ---------------------------------------------------
 
