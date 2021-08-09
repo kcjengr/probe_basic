@@ -23,9 +23,9 @@ import probe_basic
 
 # -- Project information -----------------------------------------------------
 
-project = u'ProbeBasic'
-copyright = u'2021, Chris Polanski'
-author = u'Chris Polanski'
+project = 'ProbeBasic'
+copyright = '2021, Chris Polanski'
+author = 'Chris Polanski'
 
 # The short X.Y version.
 version = probe_basic.__version__.split('+')[0]
@@ -136,8 +136,8 @@ latex_elements = {
 # (source start file, target name, title,
 #  author, documentclass [howto, manual, or own class]).
 latex_documents = [
-    (master_doc, 'ProbeBasic.tex', u'ProbeBasic Documentation',
-     u'Chris Polanski', 'manual'),
+    (master_doc, 'ProbeBasic.tex', 'ProbeBasic Documentation',
+     'Chris Polanski', 'manual'),
 ]
 
 
@@ -146,7 +146,7 @@ latex_documents = [
 # One entry per manual page. List of tuples
 # (source start file, name, description, authors, manual section).
 man_pages = [
-    (master_doc, 'ProbeBasic', u'ProbeBasic Documentation',
+    (master_doc, 'ProbeBasic', 'ProbeBasic Documentation',
      [author], 1)
 ]
 
@@ -157,7 +157,7 @@ man_pages = [
 # (source start file, target name, title, author,
 #  dir menu entry, description, category)
 texinfo_documents = [
-    (master_doc, 'ProbeBasic', u'ProbeBasic Documentation',
+    (master_doc, 'ProbeBasic', 'ProbeBasic Documentation',
      author, 'ProbeBasic', 'One line description of project.',
      'Miscellaneous'),
 ]

@@ -70,7 +70,7 @@ class DynATC(QQuickWidget):
         for i in range(1, self.pocket_slots+1):
             self.hideToolSig.emit(i)
 
-        for pocket, tool in self.pockets.items():
+        for pocket, tool in list(self.pockets.items()):
             if tool != 0:
                 self.showToolSig.emit(pocket, tool)
             else:

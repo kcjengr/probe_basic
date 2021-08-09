@@ -11,7 +11,7 @@ from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
-import probe_basic_lathe_rc
+from . import probe_basic_lathe_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 

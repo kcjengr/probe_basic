@@ -56,7 +56,7 @@ class LatheToolTouchOff(QQuickWidget):
 
     def update_tools(self, args):
 
-        for key, value in self.tool_image.items():
+        for key, value in list(self.tool_image.items()):
             group, index = value
 
             self.tool_image[int(key)] = [group, index]
@@ -68,7 +68,7 @@ class LatheToolTouchOff(QQuickWidget):
 
         if self.tool_image is None:
             self.toolResetSig.emit()
-        elif tool_num not in self.tool_image.keys():
+        elif tool_num not in list(self.tool_image.keys()):
             self.toolResetSig.emit()
         else:
             group, index = self.tool_image[tool_num]
