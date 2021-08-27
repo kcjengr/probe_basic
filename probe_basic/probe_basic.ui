@@ -96,12 +96,39 @@ bottom-margin: 0px;
           <property name="palette">
            <palette>
             <active>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
                 <red>129</red>
                 <green>133</green>
                 <blue>132</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
                </color>
               </brush>
              </colorrole>
@@ -129,17 +156,53 @@ bottom-margin: 0px;
                 <red>85</red>
                 <green>255</green>
                 <blue>127</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="NoBrush">
+               <color alpha="128">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
                </color>
               </brush>
              </colorrole>
             </active>
             <inactive>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
                 <red>129</red>
                 <green>133</green>
                 <blue>132</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
                </color>
               </brush>
              </colorrole>
@@ -170,14 +233,50 @@ bottom-margin: 0px;
                </color>
               </brush>
              </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="NoBrush">
+               <color alpha="128">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
             </inactive>
             <disabled>
+             <colorrole role="WindowText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
              <colorrole role="Button">
               <brush brushstyle="SolidPattern">
                <color alpha="255">
                 <red>129</red>
                 <green>133</green>
                 <blue>132</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="Text">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="ButtonText">
+              <brush brushstyle="SolidPattern">
+               <color alpha="255">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
                </color>
               </brush>
              </colorrole>
@@ -205,6 +304,15 @@ bottom-margin: 0px;
                 <red>145</red>
                 <green>141</green>
                 <blue>126</blue>
+               </color>
+              </brush>
+             </colorrole>
+             <colorrole role="PlaceholderText">
+              <brush brushstyle="NoBrush">
+               <color alpha="128">
+                <red>241</red>
+                <green>241</green>
+                <blue>241</blue>
                </color>
               </brush>
              </colorrole>
@@ -243,40 +351,6 @@ bottom-margin: 0px;
             <string>MAIN</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QFrame" name="frame_24">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>1</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>1</width>
-                <height>16777215</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QFrame{
-border: none;
-background-color: transparent;
-}</string>
-              </property>
-              <property name="frameShape">
-               <enum>QFrame::StyledPanel</enum>
-              </property>
-              <property name="frameShadow">
-               <enum>QFrame::Raised</enum>
-              </property>
-             </widget>
-            </item>
             <item>
              <widget class="QSplitter" name="splitter">
               <property name="focusPolicy">
@@ -375,7 +449,7 @@ QComboBox QAbstractItemView{
                  </widget>
                 </item>
                 <item>
-                 <widget class="GcodeEditor" name="gcodeeditor">
+                 <widget class="QFrame" name="gcodeeditor">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Expanding">
                     <horstretch>0</horstretch>
@@ -397,12 +471,11 @@ QComboBox QAbstractItemView{
                   <property name="focusPolicy">
                    <enum>Qt::NoFocus</enum>
                   </property>
-                  <property name="horizontalScrollBarPolicy">
-                   <enum>Qt::ScrollBarAlwaysOff</enum>
-                  </property>
-                  <property name="editor" stdset="0">
-                   <bool>false</bool>
-                  </property>
+                  <layout class="QVBoxLayout" name="verticalLayout_52">
+                   <item>
+                    <widget class="GcodeTextEdit" name="gcodetextedit"/>
+                   </item>
+                  </layout>
                  </widget>
                 </item>
                 <item>
@@ -5718,7 +5791,7 @@ color: white;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="GcodeEditor" name="gcodeeditor_2">
+                  <widget class="QFrame" name="gcodeeditor_2">
                    <property name="styleSheet">
                     <string notr="true">GcodeEditor {
 	color: black;
@@ -5728,12 +5801,11 @@ color: white;</string>
 	background-color: rgb(238, 238, 236);
 }</string>
                    </property>
-                   <property name="horizontalScrollBarPolicy">
-                    <enum>Qt::ScrollBarAlwaysOff</enum>
-                   </property>
-                   <property name="is_editor" stdset="0">
-                    <bool>true</bool>
-                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_58">
+                    <item>
+                     <widget class="GcodeTextEdit" name="gcodetextedit_2"/>
+                    </item>
+                   </layout>
                   </widget>
                  </item>
                  <item>
@@ -7672,6 +7744,15 @@ QPushButton:checked {
                           </color>
                          </brush>
                         </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>0</red>
+                           <green>0</green>
+                           <blue>0</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                        </active>
                        <inactive>
                         <colorrole role="WindowText">
@@ -7746,6 +7827,15 @@ QPushButton:checked {
                           </color>
                          </brush>
                         </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>0</red>
+                           <green>0</green>
+                           <blue>0</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                        </inactive>
                        <disabled>
                         <colorrole role="WindowText">
@@ -7817,6 +7907,15 @@ QPushButton:checked {
                            <red>255</red>
                            <green>255</green>
                            <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>0</red>
+                           <green>0</green>
+                           <blue>0</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -8243,6 +8342,15 @@ QPushButton:checked {
                           </color>
                          </brush>
                         </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                        </active>
                        <inactive>
                         <colorrole role="WindowText">
@@ -8305,6 +8413,15 @@ QPushButton:checked {
                            <red>90</red>
                            <green>90</green>
                            <blue>90</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
                           </color>
                          </brush>
                         </colorrole>
@@ -8373,6 +8490,15 @@ QPushButton:checked {
                           </color>
                          </brush>
                         </colorrole>
+                        <colorrole role="PlaceholderText">
+                         <brush brushstyle="NoBrush">
+                          <color alpha="128">
+                           <red>255</red>
+                           <green>255</green>
+                           <blue>255</blue>
+                          </color>
+                         </brush>
+                        </colorrole>
                        </disabled>
                       </palette>
                      </property>
@@ -8428,14 +8554,14 @@ QPushButton:checked {
                        <blue>255</blue>
                       </color>
                      </property>
+                     <attribute name="horizontalHeaderMinimumSectionSize">
+                      <number>90</number>
+                     </attribute>
                      <attribute name="horizontalHeaderDefaultSectionSize">
                       <number>90</number>
                      </attribute>
                      <attribute name="horizontalHeaderHighlightSections">
                       <bool>false</bool>
-                     </attribute>
-                     <attribute name="horizontalHeaderMinimumSectionSize">
-                      <number>90</number>
                      </attribute>
                      <attribute name="horizontalHeaderStretchLastSection">
                       <bool>true</bool>
@@ -8446,14 +8572,14 @@ QPushButton:checked {
                      <attribute name="verticalHeaderCascadingSectionResizes">
                       <bool>true</bool>
                      </attribute>
+                     <attribute name="verticalHeaderMinimumSectionSize">
+                      <number>35</number>
+                     </attribute>
                      <attribute name="verticalHeaderDefaultSectionSize">
                       <number>35</number>
                      </attribute>
                      <attribute name="verticalHeaderHighlightSections">
                       <bool>false</bool>
-                     </attribute>
-                     <attribute name="verticalHeaderMinimumSectionSize">
-                      <number>35</number>
                      </attribute>
                     </widget>
                    </item>
@@ -9639,6 +9765,15 @@ QPushButton:checked {
                            </color>
                           </brush>
                          </colorrole>
+                         <colorrole role="PlaceholderText">
+                          <brush brushstyle="NoBrush">
+                           <color alpha="128">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                           </color>
+                          </brush>
+                         </colorrole>
                         </active>
                         <inactive>
                          <colorrole role="WindowText">
@@ -9713,6 +9848,15 @@ QPushButton:checked {
                            </color>
                           </brush>
                          </colorrole>
+                         <colorrole role="PlaceholderText">
+                          <brush brushstyle="NoBrush">
+                           <color alpha="128">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
+                           </color>
+                          </brush>
+                         </colorrole>
                         </inactive>
                         <disabled>
                          <colorrole role="WindowText">
@@ -9784,6 +9928,15 @@ QPushButton:checked {
                             <red>255</red>
                             <green>255</green>
                             <blue>255</blue>
+                           </color>
+                          </brush>
+                         </colorrole>
+                         <colorrole role="PlaceholderText">
+                          <brush brushstyle="NoBrush">
+                           <color alpha="128">
+                            <red>0</red>
+                            <green>0</green>
+                            <blue>0</blue>
                            </color>
                           </brush>
                          </colorrole>
@@ -10190,26 +10343,26 @@ QPushButton:checked {
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>false</bool>
                      </attribute>
+                     <attribute name="horizontalHeaderMinimumSectionSize">
+                      <number>118</number>
+                     </attribute>
                      <attribute name="horizontalHeaderDefaultSectionSize">
                       <number>118</number>
                      </attribute>
                      <attribute name="horizontalHeaderHighlightSections">
                       <bool>false</bool>
                      </attribute>
-                     <attribute name="horizontalHeaderMinimumSectionSize">
-                      <number>118</number>
-                     </attribute>
                      <attribute name="horizontalHeaderStretchLastSection">
                       <bool>true</bool>
+                     </attribute>
+                     <attribute name="verticalHeaderMinimumSectionSize">
+                      <number>43</number>
                      </attribute>
                      <attribute name="verticalHeaderDefaultSectionSize">
                       <number>43</number>
                      </attribute>
                      <attribute name="verticalHeaderHighlightSections">
                       <bool>false</bool>
-                     </attribute>
-                     <attribute name="verticalHeaderMinimumSectionSize">
-                      <number>43</number>
                      </attribute>
                      <attribute name="verticalHeaderStretchLastSection">
                       <bool>false</bool>
@@ -12775,7 +12928,7 @@ padding-left: 5px;
                        <string>tool-change-position.x-tool-change-position</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:6.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -12859,7 +13012,7 @@ padding-left: 5px;
                        <string>tool-change-position.y-tool-change-position</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:6.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -12943,7 +13096,7 @@ padding-left: 5px;
                        <string>tool-change-position.z-tool-change-position</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:6.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13077,7 +13230,7 @@ color: white;
                        <string>tool-setter-probe.fast-probe-fr</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.1f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13172,7 +13325,7 @@ color: white;
                        <string>tool-setter-probe.slow-probe-fr</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.1f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13273,7 +13426,7 @@ color: white;
                        <string>tool-setter-probe.z-max-travel</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13368,7 +13521,7 @@ color: white;
                        <string>tool-setter-probe.xy-max-travel</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13463,7 +13616,7 @@ color: white;
                        <string>tool-setter-probe.retract-distance</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -13558,7 +13711,7 @@ color: white;
                        <string>tool-setter-probe.spindle-nose-height</string>
                       </property>
                       <property name="textFormat" stdset="0">
-                       <string>{:0.4f}</string>
+                       <string>{:4f}</string>
                       </property>
                      </widget>
                     </item>
@@ -14476,7 +14629,7 @@ color: white;
                       <string>probe-parameters.probe-tool-number</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.0f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -14559,7 +14712,7 @@ color: white;
                       <string>probe-parameters.step-off-width</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -14665,7 +14818,7 @@ color: white;
                       <string>probe-parameters.probe-fast-fr</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.1f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -14748,7 +14901,7 @@ color: white;
                       <string>probe-parameters.probe-slow-fr</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.1f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -14854,7 +15007,7 @@ color: white;
                       <string>probe-parameters.max-xy-distance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -14937,7 +15090,7 @@ color: white;
                       <string>probe-parameters.xy-clearance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -15043,7 +15196,7 @@ color: white;
                       <string>probe-parameters.max-z-distance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -15126,7 +15279,7 @@ color: white;
                       <string>probe-parameters.z-clearance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -15238,7 +15391,7 @@ color: white;
                       <string>probe-parameters.extra-probe-depth</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -15321,7 +15474,7 @@ color: white;
                       <string>probe-parameters.edge-width</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string>{:4f}</string>
                      </property>
                     </widget>
                    </item>
@@ -19733,7 +19886,7 @@ color: rgb(255, 255, 255);
                                 <string>touch-probe.calibration-offset</string>
                                </property>
                                <property name="textFormat" stdset="0">
-                                <string>{:8.6f}</string>
+                                <string>{:4f}</string>
                                </property>
                               </widget>
                              </item>
@@ -22127,7 +22280,7 @@ color: white;
                   <string>programmable-coolant.active</string>
                  </property>
                  <property name="textFormat" stdset="0">
-                  <string>{:0.0f}</string>
+                  <string>{:4f}</string>
                  </property>
                 </widget>
                </item>
@@ -22214,7 +22367,7 @@ color: white;
                   <string>programmable-coolant.spindle-to-nozzle-dist</string>
                  </property>
                  <property name="textFormat" stdset="0">
-                  <string>{:0.4f}</string>
+                  <string>{:4f}</string>
                  </property>
                 </widget>
                </item>
@@ -22301,7 +22454,7 @@ color: white;
                   <string>programmable-coolant.gaugeline-to-nozzle-dist</string>
                  </property>
                  <property name="textFormat" stdset="0">
-                  <string>{:0.4f}</string>
+                  <string>{:4f}</string>
                  </property>
                 </widget>
                </item>
@@ -22388,7 +22541,7 @@ color: white;
                   <string>programmable-coolant.pc-angle-offset</string>
                  </property>
                  <property name="textFormat" stdset="0">
-                  <string>{:0.4f}</string>
+                  <string>{:4f}</string>
                  </property>
                 </widget>
                </item>
@@ -27289,6 +27442,15 @@ border-radius: 1px;
                      </color>
                     </brush>
                    </colorrole>
+                   <colorrole role="PlaceholderText">
+                    <brush brushstyle="NoBrush">
+                     <color alpha="128">
+                      <red>0</red>
+                      <green>0</green>
+                      <blue>0</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
                   </active>
                   <inactive>
                    <colorrole role="WindowText">
@@ -27363,6 +27525,15 @@ border-radius: 1px;
                      </color>
                     </brush>
                    </colorrole>
+                   <colorrole role="PlaceholderText">
+                    <brush brushstyle="NoBrush">
+                     <color alpha="128">
+                      <red>0</red>
+                      <green>0</green>
+                      <blue>0</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
                   </inactive>
                   <disabled>
                    <colorrole role="WindowText">
@@ -27434,6 +27605,15 @@ border-radius: 1px;
                       <red>255</red>
                       <green>255</green>
                       <blue>255</blue>
+                     </color>
+                    </brush>
+                   </colorrole>
+                   <colorrole role="PlaceholderText">
+                    <brush brushstyle="NoBrush">
+                     <color alpha="128">
+                      <red>0</red>
+                      <green>0</green>
+                      <blue>0</blue>
                      </color>
                     </brush>
                    </colorrole>
@@ -33006,47 +33186,6 @@ LOAD</string>
            </property>
           </widget>
          </item>
-         <item row="0" column="0" colspan="2">
-          <widget class="HalBarIndicator" name="spindle_load_indicator">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>30</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <family>Bebas Kai</family>
-             <pointsize>14</pointsize>
-            </font>
-           </property>
-           <property name="styleSheet">
-            <string notr="true"/>
-           </property>
-           <property name="value" stdset="0">
-            <double>100.000000000000000</double>
-           </property>
-           <property name="maximum" stdset="0">
-            <double>150.000000000000000</double>
-           </property>
-           <property name="barGradient" stdset="0">
-            <stringlist>
-             <string>0.0, 170, 170, 236</string>
-             <string>0.63, 85, 85, 238</string>
-             <string>0.65, 171, 171, 158</string>
-             <string>0.79, 227, 237, 106</string>
-             <string>0.84, 219, 124, 55</string>
-             <string>1.0, 209, 0, 0</string>
-            </stringlist>
-           </property>
-          </widget>
-         </item>
          <item row="1" column="1">
           <widget class="StatusLabel" name="max_vel_slider">
            <property name="sizePolicy">
@@ -33458,6 +33597,47 @@ border-radius: 4px;
            </property>
            <property name="actionName" stdset="0">
             <string>machine.rapid-override.reset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="0" colspan="2">
+          <widget class="HalBarIndicator" name="spindle_load_indicator">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Bebas Kai</family>
+             <pointsize>14</pointsize>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="value" stdset="0">
+            <double>100.000000000000000</double>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>150.000000000000000</double>
+           </property>
+           <property name="barGradient" stdset="0">
+            <stringlist>
+             <string>0.0, 170, 170, 236</string>
+             <string>0.63, 85, 85, 238</string>
+             <string>0.65, 171, 171, 158</string>
+             <string>0.79, 227, 237, 106</string>
+             <string>0.84, 219, 124, 55</string>
+             <string>1.0, 209, 0, 0</string>
+            </stringlist>
            </property>
           </widget>
          </item>
@@ -34523,65 +34703,15 @@ font: 11pt bebas kai;
  </widget>
  <customwidgets>
   <customwidget>
-   <class>JogIncrementWidget</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
-  </customwidget>
-  <customwidget>
-   <class>DynATC</class>
-   <extends>QQuickWidget</extends>
-   <header>widgets.atc_widget.atc</header>
-  </customwidget>
-  <customwidget>
-   <class>FileSystemTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>MDIEntry</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
-  </customwidget>
-  <customwidget>
-   <class>ActionSlider</class>
-   <extends>QSlider</extends>
-   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>OffsetTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.offset_table</header>
-  </customwidget>
-  <customwidget>
-   <class>RemovableDeviceComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>DROLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.dro_line_edit</header>
-  </customwidget>
-  <customwidget>
-   <class>StatusLabel</class>
-   <extends>QLabel</extends>
-   <header>qtpyvcp.widgets.display_widgets.status_label</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPStackedWidget</class>
-   <extends>QStackedWidget</extends>
-   <header>qtpyvcp.widgets.containers.stack</header>
+   <class>VCPMainWindow</class>
+   <extends>QMainWindow</extends>
+   <header>qtpyvcp.widgets.form_widgets.main_window</header>
    <container>1</container>
   </customwidget>
   <customwidget>
-   <class>RecentFileComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPSettingsLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+   <class>ActionButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
   <customwidget>
    <class>SubCallButton</class>
@@ -34589,41 +34719,19 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.button_widgets.subcall_button</header>
   </customwidget>
   <customwidget>
-   <class>VCPSettingsSlider</class>
-   <extends>QSlider</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>ToolTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
-  </customwidget>
-  <customwidget>
    <class>MDIButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.button_widgets.mdi_button</header>
   </customwidget>
   <customwidget>
-   <class>HalBarIndicator</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.hal_widgets.hal_bar_indicator</header>
+   <class>StatusLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.display_widgets.status_label</header>
   </customwidget>
   <customwidget>
-   <class>GcodeEditor</class>
-   <extends>QFrame</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>MDIHistory</class>
-   <extends>QListWidget</extends>
-   <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPMainWindow</class>
-   <extends>QMainWindow</extends>
-   <header>qtpyvcp.widgets.form_widgets.main_window</header>
-   <container>1</container>
+   <class>DROLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.display_widgets.dro_label</header>
   </customwidget>
   <customwidget>
    <class>VTKBackPlot</class>
@@ -34632,9 +34740,105 @@ font: 11pt bebas kai;
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>DynATC</class>
+   <extends>QQuickWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.atc_widget.atc</header>
+  </customwidget>
+  <customwidget>
+   <class>NotificationWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
+  </customwidget>
+  <customwidget>
    <class>VCPLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>MDIEntry</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
+  </customwidget>
+  <customwidget>
+   <class>MDIHistory</class>
+   <extends>QListWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
+  </customwidget>
+  <customwidget>
+   <class>GcodeTextEdit</class>
+   <extends>QPlainTextEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>RecentFileComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
+  </customwidget>
+  <customwidget>
+   <class>JogIncrementWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
+  </customwidget>
+  <customwidget>
+   <class>FileSystemTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>RemovableDeviceComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>ActionSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsPushButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>OffsetTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.offset_table</header>
+  </customwidget>
+  <customwidget>
+   <class>DROLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.dro_line_edit</header>
+  </customwidget>
+  <customwidget>
+   <class>HalLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_label</header>
+  </customwidget>
+  <customwidget>
+   <class>HalBarIndicator</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_bar_indicator</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>qtpyvcp.widgets.containers.stack</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>FacingWidget</class>
@@ -34652,34 +34856,9 @@ font: 11pt bebas kai;
    <header>qtpyvcp_conversational_gcode.widgets.xy_coord</header>
   </customwidget>
   <customwidget>
-   <class>DROLabel</class>
-   <extends>QLabel</extends>
-   <header>qtpyvcp.widgets.display_widgets.dro_label</header>
-  </customwidget>
-  <customwidget>
-   <class>ActionButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.button_widgets.action_button</header>
-  </customwidget>
-  <customwidget>
-   <class>HalLabel</class>
-   <extends>QLabel</extends>
-   <header>qtpyvcp.widgets.hal_widgets.hal_label</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPSettingsPushButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>NotificationWidget</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
-  </customwidget>
-  <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -34785,7 +34964,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>146</x>
-     <y>611</y>
+     <y>609</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -34817,7 +34996,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>610</x>
-     <y>472</y>
+     <y>469</y>
     </hint>
     <hint type="destinationlabel">
      <x>749</x>
@@ -34832,7 +35011,7 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>160</x>
+     <x>159</x>
      <y>107</y>
     </hint>
     <hint type="destinationlabel">
@@ -34928,12 +35107,12 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>78</y>
+     <x>192</x>
+     <y>608</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>147</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -34944,12 +35123,12 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>78</y>
+     <x>812</x>
+     <y>608</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>147</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -34961,11 +35140,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>180</y>
+     <y>178</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -34976,12 +35155,12 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>78</y>
+     <x>987</x>
+     <y>608</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>147</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -34993,11 +35172,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>312</y>
+     <y>306</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35008,12 +35187,12 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>139</x>
-     <y>78</y>
+     <x>347</x>
+     <y>608</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>147</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -35025,11 +35204,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>139</y>
+     <y>138</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35044,8 +35223,8 @@ font: 11pt bebas kai;
      <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35057,11 +35236,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>494</y>
+     <y>482</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35073,11 +35252,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>221</y>
+     <y>218</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35089,11 +35268,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>535</y>
+     <y>522</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35105,11 +35284,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>353</y>
+     <y>346</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35121,11 +35300,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>626</y>
+     <y>610</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35137,11 +35316,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>585</y>
+     <y>570</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35156,8 +35335,8 @@ font: 11pt bebas kai;
      <y>101</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35168,12 +35347,12 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35184,12 +35363,12 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>384</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35200,12 +35379,12 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35216,12 +35395,12 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>339</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35232,12 +35411,12 @@ font: 11pt bebas kai;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35248,12 +35427,12 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35264,12 +35443,12 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1840</x>
+     <y>571</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35280,12 +35459,12 @@ font: 11pt bebas kai;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>573</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35296,12 +35475,12 @@ font: 11pt bebas kai;
    <slot>printView()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1840</x>
+     <y>523</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35312,12 +35491,12 @@ font: 11pt bebas kai;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>573</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35332,8 +35511,8 @@ font: 11pt bebas kai;
      <y>101</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35344,12 +35523,12 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>177</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35360,12 +35539,12 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>222</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35376,12 +35555,12 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>339</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35392,12 +35571,12 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>384</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35408,12 +35587,12 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35424,12 +35603,12 @@ font: 11pt bebas kai;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>528</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35440,12 +35619,12 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>267</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35472,12 +35651,12 @@ font: 11pt bebas kai;
    <slot>printView()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1840</x>
+     <y>523</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35488,12 +35667,12 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1840</x>
+     <y>571</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35504,12 +35683,12 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1738</x>
-     <y>101</y>
+     <x>1743</x>
+     <y>267</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>1438</x>
+     <y>296</y>
     </hint>
    </hints>
   </connection>
@@ -35536,8 +35715,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>78</y>
+     <x>132</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -35552,8 +35731,8 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>78</y>
+     <x>265</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>220</x>
@@ -35568,8 +35747,8 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>78</y>
+     <x>398</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -35584,8 +35763,8 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>78</y>
+     <x>530</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>508</x>
@@ -35648,12 +35827,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>185</x>
-     <y>88</y>
+     <x>1419</x>
+     <y>170</y>
     </hint>
     <hint type="destinationlabel">
-     <x>210</x>
-     <y>90</y>
+     <x>1591</x>
+     <y>171</y>
     </hint>
    </hints>
   </connection>
@@ -35664,12 +35843,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>483</x>
-     <y>168</y>
+     <x>1466</x>
+     <y>268</y>
     </hint>
     <hint type="destinationlabel">
-     <x>503</x>
-     <y>170</y>
+     <x>1595</x>
+     <y>269</y>
     </hint>
    </hints>
   </connection>
@@ -35681,7 +35860,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>480</x>
-     <y>754</y>
+     <y>752</y>
     </hint>
     <hint type="destinationlabel">
      <x>594</x>
@@ -35696,12 +35875,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>213</x>
-     <y>88</y>
+     <x>1447</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>210</x>
-     <y>90</y>
+     <x>1587</x>
+     <y>418</y>
     </hint>
    </hints>
   </connection>
@@ -35712,12 +35891,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>483</x>
-     <y>168</y>
+     <x>1466</x>
+     <y>385</y>
     </hint>
     <hint type="destinationlabel">
-     <x>503</x>
-     <y>170</y>
+     <x>1595</x>
+     <y>386</y>
     </hint>
    </hints>
   </connection>
@@ -35729,11 +35908,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>781</x>
-     <y>271</y>
+     <y>266</y>
     </hint>
     <hint type="destinationlabel">
-     <x>782</x>
-     <y>85</y>
+     <x>1081</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -35748,7 +35927,7 @@ font: 11pt bebas kai;
      <y>182</y>
     </hint>
     <hint type="destinationlabel">
-     <x>160</x>
+     <x>159</x>
      <y>107</y>
     </hint>
    </hints>
@@ -35776,12 +35955,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>79</x>
-     <y>95</y>
+     <x>1061</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35792,12 +35971,12 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>741</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35808,12 +35987,12 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>861</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35824,12 +36003,12 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>981</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35840,12 +36019,12 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>741</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35856,12 +36035,12 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>861</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35872,12 +36051,12 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>981</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35888,12 +36067,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>79</x>
-     <y>95</y>
+     <x>1061</x>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35904,12 +36083,12 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>230</x>
-     <y>110</y>
+     <x>1457</x>
+     <y>589</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>75</y>
+     <x>740</x>
+     <y>110</y>
     </hint>
    </hints>
   </connection>
@@ -35920,12 +36099,12 @@ font: 11pt bebas kai;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>106</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>80</x>
-     <y>66</y>
+     <x>110</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -35936,12 +36115,12 @@ font: 11pt bebas kai;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>175</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -35952,12 +36131,12 @@ font: 11pt bebas kai;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>244</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -35968,12 +36147,12 @@ font: 11pt bebas kai;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>313</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -35984,12 +36163,12 @@ font: 11pt bebas kai;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>382</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -36000,12 +36179,12 @@ font: 11pt bebas kai;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>520</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -36016,12 +36195,12 @@ font: 11pt bebas kai;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>589</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -36032,12 +36211,12 @@ font: 11pt bebas kai;
    <slot>setViewP()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>90</y>
+     <x>451</x>
+     <y>611</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>66</y>
+     <x>140</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -36048,76 +36227,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>740</x>
+     <y>605</y>
     </hint>
     <hint type="destinationlabel">
-     <x>230</x>
-     <y>110</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>edit_gcode_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gcodeeditor_2</receiver>
-   <slot>setEditable(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1203</x>
-     <y>594</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1210</x>
-     <y>541</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>find_replace_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodeeditor_2</receiver>
-   <slot>find_replace()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1324</x>
-     <y>585</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1310</x>
-     <y>513</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodeeditor_2</receiver>
-   <slot>save()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1410</x>
-     <y>599</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1394</x>
-     <y>537</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_as_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodeeditor_2</receiver>
-   <slot>saveAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1516</x>
-     <y>590</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1505</x>
-     <y>538</y>
+     <x>1457</x>
+     <y>589</y>
     </hint>
    </hints>
   </connection>
@@ -36140,16 +36255,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="plotviewGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="plotviewGroup"/>
  </buttongroups>
 </ui>
