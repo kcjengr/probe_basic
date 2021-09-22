@@ -214,7 +214,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -5375,26 +5375,26 @@ border-radius: 6px;
                           <blue>255</blue>
                          </color>
                         </property>
+                        <attribute name="horizontalHeaderMinimumSectionSize">
+                         <number>78</number>
+                        </attribute>
                         <attribute name="horizontalHeaderDefaultSectionSize">
                          <number>237</number>
                         </attribute>
                         <attribute name="horizontalHeaderHighlightSections">
                          <bool>false</bool>
                         </attribute>
-                        <attribute name="horizontalHeaderMinimumSectionSize">
-                         <number>78</number>
-                        </attribute>
                         <attribute name="horizontalHeaderStretchLastSection">
                          <bool>false</bool>
+                        </attribute>
+                        <attribute name="verticalHeaderMinimumSectionSize">
+                         <number>43</number>
                         </attribute>
                         <attribute name="verticalHeaderDefaultSectionSize">
                          <number>43</number>
                         </attribute>
                         <attribute name="verticalHeaderHighlightSections">
                          <bool>false</bool>
-                        </attribute>
-                        <attribute name="verticalHeaderMinimumSectionSize">
-                         <number>43</number>
                         </attribute>
                        </widget>
                       </item>
@@ -10923,17 +10923,17 @@ padding-right: 10px;
                        <blue>255</blue>
                       </color>
                      </property>
-                     <attribute name="horizontalHeaderDefaultSectionSize">
-                      <number>90</number>
-                     </attribute>
                      <attribute name="horizontalHeaderMinimumSectionSize">
                       <number>20</number>
                      </attribute>
-                     <attribute name="verticalHeaderDefaultSectionSize">
-                      <number>35</number>
+                     <attribute name="horizontalHeaderDefaultSectionSize">
+                      <number>90</number>
                      </attribute>
                      <attribute name="verticalHeaderMinimumSectionSize">
                       <number>30</number>
+                     </attribute>
+                     <attribute name="verticalHeaderDefaultSectionSize">
+                      <number>35</number>
                      </attribute>
                     </widget>
                    </item>
@@ -15335,7 +15335,7 @@ color: white;
             </item>
            </layout>
           </widget>
- <widget class="QWidget" name="tab_4">
+          <widget class="QWidget" name="tab_4">
            <attribute name="title">
             <string>          CONVENTIONAL          </string>
            </attribute>
@@ -15358,7 +15358,7 @@ color: white;
              <locale language="English" country="UnitedKingdom"/>
             </property>
             <property name="currentIndex">
-             <number>7</number>
+             <number>0</number>
             </property>
             <widget class="QWidget" name="turning">
              <attribute name="title">
@@ -27576,13 +27576,13 @@ LOAD</string>
 }</string>
               </property>
               <property name="text">
-               <string>F MM/M</string>
+               <string>F IPM</string>
               </property>
               <property name="checkable">
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="autoExclusive">
                <bool>false</bool>
@@ -27828,7 +27828,7 @@ LOAD</string>
                <bool>true</bool>
               </property>
               <property name="checked">
-               <bool>false</bool>
+               <bool>true</bool>
               </property>
               <property name="autoExclusive">
                <bool>false</bool>
@@ -28355,59 +28355,15 @@ font: 11pt bebas kai;
  </widget>
  <customwidgets>
   <customwidget>
-   <class>JogIncrementWidget</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
+   <class>VCPMainWindow</class>
+   <extends>QMainWindow</extends>
+   <header>qtpyvcp.widgets.form_widgets.main_window</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
-   <class>LatheToolTouchOff</class>
-   <extends>QQuickWidget</extends>
-   <header>widgets.lathe_tool_touch_off.lathe_tool_touch_off</header>
-  </customwidget>
-  <customwidget>
-   <class>FileSystemTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>MDIEntry</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
-  </customwidget>
-  <customwidget>
-   <class>ActionSlider</class>
-   <extends>QSlider</extends>
-   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>OffsetTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.offset_table</header>
-  </customwidget>
-  <customwidget>
-   <class>RemovableDeviceComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>DROLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.dro_line_edit</header>
-  </customwidget>
-  <customwidget>
-   <class>StatusLabel</class>
-   <extends>QLabel</extends>
-   <header>qtpyvcp.widgets.display_widgets.status_label</header>
-  </customwidget>
-  <customwidget>
-   <class>RecentFileComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPSettingsLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+   <class>ActionButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
   <customwidget>
    <class>SubCallButton</class>
@@ -28415,41 +28371,19 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.button_widgets.subcall_button</header>
   </customwidget>
   <customwidget>
-   <class>VCPSettingsSlider</class>
-   <extends>QSlider</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>ToolTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
-  </customwidget>
-  <customwidget>
    <class>MDIButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.button_widgets.mdi_button</header>
   </customwidget>
   <customwidget>
-   <class>HalBarIndicator</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.hal_widgets.hal_bar_indicator</header>
+   <class>StatusLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.display_widgets.status_label</header>
   </customwidget>
   <customwidget>
-   <class>GcodeEditor</class>
-   <extends>QFrame</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>MDIHistory</class>
-   <extends>QListWidget</extends>
-   <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPMainWindow</class>
-   <extends>QMainWindow</extends>
-   <header>qtpyvcp.widgets.form_widgets.main_window</header>
-   <container>1</container>
+   <class>DROLabel</class>
+   <extends>QLabel</extends>
+   <header>qtpyvcp.widgets.display_widgets.dro_label</header>
   </customwidget>
   <customwidget>
    <class>VTKBackPlot</class>
@@ -28458,19 +28392,79 @@ font: 11pt bebas kai;
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>NotificationWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
+  </customwidget>
+  <customwidget>
    <class>VCPLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.line_edit</header>
   </customwidget>
   <customwidget>
-   <class>DROLabel</class>
-   <extends>QLabel</extends>
-   <header>qtpyvcp.widgets.display_widgets.dro_label</header>
+   <class>MDIEntry</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
   </customwidget>
   <customwidget>
-   <class>ActionButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.button_widgets.action_button</header>
+   <class>MDIHistory</class>
+   <extends>QListWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
+  </customwidget>
+  <customwidget>
+   <class>RecentFileComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
+  </customwidget>
+  <customwidget>
+   <class>JogIncrementWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
+  </customwidget>
+  <customwidget>
+   <class>FileSystemTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>RemovableDeviceComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>ActionSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPSettingsDoubleSpinBox</class>
+   <extends>QDoubleSpinBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>OffsetTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.offset_table</header>
+  </customwidget>
+  <customwidget>
+   <class>DROLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.dro_line_edit</header>
   </customwidget>
   <customwidget>
    <class>HalLabel</class>
@@ -28478,14 +28472,25 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.hal_widgets.hal_label</header>
   </customwidget>
   <customwidget>
-   <class>NotificationWidget</class>
+   <class>HalBarIndicator</class>
    <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
+   <header>qtpyvcp.widgets.hal_widgets.hal_bar_indicator</header>
+  </customwidget>
+  <customwidget>
+   <class>LatheToolTouchOff</class>
+   <extends>QQuickWidget</extends>
+   <header>widgets.lathe_tool_touch_off.lathe_tool_touch_off</header>
   </customwidget>
   <customwidget>
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
-   <header>QtQuickWidgets/QQuickWidget</header>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>GcodeEditor</class>
+   <extends>QFrame</extends>
+   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
+   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
@@ -29380,8 +29385,8 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="diamradbtngroup"/>
  </buttongroups>
 </ui>
