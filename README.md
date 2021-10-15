@@ -7,7 +7,7 @@
 
 https://kcjengr.github.io/probe_basic/quick_start.html
 
-### Development installation 
+### Development installation
 
 https://kcjengr.github.io/probe_basic/dev_install.html
 
@@ -16,15 +16,22 @@ https://kcjengr.github.io/probe_basic/dev_install.html
 https://qtpyvcp.com
 
 
-## Resources
 
-* [Development](https://github.com/kcjengr/Probe_Basic/)
+## Development
+
+* [Documentation](https://www.qtpyvcp.com)
 * [Documentation](https://kcjengr.github.io/probe_basic/)
-* [Freenode IRC](http://webchat.freenode.net/?channels=%23hazzy) (#hazzy) (isolated)
-* [The Matrix](https://riot.im/app/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org) (bridged)
-* [Gitter](https://gitter.im/kcjengr/qtpyvcp) (bridged)
-* [Discord](https://discord.gg/463hMhd) (bridged)
-* [Issue Tracker](https://github.com/kcjengr/Probe_Basic/issues)
+* [GitHub Repo](https://github.com/kcjengr/probe_basic/)
+* [Issue Tracker](https://github.com/kcjengr/probe_basic/issues)
+
+## Documentation and Help
+
+* [Documentation](https://www.qtpyvcp.com)
+* [LinuxCNC Forum](https://forum.linuxcnc.org/qtpyvcp)
+* [libera.chat IRC](http://web.libera.chat/) (#qtpyvcp)
+* [The Matrix](https://app.element.io/#/room/#qtpyvcp:matrix.org) (#qtpyvcp:matrix.org)
+* [Discord](https://discord.gg/463hMhd)
+
 
 
 ## Dependencies
