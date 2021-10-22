@@ -26,8 +26,8 @@ Rectangle {
 
         RotationAnimator {
             id: atc_anim
-            target: atc_holder;
-            duration: 500
+            target: atc_holder
+            duration: anim_duration
             running: false
         }
 
@@ -80,7 +80,7 @@ Rectangle {
                         id:pocket_anim
                         target:pocket_text
                         direction: RotationAnimator.Shortest
-                        duration: atc_anim.duration
+                        duration: anim_duration
                         running: false
                     }
                 }
@@ -136,7 +136,7 @@ Rectangle {
                         id: tool_anim
                         target:tool_text
                         direction: RotationAnimator.Shortest
-                        duration: atc_anim.duration
+                        duration: anim_duration
                         running: false
                     }
                 }
@@ -209,6 +209,8 @@ Rectangle {
 
     property int prev_pocket: 1;
 
+    property int rotation_duration: 100;
+
 
     function rotate(steps, direction) {
 
@@ -221,7 +223,7 @@ Rectangle {
         else if (direction === -1)
             anim_to = anim_from - (360/pocket_slots * steps);
 
-        anim_duration = 1000 * steps;
+        anim_duration = rotation_duration * steps;
 
         // console.log("ROTATE ATC FROM " + anim_from + " TO " + anim_to);
         rotate_atc(atc_anim, anim_duration, anim_from, anim_to);
@@ -254,7 +256,9 @@ Rectangle {
     Connections {
         target: atc_spiner;
 
-        onPocketSig: {
+        function onAtcInitSig(pockets, step_duration) {
+            rotation_duration = step_duration;
+
             pocket_slots = pockets;
             if (pocket_slots == 8) {
                 pocket_position = 130;
@@ -303,20 +307,20 @@ Rectangle {
             }
         }
 
-        onHideToolSig: {
+        function onHideToolSig(pocket) {
             tool_slot.itemAt(pocket - 1).state = "hidden";
         }
 
-        onShowToolSig: {
+        function onShowToolSig(pocket, tool_num) {
             tool_slot.itemAt(pocket - 1).tool_num = tool_num;
             tool_slot.itemAt(pocket - 1).state = "visible";
         }
 
-        onRotateSig: {
+        function onRotateSig(steps, direction) {
             rotate(steps, direction);
         }
 
-        onHomeMsgSig: {
+        function onHomeMsgSig(message) {
             msg_text.text = message;
         }
     }

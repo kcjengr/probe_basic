@@ -26,7 +26,8 @@ WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 class DynATC(QQuickWidget):
-    pocketSig = Signal(int, arguments=['pockets'])
+    atcInitSig = Signal(int, int, arguments=['pockets', 'step_duration'])
+        
     rotateSig = Signal(int, int, arguments=['steps', 'direction'])
 
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
@@ -45,7 +46,8 @@ class DynATC(QQuickWidget):
         self.home = 0
         self.homing = 0
         self.pocket_slots = int(INIFILE.find("ATC", "POCKETS") or 12)
-
+        self.rotaion_duration = int(INIFILE.find("ATC", "STEP_TIME") or 1000)
+        
         self.engine().rootContext().setContextProperty("atc_spiner", self)
         qml_path = os.path.join(WIDGET_PATH, "atc.qml")
         url = QUrl.fromLocalFile(qml_path)
@@ -57,7 +59,7 @@ class DynATC(QQuickWidget):
         self.pockets = dict()
         self.tools = None
 
-        self.pocketSig.emit(self.pocket_slots)
+        self.atcInitSig.emit(self.pocket_slots, self.rotaion_duration)
 
         for pocket in range(1, self.pocket_slots+1):
             self.hideToolSig.emit(pocket)
