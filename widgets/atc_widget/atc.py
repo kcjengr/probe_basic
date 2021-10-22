@@ -29,7 +29,9 @@ INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 class DynATC(QQuickWidget):
     atcInitSig = Signal(int, int, arguments=['pockets', 'step_duration'])
-        
+    
+    resizeSig = Signal(int, int, arguments=["width", "height"])
+    
     rotateSig = Signal(int, int, arguments=['steps', 'direction'])
 
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
@@ -63,9 +65,14 @@ class DynATC(QQuickWidget):
         self.tools = None
 
         self.atcInitSig.emit(self.pocket_slots, self.rotaion_duration)
-
-        for pocket in range(1, self.pocket_slots+1):
-            self.hideToolSig.emit(pocket)
+        
+        if not IN_DESIGNER:
+            for pocket in range(1, self.pocket_slots+1):
+                self.hideToolSig.emit(pocket)
+     
+    def resizeEvent(self, event):
+        self.resizeSig.emit(self.maximumWidth(), self.maximumHeight())
+        super().resizeEvent(event)
 
     @Property(QColor)
     def backgroundColor(self):

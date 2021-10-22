@@ -5,15 +5,15 @@ import QtQuick.Layouts 1.3
 Rectangle {
     id: rectangle
     visible: true
-    width: 550
+    width: widget_width
+    height: widget_height
     color: bg_color
     opacity: 1
-    height: 550
 
     Image {
         id: atc_holder
-        width: 550
-        height: 550
+        width: widget_width
+        height: widget_height
         visible: true
         x: parent.width / 2 - width / 2
         y: parent.height / 2 - height / 2
@@ -195,6 +195,10 @@ Rectangle {
         widget.anim.restart();
     }
 
+    // carousel size
+    property int widget_width: 500
+    property int widget_height: 500
+
     // color properties
     property color bg_color: "grey"
 
@@ -310,6 +314,12 @@ Rectangle {
             }
         }
 
+        function onResizeSig(width, height) {
+            widget_width = width;
+            widget_height = height;
+            pocket_position = width - ((width/2) * 0.5);
+            tool_diam = width/ 7.85;
+        }
         function onBgColorSig(color) {
             bg_color = color;
         }
