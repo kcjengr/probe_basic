@@ -6,7 +6,7 @@ Rectangle {
     id: rectangle
     visible: true
     width: 550
-    color: "#939695"
+    color: bg_color
     opacity: 1
     height: 550
 
@@ -195,6 +195,9 @@ Rectangle {
         widget.anim.restart();
     }
 
+    // color properties
+    property color bg_color: "grey"
+
     // Animation Properties
     property int anim_from: 0;
     property int anim_to: 0;
@@ -305,6 +308,10 @@ Rectangle {
                 pocket_diam = 32;
                 tool_diam = 45;
             }
+        }
+
+        function onBgColorSig(color) {
+            bg_color = color;
         }
 
         function onHideToolSig(pocket) {

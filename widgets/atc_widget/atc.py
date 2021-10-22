@@ -11,6 +11,8 @@ ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 
 # end of Workarround
 
+from qtpy.QtCore import Property, Slot
+from qtpy.QtGui import QColor
 
 from qtpy.QtCore import Signal, Slot, QUrl, QTimer
 from qtpy.QtQuickWidgets import QQuickWidget
@@ -33,14 +35,15 @@ class DynATC(QQuickWidget):
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
     hideToolSig = Signal(float, arguments=['pocket'])
 
+    bgColorSig = Signal(QColor, arguments=["color"])
     homeMsgSig = Signal(str, arguments=["message"])
 
     def __init__(self, parent=None):
         super(DynATC, self).__init__(parent)
 
-        if IN_DESIGNER:
-            return
-
+        # properties
+        self._background_color = QColor(0, 0, 0)
+        
         self.atc_position = 0
         self.pocket = 1
         self.home = 0
@@ -64,6 +67,15 @@ class DynATC(QQuickWidget):
         for pocket in range(1, self.pocket_slots+1):
             self.hideToolSig.emit(pocket)
 
+    @Property(QColor)
+    def backgroundColor(self):
+        return self._background_color
+
+    @backgroundColor.setter
+    def backgroundColor(self, color):
+        self.bgColorSig.emit(color)
+        self._background_color = color
+    
     def hideEvent(self, *args, **kwargs):
         pass  # hack to prevent animation glitch when we are on another tab FIXME
 
