@@ -82,9 +82,6 @@ class DynATC(QQuickWidget):
     def backgroundColor(self, color):
         self.bgColorSig.emit(color)
         self._background_color = color
-    
-    def hideEvent(self, *args, **kwargs):
-        pass  # hack to prevent animation glitch when we are on another tab FIXME
 
     def load_tools(self):
         # print("load_tools")
