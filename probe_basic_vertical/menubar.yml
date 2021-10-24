@@ -81,12 +81,53 @@ menubar:
 
     - title: Set Work Offsets
       action: win.showDialog
-      args: set_work_offsets
+      args: [set_work_offsets]
 
     - separator
 
     - title: Override Limits
       action: machine.override_limits
+
+  - title: Settings
+    items:
+      - title: Show On-screen Keyboard
+        action: settings.virtual-input.enable
+
+
+  - title: View
+    items:
+      - title: Show Gridlines
+        action: settings.backplot.show-grid
+
+      - separator
+
+      - title: Show Machine Bounds
+        action: settings.backplot.show-machine-bounds
+
+      - title: Show Machine Labels
+        action: settings.backplot.show-machine-labels
+
+      - title: Show Machine Ticks
+        action: settings.backplot.show-machine-ticks
+
+      - separator
+
+      - title: Show Program Bounds
+        action: settings.backplot.show-program-bounds
+
+      - title: Show Program Labels
+        action: settings.backplot.show-program-labels
+
+      - title: Show Program Ticks
+        action: settings.backplot.show-program-ticks
+
+      - separator
+
+      - title: Perspective View
+        action: settings.backplot.perspective-view
+
+      - title: View Angle
+        action: settings.backplot.view
 
   - title: Tools
     items:
@@ -111,6 +152,10 @@ menubar:
   - title: About
     items:
       - title: About Probe Basic
+        action: win.showDialog
+        args: [about_probebasic]
       - title: About QtPyVCP
+        action: win.showDialog
+        args: [about_qtpyvcp]
       - title: About Qt
         action: app.aboutQt

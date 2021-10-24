@@ -1,0 +1,33 @@
+(author: Chris P)
+(version: 0.3)
+(date: 03/10/20)
+
+(m6 tool call with g43 offset applied)
+
+o<M6_tool_call_main_panel> sub
+
+#<tool_number_entry_main_panel> = #1
+#<activate_programmable_coolant> = #2
+#<horizontal_spindle_nozzle_dist> = #3
+#<vertical_spindle_nozzle_dist> = #4
+#<pc_angle_offset> = #5
+
+T#<tool_number_entry_main_panel> M6
+
+o<010> if [1 EQ 1]
+  G43 H#<tool_number_entry_main_panel>
+o<010> endif
+
+#<pc_tool_length> = #5403
+
+(run program_coolant sub if selected to be active in settings page with value 1)
+o<100> if [#<activate_programmable_coolant> EQ 1]
+  (run program_coolant.ngc)
+  o<program_coolant> call [#3][#4][#5][#<pc_tool_length>]
+o<100> else
+  o<M6_tool_call_main_panel> return
+o<100> endif
+
+o<M6_tool_call_main_panel> endsub
+
+M2 (end program)

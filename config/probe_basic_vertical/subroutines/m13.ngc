@@ -1,0 +1,32 @@
+o<m13> sub
+
+; Move tool carousel CW until ATC zero
+; Parameter #5170 is used to track the current tool pocket (persistently)
+(print, o<M13> P#<p>)
+
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{"REFERENCING"}])
+
+M64 P3 ; Move Motor FWD
+M66 P3 L1 Q20
+O120 if [#5399 LT 0]
+    (abort, failed to home carousel)
+    M65 P3; stop motor
+O120 endif
+#5170 = 1
+M65 P3 ; Stop motor
+#5171 = 1
+
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{}])
+
+#1 = 0
+o130 while [#1 LT 12]
+    #1 = [#1+1]
+    #2 = #[5189+#1]
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#1, #2}])
+o130 endwhile
+
+m61 q#5231
+
+o<m13> endsub [1]
+
+M2
