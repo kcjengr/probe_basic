@@ -3334,14 +3334,11 @@ border-radius: 1px;
             <property name="text">
              <string>00</string>
             </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
-            </property>
-            <property name="textFormat" stdset="0">
-             <string>-1</string>
-            </property>
-            <property name="pinType" stdset="0">
-             <enum>HalLabel::u32</enum>
             </property>
            </widget>
           </item>
@@ -3425,14 +3422,11 @@ border-radius: 1px;
             <property name="text">
              <string>00</string>
             </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
-            </property>
-            <property name="textFormat" stdset="0">
-             <string>-1</string>
-            </property>
-            <property name="pinType" stdset="0">
-             <enum>HalLabel::u32</enum>
             </property>
            </widget>
           </item>
@@ -3520,14 +3514,11 @@ border-radius: 1px;
             <property name="text">
              <string>00</string>
             </property>
+            <property name="textFormat">
+             <enum>Qt::AutoText</enum>
+            </property>
             <property name="alignment">
              <set>Qt::AlignCenter</set>
-            </property>
-            <property name="textFormat" stdset="0">
-             <string>-1</string>
-            </property>
-            <property name="pinType" stdset="0">
-             <enum>HalLabel::u32</enum>
             </property>
            </widget>
           </item>
@@ -9295,7 +9286,7 @@ QLabel[style=&quot;homing&quot;]{
       <number>5</number>
      </property>
      <item row="0" column="0" colspan="2">
-      <widget class="HalBarIndicator" name="spindle_load_indicator">
+      <widget class="HalBarIndicator" name="spindle_load_indicator" native="true">
        <property name="minimumSize">
         <size>
          <width>0</width>
@@ -10210,7 +10201,7 @@ border-radius: 4px;
         <number>16</number>
        </property>
        <item>
-        <widget class="JogIncrementWidget" name="jogincrement">
+        <widget class="JogIncrementWidget" name="jogincrement" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -11052,7 +11043,7 @@ border-radius: 1px;
      <rect>
       <x>0</x>
       <y>5</y>
-      <width>1532</width>
+      <width>1080</width>
       <height>1520</height>
      </rect>
     </property>
@@ -11061,6 +11052,12 @@ border-radius: 1px;
       <horstretch>0</horstretch>
       <verstretch>0</verstretch>
      </sizepolicy>
+    </property>
+    <property name="maximumSize">
+     <size>
+      <width>1080</width>
+      <height>1520</height>
+     </size>
     </property>
     <property name="palette">
      <palette>
@@ -11538,7 +11535,7 @@ QTabWidget QTabBar::tab {
      <enum>QTabWidget::Rounded</enum>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>4</number>
     </property>
     <property name="usesScrollButtons">
      <bool>true</bool>
@@ -12269,7 +12266,7 @@ QPushButton:checked {
         </widget>
        </item>
        <item>
-        <widget class="VTKBackPlot" name="vtk">
+        <widget class="VTKBackPlot" name="vtk" native="true">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
            <horstretch>0</horstretch>
@@ -12628,7 +12625,7 @@ QComboBox QAbstractItemView{
      <property name="maximumSize">
       <size>
        <width>820</width>
-       <height>16777215</height>
+       <height>1500</height>
       </size>
      </property>
      <attribute name="title">
@@ -12642,6 +12639,9 @@ QComboBox QAbstractItemView{
        <number>0</number>
       </property>
       <property name="rightMargin">
+       <number>0</number>
+      </property>
+      <property name="bottomMargin">
        <number>0</number>
       </property>
       <item>
@@ -15865,7 +15865,7 @@ QPushButton:checked {
           <rect>
            <x>0</x>
            <y>844</y>
-           <width>812</width>
+           <width>810</width>
            <height>630</height>
           </rect>
          </property>
@@ -15878,23 +15878,22 @@ QPushButton:checked {
          <property name="maximumSize">
           <size>
            <width>16777215</width>
-           <height>800</height>
+           <height>630</height>
           </size>
          </property>
          <property name="styleSheet">
           <string notr="true">.QFrame{
 background-color: rgb(32, 36, 37);
 border-radius: 8px;
-padding-bottom:2px;
 }</string>
          </property>
-         <widget class="VTKBackPlot" name="vtk_mdi">
+         <widget class="VTKBackPlot" name="vtk_mdi" native="true">
           <property name="geometry">
            <rect>
             <x>10</x>
             <y>8</y>
-            <width>300</width>
-            <height>300</height>
+            <width>795</width>
+            <height>530</height>
            </rect>
           </property>
           <property name="sizePolicy">
@@ -15902,6 +15901,12 @@ padding-bottom:2px;
             <horstretch>1</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>795</width>
+            <height>530</height>
+           </size>
           </property>
           <property name="focusPolicy">
            <enum>Qt::NoFocus</enum>
@@ -17345,13 +17350,13 @@ color: white;</string>
      <attribute name="title">
       <string>TOOLS</string>
      </attribute>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="widget" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>812</width>
-        <height>802</height>
+        <width>815</width>
+        <height>805</height>
        </rect>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_6">
@@ -17359,13 +17364,13 @@ color: white;</string>
         <number>0</number>
        </property>
        <property name="leftMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="rightMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="bottomMargin">
         <number>0</number>
@@ -17937,12 +17942,12 @@ color: white;</string>
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="QWidget" name="widget" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
-        <y>0</y>
-        <width>812</width>
+        <y>820</y>
+        <width>815</width>
         <height>602</height>
        </rect>
       </property>
@@ -17951,13 +17956,13 @@ color: white;</string>
         <number>0</number>
        </property>
        <property name="leftMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>0</number>
+        <number>5</number>
        </property>
        <property name="bottomMargin">
         <number>0</number>
@@ -19389,17 +19394,32 @@ QPushButton:checked {
      <attribute name="title">
       <string>ATC</string>
      </attribute>
-     <widget class="QWidget" name="horizontalLayoutWidget">
+     <widget class="QWidget" name="horizontalWidget" native="true">
       <property name="geometry">
        <rect>
-        <x>6</x>
-        <y>6</y>
-        <width>812</width>
-        <height>597</height>
+        <x>0</x>
+        <y>120</y>
+        <width>820</width>
+        <height>600</height>
        </rect>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>820</width>
+        <height>16777215</height>
+       </size>
       </property>
       <layout class="QHBoxLayout" name="horizontalLayout_152">
        <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>5</number>
+       </property>
+       <property name="bottomMargin">
         <number>0</number>
        </property>
        <item>
@@ -19408,11 +19428,41 @@ QPushButton:checked {
           <number>0</number>
          </property>
          <property name="topMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <property name="rightMargin">
           <number>0</number>
          </property>
+         <item>
+          <widget class="DynATC" name="dynatc">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>550</width>
+             <height>550</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>550</width>
+             <height>550</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QFrame {
+    border: none;
+}</string>
+           </property>
+           <property name="resizeMode">
+            <enum>QQuickWidget::SizeViewToRootObject</enum>
+           </property>
+          </widget>
+         </item>
          <item>
           <widget class="QWidget" name="widget_21" native="true">
            <property name="sizePolicy">
@@ -19423,13 +19473,13 @@ QPushButton:checked {
            </property>
            <property name="minimumSize">
             <size>
-             <width>450</width>
+             <width>300</width>
              <height>0</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>500</width>
+             <width>300</width>
              <height>16777215</height>
             </size>
            </property>
@@ -19439,9 +19489,9 @@ QPushButton:checked {
            <widget class="QFrame" name="frame_40">
             <property name="geometry">
              <rect>
-              <x>10</x>
-              <y>0</y>
-              <width>420</width>
+              <x>50</x>
+              <y>50</y>
+              <width>250</width>
               <height>60</height>
              </rect>
             </property>
@@ -19453,7 +19503,7 @@ QPushButton:checked {
             </property>
             <property name="minimumSize">
              <size>
-              <width>400</width>
+              <width>200</width>
               <height>60</height>
              </size>
             </property>
@@ -19467,16 +19517,16 @@ QPushButton:checked {
             </property>
             <layout class="QHBoxLayout" name="horizontalLayout_132">
              <property name="leftMargin">
-              <number>5</number>
+              <number>0</number>
              </property>
              <property name="topMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <property name="rightMargin">
               <number>5</number>
              </property>
              <property name="bottomMargin">
-              <number>3</number>
+              <number>0</number>
              </property>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_133">
@@ -19541,9 +19591,9 @@ QPushButton:checked {
            <widget class="QWidget" name="widget_3" native="true">
             <property name="geometry">
              <rect>
-              <x>0</x>
-              <y>80</y>
-              <width>400</width>
+              <x>50</x>
+              <y>150</y>
+              <width>250</width>
               <height>280</height>
              </rect>
             </property>
@@ -19568,7 +19618,7 @@ QPushButton:checked {
             <widget class="QLabel" name="label_89">
              <property name="geometry">
               <rect>
-               <x>70</x>
+               <x>40</x>
                <y>0</y>
                <width>169</width>
                <height>274</height>
@@ -19648,53 +19698,860 @@ QPushButton:checked {
              </property>
             </widget>
            </widget>
-           <widget class="QWidget" name="widget_4" native="true">
-            <property name="geometry">
-             <rect>
-              <x>0</x>
-              <y>390</y>
-              <width>400</width>
-              <height>202</height>
-             </rect>
-            </property>
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
-            <property name="minimumSize">
-             <size>
-              <width>0</width>
-              <height>202</height>
-             </size>
-            </property>
-            <property name="maximumSize">
-             <size>
-              <width>16777215</width>
-              <height>202</height>
-             </size>
-            </property>
-            <widget class="QLabel" name="label_38">
-             <property name="geometry">
-              <rect>
-               <x>140</x>
-               <y>0</y>
-               <width>240</width>
-               <height>200</height>
-              </rect>
-             </property>
-             <property name="styleSheet">
-              <string notr="true">image: url(:/images/tool_probe.png);</string>
-             </property>
-             <property name="text">
-              <string/>
-             </property>
-             <property name="scaledContents">
-              <bool>true</bool>
-             </property>
-            </widget>
-           </widget>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </widget>
+     <widget class="QWidget" name="widget" native="true">
+      <property name="geometry">
+       <rect>
+        <x>0</x>
+        <y>825</y>
+        <width>820</width>
+        <height>600</height>
+       </rect>
+      </property>
+      <layout class="QHBoxLayout" name="horizontalLayout_13">
+       <property name="spacing">
+        <number>0</number>
+       </property>
+       <property name="leftMargin">
+        <number>5</number>
+       </property>
+       <property name="topMargin">
+        <number>0</number>
+       </property>
+       <property name="rightMargin">
+        <number>0</number>
+       </property>
+       <property name="bottomMargin">
+        <number>0</number>
+       </property>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_18">
+         <property name="spacing">
+          <number>0</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>5</number>
+         </property>
+         <item>
+          <widget class="QFrame" name="frame_33">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>320</width>
+             <height>550</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>400</width>
+             <height>600</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">.QFrame{
+    background-color: rgb(51, 57, 59);
+    padding-left: 10px;
+    padding-right: 10px;
+}</string>
+           </property>
+           <layout class="QVBoxLayout" name="verticalLayout_7">
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_113">
+              <property name="spacing">
+               <number>0</number>
+              </property>
+              <property name="leftMargin">
+               <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>0</number>
+              </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
+              <property name="bottomMargin">
+               <number>0</number>
+              </property>
+              <item>
+               <widget class="QLabel" name="machine_column_header_9">
+                <property name="minimumSize">
+                 <size>
+                  <width>0</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(176, 179, 172);
+    border-width: 2px;
+    border-radius: 5px;
+    color: white;
+    background: rgb(90, 90, 90);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>ATC MANUAL CONTROL PANEL</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_11">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetFixedSize</enum>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="QLineEdit" name="insert_atc_tool_input">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>40</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::ClickFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 17pt;</string>
+                </property>
+                <property name="alignment">
+                 <set>Qt::AlignCenter</set>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ActionButton" name="insert_atc_tool">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>INSERT</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_114">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetFixedSize</enum>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="ActionButton" name="delete_all_atc_tools">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>DELETE ALL</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ActionButton" name="delete_single_tool">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>DELETE</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_115" stretch="0,0">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetFixedSize</enum>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_9">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">MDIButton {
+    font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string> ATC REV</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="probe_basic_vertical.qrc">
+                  <normaloff>:/images/ccw_arrow.png</normaloff>:/images/ccw_arrow.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>m11</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_3">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">text-align: right;
+padding-right: 19px;
+font: 16pt &quot;Bebas Kai&quot;;
+</string>
+                </property>
+                <property name="text">
+                 <string> ATC FWD </string>
+                </property>
+                <property name="icon">
+                 <iconset resource="probe_basic_vertical.qrc">
+                  <normaloff>:/images/cw_arrow.png</normaloff>:/images/cw_arrow.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>m12</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_116" stretch="0,0">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="sizeConstraint">
+               <enum>QLayout::SetFixedSize</enum>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_11">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">MDIButton {
+    font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string> ATC RETRACT</string>
+                </property>
+                <property name="icon">
+                 <iconset resource="probe_basic_vertical.qrc">
+                  <normaloff>:/images/left_arrow.png</normaloff>:/images/left_arrow.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>m22</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_5">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::RightToLeft</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">MDIButton {
+    text-align: right;
+    padding-right: 10px;
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string> ATC EXTEND </string>
+                </property>
+                <property name="icon">
+                 <iconset resource="probe_basic_vertical.qrc">
+                  <normaloff>:/images/right_arrow.png</normaloff>:/images/right_arrow.png</iconset>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>m21</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_117" stretch="0,0">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_16">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">MDIButton {
+    font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>DRAWBAR LOOSE</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>M64 P2</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="MDIButton" name="subcallbutton_6">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="layoutDirection">
+                 <enum>Qt::LeftToRight</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">font: 16pt &quot;Bebas Kai&quot;;
+</string>
+                </property>
+                <property name="text">
+                 <string>DRAWBAR TIGHT</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>M65 P2</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_118" stretch="0,0">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="ActionButton" name="m01_break_button_10">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>SET TC POSITION</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ActionButton" name="m01_break_button_27">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>AIR BLAST</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+            <item>
+             <layout class="QHBoxLayout" name="horizontalLayout_119">
+              <property name="spacing">
+               <number>15</number>
+              </property>
+              <property name="leftMargin">
+               <number>2</number>
+              </property>
+              <property name="topMargin">
+               <number>2</number>
+              </property>
+              <property name="rightMargin">
+               <number>2</number>
+              </property>
+              <property name="bottomMargin">
+               <number>2</number>
+              </property>
+              <item>
+               <widget class="MDIButton" name="reference_carousel">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>1</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>125</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">MDIButton {
+    font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>REF CAROUSEL</string>
+                </property>
+                <property name="iconSize">
+                 <size>
+                  <width>20</width>
+                  <height>20</height>
+                 </size>
+                </property>
+                <property name="MDICommand" stdset="0">
+                 <string>m13</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ActionButton" name="m01_break_button_14">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>55</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>+ +</string>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="ActionButton" name="m01_break_button_15">
+                <property name="sizePolicy">
+                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                  <horstretch>100</horstretch>
+                  <verstretch>0</verstretch>
+                 </sizepolicy>
+                </property>
+                <property name="minimumSize">
+                 <size>
+                  <width>55</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="maximumSize">
+                 <size>
+                  <width>16777215</width>
+                  <height>45</height>
+                 </size>
+                </property>
+                <property name="focusPolicy">
+                 <enum>Qt::NoFocus</enum>
+                </property>
+                <property name="styleSheet">
+                 <string notr="true">QPushButton {
+   	font: 20pt &quot;Bebas Kai&quot;;
+}</string>
+                </property>
+                <property name="text">
+                 <string>- -</string>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -19702,16 +20559,16 @@ QPushButton:checked {
        <item>
         <layout class="QVBoxLayout" name="verticalLayout_17">
          <property name="spacing">
-          <number>4</number>
+          <number>5</number>
          </property>
          <property name="leftMargin">
           <number>0</number>
          </property>
          <property name="rightMargin">
-          <number>0</number>
+          <number>5</number>
          </property>
          <property name="bottomMargin">
-          <number>5</number>
+          <number>0</number>
          </property>
          <item>
           <widget class="QFrame" name="frame_6">
@@ -19729,8 +20586,8 @@ QPushButton:checked {
            </property>
            <property name="maximumSize">
             <size>
-             <width>350</width>
-             <height>385</height>
+             <width>400</width>
+             <height>400</height>
             </size>
            </property>
            <property name="styleSheet">
@@ -20589,7 +21446,7 @@ QPushButton:checked {
            </property>
            <property name="maximumSize">
             <size>
-             <width>350</width>
+             <width>400</width>
              <height>200</height>
             </size>
            </property>
@@ -20770,938 +21627,48 @@ QPushButton:checked {
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="layoutWidget">
+     <widget class="MDIEntry" name="mdi_entry_box_3">
       <property name="geometry">
        <rect>
-        <x>0</x>
-        <y>600</y>
-        <width>811</width>
-        <height>502</height>
+        <x>5</x>
+        <y>1433</y>
+        <width>810</width>
+        <height>40</height>
        </rect>
       </property>
-      <layout class="QHBoxLayout" name="horizontalLayout_13">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="DynATC" name="dynatc">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>450</width>
-           <height>450</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>450</width>
-           <height>450</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">QFrame {
-    border: none;
-}</string>
-         </property>
-         <property name="resizeMode">
-          <enum>QQuickWidget::SizeViewToRootObject</enum>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-     <widget class="QWidget" name="layoutWidget">
-      <property name="geometry">
-       <rect>
-        <x>0</x>
-        <y>1080</y>
-        <width>826</width>
-        <height>392</height>
-       </rect>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
       </property>
-      <layout class="QVBoxLayout" name="verticalLayout_18">
-       <property name="spacing">
-        <number>0</number>
-       </property>
-       <property name="leftMargin">
-        <number>5</number>
-       </property>
-       <property name="rightMargin">
-        <number>0</number>
-       </property>
-       <item>
-        <widget class="QFrame" name="frame_33">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>805</width>
-           <height>350</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>810</width>
-           <height>550</height>
-          </size>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">.QFrame{
-    background-color: rgb(51, 57, 59);
-    padding-left: 10px;
-    padding-right: 10px;
-margin-bottom:5px;
-}</string>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_7">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_113">
-            <property name="spacing">
-             <number>0</number>
-            </property>
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <property name="topMargin">
-             <number>0</number>
-            </property>
-            <property name="rightMargin">
-             <number>0</number>
-            </property>
-            <property name="bottomMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <widget class="QLabel" name="machine_column_header_9">
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QLabel{
-    border-style: solid;
-    border-color: rgb(176, 179, 172);
-    border-width: 2px;
-    border-radius: 5px;
-    color: white;
-    background: rgb(90, 90, 90);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>ATC MANUAL CONTROL PANEL</string>
-              </property>
-              <property name="alignment">
-               <set>Qt::AlignCenter</set>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_137">
-            <property name="leftMargin">
-             <number>0</number>
-            </property>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_11">
-              <property name="spacing">
-               <number>15</number>
-              </property>
-              <property name="sizeConstraint">
-               <enum>QLayout::SetFixedSize</enum>
-              </property>
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>2</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="QLineEdit" name="insert_atc_tool_input">
-                <property name="enabled">
-                 <bool>true</bool>
-                </property>
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>100</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>180</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>40</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::ClickFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 17pt;</string>
-                </property>
-                <property name="alignment">
-                 <set>Qt::AlignCenter</set>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ActionButton" name="insert_atc_tool">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>100</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                </property>
-                <property name="text">
-                 <string>INSERT</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_114">
-              <property name="spacing">
-               <number>15</number>
-              </property>
-              <property name="sizeConstraint">
-               <enum>QLayout::SetFixedSize</enum>
-              </property>
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>2</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="ActionButton" name="delete_all_atc_tools">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>100</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                </property>
-                <property name="text">
-                 <string>DELETE ALL</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="ActionButton" name="delete_single_tool">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>100</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                </property>
-                <property name="text">
-                 <string>DELETE</string>
-                </property>
-               </widget>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_151">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_115" stretch="0,0,0">
-              <property name="spacing">
-               <number>15</number>
-              </property>
-              <property name="sizeConstraint">
-               <enum>QLayout::SetFixedSize</enum>
-              </property>
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>2</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="MDIButton" name="subcallbutton_9">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>1</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                </property>
-                <property name="text">
-                 <string> ATC REV</string>
-                </property>
-                <property name="icon">
-                 <iconset resource="probe_basic_vertical.qrc">
-                  <normaloff>:/images/ccw_arrow.png</normaloff>:/images/ccw_arrow.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="MDICommand" stdset="0">
-                 <string>m11</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="MDIButton" name="subcallbutton_3">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>1</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::RightToLeft</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">text-align: right;
-padding-right: 19px;
-font: 16pt &quot;Bebas Kai&quot;;
-</string>
-                </property>
-                <property name="text">
-                 <string> ATC FWD </string>
-                </property>
-                <property name="icon">
-                 <iconset resource="probe_basic_vertical.qrc">
-                  <normaloff>:/images/cw_arrow.png</normaloff>:/images/cw_arrow.png</iconset>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="MDICommand" stdset="0">
-                 <string>m12</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_116" stretch="0,0">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <property name="sizeConstraint">
-                 <enum>QLayout::SetFixedSize</enum>
-                </property>
-                <property name="leftMargin">
-                 <number>2</number>
-                </property>
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="rightMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="MDIButton" name="subcallbutton_11">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>180</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> ATC RETRACT</string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="probe_basic_vertical.qrc">
-                    <normaloff>:/images/left_arrow.png</normaloff>:/images/left_arrow.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>m22</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="MDIButton" name="subcallbutton_5">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>180</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
-                  </property>
-                  <property name="layoutDirection">
-                   <enum>Qt::RightToLeft</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">MDIButton {
-    text-align: right;
-    padding-right: 10px;
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string> ATC EXTEND </string>
-                  </property>
-                  <property name="icon">
-                   <iconset resource="probe_basic_vertical.qrc">
-                    <normaloff>:/images/right_arrow.png</normaloff>:/images/right_arrow.png</iconset>
-                  </property>
-                  <property name="iconSize">
-                   <size>
-                    <width>20</width>
-                    <height>20</height>
-                   </size>
-                  </property>
-                  <property name="MDICommand" stdset="0">
-                   <string>m21</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_153">
-            <item>
-             <layout class="QHBoxLayout" name="horizontalLayout_117" stretch="0,0,0">
-              <property name="spacing">
-               <number>15</number>
-              </property>
-              <property name="leftMargin">
-               <number>2</number>
-              </property>
-              <property name="topMargin">
-               <number>2</number>
-              </property>
-              <property name="rightMargin">
-               <number>2</number>
-              </property>
-              <property name="bottomMargin">
-               <number>2</number>
-              </property>
-              <item>
-               <widget class="MDIButton" name="subcallbutton_16">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>1</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                </property>
-                <property name="text">
-                 <string>DRAWBAR LOOSE</string>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="MDICommand" stdset="0">
-                 <string>M64 P2</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="MDIButton" name="subcallbutton_6">
-                <property name="sizePolicy">
-                 <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                  <horstretch>1</horstretch>
-                  <verstretch>0</verstretch>
-                 </sizepolicy>
-                </property>
-                <property name="minimumSize">
-                 <size>
-                  <width>125</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="maximumSize">
-                 <size>
-                  <width>16777215</width>
-                  <height>45</height>
-                 </size>
-                </property>
-                <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
-                </property>
-                <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
-                </property>
-                <property name="styleSheet">
-                 <string notr="true">font: 16pt &quot;Bebas Kai&quot;;
-</string>
-                </property>
-                <property name="text">
-                 <string>DRAWBAR TIGHT</string>
-                </property>
-                <property name="iconSize">
-                 <size>
-                  <width>20</width>
-                  <height>20</height>
-                 </size>
-                </property>
-                <property name="MDICommand" stdset="0">
-                 <string>M65 P2</string>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <layout class="QHBoxLayout" name="horizontalLayout_118" stretch="0,0">
-                <property name="spacing">
-                 <number>15</number>
-                </property>
-                <property name="leftMargin">
-                 <number>2</number>
-                </property>
-                <property name="topMargin">
-                 <number>2</number>
-                </property>
-                <property name="rightMargin">
-                 <number>2</number>
-                </property>
-                <property name="bottomMargin">
-                 <number>2</number>
-                </property>
-                <item>
-                 <widget class="ActionButton" name="m01_break_button_10">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>180</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>SET TC POSITION</string>
-                  </property>
-                 </widget>
-                </item>
-                <item>
-                 <widget class="ActionButton" name="m01_break_button_27">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                    <horstretch>1</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>180</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>16777215</width>
-                    <height>45</height>
-                   </size>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::NoFocus</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                  </property>
-                  <property name="text">
-                   <string>AIR BLAST</string>
-                  </property>
-                 </widget>
-                </item>
-               </layout>
-              </item>
-             </layout>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_119">
-            <property name="spacing">
-             <number>15</number>
-            </property>
-            <property name="leftMargin">
-             <number>2</number>
-            </property>
-            <property name="topMargin">
-             <number>2</number>
-            </property>
-            <property name="rightMargin">
-             <number>2</number>
-            </property>
-            <property name="bottomMargin">
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="MDIButton" name="reference_carousel">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>1</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>160</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>REF CAROUSEL</string>
-              </property>
-              <property name="iconSize">
-               <size>
-                <width>20</width>
-                <height>20</height>
-               </size>
-              </property>
-              <property name="MDICommand" stdset="0">
-               <string>m13</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="ActionButton" name="m01_break_button_14">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>100</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>55</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-   	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>+ +</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="ActionButton" name="m01_break_button_15">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                <horstretch>100</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>55</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>45</height>
-               </size>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
-   	font: 20pt &quot;Bebas Kai&quot;;
-}</string>
-              </property>
-              <property name="text">
-               <string>- -</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-       </item>
-       <item>
-        <widget class="MDIEntry" name="mdi_entry_box_3">
-         <property name="sizePolicy">
-          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-           <horstretch>0</horstretch>
-           <verstretch>0</verstretch>
-          </sizepolicy>
-         </property>
-         <property name="minimumSize">
-          <size>
-           <width>810</width>
-           <height>40</height>
-          </size>
-         </property>
-         <property name="maximumSize">
-          <size>
-           <width>320</width>
-           <height>16777215</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <family>Bebas Kai</family>
-           <pointsize>15</pointsize>
-           <weight>50</weight>
-           <italic>false</italic>
-           <bold>false</bold>
-          </font>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::ClickFocus</enum>
-         </property>
-         <property name="placeholderText">
-          <string>MDI</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
+      <property name="minimumSize">
+       <size>
+        <width>320</width>
+        <height>40</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>820</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="font">
+       <font>
+        <family>Bebas Kai</family>
+        <pointsize>15</pointsize>
+        <weight>50</weight>
+        <italic>false</italic>
+        <bold>false</bold>
+       </font>
+      </property>
+      <property name="focusPolicy">
+       <enum>Qt::ClickFocus</enum>
+      </property>
+      <property name="placeholderText">
+       <string>MDI</string>
+      </property>
      </widget>
     </widget>
     <widget class="QWidget" name="offsets_tab">
@@ -32783,7 +32750,7 @@ border-radius: 8px;
                   <number>3</number>
                  </property>
                  <item>
-                  <widget class="VTKBackPlot" name="vtk_probe">
+                  <widget class="VTKBackPlot" name="vtk_probe" native="true">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
                      <horstretch>1</horstretch>
@@ -32893,7 +32860,7 @@ QTabBar::tab:only-one {
          </attribute>
          <layout class="QHBoxLayout" name="horizontalLayout_49">
           <item>
-           <widget class="FacingWidget" name="facingwidget">
+           <widget class="FacingWidget" name="facingwidget" native="true">
             <property name="minimumSize">
              <size>
               <width>1420</width>
@@ -33308,7 +33275,7 @@ QTabBar::tab:only-one {
              </attribute>
              <layout class="QHBoxLayout" name="horizontalLayout_71">
               <item>
-               <widget class="XYCoordWidget" name="xycoordwidget">
+               <widget class="XYCoordWidget" name="xycoordwidget" native="true">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -33337,7 +33304,7 @@ QTabBar::tab:only-one {
              </attribute>
              <layout class="QHBoxLayout" name="horizontalLayout_149">
               <item>
-               <widget class="HoleCircleWidget" name="holecirclewidget">
+               <widget class="HoleCircleWidget" name="holecirclewidget" native="true">
                 <property name="minimumSize">
                  <size>
                   <width>1420</width>
@@ -34758,7 +34725,7 @@ color: white;
         <number>5</number>
        </property>
        <item>
-        <widget class="NotificationWidget" name="notificationwidget">
+        <widget class="NotificationWidget" name="notificationwidget" native="true">
          <property name="styleSheet">
           <string notr="true">QLabel {
     font-family: &quot;Bebas Kai&quot;;
@@ -34788,7 +34755,7 @@ color: white;
      <x>0</x>
      <y>0</y>
      <width>1080</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -34981,15 +34948,31 @@ font: 11pt bebas kai;
  </widget>
  <customwidgets>
   <customwidget>
+   <class>QQuickWidget</class>
+   <extends>QWidget</extends>
+   <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>JogIncrementWidget</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
+  </customwidget>
+  <customwidget>
+   <class>RecentFileComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
+  </customwidget>
+  <customwidget>
+   <class>GcodeEditor</class>
+   <extends>QFrame</extends>
+   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>VCPMainWindow</class>
    <extends>QMainWindow</extends>
    <header>qtpyvcp.widgets.form_widgets.main_window</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>ActionButton</class>
-   <extends>QPushButton</extends>
-   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
   <customwidget>
    <class>SubCallButton</class>
@@ -34997,9 +34980,39 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.button_widgets.subcall_button</header>
   </customwidget>
   <customwidget>
+   <class>FileSystemTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>ToolTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
+  </customwidget>
+  <customwidget>
+   <class>RemovableDeviceComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
    <class>MDIButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.button_widgets.mdi_button</header>
+  </customwidget>
+  <customwidget>
+   <class>MDIEntry</class>
+   <extends>QLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
+  </customwidget>
+  <customwidget>
+   <class>ActionSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
+  </customwidget>
+  <customwidget>
+   <class>ActionButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.action_button</header>
   </customwidget>
   <customwidget>
    <class>StatusLabel</class>
@@ -35028,44 +35041,9 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.line_edit</header>
   </customwidget>
   <customwidget>
-   <class>MDIEntry</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.mdientry_widget</header>
-  </customwidget>
-  <customwidget>
    <class>MDIHistory</class>
    <extends>QListWidget</extends>
    <header>qtpyvcp.widgets.input_widgets.mdihistory_widget</header>
-  </customwidget>
-  <customwidget>
-   <class>RecentFileComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
-  </customwidget>
-  <customwidget>
-   <class>ToolTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
-  </customwidget>
-  <customwidget>
-   <class>JogIncrementWidget</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
-  </customwidget>
-  <customwidget>
-   <class>FileSystemTable</class>
-   <extends>QTableView</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>RemovableDeviceComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.file_system</header>
-  </customwidget>
-  <customwidget>
-   <class>ActionSlider</class>
-   <extends>QSlider</extends>
-   <header>qtpyvcp.widgets.input_widgets.action_slider</header>
   </customwidget>
   <customwidget>
    <class>VCPSettingsLineEdit</class>
@@ -35128,17 +35106,6 @@ font: 11pt bebas kai;
    <extends>QQuickWidget</extends>
    <header>widgets.atc_widget.atc</header>
   </customwidget>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
-  </customwidget>
-  <customwidget>
-   <class>GcodeEditor</class>
-   <extends>QFrame</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
-   <container>1</container>
-  </customwidget>
  </customwidgets>
  <resources>
   <include location="probe_basic_vertical.qrc"/>
@@ -35154,6 +35121,7 @@ font: 11pt bebas kai;
   <include location="probe_basic_vertical.qrc"/>
   <include location="probe_basic_vertical.qrc"/>
   <include location="probe_basic_vertical.qrc"/>
+  <include location="../probe_basic/probe_basic.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -35381,38 +35349,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_table_delete_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tableWidget_2</receiver>
-   <slot>deleteSelectedTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>104</x>
-     <y>64</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tableWidget_2</receiver>
-   <slot>saveToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>104</x>
-     <y>64</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>y_view_button</sender>
    <signal>clicked()</signal>
    <receiver>vtk</receiver>
@@ -35429,22 +35365,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_table_reload_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tableWidget_2</receiver>
-   <slot>loadToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>144</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>104</x>
-     <y>64</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>zoom_in_button</sender>
    <signal>clicked()</signal>
    <receiver>vtk</receiver>
@@ -35452,22 +35372,6 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>79</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>104</x>
-     <y>64</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_add_tool_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tableWidget_2</receiver>
-   <slot>addTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>124</x>
      <y>67</y>
     </hint>
     <hint type="destinationlabel">
@@ -36101,38 +36005,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>load_spindle_tool_number</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_spindle_button</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>174</x>
-     <y>77</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>load_spindle_tool_number_2</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_spindle_button_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>471</x>
-     <y>157</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>491</x>
-     <y>159</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>tool_number_entry_main_panel</sender>
    <signal>returnPressed()</signal>
    <receiver>m6_tool_call_button_main_panel</receiver>
@@ -36145,38 +36017,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>952</x>
      <y>1568</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_number_entry_atc_page</sender>
-   <signal>returnPressed()</signal>
-   <receiver>m6_tool_call_button_atc_page</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>202</x>
-     <y>77</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>199</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_number_entry_tool_page</sender>
-   <signal>returnPressed()</signal>
-   <receiver>m6_tool_call_button_tool_page</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>471</x>
-     <y>157</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>491</x>
-     <y>159</y>
     </hint>
    </hints>
   </connection>
@@ -36599,16 +36439,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
   <buttongroup name="plotviewGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probehelpGroup"/>
  </buttongroups>
 </ui>
