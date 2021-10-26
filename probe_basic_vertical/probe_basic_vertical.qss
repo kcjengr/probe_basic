@@ -188,16 +188,22 @@ QScrollBar::handle:vertical {
 
 QTabWidget {
     background-color: rgb(40,40,40);
-
+    border:none;
 
 }
 
 QTabWidget::pane {
     background: transparent;
+    border:none;
 }
 
 QTabWidget::tab-bar {
     left: 0px; /* move to the right by 0px */
+border:none;
+}
+
+QTabBar {
+    qproperty-drawBase: 0; /* To remove white line below Tabbar elements */
 }
 
 /* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */
