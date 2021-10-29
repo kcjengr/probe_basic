@@ -736,7 +736,7 @@
              <enum>QTabWidget::Rounded</enum>
             </property>
             <property name="currentIndex">
-             <number>6</number>
+             <number>0</number>
             </property>
             <property name="elideMode">
              <enum>Qt::ElideNone</enum>
@@ -817,6 +817,8 @@
                    <property name="styleSheet">
                     <string notr="true">.QWidget{
     background: rgb(32, 36, 37);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
 }</string>
                    </property>
                    <layout class="QVBoxLayout" name="verticalLayout_8">
@@ -1438,12 +1440,7 @@ QPushButton:checked {
                     </sizepolicy>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">VTKBackPlot {
-    border: solid;
-    border-color: white;
-    border-width: 4px;
-    border-radius: 8px;
-}</string>
+                    <string notr="true"/>
                    </property>
                    <property name="backgroundColor" stdset="0">
                     <color>
@@ -1489,13 +1486,13 @@ QPushButton:checked {
                    <property name="minimumSize">
                     <size>
                      <width>142</width>
-                     <height>30</height>
+                     <height>35</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
                      <width>16777215</width>
-                     <height>30</height>
+                     <height>35</height>
                     </size>
                    </property>
                    <property name="focusPolicy">
@@ -1504,7 +1501,7 @@ QPushButton:checked {
                    <property name="styleSheet">
                     <string notr="true">QComboBox {
 	border: 1px solid black;
-	border-radius: 3px;
+	border-radius: 4px;
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
 	padding: 1px 23px 1px 3px;
 	min-width: 6em;
@@ -1559,7 +1556,7 @@ QComboBox QAbstractItemView{
                     <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="editor" stdset="0">
-                    <bool>false</bool>
+                    <bool>true</bool>
                    </property>
                   </widget>
                  </item>
@@ -1612,6 +1609,9 @@ QComboBox QAbstractItemView{
                   </widget>
                  </item>
                 </layout>
+                <zorder>recentfilecombobox</zorder>
+                <zorder>mdi_entry_box</zorder>
+                <zorder>gcodeeditor</zorder>
                </widget>
               </item>
              </layout>
@@ -2743,7 +2743,7 @@ QPushButton:checked {
                             </property>
                             <property name="icon">
                              <iconset>
-                              <normaloff>../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../Desktop/images/left_arrow.png</iconset>
+                              <normaloff>../../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../../Desktop/images/left_arrow.png</iconset>
                             </property>
                             <property name="iconSize">
                              <size>
@@ -7621,9 +7621,9 @@ QPushButton:checked {
                             <colorrole role="PlaceholderText">
                              <brush brushstyle="NoBrush">
                               <color alpha="128">
-                               <red>255</red>
-                               <green>255</green>
-                               <blue>255</blue>
+                               <red>0</red>
+                               <green>0</green>
+                               <blue>0</blue>
                               </color>
                              </brush>
                             </colorrole>
@@ -8112,8 +8112,12 @@ QPushButton:checked {
                  <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: black;
-background: rgb(235, 235, 235);</string>
+                 <string notr="true">    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);</string>
                 </property>
                 <property name="placeholderText">
                  <string>MDI</string>
@@ -9860,9 +9864,9 @@ QPushButton:checked {
                               <colorrole role="PlaceholderText">
                                <brush brushstyle="NoBrush">
                                 <color alpha="128">
-                                 <red>255</red>
-                                 <green>255</green>
-                                 <blue>255</blue>
+                                 <red>0</red>
+                                 <green>0</green>
+                                 <blue>0</blue>
                                 </color>
                                </brush>
                               </colorrole>
@@ -10357,8 +10361,12 @@ QPushButton:checked {
                  <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: black;
-background: rgb(235, 235, 235);</string>
+                 <string notr="true">    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);</string>
                 </property>
                 <property name="placeholderText">
                  <string>MDI</string>
@@ -14017,8 +14025,12 @@ color: white;
                  <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: black;
-background: rgb(235, 235, 235);</string>
+                 <string notr="true">    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);</string>
                 </property>
                 <property name="placeholderText">
                  <string>MDI</string>
@@ -21445,8 +21457,12 @@ color: rgb(235, 235, 235);
                  <enum>Qt::ClickFocus</enum>
                 </property>
                 <property name="styleSheet">
-                 <string notr="true">color: black;
-background: rgb(235, 235, 235);</string>
+                 <string notr="true">    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);</string>
                 </property>
                 <property name="frame">
                  <bool>false</bool>
@@ -23465,7 +23481,7 @@ color: white;
            <number>0</number>
           </property>
           <property name="topMargin">
-           <number>6</number>
+           <number>5</number>
           </property>
           <property name="rightMargin">
            <number>0</number>
@@ -23518,7 +23534,7 @@ color: white;
             <property name="documentMode">
              <bool>true</bool>
             </property>
-            <widget class="QWidget" name="tabWidget_24Page1">
+            <widget class="QWidget" name="jog_tab_side">
              <property name="autoFillBackground">
               <bool>false</bool>
              </property>
@@ -23531,6 +23547,9 @@ color: white;
              <layout class="QVBoxLayout" name="verticalLayout_50">
               <property name="leftMargin">
                <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>4</number>
               </property>
               <property name="rightMargin">
                <number>0</number>
@@ -24146,7 +24165,7 @@ color: white;
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="tab_17">
+            <widget class="QWidget" name="offsets_tab_side">
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -24158,7 +24177,7 @@ color: white;
                <number>0</number>
               </property>
               <property name="topMargin">
-               <number>9</number>
+               <number>4</number>
               </property>
               <property name="rightMargin">
                <number>0</number>
@@ -24929,7 +24948,7 @@ color: white;
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="tab_2">
+            <widget class="QWidget" name="plot_tab_side">
              <property name="styleSheet">
               <string notr="true"/>
              </property>
@@ -24939,6 +24958,9 @@ color: white;
              <layout class="QVBoxLayout" name="verticalLayout_65">
               <property name="leftMargin">
                <number>0</number>
+              </property>
+              <property name="topMargin">
+               <number>4</number>
               </property>
               <property name="rightMargin">
                <number>0</number>
@@ -25933,6 +25955,11 @@ QPushButton:checked {
             <property name="focusPolicy">
              <enum>Qt::NoFocus</enum>
             </property>
+            <property name="styleSheet">
+             <string notr="true">.QFrame{
+    background-color: rgb(51, 57, 59);
+}</string>
+            </property>
             <layout class="QVBoxLayout" name="verticalLayout_27">
              <property name="spacing">
               <number>10</number>
@@ -26780,7 +26807,9 @@ border-radius: 1px;
              <enum>Qt::NoFocus</enum>
             </property>
             <property name="styleSheet">
-             <string notr="true"/>
+             <string notr="true">.QFrame{
+    background-color: rgb(51, 57, 59);
+}</string>
             </property>
             <layout class="QGridLayout" name="gridLayout">
              <property name="leftMargin">
@@ -26830,6 +26859,9 @@ border-radius: 1px;
                <property name="maximum" stdset="0">
                 <double>150.000000000000000</double>
                </property>
+               <property name="format" stdset="0">
+                <string>%</string>
+               </property>
                <property name="barGradient" stdset="0">
                 <stringlist>
                  <string>0.0, 170, 170, 236</string>
@@ -26875,15 +26907,14 @@ border-radius: 1px;
                 </font>
                </property>
                <property name="styleSheet">
-                <string notr="true">QLabel{
-color: white;
+                <string notr="true">color: white;
 border-style: solid;
 border-color: rgb(176, 179,172);
 border-width: 1px;
 border-radius: 4px;
 background-color: rgb(90, 90, 90);
 font: 10pt &quot;Bebas Kai&quot;;
-}</string>
+</string>
                </property>
                <property name="lineWidth">
                 <number>0</number>
@@ -26954,7 +26985,7 @@ LOAD</string>
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
+	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="lineWidth">
@@ -27021,9 +27052,8 @@ LOAD</string>
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;
+</string>
                      </property>
                      <property name="text">
                       <string>V 100%</string>
@@ -27161,7 +27191,7 @@ border-radius: 4px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
+	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="lineWidth">
@@ -27219,9 +27249,8 @@ border-radius: 4px;
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;
+</string>
                      </property>
                      <property name="text">
                       <string>F 100%</string>
@@ -27359,7 +27388,7 @@ border-radius: 4px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
+	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="lineWidth">
@@ -27404,9 +27433,8 @@ border-radius: 4px;
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;
+</string>
                      </property>
                      <property name="text">
                       <string>S 100%</string>
@@ -27541,7 +27569,7 @@ border-radius: 4px;
     border-radius: 5px;
     color: black;
     background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
+	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="lineWidth">
@@ -27599,9 +27627,8 @@ border-radius: 4px;
                       <enum>Qt::NoFocus</enum>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;
+</string>
                      </property>
                      <property name="text">
                       <string>R 100%</string>
@@ -27716,13 +27743,13 @@ border-radius: 4px;
         <number>6</number>
        </property>
        <property name="leftMargin">
-        <number>9</number>
+        <number>10</number>
        </property>
        <property name="topMargin">
         <number>0</number>
        </property>
        <property name="rightMargin">
-        <number>9</number>
+        <number>10</number>
        </property>
        <property name="bottomMargin">
         <number>0</number>
@@ -34732,6 +34759,7 @@ font: 11pt bebas kai;
   <include location="../probe_basic/probe_basic.qrc"/>
   <include location="probe_basic_vertical.qrc"/>
   <include location="probe_basic_vertical.qrc"/>
+  <include location="probe_basic_vertical.qrc"/>
   <include location="../../../.designer/backup/probe_basic_vertical.qrc"/>
  </resources>
  <connections>
@@ -35440,22 +35468,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_number_entry_main_panel</sender>
-   <signal>returnPressed()</signal>
-   <receiver>m6_tool_call_button_main_panel</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>873</x>
-     <y>1577</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>952</x>
-     <y>1568</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>pan_button</sender>
    <signal>clicked(bool)</signal>
    <receiver>vtk</receiver>
@@ -35791,6 +35803,22 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>tool_number_entry_main_panel</sender>
+   <signal>returnPressed()</signal>
+   <receiver>m6_tool_call_button_main_panel</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>873</x>
+     <y>1577</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>952</x>
+     <y>1568</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -35810,16 +35838,16 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="plotorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="plotviewGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="plotorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
