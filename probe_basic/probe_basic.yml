@@ -27,7 +27,19 @@ data_plugins:
       # serialization method to use: json or pickle
       serialization_method: pickle
       # persistence_file: .vcp_data.json
-
+      
+  notifications:
+    provider: qtpyvcp.plugins.notifications:Notifications
+    kwargs:
+      # show notification popups
+      enabled: True
+      # "native" or "dbus"
+      mode: native
+      # max number of notifications to show
+      max_messages: 5
+      # whether to save messages on exit
+      persistent: True
+ 
 windows:
   mainwindow:
     provider: probe_basic.probe_basic:ProbeBasic
