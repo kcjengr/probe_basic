@@ -62,6 +62,8 @@ Copy the following in the main terminal, hit enter, select Y for yes if asked at
     git clone https://github.com/kcjengr/qtpyvcp qtpyvcp
 
     cd qtpyvcp
+    
+    git checkout python2_maintenance
 
     pip install --editable .
 
