@@ -35,9 +35,9 @@ https://qtpyvcp.com
 
 
 ## Dependencies
-
-* [LinuxCNC](https://linuxcnc.org)
-* Python 2.7
+* Debian 11
+* [LinuxCNC](https://linuxcnc.org) 2.9
+* Python 3.9
 * PyQt5 or PySide2
 * [QtPyVCP](https://qtpyvcp.com/)
 
