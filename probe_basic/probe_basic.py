@@ -31,10 +31,13 @@ class ProbeBasic(VCPMainWindow):
         self.probe_tab_widget.setCurrentIndex(button.property('page'))
 
     @Slot(QAbstractButton)
+    def on_gcodemdibtnGroup_buttonClicked(self, button):
+        self.gcode_mdi.setCurrentIndex(button.property('page'))
+
+    @Slot(QAbstractButton)
     def on_guiaxisdisplayGroup_buttonClicked(self, button):
         self.gui_axis_display_widget.setCurrentIndex(button.property('page'))
-
-
+        
     # Fwd/Back buttons off the stacked widget
     def on_probe_help_next_released(self):
         lastPage = 7
