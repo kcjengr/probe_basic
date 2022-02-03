@@ -22228,7 +22228,7 @@ color: white;
               <x>1160</x>
               <y>375</y>
               <width>461</width>
-              <height>60</height>
+              <height>100</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -22240,113 +22240,132 @@ color: white;
             <property name="minimumSize">
              <size>
               <width>461</width>
-              <height>60</height>
+              <height>100</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>461</width>
-              <height>58</height>
+              <height>100</height>
              </size>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
-            <layout class="QHBoxLayout" name="horizontalLayout_152">
-             <property name="spacing">
-              <number>15</number>
-             </property>
-             <property name="leftMargin">
-              <number>9</number>
-             </property>
-             <property name="rightMargin">
-              <number>9</number>
-             </property>
+            <layout class="QVBoxLayout" name="verticalLayout_23">
              <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_153">
-               <property name="spacing">
-                <number>6</number>
+              <widget class="QLabel" name="work_column_header_10">
+               <property name="enabled">
+                <bool>true</bool>
                </property>
-               <property name="topMargin">
-                <number>1</number>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
                </property>
-               <property name="bottomMargin">
-                <number>1</number>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>25</height>
+                </size>
                </property>
-               <item>
-                <widget class="QLabel" name="label_104">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>140</width>
-                   <height>31</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-font: 14pt &quot;Bebas Kai&quot;;
-color: white;
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
-                 </property>
-                 <property name="text">
-                  <string>actual spindle rpm from spindle encoder =1</string>
-                 </property>
-                 <property name="textFormat">
-                  <enum>Qt::PlainText</enum>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                 <property name="wordWrap">
-                  <bool>false</bool>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="VCPSettingsLineEdit" name="settings_lineedit">
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>33</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>100</width>
-                   <height>33</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLineEdit {
-    border-style: transparent;
-    border-color: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: white;
-	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>0</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>spindle-rpm-input.selection</string>
-                 </property>
-                 <property name="textFormat" stdset="0">
-                  <string>{:4f}</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
+               </property>
+               <property name="text">
+                <string>Spindle speed display rpm source</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_59" native="true">
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                 <horstretch>0</horstretch>
+                 <verstretch>1</verstretch>
+                </sizepolicy>
+               </property>
+               <layout class="QHBoxLayout" name="horizontalLayout_153">
+                <property name="spacing">
+                 <number>12</number>
+                </property>
+                <property name="leftMargin">
+                 <number>3</number>
+                </property>
+                <property name="topMargin">
+                 <number>3</number>
+                </property>
+                <property name="rightMargin">
+                 <number>3</number>
+                </property>
+                <property name="bottomMargin">
+                 <number>3</number>
+                </property>
+                <item>
+                 <widget class="VCPSettingsPushButton" name="spindle_calculated_rpm">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>Calculated Spindle RPM</string>
+                  </property>
+                  <property name="checked">
+                   <bool>false</bool>
+                  </property>
+                  <property name="page" stdset="0">
+                   <number>0</number>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">spindlerpmsourcebtnGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="VCPSettingsPushButton" name="spindle_encodr_rpm">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="text">
+                   <string>encoder spindle rpm</string>
+                  </property>
+                  <property name="checked">
+                   <bool>true</bool>
+                  </property>
+                  <property name="page" stdset="0">
+                   <number>1</number>
+                  </property>
+                  <attribute name="buttonGroup">
+                   <string notr="true">spindlerpmsourcebtnGroup</string>
+                  </attribute>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
              </item>
             </layout>
            </widget>
@@ -30955,7 +30974,7 @@ background: rgb(130, 135, 134);</string>
                   <number>0</number>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Active Codes&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;active_g_codes&quot;}]</string>
                  </property>
                  <property name="statusItem" stdset="0">
                   <string/>
@@ -31023,7 +31042,7 @@ background: rgb(130, 135, 134);</string>
                   <number>0</number>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Active Mcodes&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;active_m_codes&quot;}]</string>
                  </property>
                  <property name="statusItem" stdset="0">
                   <string/>
@@ -33514,7 +33533,7 @@ border-radius: 1px;
 }</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="rules" stdset="0">
          <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;ch[0]-3&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
@@ -33912,6 +33931,24 @@ border-radius: 1px;
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
                  </property>
                 </widget>
                </item>
@@ -36705,6 +36742,24 @@ QLabel[style=&quot;homing&quot;]{
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
+                 <property name="referenceType" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
                 </widget>
                </item>
                <item>
@@ -38072,20 +38127,7 @@ QLabel[style=&quot;homing&quot;]{
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:feedrate&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -38209,7 +38251,7 @@ border-radius: 4px;
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -38256,20 +38298,7 @@ border-radius: 4px;
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:rapidrate&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0%}'.format(ch[0])&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -38371,20 +38400,7 @@ LOAD</string>
             <number>0</number>
            </property>
            <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:max_velocity&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;float&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;'{:.0f}'.format(ch[0] * 60)&quot;,
-        &quot;name&quot;: &quot;New Rule&quot;,
-        &quot;property&quot;: &quot;Text&quot;
-    }
-]</string>
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:max_velocity&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0] * 60):.0f}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -39003,7 +39019,7 @@ border-radius: 4px;
               <set>Qt::AlignCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;%s%%\&quot; % ch[0]&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0]}%\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
              </property>
             </widget>
            </item>
@@ -39052,7 +39068,7 @@ border-radius: 4px;
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'%.1f' % (ch[0] * 60)&quot;, &quot;name&quot;: &quot;cur vel&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:current_vel&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{(ch[0] * 60):.1f}\&quot;&quot;, &quot;name&quot;: &quot;cur vel&quot;}]</string>
              </property>
              <property name="format" stdset="0">
               <string>{:.1f}</string>
@@ -39320,7 +39336,7 @@ border-radius: 4px;
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'%.1f' % ch[0][1]&quot;, &quot;name&quot;: &quot;F Word&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0][1]:.1f}\&quot;&quot;, &quot;name&quot;: &quot;F Word&quot;}]</string>
              </property>
              <property name="format" stdset="0">
               <string>{:1f}</string>
@@ -39364,7 +39380,7 @@ border-radius: 1px;
             <number>0</number>
            </property>
            <item>
-            <widget class="QStackedWidget" name="stackedWidget">
+            <widget class="QStackedWidget" name="spindle_rpm_source_widget">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -39384,7 +39400,7 @@ border-radius: 1px;
               </size>
              </property>
              <property name="currentIndex">
-              <number>0</number>
+              <number>1</number>
              </property>
              <widget class="QWidget" name="spindle_status_rpm">
               <property name="sizePolicy">
@@ -39462,16 +39478,13 @@ border-radius: 1px;
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.speed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.0f}\&quot;.format(ch[0] * ch[1])&quot;, &quot;name&quot;: &quot;Speed&quot;}]</string>
-                 </property>
-                 <property name="format" stdset="0">
-                  <string>{:.0f}</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.speed&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{(ch[0] * ch[1]):.0f}\&quot;&quot;, &quot;name&quot;: &quot;Speed&quot;}]</string>
                  </property>
                 </widget>
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="spindle_encoder_rpm">
+             <widget class="QWidget" name="spindle_encode_rpm">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -39510,7 +39523,7 @@ border-radius: 1px;
                 <number>0</number>
                </property>
                <item>
-                <widget class="HalLabel" name="spindle_enc_rpm">
+                <widget class="HalLabel" name="spindle_encoder_rpm">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -39547,7 +39560,13 @@ border-radius: 1px;
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
                  <property name="pinBaseName" stdset="0">
-                  <string>spindle-abs-rpm</string>
+                  <string>spindle-encoder-rpm</string>
+                 </property>
+                 <property name="textFormat" stdset="0">
+                  <string>.0f</string>
+                 </property>
+                 <property name="pinType" stdset="0">
+                  <enum>HalLabel::float</enum>
                  </property>
                 </widget>
                </item>
@@ -39621,16 +39640,16 @@ border-radius: 1px;
 }</string>
              </property>
              <property name="text">
-              <string>0.0</string>
+              <string>0</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings?speed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str( ch[0] )&quot;, &quot;name&quot;: &quot;S Word&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:settings?speed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0]:.0f}\&quot;&quot;, &quot;name&quot;: &quot;S Word&quot;}]</string>
              </property>
              <property name="format" stdset="0">
-              <string>{:.0f}</string>
+              <string>.0f</string>
              </property>
             </widget>
            </item>
@@ -41180,17 +41199,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="spindlebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
