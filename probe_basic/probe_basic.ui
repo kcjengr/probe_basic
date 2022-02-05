@@ -4723,6 +4723,9 @@ QHeaderView {
                      <property name="selectionMode">
                       <enum>QAbstractItemView::SingleSelection</enum>
                      </property>
+                     <property name="textElideMode">
+                      <enum>Qt::ElideRight</enum>
+                     </property>
                      <property name="showGrid">
                       <bool>false</bool>
                      </property>
@@ -4736,7 +4739,7 @@ QHeaderView {
                       <bool>true</bool>
                      </property>
                      <property name="nameColumnsWidth" stdset="0">
-                      <number>290</number>
+                      <number>240</number>
                      </property>
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>true</bool>
@@ -5121,8 +5124,14 @@ QHeaderView {
 	font: 13pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
+                     <property name="sizeAdjustPolicy">
+                      <enum>QAbstractScrollArea::AdjustIgnored</enum>
+                     </property>
                      <property name="selectionMode">
                       <enum>QAbstractItemView::SingleSelection</enum>
+                     </property>
+                     <property name="textElideMode">
+                      <enum>Qt::ElideRight</enum>
                      </property>
                      <property name="showGrid">
                       <bool>false</bool>
@@ -5137,13 +5146,16 @@ QHeaderView {
                       <bool>true</bool>
                      </property>
                      <property name="nameColumnsWidth" stdset="0">
-                      <number>290</number>
+                      <number>240</number>
                      </property>
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>true</bool>
                      </attribute>
                      <attribute name="horizontalHeaderMinimumSectionSize">
                       <number>20</number>
+                     </attribute>
+                     <attribute name="horizontalHeaderStretchLastSection">
+                      <bool>true</bool>
                      </attribute>
                     </widget>
                    </item>
@@ -41199,18 +41211,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="spindlebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="spindlebtnGroup"/>
  </buttongroups>
 </ui>
