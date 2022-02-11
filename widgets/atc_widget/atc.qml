@@ -230,8 +230,8 @@ Rectangle {
         else if (direction === -1)
             anim_to = anim_from - (360/pocket_slots * steps);
 
-        anim_duration = rotation_duration * steps;
-
+        anim_duration = rotation_duration * Math.abs(steps);
+        
         // console.log("ROTATE ATC FROM " + anim_from + " TO " + anim_to);
         rotate_atc(atc_anim, anim_duration, anim_from, anim_to);
 
