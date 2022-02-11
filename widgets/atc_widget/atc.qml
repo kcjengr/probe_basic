@@ -42,7 +42,7 @@ Rectangle {
 
                 height: atc_holder.height/2
                 transformOrigin: Item.Bottom
-                rotation: -index * 360/pocket_slots + 90
+                rotation: -index * 360/pocket_slots - 90
                 x: atc_holder.width/2
                 y: 0
 
@@ -61,7 +61,7 @@ Rectangle {
                     anchors.top: parent.top
                     anchors.topMargin: pocket_position
                     border.width: 0
-                    rotation: 360/pocket_slots * index - 90
+                    rotation: 360/pocket_slots * index + 90
 
 
                     Text {
