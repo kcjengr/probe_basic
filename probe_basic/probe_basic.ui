@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1916</width>
+    <width>1909</width>
     <height>1080</height>
    </rect>
   </property>
@@ -474,6 +474,50 @@ QComboBox QAbstractItemView{
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true"/>
+                      </property>
+                      <property name="tabStopWidth">
+                       <number>100</number>
+                      </property>
+                      <property name="syntaxHighlighting" stdset="0">
+                       <bool>false</bool>
+                      </property>
+                      <property name="currentLineBackground" stdset="0">
+                       <color>
+                        <red>146</red>
+                        <green>150</green>
+                        <blue>149</blue>
+                       </color>
+                      </property>
+                      <property name="marginBackground" stdset="0">
+                       <color>
+                        <red>146</red>
+                        <green>150</green>
+                        <blue>149</blue>
+                       </color>
+                      </property>
+                      <property name="marginCurrentLineBackground" stdset="0">
+                       <color>
+                        <red>255</red>
+                        <green>255</green>
+                        <blue>255</blue>
+                       </color>
+                      </property>
+                      <property name="marginColor" stdset="0">
+                       <color>
+                        <red>0</red>
+                        <green>0</green>
+                        <blue>0</blue>
+                       </color>
+                      </property>
+                      <property name="marginCurrentLineColor" stdset="0">
+                       <color>
+                        <red>255</red>
+                        <green>255</green>
+                        <blue>255</blue>
+                       </color>
                       </property>
                      </widget>
                     </item>
@@ -8173,15 +8217,15 @@ QPushButton:checked {
                      <property name="sortingEnabled">
                       <bool>true</bool>
                      </property>
-                     <property name="displayColumns" stdset="0">
-                      <string>TXYZDR</string>
-                     </property>
                      <property name="currentToolColor" stdset="0">
                       <color>
                        <red>42</red>
                        <green>56</green>
                        <blue>255</blue>
                       </color>
+                     </property>
+                     <property name="displayColumns" stdset="0">
+                      <string>TXYZDR</string>
                      </property>
                      <attribute name="horizontalHeaderMinimumSectionSize">
                       <number>90</number>
@@ -16948,6 +16992,110 @@ QPushButton:checked {
                 <widget class="QWidget" name="widget_11" native="true">
                  <layout class="QHBoxLayout" name="horizontalLayout_31">
                   <item>
+                   <widget class="QWidget" name="widget_62" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>380</width>
+                      <height>0</height>
+                     </size>
+                    </property>
+                    <widget class="QLabel" name="label_19">
+                     <property name="geometry">
+                      <rect>
+                       <x>159</x>
+                       <y>43</y>
+                       <width>128</width>
+                       <height>450</height>
+                      </rect>
+                     </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="pixmap">
+                      <pixmap resource="probe_basic.qrc">:/images/touch_probe.png</pixmap>
+                     </property>
+                     <property name="scaledContents">
+                      <bool>true</bool>
+                     </property>
+                    </widget>
+                    <widget class="HalLedIndicator" name="probe_led">
+                     <property name="geometry">
+                      <rect>
+                       <x>213</x>
+                       <y>333</y>
+                       <width>20</width>
+                       <height>20</height>
+                      </rect>
+                     </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="diameter">
+                      <number>20</number>
+                     </property>
+                     <property name="color">
+                      <color>
+                       <red>44</red>
+                       <green>41</green>
+                       <blue>255</blue>
+                      </color>
+                     </property>
+                     <property name="state">
+                      <bool>false</bool>
+                     </property>
+                     <property name="pinBaseName" stdset="0">
+                      <string>probe-led</string>
+                     </property>
+                    </widget>
+                    <widget class="HalButton" name="halbutton">
+                     <property name="geometry">
+                      <rect>
+                       <x>182</x>
+                       <y>450</y>
+                       <width>80</width>
+                       <height>70</height>
+                      </rect>
+                     </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">.HalButton{
+background: transparent;
+border: none;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string/>
+                     </property>
+                     <property name="flat">
+                      <bool>false</bool>
+                     </property>
+                     <property name="pinBaseName" stdset="0">
+                      <string>probe-in</string>
+                     </property>
+                    </widget>
+                   </widget>
+                  </item>
+                  <item>
                    <layout class="QVBoxLayout" name="verticalLayout_3">
                     <property name="spacing">
                      <number>0</number>
@@ -16962,7 +17110,7 @@ QPushButton:checked {
                      <widget class="QStackedWidget" name="probe_tab_widget">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
+                        <horstretch>3</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
                       </property>
@@ -20796,6 +20944,16 @@ background: transparent;
                      </widget>
                     </item>
                    </layout>
+                  </item>
+                  <item>
+                   <widget class="QWidget" name="widget_61" native="true">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                      <horstretch>1</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -30963,13 +31121,13 @@ QPushButton:checked {
     border-color: black;
     border-top-width: 2px;
     border-bottom-width: 2px;
-    border-right-width: 1px;
+    border-right-width: 2px;
     border-left-width: 1px;
     padding: 2px;
     border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
+    border-top-right-radius: 4px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
+    border-bottom-right-radius: 4px;
 }
 
 QPushButton:pressed, QPushButton:hover {
@@ -31009,7 +31167,7 @@ QPushButton:checked {
     <item>
      <layout class="QHBoxLayout" name="main_control_screen_layout_panel">
       <property name="spacing">
-       <number>9</number>
+       <number>0</number>
       </property>
       <property name="sizeConstraint">
        <enum>QLayout::SetFixedSize</enum>
@@ -31033,18 +31191,19 @@ QPushButton:checked {
         </property>
         <property name="minimumSize">
          <size>
-          <width>350</width>
+          <width>340</width>
           <height>340</height>
          </size>
         </property>
         <property name="styleSheet">
          <string notr="true">.QFrame{
     color: rgb(46, 52, 54);
+    background-color: rgb(46, 52, 54);
     border-style: solid;
     border-color: rgb(186, 189, 182);
-    background-color: rgb(46, 52, 54);
     border-width: 2px;
     border-radius: 6px;
+    border-right-width:1px;
 }</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_28">
@@ -31052,13 +31211,13 @@ QPushButton:checked {
           <number>6</number>
          </property>
          <property name="leftMargin">
-          <number>18</number>
+          <number>22</number>
          </property>
          <property name="topMargin">
           <number>9</number>
          </property>
          <property name="rightMargin">
-          <number>18</number>
+          <number>22</number>
          </property>
          <property name="bottomMargin">
           <number>4</number>
@@ -32017,13 +32176,13 @@ border-radius: 1px;
         </property>
         <property name="minimumSize">
          <size>
-          <width>230</width>
+          <width>250</width>
           <height>340</height>
          </size>
         </property>
         <property name="maximumSize">
          <size>
-          <width>230</width>
+          <width>250</width>
           <height>340</height>
          </size>
         </property>
@@ -32031,20 +32190,23 @@ border-radius: 1px;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">.QFrame{
+border-left-width: 1px;
+border-right-width:1px;
+}</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_29">
          <property name="spacing">
           <number>10</number>
          </property>
          <property name="leftMargin">
-          <number>12</number>
+          <number>20</number>
          </property>
          <property name="topMargin">
           <number>9</number>
          </property>
          <property name="rightMargin">
-          <number>12</number>
+          <number>20</number>
          </property>
          <property name="bottomMargin">
           <number>3</number>
@@ -33156,8 +33318,8 @@ border-radius: 1px;
         </property>
         <property name="styleSheet">
          <string notr="true">VCPStackedWidget{
-    padding-left: 6px;
-    padding-right: 6px;
+    padding-left: 16px;
+    padding-right: 16px;
     padding-top: -1px;
     padding-bottom:-1px;
     background-color: rgb(46, 52, 54);
@@ -33165,10 +33327,12 @@ border-radius: 1px;
     border-color: rgb(186, 189, 182);
     border-width: 2px;
     border-radius: 6px;
+    border-left-width: 1px;
+    border-right-width:1px;
 }</string>
         </property>
         <property name="currentIndex">
-         <number>2</number>
+         <number>0</number>
         </property>
         <property name="rules" stdset="0">
          <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;ch[0]-3&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
@@ -37699,13 +37863,21 @@ QLabel[style=&quot;homing&quot;]{
         </property>
         <property name="styleSheet">
          <string notr="true">.QFrame{
-    padding-left: 7px;
-    padding-right: 7px;
+    padding-left: 8px;
+    padding-right: 8px;
+    border-left-width: 1px;
+    border-right-width:1px;
 }</string>
         </property>
         <layout class="QGridLayout" name="gridLayout">
+         <property name="leftMargin">
+          <number>13</number>
+         </property>
          <property name="topMargin">
           <number>11</number>
+         </property>
+         <property name="rightMargin">
+          <number>13</number>
          </property>
          <property name="bottomMargin">
           <number>2</number>
@@ -38464,20 +38636,22 @@ border-radius: 4px;
          <enum>Qt::NoFocus</enum>
         </property>
         <property name="styleSheet">
-         <string notr="true"/>
+         <string notr="true">.QFrame{
+    border-left-width:1px
+}</string>
         </property>
         <layout class="QVBoxLayout" name="verticalLayout_27">
          <property name="spacing">
           <number>12</number>
          </property>
          <property name="leftMargin">
-          <number>15</number>
+          <number>19</number>
          </property>
          <property name="topMargin">
           <number>10</number>
          </property>
          <property name="rightMargin">
-          <number>15</number>
+          <number>19</number>
          </property>
          <property name="bottomMargin">
           <number>3</number>
@@ -39293,7 +39467,7 @@ border-radius: 1px;
          <item>
           <layout class="QHBoxLayout" name="horizontalLayout_86">
            <property name="spacing">
-            <number>0</number>
+            <number>20</number>
            </property>
            <property name="topMargin">
             <number>5</number>
@@ -39474,7 +39648,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1916</width>
+     <width>1909</width>
      <height>26</height>
     </rect>
    </property>
@@ -39794,6 +39968,11 @@ font: 11pt bebas kai;
    <class>HalLabel</class>
    <extends>QLabel</extends>
    <header>qtpyvcp.widgets.hal_widgets.hal_label</header>
+  </customwidget>
+  <customwidget>
+   <class>HalButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_button</header>
   </customwidget>
   <customwidget>
    <class>HalBarIndicator</class>
@@ -40829,18 +41008,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="spindlebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probemodeGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="spindlebtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probetabGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probehelpGroup"/>
  </buttongroups>
 </ui>
