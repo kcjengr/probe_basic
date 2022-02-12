@@ -111,6 +111,6 @@ class DynATC(QQuickWidget):
 
     def rotate(self, steps, direction):
         if direction == "cw":
-            self.rotateSig.emit(steps, 1)
+            self.rotateSig.emit(int(steps), 1)
         elif direction == "ccw":
-            self.rotateSig.emit(steps, -1)
+            self.rotateSig.emit(int(steps), -1)
