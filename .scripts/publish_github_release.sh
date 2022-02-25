@@ -6,7 +6,7 @@ AUTH_TOKEN="$(<'/home/turboss/.github_token')"
 
 PRERELEASE=true
 # declare -a RELEASEFILES=("debs/python-probe_basic_*.deb" "dist/probe_basic-*.tar.gz")
-declare -a RELEASEFILES=("/home/turboss/buildbot/probe_basic-py2/sources/pb-installer/bin/ProbeBasic-Installer-*.run")
+declare -a RELEASEFILES=("/home/turboss/buildbot/probe_basic-py2/sources/pb-installer/bin/ProbeBasic-Installer-${TAG}.run")
 
 # commit prefix vs. change log section name
 declare -a COMMIT_TYPES=(
