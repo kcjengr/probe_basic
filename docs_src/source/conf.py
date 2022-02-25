@@ -15,6 +15,8 @@
 import os
 import sys
 
+from urllib.parse import quote
+
 vcp_dir = os.path.join(os.path.abspath('.'), '..', '..')
 sys.path.insert(0, os.path.abspath(vcp_dir))
 
@@ -33,7 +35,7 @@ version = probe_basic.__version__.split('+')[0]
 release = probe_basic.__version__
 
 rst_epilog = '.. |code version| replace:: ``%s``\n' % version
-rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (release[:9] , release.strip('dirty'))
+rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (quote(release[:9]), release.strip('dirty.'))
 
 # -- General configuration ---------------------------------------------------
 
