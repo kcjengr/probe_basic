@@ -33,7 +33,7 @@ version = probe_basic.__version__.split('+')[0]
 release = probe_basic.__version__
 
 rst_epilog = '.. |code version| replace:: ``%s``\n' % version
-rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (version, version)
+rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (release[:7] , release)
 
 # -- General configuration ---------------------------------------------------
 
