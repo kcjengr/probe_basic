@@ -4,9 +4,9 @@ REPO="$1"
 TAG="$2"
 AUTH_TOKEN="$(<'/home/buildbot/.github_token')"
 
-PRERELEASE=false
-# RELEASEFILES=(debs/python-probe_basic_*.deb dist/probe_basic-*.tar.gz)
-RELEASEFILES=(dist/probe_basic-*.tar.gz)
+PRERELEASE=true
+# declare -a RELEASEFILES=("debs/python-probe_basic_*.deb" "dist/probe_basic-*.tar.gz")
+declare -a RELEASEFILES=("dist/probe_basic-*.tar.gz" "pb-installer/bin/ProbeBasic-Installer-*.run")
 
 # commit prefix vs. change log section name
 declare -a COMMIT_TYPES=(
