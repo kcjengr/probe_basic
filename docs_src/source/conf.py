@@ -36,7 +36,6 @@ release = probe_basic.__version__
 
 rst_epilog = '.. |code version| replace:: ``%s``\n' % version
 rst_epilog += '.. |pb_dev_bin_dl_url| replace:: https://repository.qtpyvcp.com/repo/pb-py2/bin/ProbeBasic-Installer-%s.run' % (release.strip('dirty.'))
-rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (quote(release[:9]), release.strip('dirty.'))
 
 # -- General configuration ---------------------------------------------------
 
