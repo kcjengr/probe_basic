@@ -2,7 +2,7 @@
 
 REPO="$1"
 TAG="$2"
-AUTH_TOKEN="$(<'/home/buildbot/.github_token')"
+AUTH_TOKEN="$(<'/home/turboss/.github_token')"
 
 PRERELEASE=true
 # declare -a RELEASEFILES=("debs/python-probe_basic_*.deb" "dist/probe_basic-*.tar.gz")
