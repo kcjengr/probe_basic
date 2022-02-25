@@ -15,7 +15,7 @@
 import os
 import sys
 
-from urllib.parse import quote
+from urllib import quote
 
 vcp_dir = os.path.join(os.path.abspath('.'), '..', '..')
 sys.path.insert(0, os.path.abspath(vcp_dir))
