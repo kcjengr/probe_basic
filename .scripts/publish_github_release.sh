@@ -107,7 +107,7 @@ if [ "$TRAVIS" = "true" ] && [ -z "$TRAVIS_TAG" ]; then
   exit 0
 fi
 
-TAG_NAME=${TAG:0:7}
+TAG_NAME=${TAG:0:10}
 
 echo "Creating GitHub release for $TAG_NAME"
 
