@@ -1,6 +1,6 @@
 (author: Chris P)
 (version: 0.2)
-(date: 01/23/22)
+(date: 07/18/22)
 
 (load tool in spindle safety macro)
 
@@ -39,6 +39,7 @@ o<100> else if [#<load_spindle_tool_number> EQ #5201]
   (MSG, the tool you are trying to load is already stored in carousel pocket 12)
 o<100> else
   M61 Q#<load_spindle_tool_number> G43 H#<load_spindle_tool_number>
+  #5231 = #<load_spindle_tool_number>
 o<100> endif
 
 o<105> if [#<load_spindle_tool_number> EQ #<probe_tool_number>]
