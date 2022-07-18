@@ -21,7 +21,6 @@ setup(
     download_url="https://github.com/kcjengr/probe_basic/tarball/master",
     packages=find_packages(),
     include_package_data=True,
-    install_requires=['qtpyvcp>0.39'],
     entry_points={
         'gui_scripts': [
             'probe_basic=probe_basic:main',
