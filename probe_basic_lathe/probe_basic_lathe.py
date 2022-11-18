@@ -86,7 +86,15 @@ class ProbeBasicLathe(VCPMainWindow):
 
         actions.program_actions.run(lineNum)
 
+    @Slot(QAbstractButton)
+    def on_sidebartabGroup_buttonClicked(self, button):
+        self.sidebar_widget.setCurrentIndex(button.property('page'))
+
     # MDI Panel
+    @Slot(QAbstractButton)
+    def on_gcodemdibtnGroup_buttonClicked(self, button):
+        self.gcode_mdi.setCurrentIndex(button.property('page'))
+
     @Slot(QAbstractButton)
     def on_btngrpMdi_buttonClicked(self, button):
         char = str(button.text())
@@ -109,3 +117,6 @@ class ProbeBasicLathe(VCPMainWindow):
             text += ' '
             parent.mdiEntry.setText(text)
 
+    @Slot(QAbstractButton)
+    def on_spindlerpmsourcebtnGroup_buttonClicked(self, button):
+        self.spindle_rpm_source_widget.setCurrentIndex(button.property('page'))
