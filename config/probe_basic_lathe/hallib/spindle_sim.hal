@@ -42,7 +42,7 @@ net spindle-pos encoder_0.position => spindle.0.revs
 
 # for spindle velocity estimate
 loadrt lowpass names=lowpass_velocity
-loadrt scale names=scale_to_rpm
+loadrt scale names=scale_to_rpm,scale.servo
 net spindle-rps-raw encoder_0.velocity lowpass_velocity.in
 net spindle-rps-filtered lowpass_velocity.out scale_to_rpm.in spindle.0.speed-in
 net spindle-rpm-filtered scale_to_rpm.out
