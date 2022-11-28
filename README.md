@@ -39,7 +39,7 @@ https://qtpyvcp.com
 * [LinuxCNC](https://linuxcnc.org)
 * Python 2.7
 * PyQt5 or PySide2
-* [QtPyVCP](https://qtpyvcp.com/)
+* [QtPyVCP](https://www.qtpyvcp.com/)
 
 Probe Basic is developed and tested using the LinuxCNC Debian 9 x64 (stretch)
 [Live ISO](http://www.linuxcnc.org/testing-stretch-rtpreempt/) and Ubuntu 18.10 x64 SIM. It should run
