@@ -5613,9 +5613,8 @@ color: white;</string>
 }
 
 QTabWidget QTabBar::tab {
-    width: 150px;
+    min-width: 150px;
     min-height: 30px;
-    bottom-margin: 10px;
 }</string>
                 </property>
                 <property name="tabPosition">
@@ -33343,7 +33342,7 @@ border-radius: 1px;
 }</string>
         </property>
         <property name="currentIndex">
-         <number>0</number>
+         <number>2</number>
         </property>
         <property name="rules" stdset="0">
          <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;bin(ch[0]).count('1')-3\n&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
@@ -33730,6 +33729,9 @@ border-radius: 1px;
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -34026,6 +34028,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -34306,6 +34311,9 @@ QLabel[style=&quot;homing&quot;]{
                    <italic>false</italic>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
@@ -34989,6 +34997,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -35266,6 +35277,9 @@ QLabel[style=&quot;homing&quot;]{
                    <italic>false</italic>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
@@ -35548,6 +35562,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -35827,6 +35844,9 @@ QLabel[style=&quot;homing&quot;]{
                    <italic>false</italic>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
@@ -36540,6 +36560,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -36836,6 +36859,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -37113,6 +37139,9 @@ QLabel[style=&quot;homing&quot;]{
                    <italic>false</italic>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
@@ -37394,6 +37423,9 @@ QLabel[style=&quot;homing&quot;]{
                    <bold>false</bold>
                   </font>
                  </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
     border-style: transparant;
@@ -37674,6 +37706,9 @@ QLabel[style=&quot;homing&quot;]{
                    <italic>false</italic>
                    <bold>false</bold>
                   </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QLineEdit{
@@ -41078,18 +41113,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="spindlebtnGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="spindlebtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
