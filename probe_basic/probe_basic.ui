@@ -341,7 +341,12 @@ bottom-margin: 0px;
            <enum>Qt::LeftToRight</enum>
           </property>
           <property name="styleSheet">
-           <string notr="true">QTabWidget QTabBar::tab {
+           <string notr="true">QTabWidget::pane {
+    border: none;
+    Background: rgb(146, 150, 149);
+}
+
+QTabWidget QTabBar::tab {
     margin-top: 2px;
     margin-bottom: 2px;
     min-width: 130px;
@@ -475,9 +480,6 @@ QComboBox QAbstractItemView{
                         <horstretch>0</horstretch>
                         <verstretch>0</verstretch>
                        </sizepolicy>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
                       </property>
                       <property name="tabStopWidth">
                        <number>100</number>
@@ -5593,6 +5595,9 @@ color: white;</string>
               <property name="topMargin">
                <number>7</number>
               </property>
+              <property name="rightMargin">
+               <number>0</number>
+              </property>
               <item>
                <widget class="QTabWidget" name="tabWidget_33">
                 <property name="sizePolicy">
@@ -5603,12 +5608,14 @@ color: white;</string>
                 </property>
                 <property name="styleSheet">
                  <string notr="true">QTabWidget::pane {
-    margin: -9px -9px -9px -9px;
+    margin: 0px -9px 0px -9px;
+    border: none;
 }
 
 QTabWidget QTabBar::tab {
-    min-width: 150px;
+    width: 150px;
     min-height: 30px;
+    bottom-margin: 10px;
 }</string>
                 </property>
                 <property name="tabPosition">
@@ -5617,12 +5624,9 @@ QTabWidget QTabBar::tab {
                 <property name="currentIndex">
                  <number>1</number>
                 </property>
-                <property name="usesScrollButtons">
-                 <bool>false</bool>
-                </property>
                 <widget class="QWidget" name="program_tools_tab">
                  <attribute name="title">
-                  <string>PROGRAM TOOL LIST</string>
+                  <string>PROGRAM TOOLS</string>
                  </attribute>
                  <layout class="QVBoxLayout" name="verticalLayout_65">
                   <item>
@@ -5667,7 +5671,7 @@ QTabWidget QTabBar::tab {
                 </widget>
                 <widget class="QWidget" name="manual_atc_tab">
                  <attribute name="title">
-                  <string>MANUAL ATC COMMAND</string>
+                  <string>MANUAL ATC</string>
                  </attribute>
                  <layout class="QHBoxLayout" name="horizontalLayout_11">
                   <item>
@@ -5735,7 +5739,7 @@ QTabWidget QTabBar::tab {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -5762,7 +5766,7 @@ QTabWidget QTabBar::tab {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
+    font: 15pt &quot;Bebas Kai&quot;;
 }</string>
                          </property>
                          <property name="text">
@@ -5793,7 +5797,7 @@ QTabWidget QTabBar::tab {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -5814,11 +5818,8 @@ QTabWidget QTabBar::tab {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">MDIButton {
-    text-align: right;
-    padding-right: 19px;
-   	font: 16pt &quot;Bebas Kai&quot;;
-}
-</string>
+    font: 15pt &quot;Bebas Kai&quot;;
+}</string>
                          </property>
                          <property name="text">
                           <string> ATC FWD </string>
@@ -5870,7 +5871,7 @@ QTabWidget QTabBar::tab {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -5892,7 +5893,7 @@ QTabWidget QTabBar::tab {
     border-width: 2px;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 SubCallButton:disabled {
@@ -5936,7 +5937,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -5958,7 +5959,7 @@ SubCallButton:pressed {
     border-width: 2px;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 SubCallButton:disabled {
@@ -6021,7 +6022,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -6040,7 +6041,7 @@ SubCallButton:pressed {
     border-width: 2px;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 SubCallButton:disabled {
@@ -6074,7 +6075,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -6093,7 +6094,7 @@ SubCallButton:pressed {
     border-width: 2px;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 SubCallButton:disabled {
@@ -6165,7 +6166,7 @@ SubCallButton:pressed {
     border-width: 2px;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 SubCallButton:disabled {
@@ -6218,7 +6219,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -6236,7 +6237,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
+    font: 15pt &quot;Bebas Kai&quot;;
 }</string>
                          </property>
                          <property name="text">
@@ -6263,7 +6264,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="minimumSize">
                           <size>
-                           <width>125</width>
+                           <width>120</width>
                            <height>50</height>
                           </size>
                          </property>
@@ -6284,9 +6285,8 @@ SubCallButton:pressed {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">MDIButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}
-</string>
+    font: 15pt &quot;Bebas Kai&quot;;
+}</string>
                          </property>
                          <property name="text">
                           <string>SPINDLE DOWN</string>
@@ -6362,7 +6362,7 @@ SubCallButton:pressed {
                          </property>
                          <property name="styleSheet">
                           <string notr="true">MDIButton {
-    font: 16pt &quot;Bebas Kai&quot;;
+    font: 15pt &quot;Bebas Kai&quot;;
 }</string>
                          </property>
                          <property name="text">
@@ -9760,13 +9760,13 @@ QPushButton:checked {
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_11">
               <property name="spacing">
-               <number>0</number>
+               <number>12</number>
               </property>
               <property name="leftMargin">
                <number>0</number>
               </property>
               <property name="topMargin">
-               <number>18</number>
+               <number>19</number>
               </property>
               <property name="rightMargin">
                <number>5</number>
@@ -10060,7 +10060,7 @@ QPushButton:checked {
                 </property>
                 <property name="minimumSize">
                  <size>
-                  <width>540</width>
+                  <width>545</width>
                   <height>40</height>
                  </size>
                 </property>
@@ -21049,7 +21049,11 @@ background: transparent;
                <enum>Qt::LeftToRight</enum>
               </property>
               <property name="styleSheet">
-               <string notr="true">QTabWidget QTabBar::tab{
+               <string notr="true">QTabWidget::pane {
+    border: none;
+}
+
+QTabWidget QTabBar::tab{
     margin-top: 0px;
     margin-right: 0px;
     margin-bottom:0px;
@@ -29160,7 +29164,7 @@ background: rgb(130, 135, 134);</string>
                    <number>0</number>
                   </property>
                   <property name="bottomMargin">
-                   <number>0</number>
+                   <number>3</number>
                   </property>
                   <item>
                    <widget class="QLabel" name="label_178">
@@ -30794,7 +30798,7 @@ background: rgb(130, 135, 134);</string>
                 <number>0</number>
                </property>
                <property name="topMargin">
-                <number>6</number>
+                <number>5</number>
                </property>
                <property name="rightMargin">
                 <number>0</number>
@@ -30955,9 +30959,6 @@ background: rgb(130, 135, 134);</string>
              <height>16777215</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">min-height: 30px;</string>
-           </property>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <property name="spacing">
              <number>0</number>
@@ -30972,7 +30973,7 @@ background: rgb(130, 135, 134);</string>
              <number>0</number>
             </property>
             <property name="bottomMargin">
-             <number>0</number>
+             <number>1</number>
             </property>
             <item>
              <widget class="QPushButton" name="jog_tab">
@@ -30985,7 +30986,7 @@ background: rgb(130, 135, 134);</string>
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>42</height>
+                <height>0</height>
                </size>
               </property>
               <property name="focusPolicy">
@@ -31051,7 +31052,7 @@ QPushButton:checked {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>42</height>
+                <height>40</height>
                </size>
               </property>
               <property name="focusPolicy">
@@ -31114,7 +31115,7 @@ QPushButton:checked {
               <property name="minimumSize">
                <size>
                 <width>0</width>
-                <height>42</height>
+                <height>0</height>
                </size>
               </property>
               <property name="focusPolicy">
@@ -41077,18 +41078,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="spindlebtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
