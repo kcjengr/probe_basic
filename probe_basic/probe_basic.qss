@@ -138,6 +138,7 @@ GcodeBackplot {
     border-radius: 4px;
     background-color: black;
     margin: 10px;
+    font: 12pt "Bebas Kai";
 }
 
 GcodeEditor {
@@ -147,38 +148,64 @@ GcodeEditor {
     border-width: 2px;
     border-radius: 4px;
     padding: 2px;
+    font: 12pt "Bebas Kai";
 }
 
-GcodeBackplot {
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 4px;
-    padding: 10px;
+GcodeTextEdit {
+    background-color: white;
+    font: 12pt "Bebas Kai";
+}
+
+QScrollArea {
+    border: none;
+}
+
+QScrollBar {
+    background: rgb(146, 150, 149);
 }
 
 QScrollBar:horizontal {
-    background: white;
-    color: gray;
-    height: 25px;
-}
-
-QScrollBar::handle:horizontal {
-    background: #939695;
-    margin-left: 25px;
-    margin-right: 25px;
+    height: 20px;
 }
 
 QScrollBar:vertical {
+    width: 20px;
+}
+
+QScrollBar::handle {
     background: white;
-    color: gray;
-    width: 25px;
+    border: 3px solid rgb(146, 150, 149);
+    border-radius: 4px;
+}
+
+QScrollBar::handle:horizontal {
+    height: 20px;
+    min-width: 25px;
 }
 
 QScrollBar::handle:vertical {
-    background: #939695;
-    margin-top: 25px;
-    margin-bottom: 25px;
+    width: 20px;
+    min-height: 25px;
+}
+
+QScrollBar::add-line:horizontal {
+    border: 4px solid rgb(146, 150, 149);
+    background: rgb(146, 150, 149);
+}
+
+QScrollBar::sub-line:horizontal {
+    border: 4px solid rgb(146, 150, 149);
+    background: rgb(146, 150, 149);
+}
+
+QScrollBar::add-line:vertical {
+    border: 4px solid rgb(146, 150, 149);
+    background: rgb(146, 150, 149);
+}
+
+QScrollBar::sub-line:vertical {
+    border: 4px solid rgb(146, 150, 149);
+    background: rgb(146, 150, 149);
 }
 
 /*===========================================================================*/
