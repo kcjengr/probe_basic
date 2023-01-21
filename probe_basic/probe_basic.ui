@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>7</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -21572,9 +21572,9 @@ QTabBar::tab:only-one {
             <property name="geometry">
              <rect>
               <x>1110</x>
-              <y>20</y>
+              <y>9</y>
               <width>500</width>
-              <height>339</height>
+              <height>291</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -21591,7 +21591,7 @@ QTabBar::tab:only-one {
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_59">
              <property name="spacing">
-              <number>15</number>
+              <number>6</number>
              </property>
              <item>
               <widget class="QLabel" name="work_column_header_6">
@@ -22177,9 +22177,9 @@ color: white;
             <property name="geometry">
              <rect>
               <x>1110</x>
-              <y>364</y>
+              <y>306</y>
               <width>500</width>
-              <height>100</height>
+              <height>80</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -22191,56 +22191,19 @@ color: white;
             <property name="minimumSize">
              <size>
               <width>500</width>
-              <height>100</height>
+              <height>80</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>500</width>
-              <height>100</height>
+              <height>80</height>
              </size>
             </property>
             <property name="styleSheet">
              <string notr="true"/>
             </property>
             <layout class="QVBoxLayout" name="verticalLayout_23">
-             <item>
-              <widget class="QLabel" name="work_column_header_10">
-               <property name="enabled">
-                <bool>true</bool>
-               </property>
-               <property name="sizePolicy">
-                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                 <horstretch>0</horstretch>
-                 <verstretch>0</verstretch>
-                </sizepolicy>
-               </property>
-               <property name="minimumSize">
-                <size>
-                 <width>100</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="maximumSize">
-                <size>
-                 <width>16777215</width>
-                 <height>25</height>
-                </size>
-               </property>
-               <property name="styleSheet">
-                <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-               </property>
-               <property name="text">
-                <string>Spindle speed display rpm source</string>
-               </property>
-               <property name="alignment">
-                <set>Qt::AlignCenter</set>
-               </property>
-              </widget>
-             </item>
              <item>
               <widget class="QWidget" name="widget_59" native="true">
                <property name="sizePolicy">
@@ -22276,6 +22239,12 @@ color: white;
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>38</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>Calculated Spindle RPM</string>
                   </property>
@@ -22301,6 +22270,12 @@ color: white;
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>0</width>
+                    <height>38</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>encoder spindle rpm</string>
                   </property>
@@ -22324,9 +22299,9 @@ color: white;
             <property name="geometry">
              <rect>
               <x>1110</x>
-              <y>468</y>
+              <y>391</y>
               <width>500</width>
-              <height>130</height>
+              <height>220</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -22435,6 +22410,187 @@ color: white;
               </layout>
              </item>
              <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_175">
+               <property name="spacing">
+                <number>12</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="QLabel" name="linear_jog_speed">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>140</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>LINEAR JOG SPEED</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="VCPSettingsSlider" name="linear_jog_slider">
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>50</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: white;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
+    stop: 0 #66e, stop: 1 #bbf);
+background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+    stop: 0 #bbf, stop: 1 #55f);
+border: 1px solid #777;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::add-page:horizontal {
+background: rgb(235, 235, 235);
+border: 1px solid #777;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
+border: 1px solid #777;
+border-color: rgba(40, 40, 40, 255);
+width: 40px;
+margin-top: -13px;
+margin-bottom: -13px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
+border: 1px solid #444;
+border-color: rgb(241, 239, 237);
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+background: #bbb;
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+background: #eee;
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #eee;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+                 </property>
+                 <property name="minimum">
+                  <number>0</number>
+                 </property>
+                 <property name="maximum">
+                  <number>100</number>
+                 </property>
+                 <property name="value">
+                  <number>50</number>
+                 </property>
+                 <property name="sliderPosition">
+                  <number>50</number>
+                 </property>
+                 <property name="tracking">
+                  <bool>false</bool>
+                 </property>
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="settingName" stdset="0">
+                  <string>machine.jog.linear-speed-percentage</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="StatusLabel" name="linear_jog_dro">
+                 <property name="minimumSize">
+                  <size>
+                   <width>48</width>
+                   <height>38</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>48</width>
+                   <height>38</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">StatusLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>30%</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0]}%\&quot;&quot;, &quot;name&quot;: &quot;linear_jog_slider_dro&quot;}]</string>
+                 </property>
+                 <property name="format" stdset="0">
+                  <string>0f</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
               <layout class="QHBoxLayout" name="horizontalLayout_173">
                <property name="spacing">
                 <number>12</number>
@@ -22446,32 +22602,10 @@ color: white;
                 <number>1</number>
                </property>
                <item>
-                <widget class="VCPSettingsPushButton" name="ang_jog_slider_link">
+                <widget class="QLabel" name="angular_jog_speed">
                  <property name="enabled">
                   <bool>true</bool>
                  </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="text">
-                  <string>LINK ANGULAR JOG</string>
-                 </property>
-                 <property name="checkable">
-                  <bool>true</bool>
-                 </property>
-                 <property name="checked">
-                  <bool>true</bool>
-                 </property>
-                 <property name="page" stdset="0">
-                  <number>1</number>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="VCPSettingsSlider" name="anglular_jog_slider">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -22480,7 +22614,41 @@ color: white;
                  </property>
                  <property name="minimumSize">
                   <size>
-                   <width>274</width>
+                   <width>140</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>25</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>ANGULAR JOG SPEED</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="VCPSettingsSlider" name="anglular_jog_slider">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
                    <height>50</height>
                   </size>
                  </property>
@@ -22548,6 +22716,9 @@ border-radius: 4px;
                  <property name="value">
                   <number>50</number>
                  </property>
+                 <property name="tracking">
+                  <bool>false</bool>
+                 </property>
                  <property name="orientation">
                   <enum>Qt::Horizontal</enum>
                  </property>
@@ -22557,7 +22728,7 @@ border-radius: 4px;
                 </widget>
                </item>
                <item>
-                <widget class="StatusLabel" name="fr_angular_override_dro">
+                <widget class="StatusLabel" name="angular_jog_dro">
                  <property name="minimumSize">
                   <size>
                    <width>48</width>
@@ -29296,7 +29467,7 @@ background: rgb(130, 135, 134);</string>
 }</string>
                        </property>
                        <property name="currentIndex">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <widget class="QWidget" name="sb_page_1">
                         <property name="styleSheet">
@@ -38834,15 +39005,12 @@ border-radius: 4px;
             <number>0</number>
            </property>
            <item>
-            <widget class="VCPSettingsSlider" name="linear_jog_slider">
+            <widget class="HalSlider" name="global_jog_speed_slider">
              <property name="minimumSize">
               <size>
                <width>0</width>
                <height>50</height>
               </size>
-             </property>
-             <property name="focusPolicy">
-              <enum>Qt::NoFocus</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">QSlider::groove:horizontal {
@@ -38902,28 +39070,25 @@ border: 1px solid #aaa;
 border-radius: 4px;
 }</string>
              </property>
-             <property name="minimum">
-              <number>0</number>
-             </property>
              <property name="maximum">
               <number>100</number>
              </property>
              <property name="value">
               <number>50</number>
              </property>
-             <property name="sliderPosition">
-              <number>50</number>
+             <property name="tracking">
+              <bool>false</bool>
              </property>
              <property name="orientation">
               <enum>Qt::Horizontal</enum>
              </property>
-             <property name="settingName" stdset="0">
-              <string>machine.jog.linear-speed-percentage</string>
+             <property name="pinBaseName" stdset="0">
+              <string>global-jog-speed-slider</string>
              </property>
             </widget>
            </item>
            <item>
-            <widget class="StatusLabel" name="fr_override_dro">
+            <widget class="StatusLabel" name="jog_rate_speed">
              <property name="minimumSize">
               <size>
                <width>48</width>
@@ -38954,7 +39119,7 @@ border-radius: 4px;
               <set>Qt::AlignCenter</set>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0]}%\&quot;&quot;, &quot;name&quot;: &quot;linear_jog_slider_dro&quot;}]</string>
+              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{ch[0]}%\&quot;&quot;, &quot;name&quot;: &quot;linear_jog_speed_slider_dro&quot;}]</string>
              </property>
             </widget>
            </item>
@@ -40104,6 +40269,11 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.hal_widgets.hal_label</header>
   </customwidget>
   <customwidget>
+   <class>HalSlider</class>
+   <extends>QSlider</extends>
+   <header>qtpyvcp.widgets.hal_widgets.hal_slider</header>
+  </customwidget>
+  <customwidget>
    <class>HalButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.hal_widgets.hal_button</header>
@@ -40202,8 +40372,8 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>718</x>
-     <y>107</y>
+     <x>575</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40298,8 +40468,8 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1027</x>
-     <y>611</y>
+     <x>904</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40426,8 +40596,8 @@ font: 11pt bebas kai;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1379</x>
-     <y>611</y>
+     <x>1313</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -40474,8 +40644,8 @@ font: 11pt bebas kai;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1490</x>
-     <y>611</y>
+     <x>1445</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -40490,8 +40660,8 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>896</x>
-     <y>611</y>
+     <x>768</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40506,8 +40676,8 @@ font: 11pt bebas kai;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1268</x>
-     <y>611</y>
+     <x>1181</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -40586,8 +40756,8 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>694</x>
-     <y>611</y>
+     <x>556</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40602,8 +40772,8 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1123</x>
-     <y>611</y>
+     <x>1005</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40682,8 +40852,8 @@ font: 11pt bebas kai;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1119</x>
-     <y>107</y>
+     <x>1011</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40702,8 +40872,8 @@ font: 11pt bebas kai;
      <y>182</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1119</x>
-     <y>107</y>
+     <x>1011</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -40730,8 +40900,8 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>790</x>
-     <y>611</y>
+     <x>657</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -40922,8 +41092,8 @@ font: 11pt bebas kai;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1601</x>
-     <y>611</y>
+     <x>1577</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -40939,27 +41109,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1576</x>
-     <y>549</y>
+     <y>478</y>
     </hint>
     <hint type="destinationlabel">
      <x>1023</x>
      <y>734</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>linear_jog_slider</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>anglular_jog_slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1603</x>
-     <y>812</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1521</x>
-     <y>611</y>
     </hint>
    </hints>
   </connection>
@@ -41006,8 +41160,8 @@ font: 11pt bebas kai;
      <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>561</x>
-     <y>107</y>
+     <x>418</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -41050,8 +41204,8 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>565</x>
-     <y>611</y>
+     <x>422</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -41070,8 +41224,8 @@ font: 11pt bebas kai;
      <y>107</y>
     </hint>
     <hint type="destinationlabel">
-     <x>561</x>
-     <y>107</y>
+     <x>418</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -41082,8 +41236,8 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>469</x>
-     <y>611</y>
+     <x>310</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -41130,12 +41284,60 @@ font: 11pt bebas kai;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>561</x>
-     <y>107</y>
+     <x>418</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>252</x>
      <y>107</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>global_jog_speed_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>linear_jog_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1591</x>
+     <y>825</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1468</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>global_jog_speed_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>anglular_jog_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1727</x>
+     <y>817</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1526</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>linear_jog_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>global_jog_speed_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1537</x>
+     <y>526</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1754</x>
+     <y>813</y>
     </hint>
    </hints>
   </connection>
@@ -41158,18 +41360,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="probehelpGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="spindlebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
