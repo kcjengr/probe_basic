@@ -22313,6 +22313,12 @@ color: white;
                     <verstretch>0</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
+                  </property>
                   <property name="text">
                    <string>Calculated Spindle RPM</string>
                   </property>
@@ -22337,6 +22343,12 @@ color: white;
                     <horstretch>0</horstretch>
                     <verstretch>0</verstretch>
                    </sizepolicy>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>40</height>
+                   </size>
                   </property>
                   <property name="text">
                    <string>encoder spindle rpm</string>
@@ -22363,7 +22375,7 @@ color: white;
               <x>1110</x>
               <y>468</y>
               <width>500</width>
-              <height>130</height>
+              <height>81</height>
              </rect>
             </property>
             <property name="sizePolicy">
@@ -22382,95 +22394,6 @@ color: white;
              <property name="rightMargin">
               <number>9</number>
              </property>
-             <item>
-              <layout class="QHBoxLayout" name="horizontalLayout_172">
-               <property name="topMargin">
-                <number>1</number>
-               </property>
-               <property name="bottomMargin">
-                <number>1</number>
-               </property>
-               <item>
-                <widget class="QLabel" name="work_column_header_11">
-                 <property name="enabled">
-                  <bool>true</bool>
-                 </property>
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>25</height>
-                  </size>
-                 </property>
-                 <property name="maximumSize">
-                  <size>
-                   <width>16777215</width>
-                   <height>25</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                 </property>
-                 <property name="text">
-                  <string>DRO DISPLAY COUNT (3 AXIS=0) (4 AXIS=1) (5 AXIS=2)</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                 </property>
-                </widget>
-               </item>
-               <item>
-                <widget class="VCPSettingsSpinBox" name="set_dro_index">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="minimumSize">
-                  <size>
-                   <width>100</width>
-                   <height>30</height>
-                  </size>
-                 </property>
-                 <property name="styleSheet">
-                  <string notr="true">VCPSettingsSpinBox {
-    border-style: transparent;
-    border-color: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: white;
-	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-                 </property>
-                 <property name="alignment">
-                  <set>Qt::AlignCenter</set>
-                 </property>
-                 <property name="buttonSymbols">
-                  <enum>QAbstractSpinBox::NoButtons</enum>
-                 </property>
-                 <property name="maximum">
-                  <number>2</number>
-                 </property>
-                 <property name="displayIntegerBase">
-                  <number>10</number>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>dro-display.set-dro-index</string>
-                 </property>
-                </widget>
-               </item>
-              </layout>
-             </item>
              <item>
               <layout class="QHBoxLayout" name="horizontalLayout_173">
                <property name="spacing">
@@ -22492,6 +22415,12 @@ color: white;
                    <horstretch>0</horstretch>
                    <verstretch>0</verstretch>
                   </sizepolicy>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
                  </property>
                  <property name="text">
                   <string>LINK ANGULAR JOG</string>
@@ -40111,11 +40040,6 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
-   <class>VCPSettingsSpinBox</class>
-   <extends>QSpinBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
    <class>VCPSettingsPushButton</class>
    <extends>QPushButton</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
@@ -40969,22 +40893,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>set_dro_index</sender>
-   <signal>valueChanged(int)</signal>
-   <receiver>dro_display</receiver>
-   <slot>setCurrentIndex(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1576</x>
-     <y>549</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1023</x>
-     <y>734</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>linear_jog_slider</sender>
    <signal>sliderMoved(int)</signal>
    <receiver>anglular_jog_slider</receiver>
@@ -41195,18 +41103,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="spindlebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
