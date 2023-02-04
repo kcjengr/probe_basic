@@ -2,7 +2,7 @@
 
 import os
 
-from qtpy.QtCore import Slot, QRegExp
+from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
 
@@ -22,6 +22,8 @@ class ProbeBasic(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasic, self).__init__(*args, **kwargs)
+        self.filesystemtable.sortByColumn(3, Qt.DescendingOrder) # sorting via 'datemodified' header 3
+        self.filesystemtable_2.sortByColumn(3, Qt.DescendingOrder) # sorting via 'datemodified' header 3
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
