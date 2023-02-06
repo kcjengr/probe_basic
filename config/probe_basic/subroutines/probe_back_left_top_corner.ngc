@@ -35,10 +35,10 @@ o<probe_back_left_top_corner> sub
   #<workspace_y> = #[5202 + [20 * #5220]]
 
   (Probe Tool Safety Check)
-  o<110> if [#5400 NE #<probe_tool_number>]
-  (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-   o<probe_back_left_top_corner> return
-  o<110> endif
+  o100 if [#5400 NE #<probe_tool_number>]
+      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      o<probe_back_left_top_corner> return
+  o100 endif
 
   (Probe Diameter)
   #<probe_diameter> = #5410
@@ -64,10 +64,10 @@ o<probe_back_left_top_corner> sub
   #<x_plus_zero_edge> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o<120> if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing X Sub returned edge parameter, aborting)
-    o<probe_back_left_top_corner> return
-  o<120> endif
+  o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+      (MSG, Missing X Sub returned edge parameter, aborting)
+      o<probe_back_left_top_corner> return
+  o110 endif
 
   (Probe Y Positioning Move, up to Z clearance plane)
   G91
@@ -88,10 +88,10 @@ o<probe_back_left_top_corner> sub
   #<y_minus_zero_edge> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o<130> if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing Y Sub returned edge parameter, aborting)
-    o<probe_back_left_top_corner> return
-  o<130> endif
+  o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+      (MSG, Missing Y Sub returned edge parameter, aborting)
+      o<probe_back_left_top_corner> return
+  o120 endif
 
   (Probe Completion Move to Z Clearance Plane, and XY Zero)
   G91
@@ -102,12 +102,12 @@ o<probe_back_left_top_corner> sub
   G38.3 X[#<x_plus_zero_edge>] Y[#<y_minus_zero_edge>]
 
   (probe mode rules for WCO or probe position measuring only)
-  o<140> if [#<probe_mode> EQ 0]
-    (Record Zero in selected axes and WCO)
-    G10 L2 P#5220 X[#<x_plus_zero_edge> + #<workspace_x>]
-    G10 L2 P#5220 Y[#<y_minus_zero_edge> + #<workspace_y>]
-    o<probe_back_left_top_corner> return
-  o<140> endif
+  o130 if [#<probe_mode> EQ 0]
+      (Record Zero in selected axes and WCO)
+      G10 L2 P#5220 X[#<x_plus_zero_edge> + #<workspace_x>]
+      G10 L2 P#5220 Y[#<y_minus_zero_edge> + #<workspace_y>]
+      o<probe_back_left_top_corner> return
+  o130 endif
 
 o<probe_back_left_top_corner> endsub
 

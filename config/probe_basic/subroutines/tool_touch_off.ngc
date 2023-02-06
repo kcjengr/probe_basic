@@ -23,13 +23,13 @@ G92.1    (Cancel G92 offset)
 
 G59.3
 
-o<100> if [#<tool_diameter_offset_mode> EQ 1]
-  #<tool_touch_x_coords> = #<offset_probing_position>
-o<100> endif
+o100 if [#<tool_diameter_offset_mode> EQ 1]
+    #<tool_touch_x_coords> = #<offset_probing_position>
+o100 endif
 
-o<110> if [2 EQ 2]
-  G49
-o<110> endif
+o110 if [2 EQ 2]
+    G49
+o110 endif
 
 G90    (set absolute coordinates)
 G53 G0 Z0    (move to z0 home position)
@@ -43,31 +43,31 @@ G38.2 Z-[#<z_max_travel>]    (fast tool probe)
 G0 Z[#<retract_distance>]    (retract tool retract distance amount)
 
 (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
-o<120> if [#<slow_probe_fr> GT 0]
-  (Initiate Slow Z- Probe)
-  G91
-  F[#<slow_probe_fr>]    (set probe slow feedrate)
-  G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
-  #<z_slow_probe> = #5063
-  (debug, Probed Pos: #5063 Z Pos: #<_z>)
-  G90
-  G0 Z[#<z_slow_probe> + #<retract_distance>]
-o<120> endif
+o120 if [#<slow_probe_fr> GT 0]
+    (Initiate Slow Z- Probe)
+    G91
+    F[#<slow_probe_fr>]    (set probe slow feedrate)
+    G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
+    #<z_slow_probe> = #5063
+    (debug, Probed Pos: #5063 Z Pos: #<_z>)
+    G90
+    G0 Z[#<z_slow_probe> + #<retract_distance>]
+o120 endif
 
-o<130> if [#5070 EQ 1]    (verify probe event was succesful)
-  #<z_slow_probe> = #5063    (save slow probe result to parameters)
-o<130> else
-  (MSG,Tool Length Offset Probe Failed)
-o<130> endif
+o130 if [#5070 EQ 1]    (verify probe event was succesful)
+    #<z_slow_probe> = #5063    (save slow probe result to parameters)
+o130 else
+    (MSG,Tool Length Offset Probe Failed)
+o130 endif
 
 (Tool Diameter Probe Mode Section, User must define this section as needed)
-o<140> if [#<tool_diameter_probe_mode> EQ 1]
-  (MSG, Tool Diameter Probing is Not Defined in Subroutine)
-o<140> endif
+o140 if [#<tool_diameter_probe_mode> EQ 1]
+    (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+o140 endif
 
-o<150> if [3 EQ 3]
-  G49
-o<150> endif
+o150 if [3 EQ 3]
+    G49
+o150 endif
 
 G90    (set absolute coordinates)
 G53 G0 Z0 (Send Spindle to home zero position)
@@ -77,23 +77,23 @@ G53 G0 Z0 (Send Spindle to home zero position)
 
 G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
 
-o<160> if [#<workspace_z> EQ 1]
-  G54
-o<160> else if [#<workspace_z> EQ 2]
-  G55
-o<160> else if [#<workspace_z> EQ 3]
-  G56
-o<160> else if [#<workspace_z> EQ 4]
-  G57
-o<160> else if [#<workspace_z> EQ 5]
-  G58
-o<160> else if [#<workspace_z> EQ 6]
-  G59
-o<160> else if [#<workspace_z> EQ 7]
-  G59.1
-o<160> else if [#<workspace_z> EQ 8]
-  G59.2
-o<160> endif
+o160 if [#<workspace_z> EQ 1]
+    G54
+o160 else if [#<workspace_z> EQ 2]
+    G55
+o160 else if [#<workspace_z> EQ 3]
+    G56
+o160 else if [#<workspace_z> EQ 4]
+    G57
+o160 else if [#<workspace_z> EQ 5]
+    G58
+o160 else if [#<workspace_z> EQ 6]
+    G59
+o160 else if [#<workspace_z> EQ 7]
+    G59.1
+o160 else if [#<workspace_z> EQ 8]
+    G59.2
+o160 endif
 
 T #5400 G43  H #5400    (enable tool length offset)
 
