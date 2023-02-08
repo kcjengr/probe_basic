@@ -39565,13 +39565,7 @@ border-radius: 1px;
             <number>5</number>
            </property>
            <item>
-            <widget class="MDIButton" name="mdibutton_2">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <widget class="ActionButton" name="spindle_reverse_button">
              <property name="minimumSize">
               <size>
                <width>100</width>
@@ -39584,10 +39578,13 @@ border-radius: 1px;
                <height>42</height>
               </size>
              </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-    text-align: right;
-    padding-right: 22px;
+    text-align: left;
+    padding-left: 24px;
     font: 17pt &quot;Bebas Kai&quot;;
 }</string>
              </property>
@@ -39604,31 +39601,16 @@ border-radius: 1px;
                <height>18</height>
               </size>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;probe_spindle_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}]</string>
+              <string>[{&quot;name&quot;: &quot;spindle_probe_safety&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]==99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?T&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
-             <property name="MDICommand" stdset="0">
-              <string>M4</string>
+             <property name="actionName" stdset="0">
+              <string>spindle.reverse</string>
              </property>
-             <attribute name="buttonGroup">
-              <string notr="true">spindlebtnGroup</string>
-             </attribute>
             </widget>
            </item>
            <item>
-            <widget class="MDIButton" name="mdibutton_3">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <widget class="ActionButton" name="spindle_off_button">
              <property name="minimumSize">
               <size>
                <width>100</width>
@@ -39641,42 +39623,30 @@ border-radius: 1px;
                <height>42</height>
               </size>
              </property>
+             <property name="layoutDirection">
+              <enum>Qt::LeftToRight</enum>
+             </property>
              <property name="styleSheet">
               <string notr="true">QPushButton {
-   	font: 17pt &quot;Bebas Kai&quot;;
+    font: 17pt &quot;Bebas Kai&quot;;
 }</string>
              </property>
              <property name="text">
               <string>STOP</string>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
+             <property name="iconSize">
+              <size>
+               <width>18</width>
+               <height>18</height>
+              </size>
              </property>
-             <property name="checked">
-              <bool>true</bool>
+             <property name="actionName" stdset="0">
+              <string>spindle.off</string>
              </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
-             <property name="rules" stdset="0">
-              <string>[]</string>
-             </property>
-             <property name="MDICommand" stdset="0">
-              <string>M5</string>
-             </property>
-             <attribute name="buttonGroup">
-              <string notr="true">spindlebtnGroup</string>
-             </attribute>
             </widget>
            </item>
            <item>
-            <widget class="MDIButton" name="mdibutton">
-             <property name="sizePolicy">
-              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-               <horstretch>0</horstretch>
-               <verstretch>0</verstretch>
-              </sizepolicy>
-             </property>
+            <widget class="ActionButton" name="spindle_forward_button">
              <property name="minimumSize">
               <size>
                <width>100</width>
@@ -39695,7 +39665,7 @@ border-radius: 1px;
              <property name="styleSheet">
               <string notr="true">QPushButton {
     text-align: right;
-    padding-right: 22px;
+    padding-right: 23px;
     font: 17pt &quot;Bebas Kai&quot;;
 }</string>
              </property>
@@ -39712,21 +39682,12 @@ border-radius: 1px;
                <height>18</height>
               </size>
              </property>
-             <property name="checkable">
-              <bool>true</bool>
-             </property>
-             <property name="autoExclusive">
-              <bool>true</bool>
-             </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;probe_spindle_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}]</string>
+              <string>[{&quot;name&quot;: &quot;Spindle_probe_safety&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]==99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?T&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
-             <property name="MDICommand" stdset="0">
-              <string>M3</string>
+             <property name="actionName" stdset="0">
+              <string>spindle.forward</string>
              </property>
-             <attribute name="buttonGroup">
-              <string notr="true">spindlebtnGroup</string>
-             </attribute>
             </widget>
            </item>
           </layout>
@@ -41104,21 +41065,17 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="spindlebtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
