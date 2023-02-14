@@ -108,12 +108,12 @@ And install the conversational widgets
 
 ::
 
-    pip install git+https://github.com/kcjengr/qtpyvcp.conversational-gcode.git
+    pip install git+https://github.com/kcjengr/qtpyvcp_conversational_gcode.git
 
 
 More details about conversational widgets:
 
-https://github.com/kcjengr/qtpyvcp.conversational-gcode
+https://github.com/kcjengr/qtpyvcp_conversational_gcode
 
 **7- Edit probe_basic**
 
