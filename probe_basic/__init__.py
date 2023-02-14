@@ -22,3 +22,6 @@ def main(opts=None):
 
 if __name__ == '__main__':
     main()
+
+from . import _version
+__version__ = _version.get_versions()['version']
