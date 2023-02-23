@@ -229,7 +229,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>4</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -34280,7 +34280,7 @@ LOAD</string>
              <number>2</number>
             </property>
             <item>
-             <widget class="ActionButton" name="spindle_rev_button">
+             <widget class="ActionButton" name="spindle_reverse_button">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -34299,8 +34299,8 @@ LOAD</string>
                 <height>42</height>
                </size>
               </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
               </property>
               <property name="styleSheet">
                <string notr="true">QPushButton {
@@ -34308,7 +34308,7 @@ LOAD</string>
 }</string>
               </property>
               <property name="text">
-               <string>REVERSE</string>
+               <string> REVERSE</string>
               </property>
               <property name="icon">
                <iconset resource="probe_basic_lathe.qrc">
@@ -34320,11 +34320,14 @@ LOAD</string>
                 <height>18</height>
                </size>
               </property>
+              <property name="autoExclusive">
+               <bool>false</bool>
+              </property>
+              <property name="rules" stdset="0">
+               <string>[{&quot;name&quot;: &quot;spindle_probe_safety&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]==99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?T&quot;, &quot;trigger&quot;: true}]}]</string>
+              </property>
               <property name="actionName" stdset="0">
                <string>spindle.reverse</string>
-              </property>
-              <property name="option" stdset="0">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -34362,11 +34365,14 @@ LOAD</string>
               <property name="text">
                <string>STOP</string>
               </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>false</bool>
+              </property>
               <property name="actionName" stdset="0">
                <string>spindle.off</string>
-              </property>
-              <property name="option" stdset="0">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -34374,7 +34380,7 @@ LOAD</string>
              <widget class="QWidget" name="widget_69" native="true"/>
             </item>
             <item>
-             <widget class="ActionButton" name="spindle_fwd_button">
+             <widget class="ActionButton" name="spindle_forward_button">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -34392,9 +34398,6 @@ LOAD</string>
                 <width>16777215</width>
                 <height>42</height>
                </size>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::NoFocus</enum>
               </property>
               <property name="layoutDirection">
                <enum>Qt::RightToLeft</enum>
@@ -34419,11 +34422,17 @@ LOAD</string>
                 <height>18</height>
                </size>
               </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>false</bool>
+              </property>
+              <property name="rules" stdset="0">
+               <string>[{&quot;name&quot;: &quot;Spindle_probe_safety&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]==99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?T&quot;, &quot;trigger&quot;: true}]}]</string>
+              </property>
               <property name="actionName" stdset="0">
                <string>spindle.forward</string>
-              </property>
-              <property name="option" stdset="0">
-               <bool>true</bool>
               </property>
              </widget>
             </item>
@@ -35612,11 +35621,11 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="diamradbtngroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="diamradbtngroup"/>
  </buttongroups>
 </ui>
