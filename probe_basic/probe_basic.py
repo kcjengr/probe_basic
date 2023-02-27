@@ -1,6 +1,8 @@
 #!/usr/bin/env python
-import sys;sys.path.append(r'/home/turboss/.p2/pool/plugins/org.python.pydev.core_8.3.0.202104101217/pysrc')
-import pydevd;pydevd.settrace()
+
+# import sys;sys.path.append(r'/home/turboss/.p2/pool/plugins/org.python.pydev.core_8.3.0.202104101217/pysrc')
+# import pydevd;pydevd.settrace()
+
 import os
 
 from qtpy.QtCore import Slot, QRegExp, Qt
