@@ -31324,7 +31324,7 @@ QPushButton:checked {
               <string>CYCLE START</string>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;probe_safety_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}]</string>
+              <string>[{&quot;name&quot;: &quot;probe_safety_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'RESUME FEED' if ch[0] else 'CYCLE START'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
              <property name="actionName" stdset="0">
               <string>program.run</string>
@@ -41076,17 +41076,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
