@@ -1,0 +1,56 @@
+[build-system]
+requires = ["setuptools>=61.0", "versioneer[toml] @ @REPOROOT@"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "probe_basic"
+authors = [
+  { name="Chris Polanski", email="false@123.email" },
+]
+description = "Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC"
+readme = "README.md"
+requires-python = ">=3.11"
+dynamic = ["version"]
+
+
+[tool.setuptools]
+packages = [
+	"debian",
+	"example_gcode",
+	"probe_basic",
+	"probe_basic.fonts",
+	"probe_basic.images",
+	"probe_basic.virtual_keyboards",
+	"probe_basic_latc",
+	"probe_basic_latc.images",
+	"probe_basic_lathe",
+	"probe_basic_lathe.images",
+	"probe_basic_vertical",
+	"probe_basic_vertical.images",
+	"widgets",
+	"widgets.atc_widget",
+	"widgets.atc_widget.images",
+	"widgets.conversational",
+	"widgets.conversational.images",
+	"widgets.lathe_tool_touch_off",
+	"widgets.lathe_tool_touch_off.images"
+]
+
+[project.gui-scripts]
+probe_basic = "probe_basic:main"
+probe_basic_lathe = "probe_basic_lathe:main"
+
+[project.entry-points."qtpyvcp.vcp"]
+probe_basic = "probe_basic"
+probe_basic_lathe = "probe_basic_lathe"
+
+[project.entry-points."qtpyvcp.widgets"]
+"probe_basic_widgets" = "widgets"
+
+[tool.versioneer]
+VCS = "git"
+style = "pep440"
+versionfile_source = "probe_basic/_version.py"
+versionfile_build = "probe_basic/_version.py"
+tag_prefix = ""
+parentdir_prefix = ""

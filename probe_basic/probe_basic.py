@@ -4,6 +4,7 @@
 # import pydevd;pydevd.settrace()
 
 import os
+import sys
 
 from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
@@ -13,7 +14,8 @@ from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 
-from . import probe_basic_rc
+sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
+import probe_basic_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))

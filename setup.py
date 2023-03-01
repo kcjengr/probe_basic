@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 import versioneer
 from setuptools import setup
 # from qtpyvcp.tools.qcompile import compile
@@ -54,3 +55,7 @@ setup(
         ]
     },
 )
+=======
+from setuptools import setup
+setup()
+>>>>>>> toml
