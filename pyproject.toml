@@ -8,8 +8,34 @@ authors = [
   { name="Chris Polanski", email="false@123.email" },
 ]
 description = "Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC"
+readme = "README.md"
 requires-python = ">=3.11"
 dynamic = ["version"]
+
+
+[tool.poetry]
+
+packages = [
+	{ include = "debian" },
+	{ include = "example_gcode" },
+	{ include = "probe_basic" },
+	{ include = "probe_basic.fonts" },
+	{ include = "probe_basic.images" },
+	{ include = "probe_basic.virtual_keyboards" },
+	{ include = "probe_basic_latc" },
+	{ include = "probe_basic_latc.images" },
+	{ include = "probe_basic_lathe" },
+	{ include = "probe_basic_lathe.images" },
+	{ include = "probe_basic_vertical" },
+	{ include = "probe_basic_vertical.images" },
+	{ include = "widgets" },
+	{ include = "widgets.atc_widget" },
+	{ include = "widgets.atc_widget.images" },
+	{ include = "widgets.conversational" },
+	{ include = "widgets.conversational.images" },
+	{ include = "widgets.lathe_tool_touch_off" },
+	{ include = "widgets.lathe_tool_touch_off.images" }
+]
 
 [project.gui-scripts]
 probe_basic = "probe_basic:main"
@@ -24,6 +50,7 @@ probe_basic_lathe = "probe_basic_lathe"
 
 [tool.versioneer]
 VCS = "git"
+style = "pep440"
 versionfile_source = "probe_basic/_version.py"
 versionfile_build = "probe_basic/_version.py"
 tag_prefix = ""
