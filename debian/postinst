@@ -1,0 +1,10 @@
+#!/bin/bash
+
+set -e
+
+# Define a variable for the target user's home directory
+TARGET_HOME="/home/${SUDO_USER:-$USER}/"
+
+# Copy the probe_basic_sims directory to the target directory
+sudo -u ${SUDO_USER:-$USER} cp -r /usr/lib/python3/dist-packages/config/probe_basic/ "${TARGET_HOME}linuxcnc/configs/"
+sudo -u ${SUDO_USER:-$USER} cp -r /usr/lib/python3/dist-packages/config/probe_basic_lathe/ "${TARGET_HOME}linuxcnc/configs/"
