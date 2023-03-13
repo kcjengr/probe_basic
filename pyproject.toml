@@ -11,14 +11,20 @@ description = "Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC"
 readme = "README.md"
 version = "0.0"
 packages = [
+    { include = "debian" },
     { include = "probe_basic" },
-    { include = "probe_basic_lathe" },
-    { include = "probe_basic_latc" },
     { include = "probe_basic/**/*.py" },
+    { include = "probe_basic_lathe" },
     { include = "probe_basic_lathe/**/*.py" },
+    { include = "probe_basic_latc" },
     { include = "probe_basic_latc/**/*.py" },
+    { include = "config" },
     { include = "config/**/*.py" },
+    { include = "widgets" },
     { include = "widgets/**/*.py" },
+    { exclude = "docs_src" },
+    { exclude = "dev_launchers" },
+    { exclude = "example_gcode" },
 ]
 
 [tool.poetry.dependencies]
