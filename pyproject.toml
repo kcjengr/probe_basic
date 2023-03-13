@@ -1,64 +1,40 @@
 [build-system]
-requires = ["setuptools>=61.0", "versioneer[toml]"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core", "versioneer[toml]"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "probe_basic"
 authors = [
-  { name="Chris Polanski", email="lcvette1@gmail.com" },
+  "Chris Polanski <lcvette1@gmail.com>",
 ]
 description = "Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC"
 readme = "README.md"
-requires-python = ">=3.7"
-dynamic = ["version"]
-
-[tool.setuptools]
-include-package-data = true
+version = "0.0"
 packages = [
-	"debian",
-	"example_gcode",
-	"config",
-	"config.atc_sim",
-	"config.atc_sim.macros_sim_inch",
-	"config.atc_sim.macros_sim_metric",
-	"config.atc_sim.python",
-	"config.atc_sim.vismach_parts",
-	"config.probe_basic",
-	"config.probe_basic.hallib",
-	"config.probe_basic.python",
-	"config.probe_basic.subroutines",
-	"config.probe_basic_lathe",
-	"config.probe_basic_lathe.hallib",
-	"config.probe_basic_lathe.python",
-	"config.probe_basic_lathe.subroutines",
-	"probe_basic",
-	"probe_basic.fonts",
-	"probe_basic.images",
-	"probe_basic.virtual_keyboards",
-	"probe_basic_latc",
-	"probe_basic_latc.images",
-	"probe_basic_lathe",
-	"probe_basic_lathe.images",
-	"probe_basic_vertical",
-	"probe_basic_vertical.images",
-	"widgets",
-	"widgets.atc_widget",
-	"widgets.atc_widget.images",
-	"widgets.conversational",
-	"widgets.conversational.images",
-	"widgets.lathe_tool_touch_off",
-	"widgets.lathe_tool_touch_off.images"
+    { include = "probe_basic" },
+    { include = "probe_basic_lathe" },
+    { include = "probe_basic_latc" },
+    { include = "probe_basic/**/*.py" },
+    { include = "probe_basic_lathe/**/*.py" },
+    { include = "probe_basic_latc/**/*.py" },
+    { include = "config/**/*.py" },
+    { include = "widgets/**/*.py" },
 ]
 
-[project.gui-scripts]
-probe_basic = "probe_basic:main"
-probe_basic_lathe = "probe_basic_lathe:main"
+[tool.poetry.dependencies]
+python = "^3.7"
 
-[project.entry-points."qtpyvcp.vcp"]
-probe_basic = "probe_basic"
-probe_basic_lathe = "probe_basic_lathe"
+[tool.poetry.scripts]
+probe_basic = 'probe_basic:main'
+probe_basic_lathe = 'probe_basic_lathe:main'
 
-[project.entry-points."qtpyvcp.widgets"]
+[tool.poetry.plugins]
+
+[tool.poetry.plugins."qtpyvcp.vcp"]
+"probe_basic" = "probe_basic"
+"probe_basic_lathe" = "probe_basic_lathe"
+
+[tool.poetry.plugins."qtpyvcp.widgets"]
 "probe_basic_widgets" = "widgets"
 
 [tool.versioneer]
