@@ -1,0 +1,9 @@
+o<m25> sub
+
+M64 P0 ; Move Carousel out
+M66 P1 L3 Q5 ; check for carousel out semsor
+O130 if [#5399 LT 0]
+    (abort, atc not in position)
+O130 endif
+
+M2

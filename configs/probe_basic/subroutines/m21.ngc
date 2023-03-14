@@ -1,0 +1,32 @@
+o<m21> sub
+
+; Move Carousel to the tool change poistion - OUT
+(print, o<M21>)
+
+M65 P1 ; switch off carousel in solenoid
+M66 P1 L3 Q1
+
+M5 M9
+G90
+G0 G53 Z-3.1900 ; move to tool change position
+
+M19 R0 Q4 ; oreient spindle
+
+M64 P0 ; Move Carousel out
+M66 P1 L3 Q5 ; check for carousel out sensor
+
+o100 if [#5399 LT 0]
+    (abort, atc not in position)
+    M65 P0 ; switch off atc out solenoid
+o100 endif
+
+M24 ; activate drawbar, release the tool
+M5 ; turn off spindle lock
+
+G0 G53 Z0 ; move z to clear height
+
+#5231 = 0; save fact there is now no tool in the spindle
+
+o<m21> endsub [1]
+
+M2

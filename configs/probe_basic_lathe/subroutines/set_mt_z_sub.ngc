@@ -1,0 +1,15 @@
+(author: Chris P)
+(version: 0.1)
+(date: 06/17/20)
+
+o<set_mt_z_sub> sub
+
+#<set_mt_z_position> = #5422
+
+  (output to gui master tool z position "set_mt_z")
+  #1001 = #<set_mt_z_position>
+  (DEBUG, EVAL[vcp.getWidget{"set_mt_z"}.setValue{#1001}])
+
+o<set_mt_z_sub> endsub
+
+M2 (end program)

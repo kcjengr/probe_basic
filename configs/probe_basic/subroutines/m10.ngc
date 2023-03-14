@@ -1,0 +1,26 @@
+o<m10> sub
+
+; Move tool carousel best direction to pocket P
+; Parameter #5170 is used to track the current tool pocket (persistently)
+
+o100 if [#5171 NE 1]
+    M13
+o100 endif
+#<steps> = [#5170 - #<p>]
+(print, o<M10> P#<p>, steps=#<steps>)
+o110 if [#<steps> GT 6]
+    #<steps>=[#<steps> - 12]
+o110 endif
+o120 if [#<steps> LT -6]
+    #<steps>=[#<steps> + 12]
+o120 endif
+o130 if [#<steps> GT 0]
+    M12 P[#<steps>]
+o130 elseif [#<steps> LT 0]
+    #<steps>=[#<steps> * -1]
+    M11 P[#<steps>]
+o130 endif
+
+o<m10> endsub [1]
+
+M2

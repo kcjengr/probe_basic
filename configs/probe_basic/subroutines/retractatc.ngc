@@ -1,0 +1,15 @@
+o<retractatc> sub
+
+M65 P0 ; Turn off ATC out solenoid
+M64 P1 ; Turn on move carousel home solenoid
+
+M66 P0 L3 Q4 ; check carousel in position sensor
+    o100 if [#5399 LT 0]
+        (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
+        M65 P1 ; turn off the solenoid to send atc home
+    o100 endif
+M65 P1
+
+o<retractatc> endsub [1]
+
+M2

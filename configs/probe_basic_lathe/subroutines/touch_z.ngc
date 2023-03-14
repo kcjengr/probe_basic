@@ -1,0 +1,18 @@
+o<touch_z> sub
+
+ #<set_mt_z> = #1    (current x axis position)
+ #<gage_thickness> = #2    (=0.0000)(gage thickness, gage block or paper thickness etc.)
+
+ #<total_z_position> = [#<set_mt_z> + #<gage_thickness>]
+
+ #<current_tool_z_position> = #5422
+
+ #<touch_z> = [#<current_tool_z_position> - #<total_z_position>]
+
+ G10 L1 P #5400 Z [#<touch_z>]  (5400 = tool number)
+
+ T #5400 G43  (enable tool length offset)
+
+o<touch_z> endsub
+
+M2 (end program)

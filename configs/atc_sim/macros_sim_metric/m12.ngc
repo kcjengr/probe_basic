@@ -1,0 +1,42 @@
+o<m12> sub
+
+; Move tool carousel CW Parameter P number of steps
+; Without parameter one step CW.
+; Parameter #5170 is used to track the current tool pocket (persistently)
+(print, o<M12> P#<p>)
+
+O100 if [#5171 NE 1]
+    (print, atc not homed, homing)
+    M13
+O100 endif
+
+O110 if [EXISTS[#<p>]]
+   #<Steps_to_move> = #<p>
+O110 else
+   #<Steps_to_move>=1
+    (tells the atc widget move 1 step forward)
+O110 endif
+
+(tells the atc widget how many steps to move and start moving forward)
+(DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<Steps_to_move>, "ccw"}])
+
+(tells the atc widget how many steps to move and start moving forward)
+M64 P3 ; Move atc motor FWD
+
+O120 do
+   M66 P4 L1 Q3 ; wait for falling edge on rotation index
+   O130 if [#5399 LT 0]
+      (abort, failed to get rotation index)
+      M65 P3 ; Stop atc motor
+   O130 endif
+   #5170 = [[[#5170-2] MOD 12]+1]    ;Pocket is no.1-12
+   #<Steps_to_move> = [#<Steps_to_move>-1]
+O120 while [#<Steps_to_move> GT 0]
+
+M65 P3 ; Stop motor
+
+#<_my_current_pocket> = #5170
+
+o<m12> endsub [1]
+
+M2

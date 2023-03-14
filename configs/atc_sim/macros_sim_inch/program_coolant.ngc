@@ -1,0 +1,41 @@
+(author: Chris P)
+(version: 0.1)
+(date: 02/13/20)
+
+(programmable coolant subroutine for aiming the coolant nozzle)
+(settings for setup are located on probe basic setting page)
+(in the programmable coolant constants container.)
+(calculations assume coolant nozzle is on axis b and has been homed)
+(to 0 degrees rotation aiming perpendicular to the spindle center line)
+(coolant nozzle is located on the right side of the spindle head and)
+(rotates counter clockwise from home position with commands)
+
+o<program_coolant> sub
+
+  (uses NGCGUI style arg spec)
+  (number after equals sign in comment is default value)
+  #<horizontal_spindle_nozzle_dist> = #1
+  #<vertical_spindle_nozzle_dist> = #2
+  #<pc_angle_offset> = #3
+  #<pc_tool_length> = #4
+
+  #<tool_diameter> = #5410
+
+  #<tool_radius_offset_dist> = [#<tool_diameter> / 2]
+
+  #<tool_diameter_offset_dist> = [#<horizontal_spindle_nozzle_dist> - #<tool_radius_offset_dist>]
+
+  #<tool_tip_position> = [[#<vertical_spindle_nozzle_dist>] + [#<pc_tool_length>]]
+
+  #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<tool_diameter_offset_dist>]]
+
+  #<coolant_final_angle> = [[#<coolant_abs_angle>] + [#<pc_angle_offset>]]
+
+  #1000 = #<coolant_final_angle>
+  (DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
+
+  M68 E20 Q[#<coolant_final_angle>]
+
+o<program_coolant> endsub
+
+M2 (end program)

@@ -1,0 +1,61 @@
+(author: Chris P)
+(version: 0.2)
+(date: 07/18/22)
+
+(load tool in spindle safety macro)
+
+o<load_spindle_safety> sub
+
+#<load_spindle_tool_number> = #1
+#<activate_programmable_coolant> = #2
+#<horizontal_spindle_nozzle_dist> = #3
+#<vertical_spindle_nozzle_dist> = #4
+#<pc_angle_offset> = #5
+#<probe_tool_number> = #6
+
+o<100> if [#<load_spindle_tool_number> EQ #5190]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 1)
+o<100> else if [#<load_spindle_tool_number> EQ #5191]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 2)
+o<100> else if [#<load_spindle_tool_number> EQ #5192]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 3)
+o<100> else if [#<load_spindle_tool_number> EQ #5193]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 4)
+o<100> else if [#<load_spindle_tool_number> EQ #5194]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 5)
+o<100> else if [#<load_spindle_tool_number> EQ #5195]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 6)
+o<100> else if [#<load_spindle_tool_number> EQ #5196]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 7)
+o<100> else if [#<load_spindle_tool_number> EQ #5197]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 8)
+o<100> else if [#<load_spindle_tool_number> EQ #5198]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 9)
+o<100> else if [#<load_spindle_tool_number> EQ #5199]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 10)
+o<100> else if [#<load_spindle_tool_number> EQ #5200]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 11)
+o<100> else if [#<load_spindle_tool_number> EQ #5201]
+  (MSG, the tool you are trying to load is already stored in carousel pocket 12)
+o<100> else
+  M61 Q#<load_spindle_tool_number> G43 H#<load_spindle_tool_number>
+  #5231 = #<load_spindle_tool_number>
+o<100> endif
+
+o<105> if [#<load_spindle_tool_number> EQ #<probe_tool_number>]
+  S0 M5
+o<105> endif
+
+#<pc_tool_length> = #5403
+
+(run program_coolant sub if selected to be active in settings page with value 1)
+o<110> if [#<activate_programmable_coolant> EQ 1]
+  (run program_coolant.ngc)
+  o<program_coolant> call [#3][#4][#5][#<pc_tool_length>]
+o<110> else
+  o<load_spindle_safety> return
+o<110> endif
+
+o<load_spindle_safety> endsub
+
+M2 (end program)

@@ -1,0 +1,14 @@
+### RC Servo Test Configuration - coolant_cannon.hal ###
+
+# loadrt 2 scale comps
+addf scale.servo servo-thread
+setp scale.servo.gain -0.00741
+setp scale.servo.offset .8333
+
+# enable 7i92 pwmgen0
+setp hm2_7i92.0.pwmgen.00.enable 1
+setp hm2_7i92.0.pwmgen.pwm_frequency 333
+
+#CONNECTIONS
+net scale-sig    motion.analog-out-20    =>    scale.servo.in
+net scale-pwm    scale.servo.out    =>    hm2_7i92.0.pwmgen.00.value

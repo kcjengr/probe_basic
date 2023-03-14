@@ -7,7 +7,24 @@ override_dh_auto_test:
 
 override_dh_auto_install:
 	dh_auto_install
+
 	# Create the truetype directory if it doesn't exist
 	mkdir -p debian/python3-probe-basic/usr/share/fonts/truetype/
+
 	# Install the font file
 	install -m 644 BebasKai.ttf debian/python3-probe-basic/usr/share/fonts/truetype/
+
+	# create icons directory if it doesn't exist
+	mkdir -p debian/python3-probe-basic/usr/share/icons/
+
+	# copy icons from source to icons directory
+	cp -r src/probe_basic/images/probe_basic_icon.png debian/python3-probe-basic/usr/share/icons/
+	cp -r src/probe_basic/images/probe_basic_icon_lathe.png debian/python3-probe-basic/usr/share/icons/
+
+	# create configs directory if it doesn't exist
+	mkdir -p debian/python3-probe-basic/usr/share/probe_basic/configs/
+	
+	# Install the config file contents
+	cp -r configs debian/python3-probe-basic/usr/share/
+
+

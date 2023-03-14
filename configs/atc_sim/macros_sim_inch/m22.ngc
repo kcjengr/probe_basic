@@ -1,0 +1,29 @@
+o<m22> sub
+
+; Move Carousel to the home position - IN
+
+(print, o<M22>)
+
+;M19 R0 Q2
+
+M24
+;M19 R0 Q1
+G0 G53 Z-3.9000 ; rapid move to above the toolchange position
+
+M65 P2 ; release the drawbar to clamp the tool
+M5
+M66 P5 L3 Q1 ; check the tool clamped sensor
+O140 if [#5399 LT 0]
+    (abort, failed to reclamp tool)
+O140 endif
+
+M65 P0 ; Move Carousel home
+
+M66 P0 L3 Q4 ;check carousel in position sensor
+   O150 if [#5399 LT 0]
+    (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
+   O150 endif
+
+o<m22> endsub [1]
+
+M2

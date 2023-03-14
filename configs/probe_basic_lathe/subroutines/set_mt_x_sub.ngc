@@ -1,0 +1,19 @@
+(author: Chris P)
+(version: 0.1)
+(date: 06/17/20)
+
+o<set_mt_x_sub> sub
+
+ G8
+
+ #<set_mt_x_position> = #5420
+
+ (output to gui master tool x position "set_mt_x")
+ #1000 = #<set_mt_x_position>
+ (DEBUG, EVAL[vcp.getWidget{"set_mt_x"}.setValue{#1000}])
+
+ G7
+
+o<set_mt_x_sub> endsub
+
+M2 (end program)

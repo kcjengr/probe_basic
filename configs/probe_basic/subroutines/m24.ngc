@@ -1,0 +1,12 @@
+o<m24> sub
+
+M64 P2 ; unclamp the tool
+M66 P2 L3 Q3 ; check the unclamped tool sensor
+    o100 if [#5399 LT 0]
+        (abort, failed to release tool) ; abort if the sensor does not activate in 3 seconds
+        M65 P2 ; turn off the drawbar
+    o100 endif
+
+o<m24> endsub [1]
+
+M2
