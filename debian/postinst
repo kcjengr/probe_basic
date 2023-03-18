@@ -5,9 +5,16 @@ set -e
 # Define a variable for the target user's home directory
 TARGET_HOME="/home/${SUDO_USER:-$USER}/"
 
-# Copy the probe_basic_sims directory to the target directory
-	# Create the truetype directory if it doesn't exist
+
+# Create the linuxcnc directory if it doesn't exist
 sudo -u ${SUDO_USER:-$USER} mkdir -p "${TARGET_HOME}linuxcnc"
+
+# Create the linuxcnc directory if it doesn't exist
+sudo -u ${SUDO_USER:-$USER} mkdir -p "${TARGET_HOME}.local/usr/share/icons"
+
+# Copy the probe_basic_sims directory to the target directory
 sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/configs "${TARGET_HOME}linuxcnc/"
-sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon.png "${TARGET_HOME}/Pictures/"
-sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon_lathe.png "${TARGET_HOME}/Pictures/"
+
+# Copy the probe_basic icons directory to the target directory
+sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon.png "${TARGET_HOME}.local/usr/share/icons/"
+sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon_lathe.png "${TARGET_HOME}.local/usr/share/icons/"
