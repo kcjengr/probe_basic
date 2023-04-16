@@ -1,76 +1,101 @@
-===============================
-Probe Basic Quick Start Install
-===============================
+==========================================
+Probe Basic .deb Installation instructions
+==========================================
 
 
-**Probe Basic Quick Start Installation Guide**
+**Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**
 
 
 **Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
 
-**For Whatever reason mesa ehternet setups go much more smoothly when a wired ethernet internet connection is used during linux installation.  The debian installer does some magic that sets up the network perfectly with only one minor tweak once installed.  The wireless setup after install is much easier to get working.  I HIGHLY RECOMMEND using the wired internet connection and choosing to setup that connection during installation to avoid unforeseen issues in connecting to the mesa card(s) post install.**
 
-
-**1- Download the Linuxcnc ISO Image File**
+**Download the Linux Debian 12 Bookworkm ISO Image File**
 
 ::
+    https://www.debian.org/devel/debian-installer/
 
-    http://www.linuxcnc.org/downloads/
 
-Select the "LinuxCNC 2.8.0 Debian 10 Buster PREEMPT-RT ISO" option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
+Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
 ::
-
     https://www.balena.io/etcher/?ref=etcher_update
 
-Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.
 
-After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.
+Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.  When you are greeted by the Linux Desktop Selection Page, uncheck the GNOME option and check the XFCE4 option.
+
+After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.  If the return shows "All up to Date" then you can proceed to the next step.
 
 ::
-
     sudo apt update
-
+    
     sudo apt upgrade
 
 
+**To install Probe Basic uaing the av .deb packages, you must install all 3 seperately using the following method:**
 
-**2- Start Linuxcnc first time**
+**Requirements:**
 
-Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.
+    - Debian 12 Bookworm
+    - Python 3.11
+    - Linuxcnc 2.9 or higher
 
 
-**3- Install Probe Basic requiremens**
-
-On a terminal emulator run:
+**If you have not already installed linuxcnc from apt, use the following line in main terminal:**
 
 ::
-
-    sudo apt install python-pyqt5 python-pyqt5.qtquick python-dbus.mainloop.pyqt5 python-pyqt5.qtopengl python-pyqt5.qsci python-pyqt5.qtmultimedia qml-module-qtquick-controls gstreamer1.0-plugins-bad libqt5multimedia5-plugins pyqt5-dev-tools python-dev python-wheel python-setuptools python-pip git python-pyqtgraph python-pyqt5.qtwebkit
-
-
-**4- Download ProbeBasicInstaller**
-
-Click the link below to download the ProbeBasicInstaller file.  Once downloaded, find in its destination folder and right click and select properties.  Select the Permissions Tab in the window that appears and check the box for "Allow this file to run as a program", see images below for reference. now double click the installer icon to begin the installation.  Follow the installer instructions to install Probe Basic.  Select all of the available items during initial installation.  after installation probe basic should show up in the linuxcnc launch screen and you can select to create a desktop icon for it by selecting the check box to do so at the bottom of the page.
+    sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
 
 
-Download Probe Basic Installer: https://repository.qtpyvcp.com/repo/pb-py2/bin/ProbeBasic-Installer-0.4.0%2B21.gf9dcb04.run
+**Once you have installed linuxcnc, open linuxcnc and start the axis sim briefly and then you can shut it down to ensure the installation was succesful.**
 
 
-.. image:: https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/properties.png
-   :align: center
+**Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
+
+::
+    https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_0.5.3-4286f9d.dev_all.deb
+
+    https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_0.4-4ccd1a1a.dev_all.deb
+
+    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
+    
+
+**Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
+
+::
+    sudo apt install debhelper-compat dh-python python3-setuptools python3-yaml python3-pyqt5.qtmultimedia python3-pyqt5.qtquick qml-module-qtquick-controls libqt5multimedia5-plugins python3-dev python3-docopt python3-qtpy python3-pyudev python3-psutil python3-markupsafe python3-vtk9 python3-pyqtgraph python3-simpleeval python3-jinja2 python3-deepdiff python3-sqlalchemy qttools5-dev-tools python3-serial
 
 
-.. image:: https://raw.githubusercontent.com/kcjengr/probe_basic/master/probe_basic/images/permissions.png
-   :align: center
+*then enter:*
+
+::
+    sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
+
+
+*then enter:*
+    
+::
+    sudo dpkg -i python3-qtpyvcp_0.4-2_all.deb
+
+
+*then enter:*
+
+::
+    sudo dpkg -i python3-probe-basic_0.5.3_all.deb
+
+
+**You are all installed!  you should now be able to launch your probe basic sim or machine config from within the linuxcnc applications dropdown menu.**
 
 
 
-Congratulations! You now should be able to launch Probe basic!
 
+**To uninstall enter each of the following commands one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
 
-**4- Removing, Modifying, Updating Probe Basic**
+::
+    sudo dpkg -P python3-probe-basic
 
-The maintenancetool file in the newly installed probe_basic file can be double clicked to bring up window for removing or modifying the probe basic installation.  we are currently still working on a more convenient update method but will update this page or create a new one as progress is made!
+    sudo dpkg -P python3-hiyapyco
+
+    sudo dpkg -P python3-qtpyvcp
+
 
 
