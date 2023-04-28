@@ -25,3 +25,6 @@ override_dh_auto_install:
 	cp -r configs debian/python3-probe-basic/usr/share/
 
 
+override_dh_install:
+	dh_install
+	qcompile debian/python3-probe-basic
