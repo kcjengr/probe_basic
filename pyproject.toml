@@ -1,65 +1,36 @@
 [build-system]
-requires = ["setuptools>=61.0", "versioneer[toml]"]
-build-backend = "setuptools.build_meta"
+requires = ["poetry-core", "versioneer[toml]"]
+build-backend = "poetry.core.masonry.api"
 
-[project]
+[tool.poetry]
 name = "probe_basic"
 authors = [
-  { name="Chris Polanski", email="lcvette1@gmail.com" },
+  "Chris Polanski <lcvette1@gmail.com>",
 ]
 description = "Probe Basic - A QtPyVCP based Virtual Control Panel for LinuxCNC"
 readme = "README.md"
-requires-python = ">=3.7"
-dynamic = ["version"]
+version = "0.0"
 
-[tool.setuptools]
-include-package-data = true
 packages = [
-	"debian",
-	"example_gcode",
-	"configs",
-	"configs.atc_sim",
-	"configs.atc_sim.macros_sim_inch",
-	"configs.atc_sim.macros_sim_metric",
-	"configs.atc_sim.python",
-	"configs.atc_sim.vismach_parts",
-	"configs.probe_basic",
-	"configs.probe_basic.hallib",
-	"configs.probe_basic.python",
-	"configs.probe_basic.subroutines",
-	"configs.probe_basic_lathe",
-	"configs.probe_basic_lathe.hallib",
-	"configs.probe_basic_lathe.python",
-	"configs.probe_basic_lathe.subroutines",
-	"probe_basic",
-	"probe_basic.fonts",
-	"probe_basic.images",
-	"probe_basic.virtual_keyboards",
-	"probe_basic_latc",
-	"probe_basic_latc.images",
-	"probe_basic_lathe",
-	"probe_basic_lathe.images",
-	"probe_basic_vertical",
-	"probe_basic_vertical.images",
-	"widgets",
-	"widgets.atc_widget",
-	"widgets.atc_widget.images",
-	"widgets.conversational",
-	"widgets.conversational.images",
-	"widgets.lathe_tool_touch_off",
-	"widgets.lathe_tool_touch_off.images"
+	{ include = "probe_basic", from = "src" },
+	{ include = "widgets", from = "src" },
 ]
 
-[project.gui-scripts]
+[tool.poetry.dependencies]
+python = "^3.7"
+
+[tool.poetry.scripts]
 probe_basic = "probe_basic:main"
 probe_basic_lathe = "probe_basic_lathe:main"
 
-[project.entry-points."qtpyvcp.vcp"]
+[tool.poetry.plugins]
+
+[tool.poetry.plugins."qtpyvcp.vcp"]
 probe_basic = "probe_basic"
 probe_basic_lathe = "probe_basic_lathe"
 
-[project.entry-points."qtpyvcp.widgets"]
-"probe_basic_widgets" = "widgets"
+[tool.poetry.plugins."qtpyvcp.widgets"]
+probe_basic_widgets = "widgets"
 
 [tool.versioneer]
 VCS = "git"

@@ -1,0 +1,371 @@
+QMainWindow {
+    background: #2e3436
+    /*border-image: url(:/images/dark_background.jpg);*/
+    /*background-image: url(:/images/dark_background.jpg);*/
+    /*background-image: url(:/images/pp_border.png);*/
+}
+
+QsciScintilla {
+    qproperty-backgroundcolor: #D9DADB;
+    qproperty-marginbackgroundcolor: #D9DADB;
+}
+
+QStatusBar {
+	color: white;
+	font-family: "Bebas Kai";
+    font-size: 12pt;
+}
+
+QPushButton, QComboBox[editable="false"],
+QComboBox[editable="true"]::drop-down {
+    color: white;
+    border-image: url(:/images/pp_border.png);
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: "Bebas Kai";
+    font-size: 15pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+/*QPushButton[error="true"] {
+    border-color: red;
+}*/
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option="true"] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton[actionName="machine.power.toggle"]:checked {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(154, 231, 153, 255), stop:0.0974359 rgba(92, 243, 81, 255), stop:0.446154 rgba(52, 251, 35, 255), stop:1 rgba(154, 231, 153, 255));
+}
+
+QPushButton[actionName="machine.power.toggle"]:pressed {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(208, 231, 207, 255), stop:0.0974359 rgba(189, 243, 185, 255), stop:0.446154 rgba(190, 251, 184, 255), stop:1 rgba(195, 231, 194, 255));
+}
+
+QPushButton[actionName="machine.estop.toggle"]:checked {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(226, 64, 64, 255), stop:0.446154 rgba(204, 0, 0, 255), stop:0.764103 rgba(225, 67, 67, 255), stop:1 rgba(249, 142, 142, 255));
+}
+
+QPushButton[actionName="machine.estop.toggle"]:pressed {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(226, 139, 139, 255), stop:0.446154 rgba(249, 142, 142, 255), stop:0.764103 rgba(225, 134, 134, 255), stop:1 rgba(249, 142, 142, 255));
+}
+
+SubCallButton[styleClass="probeButton"] {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #eaeaea, stop: 1.0 #b8b8b8);
+    border-radius: 10px;
+}
+
+SubCallButton[styleClass="probeButton"] :disabled {
+    border-color: gray;
+}
+
+/*SubCallButton[styleClass="probeButton"] [error="true"] {
+    border-color: red;
+}*/
+
+SubCallButton[styleClass="probeButton"] :hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #ffffff, stop: 1.0 #e1e1e1);
+}
+
+SubCallButton[styleClass="probeButton"] :pressed {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4a6aa7, stop: 1.0 #6f96cd);
+}
+
+SubCallButton[styleClass="probeButton"] :checked[option="true"] {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4a6aa7, stop: 1.0 #6f96cd);
+}
+
+SubCallButton[styleClass="probeButton"] :checked {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4a6aa7, stop: 1.0 #6f96cd);
+}
+
+/* E-Stop button */
+ActionButton[action_id="0"]:checked {
+    border-radius: 5px;
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(226, 64, 64, 255), stop:0.446154 rgba(204, 0, 0, 255), stop:0.764103 rgba(225, 67, 67, 255), stop:1 rgba(249, 142, 142, 255));
+}
+
+QLineEdit {
+    border-style: solid;
+    border-color: transparent;
+    border-width: 2px;
+    border-radius: 5px;
+    color: black;
+    background: white;
+}
+
+QLineEdit:focus {
+    border-color: #4a6aa7;
+}
+
+.QFrame {
+    padding: 0px;
+    border-width: 1px;
+    border-radius: 4px;
+    border-style: solid;
+    border-color: #8A8484;
+}
+
+DROWidget {
+    color: black;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    background-color: white;
+}
+
+QGroupBox {
+    border: 1px solid #8A8484;
+    border-radius: 5px;
+    margin-top: 1ex;
+    font-size: 16pt;
+}
+
+QGroupBox::title {
+    subcontrol-origin: margin;
+    subcontrol-position: top left;
+    padding: 0 3px;
+    color: white;
+}
+
+GcodeBackplot {
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    background-color: black;
+    margin: 10px;
+}
+
+GcodeEditor {
+    background-color: white;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 2px;
+}
+
+/*===========================================================================*/
+/*                            Tabbed Widget                                  */
+/*===========================================================================*/
+
+QTabWidget {
+    background: #818584;
+}
+
+QTabWidget::pane {
+    background: transparent;
+}
+
+QTabWidget::tab-bar {
+    left: 5px; /* move to the right by 5px */
+}
+
+/* Style the tab using the tab sub-control. Note that it reads QTabBar _not_ QTabWidget */
+QTabBar::tab {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: white;
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4e4e4e, stop: 1.0 #3a3a3a);
+    border-style: solid;
+    border-color: black;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-right-width: 1px;
+    border-left-width: 1px;
+    min-width: 10ex;
+    min-height: 3ex;
+    padding: 2px;
+}
+
+QTabBar::tab:selected, QTabBar::tab:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QTabBar::tab:selected {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(112, 112, 238, 255), stop:0.121053 rgba(123, 123, 232, 255), stop:0.3 rgba(85, 85, 238, 255), stop:0.694737 rgba(85, 85, 238, 255), stop:0.915789 rgba(123, 123, 232, 255), stop:1 rgba(112, 112, 238, 255))
+}
+
+QTabBar::tab:first {
+    border-left-width: 2px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+QTabBar::tab:last {
+    border-right-width: 2px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+QTabBar::tab:only-one {
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+
+QWidget#buttonBox QPushButton {
+    border-radius: 0px;
+    border-left-width: 1px;
+    border-right-width: 1px;
+}
+
+QWidget#buttonBox QPushButton[position='first'] {
+    border-left-width: 2px;
+    border-top-left-radius: 4px;
+    border-bottom-left-radius: 4px;
+}
+
+QWidget#buttonBox QPushButton[position='last'] {
+    border-right-width: 2px;
+    border-top-right-radius: 4px;
+    border-bottom-right-radius: 4px;
+}
+
+/***** Jog Increment Widget *****/
+JogIncrementWidget {
+    margin: 0px;
+}
+
+/*===========================================================================*/
+/*                            Big Buttons                                    */
+/*===========================================================================*/
+
+#copy_from_usb,
+#copy_to_usb {
+    color: white;
+    border-image: url(:/images/pp_border.png);
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(183, 185, 185, 255), stop:0.077 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.918 rgba(82, 82, 83, 255), stop:1 rgba(183, 185, 185, 255));
+}
+
+#copy_from_usb:disabled,
+#copy_to_usb:disabled {
+    border-color: gray;
+}
+
+#copy_from_usb:hover,
+#copy_to_usb:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+#copy_from_usb:pressed,
+#copy_to_usb:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+/*===========================================================================*/
+/*                             QMenuBar                                      */
+/*===========================================================================*/
+
+QMenuBar {
+    background-color: rgb(85, 90, 90);
+    padding: 1px;
+    border: 0px solid black;
+    color: white;
+    font-family: "Bebas Kai";
+    font-size: 12pt; 
+}
+
+QMenuBar:focus {
+    border: 1px solid #AA6600;
+}
+
+QMenuBar::item {
+    background: transparent;
+    padding: 3px;
+}
+
+QMenuBar::item:selected {
+    padding: 3px;
+    background: rgb(135, 138, 140);
+    border: 0px solid #454545;
+}
+
+QMenuBar::item:pressed {
+    padding: 3px;
+    border: 0px solid #454545;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+    color: #F0F0F0;
+    margin-bottom: 0px;
+    padding-bottom: 0px;
+}
+
+/*===========================================================================*/
+/*                               QMenu                                       */
+/*===========================================================================*/
+
+QMenu {
+    border: 0px solid #454545;
+    background-color: gray;
+    color: white;
+    margin: 0px;
+    font-family: "Bebas Kai";
+    font-size: 11pt;
+}
+
+QMenu::separator {
+    height: 2px;
+    background-color: white;
+    color: red;
+    padding-left: 4px;
+    margin-left: 2px;
+    margin-right: 2px;
+}
+
+QMenu::icon {
+    margin: 0px;
+    padding-left:4px;
+}
+
+QMenu::item {
+    padding: 4px 24px 4px 24px;
+    border: 1px transparent #454545;  /* reserve space for selection border */
+}
+
+QMenu::item:selected {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+    border: 0px solid #454545;
+}
+
+QMenu::indicator {
+    width: 12px;
+    height: 12px;
+    padding-left:6px;
+}
