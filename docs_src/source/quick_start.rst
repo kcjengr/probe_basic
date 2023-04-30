@@ -6,7 +6,14 @@ Probe Basic .deb Installation instructions
 **Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**
 
 
-**Note: Probe Basic is currently designed for 1920x1080 screen sizes only!**
+**Important Requirements:**
+
+	**Probe Basic is currently designed for 1920x1080 screen sizes only!**
+
+	**Probe Basic is tested running on XFCE4, Uncheck Gnome and Check XFCE4 diring install of Debian 12 ISO**
+
+	**Probe Basic Requires graphics hardware that support OpenGL 1.50 or later**
+
 
 
 **Download the Linux Debian 12 Bookworkm ISO Image File**
@@ -34,7 +41,7 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt upgrade
 
 
-**To install Probe Basic uaing the av .deb packages, you must install all 3 seperately using the following method:**
+**To install Probe Basic using the .deb packages, you must install all 3 seperately using the following method:**
 
 **Requirements:**
 
