@@ -8,11 +8,11 @@ Probe Basic .deb Installation instructions
 
 **Important Requirements:**
 
-	**Probe Basic is currently designed for 1920x1080 screen sizes only!**
+	*Probe Basic is currently designed for 1920x1080 screen sizes only!*
 
-	**Probe Basic is tested running on XFCE4, Uncheck Gnome and Check XFCE4 diring install of Debian 12 ISO**
+	*Probe Basic is tested running on XFCE4, Uncheck Gnome and Check XFCE4 during install of Debian 12 ISO*
 
-	**Probe Basic Requires graphics hardware that support OpenGL 1.50 or later**
+	*Probe Basic Requires graphics hardware that support OpenGL 1.50 or later*
 
 
 
@@ -48,6 +48,10 @@ After installation, copy the following in the main terminal one line at a time a
     - Debian 12 Bookworm
     - Python 3.11
     - Linuxcnc 2.9 or higher
+    - xfce4 desktop environment (should be selected during installation of Debian 12 ISO)
+    - OpenGL 1.50 or Later graphics support
+    - Hiyapyco 0.5.1-1 or Later (installed from .deb below)
+    - QtPyVCP (installed from .deb below)
 
 
 **If you have not already installed linuxcnc from apt, use the following line in main terminal:**
@@ -78,30 +82,35 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt install debhelper-compat dh-python python3-setuptools python3-yaml python3-pyqt5.qtmultimedia python3-pyqt5.qtquick qml-module-qtquick-controls libqt5multimedia5-plugins python3-dev python3-docopt python3-qtpy python3-pyudev python3-psutil python3-markupsafe python3-vtk9 python3-pyqtgraph python3-simpleeval python3-jinja2 python3-deepdiff python3-sqlalchemy qttools5-dev-tools python3-serial
 
 
-*then enter:*
+*then enter the following using the recently downloaded file name :*
 
 ::
 
-    sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
+    sudo dpkg -i python3-hiyapyco_ (**use the latest file name**).deb
 
 
-*then enter:*
+*then enter the following using the recently downloaded file name :*
     
 ::
 
-    sudo dpkg -i python3-qtpyvcp_0.4-2_all.deb
+    sudo dpkg -i python3-qtpyvcp_ (**use the latest file name**).deb
 
 
-*then enter:*
+*then enter the following using the recently downloaded file name :*
 
 ::
 
-    sudo dpkg -i python3-probe-basic_0.5.3_all.deb
+    sudo dpkg -i python3-probe-basic_ (**use the latest file name**).deb
 
 
-**You are all installed!  you should now be able to launch your probe basic sim or machine config from within the linuxcnc applications dropdown menu.**
+**You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
 
 
+**To build your own machine configuration, please follow the instructions in this document:**
+
+::
+    
+    https://forum.linuxcnc.org/qtpyvcp/48401-configuration-file-conversion-doc-for-probe-basic-py3
 
 
 **To uninstall enter each of the following commands one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
