@@ -11,8 +11,8 @@ Probe Basic .deb Installation instructions
 	- Probe Basic is currently designed for 1920x1080 screen sizes only!
 
 	- Probe Basic is tested on xfce4, during install of Debian 12 ISO:
-        1- Uncheck Gnome
-        2- Check xfce4 
+        - Uncheck Gnome
+        - Check xfce4 
 
 	- Probe Basic Requires graphics hardware that support OpenGL 1.50 or later
 
