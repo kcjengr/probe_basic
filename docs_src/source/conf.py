@@ -18,8 +18,8 @@ import sys
 vcp_dir = os.path.join(os.path.abspath('.'), '..', '..')
 sys.path.insert(0, os.path.abspath(vcp_dir))
 
+import qtpyvcp
 import probe_basic
-
 
 # -- Project information -----------------------------------------------------
 
