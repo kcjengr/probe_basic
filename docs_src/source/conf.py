@@ -37,13 +37,11 @@ qtpyvcp_release = qtpyvcp.__version__
 qtpyvcp_commit = qtpyvcp.__version__.split('.')[2]
 
 
-
-
 # The short X.Y version.
-pb_version = qtpyvcp.__version__.split('+')[0]
+pb_version = probe_basic.__version__.split('+')[0]
 
 # The full version, including alpha/beta/rc tags.
-pb_release = qtpyvcp.__version__
+pb_release = probe_basic.__version__
 
 # The short commit ID
 pb_commit = probe_basic.__version__.split('.')[2]
