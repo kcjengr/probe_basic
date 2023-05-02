@@ -74,38 +74,38 @@ After installation, copy the following in the main terminal one line at a time a
 **Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
 
 
-.. _a link: |probe_basic_deb_link|
-    
-.. _a link: |qtpyvcp_deb_link|
-    
-.. _a link: https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
+.. parsed-literal::
+
+	|probe_basic_deb_link|
+	|qtpyvcp_deb_link|
+    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
 
 **Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
 
 ::
-    
+
     sudo apt install debhelper-compat dh-python python3-setuptools python3-yaml python3-pyqt5.qtmultimedia python3-pyqt5.qtquick qml-module-qtquick-controls libqt5multimedia5-plugins python3-dev python3-docopt python3-qtpy python3-pyudev python3-psutil python3-markupsafe python3-vtk9 python3-pyqtgraph python3-simpleeval python3-jinja2 python3-deepdiff python3-sqlalchemy qttools5-dev-tools python3-serial
 
 
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-    
+
     sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
 
 
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-    
+
     sudo dpkg -i |qtpyvcp_deb|
 
 
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-    
+
     sudo dpkg -i |probe_basic_deb|
 
 
