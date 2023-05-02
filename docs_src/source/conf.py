@@ -32,9 +32,18 @@ version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 release = probe_basic.__version__
 
-rst_epilog = '.. |code version| replace:: ``%s``\n' % version
-rst_epilog += '.. |gh_bin_dl_url| replace:: https://github.com/kcjengr/probe_basic/releases/download/%s/ProbeBasic-Installer-%s.run' % (version, version)
+# The short commit ID
+commit = qtpyvcp.__version__.split('.')[2]
 
+rst_epilog = f"""
+.. |code_version| replace:: {version}
+.. |code_release| replace:: {release}
+.. |code_commit| replace:: {commit}
+.. |qtpyvcp_deb| replace:: python3-qtpyvcp_{version}-{commit}.dev_all.deb
+.. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{version}-{commit}.dev_all.deb
+.. |probe_basic_deb| replace:: python3-probe_basic_{version}-{commit}.dev_all.deb
+.. |probe_basic_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe_basic-dev/python3-probe_basic{version}-{commit}.dev_all.deb
+"""
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.

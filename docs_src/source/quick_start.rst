@@ -44,7 +44,7 @@ After installation, copy the following in the main terminal one line at a time a
 ::
 
     sudo apt update
-    
+
     sudo apt upgrade
 
 
@@ -73,14 +73,12 @@ After installation, copy the following in the main terminal one line at a time a
 
 **Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
 
-::
+|probe_basic_deb_link|
 
-    https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_0.5.3-4286f9d.dev_all.deb
+|qtpyvcp_deb_link|
 
-    https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_0.4-4ccd1a1a.dev_all.deb
+https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
-    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
-    
 
 **Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
 
@@ -91,23 +89,23 @@ After installation, copy the following in the main terminal one line at a time a
 
 *then enter the following using the recently downloaded file name :*
 
-::
+.. parsed-literal::
 
-    sudo dpkg -i python3-hiyapyco_ (**use the latest file name**).deb
-
-
-*then enter the following using the recently downloaded file name :*
-    
-::
-
-    sudo dpkg -i python3-qtpyvcp_ (**use the latest file name**).deb
+    sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
 
 
 *then enter the following using the recently downloaded file name :*
 
-::
+.. parsed-literal::
 
-    sudo dpkg -i python3-probe-basic_ (**use the latest file name**).deb
+    sudo dpkg -i |qtpyvcp_deb|
+
+
+*then enter the following using the recently downloaded file name :*
+
+.. parsed-literal::
+
+    sudo dpkg -i |probe_basic_deb|
 
 
 **You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
@@ -116,14 +114,14 @@ After installation, copy the following in the main terminal one line at a time a
 **To build your own machine configuration, please follow the instructions in this document:**
 
 ::
-    
+
     https://forum.linuxcnc.org/qtpyvcp/48401-configuration-file-conversion-doc-for-probe-basic-py3
 
 
 **To uninstall enter each of the following commands one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
 
 ::
-    
+
     sudo dpkg -P python3-probe-basic
 
     sudo dpkg -P python3-hiyapyco
