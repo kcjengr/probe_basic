@@ -28,21 +28,34 @@ copyright = '2021, Chris Polanski'
 author = 'Chris Polanski'
 
 # The short X.Y version.
-version = probe_basic.__version__.split('+')[0]
+qtpyvcp_version = qtpyvcp.__version__.split('+')[0]
+
 # The full version, including alpha/beta/rc tags.
-release = probe_basic.__version__
+qtpyvcp_release = qtpyvcp.__version__
 
 # The short commit ID
-commit = qtpyvcp.__version__.split('.')[2]
+qtpyvcp_commit = qtpyvcp.__version__.split('.')[2]
+
+
+
+
+# The short X.Y version.
+pb_version = qtpyvcp.__version__.split('+')[0]
+
+# The full version, including alpha/beta/rc tags.
+pb_release = qtpyvcp.__version__
+
+# The short commit ID
+pb_commit = probe_basic.__version__.split('.')[2]
 
 rst_epilog = f"""
-.. |code_version| replace:: {version}
-.. |code_release| replace:: {release}
-.. |code_commit| replace:: {commit}
-.. |qtpyvcp_deb| replace:: python3-qtpyvcp_{version}-{commit}.dev_all.deb
-.. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{version}-{commit}.dev_all.deb
-.. |probe_basic_deb| replace:: python3-probe_basic_{version}-{commit}.dev_all.deb
-.. |probe_basic_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe_basic-dev/python3-probe_basic{version}-{commit}.dev_all.deb
+.. |code_version| replace:: {pb_version}
+.. |code_release| replace:: {pb_release}
+.. |code_commit| replace:: {pb_commit}
+.. |qtpyvcp_deb| replace:: python3-qtpyvcp_{qtpyvcp_version}-{qtpyvcp_commit}.dev_all.deb
+.. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_version}-{qtpyvcp_commit}.dev_all.deb
+.. |probe_basic_deb| replace:: python3-probe_basic_{pb_version}-{pb_commit}.dev_all.deb
+.. |probe_basic_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe_basic-dev/python3-probe_basic{pb_version}-{pb_commit}.dev_all.deb
 """
 # -- General configuration ---------------------------------------------------
 
