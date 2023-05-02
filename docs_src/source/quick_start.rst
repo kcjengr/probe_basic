@@ -75,9 +75,11 @@ After installation, copy the following in the main terminal one line at a time a
 
 
 .. parsed-literal::
-
-	|probe_basic_deb_link|
-	|qtpyvcp_deb_link|
+    
+    |probe_basic_deb_link|
+    
+    |qtpyvcp_deb_link|
+    
     https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
 
