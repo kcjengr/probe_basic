@@ -74,11 +74,11 @@ After installation, copy the following in the main terminal one line at a time a
 **Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
 
 
-    |probe_basic_deb_link|
+.. _a link: |probe_basic_deb_link|
     
-    |qtpyvcp_deb_link|
+.. _a link: |qtpyvcp_deb_link|
     
-    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
+.. _a link: https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
 
 **Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
