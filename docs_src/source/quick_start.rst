@@ -27,12 +27,14 @@ Probe Basic .deb Installation instructions
 
 ::
 
+
     https://www.debian.org/devel/debian-installer/
 
 
 Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
 ::
+
 
     https://www.balena.io/etcher/?ref=etcher_update
 
@@ -42,6 +44,7 @@ Once you have created your flash stick for linuxcnc proceed to install and boot 
 After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.  If the return shows "All up to Date" then you can proceed to the next step.
 
 ::
+
 
     sudo apt update
 
@@ -65,6 +68,7 @@ After installation, copy the following in the main terminal one line at a time a
 
 ::
 
+
     sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
 
 
@@ -73,16 +77,20 @@ After installation, copy the following in the main terminal one line at a time a
 
 **Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
 
-|probe_basic_deb_link|
-
-|qtpyvcp_deb_link|
-
-https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
+::
+    
+    
+    |probe_basic_deb_link|
+    
+    |qtpyvcp_deb_link|
+    
+    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
 
 **Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
 
 ::
+
 
     sudo apt install debhelper-compat dh-python python3-setuptools python3-yaml python3-pyqt5.qtmultimedia python3-pyqt5.qtquick qml-module-qtquick-controls libqt5multimedia5-plugins python3-dev python3-docopt python3-qtpy python3-pyudev python3-psutil python3-markupsafe python3-vtk9 python3-pyqtgraph python3-simpleeval python3-jinja2 python3-deepdiff python3-sqlalchemy qttools5-dev-tools python3-serial
 
@@ -90,21 +98,24 @@ https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-
+    
+    
     sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
 
 
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-
+    
+    
     sudo dpkg -i |qtpyvcp_deb|
 
 
 *then enter the following using the recently downloaded file name :*
 
 .. parsed-literal::
-
+    
+    
     sudo dpkg -i |probe_basic_deb|
 
 
