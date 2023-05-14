@@ -48,7 +48,7 @@ pb_commit = probe_basic.__version__.split('.')[2]
 
 
 with open("/home/buildbot/versions/pb_dev_version.txt", "r") as v_file:
-    latest_version = v_file.readline()
+    latest_version = v_file.readline().rstrip("\n")
 
 
 rst_epilog = f"""
