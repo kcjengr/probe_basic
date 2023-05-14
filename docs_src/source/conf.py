@@ -60,7 +60,7 @@ rst_epilog = f"""
 .. |code_commit| replace:: {pb_commit}
 .. |qtpyvcp_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
 .. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
-.. |probe_basic_deb| replace:: python3-probe_basic_{probe_basic_dev_latest_version}.dev_all.deb
+.. |probe_basic_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_all.deb
 .. |probe_basic_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_{probe_basic_dev_latest_version}.dev_all.deb
 """
 # -- General configuration ---------------------------------------------------
