@@ -9,6 +9,7 @@ Probe Basic .deb Installation instructions
 **Important Requirements:**
 
 - Probe Basic is currently designed for 1920x1080 screen sizes only!
+- Probe Basic Install by apt is for amd64 only currently!
 - Probe Basic Requires graphics hardware that support OpenGL 1.50 or later
 - Probe Basic is tested on xfce4, during install of Debian 12 ISO:
 - DO NOT enter a Root password during installation, leave blank and skip this page.
@@ -49,6 +50,7 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt upgrade
 
 
+
 **To install Probe Basic using the .deb packages, you must install all 3 seperately using the following method:**
 
 **Requirements:**
@@ -58,8 +60,6 @@ After installation, copy the following in the main terminal one line at a time a
     - Linuxcnc 2.9 or higher
     - xfce4 desktop environment (should be selected during installation of Debian 12 ISO)
     - OpenGL 1.50 or Later graphics support
-    - Hiyapyco 0.5.1-1 or Later (installed from .deb below)
-    - QtPyVCP (installed from .deb below)
 
 
 **If you have not already installed linuxcnc from apt, use the following line in main terminal:**
@@ -69,47 +69,43 @@ After installation, copy the following in the main terminal one line at a time a
     sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
 
 
+
 **Once you have installed linuxcnc, open linuxcnc and start the axis sim briefly and then you can shut it down to ensure the installation was succesful.**
 
 
-**Installing QtPyVCP and Probe Basic, Download the following files into your chosen directory typically home/your-pc-name/downloads**
-
-
-.. parsed-literal::
-    
-    |probe_basic_deb_link|
-    
-    |qtpyvcp_deb_link|
-    
-    https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
-
-
-**Go to the downloaded files directory folder, right click in the folder and select "Open Terminal Here". Enter the following commands in the new terminal one at a time and press enter, it will require your sudo password:**
+**Adding the apt repository to Debian 12, Run the following Lines in Main terminal one at a time**
 
 ::
 
-    sudo apt install debhelper-compat dh-python python3-setuptools python3-yaml python3-pyqt5.qtmultimedia python3-pyqt5.qtquick qml-module-qtquick-controls libqt5multimedia5-plugins python3-dev python3-docopt python3-qtpy python3-pyudev python3-psutil python3-markupsafe python3-vtk9 python3-pyqtgraph python3-simpleeval python3-jinja2 python3-deepdiff python3-sqlalchemy qttools5-dev-tools python3-serial
+    sudo apt install curl
 
 
-*then enter the following using the recently downloaded file name :*
-
-.. parsed-literal::
-
-    sudo dpkg -i python3-hiyapyco_0.5.1-1_all.deb
+    echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt develop main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
-*then enter the following using the recently downloaded file name :*
-
-.. parsed-literal::
-
-    sudo dpkg -i |qtpyvcp_deb|
+    curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
-*then enter the following using the recently downloaded file name :*
+    gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
 
-.. parsed-literal::
 
-    sudo dpkg -i |probe_basic_deb|
+
+**Update the Repositories**
+
+::
+
+    sudo apt update
+
+
+
+**Install QtPyVCP and Probe Basic**
+
+::
+
+    sudo apt install python3-qtpyvcp
+
+    sudo apt install python3-probe-basic
+
 
 
 **You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
@@ -119,17 +115,5 @@ After installation, copy the following in the main terminal one line at a time a
 
 
 https://forum.linuxcnc.org/qtpyvcp/48401-configuration-file-conversion-doc-for-probe-basic-py3
-
-
-**To uninstall enter each of the following commands one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
-
-::
-
-    sudo dpkg -P python3-probe-basic
-
-    sudo dpkg -P python3-hiyapyco
-
-    sudo dpkg -P python3-qtpyvcp
-
 
 
