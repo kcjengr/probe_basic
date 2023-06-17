@@ -15,6 +15,7 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    :maxdepth: 2
    :caption: Installation:
 
+   quick_start_apt
    quick_start
    dev_install
 
