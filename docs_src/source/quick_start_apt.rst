@@ -3,7 +3,7 @@ Probe Basic APT Installation instructions
 ==========================================
 
 
-**Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**
+**Probe Basic APT Installation Guide for use with Debian 12 Bookworm and LinuxCNC version 2.9 or Later**
 
 
 **Important Requirements:**
@@ -49,17 +49,6 @@ After installation, copy the following in the main terminal one line at a time a
 
     sudo apt upgrade
 
-
-
-**To install Probe Basic using the .deb packages, you must install all 3 seperately using the following method:**
-
-**Requirements:**
-
-    - Debian 12 Bookworm
-    - Python 3.11
-    - Linuxcnc 2.9 or higher
-    - xfce4 desktop environment (should be selected during installation of Debian 12 ISO)
-    - OpenGL 1.50 or Later graphics support
 
 
 **If you have not already installed linuxcnc from apt, use the following line in main terminal:**
@@ -110,6 +99,8 @@ After installation, copy the following in the main terminal one line at a time a
 
 **You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
 
+
+**Updating of probe basic and qtpyvcp will occur when your run the normal "sudo apt update, sudo apt upgrade" commands.  During updating, the probe basic sim configuration files will be overwritten.  It is strongly recommended to create your machine configuration files with unique names to avoid having them overwritten during updates.**
 
 **To build your own machine configuration, please follow the instructions in this document:**
 

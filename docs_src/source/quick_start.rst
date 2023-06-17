@@ -118,6 +118,9 @@ After installation, copy the following in the main terminal one line at a time a
 **You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
 
 
+**When updating/installing the latest .deb files, the probe basic sim configuration files will be overwritten.  It is strongly recommended to create your machine configuration files with unique names to avoid having them overwritten during updates.**
+
+
 **To build your own machine configuration, please follow the instructions in this document:**
 
 
@@ -134,5 +137,5 @@ https://forum.linuxcnc.org/qtpyvcp/48401-configuration-file-conversion-doc-for-p
 
     sudo dpkg -P python3-qtpyvcp
 
-    
+
 
