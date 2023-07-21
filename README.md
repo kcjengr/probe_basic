@@ -35,15 +35,15 @@ https://qtpyvcp.com
 
 
 ## Dependencies
-* Debian 11
-* [LinuxCNC](https://linuxcnc.org) 2.9
-* Python 3.9
-* PyQt5 or PySide2
+* Debian 12
+* [LinuxCNC](https://linuxcnc.org) 2.9, 2.10pre
+* Python 3.11
+* PyQt5
 * [QtPyVCP](https://qtpyvcp.com/)
 
-Probe Basic is developed and tested using the LinuxCNC Debian 9 x64 (stretch)
-[Live ISO](http://www.linuxcnc.org/testing-stretch-rtpreempt/) and Ubuntu 18.10 x64 SIM. It should run
-on any system that can have PyQt5 installed, but Debian 9 x64 is the only OS
+Probe Basic is developed and tested using the LinuxCNC Debian 12 x64 (bookworm)
+[Install ISO](https://cdimage.debian.org/cdimage/archive/10.11.0/amd64/iso-cd/debian-10.11.0-amd64-netinst.iso).
+It should run on any system that can have PyQt5 installed, but Debian 12 x64 is the only OS
 that is officially supported.
 
 
