@@ -1,6 +1,6 @@
 (author: Chris P)
 (version: 0.1)
-(date: 04/25/19)
+(date: 08/13/2023)
 
 (Probe Y plus direction to locate edge, end at clearance distance)
 (Start probe position to the front side edge of stock)
@@ -22,10 +22,10 @@ o<probe_y_plus> sub
   G92.1
 
   (Probe Tool Safety Check)
-  o<110> if [#5400 NE #<probe_tool_number>]
-  (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-   o<probe_y_plus> return
-  o<110> endif
+  o100 if [#5400 NE #<probe_tool_number>]
+      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      o<probe_y_plus> return
+  o100 endif
 
   (Probe Diameter)
   #<probe_diameter> = #5410
@@ -46,30 +46,29 @@ o<probe_y_plus> sub
   #<y_plus_probed> = #5062
 
   (Probe Error check, #5070 will be 0 if failed)
-  o<120> if [#5070 EQ 0]
-    (back to start point and feed)
-    G90
-    G0 Y#<y>
-    F[#<probe_fast_fr>]
-    (return from sub)
-    o<probe_y_plus> return
-  o<120> endif
+  o110 if [#5070 EQ 0]
+      (back to start point and feed)
+      G90
+      G0 Y#<y>
+      F[#<probe_fast_fr>]
+      (return from sub)
+      o<probe_y_plus> return
+  o110 endif
 
   (Move to xy_clearance distance for slow probe)
   G90
   G0 Y[#<y_plus_probed> - #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
-  o<130> if [#<probe_slow_fr> GT 0]
-    (Initiate Slow Y+ Probe)
-    G91
-    F[#<probe_slow_fr>]
-    G38.2 Y[#<xy_clearance> * 2]
-    #<y_plus_probed> = #5062
-    (debug, Probed Pos: #5062 Y Pos: #<_y>)
-    G90
-    G0 Y[#<y_plus_probed> - #<xy_clearance>]
-  o<130> endif
+  o120 if [#<probe_slow_fr> GT 0]
+      (Initiate Slow Y+ Probe)
+      G91
+      F[#<probe_slow_fr>]
+      G38.2 Y[#<xy_clearance> * 2]
+      #<y_plus_probed> = #5062
+      G90
+      G0 Y[#<y_plus_probed> - #<xy_clearance>]
+  o120 endif
 
   #<y_plus_zero_edge> = [#5062 + #<probe_center_offset>]
 

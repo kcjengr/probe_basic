@@ -1,6 +1,6 @@
 (author: Chris P)
 (version: 0.1)
-(date: 04/25/19)
+(date: 08/13/2023)
 
 (Probe Z Minus direction to locate top, end at clearance distance)
 (Start probe position is over stock within max z distance)
@@ -46,7 +46,6 @@ o<probe_z_minus> sub
       F[#<probe_slow_fr>]
       G38.2 Z-[#<z_clearance> * 2]
       #<z_minus_probed> = #5063
-      (debug, Probed Pos: #5063 Z Pos: #<_z>)
       G90
       G0 Z[#<z_minus_probed> + #<z_clearance>]
   o110 endif

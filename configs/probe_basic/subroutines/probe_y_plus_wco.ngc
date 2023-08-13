@@ -1,6 +1,6 @@
 (author: Chris P)
 (version: 0.1)
-(date: 04/25/19)
+(date: 08/13/2023)
 
 (Probe Y plus direction and set Y 0 in current WCO)
 (Start probe position to the front side edge of stock)
@@ -77,7 +77,6 @@ o<probe_y_plus_wco> sub
       F[#<probe_slow_fr>]
       G38.2 Y[#<xy_clearance> * 2]
       #<y_plus_probed> = #5062
-      (debug, Probed Pos: #5062 Y Pos: #<_y>)
       G90
       G0 Y[#<y_plus_probed> - #<xy_clearance>]
   o120 endif

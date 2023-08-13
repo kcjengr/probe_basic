@@ -49,7 +49,6 @@ o120 if [#<slow_probe_fr> GT 0]
     F[#<slow_probe_fr>]    (set probe slow feedrate)
     G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
     #<z_slow_probe> = #5063
-    (debug, Probed Pos: #5063 Z Pos: #<_z>)
     G90
     G0 Z[#<z_slow_probe> + #<retract_distance>]
 o120 endif
