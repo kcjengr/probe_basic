@@ -13,6 +13,7 @@ version = "0.0"
 
 packages = [
 	{ include = "probe_basic", from = "src" },
+	{ include = "probe_basic_vertical", from = "src" },
 	{ include = "probe_basic_lathe", from = "src" },
 	{ include = "widgets", from = "src" },
 ]
@@ -22,12 +23,14 @@ python = "^3.7"
 
 [tool.poetry.scripts]
 probe_basic = "probe_basic:main"
+probe_basic_vertical = "probe_basic_vertical:main"
 probe_basic_lathe = "probe_basic_lathe:main"
 
 [tool.poetry.plugins]
 
 [tool.poetry.plugins."qtpyvcp.vcp"]
 probe_basic = "probe_basic"
+probe_basic_vertical = "probe_basic_vertical"
 probe_basic_lathe = "probe_basic_lathe"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
