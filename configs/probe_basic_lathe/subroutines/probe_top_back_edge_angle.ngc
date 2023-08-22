@@ -33,6 +33,7 @@ o<probe_top_back_edge_angle> sub
   G92.1
 
   #<workspace_y> = #[5202 + [20 * #5220]]
+  #<workspace_r> = #[5210 + [20 * #5220]]
 
   (Probe Tool Safety Check)
   o<110> if [#5400 NE #<probe_tool_number>]
@@ -115,7 +116,7 @@ o<probe_top_back_edge_angle> sub
   (probe mode rules for WCO, Rotation and probe position measuring only)
   o<150> if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]
     (Record Zero in selected axes and WCO)
-    G10 L2 P#5220 X[#<x_start_position>] Y[#<y_minus_zero_edge_start> + #<workspace_y>] R[#<edge_angle>]
+    G10 L2 P#5220 X[#<x_start_position>] Y[#<y_minus_zero_edge_start> + #<workspace_y>] R[#<edge_angle> + #<workspace_r>]
     o<probe_top_back_edge_angle> return
   o<150> endif
 
