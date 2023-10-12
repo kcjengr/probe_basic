@@ -23312,426 +23312,1038 @@ border-radius: 4px;
                          <string notr="true"/>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_64">
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
                          <property name="topMargin">
-                          <number>9</number>
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
                          </property>
                          <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_106">
-                           <item>
-                            <widget class="ActionButton" name="z_plus_jogbutton">
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:z,pos</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_107">
-                           <item>
-                            <widget class="ActionButton" name="z_minus_jogbutton">
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:z,neg</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QGridLayout" name="gridLayout_6">
-                           <property name="horizontalSpacing">
+                          <widget class="VCPStackedWidget" name="jogDisplay">
+                           <property name="currentIndex">
                             <number>0</number>
                            </property>
-                           <property name="verticalSpacing">
-                            <number>15</number>
+                           <property name="rules" stdset="0">
+                            <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;bin(ch[0]).count('1')-3&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask&quot;, &quot;trigger&quot;: true}]}]</string>
                            </property>
-                           <item row="1" column="2">
-                            <widget class="ActionButton" name="x_plus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:x,pos</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="1" column="0">
-                            <widget class="ActionButton" name="x_minus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:x,neg</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="2" column="1">
-                            <widget class="ActionButton" name="y_minus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:y,neg</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item row="0" column="1">
-                            <widget class="ActionButton" name="y_plus_jogbutton">
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:y,pos</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_112">
-                           <item>
-                            <widget class="ActionButton" name="a_minus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:a,neg</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="ActionButton" name="a_plus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:a,pos</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </item>
-                         <item>
-                          <layout class="QHBoxLayout" name="horizontalLayout_111">
-                           <item>
-                            <widget class="ActionButton" name="b_minus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:b,neg</string>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="ActionButton" name="b_plus_jogbutton">
-                             <property name="sizePolicy">
-                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
-                               <verstretch>0</verstretch>
-                              </sizepolicy>
-                             </property>
-                             <property name="minimumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="maximumSize">
-                              <size>
-                               <width>56</width>
-                               <height>56</height>
-                              </size>
-                             </property>
-                             <property name="focusPolicy">
-                              <enum>Qt::NoFocus</enum>
-                             </property>
-                             <property name="text">
-                              <string/>
-                             </property>
-                             <property name="icon">
-                              <iconset resource="probe_basic.qrc">
-                               <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
-                             </property>
-                             <property name="iconSize">
-                              <size>
-                               <width>48</width>
-                               <height>48</height>
-                              </size>
-                             </property>
-                             <property name="actionName" stdset="0">
-                              <string>machine.jog.axis:b,pos</string>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
+                           <property name="settingName" stdset="0">
+                            <string>jog-display.currentIndex</string>
+                           </property>
+                           <widget class="QWidget" name="jog_xyz">
+                            <layout class="QVBoxLayout" name="verticalLayout_69">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_164">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_3">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_172">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_3">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_13">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_3">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyza">
+                            <layout class="QVBoxLayout" name="verticalLayout_68">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_113">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_2">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_114">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_2">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_11">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton_2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton_2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_2">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_137">
+                               <item>
+                                <widget class="ActionButton" name="a_minus_jogbutton_2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="a_plus_jogbutton_2">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyzab">
+                            <layout class="QVBoxLayout" name="verticalLayout_36">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_106">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_107">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_6">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_112">
+                               <item>
+                                <widget class="ActionButton" name="a_minus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="a_plus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_111">
+                               <item>
+                                <widget class="ActionButton" name="b_minus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="b_plus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                          </widget>
                          </item>
                         </layout>
                        </widget>
