@@ -6,6 +6,8 @@
 import os
 import sys
 
+import linuxcnc
+
 from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
@@ -19,6 +21,7 @@ import probe_basic_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
+INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -32,6 +35,9 @@ class ProbeBasic(VCPMainWindow):
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+
+        if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
+            self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), false);
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
