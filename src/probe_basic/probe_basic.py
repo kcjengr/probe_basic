@@ -37,7 +37,7 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
-            self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), false);
+            self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), False);
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
