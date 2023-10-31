@@ -24841,11 +24841,14 @@ border-radius: 4px;
                             <property name="leftMargin">
                              <number>15</number>
                             </property>
+                            <property name="topMargin">
+                             <number>12</number>
+                            </property>
                             <property name="rightMargin">
                              <number>15</number>
                             </property>
                             <property name="bottomMargin">
-                             <number>15</number>
+                             <number>12</number>
                             </property>
                             <item>
                              <widget class="ActionButton" name="ref_all_button_2">
@@ -25283,6 +25286,7 @@ border-radius: 4px;
                          </item>
                         </layout>
                        </widget>
+                       <widget class="QWidget" name="sb_page_4"/>
                       </widget>
                      </item>
                      <item>
@@ -25829,13 +25833,13 @@ QPushButton:checked {
     border-color: black;
     border-top-width: 2px;
     border-bottom-width: 2px;
-    border-right-width: 2px;
+    border-right-width: 1px;
     border-left-width: 1px;
     padding: 2px;
     border-top-left-radius: 0px;
-    border-top-right-radius: 4px;
+    border-top-right-radius: 0px;
     border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 4px;
+    border-bottom-right-radius: 0px;
 }
 
 QPushButton:pressed, QPushButton:hover {
@@ -25858,6 +25862,69 @@ QPushButton:checked {
               </property>
               <property name="page" stdset="0">
                <number>2</number>
+              </property>
+              <attribute name="buttonGroup">
+               <string notr="true">sidebartabGroup</string>
+              </attribute>
+             </widget>
+            </item>
+            <item>
+             <widget class="QPushButton" name="user_sb_tab">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                <horstretch>1</horstretch>
+                <verstretch>1</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>0</width>
+                <height>0</height>
+               </size>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QPushButton {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: white;
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4e4e4e, stop: 1.0 #3a3a3a);
+    border-style: solid;
+    border-color: black;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-left-width: 1px;
+    padding: 2px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+}
+
+QPushButton:pressed, QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(112, 112, 238, 255), stop:0.121053 rgba(123, 123, 232, 255), stop:0.3 rgba(85, 85, 238, 255), stop:0.694737 rgba(85, 85, 238, 255), stop:0.915789 rgba(123, 123, 232, 255), stop:1 rgba(112, 112, 238, 255))
+}</string>
+              </property>
+              <property name="text">
+               <string>USER</string>
+              </property>
+              <property name="checkable">
+               <bool>true</bool>
+              </property>
+              <property name="autoExclusive">
+               <bool>true</bool>
+              </property>
+              <property name="page" stdset="0">
+               <number>3</number>
               </property>
               <attribute name="buttonGroup">
                <string notr="true">sidebartabGroup</string>
@@ -34767,11 +34834,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>475</x>
-     <y>754</y>
+     <y>685</y>
     </hint>
     <hint type="destinationlabel">
      <x>593</x>
-     <y>758</y>
+     <y>689</y>
     </hint>
    </hints>
   </connection>
@@ -34783,7 +34850,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>573</y>
+     <y>524</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34815,7 +34882,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>315</y>
+     <y>291</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34830,8 +34897,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>143</x>
-     <y>555</y>
+     <x>155</x>
+     <y>549</y>
     </hint>
     <hint type="destinationlabel">
      <x>117</x>
@@ -34847,7 +34914,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>100</y>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34863,7 +34930,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>358</y>
+     <y>330</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34894,8 +34961,8 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>904</x>
-     <y>632</y>
+     <x>924</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -34943,7 +35010,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>272</y>
+     <y>252</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34958,8 +35025,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>266</x>
-     <y>608</y>
+     <x>268</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -34991,7 +35058,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>487</y>
+     <y>446</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35006,12 +35073,12 @@ font: 11pt bebas kai;
    <slot>setFocus()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>740</x>
-     <y>630</y>
+     <x>772</x>
+     <y>574</y>
     </hint>
     <hint type="destinationlabel">
-     <x>567</x>
-     <y>623</y>
+     <x>577</x>
+     <y>574</y>
     </hint>
    </hints>
   </connection>
@@ -35022,12 +35089,12 @@ font: 11pt bebas kai;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1313</x>
-     <y>632</y>
+     <x>1327</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1608</x>
-     <y>573</y>
+     <x>1619</x>
+     <y>497</y>
     </hint>
    </hints>
   </connection>
@@ -35055,7 +35122,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>229</y>
+     <y>213</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35070,8 +35137,8 @@ font: 11pt bebas kai;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1445</x>
-     <y>632</y>
+     <x>1458</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -35086,8 +35153,8 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>768</x>
-     <y>632</y>
+     <x>788</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -35102,8 +35169,8 @@ font: 11pt bebas kai;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1181</x>
-     <y>632</y>
+     <x>1196</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -35134,8 +35201,8 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>724</x>
-     <y>608</y>
+     <x>730</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35150,8 +35217,8 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>541</x>
-     <y>555</y>
+     <x>553</x>
+     <y>549</y>
     </hint>
     <hint type="destinationlabel">
      <x>508</x>
@@ -35167,7 +35234,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>530</y>
+     <y>485</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35182,8 +35249,8 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>556</x>
-     <y>632</y>
+     <x>576</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -35198,8 +35265,8 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1005</x>
-     <y>632</y>
+     <x>1025</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -35310,8 +35377,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>133</x>
-     <y>643</y>
+     <x>147</x>
+     <y>574</y>
     </hint>
     <hint type="destinationlabel">
      <x>109</x>
@@ -35326,8 +35393,8 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>657</x>
-     <y>632</y>
+     <x>677</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>715</x>
@@ -35358,8 +35425,8 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>276</x>
-     <y>555</y>
+     <x>288</x>
+     <y>549</y>
     </hint>
     <hint type="destinationlabel">
      <x>220</x>
@@ -35391,7 +35458,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>186</y>
+     <y>174</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35406,8 +35473,8 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>495</x>
-     <y>608</y>
+     <x>499</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35438,8 +35505,8 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>953</x>
-     <y>608</y>
+     <x>961</x>
+     <y>539</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35471,7 +35538,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>143</y>
+     <y>135</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35486,8 +35553,8 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>555</y>
+     <x>420</x>
+     <y>549</y>
     </hint>
     <hint type="destinationlabel">
      <x>358</x>
@@ -35503,7 +35570,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>616</y>
+     <y>563</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35518,8 +35585,8 @@ font: 11pt bebas kai;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1577</x>
-     <y>632</y>
+     <x>1589</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>1608</x>
@@ -35534,8 +35601,8 @@ font: 11pt bebas kai;
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1603</x>
-     <y>812</y>
+     <x>1813</x>
+     <y>763</y>
     </hint>
     <hint type="destinationlabel">
      <x>1548</x>
@@ -35630,8 +35697,8 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>422</x>
-     <y>632</y>
+     <x>442</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -35662,8 +35729,8 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>310</x>
-     <y>632</y>
+     <x>330</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -35694,8 +35761,8 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>611</y>
+     <x>146</x>
+     <y>542</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -35738,17 +35805,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probemodeGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="sidebartabGroup"/>
  </buttongroups>
 </ui>
