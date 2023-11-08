@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
+    <width>1835</width>
     <height>1011</height>
    </rect>
   </property>
@@ -5747,7 +5747,7 @@ QTabWidget QTabBar::tab {
                           <enum>Qt::NoFocus</enum>
                          </property>
                          <property name="toolTip">
-                          <string>M111 User Defined Macro Call from Subroutine Folder</string>
+                          <string>M11P1 User Defined Macro Call from Subroutine Folder</string>
                          </property>
                          <property name="toolTipDuration">
                           <number>-1</number>
@@ -5799,7 +5799,7 @@ QTabWidget QTabBar::tab {
                           <enum>Qt::NoFocus</enum>
                          </property>
                          <property name="toolTip">
-                          <string>M112 User Defined Macro Call from Subroutine Folder</string>
+                          <string>M12 P1 User Defined Macro Call from Subroutine Folder</string>
                          </property>
                          <property name="layoutDirection">
                           <enum>Qt::RightToLeft</enum>
@@ -6249,7 +6249,7 @@ SubCallButton:pressed {
                         <number>2</number>
                        </property>
                        <item>
-                        <widget class="MDIButton" name="move_head_above_carousel">
+                        <widget class="SubCallButton" name="move_head_above_carousel_button">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>1</horstretch>
@@ -6268,28 +6268,36 @@ SubCallButton:pressed {
                            <height>45</height>
                           </size>
                          </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                         </property>
-                         <property name="toolTip">
-                          <string>M116 User Defined Macro Call from Subroutine Folder</string>
-                         </property>
                          <property name="styleSheet">
-                          <string notr="true">MDIButton {
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                          <string notr="true">SubCallButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+SubCallButton:disabled {
+    border-color: gray;
+}
+
+SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                          </property>
                          <property name="text">
                           <string>MOVE HEAD ABOVE CAROUSEL</string>
                          </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="MDICommand" stdset="0">
-                          <string>G0G53Z0.0</string>
+                         <property name="filename" stdset="0">
+                          <string>move_head_above_carousel.ngc</string>
                          </property>
                         </widget>
                        </item>
@@ -6313,7 +6321,7 @@ SubCallButton:pressed {
                         <number>2</number>
                        </property>
                        <item>
-                        <widget class="MDIButton" name="move_tool_to_carousel_height">
+                        <widget class="SubCallButton" name="move_tool_to_carousel_height_button">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>1</horstretch>
@@ -6332,31 +6340,36 @@ SubCallButton:pressed {
                            <height>45</height>
                           </size>
                          </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                         </property>
-                         <property name="toolTip">
-                          <string>M117 User Defined Macro Call from Subroutine Folder</string>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
                          <property name="styleSheet">
-                          <string notr="true">MDIButton {
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                          <string notr="true">SubCallButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+SubCallButton:disabled {
+    border-color: gray;
+}
+
+SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                          </property>
                          <property name="text">
                           <string>MOVE TOOL TO CAROUSEL HEIGHT</string>
                          </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="MDICommand" stdset="0">
-                          <string>G0G53Z-3.1900</string>
+                         <property name="filename" stdset="0">
+                          <string>move_tool_to_carousel_height.ngc</string>
                          </property>
                         </widget>
                        </item>
@@ -34321,7 +34334,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
+     <width>1835</width>
      <height>26</height>
     </rect>
    </property>
@@ -35714,16 +35727,16 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
