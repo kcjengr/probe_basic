@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
+    <width>1835</width>
     <height>1011</height>
    </rect>
   </property>
@@ -5747,7 +5747,7 @@ QTabWidget QTabBar::tab {
                           <enum>Qt::NoFocus</enum>
                          </property>
                          <property name="toolTip">
-                          <string>M111 User Defined Macro Call from Subroutine Folder</string>
+                          <string>M11P1 User Defined Macro Call from Subroutine Folder</string>
                          </property>
                          <property name="toolTipDuration">
                           <number>-1</number>
@@ -5799,7 +5799,7 @@ QTabWidget QTabBar::tab {
                           <enum>Qt::NoFocus</enum>
                          </property>
                          <property name="toolTip">
-                          <string>M112 User Defined Macro Call from Subroutine Folder</string>
+                          <string>M12 P1 User Defined Macro Call from Subroutine Folder</string>
                          </property>
                          <property name="layoutDirection">
                           <enum>Qt::RightToLeft</enum>
@@ -6249,7 +6249,7 @@ SubCallButton:pressed {
                         <number>2</number>
                        </property>
                        <item>
-                        <widget class="MDIButton" name="move_head_above_carousel">
+                        <widget class="SubCallButton" name="move_head_above_carousel_button">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>1</horstretch>
@@ -6268,28 +6268,36 @@ SubCallButton:pressed {
                            <height>45</height>
                           </size>
                          </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                         </property>
-                         <property name="toolTip">
-                          <string>M116 User Defined Macro Call from Subroutine Folder</string>
-                         </property>
                          <property name="styleSheet">
-                          <string notr="true">MDIButton {
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                          <string notr="true">SubCallButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+SubCallButton:disabled {
+    border-color: gray;
+}
+
+SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                          </property>
                          <property name="text">
                           <string>MOVE HEAD ABOVE CAROUSEL</string>
                          </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="MDICommand" stdset="0">
-                          <string>G0G53Z0.0</string>
+                         <property name="filename" stdset="0">
+                          <string>move_head_above_carousel.ngc</string>
                          </property>
                         </widget>
                        </item>
@@ -6313,7 +6321,7 @@ SubCallButton:pressed {
                         <number>2</number>
                        </property>
                        <item>
-                        <widget class="MDIButton" name="move_tool_to_carousel_height">
+                        <widget class="SubCallButton" name="move_tool_to_carousel_height_button">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                            <horstretch>1</horstretch>
@@ -6332,31 +6340,36 @@ SubCallButton:pressed {
                            <height>45</height>
                           </size>
                          </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                         </property>
-                         <property name="toolTip">
-                          <string>M117 User Defined Macro Call from Subroutine Folder</string>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
                          <property name="styleSheet">
-                          <string notr="true">MDIButton {
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                          <string notr="true">SubCallButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 15pt;
+}
+
+SubCallButton:disabled {
+    border-color: gray;
+}
+
+SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                          </property>
                          <property name="text">
                           <string>MOVE TOOL TO CAROUSEL HEIGHT</string>
                          </property>
-                         <property name="iconSize">
-                          <size>
-                           <width>20</width>
-                           <height>20</height>
-                          </size>
-                         </property>
-                         <property name="MDICommand" stdset="0">
-                          <string>G0G53Z-3.1900</string>
+                         <property name="filename" stdset="0">
+                          <string>move_tool_to_carousel_height.ngc</string>
                          </property>
                         </widget>
                        </item>
@@ -25041,7 +25054,7 @@ border-radius: 4px;
                           <number>10</number>
                          </property>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton">
+                          <widget class="VCPSettingsPushButton" name="program_boundary_button">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -25072,7 +25085,7 @@ border-radius: 4px;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_2">
+                          <widget class="VCPSettingsPushButton" name="machine_boundary_button">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -25103,131 +25116,7 @@ border-radius: 4px;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_3">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
-                           <property name="text">
-                            <string>PGM TICKS</string>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>backplot.show-program-ticks</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_4">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
-                           <property name="text">
-                            <string>MCH TICKS</string>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>backplot.show-machine-ticks</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_5">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
-                           <property name="text">
-                            <string>PGM LABEL</string>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>backplot.show-program-labels</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_6">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>0</width>
-                             <height>40</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>30</height>
-                            </size>
-                           </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
-                           <property name="text">
-                            <string>MCH LABEL</string>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>backplot.show-machine-labels</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="VCPSettingsPushButton" name="settings_pushbutton_7">
+                          <widget class="VCPSettingsPushButton" name="plot_grid_button">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -34445,7 +34334,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
+     <width>1835</width>
      <height>26</height>
     </rect>
    </property>
@@ -34865,12 +34754,12 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>575</x>
+     <x>595</x>
      <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -34897,7 +34786,7 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>155</x>
+     <x>132</x>
      <y>549</y>
     </hint>
     <hint type="destinationlabel">
@@ -34945,8 +34834,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>122</y>
+     <x>104</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -34965,8 +34854,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -34977,8 +34866,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>92</x>
-     <y>112</y>
+     <x>103</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -34993,8 +34882,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>112</y>
+     <x>94</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -35030,7 +34919,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
-     <y>151</y>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -35041,8 +34930,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>122</y>
+     <x>94</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -35106,11 +34995,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1442</x>
-     <y>170</y>
+     <y>188</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1603</x>
-     <y>171</y>
+     <x>1614</x>
+     <y>189</y>
     </hint>
    </hints>
   </connection>
@@ -35141,8 +35030,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1608</x>
-     <y>230</y>
+     <x>1619</x>
+     <y>290</y>
     </hint>
    </hints>
   </connection>
@@ -35157,8 +35046,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35173,8 +35062,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1608</x>
-     <y>230</y>
+     <x>1619</x>
+     <y>290</y>
     </hint>
    </hints>
   </connection>
@@ -35185,11 +35074,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1466</x>
+     <x>1477</x>
      <y>268</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1595</x>
+     <x>1606</x>
      <y>269</y>
     </hint>
    </hints>
@@ -35206,7 +35095,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
-     <y>151</y>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -35217,7 +35106,7 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>553</x>
+     <x>530</x>
      <y>549</y>
     </hint>
     <hint type="destinationlabel">
@@ -35253,8 +35142,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35269,8 +35158,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35285,8 +35174,8 @@ font: 11pt bebas kai;
      <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
+     <x>379</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -35297,12 +35186,12 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>109</x>
-     <y>140</y>
+     <x>119</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
+     <x>379</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -35313,8 +35202,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>108</x>
-     <y>112</y>
+     <x>119</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -35329,8 +35218,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>112</y>
+     <x>111</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -35345,12 +35234,12 @@ font: 11pt bebas kai;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1011</x>
+     <x>1027</x>
      <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35361,11 +35250,11 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1011</x>
+     <x>1027</x>
      <y>112</y>
     </hint>
    </hints>
@@ -35381,8 +35270,8 @@ font: 11pt bebas kai;
      <y>574</y>
     </hint>
     <hint type="destinationlabel">
-     <x>109</x>
-     <y>140</y>
+     <x>119</x>
+     <y>103</y>
     </hint>
    </hints>
   </connection>
@@ -35397,8 +35286,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35409,12 +35298,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1459</x>
-     <y>417</y>
+     <x>1470</x>
+     <y>435</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1603</x>
-     <y>418</y>
+     <x>1610</x>
+     <y>436</y>
     </hint>
    </hints>
   </connection>
@@ -35425,7 +35314,7 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>288</x>
+     <x>265</x>
      <y>549</y>
     </hint>
     <hint type="destinationlabel">
@@ -35445,8 +35334,8 @@ font: 11pt bebas kai;
      <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
+     <x>379</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -35478,7 +35367,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
-     <y>151</y>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -35489,8 +35378,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>122</y>
+     <x>114</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -35510,7 +35399,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
-     <y>151</y>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -35521,11 +35410,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1466</x>
+     <x>1477</x>
      <y>385</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1595</x>
+     <x>1606</x>
      <y>386</y>
     </hint>
    </hints>
@@ -35553,7 +35442,7 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>420</x>
+     <x>398</x>
      <y>549</y>
     </hint>
     <hint type="destinationlabel">
@@ -35589,8 +35478,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1608</x>
-     <y>230</y>
+     <x>1619</x>
+     <y>290</y>
     </hint>
    </hints>
   </connection>
@@ -35605,8 +35494,8 @@ font: 11pt bebas kai;
      <y>763</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1548</x>
-     <y>569</y>
+     <x>1394</x>
+     <y>554</y>
     </hint>
    </hints>
   </connection>
@@ -35617,12 +35506,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35633,12 +35522,12 @@ font: 11pt bebas kai;
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>160</x>
-     <y>107</y>
+     <x>129</x>
+     <y>80</y>
     </hint>
    </hints>
   </connection>
@@ -35649,11 +35538,11 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>107</y>
+     <x>234</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>418</x>
+     <x>438</x>
      <y>112</y>
     </hint>
    </hints>
@@ -35665,12 +35554,12 @@ font: 11pt bebas kai;
    <slot>setRootPath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>107</y>
+     <x>234</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35681,12 +35570,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>715</x>
-     <y>182</y>
+     <x>581</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35701,8 +35590,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35713,11 +35602,11 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>252</x>
-     <y>107</y>
+     <x>234</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>418</x>
+     <x>438</x>
      <y>112</y>
     </hint>
    </hints>
@@ -35729,12 +35618,12 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>330</x>
+     <x>258</x>
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35745,12 +35634,12 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>160</x>
-     <y>107</y>
+     <x>129</x>
+     <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35765,8 +35654,8 @@ font: 11pt bebas kai;
      <y>542</y>
     </hint>
     <hint type="destinationlabel">
-     <x>157</x>
-     <y>182</y>
+     <x>146</x>
+     <y>153</y>
     </hint>
    </hints>
   </connection>
@@ -35777,12 +35666,44 @@ font: 11pt bebas kai;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>418</x>
+     <x>438</x>
      <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>252</x>
-     <y>107</y>
+     <x>234</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>machine_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>846</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>973</x>
+     <y>404</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>program_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>832</x>
+     <y>346</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>994</x>
+     <y>356</y>
     </hint>
    </hints>
   </connection>
@@ -35805,17 +35726,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
