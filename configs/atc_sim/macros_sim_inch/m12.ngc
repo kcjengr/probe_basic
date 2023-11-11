@@ -26,7 +26,7 @@ o120 do
     M66 P4 L1 Q3 ; wait for rising edge on rotation index
     o130 if [#5399 LT 0]
         (abort, failed to get rotation index)
-        M65 P4 ; Stop atc motor
+        M65 P3 ; Stop atc motor
     o130 endif
     #5170 = [[[#5170-2] MOD 12]+1] ; Pocket is no.1-12
     #<Steps_to_move> = [#<Steps_to_move>-1]
