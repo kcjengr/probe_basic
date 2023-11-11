@@ -7,18 +7,18 @@ O001 if [#<_task> EQ 0]
 O001 endif (this code eliminates tool missing error on load for multiple use tools)
 
 ;assign the tool numbers held in parameters to the pocket numbers
-#1 = #5190
-#2 = #5191
-#3 = #5192
-#4 = #5193
-#5 = #5194
-#6 = #5195
-#7 = #5196
-#8 = #5197
-#9 = #5198
-#10 = #5199
-#11 = #5200
-#12 = #5201
+#1 = #5191
+#2 = #5192
+#3 = #5193
+#4 = #5194
+#5 = #5195
+#6 = #5196
+#7 = #5197
+#8 = #5198
+#9 = #5199
+#10 = #5200
+#11 = #5201
+#12 = #5202
 
 #<activate_programmable_coolant> = #13
 #<horizontal_spindle_nozzle_dist> = #14
@@ -41,12 +41,12 @@ O10 endif
 #15 = 12 ;assign test parameter the number of pockets in the carousel
 
 O100 do
- 	O110 if [#[5189 + #15] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
+ 	O110 if [#[5190 + #15] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
 		#<next_pocket> = #15 ; if tool is found in pocket, assigns the next pocket
 
 	O110 endif
 
-	O115 if [#[5189 + #15] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
+	O115 if [#[5190 + #15] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
 		#<open_pocket> = #15
 
 	O115 endif
@@ -110,18 +110,18 @@ M65 P1
 O200 ENDIF
 
 ;assign the tool numbers in the pockets to the parameters
-#5190= #1
-#5191= #2
-#5192= #3
-#5193= #4
-#5194= #5
-#5195= #6
-#5196= #7
-#5197= #8
-#5198= #9
-#5199= #10
-#5200= #11
-#5201= #12
+#5191 = #1
+#5192 = #2
+#5193 = #3
+#5194 = #4
+#5195 = #5
+#5196 = #6
+#5197 = #7
+#5198 = #8
+#5199 = #9
+#5200 = #10
+#5201 = #11
+#5202 = #12
 
 M61 Q#100
 
