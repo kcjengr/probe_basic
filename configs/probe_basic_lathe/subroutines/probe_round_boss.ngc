@@ -36,10 +36,10 @@ o<probe_round_boss> sub
   #<workspace_z> = #[5203 + [20 * #5220]]
 
   (Probe Tool Safety Check)
-  o<110> if [#5400 NE #<probe_tool_number>]
-  (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-   o<probe_round_boss> return
-  o<110> endif
+  o100 if [#5400 NE #<probe_tool_number>]
+      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      o<probe_round_boss> return
+  o100 endif
 
   (Probe Diameter)
   #<probe_diameter> = #5410
@@ -190,11 +190,11 @@ o<probe_round_boss> sub
   #<x_center_probed> = [[#<x_minus_probed> + #<x_plus_probed>] / 2]
 
   (calculate X Width Probed)
-  o<120> if [#<x_minus_probed> GT #<x_plus_probed>]
-    #<x_raw_width> = [#<x_minus_probed> - #<x_plus_probed>]
-  o<120> else
-    #<x_raw_width> = [#<x_plus_probed> - #<x_minus_probed>]
-  o<120> endif
+  o110 if [#<x_minus_probed> GT #<x_plus_probed>]
+      #<x_raw_width> = [#<x_minus_probed> - #<x_plus_probed>]
+  o110 else
+      #<x_raw_width> = [#<x_plus_probed> - #<x_minus_probed>]
+  o110 endif
 
   (Completed probed width calculations)
   #<x_probed_width> = [#<x_raw_width> - #<probe_diameter_offset>]
@@ -249,11 +249,11 @@ o<probe_round_boss> sub
   #<y_center_probed> = [[#<y_minus_probed> + #<y_plus_probed>] / 2]
 
   (calculate Y Width Probed)
-  o<130> if [#<y_minus_probed> GT #<y_plus_probed>]
-    #<y_raw_width> = [#<y_minus_probed> - #<y_plus_probed>]
-  o<130> else
-    #<y_raw_width> = [#<y_plus_probed> - #<y_minus_probed>]
-  o<130> endif
+  o120 if [#<y_minus_probed> GT #<y_plus_probed>]
+      #<y_raw_width> = [#<y_minus_probed> - #<y_plus_probed>]
+  o120 else
+      #<y_raw_width> = [#<y_plus_probed> - #<y_minus_probed>]
+  o120 endif
 
   (Completed probed width calculations)
   #<y_probed_width> = [#<y_raw_width> - #<probe_diameter_offset>]
@@ -281,11 +281,11 @@ o<probe_round_boss> sub
   #<y_zero> = [#<y_center_probed> + #<workspace_y>]
 
   (probe mode rules for WCO or probe position measuring only)
-  o<140> if [#<probe_mode> EQ 0]
-    (Record XY Zero in selected WCO)
-    G10 L2 P#5220 X[#<x_zero>] Y[#<y_zero>]
-    o<probe_cal_round_boss> return
-  o<140> endif
+  o130 if [#<probe_mode> EQ 0]
+      (Record XY Zero in selected WCO)
+      G10 L2 P#5220 X[#<x_zero>] Y[#<y_zero>]
+      o<probe_cal_round_boss> return
+  o130 endif
 
 o<probe_round_boss> endsub
 

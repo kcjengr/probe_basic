@@ -37,10 +37,10 @@ o<probe_corner_x_minus_edge_angle> sub
   #<workspace_r> = #[5210 + [20 * #5220]]
 
   (Probe Tool Safety Check)
-  o<110> if [#5400 NE #<probe_tool_number>]
-  (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-   o<probe_corner_x_minus_edge_angle> return
-  o<110> endif
+  o100 if [#5400 NE #<probe_tool_number>]
+    (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+     o<probe_corner_x_minus_edge_angle> return
+  o100 endif
 
   (Probe Diameter)
   #<probe_diameter> = #5410
@@ -72,10 +72,10 @@ o<probe_corner_x_minus_edge_angle> sub
   #<p1y> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o<120> if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing Y Sub returned edge parameter, aborting)
-    o<probe_corner_x_minus_edge_angle> return
-  o<120> endif
+  o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+      (MSG, Missing Y Sub returned edge parameter, aborting)
+      o<probe_corner_x_minus_edge_angle> return
+  o110 endif
 
   (Probe Y Positioning Move, up to Z clearance plane)
   G91
@@ -98,10 +98,10 @@ o<probe_corner_x_minus_edge_angle> sub
   #<p2x> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o<130> if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing X Sub returned edge parameter, aborting)
-    o<probe_corner_x_minus_edge_angle> return
-  o<130> endif
+  o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+      (MSG, Missing X Sub returned edge parameter, aborting)
+      o<probe_corner_x_minus_edge_angle> return
+  o120 endif
 
   (edge width move to edge second probing point)
   G91
@@ -116,10 +116,10 @@ o<probe_corner_x_minus_edge_angle> sub
   #<p3x> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o<140> if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing X Sub returned edge parameter, aborting)
-    o<probe_corner_x_minus_edge_angle> return
-  o<140> endif
+  o130 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+      (MSG, Missing X Sub returned edge parameter, aborting)
+      o<probe_corner_x_minus_edge_angle> return
+  o130 endif
 
   #<edge_delta> = [#<p2x> - #<p3x>]
 
@@ -148,18 +148,18 @@ o<probe_corner_x_minus_edge_angle> sub
   G38.3 X[#<c1x>] Y[#<c1y>]
 
   (probe mode rules for WCO,Rotation and probe position measuring only)
-  o<150> if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
-    (Record Zero in selected axes and WCO)
-    G10 L2 P#5220 X[#<c1x> + #<workspace_x>] Y[#<c1y> + #<workspace_y>]
-    o<probe_corner_x_minus_edge_angle> return
-  o<150> endif
+  o140 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
+      (Record Zero in selected axes and WCO)
+      G10 L2 P#5220 X[#<c1x> + #<workspace_x>] Y[#<c1y> + #<workspace_y>]
+      o<probe_corner_x_minus_edge_angle> return
+  o140 endif
 
   (probe mode rules for WCO,Rotation and probe position measuring only)
-  o<160> if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]
-    (Record Zero in selected axes and WCO)
-    G10 L2 P#5220 X[#<c1x> + #<workspace_x>] Y[#<c1y> + #<workspace_y>] R[#<edge_angle> + #<workspace_r>]
-    o<probe_corner_x_minus_edge_angle> return
-  o<160> endif
+  o150 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]
+      (Record Zero in selected axes and WCO)
+      G10 L2 P#5220 X[#<c1x> + #<workspace_x>] Y[#<c1y> + #<workspace_y>] R[#<edge_angle> + #<workspace_r>]
+      o<probe_corner_x_minus_edge_angle> return
+  o150 endif
 
 o<probe_corner_x_minus_edge_angle> endsub
 

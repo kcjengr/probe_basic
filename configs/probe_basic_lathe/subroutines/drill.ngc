@@ -17,10 +17,10 @@ o<drill> sub
 
 #<starting_z> = #<_z> (starting z)
 
-        O100 if [#<drill_tool> NE #<_current_tool>]
+        o100 if [#<drill_tool> NE #<_current_tool>]
              (MSG,ERROR : Set tool before use macro)
-        O100 return [-2] ; indicate failure to epilog
-        O100 endif
+        o100 return [-2] ; indicate failure to epilog
+        o100 endif
 
 G7  ; diameter mode
 G17 ; XY Plane
@@ -35,9 +35,9 @@ M3                 ; Start Spindle
 G95 F#<drill_feed>   ; Feed-Per-Rev Mode
 G4 P1              ; Wait to reach speed
 
-        O110 if [#<drill_coolant>]
+        o110 if [#<drill_coolant>]
                 M8
-        O110 endif
+        o110 endif
 
 (DEBUG,Drilling dia-#<drill_diam> depth-#<drill_depth> asked-speed-#<drill_ss> feed/rpm-#<drill_feed> tool-#<tool_number> peck dist-#<drill_peck> full retract calculated-rpm-#<speed_calc> start-z-#<starting_z>)
 
@@ -46,7 +46,7 @@ G0 X0 ; must drill from the centerline.  Tool should be zeroed here
 G83 Z#<drill_depth> R#<starting_z> Q#<drill_peck>
 G80
 
-O300 if[#<drill_x> gt #<drill_diam> ]
+o300 if[#<drill_x> gt #<drill_diam> ]
      #<new_x> = [#<drill_x> - #<drill_diam>] ; because of drilldiameter and diameter mode
 
      G96 D#<drill_maxrpm> S#<drill_ss> ; Constant Surface Speed Mode
@@ -57,21 +57,21 @@ G0 X0
 #<starting_X> = #<_x>
      (DEBUG,Turning finish dia-#<drill_x> start rad-#<starting_X> start length-#<starting_Z> finish length-#<drill_depth>)
 
-        O400 while [#<starting_X> LT [#<new_x> - #<drill_doc>]]
+        o400 while [#<starting_X> LT [#<new_x> - #<drill_doc>]]
              G0 X #<starting_X>
              #<starting_X>=[#<starting_X> + #<drill_doc>]
              G1 X #<starting_X>
              G1 Z #<drill_depth> X #<starting_X>
              G1 X[#<starting_X> - #<drill_doc>]
              G0 Z[#<starting_Z>]
-        O400 endwhile
+        o400 endwhile
 
         G0 X#<new_x>
         G1 Z#<drill_depth> X#<new_x>
         G1 X[#<new_x> - #<drill_doc>]
         G0 Z#<starting_Z>
         G0 X#<new_x> ; For touch-off
-O300 endif
+o300 endif
 
 M5
 M9

@@ -16,10 +16,10 @@ o<chamfer> sub
 #<chamfer_maxrpm>       = #11
 
 
-        O100 if [#<chamfer_tool>  NE #<_current_tool>]
+        o100 if [#<chamfer_tool>  NE #<_current_tool>]
              (MSG,ERROR : Set tool before use macro)
-        O100 return [-2] ; indicate failure to epilog
-        O100 endif
+        o100 return [-2] ; indicate failure to epilog
+        o100 endif
 
 G8  ; Lathe radius Mode
 G18 ; XZ Plane
@@ -36,12 +36,12 @@ M3            ; Start Spindle
 G95 F#<chamfer_feed>      ; Feed-Per-Rev Mode
 G4P1          ; Wait to reach speed
 
-        O110 if [#<chamfer_coolant>]
+        o110 if [#<chamfer_coolant>]
                 M8
-        O110 endif
+        o110 endif
 
 #<temp> = 0
-        O200 if [#<chamfer_exterior_front> GT 0] ; front outside
+        o200 if [#<chamfer_exterior_front> GT 0] ; front outside
              o201 while [[#<temp> + #<chamfer_doc> ] lt #<chamfer_exterior_front> ]
                   #<temp> = [#<temp> + #<chamfer_doc> ]
                   G0 x[#<chamfer_x> - #<temp>] z#<starting_Z>
@@ -57,7 +57,7 @@ G4P1          ; Wait to reach speed
              G1 x#<chamfer_x> z[#<chamfer_z> - #<chamfer_exterior_front> ]
              G1 x#<starting_X>
              G0 z#<starting_Z>
-        O200 elseif [#<chamfer_interior> GT 0] ; front inside
+        o200 elseif [#<chamfer_interior> GT 0] ; front inside
              o202 while [[#<temp> + #<chamfer_doc> ] lt #<chamfer_interior>  ]
                   #<temp> = [#<temp> + #<chamfer_doc> ]
                   G0 x[#<chamfer_x> + #<temp>] z#<starting_Z>
@@ -73,7 +73,7 @@ G4P1          ; Wait to reach speed
              G1 x#<chamfer_x> z[#<chamfer_z> - #<chamfer_interior> ]
              G1 x#<starting_X>
              G0 z#<starting_Z>
-        O200 elseif [#<chamfer_exterior_rear> GT 0] ; back outside
+        o200 elseif [#<chamfer_exterior_rear> GT 0] ; back outside
              o203 while [[#<temp> + #<chamfer_doc> ] lt <chamfer_exterior_rear>]
                   #<temp> = [#<temp> + #<chamfer_doc> ]
                   G0 x[#<chamfer_x> - #<temp>] z#<starting_Z>
@@ -89,7 +89,7 @@ G4P1          ; Wait to reach speed
              G1 x#<chamfer_x> z[#<chamfer_z> + <chamfer_exterior_rear> ]
              G1 x#<starting_X>
              G0 z#<starting_Z>
-        O200 endif
+        o200 endif
 
 M5
 M9
