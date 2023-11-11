@@ -21,10 +21,10 @@ o100 endif (this code eliminates tool missing error on load for multiple use too
 #12 = #5202
 
 ; assign the programmable coolant parameters
-#<activate_programmable_coolant> = #13
-#<horizontal_spindle_nozzle_dist> = #14
-#<vertical_spindle_nozzle_dist> = #15
-#<pc_angle_offset> = #16
+#<activate_programmable_coolant> = #50
+#<horizontal_spindle_nozzle_dist> = #51
+#<vertical_spindle_nozzle_dist> = #52
+#<pc_angle_offset> = #53
 
 ; assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -38,17 +38,17 @@ o110 endif
 
 #<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
 #<open_pocket> = 0
-#17 = 12 ; assign test parameter the number of pockets in the carousel
+#130 = 12 ; assign test parameter the number of pockets in the carousel
 
 o120 do
-    o121 if [#[5190 + #17] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
-        #<next_pocket> = #17 ; if tool is found in pocket, assigns the next pocket
+    o121 if [#[5190 + #130] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
+        #<next_pocket> = #130 ; if tool is found in pocket, assigns the next pocket
     o121 endif
-    o122 if [#[5190 + #17] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
-        #<open_pocket> = #17
+    o122 if [#[5190 + #130] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
+        #<open_pocket> = #130
     o122 endif
-    #17= [#17 - 1]
-o120 while [#17 GT 0]
+    #130= [#130 - 1]
+o120 while [#130 GT 0]
 o130 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, tool not in carousel)
 o130 endif
@@ -64,8 +64,8 @@ o140 if [#110 GT 0] ; checks if there is a valid tool in the spindle
     M10 P[#<open_pocket>] ; move carousel to an open pocket
     M21 ; puts the tool in spindle away into the open pocket
     (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
-    #30 = #<open_pocket>
-    ##30 = #110 ; save tool number in pocket
+    #140 = #<open_pocket>
+    ##140 = #110 ; save tool number in pocket
     #5231 = 0 ; empty tool in the spindle
 o140 endif
 
@@ -79,14 +79,14 @@ o150 IF [#100 GT 0] ; selected tool is not tool0
     M66 P1 L3 Q5 ; check carousel out position sensor
     o151 if [#5399 LT 0]
         M65 P0 ; turn off the solenoid to send atc to tool change
-        (abort, failed to send carousel home) ; abort if the 	sensor does not activate in 5 seconds
+        (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
     o151 endif
     M65 P0
 
     (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<next_pocket>, 0}])
     M22 ; Carousel out
-    #25 = #<next_pocket>
-    ##25 = 0 ; empty the pocket
+    #150 = #<next_pocket>
+    ##150 = 0 ; empty the pocket
     #5231 = #100 ; Set persistent variable to remember tool in spindle after power cycle
 o150 Else
     M65 P2 ; deactive drawbar
@@ -95,7 +95,7 @@ o150 Else
     M66 P0 L3 Q4 ; check carousel in position sensor
     o152 if [#5399 LT 0]
         M65 P1 ; turn off the solenoid to send atc home
-        (abort, failed to send carousel home) ; abort if the 	sensor does not activate in 5 seconds
+        (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
     o152 endif
     M65 P1
 o150 endif
