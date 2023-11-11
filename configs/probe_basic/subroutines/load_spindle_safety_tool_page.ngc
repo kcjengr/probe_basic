@@ -1,8 +1,12 @@
-(author: Chris P)
-(version: 0.3)
-(date: 07/18/22)
+(author: Chris P, LWK)
+(version: 0.4)
+(date: 11/11/23)
 
 (load tool in spindle safety macro)
+; Parameter #3991 is used to track the current tool loaded it in the spindle (persistently)
+; Parameters #4001 to #4024 are used to track which tool is in which pocket (persistently)
+; Parameter #4000 is not populated just used in the maths to calculate the above numbers
+; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 
 o<load_spindle_safety_tool_page> sub
 
@@ -13,47 +17,42 @@ o<load_spindle_safety_tool_page> sub
 #<pc_angle_offset> = #5
 #<probe_tool_number> = #6
 
-o100 if [#<load_spindle_tool_number_tool_page> EQ #5191]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 1)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5192]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 2)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5193]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 3)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5194]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 4)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5195]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 5)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5196]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 6)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5197]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 7)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5198]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 8)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5199]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 9)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5200]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 10)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5201]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 11)
-o100 else if [#<load_spindle_tool_number_tool_page> EQ #5202]
-    (MSG, the tool you are trying to load is already stored in carousel pocket 12)
-o100 else
-    M61 Q#<load_spindle_tool_number_tool_page> G43 H#<load_spindle_tool_number_tool_page>
-o100 endif
+; default to a 12 pocket ATC (mtoolhing DynATC Widget behaviour), then update based on INI settings
+#<number_of_pockets> = 12
+o101 if [EXISTS[#<_ini[tool]pockets>]]
+    #<number_of_pockets> = #<_ini[tool]pockets>
+o101 endif
 
-o110 if [#<load_spindle_tool_number_tool_page> EQ #<probe_tool_number>]
+#10 = 0
+#11 = 0 ; 1 if tool is already stored in carousel
+
+o110 while [#10 LT #<number_of_pockets>]
+    #10 = [#10+1]
+    o120 if [#<load_spindle_tool_number_tool_page> EQ #[4000 + #10]]
+        (MSG, the tool you are trying to load is already stored in carousel pocket #10)
+        #11 = 1
+        o110 break
+    o120 endif
+o110 endwhile
+
+o130 if [#11 EQ 0]
+    M61 Q#<load_spindle_tool_number_tool_page> G43 H#<load_spindle_tool_number_tool_page>
+    #3991 = #<load_spindle_tool_number_tool_page>
+o130 endif
+
+o140 if [#<load_spindle_tool_number_tool_page> EQ #<probe_tool_number>]
     S0 M5
-o110 endif
+o140 endif
 
 #<pc_tool_length> = #5403
 
 (run program_coolant sub if selected to be active in settings page with value 1)
-o120 if [#<activate_programmable_coolant> EQ 1]
+o150 if [#<activate_programmable_coolant> EQ 1]
     (run program_coolant.ngc)
-    o<program_coolant> call [#3][#4][#5][#<pc_tool_length>]
-o120 else
+    o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
+o150 else
     o<load_spindle_safety_tool_page> return
-o120 endif
+o150 endif
 
 o<load_spindle_safety_tool_page> endsub
 

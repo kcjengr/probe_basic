@@ -19,11 +19,15 @@ o<program_coolant> sub
   #<pc_angle_offset> = #3
   #<pc_tool_length> = #4
 
+  #<tool_diameter> = #5410
 
+  #<tool_radius_offset_dist> = [#<tool_diameter> / 2]
+
+  #<tool_diameter_offset_dist> = [#<horizontal_spindle_nozzle_dist> - #<tool_radius_offset_dist>]
 
   #<tool_tip_position> = [[#<vertical_spindle_nozzle_dist>] + [#<pc_tool_length>]]
 
-  #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
+  #<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<tool_diameter_offset_dist>]]
 
   #<coolant_final_angle> = [[#<coolant_abs_angle>] + [#<pc_angle_offset>]]
 
