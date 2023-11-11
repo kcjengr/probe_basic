@@ -38,20 +38,20 @@ O10 endif
 #<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
 #<open_pocket> = 0
 
-#15 = 12 ;assign test parameter the number of pockets in the carousel
+#17 = 12 ;assign test parameter the number of pockets in the carousel
 
 O100 do
- 	O110 if [#[5189 + #15] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
-		#<next_pocket> = #15 ; if tool is found in pocket, assigns the next pocket
+ 	O110 if [#[5189 + #17] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
+		#<next_pocket> = #17 ; if tool is found in pocket, assigns the next pocket
 
 	O110 endif
 
-	O115 if [#[5189 + #15] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
-		#<open_pocket> = #15
+	O115 if [#[5189 + #17] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
+		#<open_pocket> = #17
 
 	O115 endif
-  #15= [#15 - 1]
-O100 while [#15 GT 0]
+  #17= [#17 - 1]
+O100 while [#17 GT 0]
 
 O120 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, tool not in carousel)
