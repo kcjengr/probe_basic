@@ -121,9 +121,9 @@ o160 if [1 EQ 1]
 o160 endif
 
 #<pc_tool_length> = #5403
-#<tool_tip_position> = [[4] + [#<pc_tool_length>]]
-#<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [8]]
-#<coolant_final_angle> = [[#<coolant_abs_angle>] + [0]]
+#<tool_tip_position> = [[#<vertical_spindle_nozzle_dist>] + [#<pc_tool_length>]]
+#<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [#<horizontal_spindle_nozzle_dist>]]
+#<coolant_final_angle> = [[#<coolant_abs_angle>] + [#<pc_angle_offset>]]
 #1000 = #<coolant_final_angle>
 (DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
 M68 E20 Q[#<coolant_final_angle>]
