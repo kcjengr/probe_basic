@@ -3,12 +3,14 @@
 (date: 11/11/23)
 
 (load tool in spindle safety macro)
+; This is called form the Tool page
 ; Parameter #3991 is used to track the current tool loaded it in the spindle (persistently)
 ; Parameters #4001 to #4024 are used to track which tool is in which pocket (persistently)
 ; Parameter #4000 is not populated just used in the maths to calculate the above numbers
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 
 o<load_spindle_safety_2> sub
+(PRINT, o<load_spindle_safety_2>)
 
 #<load_spindle_tool_number_2> = #1
 #<activate_programmable_coolant> = #2
@@ -19,8 +21,8 @@ o<load_spindle_safety_2> sub
 
 ; default to a 12 pocket ATC (mtoolhing DynATC Widget behaviour), then update based on INI settings
 #<number_of_pockets> = 12
-o101 if [EXISTS[#<_ini[tool]pockets>]]
-    #<number_of_pockets> = #<_ini[tool]pockets>
+o101 if [EXISTS[#<_ini[atc]pockets>]]
+    #<number_of_pockets> = #<_ini[atc]pockets>
 o101 endif
 
 #10 = 0
@@ -29,9 +31,8 @@ o101 endif
 o110 while [#10 LT #<number_of_pockets>]
     #10 = [#10+1]
     o120 if [#<load_spindle_tool_number_2> EQ #[4000 + #10]]
-        (MSG, the tool you are trying to load is already stored in carousel pocket #10)
+        (DEBUG, the tool you are trying to load is already stored in carousel pocket %d#10)
         #11 = 1
-        o110 break
     o120 endif
 o110 endwhile
 

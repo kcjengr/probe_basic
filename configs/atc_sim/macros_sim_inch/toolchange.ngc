@@ -7,10 +7,10 @@ o<toolchange> sub
 ; Parameter #4000 is not populated just used in the maths to calculate the above numbers
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 
-(print, o<toolchange>)
+(PRINT, o<toolchange>)
 
 o100 if [#<_task> EQ 0]
-    (debug, Task is null)
+    (DEBUG, Task is null)
     o<toolchange> return [999]
 o100 endif (this code eliminates tool missing error on load for multiple use tools)
 
@@ -21,10 +21,10 @@ o101 if [EXISTS[#<_ini[atc]pockets>]]
 o101 endif
 
 ; assign the programmable coolant parameters
-#<activate_programmable_coolant> = #1
-#<horizontal_spindle_nozzle_dist> = #2
-#<vertical_spindle_nozzle_dist> = #3
-#<pc_angle_offset> = #4
+#<activate_programmable_coolant> = #1 (=0)
+#<horizontal_spindle_nozzle_dist> = #2 (=0)
+#<vertical_spindle_nozzle_dist> = #3 (=0)
+#<pc_angle_offset> = #4 (=0)
 
 ; assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -57,22 +57,22 @@ o130 endif
 ; we need to know if we need to put a tool away
 ; or if there is not tool in the spindle
 
-o140 if [#110 GT 0] ; checks if there is a valid tool in the spindle
+o140 if [#<tool_in_spindle> GT 0] ; checks if there is a valid tool in the spindle
     o141 if [#<open_pocket> EQ 0] ; If there is a tool in the spindle, checks if there is an open pocket
         (abort, carousel is full, cant put away tool in into carousel)
     o141 endif
     M10 P[#<open_pocket>] ; move carousel to an open pocket
     M21 ; puts the tool in spindle away into the open pocket
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<tool_in_spindle>}])
     #140 = #<open_pocket>
-    #[4000 + #140] = #110 ; save tool number in pocket
+    #[4000 + #140] = #<tool_in_spindle> ; save tool number in pocket
     #3991 = 0 ; empty tool in the spindle
 o140 endif
 
 G90
 G0 G53 Z0
 
-o150 if [#100 GT 0] ; selected tool is not tool0
+o150 if [#<selected_tool> GT 0] ; selected tool is not tool0
     M10 P#<next_pocket> ; set the carousel to move to the right pocket for the selected tool
     M65 P1
     M64 P0
@@ -87,7 +87,7 @@ o150 if [#100 GT 0] ; selected tool is not tool0
     M22 ; Carousel out
     #150 = #<next_pocket>
     #[4000 + #150] = 0 ; empty the pocket
-    #3991 = #100 ; Set persistent variable to remember tool in spindle after power cycle
+    #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
 o150 else
     M65 P2 ; deactive drawbar
     M65 P0 ; make sure ATC out solenoid is off
@@ -100,17 +100,17 @@ o150 else
     M65 P1
 o150 endif
 
-M61 Q#100
+M61 Q#<selected_tool>
 
 o160 if [1 EQ 1]
-    G43 H#100
+    G43 H#<selected_tool>
 o160 endif
 
 (run program_coolant sub if selected to be active in settings page with value 1)
-o120 if [#<activate_programmable_coolant> EQ 1]
+o170 if [#<activate_programmable_coolant> EQ 1]
     (run program_coolant.ngc)
     o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
-o120 endif
+o170 endif
 
 o<toolchange> endsub [1]
 

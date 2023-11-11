@@ -7,10 +7,10 @@ o<toolchange> sub
 ; Parameter #4000 is not populated just used in the maths to calculate the above numbers
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 
-(print, o<toolchange>)
+(PRINT, o<toolchange>)
 
 o100 if [#<_task> EQ 0]
-    (debug, Task is null)
+    (DEBUG, Task is null)
     o<toolchange> return [999]
 o100 endif (this code eliminates tool missing error on load for multiple use tools)
 
@@ -21,10 +21,10 @@ o101 if [EXISTS[#<_ini[atc]pockets>]]
 o101 endif
 
 ; assign the programmable coolant parameters
-#<activate_programmable_coolant> = #1
-#<horizontal_spindle_nozzle_dist> = #2
-#<vertical_spindle_nozzle_dist> = #3
-#<pc_angle_offset> = #4
+#<activate_programmable_coolant> = #1 (=0)
+#<horizontal_spindle_nozzle_dist> = #2 (=0)
+#<vertical_spindle_nozzle_dist> = #3 (=0)
+#<pc_angle_offset> = #4 (=0)
 
 ; assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -107,10 +107,10 @@ o160 if [1 EQ 1]
 o160 endif
 
 (run program_coolant sub if selected to be active in settings page with value 1)
-o120 if [#<activate_programmable_coolant> EQ 1]
+o170 if [#<activate_programmable_coolant> EQ 1]
     (run program_coolant.ngc)
     o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
-o120 endif
+o170 endif
 
 o<toolchange> endsub [1]
 
