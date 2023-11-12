@@ -9,7 +9,7 @@ o<m13> sub
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.atc_message{"REFERENCING"}])
 
 M64 P3 ; Move Motor FWD
-M66 P3 L1 Q20
+M66 P3 L1 Q20 ; wait for rising edge on home index
 o100 if [#5399 LT 0]
     M65 P3 ; stop motor
     (abort, failed to home carousel)
