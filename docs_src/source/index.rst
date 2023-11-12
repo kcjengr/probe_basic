@@ -8,7 +8,7 @@
 Probe Basic
 ===========
 
-ProbeBasic is a `QtPyVCP <http://qtpyvcp.kcjengr.com/>`_ based user interface
+ProbeBasic is a `QtPyVCP <http://www.qtpyvcp.com/>`_ based user interface
 for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
 
 .. toctree::
@@ -18,6 +18,8 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    quick_start_apt
    quick_start
    dev_install
+   mill_interface
+   lathe_interface
 
 
 

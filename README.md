@@ -1,5 +1,6 @@
-![](probe_basic/images/probe_basic_icon.png)
+![](/icons/probe_basic_icon.png)
 
+![](/docs_src/source/images/mill/06_Probing.png)
 
 ## Documentation
 
