@@ -17125,7 +17125,34 @@ border: none;
                        </font>
                       </property>
                       <property name="styleSheet">
-                       <string notr="true"/>
+                       <string notr="true">SubCallButton {
+    border-color: black;
+    border-style: solid;
+    border-radius: 10px;
+    border-width: 2px;
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #eaeaea, stop: 1.0 #b8b8b8);
+}
+
+SubCallButton:disabled {
+    border-color: gray;
+}
+
+SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #CFCDCA, stop: 1.0 #5C5959);
+}
+
+SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+SubCallButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+SubCallButton:checked[option=&quot;false&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
                       </property>
                       <property name="currentIndex">
                        <number>0</number>
@@ -17172,6 +17199,9 @@ border: none;
                              </property>
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
                              </property>
                              <property name="icon">
                               <iconset resource="probe_basic.qrc">
@@ -17624,6 +17654,9 @@ border: none;
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="text">
                               <string/>
                              </property>
@@ -17667,6 +17700,9 @@ border: none;
                              </property>
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
                              </property>
                              <property name="text">
                               <string/>
@@ -17712,6 +17748,9 @@ border: none;
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="text">
                               <string/>
                              </property>
@@ -17755,6 +17794,9 @@ border: none;
                              </property>
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
                              </property>
                              <property name="text">
                               <string/>
@@ -17800,6 +17842,9 @@ border: none;
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="text">
                               <string/>
                              </property>
@@ -17843,6 +17888,9 @@ border: none;
                              </property>
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
                              </property>
                              <property name="text">
                               <string/>
@@ -17888,6 +17936,9 @@ border: none;
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="text">
                               <string/>
                              </property>
@@ -17932,6 +17983,9 @@ border: none;
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
+                             </property>
                              <property name="text">
                               <string/>
                              </property>
@@ -17975,6 +18029,9 @@ border: none;
                              </property>
                              <property name="focusPolicy">
                               <enum>Qt::NoFocus</enum>
+                             </property>
+                             <property name="styleSheet">
+                              <string notr="true"/>
                              </property>
                              <property name="text">
                               <string/>
@@ -19204,6 +19261,9 @@ padding-left: 5px;
                                 </property>
                                 <property name="focusPolicy">
                                  <enum>Qt::NoFocus</enum>
+                                </property>
+                                <property name="styleSheet">
+                                 <string/>
                                 </property>
                                 <property name="icon">
                                  <iconset resource="probe_basic.qrc">
@@ -35726,17 +35786,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probehelpGroup"/>
  </buttongroups>
 </ui>
