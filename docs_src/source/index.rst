@@ -18,6 +18,8 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    quick_start_apt
    quick_start
    dev_install
+   mill_interface
+   lathe_interface
 
 
 
