@@ -39,7 +39,9 @@ class ProbeBasic(VCPMainWindow):
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
             self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), False)
-
+            
+        self.vtk.setViewMachine()  # set view to machine at startup
+        
         self.load_user_tabs()
 
     def load_user_tabs(self):
