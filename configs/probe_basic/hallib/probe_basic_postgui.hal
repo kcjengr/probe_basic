@@ -12,6 +12,11 @@ net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
 net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
 # *** Time items required for Probe Basic to run ***
 
+#  ---manual tool change signals---
+net tool-change-request     =>  qtpyvcp_manualtoolchange.change
+net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
+net tool-number             =>  qtpyvcp_manualtoolchange.number
+
 # *** Probe graphic simulation trigger push probe tip ***
 net probe-in  =>  qtpyvcp.probe-in.out
 net probe-in  <=  qtpyvcp.probe-led.on
