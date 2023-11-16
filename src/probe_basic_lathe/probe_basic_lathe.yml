@@ -170,15 +170,10 @@ settings:
     max_value: 1
 
   programmable-coolant.spindle-to-nozzle-dist:
-    description: horizontal distance from spindle centerline to nozzle centerline.
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  programmable-coolant.gaugeline-to-nozzle-dist:
-    description: vertical distance from spindle centerline to nozzle centerline.
-    default_value: 0.0
+    description: horizontal distance from spindle   toolchange:
+    provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
+    kwargs:
+      ui_file: {{ file.dir }}/toolchange_dialog_pb.ui
     persistent: true
     min_value: -10000
     max_value: 10000
@@ -276,3 +271,8 @@ dialogs:
     provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
     kwargs:
       ui_file: {{ file.dir }}/about.ui
+
+  toolchange:
+    provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
+    kwargs:
+      ui_file: {{ file.dir }}/toolchange_dialog_pb.ui

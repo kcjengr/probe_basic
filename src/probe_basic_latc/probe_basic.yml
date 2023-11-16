@@ -11,14 +11,9 @@ vcp:
   description: |
     Probe Basic description ...
 
-data_plugins:
-  status:
-    kwargs:
-      cycle_time: 75
-
 windows:
   mainwindow:
-    provider: probe_basic:ProbeBasic
+    provider: probe_basic.probe_basic:ProbeBasic
     kwargs:
       menu: ( menubar )
       fullscreen: true
@@ -27,3 +22,185 @@ windows:
 application:
   kwargs:
     stylesheet: {{ file.dir }}/probe_basic.qss
+    custom_fonts: {{ file.dir }}/fonts
+    
+settings:
+  touch-probe.calibration-offset:
+    description: Probe trigger point offset.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
+
+  probe-parameters.probe-tool-number:
+    description: probe tool number.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 9999
+
+  probe-parameters.step-off-width:
+    description: probe step off width.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.probe-fast-fr:
+    description: probe fast feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.probe-slow-fr:
+    description: probe slow feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.max-xy-distance:
+    description: max x and y probe travel distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.xy-clearance:
+    description: x and y clearance distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.max-z-distance:
+    description: max z probe travel distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.z-clearance:
+    description: z clearance distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.extra-probe-depth:
+    description: extra probe depth.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  probe-parameters.edge-width:
+    description: edge width probing distance.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  tool-change-position.x-tool-change-position:
+    description: x axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-change-position.y-tool-change-position:
+    description: y axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-change-position.z-tool-change-position:
+    description: z axis tool change position.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.fast-probe-fr:
+    description: tool probe fast feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.slow-probe-fr:
+    description: tool probe slow feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.z-max-travel:
+    description: maximumm z travel while probing before erroring out.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.xy-max-travel:
+    description: maximumm xy travel while probing before erroring out.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.retract-distance:
+    description: distance tool retracts after fast probe move.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tool-setter-probe.spindle-nose-height:
+    description: distance from home to tool setter for the spindle nose.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  programmable-coolant.active:
+    description: activates programmable coolant with 1 as entry.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
+
+  programmable-coolant.spindle-to-nozzle-dist:
+    description: horizontal distance from spindle centerline to nozzle centerline.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  programmable-coolant.gaugeline-to-nozzle-dist:
+    description: vertical distance from spindle centerline to nozzle centerline.
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  programmable-coolant.pc-angle-offset:
+    description: coolant nozzle offset amount to adjust for distance, pressure, gravity.
+    default_value: 0.0
+    persistent: true
+    min_value: -45
+    max_value: 45
+
+dialogs:
+  about_probebasic:
+    provider: qtpyvcp.widgets.dialogs.about_dialog:AboutDialog
+    kwargs:
+      ui_file: {{ file.dir }}/about.ui
+
+  
+  toolchange:
+    provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
+    kwargs:
+      ui_file: {{ file.dir }}/toolchange_dialog_pb.ui
