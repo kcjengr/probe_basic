@@ -1,4 +1,4 @@
-o<tool_touch_off> sub
+o<tool_breakage_detection_check> sub
 
 #<fast_probe_fr> = #1    (set from probe screen fast probe feed rate)
 #<slow_probe_fr> = #2    (set from probe screen slow probe feedrate)
@@ -9,6 +9,8 @@ o<tool_touch_off> sub
 #<tool_diameter_probe_mode> = #8    (activates the tool diameter probe subroutine section)
 #<tool_diameter_offset_mode> = #9    (activates the tool diameter offset position for probe subroutine section)
 #<tool_diameter> = #10    (current tool's diameter used for offseting probe position in x axis)
+#<tool_breakage_detection_mode> = #11    (activates the tool break detection feature in subroutine section)
+#<tool_breakage_tolerance> = #12    (the acceptable tolerance limit between stored tlo and new probed tlo defined on offsets page)
 
 G92.1    (Cancel G92 offset)
 
@@ -75,28 +77,16 @@ G53 G0 Z0 (Send Spindle to home zero position)
 (define new tool length offset parameters)
 #<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063]]
 
-G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
-
-o160 if [#<workspace_z> EQ 1]
-    G54
-o160 else if [#<workspace_z> EQ 2]
-    G55
-o160 else if [#<workspace_z> EQ 3]
-    G56
-o160 else if [#<workspace_z> EQ 4]
-    G57
-o160 else if [#<workspace_z> EQ 5]
-    G58
-o160 else if [#<workspace_z> EQ 6]
-    G59
-o160 else if [#<workspace_z> EQ 7]
-    G59.1
-o160 else if [#<workspace_z> EQ 8]
-    G59.2
+(Tool Breakage Detection activated, if tool breakage detection mode is set to 1 and the existing tools TLO is greater than 0)
+o160 if [#<tool_breakage_detection_mode> EQ 0]
+     endif (bypass tool breakage detection)
+o160 elseif [[#<tool_breakage_detection_mode> + #<unbroken_current_tool_length>] EQ 1]
+     endif (bypass tool breakage detection)
+0160 elseif [ABS[#<unbroken_current_tool_length> - #<new_tool_length_offset>] GT #<tool_breakage_tolerance>]
+     (Abort)
+     (send Message)
 o160 endif
 
-T #5400 G43  H #5400    (enable tool length offset)
-
-o<tool_touch_off> endsub
+o<tool_breakage_detection_check> endsub
 
 M2 (end program)

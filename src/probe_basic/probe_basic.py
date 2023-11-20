@@ -127,6 +127,12 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.tool_diameter_probe_mode.setText('0')
 
+    def on_tool_breakage_detection_Btn_clicked(self):
+        if self.tool_breakage_detection_Btn.isChecked():
+            self.tool_breakage_detection_mode.setText('1')
+        else:
+            self.tool_breakage_detection_mode.setText('0')
+
     def on_tool_diameter_offset_Btn_clicked(self):
         if self.tool_diameter_offset_Btn.isChecked():
             self.tool_diameter_offset_mode.setText('1')

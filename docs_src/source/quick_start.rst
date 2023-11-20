@@ -127,15 +127,15 @@ After installation, copy the following in the main terminal one line at a time a
 https://forum.linuxcnc.org/qtpyvcp/48401-configuration-file-conversion-doc-for-probe-basic-py3
 
 
-**To uninstall enter each of the following commands one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
+**To uninstall enter each of the following commands in order one at a time or which ever items you wish to uninstall in main terminal and press enter. This will completely remove each package:**
 
 ::
 
     sudo dpkg -P python3-probe-basic
 
-    sudo dpkg -P python3-hiyapyco
-
     sudo dpkg -P python3-qtpyvcp
+
+    sudo dpkg -P python3-hiyapyco
 
 
 
