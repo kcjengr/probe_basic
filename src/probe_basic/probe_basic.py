@@ -76,6 +76,7 @@ class ProbeBasic(VCPMainWindow):
 
         if sidebar_loaded == False:
             self.user_sb_tab.hide()
+            self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
