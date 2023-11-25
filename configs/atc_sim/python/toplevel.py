@@ -1,6 +1,6 @@
 #   This is a component of LinuxCNC
-#   Copyright 2011, 2013, 2014 Dewey Garrett <dgarrett@panix.com>,
-#   Michael Haberler <git@mah.priv.at>, Norbert Schechner <nieson@web.de>
+#   Copyright 2011, 2013 Dewey Garrett <dgarrett@panix.com>, Michael
+#   Haberler <git@mah.priv.at>
 #
 #   This program is free software; you can redistribute it and/or modify
 #   it under the terms of the GNU General Public License as published by
@@ -14,7 +14,10 @@
 #
 #   You should have received a copy of the GNU General Public License
 #   along with this program; if not, write to the Free Software
-#   Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+#   Foundation, Inc., 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
 #
-import remap
+# import pydevd
+# pydevd.settrace()
 
+import oword
+import remap

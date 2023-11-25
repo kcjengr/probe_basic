@@ -24,24 +24,6 @@ from interpreter import *
 from gscreen import preferences
 throw_exceptions = 1
 
-debug = False
-if debug:
-    pydevdir = '/home/emcmesa/Aptana_Studio_3/plugins/org.python.pydev_2.7.0.2013032300/pysrc'
-
-    # the 'emctask' module is present only in the milltask instance, otherwise both the UI and
-    # milltask would try to connect to the debug server.
-
-    if os.path.isdir( pydevdir ) and  'emctask' in sys.builtin_module_names:
-        sys.path.append( pydevdir )
-        sys.path.insert( 0, pydevdir )
-        try:
-            import pydevd
-            emccanon.MESSAGE( "pydevd imported, connecting to Eclipse debug server..." )
-            pydevd.settrace()
-        except:
-            emccanon.MESSAGE( "no pydevd module found" )
-            pass
-
 # REMAP=M6  modalgroup=6 prolog=change_prolog ngc=change epilog=change_epilog
 # exposed parameters:
 #    #<tool_in_spindle>
