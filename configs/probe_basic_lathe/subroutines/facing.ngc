@@ -9,19 +9,13 @@ o<facing> sub
 #<facing_doc>  = #4
 #<facing_tool>  = #5
 #<facing_coolant> = #6
-#<facing_angle>  = #7
-#<facing_x>   = #8
-#<facing_z>   = #9
+#<facing_x>   = #7
+#<facing_z>   = #8
 
-        O10 if [#<facing_angle>NE 0]
-           (MSG,Angled facing isn't supported yet)
-        O10 return [-2] ; indicate failure to epilog
-        O10 endif
-
-        O100 if [#<facing_tool> NE #<_current_tool>]
-             (MSG,ERROR : Set tool before use macro)
-        O100 return [-2] ; indicate failure to epilog
-        O100 endif
+o100 if [#<facing_tool> NE #<_current_tool>]
+    (MSG,ERRoR : Set tool before use macro)
+o100 return [-2] ; indicate failure to epilog
+o100 endif
 
 G7  ; diameter mode
 G18 ; XZ Plane
@@ -36,20 +30,20 @@ M3                ; Start Spindle
 G95 F#<facing_feed>  ; Feed-Per-Rev Mode
 G4P1              ; Wait to reach speed
 
-        O110 if [#<facing_coolant>]
-                M8
-        O110 endif
+o110 if [#<facing_coolant>]
+    M8
+o110 endif
 
 (DEBUG,facing finish rad-#<facing_x> start rad-#<starting_X> start length-#<starting_Z> finish length-#<facing_z>)
 
-        O200 while [#<starting_Z> GT #<facing_z>+ #<facing_doc>]
+        o200 while [#<starting_Z> GT #<facing_z>+ #<facing_doc>]
              #<starting_Z>=[#<starting_Z>-#<facing_doc>]
              G1 Z#<starting_Z>
              G1 X#<facing_x>
              G0 Z[#<starting_Z>+#<facing_doc>]
              G0 X#<starting_X>
              G0 Z#<starting_Z>
-        O200 endwhile
+        o200 endwhile
 
         G1 Z#<facing_z>
         G1 X#<facing_x>

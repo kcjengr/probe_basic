@@ -87,6 +87,10 @@ class ProbeBasicLathe(VCPMainWindow):
         actions.program_actions.run(lineNum)
 
     @Slot(QAbstractButton)
+    def on_btngrpconvfr_buttonClicked(self, button):
+        self.conversational_stacked_widget.setCurrentIndex(button.property('page'))
+
+    @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
         self.sidebar_widget.setCurrentIndex(button.property('page'))
 
