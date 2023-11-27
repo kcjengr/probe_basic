@@ -87,10 +87,6 @@ class ProbeBasicLathe(VCPMainWindow):
         actions.program_actions.run(lineNum)
 
     @Slot(QAbstractButton)
-    def on_btngrpconvfr_buttonClicked(self, button):
-        self.conversational_stacked_widget.setCurrentIndex(button.property('page'))
-
-    @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
         self.sidebar_widget.setCurrentIndex(button.property('page'))
 
@@ -124,3 +120,32 @@ class ProbeBasicLathe(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_spindlerpmsourcebtnGroup_buttonClicked(self, button):
         self.spindle_rpm_source_widget.setCurrentIndex(button.property('page'))
+
+    @Slot(QAbstractButton)
+    def on_convg20g21btngrp_buttonClicked(self, button):
+        if button.isChecked():
+            self.conv_g20_g21.setText(button.property('checkedAction'))
+
+    @Slot(QAbstractButton)
+    def on_convg94g95btngrp_buttonClicked(self, button):
+        if button.isChecked():
+            self.conv_g94_g95.setText(button.property('checkedAction'))
+
+    @Slot(QAbstractButton)
+    def on_convg96g97btngrp_buttonClicked(self, button):
+        if button.isChecked():
+            self.conv_g96_g97.setText(button.property('checkedAction'))
+
+    @Slot(QAbstractButton)
+    def on_convm3m4btngrp_buttonClicked(self, button):
+        if button.isChecked():
+            self.conv_m3_m4.setText(button.property('checkedAction'))
+
+    @Slot(QAbstractButton)
+    def on_convm7m8m9btngrp_buttonClicked(self, button):
+        if button.isChecked():
+            self.conv_m7_m8_m9.setText(button.property('checkedAction'))
+
+
+
+
