@@ -33,10 +33,10 @@ class ProbeBasicLathe(VCPMainWindow):
         self.rpm_mode = 0.0
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
-        self.conv_g94_g95.setText(str(getSetting("conversational.g94-g95-status").getValue()))
-        self.conv_g96_g97.setText(str(getSetting("conversational.g96-g97-status").getValue()))
-        self.conv_m3_m4.setText(str(getSetting("conversational.m3-m4-status").getValue()))
-        self.conv_m7_m8_m9.setText(str(getSetting("conversational.m7-m8-m9-status").getValue()))
+        self.conv_feed_mode.setText(str(getSetting("conversational.g94-g95-status").getValue()))
+        self.conv_spindle_mode.setText(str(getSetting("conversational.g96-g97-status").getValue()))
+        self.conv_spindle_dir.setText(str(getSetting("conversational.m3-m4-status").getValue()))
+        self.conv_coolant.setText(str(getSetting("conversational.m7-m8-m9-status").getValue()))
 
 
     def on_feed_unit_per_minute_entry_textChanged(self, value):
@@ -131,29 +131,29 @@ class ProbeBasicLathe(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_convg20g21btngrp_buttonClicked(self, button):
         if button.isChecked():
-            self.conv_g20_g21.setText(button.property('checkedAction'))
+            self.conv_units.setText(button.property('checkedAction'))
 
     @Slot(QAbstractButton)
     def on_convg94g95btngrp_buttonClicked(self, button):
         setSetting("conversational.g94-g95-status", button.property('checkedAction'))
-        self.conv_g94_g95.setText(str(getSetting("conversational.g94-g95-status").getValue()))
+        self.conv_feed_mode.setText(str(getSetting("conversational.g94-g95-status").getValue()))
         print(getSetting("conversational.g94-g95-status").getValue())
 
     @Slot(QAbstractButton)
     def on_convg96g97btngrp_buttonClicked(self, button):
         setSetting("conversational.g96-g97-status", button.property('checkedAction'))
-        self.conv_g96_g97.setText(str(getSetting("conversational.g96-g97-status").getValue()))
+        self.conv_spindle_mode.setText(str(getSetting("conversational.g96-g97-status").getValue()))
         self.conversational_stacked_widget.setCurrentIndex(button.property('page'))
         print(getSetting("conversational.g96-g97-status").getValue())
 
     @Slot(QAbstractButton)
     def on_convm3m4btngrp_buttonClicked(self, button):
         setSetting("conversational.m3-m4-status", button.property('checkedAction'))
-        self.conv_m3_m4.setText(str(getSetting("conversational.m3-m4-status").getValue()))
+        self.conv_spindle_dir.setText(str(getSetting("conversational.m3-m4-status").getValue()))
         print(getSetting("conversational.m3-m4-status").getValue())
 
     @Slot(QAbstractButton)
     def on_convm7m8m9btngrp_buttonClicked(self, button):
         setSetting("conversational.m7-m8-m9-status", button.property('checkedAction'))
-        self.conv_g94_g95.setText(str(getSetting("conversational.m7-m8-m9-status").getValue()))
+        self.conv_coolant.setText(str(getSetting("conversational.m7-m8-m9-status").getValue()))
         print(getSetting("conversational.m7-m8-m9-status").getValue())
