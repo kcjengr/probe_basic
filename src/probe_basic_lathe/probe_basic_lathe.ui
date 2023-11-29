@@ -21567,7 +21567,7 @@ border-image: url(:/images/Threading.png);
                        <number>0</number>
                       </property>
                       <property name="text">
-                       <string>COOLANT</string>
+                       <string>Work Offset</string>
                       </property>
                       <property name="alignment">
                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -21578,7 +21578,7 @@ border-image: url(:/images/Threading.png);
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_51" native="true">
+                     <widget class="QWidget" name="widget_53" native="true">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                         <horstretch>0</horstretch>
@@ -21594,10 +21594,7 @@ border-image: url(:/images/Threading.png);
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsPushButton" name="conv_m9_off_coolant_2">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
+                     <widget class="QComboBox" name="wcs_input">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21606,38 +21603,75 @@ border-image: url(:/images/Threading.png);
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>54</width>
+                        <width>100</width>
                         <height>38</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
-                        <width>54</width>
+                        <width>100</width>
                         <height>38</height>
                        </size>
                       </property>
-                      <property name="text">
-                       <string>OFF</string>
+                      <property name="styleSheet">
+                       <string notr="true">font: 14pt &quot;Bebas Kai&quot;;
+padding-left: 27px;</string>
                       </property>
-                      <property name="checked">
-                       <bool>true</bool>
+                      <property name="currentText">
+                       <string>G54</string>
                       </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
+                      <property name="insertPolicy">
+                       <enum>QComboBox::InsertAtBottom</enum>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>conversational.m9-button</string>
-                      </property>
-                      <property name="checkedAction" stdset="0">
-                       <string>M9</string>
-                      </property>
+                      <item>
+                       <property name="text">
+                        <string>G54</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G55</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G56</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G57</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G58</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G59</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G59.1</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G59.2</string>
+                       </property>
+                      </item>
+                      <item>
+                       <property name="text">
+                        <string>G59.3</string>
+                       </property>
+                      </item>
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsPushButton" name="conv_m8_flood_coolant_2">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
+                     <widget class="QWidget" name="widget_51" native="true">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21646,64 +21680,9 @@ border-image: url(:/images/Threading.png);
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>54</width>
-                        <height>38</height>
+                        <width>68</width>
+                        <height>31</height>
                        </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>54</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>FLOOD</string>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                      <property name="settingName" stdset="0">
-                       <string>conversational.m8-button</string>
-                      </property>
-                      <property name="checkedAction" stdset="0">
-                       <string>M8</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="VCPSettingsPushButton" name="conv_m7_mist_coolant_2">
-                      <property name="enabled">
-                       <bool>true</bool>
-                      </property>
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>54</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>54</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>MIST</string>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                      <property name="settingName" stdset="0">
-                       <string>conversational.m7-button</string>
-                      </property>
-                      <property name="checkedAction" stdset="0">
-                       <string>M7</string>
                       </property>
                      </widget>
                     </item>
@@ -21969,7 +21948,7 @@ border-image: url(:/images/Threading.png);
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>84</width>
+                        <width>100</width>
                         <height>38</height>
                        </size>
                       </property>
@@ -22506,7 +22485,7 @@ border-image: url(:/images/Threading.png);
                       </property>
                       <property name="minimumSize">
                        <size>
-                        <width>84</width>
+                        <width>100</width>
                         <height>38</height>
                        </size>
                       </property>
@@ -31918,19 +31897,19 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="convg20g21btngrp"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="convm7m8m9btngrp">
    <property name="exclusive">
     <bool>true</bool>
    </property>
   </buttongroup>
-  <buttongroup name="convg94g95btngrp"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="diamradbtngroup"/>
-  <buttongroup name="convg20g21btngrp"/>
-  <buttongroup name="convm3m4btngrp"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="convg96g97btngrp"/>
+  <buttongroup name="diamradbtngroup"/>
+  <buttongroup name="convm3m4btngrp"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="convg94g95btngrp"/>
  </buttongroups>
 </ui>
