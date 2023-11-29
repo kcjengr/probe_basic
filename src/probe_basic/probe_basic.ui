@@ -335,7 +335,7 @@ bottom-margin: 0px;
            <cursorShape>ArrowCursor</cursorShape>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::WheelFocus</enum>
+           <enum>Qt::NoFocus</enum>
           </property>
           <property name="layoutDirection">
            <enum>Qt::LeftToRight</enum>
@@ -360,6 +360,9 @@ QTabWidget QTabBar::tab {
           </property>
           <property name="currentIndex">
            <number>0</number>
+          </property>
+          <property name="usesScrollButtons">
+           <bool>false</bool>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -5604,7 +5607,7 @@ QTabWidget QTabBar::tab {
                  <enum>QTabWidget::North</enum>
                 </property>
                 <property name="currentIndex">
-                 <number>1</number>
+                 <number>0</number>
                 </property>
                 <widget class="QWidget" name="program_tools_tab">
                  <attribute name="title">
@@ -23511,6 +23514,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,pos</string>
                                  </property>
@@ -23549,6 +23555,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,neg</string>
@@ -23601,6 +23610,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,pos</string>
                                  </property>
@@ -23641,6 +23653,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,neg</string>
@@ -23683,6 +23698,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,neg</string>
                                  </property>
@@ -23717,6 +23735,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,pos</string>
@@ -23761,6 +23782,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,pos</string>
                                  </property>
@@ -23799,6 +23823,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,neg</string>
@@ -23851,6 +23878,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,pos</string>
                                  </property>
@@ -23891,6 +23921,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,neg</string>
@@ -23933,6 +23966,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,neg</string>
                                  </property>
@@ -23967,6 +24003,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,pos</string>
@@ -24013,6 +24052,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:a,neg</string>
                                  </property>
@@ -24053,6 +24095,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:a,pos</string>
@@ -24097,6 +24142,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,pos</string>
                                  </property>
@@ -24135,6 +24183,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:z,neg</string>
@@ -24187,6 +24238,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,pos</string>
                                  </property>
@@ -24227,6 +24281,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,neg</string>
@@ -24269,6 +24326,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,neg</string>
                                  </property>
@@ -24303,6 +24363,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:y,pos</string>
@@ -24349,6 +24412,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:a,neg</string>
                                  </property>
@@ -24389,6 +24455,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:a,pos</string>
@@ -24435,6 +24504,9 @@ border-radius: 4px;
                                    <height>48</height>
                                   </size>
                                  </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:b,neg</string>
                                  </property>
@@ -24475,6 +24547,9 @@ border-radius: 4px;
                                    <width>48</width>
                                    <height>48</height>
                                   </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:b,pos</string>
@@ -34838,11 +34913,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>475</x>
-     <y>685</y>
+     <y>775</y>
     </hint>
     <hint type="destinationlabel">
      <x>593</x>
-     <y>689</y>
+     <y>779</y>
     </hint>
    </hints>
   </connection>
@@ -34854,7 +34929,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>524</y>
+     <y>597</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34886,7 +34961,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>291</y>
+     <y>327</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34934,7 +35009,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>330</y>
+     <y>372</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -34966,7 +35041,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>924</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>581</x>
@@ -35030,7 +35105,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>268</x>
-     <y>539</y>
+     <y>629</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35062,7 +35137,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>446</y>
+     <y>507</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35078,11 +35153,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>772</x>
-     <y>574</y>
+     <y>664</y>
     </hint>
     <hint type="destinationlabel">
      <x>577</x>
-     <y>574</y>
+     <y>664</y>
     </hint>
    </hints>
   </connection>
@@ -35094,7 +35169,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1327</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1619</x>
@@ -35142,7 +35217,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1458</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1619</x>
@@ -35158,7 +35233,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>788</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>581</x>
@@ -35174,7 +35249,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1196</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1619</x>
@@ -35206,7 +35281,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>730</x>
-     <y>539</y>
+     <y>629</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35238,7 +35313,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>485</y>
+     <y>552</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35254,7 +35329,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>576</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>581</x>
@@ -35270,7 +35345,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1025</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>581</x>
@@ -35381,8 +35456,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>147</x>
-     <y>574</y>
+     <x>161</x>
+     <y>664</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -35398,7 +35473,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>677</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>581</x>
@@ -35478,7 +35553,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>499</x>
-     <y>539</y>
+     <y>629</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35510,7 +35585,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>961</x>
-     <y>539</y>
+     <y>629</y>
     </hint>
     <hint type="destinationlabel">
      <x>147</x>
@@ -35574,7 +35649,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>563</y>
+     <y>642</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -35590,7 +35665,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1589</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>1619</x>
@@ -35606,7 +35681,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1813</x>
-     <y>763</y>
+     <y>853</y>
     </hint>
     <hint type="destinationlabel">
      <x>1394</x>
@@ -35702,7 +35777,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>442</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -35733,8 +35808,8 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>258</x>
-     <y>542</y>
+     <x>330</x>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -35766,7 +35841,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>146</x>
-     <y>542</y>
+     <y>632</y>
     </hint>
     <hint type="destinationlabel">
      <x>146</x>
@@ -35797,8 +35872,8 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>846</x>
-     <y>391</y>
+     <x>877</x>
+     <y>462</y>
     </hint>
     <hint type="destinationlabel">
      <x>973</x>
@@ -35813,8 +35888,8 @@ font: 11pt bebas kai;
    <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>832</x>
-     <y>346</y>
+     <x>877</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
      <x>994</x>
@@ -35841,17 +35916,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="probehelpGroup"/>
   <buttongroup name="probemodeGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
