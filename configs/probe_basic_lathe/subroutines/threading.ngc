@@ -19,10 +19,10 @@ o<threading> sub
 #<cut_size>      = #<threading_doc>
 
 
-        O100 if [#<threading_tool> NE #<_current_tool>]
+        o100 if [#<threading_tool> NE #<_current_tool>]
              (MSG,ERROR : Set tool before use macro)
-        O100 return [-2] ; indicate failure to epilog
-        O100 endif
+        o100 return [-2] ; indicate failure to epilog
+        o100 endif
 
 G8  ; Lathe radius Mode
 G18 ; XZ Plane
@@ -35,9 +35,9 @@ G96 D#<threading_maxrpm> S#<threading_feed> ; Constant Surface Speed Mode
 M3            ; Start Spindle
 G4 P1         ; Wait to reach speed
 
-        O110 if [#<threading_coolant>]
+        o110 if [#<threading_coolant>]
                 M8
-        O110 endif
+        o110 endif
 
 #<height> = [0.86603 * #<threading_pitch>]
 #<majorflat> = [#<height> * 0.125]
@@ -45,18 +45,18 @@ G4 P1         ; Wait to reach speed
 #<threaddepth> = [#<height> * 0.625]
 ;(DEBUG,#<height> #<majorflat> #<minorflat> #<threaddepth>)
 
-        O200 if [#<_metric>]
+        o200 if [#<_metric>]
             #<cutdepth> = 0.2
             #<flatfeed> = 0.1
-        O200 else
+        o200 else
             #<cutdepth> = 0.007
             #<flatfeed> = 0.004
-        O200 endif
+        o200 endif
 
 G95 F#<flatfeed> ; Feed-Per-Rev Mode
 
 ;Threading
-        O300 if [#<threading_id>GT 0.5] ;internal
+        o300 if [#<threading_id>GT 0.5] ;internal
             ;cut the minor flat diameter
             ;(DEBUG,INTERNAL Threading thread dia-#<threading_x> startZ-#<starting_Z> finishZ-#<threading_z> Pitch-#<threading_pitch> Tool-#<tool_number>)
             G0 Z #<starting_Z>
@@ -67,7 +67,7 @@ G95 F#<flatfeed> ; Feed-Per-Rev Mode
             G96 D#<threading_maxrpm> S#<threading_feed> ; limit RPM in threading mode
             G76 P#<threading_pitch> Z#<threading_z> i#<minorflat> j#<cutdepth> k#<threaddepth> H3 R1.5 Q29.5 E0 L0
             G0 X [#<threading_x> - 0.5]
-        O300 else ;external
+        o300 else ;external
             ; cut the major diameter
             ;(DEBUG,EXTERNAL Threading thread dia-#<threading_x> startZ-#<starting_Z> finishZ-#<threading_z> Pitch-#<threading_pitch> Tool-#<tool_number> MF #<majorflat>)
             G0 Z #<starting_Z>
@@ -79,7 +79,7 @@ G95 F#<flatfeed> ; Feed-Per-Rev Mode
             G96 D#<threading_maxrpm> S#<threading_feed> ; limit RPM in threading mode
             G76 P#<threading_pitch> Z#<threading_z> i[-#<majorflat>] j#<cutdepth> k#<threaddepth> H3 R1.5 Q29.5 E0 L0
             G0 X [#<threading_x> + 0.5]
-        O300 endif
+        o300 endif
 
         G0 Z#<starting_Z>
 

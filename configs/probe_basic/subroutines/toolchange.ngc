@@ -1,30 +1,30 @@
 o<toolchange> sub
-(print, o<toolchange>)
+
+; Parameter #3989 is used to track if the carousel is homed (M13) (volatile)
+; Parameter #3990 is used to track the current tool pocket (persistently)
+; Parameter #3991 is used to track the current tool loaded it in the spindle (persistently)
+; Parameters #4001 to #4024 are used to track which tool is in which pocket (persistently)
+; Parameter #4000 is not populated just used in the maths to calculate the above numbers
+; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
+
+(PRINT, o<toolchange>)
 
 o100 if [#<_task> EQ 0]
-    (debug, Task is null)
+    (DEBUG, Task is null)
     o<toolchange> return [999]
 o100 endif (this code eliminates tool missing error on load for multiple use tools)
 
-;assign the tool numbers held in parameters to the pocket numbers
-#1 = #5191
-#2 = #5192
-#3 = #5193
-#4 = #5194
-#5 = #5195
-#6 = #5196
-#7 = #5197
-#8 = #5198
-#9 = #5199
-#10 = #5200
-#11 = #5201
-#12 = #5202
+; default to a 12 pocket ATC (matching DynATC Widget behaviour), then update based on INI settings
+#<number_of_pockets> = 12
+o101 if [EXISTS[#<_ini[atc]pockets>]]
+    #<number_of_pockets> = #<_ini[atc]pockets>
+o101 endif
 
 ; assign the programmable coolant parameters
-#<activate_programmable_coolant> = #13
-#<horizontal_spindle_nozzle_dist> = #14
-#<vertical_spindle_nozzle_dist> = #15
-#<pc_angle_offset> = #16
+#<activate_programmable_coolant> = #1 (=0)
+#<horizontal_spindle_nozzle_dist> = #2 (=0)
+#<vertical_spindle_nozzle_dist> = #3 (=0)
+#<pc_angle_offset> = #4 (=0)
 
 ; assign the variables passed by M6 to some parameters
 #100 = #<selected_tool>
@@ -38,17 +38,17 @@ o110 endif
 
 #<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
 #<open_pocket> = 0
-#17 = 12 ; assign test parameter the number of pockets in the carousel
+#130 = #<number_of_pockets> ; assign test parameter the number of pockets in the carousel
 
 o120 do
-    o121 if [#[5190 + #17] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
-        #<next_pocket> = #17 ; if tool is found in pocket, assigns the next pocket
+    o121 if [#[4000 + #130] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
+        #<next_pocket> = #130 ; if tool is found in pocket, assigns the next pocket
     o121 endif
-    o122 if [#[5190 + #17] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
-        #<open_pocket> = #17
+    o122 if [#[4000 + #130] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
+        #<open_pocket> = #130
     o122 endif
-    #17= [#17 - 1]
-o120 while [#17 GT 0]
+    #130 = [#130 - 1]
+o120 while [#130 GT 0]
 o130 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, tool not in carousel)
 o130 endif
@@ -57,76 +57,60 @@ o130 endif
 ; we need to know if we need to put a tool away
 ; or if there is not tool in the spindle
 
-o140 if [#110 GT 0] ; checks if there is a valid tool in the spindle
+o140 if [#<tool_in_spindle> GT 0] ; checks if there is a valid tool in the spindle
     o141 if [#<open_pocket> EQ 0] ; If there is a tool in the spindle, checks if there is an open pocket
         (abort, carousel is full, cant put away tool in into carousel)
     o141 endif
     M10 P[#<open_pocket>] ; move carousel to an open pocket
     M21 ; puts the tool in spindle away into the open pocket
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #110}])
-    #30 = #<open_pocket>
-    ##30 = #110 ; save tool number in pocket
-    #5231 = 0 ; empty tool in the spindle
+    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<tool_in_spindle>}])
+    #140 = #<open_pocket>
+    #[4000 + #140] = #<tool_in_spindle> ; save tool number in pocket
+    #3991 = 0 ; empty tool in the spindle
 o140 endif
 
 G90
 G0 G53 Z0
 
-o150 IF [#100 GT 0] ; selected tool is not tool0
+o150 if [#<selected_tool> GT 0] ; selected tool is not tool0
     M10 P#<next_pocket> ; set the carousel to move to the right pocket for the selected tool
     M65 P1
     M64 P0
     M66 P1 L3 Q5 ; check carousel out position sensor
     o151 if [#5399 LT 0]
         M65 P0 ; turn off the solenoid to send atc to tool change
-        (abort, failed to send carousel home) ; abort if the 	sensor does not activate in 5 seconds
+        (abort, failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
     o151 endif
     M65 P0
 
     (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<next_pocket>, 0}])
     M22 ; Carousel out
-    #25 = #<next_pocket>
-    ##25 = 0 ; empty the pocket
-    #5231 = #100 ; Set persistent variable to remember tool in spindle after power cycle
-o150 Else
+    #150 = #<next_pocket>
+    #[4000 + #150] = 0 ; empty the pocket
+    #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
+o150 else
     M65 P2 ; deactive drawbar
     M65 P0 ; make sure ATC out solenoid is off
     M64 P1 ; move carousel home
     M66 P0 L3 Q4 ; check carousel in position sensor
     o152 if [#5399 LT 0]
         M65 P1 ; turn off the solenoid to send atc home
-        (abort, failed to send carousel home) ; abort if the 	sensor does not activate in 5 seconds
+        (abort, failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
     o152 endif
     M65 P1
 o150 endif
 
-; assign the tool numbers in the pockets to the parameters
-#5190= #1
-#5191= #2
-#5192= #3
-#5193= #4
-#5194= #5
-#5195= #6
-#5196= #7
-#5197= #8
-#5198= #9
-#5199= #10
-#5200= #11
-#5201= #12
-
-M61 Q#100
+M61 Q#<selected_tool>
 
 o160 if [1 EQ 1]
-    G43 H#100
+    G43 H#<selected_tool>
 o160 endif
 
-#<pc_tool_length> = #5403
-#<tool_tip_position> = [[2.875] + [#<pc_tool_length>]]
-#<coolant_abs_angle> = [ATAN[#<tool_tip_position>] / [9]]
-#<coolant_final_angle> = [[#<coolant_abs_angle>] + [0]]
-#1000 = #<coolant_final_angle>
-(DEBUG, EVAL[vcp.getWidget{"coolant_final_angle"}.setValue{#1000}])
-M68 E20 Q[#<coolant_final_angle>]
+(run program_coolant sub if selected to be active in settings page with value 1)
+o170 if [#<activate_programmable_coolant> EQ 1]
+    (run program_coolant.ngc)
+    o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
+o170 endif
 
 o<toolchange> endsub [1]
 

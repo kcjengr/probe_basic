@@ -1,28 +1,34 @@
 o<m22> sub
 
 ; Move Carousel to the home position - IN
+; after loading any tool in the current pocket to the spindle
+; #<atc_z_tool_change_height> is the height you spindle needs to be at to clamp/unclamp a tool form the ATC (adjust to your needs)
+; #<atc_z_tool_clearance_height> is the clearance height you spindle needs to be at to safely clear the ATC (adjust to your needs)
+(PRINT, o<M22>)
 
-(print, o<M22>)
+#<atc_z_tool_change_height> = -3.9000
+#<atc_z_tool_clearance_height> = 0
 
 ;M19 R0 Q2
-
 M24
 ;M19 R0 Q1
-G0 G53 Z-3.9000 ; rapid move to above the toolchange position
-
+;G90
+G0 G53 Z#<atc_z_tool_change_height> ; rapid move to above the tool change height
 M65 P2 ; release the drawbar to clamp the tool
 M5
 M66 P5 L3 Q1 ; check the tool clamped sensor
-O140 if [#5399 LT 0]
+o100 if [#5399 LT 0]
     (abort, failed to reclamp tool)
-O140 endif
+o100 endif
 
 M65 P0 ; Move Carousel home
-
-M66 P0 L3 Q4 ;check carousel in position sensor
-   O150 if [#5399 LT 0]
+M66 P0 L3 Q4 ; check carousel in position sensor
+o110 if [#5399 LT 0]
+    M65 P1 ; turn off the solenoid to send atc home
     (abort, failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
-   O150 endif
+o110 endif
+
+;M65 P1
 
 o<m22> endsub [1]
 

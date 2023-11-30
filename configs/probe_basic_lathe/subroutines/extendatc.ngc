@@ -2,12 +2,14 @@ o<extendatc> sub
 
 G0 G53 Z0
 
-M64 P0 ; Move Carousel out
-M66 P1 L3 Q5 ; check for carousel out semsor
-   O100 if [#5399 LT 0]
-      (abort, atc not in position)
-      M65 P0 ; switch off atc out solonoid
-   O100 endif
+M65 P1 ; Turn off carousel home solenoid
+M64 P0 ; Move Carousel OUT
+
+M66 P1 L3 Q5 ; check for carousel out position sensor
+o100 if [#5399 LT 0]
+    M65 P0 ; switch off atc out solenoid
+    (abort, atc not in position)
+o100 endif
 
 o<extendatc> endsub [1]
 
