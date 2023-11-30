@@ -12,6 +12,11 @@ net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
 net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
 net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
 
+#  ---manual tool change signals---
+net tool-change-request     =>  qtpyvcp_manualtoolchange.change
+net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
+net tool-number             =>  qtpyvcp_manualtoolchange.number
+
 # *** Set line below for actual spindle readout from your hal file ***
 net spindle-rpm-filtered.0 scale_to_rpm.0.out  =>  qtpyvcp.spindle-encoder-rpm.in
 
