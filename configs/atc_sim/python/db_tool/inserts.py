@@ -2,7 +2,7 @@
 
 from datetime import date
 
-from tool_table import ToolTable, Tool, ProbeParams
+from tool_table import ToolTable, Tool, ProbeParams, CutParams
 from base import Session, engine, Base
 
 
@@ -36,7 +36,8 @@ probe_params_3 = ProbeParams(
     tool_breakage_tolerance = "0.0"
 )
 
-
+cut_params_1 = CutParams(
+)
 
 tool_1 = Tool(
     remark = "no tool",
