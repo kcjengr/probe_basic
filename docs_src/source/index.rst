@@ -18,10 +18,29 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    quick_start_apt
    quick_start
    dev_install
-   mill_interface
-   lathe_interface
 
+.. toctree::
+   :maxdepth: 2
+   :caption: Configuration:
 
+   machine_config
+   atc_setup
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Interface:
+
+   Mill <mill_interface>
+   Lathe <lathe_interface>
+   probing
+   tool_length_setter
+
+.. toctree::
+   :maxdepth: 2
+   :caption: Extending:
+
+   user_tabs
+   custom_ux_hacking
 
 Indices and tables
 ==================
