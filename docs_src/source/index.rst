@@ -40,6 +40,7 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    :caption: Extending:
 
    user_tabs
+   custom_ux_hacking
 
 Indices and tables
 ==================
