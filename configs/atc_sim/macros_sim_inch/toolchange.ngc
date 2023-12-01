@@ -6,8 +6,10 @@ o<toolchange> sub
 ; Parameters #4001 to #4024 are used to track which tool is in which pocket (persistently)
 ; Parameter #4000 is not populated just used in the maths to calculate the above numbers
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
+; #<atc_z_tool_change_height> is the height you spindle needs to be at to clamp/unclamp a tool form the ATC (Set via INI [ATC]Z_TOOL_CHANGE_HEIGHT)
+; #<atc_z_tool_clearance_height> is the clearance height you spindle needs to be at to safely clear the ATC (Set via INI [ATC]Z_TOOL_CLEARANCE_HEIGHT)
 
-(PRINT, o<toolchange>)
+(PRINT, o<toolchange> selected_tool: #<selected_tool>, tool_in_spindle: #<tool_in_spindle>, selected_pocket: #<selected_pocket>, current_pocket: #<current_pocket>, task: #<_task>)
 
 o100 if [#<_task> EQ 0]
     (DEBUG, Task is null)
@@ -20,28 +22,46 @@ o101 if [EXISTS[#<_ini[atc]pockets>]]
     #<number_of_pockets> = #<_ini[atc]pockets>
 o101 endif
 
+#<atc_z_tool_change_height> = -3.9000
+o102 if [EXISTS[#<_ini[atc]z_tool_change_height>]]
+    #<atc_z_tool_change_height> = #<_ini[atc]z_tool_change_height>
+o102 endif
+#<atc_z_tool_clearance_height> = [#<_ini[AXIS_Z]MAX_LIMIT>-0.1]
+o103 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
+    #<atc_z_tool_clearance_height> = #<_ini[atc]z_tool_clearance_height>
+o103 endif
+
 ; assign the programmable coolant parameters
 #<activate_programmable_coolant> = #1 (=0)
 #<horizontal_spindle_nozzle_dist> = #2 (=0)
 #<vertical_spindle_nozzle_dist> = #3 (=0)
 #<pc_angle_offset> = #4 (=0)
 
-; assign the variables passed by M6 to some parameters
+; assign the variables passed by M6 change_prolog to some parameters
 #100 = #<selected_tool>
 #110 = #<tool_in_spindle>
 #120 = #<selected_pocket>
+#121 = #<current_pocket>
+; NOTE:
+;      The legacy names *selected_pocket* and *current_pocket* actually reference
+;      a sequential tooldata index for tool items loaded from a tool
+;      table ([EMCIO]TOOL_TABLE) or via a tooldata database ([EMCIO]DB_PROGRAM)
 
-o110 if [#100 EQ #110] ; checks if tool in the spindle is same as requested
+o110 if [#<selected_tool> EQ #<tool_in_spindle>] ; checks if tool in the spindle is same as requested
     o<toolchange> endsub [1]
     M2
 o110 endif
+
+o111 if [#3991 NE #<tool_in_spindle>]
+    (PRINT, o<toolchange> tool_in_spindle does not match 3991)
+o111 endif
 
 #<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
 #<open_pocket> = 0
 #130 = #<number_of_pockets> ; assign test parameter the number of pockets in the carousel
 
 o120 do
-    o121 if [#[4000 + #130] EQ #100] ; checks all pockets to see if it contains tool number requested as the new tool
+    o121 if [#[4000 + #130] EQ #<selected_tool>] ; checks all pockets to see if it contains tool number requested as the new tool
         #<next_pocket> = #130 ; if tool is found in pocket, assigns the next pocket
     o121 endif
     o122 if [#[4000 + #130] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
@@ -50,7 +70,7 @@ o120 do
     #130 = [#130 - 1]
 o120 while [#130 GT 0]
 o130 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
-    (abort, tool not in carousel)
+    (abort, Tool T%d#<selected_tool> not found in carousel)
 o130 endif
 
 ; now we know which pocket the next tool is sitting in
@@ -59,7 +79,7 @@ o130 endif
 
 o140 if [#<tool_in_spindle> GT 0] ; checks if there is a valid tool in the spindle
     o141 if [#<open_pocket> EQ 0] ; If there is a tool in the spindle, checks if there is an open pocket
-        (abort, carousel is full, cant put away tool in into carousel)
+        (abort, Carousel is full, cant put away tool T#<tool_in_spindle> in into carousel)
     o141 endif
     M10 P[#<open_pocket>] ; move carousel to an open pocket
     M21 ; puts the tool in spindle away into the open pocket
@@ -67,10 +87,12 @@ o140 if [#<tool_in_spindle> GT 0] ; checks if there is a valid tool in the spind
     #140 = #<open_pocket>
     #[4000 + #140] = #<tool_in_spindle> ; save tool number in pocket
     #3991 = 0 ; empty tool in the spindle
+    M61 Q0
+    G49
 o140 endif
 
 G90
-G0 G53 Z0
+G0 G53 Z#<atc_z_tool_clearance_height> ; move z to clear height
 
 o150 if [#<selected_tool> GT 0] ; selected tool is not tool0
     M10 P#<next_pocket> ; set the carousel to move to the right pocket for the selected tool
@@ -79,7 +101,7 @@ o150 if [#<selected_tool> GT 0] ; selected tool is not tool0
     M66 P1 L3 Q5 ; check carousel out position sensor
     o151 if [#5399 LT 0]
         M65 P0 ; turn off the solenoid to send atc to tool change
-        (abort, failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
+        (abort, Failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
     o151 endif
     M65 P0
 
@@ -95,7 +117,7 @@ o150 else
     M66 P0 L3 Q4 ; check carousel in position sensor
     o152 if [#5399 LT 0]
         M65 P1 ; turn off the solenoid to send atc home
-        (abort, failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
+        (abort, Failed to send carousel home) ; abort if the    sensor does not activate in 5 seconds
     o152 endif
     M65 P1
 o150 endif
@@ -112,6 +134,7 @@ o170 if [#<activate_programmable_coolant> EQ 1]
     o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
 o170 endif
 
+(PRINT, o<toolchange> endsub)
 o<toolchange> endsub [1]
 
 M2
