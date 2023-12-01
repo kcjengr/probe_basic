@@ -16,6 +16,8 @@ from qtpy.QtWidgets import QAbstractButton
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
+from qtpyvcp.utilities.settings import getSetting, setSetting
+
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
@@ -41,6 +43,12 @@ class ProbeBasic(VCPMainWindow):
             self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), False)
             
         self.vtk.setViewMachine()  # set view to machine at startup
+
+        if (getSetting("spindle-rpm-display.calculated-rpm").getValue()):
+            self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_calculated_rpm_button.property('page'))
+        
+        else:
+            self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
         
         self.load_user_tabs()
 
