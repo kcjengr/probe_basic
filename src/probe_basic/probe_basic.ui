@@ -5900,7 +5900,7 @@ QTabWidget QTabBar::tab {
                            <number>2</number>
                           </property>
                           <property name="text">
-                           <string>T0</string>
+                           <string/>
                           </property>
                           <property name="textFormat">
                            <enum>Qt::AutoText</enum>
@@ -5912,7 +5912,7 @@ QTabWidget QTabBar::tab {
                            <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'\\n'.join(['T' + char.strip() for char in str(ch[0]).strip('[]').split(',')])\n&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools&quot;, &quot;trigger&quot;: true}]}]</string>
+                           <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;\\n\&quot;.join(f\&quot;T{ch[1][x][0]}\&quot; for\nx in ch[0])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}]}]</string>
                           </property>
                          </widget>
                         </item>
@@ -36256,17 +36256,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probemodeGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
