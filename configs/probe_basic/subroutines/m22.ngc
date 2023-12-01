@@ -2,12 +2,18 @@ o<m22> sub
 
 ; Move Carousel to the home position - IN
 ; after loading any tool in the current pocket to the spindle
-; #<atc_z_tool_change_height> is the height you spindle needs to be at to clamp/unclamp a tool form the ATC (adjust to your needs)
-; #<atc_z_tool_clearance_height> is the clearance height you spindle needs to be at to safely clear the ATC (adjust to your needs)
+; #<atc_z_tool_change_height> is the height you spindle needs to be at to clamp/unclamp a tool form the ATC (Set via INI [ATC]Z_TOOL_CHANGE_HEIGHT)
+; #<atc_z_tool_clearance_height> is the clearance height you spindle needs to be at to safely clear the ATC (Set via INI [ATC]Z_TOOL_CLEARANCE_HEIGHT)
 (PRINT, o<M22>)
 
 #<atc_z_tool_change_height> = -3.1900
+o101 if [EXISTS[#<_ini[atc]z_tool_change_height>]]
+    #<atc_z_tool_change_height> = #<_ini[atc]z_tool_change_height>
+o101 endif
 #<atc_z_tool_clearance_height> = [#<_ini[AXIS_Z]MAX_LIMIT>-0.1]
+o102 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
+    #<atc_z_tool_clearance_height> = #<_ini[atc]z_tool_clearance_height>
+o102 endif
 
 ;M19 R0 Q2
 M24
