@@ -4,7 +4,7 @@
 
 (m6 tool call with g43 offset applied)
 
-o<M6_tool_call_touch_panel> sub
+o<m6_tool_call_touch_panel> sub
 
 #<tool_number_entry_touch_panel> = #1
 #<x_tool_change_position> = #2
@@ -19,7 +19,7 @@ o100 if [#<use_tcp_mode> EQ 1]
   G90
   G53 G0 Z#<z_tool_change_position>
   G53 G0 X#<x_tool_change_position>
-  o<M6_tool_call_touch_panel> return
+  o<m6_tool_call_touch_panel> return
 o100 endif
 
 T#<tool_number_entry_touch_panel> M6 g43
