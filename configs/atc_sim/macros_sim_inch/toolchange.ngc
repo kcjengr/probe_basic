@@ -72,6 +72,8 @@ O180 IF [#110 GT 0] ; checks if there is a valid tool in the spindle
       #30 = #<open_pocket>
 	##30 = #110 ; save tool number in pocket
 	#5231 = 0 ; empty tool in the spindle
+  M61 Q0
+  G49
 O180 ENDIF
 
 G90
