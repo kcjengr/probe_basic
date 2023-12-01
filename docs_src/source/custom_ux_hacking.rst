@@ -17,6 +17,7 @@ In the following python example the **FLOOD** button is rename to **FOO** and th
 To try out the following yourself, save the python below to a file called ``custom_probebasic.py`` under your machine config directory (``~/linuxcnc/configs/{my_machine}/custom_probebasic.py``).
 
 .. code:: python
+
     from probe_basic.probe_basic import ProbeBasic
 
     class CustomProbeBasic(ProbeBasic):
@@ -42,6 +43,7 @@ To try out the following yourself, save the python below to a file called ``cust
 
             # rename the Mist button
             self.mist_button.setText("Bar")
+
 
 Then edit the ``~/linuxcnc/configs/{my_machine}/custom_config.yml`` file and add the line ``provider: custom_probebasic:CustomProbeBasic`` just under ``mainwindow:``
 
