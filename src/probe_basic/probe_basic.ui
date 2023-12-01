@@ -5912,7 +5912,7 @@ QTabWidget QTabBar::tab {
                            <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
-                           <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'\\n'.join(['T' + char.strip() for char in str(ch[0]).strip('[]').split(',')])\n&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools?str&quot;, &quot;trigger&quot;: true}]}]</string>
+                           <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'\\n'.join(['T' + char.strip() for char in str(ch[0]).strip('[]').split(',')])\n&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                          </widget>
                         </item>
@@ -22800,7 +22800,7 @@ color: white;
                  <number>3</number>
                 </property>
                 <item>
-                 <widget class="VCPSettingsPushButton" name="spindle_calculated_rpm">
+                 <widget class="VCPSettingsPushButton" name="spindle_calculated_rpm_button">
                   <property name="enabled">
                    <bool>true</bool>
                   </property>
@@ -22822,6 +22822,9 @@ color: white;
                   <property name="checked">
                    <bool>false</bool>
                   </property>
+                  <property name="settingName" stdset="0">
+                   <string>spindle-rpm-display.calculated-rpm</string>
+                  </property>
                   <property name="page" stdset="0">
                    <number>0</number>
                   </property>
@@ -22831,7 +22834,7 @@ color: white;
                  </widget>
                 </item>
                 <item>
-                 <widget class="VCPSettingsPushButton" name="spindle_encodr_rpm">
+                 <widget class="VCPSettingsPushButton" name="spindle_encoder_rpm_button">
                   <property name="enabled">
                    <bool>true</bool>
                   </property>
@@ -22852,6 +22855,9 @@ color: white;
                   </property>
                   <property name="checked">
                    <bool>true</bool>
+                  </property>
+                  <property name="settingName" stdset="0">
+                   <string>spindle-rpm-display.encoder-feedback-rpm</string>
                   </property>
                   <property name="page" stdset="0">
                    <number>1</number>
@@ -34553,7 +34559,7 @@ border-radius: 1px;
                </item>
               </layout>
              </widget>
-             <widget class="QWidget" name="spindle_encode_rpm">
+             <widget class="QWidget" name="spindle_encoder_rpm">
               <property name="sizePolicy">
                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                 <horstretch>0</horstretch>
@@ -36250,17 +36256,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
