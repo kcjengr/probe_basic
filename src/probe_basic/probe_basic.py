@@ -38,7 +38,9 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
-            self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), False)
+            atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
+            self.tabWidget.setTabVisible(atc_tab_index, False)
+            self.tabWidget.removeTab(atc_tab_index)
             
         self.vtk.setViewMachine()  # set view to machine at startup
         
