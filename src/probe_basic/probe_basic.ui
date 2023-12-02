@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>2</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -5641,295 +5641,434 @@ QTabWidget QTabBar::tab {
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_65">
                      <property name="spacing">
-                      <number>0</number>
+                      <number>16</number>
                      </property>
                      <property name="leftMargin">
-                      <number>9</number>
+                      <number>20</number>
                      </property>
                      <property name="topMargin">
-                      <number>6</number>
+                      <number>18</number>
+                     </property>
+                     <property name="rightMargin">
+                      <number>20</number>
+                     </property>
+                     <property name="bottomMargin">
+                      <number>18</number>
                      </property>
                      <item>
-                      <widget class="QLabel" name="work_column_header_7">
-                       <property name="enabled">
-                        <bool>true</bool>
+                      <layout class="QHBoxLayout" name="horizontalLayout_176">
+                       <property name="leftMargin">
+                        <number>2</number>
                        </property>
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                         <horstretch>1</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
+                       <property name="topMargin">
+                        <number>2</number>
                        </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>38</height>
-                        </size>
+                       <property name="rightMargin">
+                        <number>2</number>
                        </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>38</height>
-                        </size>
+                       <property name="bottomMargin">
+                        <number>2</number>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    color: rgb(238, 238, 236);
-	font: 15pt &quot;Bebas Kai&quot;;
+                       <item>
+                        <widget class="QLabel" name="work_column_header_7">
+                         <property name="enabled">
+                          <bool>true</bool>
+                         </property>
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(176, 179, 172);
+    border-width: 2px;
+    border-radius: 5px;
+    color: white;
+    background: rgb(90, 90, 90);
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
-                       </property>
-                       <property name="frameShape">
-                        <enum>QFrame::NoFrame</enum>
-                       </property>
-                       <property name="text">
-                        <string>CURRENT PROGRAM TOOLS USED:</string>
-                       </property>
-                       <property name="alignment">
-                        <set>Qt::AlignCenter</set>
-                       </property>
-                       <property name="wordWrap">
-                        <bool>true</bool>
-                       </property>
-                       <property name="indent">
-                        <number>0</number>
-                       </property>
-                      </widget>
+                         </property>
+                         <property name="frameShape">
+                          <enum>QFrame::NoFrame</enum>
+                         </property>
+                         <property name="text">
+                          <string>CURRENT PROGRAM TOOLS</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="indent">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
                      </item>
                      <item>
-                      <widget class="Line" name="line_8">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                         <horstretch>0</horstretch>
-                         <verstretch>0</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="minimumSize">
-                        <size>
-                         <width>0</width>
-                         <height>2</height>
-                        </size>
-                       </property>
-                       <property name="maximumSize">
-                        <size>
-                         <width>16777215</width>
-                         <height>2</height>
-                        </size>
-                       </property>
+                      <widget class="QScrollArea" name="scrollArea">
                        <property name="styleSheet">
-                        <string notr="true">Line {
-	color:rgb(186, 189, 182);
-	border-style: solid;
-	border-color: rgb(186, 189, 182);
-	background-color: rgb(186, 189, 182);
-	border-width: 1px;
-	border-radius: 1px;
-	margin-left: 20px;
-	margin-right: 20px;
-}</string>
-                       </property>
-                       <property name="orientation">
-                        <enum>Qt::Horizontal</enum>
-                       </property>
-                      </widget>
-                     </item>
-                     <item>
-                      <widget class="QWidget" name="widget_6" native="true">
-                       <property name="sizePolicy">
-                        <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                         <horstretch>1</horstretch>
-                         <verstretch>1</verstretch>
-                        </sizepolicy>
-                       </property>
-                       <property name="styleSheet">
-                        <string notr="true">.QWidget {
+                        <string notr="true">QScrollArea {
+    background: transparent;
     border: none;
 }</string>
                        </property>
-                       <layout class="QHBoxLayout" name="horizontalLayout_33">
-                        <property name="spacing">
-                         <number>20</number>
+                       <property name="widgetResizable">
+                        <bool>true</bool>
+                       </property>
+                       <widget class="QWidget" name="scrollAreaWidgetContents">
+                        <property name="geometry">
+                         <rect>
+                          <x>0</x>
+                          <y>0</y>
+                          <width>240</width>
+                          <height>813</height>
+                         </rect>
                         </property>
-                        <property name="leftMargin">
-                         <number>12</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>9</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>0</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>0</number>
-                        </property>
-                        <item>
-                         <widget class="QWidget" name="widget_9" native="true">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-                            <horstretch>1</horstretch>
-                            <verstretch>1</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>30</width>
-                            <height>0</height>
-                           </size>
-                          </property>
-                          <layout class="QVBoxLayout" name="verticalLayout_67">
-                           <property name="spacing">
-                            <number>9</number>
+                        <layout class="QVBoxLayout" name="verticalLayout_70">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>0</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>0</number>
+                         </property>
+                         <item>
+                          <widget class="QWidget" name="widget_6" native="true">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                             <horstretch>1</horstretch>
+                             <verstretch>1</verstretch>
+                            </sizepolicy>
                            </property>
-                           <property name="leftMargin">
-                            <number>20</number>
+                           <property name="styleSheet">
+                            <string notr="true">.QWidget {
+    border: none;
+    border-radius: 0px
+}</string>
                            </property>
-                           <property name="topMargin">
-                            <number>4</number>
-                           </property>
-                           <property name="rightMargin">
-                            <number>0</number>
-                           </property>
-                           <property name="bottomMargin">
-                            <number>31</number>
-                           </property>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_4">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_2">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_3">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_6">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_5">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_9">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_7">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_8">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_10">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_11">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_12">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_13">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                           <item>
-                            <widget class="QCheckBox" name="checkBox_14">
-                             <property name="text">
-                              <string/>
-                             </property>
-                            </widget>
-                           </item>
-                          </layout>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="StatusLabel" name="statuslabel">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                            <horstretch>1</horstretch>
-                            <verstretch>1</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel {
-    font: 16pt &quot;Bebas Kai&quot;;
+                           <layout class="QHBoxLayout" name="horizontalLayout_33">
+                            <property name="spacing">
+                             <number>20</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>30</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>6</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                            <item>
+                             <widget class="QWidget" name="widget_9" native="true">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                                <horstretch>1</horstretch>
+                                <verstretch>1</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>30</width>
+                                <height>0</height>
+                               </size>
+                              </property>
+                              <layout class="QVBoxLayout" name="verticalLayout_67">
+                               <property name="spacing">
+                                <number>13</number>
+                               </property>
+                               <property name="topMargin">
+                                <number>6</number>
+                               </property>
+                               <property name="rightMargin">
+                                <number>3</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>0</number>
+                               </property>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_4">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_2">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_41">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_3">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_34">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_6">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_31">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_5">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_39">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_9">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_38">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_7">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_37">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_8">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_33">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_10">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_40">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_11">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_35">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_12">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_30">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_13">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_32">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_14">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_42">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_36">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QCheckBox" name="checkBox_29">
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="QLabel" name="label">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>1</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </widget>
+                            </item>
+                            <item>
+                             <widget class="StatusLabel" name="statuslabel">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                                <horstretch>1</horstretch>
+                                <verstretch>1</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QLabel {
+    font: 17pt &quot;Bebas Kai&quot;;
     color: white;
 }</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>3</number>
-                          </property>
-                          <property name="midLineWidth">
-                           <number>2</number>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="textFormat">
-                           <enum>Qt::AutoText</enum>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-                          </property>
-                          <property name="wordWrap">
-                           <bool>true</bool>
-                          </property>
-                          <property name="rules" stdset="0">
-                           <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;\\n\&quot;.join(f\&quot;T{ch[1][x][0]}\&quot; for\nx in ch[0])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}]}]</string>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
+                              </property>
+                              <property name="lineWidth">
+                               <number>3</number>
+                              </property>
+                              <property name="midLineWidth">
+                               <number>2</number>
+                              </property>
+                              <property name="text">
+                               <string/>
+                              </property>
+                              <property name="textFormat">
+                               <enum>Qt::AutoText</enum>
+                              </property>
+                              <property name="alignment">
+                               <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                              </property>
+                              <property name="wordWrap">
+                               <bool>true</bool>
+                              </property>
+                              <property name="rules" stdset="0">
+                               <string>[{&quot;name&quot;: &quot;program_tool_list&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;\\n\&quot;.join(f\&quot;T{ch[1][x][0]}\&quot; for\nx in ch[0])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;gcode_properties:tools&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:tool_table&quot;, &quot;trigger&quot;: false}]}]</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                         </item>
+                        </layout>
+                       </widget>
                       </widget>
                      </item>
                      <item>
@@ -6033,13 +6172,13 @@ QTabWidget QTabBar::tab {
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_66">
                      <property name="spacing">
-                      <number>12</number>
+                      <number>16</number>
                      </property>
                      <property name="leftMargin">
                       <number>20</number>
                      </property>
                      <property name="topMargin">
-                      <number>20</number>
+                      <number>18</number>
                      </property>
                      <property name="rightMargin">
                       <number>20</number>
@@ -7168,7 +7307,7 @@ SubCallButton:pressed {
             <item>
              <layout class="QVBoxLayout" name="verticalLayout_17">
               <property name="spacing">
-               <number>2</number>
+               <number>12</number>
               </property>
               <property name="topMargin">
                <number>20</number>
@@ -7177,7 +7316,7 @@ SubCallButton:pressed {
                <number>9</number>
               </property>
               <property name="bottomMargin">
-               <number>9</number>
+               <number>40</number>
               </property>
               <item>
                <widget class="QFrame" name="frame_6">
@@ -7190,13 +7329,13 @@ SubCallButton:pressed {
                 <property name="minimumSize">
                  <size>
                   <width>320</width>
-                  <height>385</height>
+                  <height>400</height>
                  </size>
                 </property>
                 <property name="maximumSize">
                  <size>
                   <width>320</width>
-                  <height>385</height>
+                  <height>400</height>
                  </size>
                 </property>
                 <property name="styleSheet">
@@ -7211,7 +7350,7 @@ SubCallButton:pressed {
                   <number>5</number>
                  </property>
                  <property name="bottomMargin">
-                  <number>6</number>
+                  <number>9</number>
                  </property>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_25">
@@ -7252,7 +7391,7 @@ SubCallButton:pressed {
     border-radius: 5px;
     color: white;
     background: rgb(90, 90, 90);
-	font: 17pt &quot;Bebas Kai&quot;;
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="text">
@@ -8050,7 +8189,7 @@ QPushButton:checked {
                 <property name="minimumSize">
                  <size>
                   <width>320</width>
-                  <height>210</height>
+                  <height>0</height>
                  </size>
                 </property>
                 <property name="maximumSize">
@@ -8069,6 +8208,9 @@ QPushButton:checked {
                 <layout class="QVBoxLayout" name="verticalLayout_6">
                  <property name="spacing">
                   <number>5</number>
+                 </property>
+                 <property name="topMargin">
+                  <number>3</number>
                  </property>
                  <property name="bottomMargin">
                   <number>6</number>
@@ -8112,7 +8254,7 @@ QPushButton:checked {
     border-radius: 5px;
     color: white;
     background: rgb(90, 90, 90);
-	font: 17pt &quot;Bebas Kai&quot;;
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="text">
@@ -8120,92 +8262,6 @@ QPushButton:checked {
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignCenter</set>
-                     </property>
-                    </widget>
-                   </item>
-                  </layout>
-                 </item>
-                 <item>
-                  <layout class="QHBoxLayout" name="horizontalLayout_19">
-                   <property name="spacing">
-                    <number>0</number>
-                   </property>
-                   <property name="leftMargin">
-                    <number>2</number>
-                   </property>
-                   <property name="topMargin">
-                    <number>2</number>
-                   </property>
-                   <property name="rightMargin">
-                    <number>2</number>
-                   </property>
-                   <property name="bottomMargin">
-                    <number>2</number>
-                   </property>
-                   <item>
-                    <widget class="SubCallButton" name="tool_touch_off_carousel_button_atc">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>250</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>45</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-    color: white;
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton {
-    font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
-}
-
-QPushButton:disabled {
-    border-color: gray;
-}
-
-QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
-
-QPushButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>TOUCH OFF ENTIRE CAROUSEL</string>
-                     </property>
-                     <property name="filename" stdset="0">
-                      <string>tool_touch_off_entire_carousel.ngc</string>
                      </property>
                     </widget>
                    </item>
@@ -36269,17 +36325,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="probemodeGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
