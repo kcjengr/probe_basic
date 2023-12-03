@@ -13,11 +13,7 @@ o<load_spindle_safety> sub
 (PRINT, o<load_spindle_safety>)
 
 #<load_spindle_tool_number> = #1 ; this is the value form the ATC tab
-#<activate_programmable_coolant> = #2
-#<horizontal_spindle_nozzle_dist> = #3
-#<vertical_spindle_nozzle_dist> = #4
-#<pc_angle_offset> = #5
-#<probe_tool_number> = #6
+#<probe_tool_number> = #2
 
 ; default to a 12 pocket ATC (matching DynATC Widget behaviour), then update based on INI settings
 #<number_of_pockets> = 12
@@ -45,15 +41,7 @@ o140 if [#<load_spindle_tool_number> EQ #<probe_tool_number>]
     S0 M5
 o140 endif
 
-#<pc_tool_length> = #5403
-
-(run program_coolant sub if selected to be active in settings page with value 1)
-o150 if [#<activate_programmable_coolant> EQ 1]
-    (run program_coolant.ngc)
-    o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
-o150 else
-    o<load_spindle_safety> return
-o150 endif
+o<program_coolant> call
 
 o<load_spindle_safety> endsub
 

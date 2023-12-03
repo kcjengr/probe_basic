@@ -53,6 +53,7 @@ class ProbeBasic(VCPMainWindow):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
         
         self.load_user_tabs()
+        self.load_programmable_coolant_cannon_settings()
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
@@ -87,6 +88,12 @@ class ProbeBasic(VCPMainWindow):
         if sidebar_loaded == False:
             self.user_sb_tab.hide()
             self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
+
+    def load_programmable_coolant_cannon_settings(self):
+        self.activate_programmable_coolant.setValue(int(INIFILE.find("COOLANT_CANNON", "ACTIVATE")) or 0)
+        self.horizontal_spindle_nozzle_dist.setValue(int(INIFILE.find("COOLANT_CANNON", "HORIZONTAL_SPINDLE_NOZZLE_DIST")) or 0)
+        self.vertical_spindle_nozzle_dist.setValue(int(INIFILE.find("COOLANT_CANNON", "VERTICAL_SPINDLE_NOZZLE_DIST")) or 0)
+        self.pc_angle_offset.setValue(int(INIFILE.find("COOLANT_CANNON", "PC_ANGLE_OFFSET")) or 0)
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
