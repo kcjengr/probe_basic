@@ -7,8 +7,8 @@ from qtpy.QtCore import Slot, Property
 from qtpy.QtWidgets import QWidget, QLineEdit, QHBoxLayout, QPushButton, QFileDialog, QDialog, QLabel
 
 
-from db_tool.base import Session, Base, engine
-from db_tool.tool_table import ProbeParams, Tool, ToolTable
+from probe_basic_db_tool.base import Session, Base, engine
+from probe_basic_db_tool.tool_table import ProbeParams, Tool, ToolTable
 
 from qtpyvcp.utilities.logger import getLogger
 from qtpyvcp.widgets.base_widgets.base_widget import VCPWidget
