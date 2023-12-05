@@ -16,6 +16,8 @@ from qtpy.QtWidgets import QAbstractButton
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
+from qtpyvcp.utilities.settings import getSetting, setSetting
+
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
@@ -38,9 +40,17 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
-            self.tabWidget.setTabVisible(self.tabWidget.indexOf(self.atc_tab), False)
+            atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
+            self.tabWidget.setTabVisible(atc_tab_index, False)
+            self.tabWidget.removeTab(atc_tab_index)
             
         self.vtk.setViewMachine()  # set view to machine at startup
+
+        if (getSetting("spindle-rpm-display.calculated-rpm").getValue()):
+            self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_calculated_rpm_button.property('page'))
+        
+        else:
+            self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
         
         self.load_user_tabs()
 
@@ -76,6 +86,7 @@ class ProbeBasic(VCPMainWindow):
 
         if sidebar_loaded == False:
             self.user_sb_tab.hide()
+            self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):

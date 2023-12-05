@@ -11,6 +11,10 @@ vcp:
   description: |
     Probe Basic description ...
 
+data_plugins:
+  gcode_properties:
+    provider: qtpyvcp.plugins.gcode_properties:GCodeProperties
+
 windows:
   mainwindow:
     provider: probe_basic.probe_basic:ProbeBasic
@@ -101,6 +105,14 @@ settings:
     persistent: true
     min_value: 0
     max_value: 10000
+
+  spindle-rpm-display.calculated-rpm:
+    description: display calculated rpm on main page.
+    persistent: true
+
+  spindle-rpm-display.encoder-feedback-rpm:
+    description: display encoder feedback rpm on main page.
+    persistent: true
 
   tool-change-position.x-tool-change-position:
     description: x axis tool change position.
@@ -199,7 +211,7 @@ dialogs:
     kwargs:
       ui_file: {{ file.dir }}/about.ui
 
-  
   toolchange:
+    provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
     kwargs:
       ui_file: {{ file.dir }}/toolchange_dialog_pb.ui

@@ -1,6 +1,10 @@
 #!/usr/bin/env python
 
 import os
+import sys
+import importlib.util
+
+import linuxcnc
 
 from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
@@ -14,8 +18,8 @@ from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from . import probe_basic_lathe_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
-
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
+INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -31,6 +35,42 @@ class ProbeBasicLathe(VCPMainWindow):
         self.rpm_mode = 0.0
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+
+        self.load_user_tabs()
+
+    def load_user_tabs(self):
+        self.user_tab_modules = {}
+        self.user_tabs = {}
+        sidebar_loaded = False;
+        user_tabs_paths = INIFILE.findall("DISPLAY", "USER_TABS_PATH")
+
+        for user_tabs_path in user_tabs_paths:
+            user_tabs_path = os.path.expanduser(user_tabs_path)
+            user_tab_folders = os.listdir(user_tabs_path)
+            for user_tab in user_tab_folders:
+                if not os.path.isdir(os.path.join(user_tabs_path, user_tab)):
+                    continue
+
+                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tabs_path
+                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py"))
+                self.user_tab_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.user_tab_modules[module_name]
+                spec.loader.exec_module(self.user_tab_modules[module_name])
+                self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
+                if self.user_tabs[module_name].property("sidebar"):
+                    if sidebar_loaded == False:
+                        sidebar_loaded = True
+                        self.user_tabs[module_name].setParent(self.sb_page_4)
+                        self.user_sb_tab.setText(self.user_tabs[module_name].objectName().replace("_", " "))
+                    else:
+                        # can not load more than one sidebar widget
+                        pass
+                else:
+                    self.tabWidget.addTab(self.user_tabs[module_name], self.user_tabs[module_name].objectName().replace("_", " "))
+
+        if sidebar_loaded == False:
+            self.user_sb_tab.hide()
+            self.dro_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
     def on_feed_unit_per_minute_entry_textChanged(self, value):
         if value:
