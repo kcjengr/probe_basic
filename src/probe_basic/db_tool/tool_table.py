@@ -3,7 +3,7 @@
 from sqlalchemy import Column, String, Integer, Date, Table, ForeignKey, Float, Text
 from sqlalchemy.orm import relationship
 
-from probe_basic.db_tool.base import Base
+from db_tool.base import Base
 
 
 class ToolTable(Base):
