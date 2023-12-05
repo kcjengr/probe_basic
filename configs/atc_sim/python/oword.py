@@ -21,8 +21,8 @@
 
 from pprint import pprint
 
-from probe_basic.db_tool.tool_table import ToolTable, Tool, ProbeParams
-from probe_basic.db_tool.base import Session
+from probe_basic_db_tool.tool_table import ToolTable, Tool, ProbeParams
+from probe_basic_db_tool.base import Session
 
 
 
