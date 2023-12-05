@@ -2,8 +2,8 @@
 
 from datetime import date
 
-from tool_table import ToolTable, Tool, ProbeParams, CutParams
-from base import Session, engine, Base
+from probe_basic_db_tool.tool_table import ToolTable, Tool, ProbeParams, CutParams
+from probe_basic_db_tool.base import Session, engine, Base
 
 
 Base.metadata.create_all(engine)

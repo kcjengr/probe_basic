@@ -1,7 +1,7 @@
 # coding=utf-8
 
-from .tool_table import ToolTable, Tool
-from .base import Session
+from probe_basic_db_tool.tool_table import ToolTable, Tool
+from probe_basic_db_tool.base import Session
 
 session = Session()
 
