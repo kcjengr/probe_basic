@@ -90,10 +90,22 @@ class ProbeBasic(VCPMainWindow):
             self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
     def load_programmable_coolant_cannon_settings(self):
-        self.activate_programmable_coolant.setValue(int(INIFILE.find("COOLANT_CANNON", "ACTIVATE")) or 0)
-        self.horizontal_spindle_nozzle_dist.setValue(int(INIFILE.find("COOLANT_CANNON", "HORIZONTAL_SPINDLE_NOZZLE_DIST")) or 0)
-        self.vertical_spindle_nozzle_dist.setValue(int(INIFILE.find("COOLANT_CANNON", "VERTICAL_SPINDLE_NOZZLE_DIST")) or 0)
-        self.pc_angle_offset.setValue(int(INIFILE.find("COOLANT_CANNON", "PC_ANGLE_OFFSET")) or 0)
+        activate_programmable_coolant = int(INIFILE.find("COOLANT_CANNON", "ACTIVATE") or 0)
+        horizontal_spindle_nozzle_dist = int(INIFILE.find("COOLANT_CANNON", "HORIZONTAL_SPINDLE_NOZZLE_DIST") or 0)
+        vertical_spindle_nozzle_dist = int(INIFILE.find("COOLANT_CANNON", "VERTICAL_SPINDLE_NOZZLE_DIST") or 0)
+        pc_angle_offset = int(INIFILE.find("COOLANT_CANNON", "PC_ANGLE_OFFSET") or 0)
+
+        # update the setting form the INI (or default 0)
+        setSetting('programmable-coolant.active', activate_programmable_coolant)
+        setSetting('programmable-coolant.spindle-to-nozzle-dist', horizontal_spindle_nozzle_dist)
+        setSetting('programmable-coolant.gaugeline-to-nozzle-dist', vertical_spindle_nozzle_dist)
+        setSetting('programmable-coolant.pc-angle-offset', pc_angle_offset)
+
+        # left for if we switch VCPSettingsLineEdit to QLabes
+        # self.activate_programmable_coolant.setValue(int(activate_programmable_coolant))
+        # self.horizontal_spindle_nozzle_dist.setValue(int(horizontal_spindle_nozzle_dist))
+        # self.vertical_spindle_nozzle_dist.setValue(int(vertical_spindle_nozzle_dist))
+        # self.pc_angle_offset.setValue(int(pc_angle_offset))
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
