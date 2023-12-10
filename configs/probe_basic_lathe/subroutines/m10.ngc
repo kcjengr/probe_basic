@@ -12,24 +12,26 @@ o100 endif
 
 ; default to a 12 pocket ATC (matching DynATC Widget behaviour), then update based on INI settings
 #<number_of_pockets> = 12
-o101 if [EXISTS[#<_ini[atc]pockets>]]
+o110 if [EXISTS[#<_ini[atc]pockets>]]
     #<number_of_pockets> = #<_ini[atc]pockets>
-o101 endif
+o110 endif
 
 #<steps> = [#3990 - #<p>]
 (PRINT, o<m10> P#<p>, steps=#<steps>)
-o110 if [#<steps> GT [#<number_of_pockets> / 2]]
+o120 if [#<steps> GT [#<number_of_pockets> / 2]]
     #<steps>=[#<steps> - #<number_of_pockets>]
-o110 endif
-o120 if [#<steps> LT -[#<number_of_pockets> / 2]]
-    #<steps>=[#<steps> + #<number_of_pockets>]
 o120 endif
-o130 if [#<steps> GT 0]
+
+o130 if [#<steps> LT -[#<number_of_pockets> / 2]]
+    #<steps>=[#<steps> + #<number_of_pockets>]
+o130 endif
+
+o140 if [#<steps> GT 0]
     M12 P[#<steps>]
-o130 elseif [#<steps> LT 0]
+o140 elseif [#<steps> LT 0]
     #<steps>=[#<steps> * -1]
     M11 P[#<steps>]
-o130 endif
+o140 endif
 
 (PRINT, o<m10> endsub)
 o<m10> endsub [1]
