@@ -6260,7 +6260,7 @@ QTabWidget QTabBar::tab {
                           </size>
                          </property>
                          <property name="MDICommand" stdset="0">
-                          <string>M11P1</string>
+                          <string>M12P1</string>
                          </property>
                         </widget>
                        </item>
@@ -6312,7 +6312,7 @@ QTabWidget QTabBar::tab {
                           </size>
                          </property>
                          <property name="MDICommand" stdset="0">
-                          <string>M12P1</string>
+                          <string>M11P1</string>
                          </property>
                         </widget>
                        </item>
@@ -7652,7 +7652,7 @@ QPushButton:checked {
                       </size>
                      </property>
                      <property name="MDICommand" stdset="0">
-                      <string>m12</string>
+                      <string>M12P1</string>
                      </property>
                     </widget>
                    </item>
@@ -7702,7 +7702,7 @@ font: 16pt &quot;Bebas Kai&quot;;
                       </size>
                      </property>
                      <property name="MDICommand" stdset="0">
-                      <string>m11</string>
+                      <string>M11P1</string>
                      </property>
                     </widget>
                    </item>
@@ -22282,7 +22282,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="VCPSettingsLineEdit" name="activate_programmable_coolant">
+                <widget class="StatusLabel" name="activate_programmable_coolant">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -22301,23 +22301,25 @@ color: white;
                    <height>31</height>
                   </size>
                  </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
+                 <property name="styleSheet">
+                  <string notr="true">StatusLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="placeholderText">
-                  <string>0</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>programmable-coolant.active</string>
-                 </property>
-                 <property name="textFormat" stdset="0">
-                  <string>{:.0f}</string>
+                 <property name="format" stdset="0">
+                  <string>{}</string>
                  </property>
                 </widget>
                </item>
@@ -22372,7 +22374,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="VCPSettingsLineEdit" name="horizontal_spindle_nozzle_dist">
+                <widget class="StatusLabel" name="horizontal_spindle_nozzle_dist">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -22391,22 +22393,24 @@ color: white;
                    <height>31</height>
                   </size>
                  </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
+                 <property name="styleSheet">
+                  <string notr="true">StatusLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="placeholderText">
-                  <string>0.0000</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>programmable-coolant.spindle-to-nozzle-dist</string>
-                 </property>
-                 <property name="textFormat" stdset="0">
+                 <property name="format" stdset="0">
                   <string>{:.4f}</string>
                  </property>
                 </widget>
@@ -22462,7 +22466,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="VCPSettingsLineEdit" name="vertical_spindle_nozzle_dist">
+                <widget class="StatusLabel" name="vertical_spindle_nozzle_dist">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -22481,22 +22485,24 @@ color: white;
                    <height>31</height>
                   </size>
                  </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
+                 <property name="styleSheet">
+                  <string notr="true">StatusLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="placeholderText">
-                  <string>0.0000</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>programmable-coolant.gaugeline-to-nozzle-dist</string>
-                 </property>
-                 <property name="textFormat" stdset="0">
+                 <property name="format" stdset="0">
                   <string>{:.4f}</string>
                  </property>
                 </widget>
@@ -22552,7 +22558,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="VCPSettingsLineEdit" name="pc_angle_offset">
+                <widget class="StatusLabel" name="pc_angle_offset">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -22571,22 +22577,24 @@ color: white;
                    <height>31</height>
                   </size>
                  </property>
-                 <property name="focusPolicy">
-                  <enum>Qt::ClickFocus</enum>
+                 <property name="styleSheet">
+                  <string notr="true">StatusLabel {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string/>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
-                 <property name="readOnly">
-                  <bool>true</bool>
-                 </property>
-                 <property name="placeholderText">
-                  <string>0.0</string>
-                 </property>
-                 <property name="settingName" stdset="0">
-                  <string>programmable-coolant.pc-angle-offset</string>
-                 </property>
-                 <property name="textFormat" stdset="0">
+                 <property name="format" stdset="0">
                   <string>{:.1f}</string>
                  </property>
                 </widget>
@@ -23903,8 +23911,23 @@ border-radius: 4px;
                            </property>
                            <widget class="QWidget" name="jog_xyz">
                             <layout class="QVBoxLayout" name="verticalLayout_69">
+                             <property name="spacing">
+                              <number>6</number>
+                             </property>
+                             <property name="topMargin">
+                              <number>30</number>
+                             </property>
+                             <property name="bottomMargin">
+                              <number>40</number>
+                             </property>
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_164">
+                               <property name="topMargin">
+                                <number>15</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>15</number>
+                               </property>
                                <item>
                                 <widget class="ActionButton" name="z_plus_jogbutton_3">
                                  <property name="minimumSize">
@@ -23947,6 +23970,12 @@ border-radius: 4px;
                              </item>
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_172">
+                               <property name="topMargin">
+                                <number>15</number>
+                               </property>
+                               <property name="bottomMargin">
+                                <number>15</number>
+                               </property>
                                <item>
                                 <widget class="ActionButton" name="z_minus_jogbutton_3">
                                  <property name="minimumSize">
@@ -23989,12 +24018,53 @@ border-radius: 4px;
                              </item>
                              <item>
                               <layout class="QGridLayout" name="gridLayout_13">
+                               <property name="topMargin">
+                                <number>30</number>
+                               </property>
                                <property name="horizontalSpacing">
                                 <number>0</number>
                                </property>
                                <property name="verticalSpacing">
                                 <number>15</number>
                                </property>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_3">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
                                <item row="1" column="2">
                                 <widget class="ActionButton" name="x_plus_jogbutton_3">
                                  <property name="sizePolicy">
@@ -24036,50 +24106,6 @@ border-radius: 4px;
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:x,pos</string>
-                                 </property>
-                                </widget>
-                               </item>
-                               <item row="1" column="0">
-                                <widget class="ActionButton" name="x_minus_jogbutton_3">
-                                 <property name="sizePolicy">
-                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                   <horstretch>0</horstretch>
-                                   <verstretch>0</verstretch>
-                                  </sizepolicy>
-                                 </property>
-                                 <property name="minimumSize">
-                                  <size>
-                                   <width>56</width>
-                                   <height>56</height>
-                                  </size>
-                                 </property>
-                                 <property name="maximumSize">
-                                  <size>
-                                   <width>56</width>
-                                   <height>56</height>
-                                  </size>
-                                 </property>
-                                 <property name="focusPolicy">
-                                  <enum>Qt::NoFocus</enum>
-                                 </property>
-                                 <property name="text">
-                                  <string/>
-                                 </property>
-                                 <property name="icon">
-                                  <iconset resource="probe_basic.qrc">
-                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
-                                 </property>
-                                 <property name="iconSize">
-                                  <size>
-                                   <width>48</width>
-                                   <height>48</height>
-                                  </size>
-                                 </property>
-                                 <property name="rules" stdset="0">
-                                  <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
-                                 </property>
-                                 <property name="actionName" stdset="0">
-                                  <string>machine.jog.axis:x,neg</string>
                                  </property>
                                 </widget>
                                </item>
@@ -24127,8 +24153,14 @@ border-radius: 4px;
                                  </property>
                                 </widget>
                                </item>
-                               <item row="0" column="1">
-                                <widget class="ActionButton" name="y_plus_jogbutton_3">
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
                                  <property name="minimumSize">
                                   <size>
                                    <width>56</width>
@@ -24149,7 +24181,7 @@ border-radius: 4px;
                                  </property>
                                  <property name="icon">
                                   <iconset resource="probe_basic.qrc">
-                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
                                  </property>
                                  <property name="iconSize">
                                   <size>
@@ -24161,7 +24193,7 @@ border-radius: 4px;
                                   <string>[{&quot;name&quot;: &quot;task_mode_enabled&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
-                                  <string>machine.jog.axis:y,pos</string>
+                                  <string>machine.jog.axis:x,neg</string>
                                  </property>
                                 </widget>
                                </item>
@@ -36338,17 +36370,17 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>

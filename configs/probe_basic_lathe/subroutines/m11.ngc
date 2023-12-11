@@ -14,31 +14,31 @@ o100 endif
 
 ; default to a 12 pocket ATC (matching DynATC Widget behaviour), then update based on INI settings
 #<number_of_pockets> = 12
-o101 if [EXISTS[#<_ini[atc]pockets>]]
+o110 if [EXISTS[#<_ini[atc]pockets>]]
     #<number_of_pockets> = #<_ini[atc]pockets>
-o101 endif
+o110 endif
 
-o110 if [EXISTS[#<p>]]
+o120 if [EXISTS[#<p>]]
     #<steps_to_move> = #<p>
-o110 else
+o120 else
     #<steps_to_move> = 1
     (tells the atc widget move 1 step reverse)
-o110 endif
+o120 endif
 
 (tells the atc widget how many steps to move and start moving reverse)
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<steps_to_move>, "cw"}])
 
 M64 P4 ; Move atc motor Rev
 
-o120 do
+o130 do
     M66 P4 L1 Q3 ; wait for rising edge on rotation index
-    o130 if [#5399 LT 0]
+    o131 if [#5399 LT 0]
         M65 P4 ; Stop atc motor
         (abort, Failed to get rotation index)
-    o130 endif
+    o131 endif
     #3990 = [[[#3990+2] MOD #<number_of_pockets>]-1] ; Pocket is no.1-#<number_of_pockets>
     #<steps_to_move> = [#<steps_to_move>-1]
-o120 while [#<steps_to_move> GT 0]
+o130 while [#<steps_to_move> GT 0]
 
 M65 P4 ; Stop motor
 
