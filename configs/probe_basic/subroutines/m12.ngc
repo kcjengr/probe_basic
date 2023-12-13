@@ -1,6 +1,6 @@
 o<m12> sub
 
-; Move tool carousel CW Parameter P number of steps
+; Move tool carousel CCW Parameter P number of steps
 ; Without parameter one step CW.
 ; Parameter #3989 is used to track if the carousel is homed (M13) (volatile)
 ; Parameter #3990 is used to track the current tool pocket (persistently)
@@ -22,13 +22,13 @@ o120 if [EXISTS[#<p>]]
     #<steps_to_move> = #<p>
 o120 else
     #<steps_to_move>=1
-    (tells the atc widget move 1 step forward)
+    (tells the atc widget move 1 step reverse)
 o120 endif
 
-(tells the atc widget how many steps to move and start moving forward)
+(tells the atc widget how many steps to move and start moving reverse)
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<steps_to_move>, "ccw"}])
 
-M64 P3 ; Move atc motor FWD
+M64 P3 ; Move atc motor REV
 
 o130 do
     M66 P4 L1 Q3 ; wait for rising edge on rotation index

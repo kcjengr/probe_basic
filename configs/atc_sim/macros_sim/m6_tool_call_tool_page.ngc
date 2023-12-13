@@ -21,14 +21,6 @@ o110 endif
 
 #<pc_tool_length> = #5403
 
-(run program_coolant sub if selected to be active in settings page with value 1)
-o120 if [#<activate_programmable_coolant> EQ 1]
-    (run program_coolant.ngc)
-    o<program_coolant> call [#<horizontal_spindle_nozzle_dist>][#<vertical_spindle_nozzle_dist>][#<pc_angle_offset>][#<pc_tool_length>]
-o120 else
-    o<m6_tool_call_tool_page> return
-o120 endif
-
 o<m6_tool_call_tool_page> endsub
 
 M2 (end program)
