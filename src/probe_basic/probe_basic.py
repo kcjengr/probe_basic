@@ -105,6 +105,10 @@ class ProbeBasic(VCPMainWindow):
         self.probe_tab_widget.setCurrentIndex(button.property('page'))
 
     @Slot(QAbstractButton)
+    def on_settertabGroup_buttonClicked(self, button):
+        self.setter_tab_widget.setCurrentIndex(button.property('page'))
+
+    @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
         self.sidebar_widget.setCurrentIndex(button.property('page'))
 
