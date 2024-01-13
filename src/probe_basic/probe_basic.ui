@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -22429,7 +22429,7 @@ QPushButton:checked {
 }</string>
                         </property>
                         <property name="text">
-                         <string>FAST PROBE FR</string>
+                         <string>TOOL TOUCH POSITION</string>
                         </property>
                         <property name="checkable">
                          <bool>true</bool>
@@ -22491,7 +22491,7 @@ QPushButton:checked {
 }</string>
                         </property>
                         <property name="text">
-                         <string>SLOW PROBE FR</string>
+                         <string>FAST AND SLOW PROBE FR</string>
                         </property>
                         <property name="checkable">
                          <bool>true</bool>
@@ -22744,65 +22744,6 @@ QPushButton:checked {
                        </widget>
                       </item>
                       <item>
-                       <widget class="QPushButton" name="setter_diam_probe">
-                        <property name="minimumSize">
-                         <size>
-                          <width>126</width>
-                          <height>37</height>
-                         </size>
-                        </property>
-                        <property name="focusPolicy">
-                         <enum>Qt::NoFocus</enum>
-                        </property>
-                        <property name="styleSheet">
-                         <string notr="true">QPushButton {
-    margin-top: 2px;
-    margin-bottom: 2px;
-    color: white;
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #4e4e4e, stop: 1.0 #3a3a3a);
-    border-style: solid;
-    border-color: black;
-    border-top-width: 2px;
-    border-bottom-width: 2px;
-    border-right-width: 1px;
-    border-left-width: 1px;
-    min-width: 10ex;
-    min-height: 25;
-    padding: 2px;
-    border-top-left-radius: 0px;
-    border-top-right-radius: 0px;
-    border-bottom-left-radius: 0px;
-    border-bottom-right-radius: 0px;
-}
-
-QPushButton:pressed, QPushButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
-
-QPushButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(112, 112, 238, 255), stop:0.121053 rgba(123, 123, 232, 255), stop:0.3 rgba(85, 85, 238, 255), stop:0.694737 rgba(85, 85, 238, 255), stop:0.915789 rgba(123, 123, 232, 255), stop:1 rgba(112, 112, 238, 255))
-}</string>
-                        </property>
-                        <property name="text">
-                         <string>PROBE TOOL DIAM</string>
-                        </property>
-                        <property name="checkable">
-                         <bool>true</bool>
-                        </property>
-                        <property name="autoExclusive">
-                         <bool>true</bool>
-                        </property>
-                        <property name="page" stdset="0">
-                         <number>6</number>
-                        </property>
-                        <attribute name="buttonGroup">
-                         <string notr="true">settertabGroup</string>
-                        </attribute>
-                       </widget>
-                      </item>
-                      <item>
                        <widget class="QPushButton" name="setter_touch_position">
                         <property name="minimumSize">
                          <size>
@@ -22845,7 +22786,7 @@ QPushButton:checked {
 }</string>
                         </property>
                         <property name="text">
-                         <string>TOOL TOUCH POSITION</string>
+                         <string>PROBE TOOL DIAM</string>
                         </property>
                         <property name="checkable">
                          <bool>true</bool>
@@ -22854,7 +22795,7 @@ QPushButton:checked {
                          <bool>true</bool>
                         </property>
                         <property name="page" stdset="0">
-                         <number>7</number>
+                         <number>6</number>
                         </property>
                         <attribute name="buttonGroup">
                          <string notr="true">settertabGroup</string>
@@ -22895,14 +22836,161 @@ QPushButton:checked {
                          <pointsize>13</pointsize>
                         </font>
                        </property>
+                       <property name="styleSheet">
+                        <string notr="true">background-color: grey;</string>
+                       </property>
                        <property name="currentIndex">
-                        <number>0</number>
+                        <number>1</number>
                        </property>
                        <widget class="QWidget" name="Page1">
-                        <layout class="QHBoxLayout" name="horizontalLayout_163"/>
+                        <widget class="QLabel" name="label_12">
+                         <property name="geometry">
+                          <rect>
+                           <x>40</x>
+                           <y>30</y>
+                           <width>400</width>
+                           <height>260</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>400</width>
+                           <height>260</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">color: white;
+font: 14pt &quot;Bebas Kai&quot;;</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;TOOL TOUCH POSITION:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TO SET THE TOOL TOUCH POSITION, JOG THE MILL SO THAT THE SPINDLE CENTERLINE IS CONCENTRIC TO THE TOOL SETTER TOUCH PLATFORM. &lt;/p&gt;&lt;p&gt;MOVE THE Z AXIS TO THE THE HOMED (ASSUMES Z0.0000 IS THE FULL UP POSITION), AND PRESS THE &amp;quot;SET TOOL TOUCH OFF POSITION&amp;quot; BUTTON. &lt;/p&gt;&lt;p&gt;THIS RECORDS AND STORES THE CURRENT MACHINE COORDINATES AND DEFINES WHERE THE MACHINE WILL MOVE TO WHEN A TOOL TOUCH OFF CALL IS COMMANDED.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                        </widget>
                        </widget>
                        <widget class="QWidget" name="Page2">
-                        <layout class="QHBoxLayout" name="horizontalLayout_165"/>
+                        <widget class="QLabel" name="label_13">
+                         <property name="geometry">
+                          <rect>
+                           <x>50</x>
+                           <y>30</y>
+                           <width>500</width>
+                           <height>400</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>500</width>
+                           <height>400</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;FAST PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;FAST PROBE FEEDRATE IS THE SPEED AT WHICH THE TOOL INITIALLY SEARCHES FOR THE TOOL SETTER IN THE Z MINUS DIRECTION. THIS PARAMETER ENTRY SHOULD BE SET AT A SPEED THAT IS NOT TOO FAST THAT THE TRIGGER EVENT AND SUBSEQUENT MOTION CAUSES THE TOOL TO OVER SHOOT THE TRIGGER POINT AND CAUSE DAMAGE TO THE TOOL SETTER. START WITH A CONSERVATIVE ENTRY HERE, PERHAPS 10IPM AND WORK YOUR WAY TO A COMFORTABLE SPEED.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;SLOW PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SLOW PROBE FEED IS THE SECONDARY PROBING SPEED. THIS SPEED WILL BE MUCH SLOWER FOR A MORE CONSISTENT TOUCH RESULT. IF THIS PARAMETER IS LEFT SET AT ZERO, THE SUBROUTINE WILL SLIP THE SECONDARY PROBE EVENT AND USE THE FAST PROBE EVENT ONLY.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
+                          <number>-1</number>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_14">
+                         <property name="geometry">
+                          <rect>
+                           <x>710</x>
+                           <y>110</y>
+                           <width>141</width>
+                           <height>71</height>
+                          </rect>
+                         </property>
+                         <property name="pixmap">
+                          <pixmap resource="probe_basic.qrc">:/images/horizontal_dimensions_arrows_inside.png</pixmap>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                        </widget>
+                        <widget class="StatusLabel" name="statuslabel_27">
+                         <property name="geometry">
+                          <rect>
+                           <x>745</x>
+                           <y>112</y>
+                           <width>71</width>
+                           <height>30</height>
+                          </rect>
+                         </property>
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>EXAMPLE</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[]</string>
+                         </property>
+                        </widget>
+                        <widget class="QLabel" name="label_51">
+                         <property name="geometry">
+                          <rect>
+                           <x>720</x>
+                           <y>180</y>
+                           <width>171</width>
+                           <height>151</height>
+                          </rect>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">image: url(:/images/tool_probe.png);</string>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="scaledContents">
+                          <bool>true</bool>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
+                          <number>10</number>
+                         </property>
+                        </widget>
+                        <zorder>label_14</zorder>
+                        <zorder>statuslabel_27</zorder>
+                        <zorder>label_13</zorder>
+                        <zorder>label_51</zorder>
                        </widget>
                        <widget class="QWidget" name="Page3">
                         <layout class="QHBoxLayout" name="horizontalLayout_185"/>
@@ -22913,6 +23001,33 @@ QPushButton:checked {
                        <widget class="QWidget" name="Page_5">
                         <layout class="QHBoxLayout" name="horizontalLayout_19">
                          <item>
+                          <widget class="QWidget" name="widget_38" native="true">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                             <horstretch>0</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <layout class="QVBoxLayout" name="verticalLayout_74">
+                            <property name="spacing">
+                             <number>9</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>0</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>0</number>
+                            </property>
+                           </layout>
+                          </widget>
+                         </item>
+                         <item>
                           <widget class="QWidget" name="widget_48" native="true">
                            <property name="styleSheet">
                             <string notr="true">## background-color: grey;</string>
@@ -22920,7 +23035,7 @@ QPushButton:checked {
                            <widget class="Line" name="line_6">
                             <property name="geometry">
                              <rect>
-                              <x>310</x>
+                              <x>150</x>
                               <y>276</y>
                               <width>2</width>
                               <height>115</height>
@@ -22954,7 +23069,7 @@ border: none;
                            <widget class="Line" name="line_4">
                             <property name="geometry">
                              <rect>
-                              <x>300</x>
+                              <x>140</x>
                               <y>390</y>
                               <width>245</width>
                               <height>2</height>
@@ -22991,7 +23106,7 @@ border: none;
                            <widget class="QLabel" name="label_140">
                             <property name="geometry">
                              <rect>
-                              <x>360</x>
+                              <x>200</x>
                               <y>395</y>
                               <width>101</width>
                               <height>23</height>
@@ -23031,7 +23146,7 @@ color: white;
                            <widget class="QLabel" name="label_50">
                             <property name="geometry">
                              <rect>
-                              <x>550</x>
+                              <x>390</x>
                               <y>390</y>
                               <width>171</width>
                               <height>131</height>
@@ -23050,7 +23165,7 @@ color: white;
                            <widget class="QLabel" name="label_138">
                             <property name="geometry">
                              <rect>
-                              <x>365</x>
+                              <x>205</x>
                               <y>46</y>
                               <width>91</width>
                               <height>23</height>
@@ -23094,7 +23209,7 @@ background: transparent;
                            <widget class="QLabel" name="label_137">
                             <property name="geometry">
                              <rect>
-                              <x>350</x>
+                              <x>190</x>
                               <y>420</y>
                               <width>121</width>
                               <height>23</height>
@@ -23134,7 +23249,7 @@ color: white;
                            <widget class="QLabel" name="label_52">
                             <property name="geometry">
                              <rect>
-                              <x>490</x>
+                              <x>330</x>
                               <y>19</y>
                               <width>161</width>
                               <height>221</height>
@@ -23153,7 +23268,7 @@ color: white;
                            <widget class="Line" name="line_3">
                             <property name="geometry">
                              <rect>
-                              <x>300</x>
+                              <x>140</x>
                               <y>95</y>
                               <width>200</width>
                               <height>2</height>
@@ -23190,7 +23305,7 @@ border: none;
                            <widget class="QLabel" name="label_136">
                             <property name="geometry">
                              <rect>
-                              <x>241</x>
+                              <x>81</x>
                               <y>221</y>
                               <width>141</width>
                               <height>45</height>
@@ -23234,7 +23349,7 @@ ABSOLUTE DISTANCE</string>
                            <widget class="Line" name="line_5">
                             <property name="geometry">
                              <rect>
-                              <x>309</x>
+                              <x>149</x>
                               <y>96</y>
                               <width>2</width>
                               <height>115</height>
@@ -23268,7 +23383,7 @@ border: none;
                            <widget class="QLabel" name="label_139">
                             <property name="geometry">
                              <rect>
-                              <x>350</x>
+                              <x>190</x>
                               <y>70</y>
                               <width>121</width>
                               <height>23</height>
@@ -23305,43 +23420,33 @@ color: white;
                              <number>0</number>
                             </property>
                            </widget>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="QWidget" name="widget_38" native="true">
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                             <horstretch>0</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <layout class="QVBoxLayout" name="verticalLayout_74">
-                            <property name="spacing">
-                             <number>9</number>
+                           <widget class="QLabel" name="label_7">
+                            <property name="geometry">
+                             <rect>
+                              <x>630</x>
+                              <y>20</y>
+                              <width>401</width>
+                              <height>281</height>
+                             </rect>
                             </property>
-                            <property name="leftMargin">
-                             <number>0</number>
+                            <property name="styleSheet">
+                             <string notr="true">color: white;
+font: 14pt &quot;Bebas Kai&quot;;</string>
                             </property>
-                            <property name="topMargin">
-                             <number>0</number>
+                            <property name="text">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;SPINDLE ZERO:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;THE SPINDLE ZERO DISTANCE PARAMETER IS MEASURED FROM THE Z HOMED POSITION FROM THE REPEATABLE SPINDLE NOSE DOWN TO THE TOOL SETTER'S TRIGGERED HEIGHT. &lt;/p&gt;&lt;p&gt;THE PARAMETER ENTRY MUST BE A POSITIVE (ABSOLUTE) NUMBER. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;EXAMPLE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SPINDLE NOSE HOME = Z 0.0000&lt;/p&gt;&lt;p&gt;TOOL SETTER TRIGGER HEIGHT = Z -12.375&lt;/p&gt;&lt;p&gt;SPINDLE ZERO = 12.375&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                             </property>
-                            <property name="rightMargin">
-                             <number>0</number>
+                            <property name="wordWrap">
+                             <bool>true</bool>
                             </property>
-                            <property name="bottomMargin">
-                             <number>0</number>
-                            </property>
-                           </layout>
+                           </widget>
                           </widget>
                          </item>
                         </layout>
                        </widget>
                        <widget class="QWidget" name="Page6"/>
                        <widget class="QWidget" name="Page7">
-                        <layout class="QHBoxLayout" name="horizontalLayout_188"/>
-                       </widget>
-                       <widget class="QWidget" name="Page8">
-                        <layout class="QHBoxLayout" name="horizontalLayout_193"/>
+                        <layout class="QVBoxLayout" name="verticalLayout_75"/>
                        </widget>
                       </widget>
                      </item>
@@ -38010,18 +38115,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="settertabGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
