@@ -9,6 +9,7 @@ o<toolsetter_wco> sub
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
   
+  #<max_vel_slider> = #1
   #<tool_touch_x_coords> = 33.2
   #<tool_touch_y_coords> = 4.4
   #<dust_boot_x_coords> = 26
@@ -30,8 +31,8 @@ o<toolsetter_wco> sub
   o100 endif
 
   G90    (set absolute coordinates)
-  G53 G0 Z0    (move to z0 home position)
-  G53 G0 X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+  G53 G1 F[#<max_velocity_slider] Z0    (move to z0 home position)
+  G53 G1 F[#<max_velocity_slider] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
   
   #<workspace_z> = #[5203 + [20 * #5220]]
 
@@ -48,7 +49,7 @@ o<toolsetter_wco> sub
   o110 if [#5070 EQ 0]
     (back to start point and feed)
     G90
-    G0 Z#<z>
+    G1 F[#<max_velocity_slider] Z#<z>
     F[#<probe_fast_fr>]
     (return from sub)
     o<toolsetter_wco> return
@@ -56,7 +57,7 @@ o<toolsetter_wco> sub
 
   (Move to z_clearance height for slow probe)
   G90
-  G0 Z[#<z_minus_probed> + #<z_clearance>]
+  G1 F[#<max_velocity_slider] Z[#<z_minus_probed> + #<z_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -66,7 +67,7 @@ o<toolsetter_wco> sub
     G38.2 Z-[#<z_clearance> * 2]
     #<z_minus_probed> = #5063
     G90
-    G0 Z[#<z_minus_probed> + #<z_clearance>]
+    G1 F[#<max_velocity_slider] Z[#<z_minus_probed> + #<z_clearance>]
   o120 endif
 
   #<z_finish_height> = [#<z_minus_probed> + #<z_clearance>]
@@ -77,7 +78,7 @@ o<toolsetter_wco> sub
   G10 L2 P#5220 Z[#<new_tool_wco_z> + #<workspace_z>]
 
   (Move to Toolset location)
-  G53 G0 X#<dust_boot_x_coords> Y#<dust_boot_y_coords>
+  G53 G1 F[#<max_velocity_slider] X#<dust_boot_x_coords> Y#<dust_boot_y_coords>
   
   (pause for dust boot)
   M0 (replace the dust boot)
