@@ -10,7 +10,7 @@ Probe Basic .deb Installation instructions
 
 - Probe Basic is currently designed for 1920x1080 screen sizes only!
 - Probe Basic Install by apt is for amd64 only currently!
-- Probe Basic Requires graphics hardware that support OpenGL 1.50 or later
+- Probe Basic requires graphics hardware that supports OpenGL 3.2 and OpenGL Shading Language (GLSL) 1.50 or later
 - Probe Basic is tested on xfce4, during install of Debian 12 ISO:
 - DO NOT enter a Root password during installation, leave blank and skip this page.
 
