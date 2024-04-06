@@ -138,15 +138,15 @@ class ProbeBasic(VCPMainWindow):
 
     def on_tool_diameter_probe_Btn_clicked(self):
         if self.tool_diameter_probe_Btn.isChecked():
-            self.tool_diameter_probe_mode.setText('1')
+            self.tool_diameter_probe_mode_3012.setText('1')
         else:
-            self.tool_diameter_probe_mode.setText('0')
+            self.tool_diameter_probe_mode_3012.setText('0')
 
     def on_tool_diameter_offset_Btn_clicked(self):
         if self.tool_diameter_offset_Btn.isChecked():
-            self.tool_diameter_offset_mode.setText('1')
+            self.tool_diameter_offset_mode_3011.setText('1')
         else:
-            self.tool_diameter_offset_mode.setText('0')
+            self.tool_diameter_offset_mode_3011.setText('0')
 
     @Slot(QAbstractButton)
     def on_xycalbtnGroup_buttonClicked(self, button):
