@@ -13189,7 +13189,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::East</enum>
               </property>
               <property name="currentIndex">
-               <number>1</number>
+               <number>0</number>
               </property>
               <property name="elideMode">
                <enum>Qt::ElideNone</enum>
@@ -23012,33 +23012,48 @@ QPushButton:checked {
                         <string notr="true">background-color: grey;</string>
                        </property>
                        <property name="currentIndex">
-                        <number>1</number>
+                        <number>0</number>
                        </property>
                        <widget class="QWidget" name="Page1">
                         <widget class="QLabel" name="label_12">
                          <property name="geometry">
                           <rect>
-                           <x>40</x>
+                           <x>50</x>
                            <y>30</y>
-                           <width>400</width>
-                           <height>260</height>
+                           <width>500</width>
+                           <height>261</height>
                           </rect>
+                         </property>
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
                          </property>
                          <property name="maximumSize">
                           <size>
-                           <width>400</width>
-                           <height>260</height>
+                           <width>500</width>
+                           <height>450</height>
                           </size>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">color: white;
-font: 14pt &quot;Bebas Kai&quot;;</string>
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;TOOL TOUCH POSITION:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TO SET THE TOOL TOUCH POSITION, JOG THE MILL SO THAT THE SPINDLE CENTERLINE IS CONCENTRIC TO THE TOOL SETTER TOUCH PLATFORM. &lt;/p&gt;&lt;p&gt;MOVE THE Z AXIS TO THE THE HOMED (ASSUMES Z0.0000 IS THE FULL UP POSITION), AND PRESS THE &amp;quot;SET TOOL TOUCH OFF POSITION&amp;quot; BUTTON. &lt;/p&gt;&lt;p&gt;THIS RECORDS AND STORES THE CURRENT MACHINE COORDINATES AND DEFINES WHERE THE MACHINE WILL MOVE TO WHEN A TOOL TOUCH OFF CALL IS COMMANDED.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -23049,7 +23064,47 @@ font: 14pt &quot;Bebas Kai&quot;;</string>
                            <x>50</x>
                            <y>30</y>
                            <width>500</width>
-                           <height>400</height>
+                           <height>421</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>500</width>
+                           <height>430</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;FAST PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;FAST PROBE FEEDRATE IS THE SPEED AT WHICH THE TOOL INITIALLY SEARCHES FOR THE TOOL SETTER IN THE Z MINUS DIRECTION. THIS PARAMETER ENTRY SHOULD BE SET AT A SPEED THAT IS NOT TOO FAST THAT THE TRIGGER EVENT AND SUBSEQUENT MOTION CAUSES THE TOOL TO OVER SHOOT THE TRIGGER POINT AND CAUSE DAMAGE TO THE TOOL SETTER. START WITH A CONSERVATIVE ENTRY HERE, PERHAPS 10IPM AND WORK YOUR WAY TO A COMFORTABLE SPEED.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;SLOW PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SLOW PROBE FEED IS THE SECONDARY PROBING SPEED. THIS SPEED WILL BE MUCH SLOWER FOR A MORE CONSISTENT TOUCH RESULT. IF THIS PARAMETER IS LEFT SET AT ZERO, THE SUBROUTINE WILL SLIP THE SECONDARY PROBE EVENT AND USE THE FAST PROBE EVENT ONLY.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Traverse Feedrate:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Traversing feedrate for non probing event moves.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
+                          <number>-1</number>
+                         </property>
+                        </widget>
+                       </widget>
+                       <widget class="QWidget" name="Page3">
+                        <widget class="QLabel" name="label_15">
+                         <property name="geometry">
+                          <rect>
+                           <x>50</x>
+                           <y>30</y>
+                           <width>500</width>
+                           <height>141</height>
                           </rect>
                          </property>
                          <property name="maximumSize">
@@ -23069,7 +23124,7 @@ font: 14pt &quot;Bebas Kai&quot;;</string>
 }</string>
                          </property>
                          <property name="text">
-                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;FAST PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;FAST PROBE FEEDRATE IS THE SPEED AT WHICH THE TOOL INITIALLY SEARCHES FOR THE TOOL SETTER IN THE Z MINUS DIRECTION. THIS PARAMETER ENTRY SHOULD BE SET AT A SPEED THAT IS NOT TOO FAST THAT THE TRIGGER EVENT AND SUBSEQUENT MOTION CAUSES THE TOOL TO OVER SHOOT THE TRIGGER POINT AND CAUSE DAMAGE TO THE TOOL SETTER. START WITH A CONSERVATIVE ENTRY HERE, PERHAPS 10IPM AND WORK YOUR WAY TO A COMFORTABLE SPEED.&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;SLOW PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SLOW PROBE FEED IS THE SECONDARY PROBING SPEED. THIS SPEED WILL BE MUCH SLOWER FOR A MORE CONSISTENT TOUCH RESULT. IF THIS PARAMETER IS LEFT SET AT ZERO, THE SUBROUTINE WILL SLIP THE SECONDARY PROBE EVENT AND USE THE FAST PROBE EVENT ONLY.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;XYZ Max Travel:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Maximum distance the probing subroutine will allow travel before stopping with an error message letting you know the probe move failed to record a probe event.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23081,94 +23136,46 @@ font: 14pt &quot;Bebas Kai&quot;;</string>
                           <number>-1</number>
                          </property>
                         </widget>
-                        <widget class="QLabel" name="label_14">
+                       </widget>
+                       <widget class="QWidget" name="Page4">
+                        <widget class="QLabel" name="label_16">
                          <property name="geometry">
                           <rect>
-                           <x>710</x>
-                           <y>110</y>
-                           <width>191</width>
-                           <height>71</height>
+                           <x>50</x>
+                           <y>30</y>
+                           <width>500</width>
+                           <height>211</height>
                           </rect>
                          </property>
-                         <property name="pixmap">
-                          <pixmap resource="probe_basic.qrc">:/images/horizontal_dimensions_arrows_inside.png</pixmap>
-                         </property>
-                         <property name="scaledContents">
-                          <bool>true</bool>
-                         </property>
-                         <property name="margin">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                        <widget class="StatusLabel" name="statuslabel_27">
-                         <property name="geometry">
-                          <rect>
-                           <x>770</x>
-                           <y>110</y>
-                           <width>71</width>
-                           <height>30</height>
-                          </rect>
-                         </property>
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
+                         <property name="maximumSize">
+                          <size>
+                           <width>500</width>
+                           <height>400</height>
+                          </size>
                          </property>
                          <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: rgb(238, 238, 236);
-	font: 16pt &quot;Bebas Kai&quot;;
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                          </property>
                          <property name="text">
-                          <string>EXAMPLE</string>
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;RETRACT DISTANCE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The retract distance is the amount of travel the tool will move after contacting the probe and triggering a probe event.  if slow probe feedrate is non zero, a subsequent prove even will take place starting from the retracted distance above or to the side of the tool setter depending on the active probe modes.  the final resting position will be the retract distance above the tool setter contact plate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="rules" stdset="0">
-                          <string>[]</string>
-                         </property>
-                        </widget>
-                        <widget class="QLabel" name="label_51">
-                         <property name="geometry">
-                          <rect>
-                           <x>720</x>
-                           <y>180</y>
-                           <width>171</width>
-                           <height>151</height>
-                          </rect>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">image: url(:/images/tool_probe.png);</string>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="scaledContents">
+                         <property name="wordWrap">
                           <bool>true</bool>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
                          </property>
                          <property name="margin">
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>10</number>
+                          <number>-1</number>
                          </property>
                         </widget>
-                        <zorder>label_14</zorder>
-                        <zorder>statuslabel_27</zorder>
-                        <zorder>label_13</zorder>
-                        <zorder>label_51</zorder>
-                       </widget>
-                       <widget class="QWidget" name="Page3">
-                        <layout class="QHBoxLayout" name="horizontalLayout_185"/>
-                       </widget>
-                       <widget class="QWidget" name="Page4">
-                        <layout class="QHBoxLayout" name="horizontalLayout_186"/>
                        </widget>
                        <widget class="QWidget" name="Page_5">
                         <layout class="QHBoxLayout" name="horizontalLayout_19">
@@ -23207,7 +23214,7 @@ font: 14pt &quot;Bebas Kai&quot;;</string>
                            <widget class="Line" name="line_6">
                             <property name="geometry">
                              <rect>
-                              <x>150</x>
+                              <x>521</x>
                               <y>276</y>
                               <width>2</width>
                               <height>115</height>
@@ -23241,7 +23248,7 @@ border: none;
                            <widget class="Line" name="line_4">
                             <property name="geometry">
                              <rect>
-                              <x>140</x>
+                              <x>511</x>
                               <y>390</y>
                               <width>245</width>
                               <height>2</height>
@@ -23278,7 +23285,7 @@ border: none;
                            <widget class="QLabel" name="label_140">
                             <property name="geometry">
                              <rect>
-                              <x>200</x>
+                              <x>571</x>
                               <y>395</y>
                               <width>101</width>
                               <height>23</height>
@@ -23318,7 +23325,7 @@ color: white;
                            <widget class="QLabel" name="label_50">
                             <property name="geometry">
                              <rect>
-                              <x>390</x>
+                              <x>761</x>
                               <y>390</y>
                               <width>171</width>
                               <height>131</height>
@@ -23337,7 +23344,7 @@ color: white;
                            <widget class="QLabel" name="label_138">
                             <property name="geometry">
                              <rect>
-                              <x>205</x>
+                              <x>576</x>
                               <y>46</y>
                               <width>91</width>
                               <height>23</height>
@@ -23381,7 +23388,7 @@ background: transparent;
                            <widget class="QLabel" name="label_137">
                             <property name="geometry">
                              <rect>
-                              <x>190</x>
+                              <x>561</x>
                               <y>420</y>
                               <width>121</width>
                               <height>23</height>
@@ -23421,7 +23428,7 @@ color: white;
                            <widget class="QLabel" name="label_52">
                             <property name="geometry">
                              <rect>
-                              <x>330</x>
+                              <x>701</x>
                               <y>19</y>
                               <width>161</width>
                               <height>221</height>
@@ -23440,7 +23447,7 @@ color: white;
                            <widget class="Line" name="line_3">
                             <property name="geometry">
                              <rect>
-                              <x>140</x>
+                              <x>511</x>
                               <y>95</y>
                               <width>200</width>
                               <height>2</height>
@@ -23477,7 +23484,7 @@ border: none;
                            <widget class="QLabel" name="label_136">
                             <property name="geometry">
                              <rect>
-                              <x>81</x>
+                              <x>452</x>
                               <y>221</y>
                               <width>141</width>
                               <height>45</height>
@@ -23505,7 +23512,7 @@ color: white;
                              <number>0</number>
                             </property>
                             <property name="text">
-                             <string>SPINDLE ZERO IS
+                             <string>SPINDLE ZERO IN
 ABSOLUTE DISTANCE</string>
                             </property>
                             <property name="alignment">
@@ -23521,7 +23528,7 @@ ABSOLUTE DISTANCE</string>
                            <widget class="Line" name="line_5">
                             <property name="geometry">
                              <rect>
-                              <x>149</x>
+                              <x>520</x>
                               <y>96</y>
                               <width>2</width>
                               <height>115</height>
@@ -23555,7 +23562,7 @@ border: none;
                            <widget class="QLabel" name="label_139">
                             <property name="geometry">
                              <rect>
-                              <x>190</x>
+                              <x>561</x>
                               <y>70</y>
                               <width>121</width>
                               <height>23</height>
@@ -23595,30 +23602,115 @@ color: white;
                            <widget class="QLabel" name="label_7">
                             <property name="geometry">
                              <rect>
-                              <x>630</x>
-                              <y>20</y>
-                              <width>401</width>
-                              <height>281</height>
+                              <x>35</x>
+                              <y>21</y>
+                              <width>321</width>
+                              <height>361</height>
                              </rect>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">color: white;
-font: 14pt &quot;Bebas Kai&quot;;</string>
+                             <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
                             </property>
                             <property name="text">
-                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;SPINDLE ZERO:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;THE SPINDLE ZERO DISTANCE PARAMETER IS MEASURED FROM THE Z HOMED POSITION FROM THE REPEATABLE SPINDLE NOSE DOWN TO THE TOOL SETTER'S TRIGGERED HEIGHT. &lt;/p&gt;&lt;p&gt;THE PARAMETER ENTRY MUST BE A POSITIVE (ABSOLUTE) NUMBER. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;EXAMPLE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SPINDLE NOSE HOME = Z 0.0000&lt;/p&gt;&lt;p&gt;TOOL SETTER TRIGGER HEIGHT = Z -12.375&lt;/p&gt;&lt;p&gt;SPINDLE ZERO = 12.375&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;SPINDLE ZERO:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;THE SPINDLE ZERO DISTANCE PARAMETER IS MEASURED FROM THE Z HOMED POSITION FROM THE REPEATABLE SPINDLE NOSE DOWN TO THE TOOL SETTER'S TRIGGERED HEIGHT. &lt;/p&gt;&lt;p&gt;THE PARAMETER ENTRY MUST BE A POSITIVE (ABSOLUTE) NUMBER. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;EXAMPLE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SPINDLE NOSE HOME = Z 0.0000&lt;/p&gt;&lt;p&gt;TOOL SETTER TRIGGERed DISTANCE = Z -12.375&lt;/p&gt;&lt;p&gt;SPINDLE ZERO = 12.375&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                             </property>
                             <property name="wordWrap">
                              <bool>true</bool>
+                            </property>
+                            <property name="margin">
+                             <number>10</number>
                             </property>
                            </widget>
                           </widget>
                          </item>
                         </layout>
                        </widget>
-                       <widget class="QWidget" name="Page6"/>
+                       <widget class="QWidget" name="Page6">
+                        <widget class="QLabel" name="label_17">
+                         <property name="geometry">
+                          <rect>
+                           <x>50</x>
+                           <y>30</y>
+                           <width>500</width>
+                           <height>311</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>500</width>
+                           <height>400</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;tool diameter offset probe:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;when this feature is active, the probing function will offset the spindle centerline by the currently loaded tool's radius in order to ensure the tools edge contacts the center of the tool setter's contact platform.  this is useful for larger tools such as facemills and fly cutters or any other tool too large to correctly touch the tool setter during a centered tool too setter alignment.  note this feature is not currently persistent between shut downs.  use care when setting up the machine as this is configured for the tool to move to the left of the tool setter from the machine operators perspective view.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
+                          <number>-1</number>
+                         </property>
+                        </widget>
+                       </widget>
                        <widget class="QWidget" name="Page7">
-                        <layout class="QVBoxLayout" name="verticalLayout_75"/>
+                        <widget class="QLabel" name="label_18">
+                         <property name="geometry">
+                          <rect>
+                           <x>50</x>
+                           <y>30</y>
+                           <width>500</width>
+                           <height>151</height>
+                          </rect>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>500</width>
+                           <height>400</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel {
+    border-style: solid;
+    border-color: white;
+    border-width: 2px;
+    border-radius: 4px;
+    color: white;
+    font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;probe tool diameter:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;this probing function is a place holder and is not yet included in probe basic.  its function will be to probe the tool while spinning to set the tool's diameter in the tool table.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="wordWrap">
+                          <bool>true</bool>
+                         </property>
+                         <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
+                          <number>-1</number>
+                         </property>
+                        </widget>
                        </widget>
                       </widget>
                      </item>
@@ -38301,18 +38393,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probetabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
