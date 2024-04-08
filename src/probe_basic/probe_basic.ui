@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>7</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -13213,7 +13213,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::East</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>1</number>
               </property>
               <property name="elideMode">
                <enum>Qt::ElideNone</enum>
@@ -13257,12 +13257,14 @@ QTabBar::tab:only-one {
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>540</width>
+                    <width>530</width>
                     <height>16777215</height>
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true"/>
+                   <string notr="true">.QWidget {
+    background-color: #929695;;
+}</string>
                   </property>
                   <layout class="QVBoxLayout" name="verticalLayout_41">
                    <property name="topMargin">
@@ -13285,13 +13287,13 @@ QTabBar::tab:only-one {
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>27</height>
+                       <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>27</height>
+                       <height>30</height>
                       </size>
                      </property>
                      <property name="font">
@@ -13306,19 +13308,22 @@ QTabBar::tab:only-one {
                      <property name="styleSheet">
                       <string notr="true">QLabel{
     border-style: solid;
-    border-color: black;
+    border-color: rgb(176, 179, 172);
     border-width: 2px;
     border-radius: 5px;
-    color: rgb(238, 238, 236);
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+    color: white;
+    background: rgb(90, 90, 90);
 	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="text">
-                      <string> WORK OFFSETS</string>
+                      <string>WORK OFFSETS</string>
                      </property>
                      <property name="alignment">
                       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="indent">
+                      <number>10</number>
                      </property>
                     </widget>
                    </item>
@@ -13900,13 +13905,13 @@ QTabBar::tab:only-one {
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
-                       <height>27</height>
+                       <height>30</height>
                       </size>
                      </property>
                      <property name="maximumSize">
                       <size>
                        <width>16777215</width>
-                       <height>27</height>
+                       <height>30</height>
                       </size>
                      </property>
                      <property name="font">
@@ -13921,16 +13926,19 @@ QTabBar::tab:only-one {
                      <property name="styleSheet">
                       <string notr="true">QLabel{
     border-style: solid;
-    border-color: black;
+    border-color: rgb(176, 179, 172);
     border-width: 2px;
     border-radius: 5px;
-    color: rgb(238, 238, 236);
-	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+    color: white;
+    background: rgb(90, 90, 90);
 	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
                      </property>
                      <property name="text">
-                      <string> Probing Parameters</string>
+                      <string>Probing Parameters</string>
+                     </property>
+                     <property name="indent">
+                      <number>10</number>
                      </property>
                     </widget>
                    </item>
@@ -14979,6 +14987,9 @@ color: white;
                         </property>
                         <property name="text">
                          <string> Probe Results</string>
+                        </property>
+                        <property name="indent">
+                         <number>6</number>
                         </property>
                        </widget>
                       </item>
@@ -21050,31 +21061,112 @@ background: transparent;
                   </property>
                   <property name="minimumSize">
                    <size>
-                    <width>512</width>
+                    <width>530</width>
                     <height>0</height>
                    </size>
                   </property>
                   <property name="maximumSize">
                    <size>
-                    <width>512</width>
+                    <width>530</width>
                     <height>16777215</height>
                    </size>
                   </property>
+                  <property name="styleSheet">
+                   <string notr="true">.QWidget {
+    background-color: #929695;;
+}</string>
+                  </property>
                   <layout class="QVBoxLayout" name="verticalLayout_48">
                    <property name="spacing">
-                    <number>6</number>
+                    <number>9</number>
                    </property>
                    <property name="leftMargin">
                     <number>9</number>
                    </property>
                    <property name="topMargin">
-                    <number>9</number>
+                    <number>5</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>6</number>
                    </property>
                    <property name="bottomMargin">
-                    <number>12</number>
+                    <number>9</number>
                    </property>
                    <item>
-                    <widget class="QFrame" name="frame_52">
+                    <widget class="QLabel" name="work_column_header_11">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>30</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>27</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(176, 179, 172);
+    border-width: 2px;
+    border-radius: 5px;
+    color: white;
+    background: rgb(90, 90, 90);
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <property name="frameShape">
+                      <enum>QFrame::NoFrame</enum>
+                     </property>
+                     <property name="text">
+                      <string>TOOL SETTER PARAMETERS</string>
+                     </property>
+                     <property name="alignment">
+                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
+                     </property>
+                     <property name="indent">
+                      <number>10</number>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_76" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>6</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>6</height>
+                      </size>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_52" native="true">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>0</horstretch>
@@ -21095,100 +21187,33 @@ background: transparent;
                      </property>
                      <property name="styleSheet">
                       <string notr="true">.QFrame{
-    background-color: rgb(51, 57, 59);
+    background-color: #929695;
 }
 </string>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_72">
                       <property name="spacing">
-                       <number>9</number>
+                       <number>6</number>
                       </property>
                       <property name="leftMargin">
-                       <number>12</number>
+                       <number>0</number>
                       </property>
                       <property name="topMargin">
-                       <number>9</number>
+                       <number>0</number>
                       </property>
                       <property name="rightMargin">
-                       <number>12</number>
+                       <number>0</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>14</number>
+                       <number>0</number>
                       </property>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_189">
-                        <property name="leftMargin">
-                         <number>2</number>
-                        </property>
-                        <property name="topMargin">
-                         <number>2</number>
-                        </property>
-                        <property name="rightMargin">
-                         <number>2</number>
-                        </property>
-                        <property name="bottomMargin">
-                         <number>2</number>
-                        </property>
-                        <item>
-                         <widget class="QLabel" name="work_column_header_11">
-                          <property name="enabled">
-                           <bool>true</bool>
-                          </property>
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>0</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>35</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-    border-style: solid;
-    border-color: rgb(176, 179, 172);
-    border-width: 2px;
-    border-radius: 5px;
-    color: white;
-    background: rgb(90, 90, 90);
-	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
-                          </property>
-                          <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
-                          </property>
-                          <property name="text">
-                           <string>TOOL SETTER PARAMETERS</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                          <property name="wordWrap">
-                           <bool>true</bool>
-                          </property>
-                          <property name="indent">
-                           <number>0</number>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_179">
                         <property name="spacing">
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -21236,6 +21261,22 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
+                         <widget class="QWidget" name="widget_72" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>20</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>20</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <widget class="VCPSettingsLineEdit" name="x_tool_change_position_2">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -21245,14 +21286,14 @@ padding-left: 5px;
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="focusPolicy">
@@ -21343,13 +21384,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -21391,7 +21432,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -21439,6 +21480,22 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
+                         <widget class="QWidget" name="widget_74" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>20</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>20</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <widget class="VCPSettingsLineEdit" name="y_tool_change_position_2">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -21448,14 +21505,14 @@ padding-left: 5px;
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="focusPolicy">
@@ -21546,13 +21603,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -21594,7 +21651,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -21642,6 +21699,22 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
+                         <widget class="QWidget" name="widget_75" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>20</width>
+                            <height>0</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>20</width>
+                            <height>16777215</height>
+                           </size>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
                          <widget class="VCPSettingsLineEdit" name="z_tool_change_position_2">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -21651,14 +21724,14 @@ padding-left: 5px;
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>130</width>
-                            <height>38</height>
+                            <width>110</width>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="focusPolicy">
@@ -21749,13 +21822,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -21797,7 +21870,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -21818,13 +21891,13 @@ color: white;
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>0</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>170</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
@@ -21929,13 +22002,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -21977,7 +22050,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -22042,13 +22115,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -22090,7 +22163,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -22102,9 +22175,9 @@ color: white;
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="tool_diameter_probe_Btn">
+                         <widget class="VCPSettingsPushButton" name="tool_diameter_offset_Btn">
                           <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
@@ -22121,27 +22194,19 @@ color: white;
                             <height>38</height>
                            </size>
                           </property>
-                          <property name="focusPolicy">
-                           <enum>Qt::NoFocus</enum>
-                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QPushButton{
-    font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                           <string notr="true">font: 14pt &quot;Bebas Kai&quot;</string>
                           </property>
                           <property name="text">
-                           <string>TOOL DIAM PROBE</string>
+                           <string>TOOL DIAM OFFSET</string>
                           </property>
-                          <property name="checkable">
-                           <bool>true</bool>
-                          </property>
-                          <property name="checkedAction" stdset="0">
-                           <string>1</string>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.diameter-offset</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="tool_diameter_probe_mode_3012">
+                         <widget class="QLineEdit" name="tool_diameter_offset_mode_3011">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -22151,13 +22216,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>70</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>70</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="focusPolicy">
@@ -22234,13 +22299,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -22282,7 +22347,7 @@ color: white;
                          <number>12</number>
                         </property>
                         <property name="leftMargin">
-                         <number>6</number>
+                         <number>12</number>
                         </property>
                         <property name="topMargin">
                          <number>0</number>
@@ -22294,9 +22359,9 @@ color: white;
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="QPushButton" name="tool_diameter_offset_Btn">
+                         <widget class="VCPSettingsPushButton" name="tool_diameter_probe_Btn">
                           <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
@@ -22313,30 +22378,19 @@ color: white;
                             <height>38</height>
                            </size>
                           </property>
-                          <property name="focusPolicy">
-                           <enum>Qt::NoFocus</enum>
-                          </property>
-                          <property name="statusTip">
-                           <string>Tool Diameter Offset: offsets the X Axis during touch off by the tool's radius distance, this puts the tool edge over the center of the tool setter.  Very useful for touching off Facemills!</string>
-                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QPushButton{
-    font: 14pt &quot;Bebas Kai&quot;;
-}</string>
+                           <string notr="true">font: 14pt &quot;Bebas Kai&quot;;</string>
                           </property>
                           <property name="text">
-                           <string>TOOL DIAM OFFSET</string>
+                           <string>TOOL DIAM PROBE</string>
                           </property>
-                          <property name="checkable">
-                           <bool>true</bool>
-                          </property>
-                          <property name="checkedAction" stdset="0">
-                           <string>1</string>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.diameter-probe</string>
                           </property>
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="tool_diameter_offset_mode_3011">
+                         <widget class="QLineEdit" name="tool_diameter_probe_mode_3012">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -22346,13 +22400,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>70</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>70</width>
-                            <height>38</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="focusPolicy">
@@ -22429,13 +22483,13 @@ color: white;
                           <property name="minimumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>100</width>
-                            <height>35</height>
+                            <height>31</height>
                            </size>
                           </property>
                           <property name="font">
@@ -22470,6 +22524,28 @@ color: white;
                          </widget>
                         </item>
                        </layout>
+                      </item>
+                      <item>
+                       <widget class="QWidget" name="widget_68" native="true">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>1</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>20</height>
+                         </size>
+                        </property>
+                       </widget>
                       </item>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_184">
@@ -22514,7 +22590,7 @@ color: white;
 }</string>
                           </property>
                           <property name="text">
-                           <string>UPDATE PARAMETERS</string>
+                           <string>UPDATE TOOL SETTER PARAMETERS</string>
                           </property>
                           <property name="filename" stdset="0">
                            <string>tool_setter_param_update.ngc</string>
@@ -22527,7 +22603,49 @@ color: white;
                      <zorder></zorder>
                      <zorder></zorder>
                      <zorder></zorder>
+                     <zorder>widget_68</zorder>
                      <zorder></zorder>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QWidget" name="widget_69" native="true">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                       <horstretch>0</horstretch>
+                       <verstretch>1</verstretch>
+                      </sizepolicy>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="MDIEntry" name="mdi_entry_box_7">
+                     <property name="minimumSize">
+                      <size>
+                       <width>0</width>
+                       <height>42</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
+                       <height>42</height>
+                      </size>
+                     </property>
+                     <property name="font">
+                      <font>
+                       <family>Bebas Kai</family>
+                       <pointsize>15</pointsize>
+                       <weight>50</weight>
+                       <italic>false</italic>
+                       <bold>false</bold>
+                      </font>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::ClickFocus</enum>
+                     </property>
+                     <property name="placeholderText">
+                      <string>MDI</string>
+                     </property>
                     </widget>
                    </item>
                   </layout>
@@ -22640,7 +22758,7 @@ QPushButton:checked {
                        <widget class="QPushButton" name="setter_spindle_zero">
                         <property name="minimumSize">
                          <size>
-                          <width>126</width>
+                          <width>150</width>
                           <height>37</height>
                          </size>
                         </property>
@@ -22660,7 +22778,7 @@ QPushButton:checked {
     border-bottom-width: 2px;
     border-right-width: 1px;
     border-left-width: 1px;
-    min-width: 10ex;
+    min-width: 12ex;
     min-height: 25;
     padding: 2px;
     border-top-left-radius: 0px;
@@ -22699,7 +22817,7 @@ QPushButton:checked {
                        <widget class="QPushButton" name="setter_slow_fr">
                         <property name="minimumSize">
                          <size>
-                          <width>126</width>
+                          <width>174</width>
                           <height>37</height>
                          </size>
                         </property>
@@ -22719,7 +22837,7 @@ QPushButton:checked {
     border-bottom-width: 2px;
     border-right-width: 1px;
     border-left-width: 1px;
-    min-width: 10ex;
+    min-width: 14ex;
     min-height: 25;
     padding: 2px;
     border-top-left-radius: 0px;
@@ -38288,38 +38406,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_diameter_offset_mode_3011</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>270</x>
-     <y>563</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>508</x>
-     <y>627</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_probe_mode_3012</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>270</x>
-     <y>498</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>494</x>
-     <y>627</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>activate_programmable_coolant_3000</sender>
    <signal>editingFinished()</signal>
    <receiver>update_programmable_coolant_param</receiver>
@@ -38384,114 +38470,34 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>spindle_zero_height_3010</sender>
-   <signal>editingFinished()</signal>
+   <sender>tool_diameter_offset_mode_3011</sender>
+   <signal>textChanged(QString)</signal>
    <receiver>subcallbutton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>446</x>
-     <y>163</y>
+     <x>249</x>
+     <y>361</y>
     </hint>
     <hint type="destinationlabel">
-     <x>451</x>
-     <y>592</y>
+     <x>252</x>
+     <y>463</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>slow_probe_fr_3005</sender>
-   <signal>editingFinished()</signal>
+   <sender>tool_diameter_probe_mode_3012</sender>
+   <signal>textChanged(QString)</signal>
    <receiver>subcallbutton</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>433</x>
-     <y>222</y>
+     <x>221</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>419</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fast_probe_fr_3004</sender>
-   <signal>editingFinished()</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>428</x>
-     <y>286</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>371</x>
-     <y>593</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>traverse_fr_3006</sender>
-   <signal>editingFinished()</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>434</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>396</x>
-     <y>600</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_max_travel_3007</sender>
-   <signal>editingFinished()</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>436</x>
-     <y>413</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>434</x>
-     <y>591</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xy_max_travel_3008</sender>
-   <signal>editingFinished()</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>474</x>
-     <y>475</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>464</x>
-     <y>594</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>retract_distance_3009</sender>
-   <signal>editingFinished()</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>446</x>
-     <y>544</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>445</x>
-     <y>598</y>
+     <x>216</x>
+     <y>470</y>
     </hint>
    </hints>
   </connection>
@@ -38516,16 +38522,16 @@ font: 11pt bebas kai;
  <buttongroups>
   <buttongroup name="probemodeGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="settertabGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
