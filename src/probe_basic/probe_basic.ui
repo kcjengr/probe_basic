@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1925</width>
-    <height>1101</height>
+    <width>1920</width>
+    <height>1015</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -5738,8 +5738,8 @@ QTabWidget QTabBar::tab {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>240</width>
-                          <height>811</height>
+                          <width>80</width>
+                          <height>815</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_70">
@@ -7930,7 +7930,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>0</red>
                            <green>0</green>
                            <blue>0</blue>
@@ -8013,7 +8013,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>0</red>
                            <green>0</green>
                            <blue>0</blue>
@@ -8096,7 +8096,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>0</red>
                            <green>0</green>
                            <blue>0</blue>
@@ -8532,7 +8532,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>255</red>
                            <green>255</green>
                            <blue>255</blue>
@@ -8606,7 +8606,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>255</red>
                            <green>255</green>
                            <blue>255</blue>
@@ -8680,7 +8680,7 @@ QPushButton:checked {
                         </colorrole>
                         <colorrole role="PlaceholderText">
                          <brush brushstyle="SolidPattern">
-                          <color alpha="255">
+                          <color alpha="128">
                            <red>255</red>
                            <green>255</green>
                            <blue>255</blue>
@@ -9840,7 +9840,7 @@ QPushButton:checked {
                          </colorrole>
                          <colorrole role="PlaceholderText">
                           <brush brushstyle="SolidPattern">
-                           <color alpha="255">
+                           <color alpha="128">
                             <red>0</red>
                             <green>0</green>
                             <blue>0</blue>
@@ -9923,7 +9923,7 @@ QPushButton:checked {
                          </colorrole>
                          <colorrole role="PlaceholderText">
                           <brush brushstyle="SolidPattern">
-                           <color alpha="255">
+                           <color alpha="128">
                             <red>0</red>
                             <green>0</green>
                             <blue>0</blue>
@@ -10006,7 +10006,7 @@ QPushButton:checked {
                          </colorrole>
                          <colorrole role="PlaceholderText">
                           <brush brushstyle="SolidPattern">
-                           <color alpha="255">
+                           <color alpha="128">
                             <red>0</red>
                             <green>0</green>
                             <blue>0</blue>
@@ -22206,42 +22206,9 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="tool_diameter_offset_mode_3011">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="acceptDrops">
-                           <bool>true</bool>
-                          </property>
-                          <property name="text">
-                           <string>0</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                          <property name="readOnly">
-                           <bool>true</bool>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.tool-diam-offset-setting</string>
-                          </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.0f}</string>
+                         <widget class="VCPLineEdit" name="lineedit">
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-offset&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                          </widget>
                         </item>
@@ -22390,39 +22357,9 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="tool_diameter_probe_mode_3012">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="text">
-                           <string>0</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignCenter</set>
-                          </property>
-                          <property name="readOnly">
-                           <bool>true</bool>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.tool-diam-probing</string>
-                          </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.0f}</string>
+                         <widget class="VCPLineEdit" name="lineedit_2">
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-probe&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                          </widget>
                         </item>
@@ -29807,7 +29744,7 @@ border-right-width:1px;
                    </colorrole>
                    <colorrole role="PlaceholderText">
                     <brush brushstyle="SolidPattern">
-                     <color alpha="255">
+                     <color alpha="128">
                       <red>0</red>
                       <green>0</green>
                       <blue>0</blue>
@@ -29890,7 +29827,7 @@ border-right-width:1px;
                    </colorrole>
                    <colorrole role="PlaceholderText">
                     <brush brushstyle="SolidPattern">
-                     <color alpha="255">
+                     <color alpha="128">
                       <red>0</red>
                       <green>0</green>
                       <blue>0</blue>
@@ -29973,7 +29910,7 @@ border-right-width:1px;
                    </colorrole>
                    <colorrole role="PlaceholderText">
                     <brush brushstyle="SolidPattern">
-                     <color alpha="255">
+                     <color alpha="128">
                       <red>0</red>
                       <green>0</green>
                       <blue>0</blue>
@@ -37075,7 +37012,7 @@ border-radius: 1px;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1925</width>
+     <width>1920</width>
      <height>26</height>
     </rect>
    </property>
@@ -38466,38 +38403,6 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
-  <connection>
-   <sender>tool_diameter_probe_mode_3012</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>221</x>
-     <y>408</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>223</x>
-     <y>470</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_offset_mode_3011</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>233</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>237</x>
-     <y>463</y>
-    </hint>
-   </hints>
-  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -38517,18 +38422,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
