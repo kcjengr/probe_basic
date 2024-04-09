@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>7</number>
+           <number>5</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -22206,7 +22206,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="tool_diameter_offset_mode_3011">
+                         <widget class="VCPSettingsLineEdit" name="tool_diameter_offset_mode_3011">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -22225,23 +22225,23 @@ color: white;
                             <height>31</height>
                            </size>
                           </property>
-                          <property name="focusPolicy">
-                           <enum>Qt::ClickFocus</enum>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
+                          <property name="acceptDrops">
+                           <bool>true</bool>
                           </property>
                           <property name="text">
                            <string>0</string>
-                          </property>
-                          <property name="frame">
-                           <bool>false</bool>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
                           </property>
                           <property name="readOnly">
                            <bool>true</bool>
+                          </property>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.tool-diam-offset-setting</string>
+                          </property>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.0f}</string>
                           </property>
                          </widget>
                         </item>
@@ -22390,7 +22390,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLineEdit" name="tool_diameter_probe_mode_3012">
+                         <widget class="VCPSettingsLineEdit" name="tool_diameter_probe_mode_3012">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -22409,23 +22409,20 @@ color: white;
                             <height>31</height>
                            </size>
                           </property>
-                          <property name="focusPolicy">
-                           <enum>Qt::ClickFocus</enum>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true"/>
-                          </property>
                           <property name="text">
                            <string>0</string>
-                          </property>
-                          <property name="frame">
-                           <bool>false</bool>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
                           </property>
                           <property name="readOnly">
                            <bool>true</bool>
+                          </property>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.tool-diam-probing</string>
+                          </property>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.0f}</string>
                           </property>
                          </widget>
                         </item>
@@ -38470,22 +38467,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_diameter_offset_mode_3011</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>249</x>
-     <y>361</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>252</x>
-     <y>463</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>tool_diameter_probe_mode_3012</sender>
    <signal>textChanged(QString)</signal>
    <receiver>subcallbutton</receiver>
@@ -38493,11 +38474,27 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>221</x>
-     <y>417</y>
+     <y>408</y>
     </hint>
     <hint type="destinationlabel">
-     <x>216</x>
+     <x>223</x>
      <y>470</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_diameter_offset_mode_3011</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>subcallbutton</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>233</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>463</y>
     </hint>
    </hints>
   </connection>
@@ -38520,18 +38517,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="settertabGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
