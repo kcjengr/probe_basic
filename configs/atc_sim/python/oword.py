@@ -33,7 +33,7 @@ def pocket_content(self, pocket_num):
     index = int(pocket_num)
     tool = storage.get("pockets")[index]
 
-    LOG.debug(f"Pocket Numer {pocket_num} contains tool {tool}")
+    LOG.debug(f"Pocket Number {pocket_num} contains tool {tool}")
 
     return float(tool)
 
@@ -42,7 +42,7 @@ def spindle_spindle(self, spindle_num):
     storage = _read_store_file()
     tool = int(storage.get("spindle"))
 
-    LOG.debug(f"Spindle Numer {spindle_num} contains tool {tool}")
+    LOG.debug(f"Spindle Number {spindle_num} contains tool {tool}")
 
     return float(tool)
 
