@@ -21,6 +21,9 @@
 
 # from pprint import pprint
 
+import sys
+sys.path.insert(0,'/home/py3dev/dev/qtpyvcp/src')
+
 from utils import _read_store_file, _store_pocket, _store_spindle
 
 from qtpyvcp.utilities import logger
