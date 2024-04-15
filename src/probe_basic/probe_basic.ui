@@ -5738,7 +5738,7 @@ QTabWidget QTabBar::tab {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>240</width>
+                          <width>80</width>
                           <height>811</height>
                          </rect>
                         </property>
@@ -23408,7 +23408,7 @@ border: none;
                               <x>660</x>
                               <y>21</y>
                               <width>321</width>
-                              <height>361</height>
+                              <height>391</height>
                              </rect>
                             </property>
                             <property name="styleSheet">
@@ -23419,16 +23419,23 @@ border: none;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                             </property>
                             <property name="text">
                              <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;SPINDLE ZERO:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;THE SPINDLE ZERO DISTANCE PARAMETER IS MEASURED FROM THE Z HOMED POSITION FROM THE REPEATABLE SPINDLE NOSE DOWN TO THE TOOL SETTER'S TRIGGERED HEIGHT. &lt;/p&gt;&lt;p&gt;THE PARAMETER ENTRY MUST BE A POSITIVE (ABSOLUTE) NUMBER. &lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;EXAMPLE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SPINDLE NOSE HOME = Z 0.0000&lt;/p&gt;&lt;p&gt;TOOL SETTER TRIGGERed DISTANCE = Z -12.375&lt;/p&gt;&lt;p&gt;SPINDLE ZERO = 12.375&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                             </property>
+                            <property name="alignment">
+                             <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                            </property>
                             <property name="wordWrap">
                              <bool>true</bool>
                             </property>
                             <property name="margin">
-                             <number>12</number>
+                             <number>10</number>
+                            </property>
+                            <property name="indent">
+                             <number>10</number>
                             </property>
                            </widget>
                            <widget class="Line" name="line_9">
@@ -23687,15 +23694,22 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;TOOL TOUCH POSITION:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;TO SET THE TOOL TOUCH POSITION, JOG THE MILL SO THAT THE SPINDLE CENTERLINE IS CONCENTRIC TO THE TOOL SETTER TOUCH PLATFORM. &lt;/p&gt;&lt;p&gt;MOVE THE Z AXIS TO THE THE HOMED (ASSUMES Z0.0000 IS THE FULL UP POSITION), AND PRESS THE &amp;quot;SET TOOL TOUCH OFF POSITION&amp;quot; BUTTON. &lt;/p&gt;&lt;p&gt;THIS RECORDS AND STORES THE CURRENT MACHINE COORDINATES AND DEFINES WHERE THE MACHINE WILL MOVE TO WHEN A TOOL TOUCH OFF CALL IS COMMANDED.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                          </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                         </property>
                          <property name="wordWrap">
                           <bool>true</bool>
                          </property>
                          <property name="margin">
+                          <number>10</number>
+                         </property>
+                         <property name="indent">
                           <number>10</number>
                          </property>
                         </widget>
@@ -23707,13 +23721,13 @@ color: white;
                            <x>50</x>
                            <y>30</y>
                            <width>500</width>
-                           <height>421</height>
+                           <height>450</height>
                           </rect>
                          </property>
                          <property name="maximumSize">
                           <size>
                            <width>500</width>
-                           <height>430</height>
+                           <height>450</height>
                           </size>
                          </property>
                          <property name="styleSheet">
@@ -23724,10 +23738,14 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;FAST PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;FAST PROBE FEEDRATE IS THE SPEED AT WHICH THE TOOL INITIALLY SEARCHES FOR THE TOOL SETTER IN THE Z MINUS DIRECTION. THIS PARAMETER ENTRY SHOULD BE SET AT A SPEED THAT IS NOT TOO FAST THAT THE TRIGGER EVENT AND SUBSEQUENT MOTION CAUSES THE TOOL TO OVER SHOOT THE TRIGGER POINT AND CAUSE DAMAGE TO THE TOOL SETTER. START WITH A CONSERVATIVE ENTRY HERE, PERHAPS 10IPM AND WORK YOUR WAY TO A COMFORTABLE SPEED.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;SLOW PROBE FEEDRATE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;SLOW PROBE FEED IS THE SECONDARY PROBING SPEED. THIS SPEED WILL BE MUCH SLOWER FOR A MORE CONSISTENT TOUCH RESULT. IF THIS PARAMETER IS LEFT SET AT ZERO, THE SUBROUTINE WILL SLIP THE SECONDARY PROBE EVENT AND USE THE FAST PROBE EVENT ONLY.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;Traverse Feedrate:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Traversing feedrate for non probing event moves.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23736,7 +23754,7 @@ color: white;
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>-1</number>
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -23747,7 +23765,7 @@ color: white;
                            <x>50</x>
                            <y>30</y>
                            <width>500</width>
-                           <height>141</height>
+                           <height>151</height>
                           </rect>
                          </property>
                          <property name="maximumSize">
@@ -23764,10 +23782,14 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;XYZ Max Travel:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Maximum distance the probing subroutine will allow travel before stopping with an error message letting you know the probe move failed to record a probe event.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23776,7 +23798,7 @@ color: white;
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>-1</number>
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -23787,7 +23809,7 @@ color: white;
                            <x>50</x>
                            <y>30</y>
                            <width>500</width>
-                           <height>211</height>
+                           <height>241</height>
                           </rect>
                          </property>
                          <property name="maximumSize">
@@ -23804,10 +23826,14 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;RETRACT DISTANCE:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;The retract distance is the amount of travel the tool will move after contacting the probe and triggering a probe event.  if slow probe feedrate is non zero, a subsequent prove even will take place starting from the retracted distance above or to the side of the tool setter depending on the active probe modes.  the final resting position will be the retract distance above the tool setter contact plate.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23816,7 +23842,7 @@ color: white;
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>-1</number>
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -23844,10 +23870,14 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;tool diameter offset probe:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;when this feature is active, the probing function will offset the spindle centerline by the currently loaded tool's radius in order to ensure the tools edge contacts the center of the tool setter's contact platform.  this is useful for larger tools such as facemills and fly cutters or any other tool too large to correctly touch the tool setter during a centered tool too setter alignment.  note this feature is not currently persistent between shut downs.  use care when setting up the machine as this is configured for the tool to move to the left of the tool setter from the machine operators perspective view.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23856,7 +23886,7 @@ color: white;
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>-1</number>
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -23884,10 +23914,14 @@ color: white;
     border-radius: 4px;
     color: white;
     font: 14pt &quot;Bebas Kai&quot;;
+    padding-right: 10px;
 }</string>
                          </property>
                          <property name="text">
                           <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; text-decoration: underline;&quot;&gt;probe tool diameter:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;this probing function is a place holder and is not yet included in probe basic.  its function will be to probe the tool while spinning to set the tool's diameter in the tool table.&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                          </property>
                          <property name="wordWrap">
                           <bool>true</bool>
@@ -23896,7 +23930,7 @@ color: white;
                           <number>10</number>
                          </property>
                          <property name="indent">
-                          <number>-1</number>
+                          <number>10</number>
                          </property>
                         </widget>
                        </widget>
@@ -38503,17 +38537,17 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="settertabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
