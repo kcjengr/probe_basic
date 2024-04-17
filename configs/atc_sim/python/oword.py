@@ -21,14 +21,14 @@
 
 # from pprint import pprint
 
-import sys
-sys.path.insert(0,'/home/py3dev/dev/qtpyvcp/src')
-
+from urllib3 import PoolManager
 from utils import _read_store_file, _store_pocket, _store_spindle
 
 from qtpyvcp.utilities import logger
 
+
 LOG = logger.getLogger(__name__)
+HTTP = PoolManager()
 
 
 def pocket_content(self, pocket_num):
@@ -56,6 +56,34 @@ def store_spindle(self, tool):
 
 def store_pocket(self, pocket, tool):
     _store_pocket(pocket, tool)
+
+
+def atc_rotate(self, steps, direction):
+    # curl http://127.0.0.1:5002/atc\?mode\=spin\&steps\=5\&direction\=cw
+
+    r = HTTP.request("GET", f"http://127.0.0.1:5002/atc", fields={"mode": "spin", "steps": steps, "direction": direction})
+
+
+def atc_store(self, pocket, tool):
+    # curl http://127.0.0.1:5002/atc\?mode\=message\&message\=hola
+
+    r = HTTP.request("GET", f"http://127.0.0.1:5002/atc", fields={"mode": "store", "pocket": pocket, "tool": tool})
+
+
+def atc_message(self, message):
+    # curl http://127.0.0.1:5002/atc\?mode\=store\&pocket\=5\&tool\=7
+
+    display = " "
+
+    if int(message) == 1:
+        display = "UN REFERENCED"
+    elif int(message) == 2:
+        display = "REFERENCING"
+    elif int(message) == 3:
+        display = " "
+
+    r = HTTP.request("GET", f"http://127.0.0.1:5002/atc", fields={"mode": "message", "message": display})
+
 
 
 # def toolparams(self, *args):
