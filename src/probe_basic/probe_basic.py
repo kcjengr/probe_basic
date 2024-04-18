@@ -51,7 +51,7 @@ class ProbeBasic(VCPMainWindow):
         
         else:
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
-        
+    
         self.load_user_tabs()
 
     def load_user_tabs(self):
@@ -136,17 +136,17 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.wco_rotation.setText('0')
 
-    def on_tool_diameter_probe_Btn_clicked(self):
-        if self.tool_diameter_probe_Btn.isChecked():
-            self.tool_diameter_probe_mode_3012.setText('1')
-        else:
-            self.tool_diameter_probe_mode_3012.setText('0')
-
     def on_tool_diameter_offset_Btn_clicked(self):
         if self.tool_diameter_offset_Btn.isChecked():
             self.tool_diameter_offset_mode_3011.setText('1')
         else:
             self.tool_diameter_offset_mode_3011.setText('0')
+
+    def on_tool_diameter_probe_Btn_clicked(self):
+        if self.tool_diameter_probe_Btn.isChecked():
+            self.tool_diameter_probe_mode_3012.setText('1')
+        else:
+            self.tool_diameter_probe_mode_3012.setText('0')
 
     @Slot(QAbstractButton)
     def on_xycalbtnGroup_buttonClicked(self, button):

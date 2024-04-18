@@ -11,6 +11,7 @@ o<tool_touch_off> sub
 #<spindle_zero_height> = #3010    (G53 distance from home to spindle nose triggering point on touch plate)
 #<tool_diameter_probe_mode> = #3011    (activates the tool diameter probe subroutine section)
 #<tool_diameter_offset_mode> = #3012    (activates the tool diameter offset position for probe subroutine section)
+#<tool_setter_offset_direction> = #3013    (sets tool setter offset direction to move tool)
 #<tool_diameter> = #5410    (current tool's diameter used for offseting probe position in x axis)
 
 G92.1    (Cancel G92 offset)
@@ -22,12 +23,21 @@ G92.1    (Cancel G92 offset)
 #<tool_touch_z_coords> = #5183
 
 #<tool_radius_offset> = [#<tool_diameter> / 2]
-#<offset_probing_position> = [#<tool_touch_x_coords> - #<tool_radius_offset>]
+#<left_offset_probing_position> = [#<tool_touch_x_coords> - #<tool_radius_offset>]
+#<right_offset_probing_position> = [#<tool_touch_x_coords> + #<tool_radius_offset>]
+#<front_offset_probing_position> = [#<tool_touch_y_coords> - #<tool_radius_offset>]
+#<back_offset_probing_position> = [#<tool_touch_y_coords> + #<tool_radius_offset>]
 
 G59.3
 
-o100 if [#<tool_diameter_offset_mode> EQ 1]
-    #<tool_touch_x_coords> = #<offset_probing_position>
+o100 if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 1]
+    #<tool_touch_x_coords> = #<left_offset_probing_position>
+0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 2]
+    #<tool_touch_x_coords> = #<right_offset_probing_position>
+0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 3]
+    #<tool_touch_y_coords> = #<front_offset_probing_position>
+0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 4]
+    #<tool_touch_y_coords> = #<back_offset_probing_position>
 o100 endif
 
 o110 if [2 EQ 2]
