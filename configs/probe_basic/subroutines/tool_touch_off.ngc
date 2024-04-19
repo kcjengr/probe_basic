@@ -40,20 +40,20 @@ o100 if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 1]
     #<tool_touch_y_coords> = #<back_offset_probing_position>
 o100 endif
 
+G90    (set absolute coordinates)
+G53 G1 F[#<traverse_fr>] Z0    (move to z0 home position)
+G53 G1 F[#<traverse_fr>] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+G53 G1 F[#<traverse_fr>] Z#<tool_touch_z_coords>
+
 o110 if [2 EQ 2]
     G49
 o110 endif
-
-G90    (set absolute coordinates)
-G53 G1 F[#<traverse_fr] Z0    (move to z0 home position)
-G53 G1 F[#<traverse_fr] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
-G53 G1 F[#<traverse_fr] Z#<tool_touch_z_coords>
 
 G91
 F #<fast_probe_fr>
 G38.2 Z-[#<z_max_travel>]    (fast tool probe)
 #<z_fast_probe> = #5063    (save probe result of fast probe to parameters)
-G1 F[#<traverse_fr] Z[#<retract_distance>]    (retract tool retract distance amount)
+G1 F[#<traverse_fr>] Z[#<retract_distance>]    (retract tool retract distance amount)
 
 (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
 o120 if [#<slow_probe_fr> GT 0]
@@ -63,7 +63,7 @@ o120 if [#<slow_probe_fr> GT 0]
     G38.2 Z-[#<retract_distance> * 2]    (slow tool probe)
     #<z_slow_probe> = #5063
     G90
-    G1 F[#<traverse_fr] Z[#<z_slow_probe> + #<retract_distance>]
+    G1 F[#<traverse_fr>] Z[#<z_slow_probe> + #<retract_distance>]
 o120 endif
 
 o130 if [#5070 EQ 1]    (verify probe event was succesful)
@@ -82,7 +82,7 @@ o150 if [3 EQ 3]
 o150 endif
 
 G90    (set absolute coordinates)
-G53 G1 F[#<traverse_fr] Z0 (Send Spindle to home zero position)
+G53 G1 F[#<traverse_fr>] Z0 (Send Spindle to home zero position)
 
 (define new tool length offset parameters)
 #<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063]]

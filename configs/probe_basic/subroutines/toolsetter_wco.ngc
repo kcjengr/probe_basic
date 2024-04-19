@@ -31,8 +31,8 @@ o<toolsetter_wco> sub
   o100 endif
 
   G90    (set absolute coordinates)
-  G53 G1 F[#<traverse_fr] Z0    (move to z0 home position)
-  G53 G1 F[#<traverse_fr] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+  G53 G1 F[#<traverse_fr>] Z0    (move to z0 home position)
+  G53 G1 F[#<traverse_fr>] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
   
   #<workspace_z> = #[5203 + [20 * #5220]]
 
@@ -49,7 +49,7 @@ o<toolsetter_wco> sub
   o110 if [#5070 EQ 0]
     (back to start point and feed)
     G90
-    G1 F[#<traverse_fr] Z#<z>
+    G1 F[#<traverse_fr>] Z#<z>
     F[#<probe_fast_fr>]
     (return from sub)
     o<toolsetter_wco> return
@@ -57,7 +57,7 @@ o<toolsetter_wco> sub
 
   (Move to z_clearance height for slow probe)
   G90
-  G1 F[#<traverse_fr] Z[#<z_minus_probed> + #<z_clearance>]
+  G1 F[#<traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -67,7 +67,7 @@ o<toolsetter_wco> sub
     G38.2 Z-[#<z_clearance> * 2]
     #<z_minus_probed> = #5063
     G90
-    G1 F[#<traverse_fr] Z[#<z_minus_probed> + #<z_clearance>]
+    G1 F[#<traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
   o120 endif
 
   #<z_finish_height> = [#<z_minus_probed> + #<z_clearance>]
@@ -78,7 +78,7 @@ o<toolsetter_wco> sub
   G10 L2 P#5220 Z[#<new_tool_wco_z> + #<workspace_z>]
 
   (Move to Toolset location)
-  G53 G1 F[#<traverse_fr] X#<dust_boot_x_coords> Y#<dust_boot_y_coords>
+  G53 G1 F[#<traverse_fr>] X#<dust_boot_x_coords> Y#<dust_boot_y_coords>
   
   (pause for dust boot)
   M0 (replace the dust boot)
