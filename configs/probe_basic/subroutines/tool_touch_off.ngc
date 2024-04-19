@@ -32,22 +32,22 @@ G59.3
 
 o100 if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 1]
     #<tool_touch_x_coords> = #<left_offset_probing_position>
-0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 2]
+o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 2]
     #<tool_touch_x_coords> = #<right_offset_probing_position>
-0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 3]
+o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 3]
     #<tool_touch_y_coords> = #<front_offset_probing_position>
-0100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 4]
+o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 4]
     #<tool_touch_y_coords> = #<back_offset_probing_position>
 o100 endif
+
+o110 if [2 EQ 2]
+    G49
+o110 endif
 
 G90    (set absolute coordinates)
 G53 G1 F[#<traverse_fr>] Z0    (move to z0 home position)
 G53 G1 F[#<traverse_fr>] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
 G53 G1 F[#<traverse_fr>] Z#<tool_touch_z_coords>
-
-o110 if [2 EQ 2]
-    G49
-o110 endif
 
 G91
 F #<fast_probe_fr>
