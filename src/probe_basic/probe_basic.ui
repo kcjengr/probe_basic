@@ -7567,19 +7567,10 @@ QPushButton:checked {
                     <number>2</number>
                    </property>
                    <item>
-                    <widget class="MDIButton" name="remove_current_tool">
-                     <property name="enabled">
-                      <bool>false</bool>
-                     </property>
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
+                    <widget class="SubCallButton" name="remove_tool">
                      <property name="minimumSize">
                       <size>
-                       <width>130</width>
+                       <width>125</width>
                        <height>45</height>
                       </size>
                      </property>
@@ -7589,28 +7580,48 @@ QPushButton:checked {
                        <height>45</height>
                       </size>
                      </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
                      <property name="styleSheet">
                       <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                      </property>
                      <property name="text">
                       <string>UNLOAD SPINDLE</string>
                      </property>
-                     <property name="checkable">
-                      <bool>false</bool>
-                     </property>
-                     <property name="autoExclusive">
-                      <bool>true</bool>
-                     </property>
-                     <property name="rules" stdset="0">
-                      <string>[]</string>
-                     </property>
-                     <property name="MDICommand" stdset="0">
-                      <string>M61 Q0 G49 #5210 = 0 #3991 = 0</string>
+                     <property name="filename" stdset="0">
+                      <string>unload_spindle.ngc</string>
                      </property>
                     </widget>
                    </item>
@@ -9671,19 +9682,10 @@ QPushButton:checked {
                      <number>2</number>
                     </property>
                     <item>
-                     <widget class="MDIButton" name="remove_current_tool_3">
-                      <property name="enabled">
-                       <bool>false</bool>
-                      </property>
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
+                     <widget class="SubCallButton" name="remove_tool_2">
                       <property name="minimumSize">
                        <size>
-                        <width>130</width>
+                        <width>125</width>
                         <height>45</height>
                        </size>
                       </property>
@@ -9693,28 +9695,48 @@ QPushButton:checked {
                         <height>45</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::NoFocus</enum>
-                      </property>
                       <property name="styleSheet">
                        <string notr="true">QPushButton {
-   	font: 16pt &quot;Bebas Kai&quot;;
-}</string>
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+</string>
                       </property>
                       <property name="text">
                        <string>UNLOAD SPINDLE</string>
                       </property>
-                      <property name="checkable">
-                       <bool>false</bool>
-                      </property>
-                      <property name="autoExclusive">
-                       <bool>true</bool>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[]</string>
-                      </property>
-                      <property name="MDICommand" stdset="0">
-                       <string>M61 Q0 G49 #5210 = 0 #3991 = 0</string>
+                      <property name="filename" stdset="0">
+                       <string>unload_spindle.ngc</string>
                       </property>
                      </widget>
                     </item>
@@ -39126,11 +39148,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>121</y>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
-     <x>662</x>
-     <y>83</y>
+     <x>221</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39142,11 +39164,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>168</y>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
-     <x>957</x>
-     <y>77</y>
+     <x>270</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39158,11 +39180,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>214</y>
+     <y>89</y>
     </hint>
     <hint type="destinationlabel">
-     <x>998</x>
-     <y>84</y>
+     <x>270</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39174,11 +39196,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>261</y>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>938</x>
-     <y>83</y>
+     <x>270</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39190,11 +39212,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>307</y>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1124</x>
-     <y>82</y>
+     <x>223</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39206,11 +39228,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>354</y>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1160</x>
-     <y>70</y>
+     <x>223</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39222,11 +39244,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>400</y>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1289</x>
-     <y>82</y>
+     <x>223</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39237,12 +39259,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>187</x>
-     <y>262</y>
+     <x>219</x>
+     <y>98</y>
     </hint>
     <hint type="destinationlabel">
-     <x>830</x>
-     <y>73</y>
+     <x>269</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39253,12 +39275,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>180</x>
-     <y>357</y>
+     <x>190</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1513</x>
-     <y>70</y>
+     <x>226</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39270,11 +39292,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>121</y>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
-     <x>498</x>
-     <y>590</y>
+     <x>522</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39285,12 +39307,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>511</x>
-     <y>163</y>
+     <x>522</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
-     <x>520</x>
-     <y>590</y>
+     <x>522</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39302,11 +39324,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>214</y>
+     <y>89</y>
     </hint>
     <hint type="destinationlabel">
-     <x>474</x>
-     <y>590</y>
+     <x>500</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39318,11 +39340,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>261</y>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>442</x>
-     <y>590</y>
+     <x>468</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39334,11 +39356,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>307</y>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
-     <x>413</x>
-     <y>590</y>
+     <x>439</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39350,11 +39372,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>354</y>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
-     <x>386</x>
-     <y>590</y>
+     <x>412</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39365,12 +39387,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>436</x>
-     <y>399</y>
+     <x>522</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>363</x>
-     <y>590</y>
+     <x>389</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39381,12 +39403,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>256</x>
-     <y>349</y>
+     <x>272</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
-     <x>325</x>
-     <y>590</y>
+     <x>351</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39398,11 +39420,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>272</x>
-     <y>400</y>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
-     <x>292</x>
-     <y>590</y>
+     <x>318</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39414,11 +39436,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>308</x>
-     <y>495</y>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
-     <x>261</x>
-     <y>590</y>
+     <x>287</x>
+     <y>105</y>
     </hint>
    </hints>
   </connection>
@@ -39429,12 +39451,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>151</x>
-     <y>404</y>
+     <x>183</x>
+     <y>101</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1397</x>
-     <y>79</y>
+     <x>224</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39446,11 +39468,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>393</x>
-     <y>497</y>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1377</x>
-     <y>79</y>
+     <x>224</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39462,10 +39484,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>236</x>
-     <y>497</y>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1361</x>
+     <x>224</x>
      <y>85</y>
     </hint>
    </hints>
@@ -39477,12 +39499,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>300</x>
-     <y>433</y>
+     <x>315</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1435</x>
-     <y>76</y>
+     <x>224</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -39493,12 +39515,28 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>269</x>
-     <y>530</y>
+     <x>315</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1414</x>
-     <y>80</y>
+     <x>224</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>load_spindle_tool_number_2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>load_spindle_button_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1459</x>
+     <y>245</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1520</x>
+     <y>246</y>
     </hint>
    </hints>
   </connection>
@@ -39521,19 +39559,19 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="settertabGroup"/>
+  <buttongroup name="probemodeGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
  </buttongroups>
 </ui>
