@@ -3,7 +3,7 @@ import linuxcnc
 from pyqtgraph import Qt
 
 from qtpy import uic
-from qtpy.QtCore import Qt
+from qtpy.QtCore import Qt, Slot
 from qtpy.QtWidgets import QWidget, QMessageBox
 
 from qtpyvcp.actions.program_actions import load as loadProgram
@@ -36,6 +36,8 @@ class ConversationalBaseWidget(QWidget):
                             self._validate_z_feed_rate,
                             self._validate_tool_number,
                             self._validate_retract_height]
+
+        self.save_file_path = None
 
         self.wcs_input.addItem('G54')
         self.wcs_input.addItem('G55')
@@ -185,7 +187,12 @@ class ConversationalBaseWidget(QWidget):
         if self.name() == '':
             self.name_input.setText('Untitled')
 
-        program_base = os.path.join(PROGRAM_PREFIX, self.name())
+        if self.save_file_path is not None:
+            path = self.save_file_path
+        else:
+            path = PROGRAM_PREFIX
+
+        program_base = os.path.join(path, self.name())
         program_path = program_base + '.ngc'
 
         i = 1
@@ -268,3 +275,8 @@ class ConversationalBaseWidget(QWidget):
                           Qt.FramelessWindowHint)
 
         msg.exec_()
+
+    @Slot(str)
+    def setFilePath(self, path):
+        self.save_file_path = path
+        
