@@ -51,9 +51,8 @@ class ProbeBasic(VCPMainWindow):
         
         else:
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
-        
+    
         self.load_user_tabs()
-        self.load_programmable_coolant_cannon_settings()
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
@@ -89,20 +88,13 @@ class ProbeBasic(VCPMainWindow):
             self.user_sb_tab.hide()
             self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
-    def load_programmable_coolant_cannon_settings(self):
-        activate_programmable_coolant = int(INIFILE.find("COOLANT_CANNON", "ACTIVATE") or 0)
-        horizontal_spindle_nozzle_dist = float(INIFILE.find("COOLANT_CANNON", "HORIZONTAL_SPINDLE_NOZZLE_DIST") or 0)
-        vertical_spindle_nozzle_dist = float(INIFILE.find("COOLANT_CANNON", "VERTICAL_SPINDLE_NOZZLE_DIST") or 0)
-        pc_angle_offset = float(INIFILE.find("COOLANT_CANNON", "PC_ANGLE_OFFSET") or 0)
-
-        self.activate_programmable_coolant.setValue(int(activate_programmable_coolant))
-        self.horizontal_spindle_nozzle_dist.setValue(float(horizontal_spindle_nozzle_dist))
-        self.vertical_spindle_nozzle_dist.setValue(float(vertical_spindle_nozzle_dist))
-        self.pc_angle_offset.setValue(float(pc_angle_offset))
-
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
         self.probe_tab_widget.setCurrentIndex(button.property('page'))
+
+    @Slot(QAbstractButton)
+    def on_settertabGroup_buttonClicked(self, button):
+        self.setter_tab_widget.setCurrentIndex(button.property('page'))
 
     @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
@@ -144,17 +136,17 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.wco_rotation.setText('0')
 
-    def on_tool_diameter_probe_Btn_clicked(self):
-        if self.tool_diameter_probe_Btn.isChecked():
-            self.tool_diameter_probe_mode.setText('1')
-        else:
-            self.tool_diameter_probe_mode.setText('0')
-
     def on_tool_diameter_offset_Btn_clicked(self):
         if self.tool_diameter_offset_Btn.isChecked():
-            self.tool_diameter_offset_mode.setText('1')
+            self.tool_diameter_offset_mode_3012.setText('1')
         else:
-            self.tool_diameter_offset_mode.setText('0')
+            self.tool_diameter_offset_mode_3012.setText('0')
+
+    def on_tool_diameter_probe_Btn_clicked(self):
+        if self.tool_diameter_probe_Btn.isChecked():
+            self.tool_diameter_probe_mode_3011.setText('1')
+        else:
+            self.tool_diameter_probe_mode_3011.setText('0')
 
     @Slot(QAbstractButton)
     def on_xycalbtnGroup_buttonClicked(self, button):

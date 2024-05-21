@@ -43,6 +43,8 @@ o130 endif
 ;      see Linuxcnc docs for further information on how these are used
 
 o140 if [#<selected_tool> EQ #<tool_in_spindle>] ; checks if tool in the spindle is same as requested
+    (PRINT, Requested tool already in spindle)
+    (PRINT, o<toolchange> endsub)
     o<toolchange> endsub [1]
     M2
 o140 endif
