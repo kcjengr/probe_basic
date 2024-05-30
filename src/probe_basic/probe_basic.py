@@ -125,34 +125,6 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.probe_help_widget.setCurrentIndex(currentIndex - 1)
 
-    def on_probe_wco_Btn_clicked(self):
-        if self.probe_wco_Btn.isChecked():
-            self.probe_mode_3030.setText('0')
-        else:
-            self.probe_mode_3030.setText('1')
-
-    def on_set_wco_offset_Btn_clicked(self):
-        if self.set_wco_offset_Btn.isChecked():
-            self.wco_rotation.setText('1')
-        else:
-            self.wco_rotation.setText('0')
-
-    def on_tool_diameter_offset_Btn_clicked(self):
-        if self.tool_diameter_offset_Btn.isChecked():
-            self.tool_diameter_offset_mode_3012.setText('1')
-        else:
-            self.tool_diameter_offset_mode_3012.setText('0')
-
-    def on_tool_diameter_probe_Btn_clicked(self):
-        if self.tool_diameter_probe_Btn.isChecked():
-            self.tool_diameter_probe_mode_3011.setText('1')
-        else:
-            self.tool_diameter_probe_mode_3011.setText('0')
-
-    @Slot(QAbstractButton)
-    def on_xycalbtnGroup_buttonClicked(self, button):
-        if button.isChecked():
-            self.sq_cal_axis.setText(button.property('checkedAction'))
 
     @Slot(QAbstractButton)
     def on_fileviewerbtnGroup_buttonClicked(self, button):

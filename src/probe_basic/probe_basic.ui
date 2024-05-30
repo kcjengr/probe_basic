@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -15958,47 +15958,7 @@ QTabBar::tab:only-one {
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="probe_wco_Btn">
-                           <property name="enabled">
-                            <bool>false</bool>
-                           </property>
-                           <property name="sizePolicy">
-                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                             <horstretch>156</horstretch>
-                             <verstretch>0</verstretch>
-                            </sizepolicy>
-                           </property>
-                           <property name="minimumSize">
-                            <size>
-                             <width>118</width>
-                             <height>38</height>
-                            </size>
-                           </property>
-                           <property name="maximumSize">
-                            <size>
-                             <width>16777215</width>
-                             <height>38</height>
-                            </size>
-                           </property>
-                           <property name="styleSheet">
-                            <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
-                           </property>
-                           <property name="text">
-                            <string>PROBE WCO</string>
-                           </property>
-                           <property name="checked">
-                            <bool>false</bool>
-                           </property>
-                           <property name="autoExclusive">
-                            <bool>true</bool>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>probe-parameters.probe-wco-btn</string>
-                           </property>
-                          </widget>
-                         </item>
-                         <item>
-                          <widget class="VCPSettingsPushButton" name="probe_position_only_Btn">
+                          <widget class="VCPSettingsPushButton" name="probe_posn_only_Btn">
                            <property name="enabled">
                             <bool>false</bool>
                            </property>
@@ -16010,13 +15970,13 @@ QTabBar::tab:only-one {
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>118</width>
+                             <width>243</width>
                              <height>38</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>118</width>
+                             <width>243</width>
                              <height>38</height>
                             </size>
                            </property>
@@ -16024,13 +15984,7 @@ QTabBar::tab:only-one {
                             <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                            </property>
                            <property name="text">
-                            <string>PROBE POS'N</string>
-                           </property>
-                           <property name="checked">
-                            <bool>false</bool>
-                           </property>
-                           <property name="autoExclusive">
-                            <bool>true</bool>
+                            <string>PROBE POSITION ONLY</string>
                            </property>
                            <property name="settingName" stdset="0">
                             <string>probe-parameters.probe-posn-btn</string>
@@ -16044,36 +15998,54 @@ QTabBar::tab:only-one {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QLabel" name="label_82">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>0</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>16777215</width>
-                       <height>30</height>
-                      </size>
-                     </property>
-                     <property name="font">
-                      <font>
-                       <family>Bebas Kai</family>
-                       <pointsize>14</pointsize>
-                       <weight>50</weight>
-                       <italic>false</italic>
-                       <bold>false</bold>
-                      </font>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QLabel{
+                    <widget class="QWidget" name="widget_76" native="true">
+                     <layout class="QHBoxLayout" name="horizontalLayout_64">
+                      <property name="spacing">
+                       <number>1</number>
+                      </property>
+                      <property name="leftMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="bottomMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="label_82">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                          <horstretch>0</horstretch>
+                          <verstretch>0</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>27</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>27</height>
+                         </size>
+                        </property>
+                        <property name="font">
+                         <font>
+                          <family>Bebas Kai</family>
+                          <pointsize>14</pointsize>
+                          <weight>50</weight>
+                          <italic>false</italic>
+                          <bold>false</bold>
+                         </font>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QLabel{
     border-style: solid;
     border-color: rgb(176, 179, 172);
     border-width: 2px;
@@ -16082,13 +16054,16 @@ QTabBar::tab:only-one {
     background: rgb(90, 90, 90);
 	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
-                     </property>
-                     <property name="text">
-                      <string>Probing Parameters</string>
-                     </property>
-                     <property name="indent">
-                      <number>10</number>
-                     </property>
+                        </property>
+                        <property name="text">
+                         <string>Probing Parameters</string>
+                        </property>
+                        <property name="indent">
+                         <number>10</number>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
                     </widget>
                    </item>
                    <item>
@@ -16397,7 +16372,7 @@ color: white;
                           <string>probe-parameters.probe-traverse-fr</string>
                          </property>
                          <property name="textFormat" stdset="0">
-                          <string/>
+                          <string>{:.1f}</string>
                          </property>
                         </widget>
                        </item>
@@ -17092,7 +17067,7 @@ color: white;
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="QLabel" name="label_95">
+                       <widget class="SubCallButton" name="update_probe_parameters_btn">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                           <horstretch>0</horstretch>
@@ -17101,7 +17076,7 @@ color: white;
                         </property>
                         <property name="minimumSize">
                          <size>
-                          <width>0</width>
+                          <width>150</width>
                           <height>27</height>
                          </size>
                         </property>
@@ -17111,17 +17086,11 @@ color: white;
                           <height>27</height>
                          </size>
                         </property>
-                        <property name="font">
-                         <font>
-                          <family>Bebas Kai</family>
-                          <pointsize>14</pointsize>
-                          <weight>50</weight>
-                          <italic>false</italic>
-                          <bold>false</bold>
-                         </font>
+                        <property name="focusPolicy">
+                         <enum>Qt::NoFocus</enum>
                         </property>
                         <property name="styleSheet">
-                         <string notr="true">QLabel{
+                         <string notr="true">SubCallButton{
     border-style: solid;
     border-color: black;
     border-width: 2px;
@@ -17132,13 +17101,34 @@ color: white;
     color: rgb(238, 238, 236);
 	background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
 	font: 14pt &quot;Bebas Kai&quot;;
+}
+
+.SubCallButton:disabled {
+    border-color: gray;
+}
+
+.SubCallButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+.SubCallButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+.SubCallButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                         </property>
                         <property name="text">
-                         <string> Probe Results</string>
+                         <string>UPDATE PROBE PARAMS</string>
                         </property>
-                        <property name="indent">
-                         <number>6</number>
+                        <property name="filename" stdset="0">
+                         <string>touch_probe_param_update.ngc</string>
                         </property>
                        </widget>
                       </item>
@@ -19126,7 +19116,7 @@ SubCallButton:checked[option=&quot;false&quot;] {
 }</string>
                           </property>
                           <property name="currentIndex">
-                           <number>4</number>
+                           <number>0</number>
                           </property>
                           <widget class="QWidget" name="Page1">
                            <layout class="QHBoxLayout" name="horizontalLayout_132">
@@ -21606,7 +21596,10 @@ padding-left: 5px;
                                    <number>1</number>
                                   </property>
                                   <item>
-                                   <widget class="QPushButton" name="set_wco_offset_Btn">
+                                   <widget class="VCPSettingsPushButton" name="set_wco_offset_Btn">
+                                    <property name="enabled">
+                                     <bool>false</bool>
+                                    </property>
                                     <property name="sizePolicy">
                                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                                       <horstretch>0</horstretch>
@@ -21625,26 +21618,14 @@ padding-left: 5px;
                                       <height>40</height>
                                      </size>
                                     </property>
-                                    <property name="focusPolicy">
-                                     <enum>Qt::NoFocus</enum>
-                                    </property>
                                     <property name="styleSheet">
-                                     <string notr="true"/>
+                                     <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                                     </property>
                                     <property name="text">
-                                     <string>SET WCO ROTATION</string>
+                                     <string>SET ROTATION WCO</string>
                                     </property>
-                                    <property name="checkable">
-                                     <bool>true</bool>
-                                    </property>
-                                    <property name="checked">
-                                     <bool>false</bool>
-                                    </property>
-                                    <property name="autoExclusive">
-                                     <bool>true</bool>
-                                    </property>
-                                    <property name="default">
-                                     <bool>false</bool>
+                                    <property name="settingName" stdset="0">
+                                     <string>probe-parameters.rotation-wco-btn</string>
                                     </property>
                                    </widget>
                                   </item>
@@ -22252,7 +22233,10 @@ margin-left: 14px;</string>
                                   <number>3</number>
                                  </property>
                                  <item>
-                                  <widget class="QPushButton" name="cal_avg_error">
+                                  <widget class="VCPSettingsPushButton" name="cal_avg_error">
+                                   <property name="enabled">
+                                    <bool>false</bool>
+                                   </property>
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -22271,26 +22255,20 @@ margin-left: 14px;</string>
                                      <height>37</height>
                                     </size>
                                    </property>
-                                   <property name="focusPolicy">
-                                    <enum>Qt::NoFocus</enum>
-                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true"/>
+                                    <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON AVG XY ERROR</string>
                                    </property>
-                                   <property name="checkable">
-                                    <bool>true</bool>
-                                   </property>
                                    <property name="checked">
                                     <bool>true</bool>
                                    </property>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
                                    </property>
-                                   <property name="checkedAction" stdset="0">
-                                    <string>0</string>
+                                   <property name="settingName" stdset="0">
+                                    <string>probe-parameters.cal-xy-btn</string>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -22298,7 +22276,10 @@ margin-left: 14px;</string>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QPushButton" name="cal_x_error">
+                                  <widget class="VCPSettingsPushButton" name="cal_x_error">
+                                   <property name="enabled">
+                                    <bool>false</bool>
+                                   </property>
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -22317,23 +22298,17 @@ margin-left: 14px;</string>
                                      <height>37</height>
                                     </size>
                                    </property>
-                                   <property name="focusPolicy">
-                                    <enum>Qt::NoFocus</enum>
+                                   <property name="styleSheet">
+                                    <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON X ERROR</string>
                                    </property>
-                                   <property name="checkable">
-                                    <bool>true</bool>
-                                   </property>
-                                   <property name="checked">
-                                    <bool>false</bool>
-                                   </property>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
                                    </property>
-                                   <property name="checkedAction" stdset="0">
-                                    <string>1</string>
+                                   <property name="settingName" stdset="0">
+                                    <string>probe-parameters.cal-x-btn</string>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -22341,7 +22316,10 @@ margin-left: 14px;</string>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="QPushButton" name="cal_y_error">
+                                  <widget class="VCPSettingsPushButton" name="cal_y_error">
+                                   <property name="enabled">
+                                    <bool>false</bool>
+                                   </property>
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -22360,23 +22338,17 @@ margin-left: 14px;</string>
                                      <height>37</height>
                                     </size>
                                    </property>
-                                   <property name="focusPolicy">
-                                    <enum>Qt::NoFocus</enum>
-                                   </property>
                                    <property name="styleSheet">
-                                    <string notr="true"/>
+                                    <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON Y ERROR</string>
                                    </property>
-                                   <property name="checkable">
-                                    <bool>true</bool>
-                                   </property>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
                                    </property>
-                                   <property name="checkedAction" stdset="0">
-                                    <string>2</string>
+                                   <property name="settingName" stdset="0">
+                                    <string>probe-parameters.cal-y-btn</string>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -25238,7 +25210,7 @@ color: white;
                          <number>1</number>
                         </property>
                         <item>
-                         <widget class="SubCallButton" name="subcallbutton">
+                         <widget class="SubCallButton" name="update_tool_setter_params">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>1</horstretch>
@@ -28536,7 +28508,7 @@ color: white;
                        <bool>true</bool>
                       </property>
                       <property name="rules" stdset="0">
-                       <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-probe&quot;, &quot;trigger&quot;: true}]}]</string>
+                       <string>[{&quot;name&quot;: &quot;probe_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.probe-posn-btn&quot;, &quot;trigger&quot;: true}]}]</string>
                       </property>
                      </widget>
                     </item>
@@ -28588,7 +28560,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="wco_rotation_mode_3031">
+                     <widget class="VCPLineEdit" name="wco_rotation_3031">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28607,20 +28579,14 @@ color: white;
                         <height>31</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::ClickFocus</enum>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="placeholderText">
-                       <string>0</string>
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>probe-parameters.wco-rotation-mode</string>
-                      </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.0f}</string>
+                      <property name="rules" stdset="0">
+                       <string>[{&quot;name&quot;: &quot;wco_rotation_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.rotation-wco-btn&quot;, &quot;trigger&quot;: true}]}]</string>
                       </property>
                      </widget>
                     </item>
@@ -28672,7 +28638,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="sq_cal_axis_3036">
+                     <widget class="VCPLineEdit" name="sq_cal_axis_3036">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28691,20 +28657,14 @@ color: white;
                         <height>31</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::ClickFocus</enum>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="placeholderText">
-                       <string>0</string>
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>probe-parameters.sq-cal-axis</string>
-                      </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.0f}</string>
+                      <property name="rules" stdset="0">
+                       <string>[{&quot;name&quot;: &quot;calibration_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0\&quot; if ch[0] else (\&quot;1\&quot; if ch[1] else \&quot;2\&quot;)&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.cal-xy-btn&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;settings:probe-parameters.cal-x-btn&quot;, &quot;trigger&quot;: true}]}]</string>
                       </property>
                      </widget>
                     </item>
@@ -40391,11 +40351,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>475</x>
+     <x>470</x>
      <y>775</y>
     </hint>
     <hint type="destinationlabel">
-     <x>593</x>
+     <x>588</x>
      <y>779</y>
     </hint>
    </hints>
@@ -40503,7 +40463,7 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>924</x>
+     <x>876</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
@@ -40567,7 +40527,7 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>270</x>
+     <x>223</x>
      <y>640</y>
     </hint>
     <hint type="destinationlabel">
@@ -40631,12 +40591,12 @@ font: 11pt bebas kai;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1327</x>
+     <x>1170</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1619</x>
-     <y>497</y>
+     <x>1383</x>
+     <y>557</y>
     </hint>
    </hints>
   </connection>
@@ -40647,12 +40607,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1442</x>
-     <y>188</y>
+     <x>1238</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1614</x>
-     <y>189</y>
+     <x>1378</x>
+     <y>205</y>
     </hint>
    </hints>
   </connection>
@@ -40679,12 +40639,12 @@ font: 11pt bebas kai;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1458</x>
+     <x>1276</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1619</x>
-     <y>290</y>
+     <x>1383</x>
+     <y>350</y>
     </hint>
    </hints>
   </connection>
@@ -40695,7 +40655,7 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>788</x>
+     <x>761</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
@@ -40711,12 +40671,12 @@ font: 11pt bebas kai;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1196</x>
+     <x>1064</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1619</x>
-     <y>290</y>
+     <x>1383</x>
+     <y>350</y>
     </hint>
    </hints>
   </connection>
@@ -40727,7 +40687,7 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>722</x>
+     <x>581</x>
      <y>640</y>
     </hint>
     <hint type="destinationlabel">
@@ -40759,7 +40719,7 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>576</x>
+     <x>571</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
@@ -40775,7 +40735,7 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1025</x>
+     <x>931</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
@@ -40855,7 +40815,7 @@ font: 11pt bebas kai;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1027</x>
+     <x>920</x>
      <y>112</y>
     </hint>
     <hint type="destinationlabel">
@@ -40875,7 +40835,7 @@ font: 11pt bebas kai;
      <y>153</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1027</x>
+     <x>920</x>
      <y>112</y>
     </hint>
    </hints>
@@ -40903,7 +40863,7 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>677</x>
+     <x>661</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
@@ -40919,11 +40879,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1474</x>
+     <x>1238</x>
      <y>421</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1614</x>
+     <x>1378</x>
      <y>422</y>
     </hint>
    </hints>
@@ -40967,7 +40927,7 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>496</x>
+     <x>402</x>
      <y>640</y>
     </hint>
     <hint type="destinationlabel">
@@ -40999,7 +40959,7 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>948</x>
+     <x>760</x>
      <y>640</y>
     </hint>
     <hint type="destinationlabel">
@@ -41047,12 +41007,12 @@ font: 11pt bebas kai;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1589</x>
+     <x>1382</x>
      <y>632</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1619</x>
-     <y>290</y>
+     <x>1383</x>
+     <y>350</y>
     </hint>
    </hints>
   </connection>
@@ -41063,7 +41023,7 @@ font: 11pt bebas kai;
    <slot>setValue(int)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1813</x>
+     <x>1606</x>
      <y>853</y>
     </hint>
     <hint type="destinationlabel">
@@ -41419,7 +41379,7 @@ font: 11pt bebas kai;
      <y>121</y>
     </hint>
     <hint type="destinationlabel">
-     <x>708</x>
+     <x>705</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41435,7 +41395,7 @@ font: 11pt bebas kai;
      <y>214</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1056</x>
+     <x>970</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41451,7 +41411,7 @@ font: 11pt bebas kai;
      <y>168</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1056</x>
+     <x>970</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41467,7 +41427,7 @@ font: 11pt bebas kai;
      <y>261</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1056</x>
+     <x>970</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41483,7 +41443,7 @@ font: 11pt bebas kai;
      <y>307</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1186</x>
+     <x>1031</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41499,7 +41459,7 @@ font: 11pt bebas kai;
      <y>354</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1186</x>
+     <x>1031</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41515,7 +41475,7 @@ font: 11pt bebas kai;
      <y>400</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1317</x>
+     <x>1140</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41531,7 +41491,7 @@ font: 11pt bebas kai;
      <y>264</y>
     </hint>
     <hint type="destinationlabel">
-     <x>882</x>
+     <x>861</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41547,7 +41507,7 @@ font: 11pt bebas kai;
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1577</x>
+     <x>1359</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41555,7 +41515,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>spindle_zero_height_3010</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41571,7 +41531,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>slow_probe_fr_3005</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41587,7 +41547,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>fast_probe_fr_3004</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41603,7 +41563,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>traverse_fr_3006</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41619,7 +41579,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>z_max_travel_3007</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41635,7 +41595,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>xy_max_travel_3008</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41651,7 +41611,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>retract_distance_3009</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41667,7 +41627,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>tool_diameter_probe_mode_3011</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41683,7 +41643,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>tool_diameter_offset_mode_3012</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41699,7 +41659,7 @@ font: 11pt bebas kai;
   <connection>
    <sender>tool_setter_offset_direction_3013</sender>
    <signal>textChanged(QString)</signal>
-   <receiver>subcallbutton</receiver>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
@@ -41723,7 +41683,7 @@ font: 11pt bebas kai;
      <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1447</x>
+     <x>1249</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41739,7 +41699,7 @@ font: 11pt bebas kai;
      <y>497</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1447</x>
+     <x>1249</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41755,7 +41715,7 @@ font: 11pt bebas kai;
      <y>497</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1447</x>
+     <x>1249</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41771,7 +41731,7 @@ font: 11pt bebas kai;
      <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1447</x>
+     <x>1249</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41787,7 +41747,7 @@ font: 11pt bebas kai;
      <y>543</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1447</x>
+     <x>1249</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41799,12 +41759,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1459</x>
-     <y>245</y>
+     <x>1250</x>
+     <y>267</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1520</x>
-     <y>246</y>
+     <x>1379</x>
+     <y>268</y>
     </hint>
    </hints>
   </connection>
@@ -41821,6 +41781,358 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>738</x>
      <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_tool_number_3014</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>256</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_slow_fr_3015</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>455</x>
+     <y>236</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_traverse_fr_3017</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>211</x>
+     <y>270</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>max_xy_distance_3018</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>279</x>
+     <y>312</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>max_z_distance_3020</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>350</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>extra_probe_depth_3022</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>220</x>
+     <y>388</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_fast_fr_3016</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>482</x>
+     <y>283</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xy_clearance_3019</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>521</x>
+     <y>318</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_clearance_3021</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>507</x>
+     <y>351</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>step_off_width_3023</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>504</x>
+     <y>391</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>cal_diameter_3033</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1162</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_cal_width_3034</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1148</x>
+     <y>204</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_cal_width_3035</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1148</x>
+     <y>272</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edge_width_3024</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1130</x>
+     <y>163</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_hint_ridge_valley_3028</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1253</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_hint_ridge_valley_3029</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1403</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>diameter_hint_3025</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1177</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_hint_boss_pocket_3026</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1293</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_hint_boss_pocket_3027</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1409</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_mode_3030</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1306</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>wco_rotation_3031</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1306</x>
+     <y>583</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sq_cal_axis_3036</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1306</x>
+     <y>622</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>200</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -41843,18 +42155,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
  </buttongroups>
 </ui>

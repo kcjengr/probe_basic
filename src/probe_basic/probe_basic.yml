@@ -92,6 +92,13 @@ settings:
     min_value: 0
     max_value: 10000
 
+  probe-parameters.probe-traverse-fr:
+    description: probe traverse feedrate.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
   probe-parameters.max-xy-distance:
     description: max x and y probe travel distance.
     default_value: 0.0
@@ -169,20 +176,25 @@ settings:
     min_value: 0
     max_value: 10000
 
-  probe-parameters.probe-wco-btn:
-    description: probe wco mode button.
-    persistent: true
-
   probe-parameters.probe-posn-btn:
     description: probe pos'n mode button.
     persistent: true
 
-  probe-parameters.wco-rotation-mode:
-    description: ridge and valley y hint.
-    default_value: 0.0
+  probe-parameters.rotation-wco-btn:
+    description: set wco rotation mode.
     persistent: true
-    min_value: 0
-    max_value: 1
+
+  probe-parameters.cal-xy-btn:
+    description: calibrate probe with x and y error.
+    persistent: true
+
+  probe-parameters.cal-x-btn:
+    description: calibrate probe on x error only.
+    persistent: true
+
+  probe-parameters.cal-y-btn:
+    description: calibrate probe on y error only.
+    persistent: true
 
   spindle-rpm-display.calculated-rpm:
     description: display calculated rpm on main page.
