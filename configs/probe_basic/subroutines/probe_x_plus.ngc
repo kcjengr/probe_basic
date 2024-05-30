@@ -11,13 +11,13 @@ o<probe_x_plus> sub
 
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
-  #<probe_tool_number> = #1
-  #<max_xy_distance> = #2
-  #<xy_clearance> = #3
-  #<probe_slow_fr> = #4
-  #<probe_fast_fr> = #5
-  #<calibration_offset> = #6
-  #<max_vel_slider> = #7
+  #<max_xy_distance> = #1
+  #<probe_tool_number> = #3014    (=99)
+  #<probe_slow_fr> = #3015        (=3)
+  #<probe_fast_fr> = #3016        (=10.0)
+  #<probe_traverse_fr> = #3017    (=50)
+  #<xy_clearance> = #3019         (=0.1)
+  #<calibration_offset> = #3032   (=0)
 
   (Cancel G92 offsets)
   G92.1
@@ -50,7 +50,7 @@ o<probe_x_plus> sub
   o110 if [#5070 EQ 0]
       (back to start point and feed)
       G90
-      G1 F[#<max_velocity_slider] X#<x>
+      G1 F[#<probe_traverse_fr>] X#<x>
       F[#<probe_fast_fr>]
       (return from sub)
       o<probe_x_plus> return
@@ -58,7 +58,7 @@ o<probe_x_plus> sub
 
   (Move to xy_clearance distance for slow probe)
   G90
-  G1 F[#<max_velocity_slider] X[#<x_plus_probed> - #<xy_clearance>]
+  G1 F[#<probe_traverse_fr>] X[#<x_plus_probed> - #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -68,7 +68,7 @@ o<probe_x_plus> sub
       G38.2 X[#<xy_clearance> * 2]
       #<x_plus_probed> = #5061
       G90
-      G1 F[#<max_velocity_slider] X[#<x_plus_probed> - #<xy_clearance>]
+      G1 F[#<probe_traverse_fr>] X[#<x_plus_probed> - #<xy_clearance>]
   o120 endif
 
   #<x_plus_zero_edge> = [#<x_plus_probed> + #<probe_center_offset>]

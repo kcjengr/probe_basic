@@ -128,7 +128,7 @@ class ProbeBasic(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_probemodeGroup_buttonClicked(self, button):
         if button.isChecked():
-            self.probe_mode.setText(button.property('checkedAction'))
+            self.probe_mode_3030.setText(button.property('checkedAction'))
 
     def on_set_wco_offset_Btn_clicked(self):
         if self.set_wco_offset_Btn.isChecked():

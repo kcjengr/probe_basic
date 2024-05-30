@@ -21,15 +21,12 @@ o<probe_cal_square_boss> sub
   #<probe_slow_fr> = #8        (=0.0)
   #<probe_fast_fr> = #9        (=10.0)
   #<calibration_offset> = #10  (=0.0000)
-  #<x_hint> = #11              (=1.0000)
-  #<y_hint> = #12              (=1.0000)
-  #<diameter_hint> = #13       (=1.0000)
   #<edge_width> = #14          (=0.5000)
   #<probe_mode> = #15          (=0)
   #<x_cal_width> = #16         (=0)
   #<y_cal_width> = #17         (=0)
   #<sq_cal_axis> = #18         (=0)
-  #<max_vel_slider> = #19      (=50)
+  #<probe_traverse_fr> = #19      (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -63,7 +60,7 @@ o<probe_cal_square_boss> sub
 
   (Probe X Positioning Move, X hint/2 + Step Off Width)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X-[#<x_cal_width>/2 + #<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
@@ -77,12 +74,12 @@ o<probe_cal_square_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in X, X Hint + Step Off Width at Rapid Speed)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<x_cal_width> + #<step_off_width> + #<xy_clearance>]
 
   (Probe X Positioning Move, to Probing Depth)
@@ -110,15 +107,15 @@ o<probe_cal_square_boss> sub
   (DEBUG, EVAL[vcp.getWidget{"x_center_probed"}.setValue{#1002}])
 
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
   G90
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<x_center_probed>]
 
   (Probe Y Positioning Move, Y hint/2 + Step Off Width)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Y-[#<y_cal_width>/2 + #<step_off_width>]
 
   (Probe Y Positioning Move, to Probing Depth)
@@ -132,17 +129,17 @@ o<probe_cal_square_boss> sub
 
   (first side Probe Completion Move to Z Clearance Plane)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
 
   (Positioning move in Y, Y Hint + Step Off Width at Rapid Speed)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Y[#<y_cal_width> + #<step_off_width> + #<xy_clearance>]
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
@@ -166,10 +163,10 @@ o<probe_cal_square_boss> sub
   (DEBUG, EVAL[vcp.getWidget{"y_center_probed"}.setValue{#1004}])
 
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
   G90
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<x_center_probed>] Y[#<y_center_probed>]
 
   o110 if [#<x_cal_width> GT #<x_probed_width>]

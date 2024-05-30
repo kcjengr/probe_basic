@@ -29,12 +29,40 @@ application:
     custom_fonts: {{ file.dir }}/fonts
     
 settings:
-  touch-probe.calibration-offset:
+  probe-parameters.calibration-offset:
     description: Probe trigger point offset.
     default_value: 0.0
     persistent: true
     min_value: 0
-    max_value: 1
+    max_value: 1000
+
+  probe-parameters.cal-diameter:
+    description: Probe calibration diameter.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.x-cal-width:
+    description: Probe calibration x width.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.y-cal-width:
+    description: Probe calibration y width.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  probe-parameters.probe-parameters.sq-cal-axis:
+    description: Probe calibrate square axis.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 2
 
   probe-parameters.probe-tool-number:
     description: probe tool number.
@@ -105,6 +133,63 @@ settings:
     persistent: true
     min_value: 0
     max_value: 10000
+
+  probe-parameters.diameter-hint:
+    description: boss and pocket diameter hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.x-hint-boss-pocket:
+    description: boss and pocket x hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.y-hint-boss-pocket:
+    description: boss and pocket y hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.x-hint-ridge-valley:
+    description: ridge and valley x hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.y-hint-ridge-valley:
+    description: ridge and valley y hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  probe-parameters.probe-mode:
+    description: probe mode for wco or position only.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
+
+  probe-parameters.probe-wco-btn:
+    description: probe wco mode button.
+    persistent: true
+
+  probe-parameters.probe-posn-btn:
+    description: probe pos'n mode button.
+    persistent: true
+
+  probe-parameters.wco-rotation-mode:
+    description: ridge and valley y hint.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
 
   spindle-rpm-display.calculated-rpm:
     description: display calculated rpm on main page.

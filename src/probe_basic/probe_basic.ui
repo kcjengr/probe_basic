@@ -359,7 +359,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -15958,7 +15958,10 @@ QTabBar::tab:only-one {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QPushButton" name="probe_wco">
+                          <widget class="VCPSettingsPushButton" name="probe_wco">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>156</horstretch>
@@ -15977,25 +15980,20 @@ QTabBar::tab:only-one {
                              <height>38</height>
                             </size>
                            </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton{
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                            <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                            </property>
                            <property name="text">
                             <string>PROBE WCO</string>
-                           </property>
-                           <property name="checkable">
-                            <bool>true</bool>
                            </property>
                            <property name="checked">
                             <bool>true</bool>
                            </property>
                            <property name="autoExclusive">
                             <bool>true</bool>
+                           </property>
+                           <property name="settingName" stdset="0">
+                            <string>probe-parameters.probe-wco-btn</string>
                            </property>
                            <property name="checkedAction" stdset="0">
                             <string>0</string>
@@ -16006,10 +16004,13 @@ QTabBar::tab:only-one {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QPushButton" name="probe_Position_only">
+                          <widget class="VCPSettingsPushButton" name="probe_position_only">
+                           <property name="enabled">
+                            <bool>false</bool>
+                           </property>
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                             <horstretch>156</horstretch>
+                             <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
@@ -16021,23 +16022,21 @@ QTabBar::tab:only-one {
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>16777215</width>
+                             <width>118</width>
                              <height>38</height>
                             </size>
                            </property>
-                           <property name="focusPolicy">
-                            <enum>Qt::NoFocus</enum>
-                           </property>
                            <property name="styleSheet">
-                            <string notr="true">QPushButton{
-    font: 15pt &quot;Bebas Kai&quot;;
-}</string>
+                            <string notr="true">font: 15pt &quot;Bebas Kai&quot;;</string>
                            </property>
                            <property name="text">
                             <string>PROBE POS'N</string>
                            </property>
-                           <property name="checkable">
+                           <property name="autoExclusive">
                             <bool>true</bool>
+                           </property>
+                           <property name="settingName" stdset="0">
+                            <string>probe-parameters.probe-posn-btn</string>
                            </property>
                            <property name="checkedAction" stdset="0">
                             <string>1</string>
@@ -16180,7 +16179,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_tool_number">
+                        <widget class="VCPSettingsLineEdit" name="probe_tool_number_3014">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16213,195 +16212,6 @@ color: white;
                          </property>
                          <property name="textFormat" stdset="0">
                           <string>{:.0f}</string>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_84">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>140</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>140</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="baseSize">
-                          <size>
-                           <width>140</width>
-                           <height>30</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-font: 75 14pt &quot;Bebas Kai&quot;;
-color: white;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>Step Off Width:</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="VCPSettingsLineEdit" name="step_off_width">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::ClickFocus</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="placeholderText">
-                          <string>0.0000</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.step-off-width</string>
-                         </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_155">
-                       <property name="topMargin">
-                        <number>1</number>
-                       </property>
-                       <property name="bottomMargin">
-                        <number>1</number>
-                       </property>
-                       <item>
-                        <widget class="QLabel" name="ref_coilumn_header_20">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true"/>
-                         </property>
-                         <property name="text">
-                          <string/>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QLabel" name="label_85">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>140</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>150</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-font: 75 14pt &quot;Bebas Kai&quot;;
-color: white;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>PROBE FAST FDRATE:</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_fast_fr">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::ClickFocus</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="placeholderText">
-                          <string>0.0</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.probe-fast-fr</string>
-                         </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.1f}</string>
                          </property>
                         </widget>
                        </item>
@@ -16452,7 +16262,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_slow_fr">
+                        <widget class="VCPSettingsLineEdit" name="probe_slow_fr_3015">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16482,6 +16292,195 @@ color: white;
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.probe-slow-fr</string>
+                         </property>
+                         <property name="textFormat" stdset="0">
+                          <string>{:.1f}</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="horizontalLayout_155">
+                       <property name="topMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="QLabel" name="ref_coilumn_header_20">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true"/>
+                         </property>
+                         <property name="text">
+                          <string/>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_94">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>140</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>140</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="baseSize">
+                          <size>
+                           <width>140</width>
+                           <height>30</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+font: 75 14pt &quot;Bebas Kai&quot;;
+color: white;
+}</string>
+                         </property>
+                         <property name="lineWidth">
+                          <number>0</number>
+                         </property>
+                         <property name="text">
+                          <string>PROBE TRAVERSE FR:</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="indent">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="VCPSettingsLineEdit" name="probe_traverse_fr_3017">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>100</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::ClickFocus</enum>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="placeholderText">
+                          <string>0.0</string>
+                         </property>
+                         <property name="settingName" stdset="0">
+                          <string>probe-parameters.probe-traverse-fr</string>
+                         </property>
+                         <property name="textFormat" stdset="0">
+                          <string/>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="label_85">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>140</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>150</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+font: 75 14pt &quot;Bebas Kai&quot;;
+color: white;
+}</string>
+                         </property>
+                         <property name="lineWidth">
+                          <number>0</number>
+                         </property>
+                         <property name="text">
+                          <string>PROBE FAST FDRATE:</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="indent">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="VCPSettingsLineEdit" name="probe_fast_fr_3016">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>100</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>100</width>
+                           <height>31</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::ClickFocus</enum>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="placeholderText">
+                          <string>0.0</string>
+                         </property>
+                         <property name="settingName" stdset="0">
+                          <string>probe-parameters.probe-fast-fr</string>
                          </property>
                          <property name="textFormat" stdset="0">
                           <string>{:.1f}</string>
@@ -16558,7 +16557,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="max_xy_distance">
+                        <widget class="VCPSettingsLineEdit" name="max_xy_distance_3018">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16641,7 +16640,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="xy_clearance">
+                        <widget class="VCPSettingsLineEdit" name="xy_clearance_3019">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16747,7 +16746,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="max_z_distance">
+                        <widget class="VCPSettingsLineEdit" name="max_z_distance_3020">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16830,7 +16829,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="z_clearance">
+                        <widget class="VCPSettingsLineEdit" name="z_clearance_3021">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16942,7 +16941,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="extra_probe_depth">
+                        <widget class="VCPSettingsLineEdit" name="extra_probe_depth_3022">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -16979,7 +16978,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="QLabel" name="label_94">
+                        <widget class="QLabel" name="label_84">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -17014,7 +17013,7 @@ color: white;
                           <number>0</number>
                          </property>
                          <property name="text">
-                          <string>EDGE WIDTH:</string>
+                          <string>Step Off Width:</string>
                          </property>
                          <property name="alignment">
                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -17025,7 +17024,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="edge_width">
+                        <widget class="VCPSettingsLineEdit" name="step_off_width_3023">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -17054,7 +17053,7 @@ color: white;
                           <string>0.0000</string>
                          </property>
                          <property name="settingName" stdset="0">
-                          <string>probe-parameters.edge-width</string>
+                          <string>probe-parameters.step-off-width</string>
                          </property>
                          <property name="textFormat" stdset="0">
                           <string>{:.4f}</string>
@@ -20423,9 +20422,9 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPLineEdit" name="diameter_hint">
+                                     <widget class="VCPSettingsLineEdit" name="diameter_hint_3025">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -20450,6 +20449,12 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.diameter-hint</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -20487,9 +20492,9 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPLineEdit" name="x_hint_0">
+                                     <widget class="VCPSettingsLineEdit" name="x_hint_boss_pocket_3026">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -20514,6 +20519,12 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.x-hint-boss-pocket</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -20551,9 +20562,9 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPLineEdit" name="y_hint_0">
+                                     <widget class="VCPSettingsLineEdit" name="y_hint_boss_pocket_3027">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -20578,6 +20589,12 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.y-hint-boss-pocket</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -20978,9 +20995,9 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPLineEdit" name="x_hint">
+                                     <widget class="VCPSettingsLineEdit" name="x_hint_ridge_valley_3028">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -21005,6 +21022,12 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.x-hint-ridge-valley</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -21042,9 +21065,9 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPLineEdit" name="y_hint">
+                                     <widget class="VCPSettingsLineEdit" name="y_hint_ridge_valley_3029">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -21069,6 +21092,12 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.y-hint-ridge-valley</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -21571,7 +21600,7 @@ padding-left: 5px;
                                  </property>
                                  <layout class="QHBoxLayout" name="horizontalLayout_54">
                                   <property name="spacing">
-                                   <number>0</number>
+                                   <number>9</number>
                                   </property>
                                   <property name="leftMargin">
                                    <number>0</number>
@@ -21588,21 +21617,21 @@ padding-left: 5px;
                                   <item>
                                    <widget class="QPushButton" name="set_wco_offset_Btn">
                                     <property name="sizePolicy">
-                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                                      <horstretch>1</horstretch>
+                                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                      <horstretch>0</horstretch>
                                       <verstretch>0</verstretch>
                                      </sizepolicy>
                                     </property>
                                     <property name="minimumSize">
                                      <size>
-                                      <width>400</width>
-                                      <height>38</height>
+                                      <width>0</width>
+                                      <height>40</height>
                                      </size>
                                     </property>
                                     <property name="maximumSize">
                                      <size>
                                       <width>16777215</width>
-                                      <height>38</height>
+                                      <height>40</height>
                                      </size>
                                     </property>
                                     <property name="focusPolicy">
@@ -21612,7 +21641,7 @@ padding-left: 5px;
                                      <string notr="true"/>
                                     </property>
                                     <property name="text">
-                                     <string>SET WCO ROTATION FOR ANGLE PROBE OPERATIONS</string>
+                                     <string>SET WCO ROTATION</string>
                                     </property>
                                     <property name="checkable">
                                      <bool>true</bool>
@@ -21626,6 +21655,118 @@ padding-left: 5px;
                                     <property name="default">
                                      <bool>false</bool>
                                     </property>
+                                   </widget>
+                                  </item>
+                                  <item>
+                                   <widget class="QFrame" name="frame_16">
+                                    <property name="sizePolicy">
+                                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                      <horstretch>0</horstretch>
+                                      <verstretch>0</verstretch>
+                                     </sizepolicy>
+                                    </property>
+                                    <property name="minimumSize">
+                                     <size>
+                                      <width>0</width>
+                                      <height>40</height>
+                                     </size>
+                                    </property>
+                                    <property name="maximumSize">
+                                     <size>
+                                      <width>16777215</width>
+                                      <height>40</height>
+                                     </size>
+                                    </property>
+                                    <property name="styleSheet">
+                                     <string notr="true">.QFrame{
+    border-style: solid;
+    border-color: black;
+	border-width: 2px;
+    background-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+}</string>
+                                    </property>
+                                    <layout class="QHBoxLayout" name="horizontalLayout_163">
+                                     <property name="leftMargin">
+                                      <number>3</number>
+                                     </property>
+                                     <property name="topMargin">
+                                      <number>1</number>
+                                     </property>
+                                     <property name="rightMargin">
+                                      <number>3</number>
+                                     </property>
+                                     <property name="bottomMargin">
+                                      <number>1</number>
+                                     </property>
+                                     <item>
+                                      <widget class="QLabel" name="edge_width_label">
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>90</width>
+                                         <height>31</height>
+                                        </size>
+                                       </property>
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>90</width>
+                                         <height>31</height>
+                                        </size>
+                                       </property>
+                                       <property name="layoutDirection">
+                                        <enum>Qt::LeftToRight</enum>
+                                       </property>
+                                       <property name="styleSheet">
+                                        <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                                       </property>
+                                       <property name="text">
+                                        <string>EDGE WIDTH</string>
+                                       </property>
+                                       <property name="alignment">
+                                        <set>Qt::AlignCenter</set>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                     <item>
+                                      <widget class="VCPSettingsLineEdit" name="edge_width_3024">
+                                       <property name="sizePolicy">
+                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                         <horstretch>0</horstretch>
+                                         <verstretch>0</verstretch>
+                                        </sizepolicy>
+                                       </property>
+                                       <property name="minimumSize">
+                                        <size>
+                                         <width>100</width>
+                                         <height>31</height>
+                                        </size>
+                                       </property>
+                                       <property name="maximumSize">
+                                        <size>
+                                         <width>100</width>
+                                         <height>31</height>
+                                        </size>
+                                       </property>
+                                       <property name="focusPolicy">
+                                        <enum>Qt::ClickFocus</enum>
+                                       </property>
+                                       <property name="alignment">
+                                        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                                       </property>
+                                       <property name="placeholderText">
+                                        <string>0.0000</string>
+                                       </property>
+                                       <property name="settingName" stdset="0">
+                                        <string>probe-parameters.edge-width</string>
+                                       </property>
+                                       <property name="textFormat" stdset="0">
+                                        <string>{:.4f}</string>
+                                       </property>
+                                      </widget>
+                                     </item>
+                                    </layout>
                                    </widget>
                                   </item>
                                  </layout>
@@ -21742,7 +21883,7 @@ color: rgb(255, 255, 255);
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="VCPSettingsLineEdit" name="calibration_offset">
+                                  <widget class="VCPSettingsLineEdit" name="calibration_offset_3032">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -21783,10 +21924,10 @@ color: rgb(255, 255, 255);
                                     <string>[]</string>
                                    </property>
                                    <property name="settingName" stdset="0">
-                                    <string>touch-probe.calibration-offset</string>
+                                    <string>probe-parameters.calibration-offset</string>
                                    </property>
                                    <property name="textFormat" stdset="0">
-                                    <string>{:4f}</string>
+                                    <string>{:6f}</string>
                                    </property>
                                   </widget>
                                  </item>
@@ -22057,7 +22198,7 @@ color: rgb(255, 255, 255);
                                      </widget>
                                     </item>
                                     <item row="1" column="1">
-                                     <widget class="VCPLineEdit" name="cal_diameter">
+                                     <widget class="VCPSettingsLineEdit" name="cal_diameter_3033">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -22088,6 +22229,12 @@ margin-left: 14px;</string>
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.cal-diameter</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -22506,9 +22653,9 @@ color: white;
                                      </widget>
                                     </item>
                                     <item row="1" column="1">
-                                     <widget class="VCPLineEdit" name="x_cal_width">
+                                     <widget class="VCPSettingsLineEdit" name="x_cal_width_3034">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -22533,13 +22680,19 @@ color: white;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.x-cal-width</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
                                     <item row="3" column="1">
-                                     <widget class="VCPLineEdit" name="y_cal_width">
+                                     <widget class="VCPSettingsLineEdit" name="y_cal_width_3035">
                                       <property name="sizePolicy">
-                                       <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
+                                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
                                         <verstretch>0</verstretch>
                                        </sizepolicy>
@@ -22564,6 +22717,12 @@ color: white;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="settingName" stdset="0">
+                                       <string>probe-parameters.y-cal-width</string>
+                                      </property>
+                                      <property name="textFormat" stdset="0">
+                                       <string>{:.4f}</string>
                                       </property>
                                      </widget>
                                     </item>
@@ -28048,7 +28207,7 @@ color: white;
                 </widget>
                </item>
                <item>
-                <widget class="StatusLabel" name="pc_tool_length_2">
+                <widget class="StatusLabel" name="pc_tool_length">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -28233,7 +28392,6 @@ color: white;
               <property name="styleSheet">
                <string notr="true"/>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_15"/>
              </widget>
             </item>
             <item>
@@ -28361,7 +28519,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="probe_mode">
+                     <widget class="VCPSettingsLineEdit" name="probe_mode_3030">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28383,20 +28541,17 @@ color: white;
                       <property name="focusPolicy">
                        <enum>Qt::ClickFocus</enum>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="text">
-                       <string>0</string>
-                      </property>
-                      <property name="frame">
-                       <bool>false</bool>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>probe-parameters.probe-mode</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.0f}</string>
                       </property>
                      </widget>
                     </item>
@@ -28448,7 +28603,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="wco_rotation">
+                     <widget class="VCPSettingsLineEdit" name="wco_rotation_mode_3031">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28470,20 +28625,17 @@ color: white;
                       <property name="focusPolicy">
                        <enum>Qt::ClickFocus</enum>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="text">
-                       <string>0</string>
-                      </property>
-                      <property name="frame">
-                       <bool>false</bool>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>probe-parameters.wco-rotation-mode</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.0f}</string>
                       </property>
                      </widget>
                     </item>
@@ -28535,7 +28687,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="QLineEdit" name="sq_cal_axis">
+                     <widget class="VCPSettingsLineEdit" name="sq_cal_axis_3036">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28557,20 +28709,17 @@ color: white;
                       <property name="focusPolicy">
                        <enum>Qt::ClickFocus</enum>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="text">
-                       <string>0</string>
-                      </property>
-                      <property name="frame">
-                       <bool>false</bool>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>probe-parameters.sq-cal-axis</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.0f}</string>
                       </property>
                      </widget>
                     </item>
@@ -38149,227 +38298,6 @@ QLabel[style=&quot;homing&quot;]{
          <property name="verticalSpacing">
           <number>13</number>
          </property>
-         <item row="2" column="1">
-          <widget class="StatusLabel" name="feed_override_status">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="toolTipDuration">
-            <number>-3</number>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border-style: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="lineWidth">
-            <number>0</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="margin">
-            <number>-6</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0">
-          <widget class="ActionSlider" name="rapid_override_slider">
-           <property name="minimumSize">
-            <size>
-             <width>0</width>
-             <height>50</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QSlider::groove:horizontal {
-border: 1px solid #bbb;
-background: white;
-height: 20px;
-border-radius: 3px;
-}
-
-QSlider::sub-page:horizontal {
-background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
-    stop: 0 #66e, stop: 1 #bbf);
-background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
-    stop: 0 #bbf, stop: 1 #55f);
-border: 1px solid #777;
-height: 20px;
-border-radius: 3px;
-}
-
-QSlider::add-page:horizontal {
-background: rgb(235, 235, 235);
-border: 1px solid #777;
-height: 20px;
-border-radius: 3px;
-}
-
-QSlider::handle:horizontal {
-background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
-border: 1px solid #777;
-border-color: rgba(40, 40, 40, 255);
-width: 40px;
-margin-top: -13px;
-margin-bottom: -13px;
-border-radius: 4px;
-}
-
-QSlider::handle:horizontal:hover {
-background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
-border: 1px solid #444;
-border-color: rgb(241, 239, 237);
-border-radius: 4px;
-}
-
-QSlider::sub-page:horizontal:disabled {
-background: #bbb;
-border-color: #999;
-}
-
-QSlider::add-page:horizontal:disabled {
-background: #eee;
-border-color: #999;
-}
-
-QSlider::handle:horizontal:disabled {
-background: #eee;
-border: 1px solid #aaa;
-border-radius: 4px;
-}</string>
-           </property>
-           <property name="orientation">
-            <enum>Qt::Horizontal</enum>
-           </property>
-           <property name="actionName" stdset="0">
-            <string>machine.rapid-override.set</string>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1">
-          <widget class="StatusLabel" name="spindle_override_status">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border-style: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="lineWidth">
-            <number>0</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="margin">
-            <number>-6</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1">
-          <widget class="StatusLabel" name="rapid_override_status">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border-style: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="lineWidth">
-            <number>0</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="margin">
-            <number>-6</number>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
-           </property>
-          </widget>
-         </item>
          <item row="0" column="2">
           <widget class="QLabel" name="spindel_load_label">
            <property name="enabled">
@@ -38422,53 +38350,6 @@ LOAD</string>
            </property>
            <property name="indent">
             <number>0</number>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1">
-          <widget class="StatusLabel" name="max_vel_slider">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>55</width>
-             <height>36</height>
-            </size>
-           </property>
-           <property name="toolTipDuration">
-            <number>-1</number>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border-style: transparent;
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="lineWidth">
-            <number>0</number>
-           </property>
-           <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="indent">
-            <number>0</number>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:max_velocity&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0] * 60):.0f}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
            </property>
           </widget>
          </item>
@@ -38549,38 +38430,105 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
-         <item row="4" column="2">
-          <widget class="ActionButton" name="spindle_override_to_100_button">
+         <item row="2" column="1">
+          <widget class="StatusLabel" name="feed_override_status">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
            <property name="minimumSize">
             <size>
-             <width>65</width>
-             <height>40</height>
+             <width>55</width>
+             <height>36</height>
             </size>
            </property>
            <property name="maximumSize">
             <size>
-             <width>65</width>
-             <height>40</height>
+             <width>55</width>
+             <height>36</height>
             </size>
            </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
+           <property name="toolTipDuration">
+            <number>-3</number>
            </property>
            <property name="styleSheet">
-            <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
+            <string notr="true">QLabel {
+    border-style: transparent;
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 14pt &quot;Bebas Kai&quot;;
 }</string>
            </property>
-           <property name="text">
-            <string>S 100%</string>
+           <property name="lineWidth">
+            <number>0</number>
            </property>
-           <property name="actionName" stdset="0">
-            <string>spindle.override.reset</string>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="margin">
+            <number>-6</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:feedrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
            </property>
           </widget>
          </item>
-         <item row="2" column="0">
-          <widget class="ActionSlider" name="feed_override_slider">
+         <item row="4" column="1">
+          <widget class="StatusLabel" name="spindle_override_status">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    border-style: transparent;
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="margin">
+            <number>-6</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:spindle.0.override&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="0">
+          <widget class="ActionSlider" name="rapid_override_slider">
            <property name="minimumSize">
             <size>
              <width>0</width>
@@ -38648,14 +38596,11 @@ border: 1px solid #aaa;
 border-radius: 4px;
 }</string>
            </property>
-           <property name="maximum">
-            <number>100</number>
-           </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
            </property>
            <property name="actionName" stdset="0">
-            <string>machine.feed-override.set</string>
+            <string>machine.rapid-override.set</string>
            </property>
           </widget>
          </item>
@@ -38766,8 +38711,8 @@ border-radius: 4px;
            </property>
           </widget>
          </item>
-         <item row="1" column="2">
-          <widget class="ActionButton" name="max_velocity_to_100_button">
+         <item row="4" column="2">
+          <widget class="ActionButton" name="spindle_override_to_100_button">
            <property name="minimumSize">
             <size>
              <width>65</width>
@@ -38789,40 +38734,10 @@ border-radius: 4px;
 }</string>
            </property>
            <property name="text">
-            <string>V 100%</string>
+            <string>S 100%</string>
            </property>
            <property name="actionName" stdset="0">
-            <string>machine.max-velocity.reset</string>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2">
-          <widget class="ActionButton" name="rapid_override_to_100_button">
-           <property name="minimumSize">
-            <size>
-             <width>65</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>65</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>R 100%</string>
-           </property>
-           <property name="actionName" stdset="0">
-            <string>machine.rapid-override.reset</string>
+            <string>spindle.override.reset</string>
            </property>
           </widget>
          </item>
@@ -38877,6 +38792,240 @@ border-radius: 4px;
              <green>255</green>
              <blue>255</blue>
             </color>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="2">
+          <widget class="ActionButton" name="rapid_override_to_100_button">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>R 100%</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>machine.rapid-override.reset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="1">
+          <widget class="StatusLabel" name="max_vel_slider">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="toolTipDuration">
+            <number>-1</number>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    border-style: transparent;
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:max_velocity&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0] * 60):.0f}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="ActionButton" name="max_velocity_to_100_button">
+           <property name="minimumSize">
+            <size>
+             <width>65</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>65</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>V 100%</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>machine.max-velocity.reset</string>
+           </property>
+          </widget>
+         </item>
+         <item row="5" column="1">
+          <widget class="StatusLabel" name="rapid_override_status">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>55</width>
+             <height>36</height>
+            </size>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QLabel {
+    border-style: transparent;
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 75 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+           <property name="margin">
+            <number>-6</number>
+           </property>
+           <property name="indent">
+            <number>0</number>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:rapidrate&quot;, &quot;trigger&quot;: true}], &quot;expression&quot;: &quot;f\&quot;{(ch[0]):.0%}\&quot;&quot;, &quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;}]</string>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="0">
+          <widget class="ActionSlider" name="feed_override_slider">
+           <property name="minimumSize">
+            <size>
+             <width>0</width>
+             <height>50</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QSlider::groove:horizontal {
+border: 1px solid #bbb;
+background: white;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::sub-page:horizontal {
+background: qlineargradient(x1: 0, y1: 0,    x2: 0, y2: 1,
+    stop: 0 #66e, stop: 1 #bbf);
+background: qlineargradient(x1: 0, y1: 0.2, x2: 1, y2: 1,
+    stop: 0 #bbf, stop: 1 #55f);
+border: 1px solid #777;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::add-page:horizontal {
+background: rgb(235, 235, 235);
+border: 1px solid #777;
+height: 20px;
+border-radius: 3px;
+}
+
+QSlider::handle:horizontal {
+background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
+border: 1px solid #777;
+border-color: rgba(40, 40, 40, 255);
+width: 40px;
+margin-top: -13px;
+margin-bottom: -13px;
+border-radius: 4px;
+}
+
+QSlider::handle:horizontal:hover {
+background: qlineargradient(spread:reflect, x1:0, y1:0, x2:1, y2:0, stop:0 rgba(255, 255, 255, 255), stop:0.1 rgba(60, 60, 60, 255), stop:0.21 rgba(60, 60, 60, 255), stop:0.25 rgba(255, 255, 255, 255), stop:0.29 rgba(60, 60, 60, 255), stop:0.46 rgba(60, 60, 60, 255), stop:0.5 rgba(255, 255, 255, 255), stop:0.54 rgba(60, 60, 60, 255), stop:0.71 rgba(60, 60, 60, 255), stop:0.75 rgba(255, 255, 255, 255), stop:0.79 rgba(60, 60, 60, 255), stop:0.9 rgba(60, 60, 60, 255), stop:1 rgba(255, 255, 255, 255));
+border: 1px solid #444;
+border-color: rgb(241, 239, 237);
+border-radius: 4px;
+}
+
+QSlider::sub-page:horizontal:disabled {
+background: #bbb;
+border-color: #999;
+}
+
+QSlider::add-page:horizontal:disabled {
+background: #eee;
+border-color: #999;
+}
+
+QSlider::handle:horizontal:disabled {
+background: #eee;
+border: 1px solid #aaa;
+border-radius: 4px;
+}</string>
+           </property>
+           <property name="maximum">
+            <number>100</number>
+           </property>
+           <property name="orientation">
+            <enum>Qt::Horizontal</enum>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>machine.feed-override.set</string>
            </property>
           </widget>
          </item>
@@ -40785,12 +40934,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1470</x>
-     <y>435</y>
+     <x>1474</x>
+     <y>421</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1610</x>
-     <y>436</y>
+     <x>1614</x>
+     <y>422</y>
     </hint>
    </hints>
   </connection>
@@ -41282,10 +41431,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>88</y>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
-     <x>221</x>
+     <x>708</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41298,10 +41447,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>90</y>
+     <y>214</y>
     </hint>
     <hint type="destinationlabel">
-     <x>270</x>
+     <x>1056</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41314,10 +41463,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>89</y>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
-     <x>270</x>
+     <x>1056</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41330,10 +41479,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>91</y>
+     <y>261</y>
     </hint>
     <hint type="destinationlabel">
-     <x>270</x>
+     <x>1056</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41346,10 +41495,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>92</y>
+     <y>307</y>
     </hint>
     <hint type="destinationlabel">
-     <x>223</x>
+     <x>1186</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41362,10 +41511,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>93</y>
+     <y>354</y>
     </hint>
     <hint type="destinationlabel">
-     <x>223</x>
+     <x>1186</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41378,10 +41527,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>94</y>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
-     <x>223</x>
+     <x>1317</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41393,11 +41542,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>219</x>
-     <y>98</y>
+     <x>225</x>
+     <y>264</y>
     </hint>
     <hint type="destinationlabel">
-     <x>269</x>
+     <x>882</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41410,10 +41559,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>190</x>
-     <y>100</y>
+     <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>226</x>
+     <x>1577</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41426,11 +41575,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>88</y>
+     <y>121</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>105</y>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41442,11 +41591,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>90</y>
+     <y>214</y>
     </hint>
     <hint type="destinationlabel">
      <x>522</x>
-     <y>105</y>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41458,11 +41607,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>89</y>
+     <y>168</y>
     </hint>
     <hint type="destinationlabel">
-     <x>500</x>
-     <y>105</y>
+     <x>522</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41474,11 +41623,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>91</y>
+     <y>261</y>
     </hint>
     <hint type="destinationlabel">
-     <x>468</x>
-     <y>105</y>
+     <x>494</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41490,11 +41639,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>92</y>
+     <y>307</y>
     </hint>
     <hint type="destinationlabel">
-     <x>439</x>
-     <y>105</y>
+     <x>465</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41506,11 +41655,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>93</y>
+     <y>354</y>
     </hint>
     <hint type="destinationlabel">
-     <x>412</x>
-     <y>105</y>
+     <x>438</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41522,11 +41671,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>522</x>
-     <y>94</y>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
-     <x>389</x>
-     <y>105</y>
+     <x>415</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41538,11 +41687,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>272</x>
-     <y>93</y>
+     <y>354</y>
     </hint>
     <hint type="destinationlabel">
-     <x>351</x>
-     <y>105</y>
+     <x>377</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41554,11 +41703,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>272</x>
-     <y>94</y>
+     <y>400</y>
     </hint>
     <hint type="destinationlabel">
-     <x>318</x>
-     <y>105</y>
+     <x>344</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41570,11 +41719,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>308</x>
-     <y>100</y>
+     <y>495</y>
     </hint>
     <hint type="destinationlabel">
-     <x>287</x>
-     <y>105</y>
+     <x>313</x>
+     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -41585,11 +41734,11 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>183</x>
-     <y>101</y>
+     <x>190</x>
+     <y>404</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
+     <x>1447</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41602,10 +41751,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>393</x>
-     <y>103</y>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
+     <x>1447</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41618,10 +41767,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>236</x>
-     <y>103</y>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
+     <x>1447</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41634,10 +41783,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>315</x>
-     <y>102</y>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
+     <x>1447</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41650,10 +41799,10 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>315</x>
-     <y>104</y>
+     <y>543</y>
     </hint>
     <hint type="destinationlabel">
-     <x>224</x>
+     <x>1447</x>
      <y>85</y>
     </hint>
    </hints>
@@ -41681,8 +41830,8 @@ font: 11pt bebas kai;
    <slot>setFilePath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>69</x>
-     <y>60</y>
+     <x>542</x>
+     <y>175</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -41709,19 +41858,19 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probemodeGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
