@@ -15958,7 +15958,7 @@ QTabBar::tab:only-one {
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="probe_wco">
+                          <widget class="VCPSettingsPushButton" name="probe_wco_Btn">
                            <property name="enabled">
                             <bool>false</bool>
                            </property>
@@ -15987,7 +15987,7 @@ QTabBar::tab:only-one {
                             <string>PROBE WCO</string>
                            </property>
                            <property name="checked">
-                            <bool>true</bool>
+                            <bool>false</bool>
                            </property>
                            <property name="autoExclusive">
                             <bool>true</bool>
@@ -15995,16 +15995,10 @@ QTabBar::tab:only-one {
                            <property name="settingName" stdset="0">
                             <string>probe-parameters.probe-wco-btn</string>
                            </property>
-                           <property name="checkedAction" stdset="0">
-                            <string>0</string>
-                           </property>
-                           <attribute name="buttonGroup">
-                            <string notr="true">probemodeGroup</string>
-                           </attribute>
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="probe_position_only">
+                          <widget class="VCPSettingsPushButton" name="probe_position_only_Btn">
                            <property name="enabled">
                             <bool>false</bool>
                            </property>
@@ -16032,18 +16026,15 @@ QTabBar::tab:only-one {
                            <property name="text">
                             <string>PROBE POS'N</string>
                            </property>
+                           <property name="checked">
+                            <bool>false</bool>
+                           </property>
                            <property name="autoExclusive">
                             <bool>true</bool>
                            </property>
                            <property name="settingName" stdset="0">
                             <string>probe-parameters.probe-posn-btn</string>
                            </property>
-                           <property name="checkedAction" stdset="0">
-                            <string>1</string>
-                           </property>
-                           <attribute name="buttonGroup">
-                            <string notr="true">probemodeGroup</string>
-                           </attribute>
                           </widget>
                          </item>
                         </layout>
@@ -19135,7 +19126,7 @@ SubCallButton:checked[option=&quot;false&quot;] {
 }</string>
                           </property>
                           <property name="currentIndex">
-                           <number>0</number>
+                           <number>4</number>
                           </property>
                           <widget class="QWidget" name="Page1">
                            <layout class="QHBoxLayout" name="horizontalLayout_132">
@@ -28519,7 +28510,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="probe_mode_3030">
+                     <widget class="VCPLineEdit" name="probe_mode_3030">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -28538,20 +28529,14 @@ color: white;
                         <height>31</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::ClickFocus</enum>
-                      </property>
                       <property name="alignment">
                        <set>Qt::AlignCenter</set>
                       </property>
-                      <property name="placeholderText">
-                       <string>0</string>
+                      <property name="readOnly">
+                       <bool>true</bool>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>probe-parameters.probe-mode</string>
-                      </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.0f}</string>
+                      <property name="rules" stdset="0">
+                       <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-probe&quot;, &quot;trigger&quot;: true}]}]</string>
                       </property>
                      </widget>
                     </item>
@@ -41871,6 +41856,5 @@ font: 11pt bebas kai;
   <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probemodeGroup"/>
  </buttongroups>
 </ui>
