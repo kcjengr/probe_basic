@@ -13,7 +13,7 @@ o<load_spindle_safety> sub
 (PRINT, o<load_spindle_safety>)
 
 #<load_spindle_tool_number> = #1 ; this is the value form the ATC tab
-#<probe_tool_number> = #2
+#<probe_tool_number_3014> = #2
 
 ; default to a 12 pocket ATC (matching DynATC Widget behaviour), then update based on INI settings
 #<number_of_pockets> = 12
@@ -37,7 +37,7 @@ o130 if [#11 EQ 0]
     #3991 = #<load_spindle_tool_number>
 o130 endif
 
-o140 if [#<load_spindle_tool_number> EQ #<probe_tool_number>]
+o140 if [#<load_spindle_tool_number> EQ #<probe_tool_number_3014>]
     S0 M5
 o140 endif
 
