@@ -22,26 +22,8 @@ o<probe_cal_round_pocket> sub
   #<extra_probe_depth> = #3022    (=0.0000)  
   #<step_off_width> = #3023       (=0.5000)
   #<probe_mode> = #3030           (=0)
-  #<calibration_offset> = #3032   (=0)
-  #<cal_diameter_3033> = #3033    (=0)
-  #<x_cal_width> = #3034          (=0)
-  #<y_cal_width> = #3035          (=0)
+  #<cal_diameter> = #3033         (=0)
   #<sq_cal_axis> = #3036          (=0)
-
-  #<probe_tool_number> = #1    (=99)
-  #<max_z_distance> = #2       (=0.5000)
-  #<max_xy_distance> = #3      (=0.5000)
-  #<xy_clearance> = #4         (=0.1000)
-  #<z_clearance> = #5          (=0.1000)
-  #<step_off_width> = #6       (=0.5000)
-  #<extra_probe_depth> = #7    (=0.0000)
-  #<probe_slow_fr> = #8        (=0.0)
-  #<probe_fast_fr> = #9        (=10.0)
-  #<calibration_offset> = #10  (=0.0000)
-  #<edge_width> = #11          (=0.5000)
-  #<probe_mode> = #12          (=0)
-  #<cal_diameter> = #13        (=1.0000)
-  #<probe_traverse_fr> = #15   (=50)
 
   (Cancel G92 offsets)
   G92.1
@@ -64,7 +46,7 @@ o<probe_cal_round_pocket> sub
   #<z_probe_stack> = [#<z_clearance> + #<probe_diameter> + #<extra_probe_depth>]
 
   (Call sub "probe_z_minus_sub" to Probe top of Workpiece)
-  o<probe_z_minus_sub> call
+  o<probe_z_minus_sub> call [#3014][#3015][#3016][#3017][#3020][#3021][#3030]
 
   (Probe X Positioning Move, Step Off Width)
   G91
@@ -76,12 +58,12 @@ o<probe_cal_round_pocket> sub
   G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call
+  o<probe_x_minus> call [#3014][#3015][#3016][#3017][#3018][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#3018 + #3033]
+  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3033][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -97,12 +79,12 @@ o<probe_cal_round_pocket> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#3018 + #3033 / 2]
+  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3033 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#3018 + #3033]
+  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3033][#3019][#3032]
 
   #<y_minus_probed> = #5062
 
@@ -118,12 +100,12 @@ o<probe_cal_round_pocket> sub
   G38.3 Y[#<y_center_probed>]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call [#3018 + #3033 / 2]
+  o<probe_x_minus> call [#3014][#3015][#3016][3017][#3018 + #3033 / 2][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#3018 + #3033]
+  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3033][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -147,12 +129,12 @@ o<probe_cal_round_pocket> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#3018 + #3033 / 2]
+  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3033 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#3018 + #3033]
+  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3033][#3019][#3032]
 
   #<y_minus_probed> = #5062
 

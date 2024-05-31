@@ -61,7 +61,7 @@ o<probe_x_plus_wco> sub
   o110 if [#5070 EQ 0]
       (back to start point and feed)
       G90
-      G1 F[#<max_velocity_slider] X#<x>
+      G1 F[#<max_vel_slider>] X#<x>
       F[#<probe_fast_fr>]
       (return from sub)
       o<probe_x_plus_wco> return
@@ -69,7 +69,7 @@ o<probe_x_plus_wco> sub
 
   (Move to xy_clearance distance for slow probe)
   G90
-  G1 F[#<max_velocity_slider] X[#<x_plus_probed> - #<xy_clearance>]
+  G1 F[#<max_vel_slider>] X[#<x_plus_probed> - #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -79,7 +79,7 @@ o<probe_x_plus_wco> sub
       G38.2 X[#<xy_clearance> * 2]
       #<x_plus_probed> = #5061
       G90
-      G1 F[#<max_velocity_slider] X[#<x_plus_probed> - #<xy_clearance>]
+      G1 F[#<max_vel_slider>] X[#<x_plus_probed> - #<xy_clearance>]
   o120 endif
 
   #<x_plus_zero_edge> = [#<x_plus_probed> + #<probe_center_offset>]

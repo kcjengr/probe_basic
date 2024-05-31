@@ -21,14 +21,8 @@ o<probe_round_pocket_center_start> sub
   #<z_clearance> = #3021          (=0.1000)
   #<extra_probe_depth> = #3022    (=0.0000)  
   #<step_off_width> = #3023       (=0.5000)
-  #<edge_width> = #3024           (=0.5000)
-  #<diameter_hint> = #3025
-  #<x_hint_boss_pocket> = #3026
-  #<y_hint_boss_pocket> = #3027
-  #<x_hint_ridge_valley> = #3028
-  #<y_hint_ridge_valley> = #3029
+  #<diameter_hint> = #3025        (=0)
   #<probe_mode> = #3030           (=0)
-  #<wco_rotation> = #3031         (=0)
   #<calibration_offset> = #3032   (=0)
 
   (Cancel G92 offsets)
@@ -50,12 +44,12 @@ o<probe_round_pocket_center_start> sub
   #<probe_diameter_offset> = [#<probe_diameter> - [#<calibration_offset> * 2]]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call [#1][#3 +#13 / 2][#4][#8][#9][#10]
+  o<probe_x_minus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#1][#3 + #13][#4][#8][#9][#10]
+  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -71,12 +65,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#1][#3 + #13 / 2][#4][#8][#9][#10]
+  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#1][#3 + #13][#4][#8][#9][#10]
+  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
 
   #<y_minus_probed> = #5062
 
@@ -92,12 +86,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 Y[#<y_center_probed>]
 
   (Call sub "probe_x_minus" to Probe x-)
-  o<probe_x_minus> call [#1][#3 + #13 / 2][#4][#8][#9][#10]
+  o<probe_x_minus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<x_minus_probed> = #5061
 
   (Call sub "probe_x_plus" to Probe x+)
-  o<probe_x_plus> call [#1][#3 + #13][#4][#8][#9][#10]
+  o<probe_x_plus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
 
   #<x_plus_probed> = #5061
 
@@ -121,12 +115,12 @@ o<probe_round_pocket_center_start> sub
   G38.3 X[#<x_center_probed>]
 
   (Call sub "probe_y_plus" to Probe Y+)
-  o<probe_y_plus> call [#1][#3 + #13 / 2][#4][#8][#9][#10]
+  o<probe_y_plus> call [#3014][#3015][#3016][3017][#3018 + #3025 / 2][#3019][#3032]
 
   #<y_plus_probed> = #5062
 
   (Call sub "probe_y_minus" to Probe Y-)
-  o<probe_y_minus> call [#1][#3 + #13][#4][#8][#9][#10]
+  o<probe_y_minus> call [#3014][#3015][#3016][3017][#3018 + #3025][#3019][#3032]
 
   #<y_minus_probed> = #5062
 
