@@ -1,6 +1,6 @@
-==========================================
+========================================================
 Probe Basic Stable Version APT Installation instructions
-==========================================
+========================================================
 
 
 **Probe Basic APT Installation Guide for use with Debian 12 Bookworm and LinuxCNC version 2.9 or Later**
