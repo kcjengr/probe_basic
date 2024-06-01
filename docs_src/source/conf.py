@@ -43,9 +43,6 @@ pb_version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 pb_release = probe_basic.__version__
 
-# The short commit ID
-pb_commit = probe_basic.__version__.split('.')[2]
-
 
 with open("/home/buildbot/versions/qtpyvcp_dev_version.txt", "r") as v_file:
     qtpyvcp_dev_latest_version = v_file.readline().rstrip("\n")
@@ -57,7 +54,6 @@ with open("/home/buildbot/versions/pb_dev_version.txt", "r") as v_file:
 rst_epilog = f"""
 .. |code_version| replace:: {pb_version}
 .. |code_release| replace:: {pb_release}
-.. |code_commit| replace:: {pb_commit}
 .. |qtpyvcp_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
 .. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
 .. |probe_basic_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_all.deb
