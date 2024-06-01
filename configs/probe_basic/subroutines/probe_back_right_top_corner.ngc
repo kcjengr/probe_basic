@@ -47,7 +47,7 @@ o<probe_back_right_top_corner> sub
 
   (Probe X Positioning Move, Step Off Width)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<step_off_width>]
 
   (Probe X Positioning Move, to Probing Depth)
@@ -67,10 +67,10 @@ o<probe_back_right_top_corner> sub
 
   (Probe Y Positioning Move, up to Z clearance plane)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
   (Probe Y Positioning Move)
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X-[#<step_off_width>] Y[#<step_off_width>]
 
   (Probe Y Positioning Move,to Probing Depth)
@@ -90,10 +90,10 @@ o<probe_back_right_top_corner> sub
 
   (Probe Completion Move to Z Clearance Plane, and XY Zero)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
   G90
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<x_minus_zero_edge>] Y[#<y_minus_zero_edge>]
 
   (probe mode rules for WCO or probe position measuring only)
