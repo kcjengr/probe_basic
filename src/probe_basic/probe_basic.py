@@ -18,6 +18,7 @@ from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
+from probe_basic_utils.named_params import NamedParams
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
@@ -53,6 +54,9 @@ class ProbeBasic(VCPMainWindow):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
     
         self.load_user_tabs()
+        
+        params_config_path = os.path.join(VCP_DIR, "params.yml")
+        self.named_params = NamedParams(params_config_path, self)
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
@@ -149,12 +153,12 @@ class ProbeBasic(VCPMainWindow):
             text = char
         self.mdiEntry.setText(text)
 
-    def mdiBackSpace_clicked(parent):
+    def mdiBackSpace_clicked(self, parent):
         if len(parent.mdiEntry.text()) > 0:
             text = parent.mdiEntry.text()[:-1]
             parent.mdiEntry.setText(text)
 
-    def mdiSpace_clicked(parent):
+    def mdiSpace_clicked(self, parent):
         text = parent.mdiEntry.text() or 'null'
         # if no text then do not add a space
         if text != 'null':
