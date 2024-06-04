@@ -11,90 +11,68 @@ Probe Basic now has a STABLE and a DEVELOP repository from which users can selec
 
 Step by Step how to change the sources list name for the stable and develop apt repository:
 
-**1- Type or copy and paste the following line in a terminal, click ENTER, type in your sudo password when prompted, click ENTER.
+
+**1- Type or copy and paste the following line in a terminal, click ENTER, type in your sudo password when prompted, click ENTER.**
 
 
 ::
-
-
-
    sudo nano /etc/apt/sources.list.d/kcjengr.list
-
-
-
+|
 
 
 .. image:: images/pb_sources_list.png
    :align: center
+|
 
 
 
-
-
-**2- Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic as shown below:
+**2- Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic as shown below:**
 
 
 .. image:: images/nano_sources_list.png
    :align: center
-
-
-
+|
 
 
 .. image:: images/nano_sources_list_edited.png
    :align: center
+|
 
 
 
-
-**3- Exit and Save the changes, CTRL + X, Y, ENTER as shown below:
+**3- Exit and Save the changes, CTRL + X, Y, ENTER as shown below:**
 
 
 .. image:: images/yes_nano_to_save.png
    :align: center
-
-
-
-
-
+|
 
 
 .. image:: images/enter_nano_file_save_name.png
    :align: center
+|
 
 
 
-
-
-
-
-
-**4- Run apt update/upgrade, copy the following in the main terminal one line at a time , select Y for yes if asked at any point during the update.
+**4- Run apt update/upgrade, copy the following in the main terminal one line at a time , select Y for yes if asked at any point during the update**
 
 
 ::
-   
-   
-   
    sudo apt update
-
+|
 
 
 ::
-   
-   
-   
    sudo apt upgrade
+|
 
 
 
-
-
-**5- you should see the temrinal run the update for QtPyVCP and Probe Basic.
+**5- you should see the temrinal run the update for QtPyVCP and Probe Basic**
 
 
 
-**6- NOTE: The development versions will likely require edits, additions or updates to config files, these include but are not limited to the yaml, ini, hal, subroutine, python and any other supporting configuration files.  these changes may not always be fully documents as we test them and are making changes, so we urge users to be aware that the development version should be used in a testing environment only.  Those wishing to retain stability in operational use should change to the STABLE version. 
+**6- NOTE: The development versions will likely require edits, additions or updates to config files, these include but are not limited to the yaml, ini, hal, subroutine, python and any other supporting configuration files.  these changes may not always be fully documents as we test them and are making changes, so we urge users to be aware that the development version should be used in a testing environment only.  Those wishing to retain stability in operational use should change to the STABLE version.**
 
 
 
