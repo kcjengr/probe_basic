@@ -10352,15 +10352,15 @@ QPushButton:checked {
                      <property name="cornerButtonEnabled">
                       <bool>false</bool>
                      </property>
-                     <property name="displayColumns" stdset="0">
-                      <string>XYZABR</string>
-                     </property>
                      <property name="currentRowColor" stdset="0">
                       <color>
                        <red>0</red>
                        <green>38</green>
                        <blue>255</blue>
                       </color>
+                     </property>
+                     <property name="displayColumns" stdset="0">
+                      <string>XYZABR</string>
                      </property>
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>false</bool>
@@ -15986,6 +15986,9 @@ QTabBar::tab:only-one {
                            <property name="text">
                             <string>PROBE POSITION ONLY</string>
                            </property>
+                           <property name="rules" stdset="0">
+                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                           </property>
                            <property name="settingName" stdset="0">
                             <string>probe-parameters.probe-posn-btn</string>
                            </property>
@@ -16173,6 +16176,9 @@ color: white;
                          <property name="placeholderText">
                           <string>0</string>
                          </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.probe-tool-number</string>
                          </property>
@@ -16255,6 +16261,9 @@ color: white;
                          </property>
                          <property name="placeholderText">
                           <string>0.0</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.probe-slow-fr</string>
@@ -16368,6 +16377,9 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0</string>
                          </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.probe-traverse-fr</string>
                          </property>
@@ -16444,6 +16456,9 @@ color: white;
                          </property>
                          <property name="placeholderText">
                           <string>0.0</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.probe-fast-fr</string>
@@ -16551,6 +16566,9 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.max-xy-distance</string>
                          </property>
@@ -16633,6 +16651,9 @@ color: white;
                          </property>
                          <property name="placeholderText">
                           <string>0.0000</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.xy-clearance</string>
@@ -16740,6 +16761,9 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.max-z-distance</string>
                          </property>
@@ -16822,6 +16846,9 @@ color: white;
                          </property>
                          <property name="placeholderText">
                           <string>0.0000</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.z-clearance</string>
@@ -16935,6 +16962,9 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.extra-probe-depth</string>
                          </property>
@@ -17017,6 +17047,9 @@ color: white;
                          </property>
                          <property name="placeholderText">
                           <string>0.0000</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>probe-parameters.step-off-width</string>
@@ -20431,6 +20464,9 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.diameter-hint</string>
                                       </property>
@@ -20501,6 +20537,9 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.x-hint-boss-pocket</string>
                                       </property>
@@ -20570,6 +20609,9 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                       </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.y-hint-boss-pocket</string>
@@ -21004,6 +21046,9 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.x-hint-ridge-valley</string>
                                       </property>
@@ -21073,6 +21118,9 @@ padding-left: 5px;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                       </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.y-hint-ridge-valley</string>
@@ -21624,6 +21672,9 @@ padding-left: 5px;
                                     <property name="text">
                                      <string>SET ROTATION WCO</string>
                                     </property>
+                                    <property name="rules" stdset="0">
+                                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                    </property>
                                     <property name="settingName" stdset="0">
                                      <string>probe-parameters.rotation-wco-btn</string>
                                     </property>
@@ -21729,6 +21780,9 @@ padding-left: 5px;
                                        </property>
                                        <property name="placeholderText">
                                         <string>0.0000</string>
+                                       </property>
+                                       <property name="rules" stdset="0">
+                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                        </property>
                                        <property name="settingName" stdset="0">
                                         <string>probe-parameters.edge-width</string>
@@ -21893,7 +21947,7 @@ color: rgb(255, 255, 255);
                                     <bool>false</bool>
                                    </property>
                                    <property name="rules" stdset="0">
-                                    <string>[]</string>
+                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                    </property>
                                    <property name="settingName" stdset="0">
                                     <string>probe-parameters.calibration-offset</string>
@@ -21956,6 +22010,9 @@ color: rgb(255, 255, 255);
                                    </property>
                                    <property name="text">
                                     <string>PROBE CAL RESET</string>
+                                   </property>
+                                   <property name="rules" stdset="0">
+                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                    </property>
                                    <property name="filename" stdset="0">
                                     <string>probe_cal_reset.ngc</string>
@@ -22202,6 +22259,9 @@ margin-left: 14px;</string>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.cal-diameter</string>
                                       </property>
@@ -22267,6 +22327,9 @@ margin-left: 14px;</string>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
                                    </property>
+                                   <property name="rules" stdset="0">
+                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   </property>
                                    <property name="settingName" stdset="0">
                                     <string>probe-parameters.cal-xy-btn</string>
                                    </property>
@@ -22307,6 +22370,9 @@ margin-left: 14px;</string>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
                                    </property>
+                                   <property name="rules" stdset="0">
+                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   </property>
                                    <property name="settingName" stdset="0">
                                     <string>probe-parameters.cal-x-btn</string>
                                    </property>
@@ -22346,6 +22412,9 @@ margin-left: 14px;</string>
                                    </property>
                                    <property name="autoExclusive">
                                     <bool>true</bool>
+                                   </property>
+                                   <property name="rules" stdset="0">
+                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                    </property>
                                    <property name="settingName" stdset="0">
                                     <string>probe-parameters.cal-y-btn</string>
@@ -22644,6 +22713,9 @@ color: white;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.x-cal-width</string>
                                       </property>
@@ -22680,6 +22752,9 @@ color: white;
                                       </property>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
+                                      </property>
+                                      <property name="rules" stdset="0">
+                                       <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                                       </property>
                                       <property name="settingName" stdset="0">
                                        <string>probe-parameters.y-cal-width</string>
@@ -23635,7 +23710,7 @@ color: white;
                         <item>
                          <widget class="VCPSettingsLineEdit" name="spindle_zero_height_3010">
                           <property name="enabled">
-                           <bool>true</bool>
+                           <bool>false</bool>
                           </property>
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -23677,6 +23752,9 @@ color: white;
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.spindle-nose-height</string>
@@ -23897,6 +23975,9 @@ color: white;
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.fast-probe-fr</string>
                           </property>
@@ -24116,6 +24197,9 @@ color: white;
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.slow-probe-fr</string>
                           </property>
@@ -24296,6 +24380,9 @@ color: white;
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.traverse-fr</string>
                           </property>
@@ -24409,6 +24496,9 @@ color: white;
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.z-max-travel</string>
                           </property>
@@ -24438,6 +24528,9 @@ color: white;
                         </property>
                         <item>
                          <widget class="VCPSettingsPushButton" name="tool_diameter_probe_Btn">
+                          <property name="enabled">
+                           <bool>false</bool>
+                          </property>
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -24461,6 +24554,9 @@ color: white;
                           </property>
                           <property name="text">
                            <string>TOOL DIAM PROBE</string>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[]</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.diameter-probe</string>
@@ -24583,6 +24679,9 @@ color: white;
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.xy-max-travel</string>
@@ -24758,6 +24857,9 @@ color: white;
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>tool-setter-probe.retract-distance</string>
@@ -42155,18 +42257,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="settertabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
  </buttongroups>
 </ui>
