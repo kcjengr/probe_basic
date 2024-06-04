@@ -28,7 +28,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 .. image:: images/pb_sources_list.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 |
 
 
@@ -38,13 +38,13 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 .. image:: images/nano_sources_list.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 |
 
 
 .. image:: images/nano_sources_list_edited.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 |
 
 
@@ -54,13 +54,13 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 .. image:: images/yes_nano_to_save.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 |
 
 
 .. image:: images/enter_nano_file_save_name.png
    :align: center
-   :scale: 50%
+   :scale: 80%
 |
 
 
