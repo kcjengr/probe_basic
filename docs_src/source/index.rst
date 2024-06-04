@@ -17,6 +17,7 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
 
    stable_quick_start_apt
    development_quick_start_apt
+   stable_develop_branch_change
    quick_start
    dev_install
 
