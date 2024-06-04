@@ -21,7 +21,8 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-.. image:: pb_sources_list.png
+
+.. image:: images/pb_sources_list.png
    :align: center
 
 
@@ -31,14 +32,14 @@ Step by Step how to change the sources list name for the stable and develop apt 
 2- Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic as shown below:
 
 
-.. image:: nano_sources_list.png
+.. image:: images/nano_sources_list.png
    :align: center
 
 
 
 
 
-.. image:: nano_sources_list_edited.png
+.. image:: images/nano_sources_list_edited.png
    :align: center
 
 
@@ -48,14 +49,14 @@ Step by Step how to change the sources list name for the stable and develop apt 
 3- Exit and Save the changes, CTRL + X, Y, ENTER as shown below:
 
 
-.. image:: yes_nano_to_save.png
+.. image:: images/yes_nano_to_save.png
    :align: center
 
 
 
 
 
-.. image:: enter_nano_file_save_name.png
+.. image:: images/enter_nano_file_save_name.png
    :align: center
 
 
@@ -68,14 +69,14 @@ Step by Step how to change the sources list name for the stable and develop apt 
 ::
 
 
-    sudo apt update
+   sudo apt update
 
 
 
 ::
 
 
-    sudo apt upgrade
+   sudo apt upgrade
 
 
 
