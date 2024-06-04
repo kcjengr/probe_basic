@@ -76,8 +76,6 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-|
-
 
 ::
 
