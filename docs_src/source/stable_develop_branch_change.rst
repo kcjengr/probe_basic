@@ -89,7 +89,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-**5- you should see the temrinal run the update for QtPyVCP and Probe Basic**
+**5- You should see the terminal run the update for QtPyVCP and Probe Basic**
 
 
 
