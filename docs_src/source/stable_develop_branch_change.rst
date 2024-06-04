@@ -16,6 +16,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 ::
 
 
+
     sudo nano /etc/apt/sources.list.d/kcjengr.list
 
 
@@ -26,11 +27,14 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
+
 2- Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic as shown below:
 
 
 .. image:: nano_sources_list.png
    :align: center
+
+
 
 
 
@@ -46,6 +50,8 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 .. image:: yes_nano_to_save.png
    :align: center
+
+
 
 
 
