@@ -25,6 +25,7 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    :maxdepth: 2
    :caption: Configuration:
 
+   probe_basic_parameters
    machine_config
    atc_setup
 
