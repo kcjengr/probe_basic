@@ -12,7 +12,7 @@ The Probe Basic Sim Config Folder contains the sim.var file which has been updat
 
 .. image:: images/params_program_coolant.png
    :align: center
-   :scale: 100%
+   :scale: 95%
 |
 
 .. image:: images/params_tool_setter.png
