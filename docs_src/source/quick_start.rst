@@ -1,6 +1,6 @@
-==========================================
-Probe Basic .deb Installation instructions
-==========================================
+========================
+Probe Basic .deb Install
+========================
 
 
 **Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**

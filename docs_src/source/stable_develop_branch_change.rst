@@ -1,6 +1,6 @@
-==========================================
-Change Between Stable and Develop Versions 
-==========================================
+====================================
+Changing Stable <-> Develop Versions
+====================================
 
 
 **Probe Basic STABLE and DEVELOP Version Information**
