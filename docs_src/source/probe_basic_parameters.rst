@@ -10,9 +10,9 @@ Probe Basic's devlop version is now using the var file in the configs folder for
 The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine connfiguration for proper functionality.  
 
 
-.. image:: images/params_program_coolant.png
+.. image:: images/params_programmable_coolant.png
    :align: center
-   :scale: 95%
+   :scale: 100%
 |
 
 .. image:: images/params_tool_setter.png
