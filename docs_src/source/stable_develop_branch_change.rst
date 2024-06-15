@@ -65,7 +65,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-**4- Run uninstall the current installation of Probe Basic with the following commands in terminal:
+**4- Run uninstall the current installation of Probe Basic with the following commands in terminal:**
 
 ::
 
@@ -88,7 +88,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 |
 
 
-**5- Run install of Probe Basic and QtPyVCP with the following commands in terminal:
+**5- Run install of Probe Basic and QtPyVCP with the following commands in terminal:**
 
 ::
 
