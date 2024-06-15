@@ -65,7 +65,56 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-**4- Run apt update/upgrade, copy the following in the main terminal one line at a time , select Y for yes if asked at any point during the update**
+**4- Run uninstall the current installation of Probe Basic with the following commands in terminal:
+
+::
+
+
+
+   sudo dpkg -P python3-probe-basic
+
+
+
+|
+
+::
+
+
+
+   sudo dpkg -P python3-qtpyvcp
+
+
+
+|
+
+
+**5- Run install of Probe Basic and QtPyVCP with the following commands in terminal:
+
+::
+
+
+
+   sudo apt install python3-qtpyvcp
+
+
+
+|
+
+::
+
+
+
+   sudo apt install python3-probe-basic
+
+
+
+|
+
+
+
+
+
+**6- Run apt update/upgrade, copy the following in the main terminal one line at a time , select Y for yes if asked at any point during the update**
 
 
 ::
@@ -89,11 +138,7 @@ Step by Step how to change the sources list name for the stable and develop apt 
 
 
 
-**5- You should see the terminal run the update for QtPyVCP and Probe Basic**
-
-
-
-**6- NOTE: The development versions will likely require edits, additions or updates to config files, these include but are not limited to the yaml, ini, hal, subroutine, python and any other supporting configuration files.  these changes may not always be fully documents as we test them and are making changes, so we urge users to be aware that the development version should be used in a testing environment only.  Those wishing to retain stability in operational use should change to the STABLE version.**
+**7- NOTE: The development versions will likely require edits, additions or updates to config files, these include but are not limited to the yaml, ini, hal, subroutine, python and any other supporting configuration files.  these changes may not always be fully documents as we test them and are making changes, so we urge users to be aware that the development version should be used in a testing environment only.  Those wishing to retain stability in operational use should change to the STABLE version.**
 
 
 

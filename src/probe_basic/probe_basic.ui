@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>Form</class>
  <widget class="VCPMainWindow" name="Form">
+  <property name="windowModality">
+   <enum>Qt::NonModal</enum>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -28467,13 +28470,19 @@ color: black;
 padding: 20px;</string>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Probe Basic is moving to a stable and development apt version. This is to give users the ability to try and test the latest working branch of Probe Basic easily via changing the apt source list file. If you are seeing this message, you are currently on the develop version which has major changes regarding subroutine function that will require significant updates to the config files for a change in the way subroutines access data. If you have modified your subroutines they will NOT work with this development version.  ALL of the subroutine files as well as the method by which they access data has been changed to store the entries in the var file. This required removing the ui stored data and senders in the ui so old subroutines will no longer have access to ui stored data. If no subroutines have been modified you can easily copy over the new subroutine file to your configs folder along with the updated var file and simply re-enter your probe/touch-off/coolant cannon parameters in the ui input boxes to return to running as normal. The stable version will remain accessible via changing to the stable branch version for a few months to give everyone a chance to convert. Please visit the forum qtpyvcp section or the probe basic quickstart web page for additional information in the coming days regarding the changes being made and the functionality of this new development version it unlocks for users! We will output a comprehensive config conversion document to make the change as easy as possible. In the interm we advise any users wanting to continue with their currently working probe basic installation to change the apt source list to remain on the now stable branch of Probe Basic, to do so please follow the instructions below:&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;1- Open a terminal window and enter the following line:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;sudo nano /etc/apt/sources.list.d/kcjengr.list&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;2- Edit the source line by changing the word &amp;quot;develop&amp;quot; to &amp;quot;stable&amp;quot; as shown below:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;deb [arch=amd64] https://repository.qtpyvcp.com/apt &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;develop&lt;/span&gt; main&lt;/p&gt;&lt;p&gt;to the following:&lt;/p&gt;&lt;p&gt;deb [arch=amd64] https://repository.qtpyvcp.com/apt &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;stable&lt;/span&gt; main&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;3- Once edited:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Type:&lt;/span&gt; &amp;quot;Ctrl + x&amp;quot;, to exit editing. &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Press:&lt;/span&gt; &amp;quot;Y&amp;quot; to save to buffer. &lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;Press:&lt;/span&gt; &amp;quot;Enter&amp;quot; to save to the sources file.&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;4- In the terminal run the following to update from the stable branch:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;sudo apt update&lt;/p&gt;&lt;p&gt;sudo apt upgrade&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;5- You should now be on the stable version of Probe Basic and QtPyVCP! &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;Probe Basic is moving to a stable and development apt version. This is to give users the ability to try and test the latest working branch of Probe Basic easily via changing the apt source list file. If you are seeing this message, you are currently on the develop version which has major changes regarding subroutine function that will require significant updates to the config files for a change in the way subroutines access data. If you have modified your subroutines they will NOT work with this development version. ALL of the subroutine files as well as the method by which they access data has been changed to store the entries in the var file. This required removing the ui stored data and senders in the ui so old subroutines will no longer have access to ui stored data. If no subroutines have been modified you can easily copy over the new subroutine file to your configs folder along with the updated var file and simply re-enter your probe/touch-off/coolant cannon parameters in the ui input boxes to return to running as normal. The stable version will remain accessible via changing to the stable branch version for a few months to give everyone a chance to convert. Please visit the forum qtpyvcp section or the probe basic quickstart web page for additional information in the coming days regarding the changes being made and the functionality of this new development version it unlocks for users! We will output a comprehensive config conversion document to make the change as easy as possible. In the interm we advise any users wanting to continue with their currently working probe basic installation to change the apt source list to remain on the now stable branch of Probe Basic, to do so please follow the instructions below:&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;For Instructions on changing please visit the following url and follow the instructions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="textFormat">
-                  <enum>Qt::RichText</enum>
+                  <enum>Qt::AutoText</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
                  </property>
                  <property name="wordWrap">
                   <bool>true</bool>
+                 </property>
+                 <property name="textInteractionFlags">
+                  <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
                  </property>
                 </widget>
                </item>
@@ -42294,18 +42303,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
