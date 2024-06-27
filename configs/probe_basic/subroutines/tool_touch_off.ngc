@@ -1,6 +1,8 @@
-o<tool_touch_off> sub
+(author: Chris P, TooTall18)
+(version: 0.2)
+(date: 06/27/24)
 
-; NOTE this routine used G59.3, and this needs to be set to 0,0,0 for everything to work correctly
+o<tool_touch_off> sub
 
 #<fast_probe_fr> = #3004    (set from probe screen fast probe feed rate)
 #<slow_probe_fr> = #3005    (set from probe screen slow probe feedrate)
@@ -16,8 +18,6 @@ o<tool_touch_off> sub
 
 G92.1    (Cancel G92 offset)
 
-#<workspace_z> = #5220
-
 #<tool_touch_x_coords> = #5181
 #<tool_touch_y_coords> = #5182
 #<tool_touch_z_coords> = #5183
@@ -27,8 +27,6 @@ G92.1    (Cancel G92 offset)
 #<right_offset_probing_position> = [#<tool_touch_x_coords> + #<tool_radius_offset>]
 #<front_offset_probing_position> = [#<tool_touch_y_coords> - #<tool_radius_offset>]
 #<back_offset_probing_position> = [#<tool_touch_y_coords> + #<tool_radius_offset>]
-
-G59.3
 
 o100 if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 1]
     #<tool_touch_x_coords> = #<left_offset_probing_position>
@@ -48,6 +46,8 @@ G90    (set absolute coordinates)
 G53 G1 F[#<traverse_fr>] Z0    (move to z0 home position)
 G53 G1 F[#<traverse_fr>] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
 G53 G1 F[#<traverse_fr>] Z#<tool_touch_z_coords>
+
+#<offset_z> = #5422         ;Stores the offset of the current Z coordinate.
 
 G91
 F #<fast_probe_fr>
@@ -85,27 +85,9 @@ G90    (set absolute coordinates)
 G53 G1 F[#<traverse_fr>] Z0 (Send Spindle to home zero position)
 
 (define new tool length offset parameters)
-#<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063]]
+#<new_tool_length_offset> = [ABS[#<spindle_zero_height> + #5063 - #<offset_z>]]
 
 G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
-
-o160 if [#<workspace_z> EQ 1]
-    G54
-o160 else if [#<workspace_z> EQ 2]
-    G55
-o160 else if [#<workspace_z> EQ 3]
-    G56
-o160 else if [#<workspace_z> EQ 4]
-    G57
-o160 else if [#<workspace_z> EQ 5]
-    G58
-o160 else if [#<workspace_z> EQ 6]
-    G59
-o160 else if [#<workspace_z> EQ 7]
-    G59.1
-o160 else if [#<workspace_z> EQ 8]
-    G59.2
-o160 endif
 
 T #5400 G43  H #5400    (enable tool length offset)
 
