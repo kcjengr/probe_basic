@@ -28,14 +28,16 @@ G92.1    (Cancel G92 offset)
 #<front_offset_probing_position> = [#<tool_touch_y_coords> - #<tool_radius_offset>]
 #<back_offset_probing_position> = [#<tool_touch_y_coords> + #<tool_radius_offset>]
 
-o100 if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 1]
-    #<tool_touch_x_coords> = #<left_offset_probing_position>
-o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 2]
-    #<tool_touch_x_coords> = #<right_offset_probing_position>
-o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 3]
-    #<tool_touch_y_coords> = #<front_offset_probing_position>
-o100 else if [[#<tool_diameter_offset_mode> + #<tool_setter_offset_direction>] EQ 4]
-    #<tool_touch_y_coords> = #<back_offset_probing_position>
+o100 if [#<tool_diameter_offset_mode> EQ 1]
+    o101 if [#<tool_setter_offset_direction> EQ 0]
+        #<tool_touch_x_coords> = #<left_offset_probing_position>
+    o101 else if [#<tool_setter_offset_direction> EQ 1]
+        #<tool_touch_x_coords> = #<right_offset_probing_position>
+    o101 else if [#<tool_setter_offset_direction> EQ 2]
+        #<tool_touch_y_coords> = #<front_offset_probing_position>
+    o101 else if [#<tool_setter_offset_direction> EQ 3]
+        #<tool_touch_y_coords> = #<back_offset_probing_position>
+    o101 endif
 o100 endif
 
 o110 if [2 EQ 2]
