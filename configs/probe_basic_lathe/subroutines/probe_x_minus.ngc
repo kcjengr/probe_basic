@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.1)
-(date: 08/13/2023)
+(version: 0.2)
+(date: 06/27/24)
 
 (Probe X Minus direction and set X 0 in current WCO)
 (Start probe position to the right side edge of stock)
@@ -12,11 +12,12 @@ o<probe_x_minus> sub
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
   #<probe_tool_number> = #1
-  #<max_xy_distance> = #2
-  #<xy_clearance> = #3
-  #<probe_slow_fr> = #4
-  #<probe_fast_fr> = #5
-  #<calibration_offset> = #6
+  #<probe_slow_fr> = #2
+  #<probe_fast_fr> = #3
+  #<probe_traverse_fr> = #4
+  #<max_xy_distance> = #5
+  #<xy_clearance> = #6
+  #<calibration_offset> = #7
 
   (Cancel G92 offsets)
   G92.1
@@ -49,7 +50,7 @@ o<probe_x_minus> sub
   o110 if [#5070 EQ 0]
       (back to start point and feed)
       G90
-      G0 X#<x>
+      G1 F[#<probe_traverse_fr>] X#<x>
       F[#<probe_fast_fr>]
       (return from sub)
       o<probe_x_minus> return
@@ -57,7 +58,7 @@ o<probe_x_minus> sub
 
   (Move to xy_clearance distance for slow probe)
   G90
-  G0 X[#<x_minus_probed> + #<xy_clearance>]
+  G1 F[#<probe_traverse_fr>] X[#<x_minus_probed> + #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -67,7 +68,7 @@ o<probe_x_minus> sub
       G38.2 X-[#<xy_clearance> * 2]
       #<x_minus_probed> = #5061
       G90
-      G0 X[#<x_minus_probed> + #<xy_clearance>]
+      G1 F[#<probe_traverse_fr>] X[#<x_minus_probed> + #<xy_clearance>]
   o120 endif
 
   #<x_minus_zero_edge> = [#<x_minus_probed> - #<probe_center_offset>]

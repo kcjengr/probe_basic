@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.3)
-(date: 04/25/19)
+(version: 0.4)
+(date: 06/27/24)
 
 (Probe back top edge angle for y,z 0,0 position and edge angle)
 (Start probe position is over back edge of stock, set edge width,)
@@ -11,23 +11,20 @@ o<probe_top_back_edge_angle> sub
 
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
-  #<probe_tool_number> = #1    (=99)
-  #<max_z_distance> = #2       (=0.5000)
-  #<max_xy_distance> = #3      (=0.5000)
-  #<xy_clearance> = #4         (=0.1000)
-  #<z_clearance> = #5          (=0.1000)
-  #<step_off_width> = #6       (=0.5000)
-  #<extra_probe_depth> = #7    (=0.0000)
-  #<probe_slow_fr> = #8        (=0.0)
-  #<probe_fast_fr> = #9        (=10.0)
-  #<calibration_offset> = #10  (=0.0000)
-  #<x_hint> = #11              (=1.0000)
-  #<y_hint> = #12              (=1.0000)
-  #<diameter_hint> = #13       (=1.0000)
-  #<edge_width> = #14          (=0.5000)
-  #<probe_mode> = #15          (=0)
-  #<wco_rotation> = #16        (=0)
-  #<max_vel_slider> = #17      (=50)
+  #<probe_tool_number> = #3014    (=99)
+  #<probe_slow_fr> = #3015        (=0)
+  #<probe_fast_fr> = #3016        (=10.0)
+  #<probe_traverse_fr> = #3017    (=50)
+  #<max_xy_distance> = #3018      (=0.5000)
+  #<xy_clearance> = #3019         (=0.1000)
+  #<max_z_distance> = #3020       (=0.5000)
+  #<z_clearance> = #3021          (=0.1000)
+  #<extra_probe_depth> = #3022    (=0.0000)  
+  #<step_off_width> = #3023       (=0.5000)
+  #<edge_width> = #3024           (=0.5000)
+  #<probe_mode> = #3030           (=0)
+  #<wco_rotation> = #3031         (=0)
+  #<calibration_offset> = #3032   (=0)
 
   (Cancel G92 offsets)
   G92.1
@@ -52,11 +49,11 @@ o<probe_top_back_edge_angle> sub
   #<x_start_position> = #5420
 
   (Call sub "probe_z_minus_sub" to Probe top of Workpiece)
-  o<probe_z_minus_sub> call [#1][#2][#5][#8][#9][#15]
+  o<probe_z_minus_sub> call [#3014][#3015][#3016][#3017][#3020][#3021][#3030]
 
   (Probe Y Positioning Move, Step Off Width)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Y[#<step_off_width>]
 
   (Probe Y Positioning Move, to Probing Depth)
@@ -64,7 +61,7 @@ o<probe_top_back_edge_angle> sub
   G38.3 Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
-  o<probe_y_minus> call [#1][#3][#4][#8][#9][#10]
+  o<probe_y_minus> call [#3014][#3015][#3016][#3017][#3018][#3019][#3032]
 
   #<y_minus_zero_edge_start> = #<_value>
 
@@ -80,7 +77,7 @@ o<probe_top_back_edge_angle> sub
   G38.3 X-[#<edge_width>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
-  o<probe_y_minus> call [#1][#3][#4][#8][#9][#10]
+  o<probe_y_minus> call [#3014][#3015][#3016][#3017][#3018][#3019][#3032]
 
   #<y_minus_zero_edge_end> = #<_value>
 
@@ -102,10 +99,10 @@ o<probe_top_back_edge_angle> sub
 
   (Probe Completion Move to Z Clearance Plane, and Y Zero)
   G91
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 Z[#<z_probe_stack>]
   G90
-  F[#<max_vel_slider>]
+  F[#<probe_traverse_fr>]
   G38.3 X[#<x_start_position>] Y[#<y_minus_zero_edge_start>]
 
   (probe mode rules for WCO, Rotation and probe position measuring only)

@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.1)
-(date: 08/13/2023)
+(version: 0.2)
+(date: 06/27/24)
 
 (Probe Z Minus direction and set Z 0 in current WCO)
 (Start probe position is over stock within max z distance)
@@ -11,11 +11,12 @@ o<probe_z_minus_sub> sub
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
   #<probe_tool_number> = #1
-  #<max_z_distance> = #2
-  #<z_clearance> = #3
-  #<probe_slow_fr> = #4
-  #<probe_fast_fr> = #5
-  #<probe_mode> = #6
+  #<probe_slow_fr> = #2
+  #<probe_fast_fr> = #3
+  #<probe_traverse_fr> = #4
+  #<max_z_distance> = #5
+  #<z_clearance> = #6
+  #<probe_mode> = #7
 
   (Cancel G92 offsets)
   G92.1
@@ -41,7 +42,7 @@ o<probe_z_minus_sub> sub
   o110 if [#5070 EQ 0]
       (back to start point and feed)
       G90
-      G0 Z#<z>
+      G1 F[#<probe_traverse_fr>] Z#<z>
       F[#<probe_fast_fr>]
       (return from sub)
       o<probe_z_minus_sub> return
@@ -49,7 +50,7 @@ o<probe_z_minus_sub> sub
 
   (Move to z_clearance height for slow probe)
   G90
-  G0 Z[#<z_minus_probed> + #<z_clearance>]
+  G1 F[#<probe_traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -59,7 +60,7 @@ o<probe_z_minus_sub> sub
       G38.2 Z-[#<z_clearance> * 2]
       #<z_minus_probed> = #5063
       G90
-      G0 Z[#<z_minus_probed> + #<z_clearance>]
+      G1 F[#<probe_traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
   o120 endif
 
   (defines the edge as z_probed_position for DRO reporting)

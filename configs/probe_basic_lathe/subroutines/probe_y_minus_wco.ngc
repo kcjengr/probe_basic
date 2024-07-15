@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.1)
-(date: 08/13/2023)
+(version: 0.2)
+(date: 06/27/24)
 
 (Probe Y Minus direction and set Y 0 in current WCO)
 (Start probe position to the back side edge of stock)
@@ -11,21 +11,18 @@ o<probe_y_minus_wco> sub
 
   (uses NGCGUI style arg spec)
   (number after "=" in comment is default value)
-  #<probe_tool_number> = #1    (=99)
-  #<max_z_distance> = #2       (=0.5000)
-  #<max_xy_distance> = #3      (=0.5000)
-  #<xy_clearance> = #4         (=0.1000)
-  #<z_clearance> = #5          (=0.1000)
-  #<step_off_width> = #6       (=0.5000)
-  #<extra_probe_depth> = #7    (=0.0000)
-  #<probe_slow_fr> = #8        (=0.0)
-  #<probe_fast_fr> = #9        (=10.0)
-  #<calibration_offset> = #10  (=0.0000)
-  #<x_hint> = #11              (=1.0000)
-  #<y_hint> = #12              (=1.0000)
-  #<diameter_hint> = #13       (=1.0000)
-  #<edge_width> = #14          (=0.5000)
-  #<probe_mode> = #15          (=0)
+  #<probe_tool_number> = #3014    (=99)
+  #<probe_slow_fr> = #3015        (=0)
+  #<probe_fast_fr> = #3016        (=10.0)
+  #<probe_traverse_fr> = #3017    (=50)
+  #<max_xy_distance> = #3018      (=0.5000)
+  #<xy_clearance> = #3019         (=0.1000)
+  #<max_z_distance> = #3020       (=0.5000)
+  #<z_clearance> = #3021          (=0.1000)
+  #<extra_probe_depth> = #3022    (=0.0000)  
+  #<step_off_width> = #3023       (=0.5000)
+  #<probe_mode> = #3030           (=0)
+  #<calibration_offset> = #3032   (=0)
 
   (Cancel G92 offsets)
   G92.1
@@ -60,7 +57,7 @@ o<probe_y_minus_wco> sub
   o110 if [#5070 EQ 0]
       (back to start point and feed)
       G90
-      G0 Y#<y>
+      G1 F[#<probe_traverse_fr>] Y#<y>
       F[#<probe_fast_fr>]
       (return from sub)
       o<probe_y_minus_wco> return
@@ -68,7 +65,7 @@ o<probe_y_minus_wco> sub
 
   (Move to xy_clearance distance for slow probe)
   G90
-  G0 Y[#<y_minus_probed> + #<xy_clearance>]
+  G1 F[#<probe_traverse_fr>] Y[#<y_minus_probed> + #<xy_clearance>]
 
   (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
   o120 if [#<probe_slow_fr> GT 0]
@@ -78,7 +75,7 @@ o<probe_y_minus_wco> sub
       G38.2 Y-[#<xy_clearance> * 2]
       #<y_minus_probed> = #5062
       G90
-      G0 Y[#<y_minus_probed> + #<xy_clearance>]
+      G1 F[#<probe_traverse_fr>] Y[#<y_minus_probed> + #<xy_clearance>]
   o120 endif
 
   #<y_minus_zero_edge> = [#5062 - #<probe_center_offset>]
