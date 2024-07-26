@@ -5741,7 +5741,7 @@ QTabWidget QTabBar::tab {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>80</width>
+                          <width>240</width>
                           <height>811</height>
                          </rect>
                         </property>
@@ -10363,7 +10363,7 @@ QPushButton:checked {
                       </color>
                      </property>
                      <property name="displayColumns" stdset="0">
-                      <string>XYZABR</string>
+                      <string>XYZABCR</string>
                      </property>
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>false</bool>
@@ -10408,7 +10408,7 @@ QPushButton:checked {
                     <number>5</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="x_axis_button_10">
+                    <widget class="QPushButton" name="offset_table_clear_selected_button">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -10441,7 +10441,7 @@ QPushButton:checked {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="x_axis_button_11">
+                    <widget class="QPushButton" name="offset_table_clear_all_button">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -10474,7 +10474,7 @@ QPushButton:checked {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="x_axis_button_13">
+                    <widget class="QPushButton" name="offset_table_save_button">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -10507,7 +10507,7 @@ QPushButton:checked {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="x_axis_button_14">
+                    <widget class="QPushButton" name="offset_table_reload_button">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -11409,7 +11409,7 @@ OFFSET</string>
                     <number>0</number>
                    </property>
                    <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;bin(ch[0]).count('1')-3\n&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 'XYZ' else (1 if ch[0] == 'XYZA' else (2 if ch[0] == 'XYZAB' else (3 if ch[0] == 'XYZAC' else -1)))&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask?string&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                    <widget class="QWidget" name="xyz">
                     <layout class="QVBoxLayout" name="verticalLayout_71">
@@ -15265,6 +15265,1642 @@ QLabel[style=&quot;homing&quot;]{
                        </item>
                        <item>
                         <widget class="StatusLabel" name="statuslabel_99">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                    </layout>
+                   </widget>
+                   <widget class="QWidget" name="xyzac">
+                    <layout class="QVBoxLayout" name="verticalLayout_59">
+                     <item>
+                      <layout class="QHBoxLayout" name="x_axis_dro_layout_8">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="MDIButton" name="zero_x_button_9">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">MDIButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>ZERO</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                         </property>
+                         <property name="MDICommand" stdset="0">
+                          <string>G10 L20 P{ch[0]} X0.0</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="axis_column_header_32">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: rgb(238, 238, 236);
+	font: 18pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>X</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLineEdit" name="dro_entry_main_x_8">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Bebas Kai</family>
+                           <pointsize>17</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLabel" name="drolabel_49">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_115">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_116">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_117">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="y_axis_dro_layout_8">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="MDIButton" name="zero_y_button_9">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">MDIButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>ZERO</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                         </property>
+                         <property name="MDICommand" stdset="0">
+                          <string>G10 L20 P{ch[0]} Y0.0</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="axis_column_header_31">
+                         <property name="minimumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: rgb(238, 238, 236);
+	font: 18pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Y</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLineEdit" name="dro_entry_main_y_8">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Bebas Kai</family>
+                           <pointsize>17</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>1</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLabel" name="drolabel_48">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>1</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_112">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][1])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_113">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][1])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_114">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][1])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="z_axis_dro_layout_8">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="MDIButton" name="zero_z_button_9">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">MDIButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>ZERO</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                         </property>
+                         <property name="MDICommand" stdset="0">
+                          <string>G10 L20 P{ch[0]} Z0.0</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="axis_column_header_33">
+                         <property name="minimumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: rgb(238, 238, 236);
+	font: 18pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>Z</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLineEdit" name="dro_entry_main_z_8">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Bebas Kai</family>
+                           <pointsize>17</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>2</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLabel" name="drolabel_50">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>2</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_118">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_119">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_120">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;tool offset&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="a_axis_dro_layout_7">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="MDIButton" name="zero_a_button_8">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">MDIButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>ZERO</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                         </property>
+                         <property name="MDICommand" stdset="0">
+                          <string>G10 L20 P{ch[0]} A0.0</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="axis_column_header_30">
+                         <property name="minimumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: rgb(238, 238, 236);
+	font: 18pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>A</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLineEdit" name="dro_entry_main_a_7">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Bebas Kai</family>
+                           <pointsize>17</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>3</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLabel" name="drolabel_47">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>3</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_109">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][3])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_110">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][3])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_111">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][3])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                      </layout>
+                     </item>
+                     <item>
+                      <layout class="QHBoxLayout" name="b_axis_dro_layout_7">
+                       <property name="spacing">
+                        <number>12</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>6</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>6</number>
+                       </property>
+                       <item>
+                        <widget class="MDIButton" name="zero_c_button_6">
+                         <property name="enabled">
+                          <bool>false</bool>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>55</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">MDIButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>ZERO</string>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                         </property>
+                         <property name="MDICommand" stdset="0">
+                          <string>G10 L20 P{ch[0]} C0.0</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QLabel" name="axis_column_header_34">
+                         <property name="minimumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>45</width>
+                           <height>35</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: rgb(238, 238, 236);
+	font: 18pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="text">
+                          <string>C</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignCenter</set>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLineEdit" name="dro_entry_main_c">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="font">
+                          <font>
+                           <family>Bebas Kai</family>
+                           <pointsize>17</pointsize>
+                           <weight>50</weight>
+                           <italic>false</italic>
+                           <bold>false</bold>
+                          </font>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>1</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>4</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="DROLabel" name="drolabel_51">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="referenceType" stdset="0">
+                          <number>0</number>
+                         </property>
+                         <property name="axisNumber" stdset="0">
+                          <number>4</number>
+                         </property>
+                         <property name="inchFormat" stdset="0">
+                          <string>%9.4f</string>
+                         </property>
+                         <property name="millimeterFormat" stdset="0">
+                          <string>%10.3f</string>
+                         </property>
+                         <property name="degreeFormat" stdset="0">
+                          <string>%10.2f</string>
+                         </property>
+                         <property name="latheMode" stdset="0">
+                          <number>0</number>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_121">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_122">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>0</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>38</height>
+                          </size>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">StatusLabel{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                         </property>
+                         <property name="alignment">
+                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                         </property>
+                         <property name="rules" stdset="0">
+                          <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="StatusLabel" name="statuslabel_123">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>1</horstretch>
@@ -29024,7 +30660,7 @@ padding: 20px;</string>
                             <number>0</number>
                            </property>
                            <property name="rules" stdset="0">
-                            <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;bin(ch[0]).count('1')-3&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask&quot;, &quot;trigger&quot;: true}]}]</string>
+                            <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 'XYZ' else (1 if ch[0] == 'XYZA' else (2 if ch[0] == 'XYZAB' else (3 if ch[0] == 'XYZAC' else -1)))&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask?string&quot;, &quot;trigger&quot;: true}]}]</string>
                            </property>
                            <property name="settingName" stdset="0">
                             <string>jog-display.currentIndex</string>
@@ -30042,7 +31678,459 @@ padding: 20px;</string>
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_111">
                                <item>
-                                <widget class="ActionButton" name="c_minus_jogbutton">
+                                <widget class="ActionButton" name="b_minus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="b_plus_jogbutton">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyzac">
+                            <layout class="QVBoxLayout" name="verticalLayout_79">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_166">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_4">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_168">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_4">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_14">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_4">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_167">
+                               <item>
+                                <widget class="ActionButton" name="a_minus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="a_plus_jogbutton_3">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_165">
+                               <item>
+                                <widget class="ActionButton" name="c_minus_jogbutton_2">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                    <horstretch>0</horstretch>
@@ -30086,7 +32174,7 @@ padding: 20px;</string>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="ActionButton" name="c_plus_jogbutton">
+                                <widget class="ActionButton" name="c_plus_jogbutton_2">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                    <horstretch>0</horstretch>
@@ -33777,7 +35865,7 @@ border-radius: 1px;
          <number>0</number>
         </property>
         <property name="rules" stdset="0">
-         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;bin(ch[0]).count('1')-3\n&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
+         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask?string&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 'XYZ' else (1 if ch[0] == 'XYZA' else (2 if ch[0] == 'XYZAB' else (3 if ch[0] == 'XYZAC' else -1)))&quot;, &quot;name&quot;: &quot;axis_display_rule&quot;}]</string>
         </property>
         <widget class="QWidget" name="xyz">
          <layout class="QVBoxLayout" name="verticalLayout_51">
@@ -36536,7 +38624,7 @@ QLabel[style=&quot;homing&quot;]{
 ]</string>
                  </property>
                  <property name="MDICommand" stdset="0">
-                  <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0</string>
+                  <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0 A0.0</string>
                  </property>
                 </widget>
                </item>
@@ -36687,7 +38775,7 @@ QLabel[style=&quot;homing&quot;]{
 ]</string>
                  </property>
                  <property name="MDICommand" stdset="0">
-                  <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0</string>
+                  <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0 A0.0 B0.0</string>
                  </property>
                 </widget>
                </item>
@@ -38058,7 +40146,1765 @@ QLabel[style=&quot;homing&quot;]{
                 <number>1</number>
                </property>
                <item>
-                <widget class="MDIButton" name="zero_c_button_3">
+                <widget class="MDIButton" name="zero_b_button_3">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>B</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} B0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLineEdit" name="dro_entry_main_b">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Bebas Kai</family>
+                   <pointsize>17</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>4</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_23">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>4</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_24">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>4</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="axisactionbutton_4">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF B</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.axis:b</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+            </layout>
+           </widget>
+          </item>
+         </layout>
+        </widget>
+        <widget class="QWidget" name="xyzac">
+         <layout class="QVBoxLayout" name="verticalLayout_15">
+          <item>
+           <widget class="QWidget" name="widget_77" native="true">
+            <layout class="QVBoxLayout" name="verticalLayout_13">
+             <property name="spacing">
+              <number>4</number>
+             </property>
+             <property name="leftMargin">
+              <number>0</number>
+             </property>
+             <property name="topMargin">
+              <number>6</number>
+             </property>
+             <property name="rightMargin">
+              <number>0</number>
+             </property>
+             <property name="bottomMargin">
+              <number>1</number>
+             </property>
+             <item>
+              <layout class="QHBoxLayout" name="horizontalLayout_72">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_all_button_2">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>ALL</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0 A0.0 C0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="QFrame" name="frame_29">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>0</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>16777215</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">.QFrame{
+    border-style: solid;
+    border-color: rgb(176, 179,172);
+    border-width: 1px;
+    border-radius: 4px;
+    background-color: rgb(90, 90, 90);
+    padding: -5px;
+}</string>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::StyledPanel</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Raised</enum>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_131">
+                  <property name="spacing">
+                   <number>8</number>
+                  </property>
+                  <property name="leftMargin">
+                   <number>5</number>
+                  </property>
+                  <property name="rightMargin">
+                   <number>7</number>
+                  </property>
+                  <item>
+                   <widget class="StatusLabel" name="statuslabel_13">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+    padding-left: 6px;
+}</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_index?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0] + ' WORK'\n&quot;, &quot;name&quot;: &quot;WCS Header&quot;}]</string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="work_column_header_3">
+                    <property name="enabled">
+                     <bool>false</bool>
+                    </property>
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>MACHINE</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <widget class="QLabel" name="dtg_column_header_2">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>100</width>
+                      <height>17</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                    </property>
+                    <property name="text">
+                     <string>DTG</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                   </widget>
+                  </item>
+                 </layout>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="ref_all_button_3">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF ALL</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.all</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="x_axis_dro_layout_6">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_x_button_7">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>X</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} X0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLineEdit" name="dro_entry_main_x_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Bebas Kai</family>
+                   <pointsize>17</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>     0.000</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_28">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_29">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="axisactionbutton_17">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF X</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.axis:x</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="y_axis_dro_layout_6">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_y_button_7">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Y</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} Y0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLineEdit" name="dro_entry_main_y_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Bebas Kai</family>
+                   <pointsize>17</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>1</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_34">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_35">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>1</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="axisactionbutton_18">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF Y</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.axis:y</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="z_axis_dro_layout_6">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_z_button_7">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>Z</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} Z0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLineEdit" name="dro_entry_main_z_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Bebas Kai</family>
+                   <pointsize>17</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_36">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_37">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="axisactionbutton_19">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF Z</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.axis:z</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="a_axis_dro_layout_3">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_a_button_6">
+                 <property name="enabled">
+                  <bool>false</bool>
+                 </property>
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>60</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">MDIButton {
+   	font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>A</string>
+                 </property>
+                 <property name="icon">
+                  <iconset resource="probe_basic.qrc">
+                   <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+                 </property>
+                 <property name="iconSize">
+                  <size>
+                   <width>20</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+                 </property>
+                 <property name="MDICommand" stdset="0">
+                  <string>G10 L20 P{ch[0]} A0.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLineEdit" name="dro_entry_main_a_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="font">
+                  <font>
+                   <family>Bebas Kai</family>
+                   <pointsize>17</pointsize>
+                   <weight>50</weight>
+                   <italic>false</italic>
+                   <bold>false</bold>
+                  </font>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::ClickFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLineEdit{
+    border-style: transparant;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+    padding-right: 2px;
+    font: 17pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_38">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}
+
+QLabel[style=&quot;unhomed&quot;]{
+   color: red;
+}
+
+QLabel[style=&quot;homing&quot;]{
+   color: rgb(196, 160, 0);
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>0</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>3</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="DROLabel" name="drolabel_44">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>100</width>
+                   <height>35</height>
+                  </size>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QLabel{
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 17pt &quot;Bebas Kai&quot;;
+    padding-right: 2px;
+}</string>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                 </property>
+                 <property name="referenceType" stdset="0">
+                  <number>2</number>
+                 </property>
+                 <property name="axisNumber" stdset="0">
+                  <number>3</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
+                 </property>
+                </widget>
+               </item>
+               <item>
+                <widget class="ActionButton" name="axisactionbutton_20">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="minimumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="maximumSize">
+                  <size>
+                   <width>62</width>
+                   <height>40</height>
+                  </size>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::NoFocus</enum>
+                 </property>
+                 <property name="styleSheet">
+                  <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                 </property>
+                 <property name="text">
+                  <string>REF A</string>
+                 </property>
+                 <property name="actionName" stdset="0">
+                  <string>machine.home.axis:a</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </item>
+             <item>
+              <layout class="QHBoxLayout" name="b_axis_dro_layout_2">
+               <property name="spacing">
+                <number>7</number>
+               </property>
+               <property name="leftMargin">
+                <number>1</number>
+               </property>
+               <property name="topMargin">
+                <number>1</number>
+               </property>
+               <property name="rightMargin">
+                <number>1</number>
+               </property>
+               <property name="bottomMargin">
+                <number>1</number>
+               </property>
+               <item>
+                <widget class="MDIButton" name="zero_c_button_4">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -38123,7 +41969,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="DROLineEdit" name="dro_entry_main_b">
+                <widget class="DROLineEdit" name="dro_entry_main_b_2">
                  <property name="minimumSize">
                   <size>
                    <width>100</width>
@@ -38184,7 +42030,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="DROLabel" name="drolabel_23">
+                <widget class="DROLabel" name="drolabel_45">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -38247,7 +42093,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="DROLabel" name="drolabel_24">
+                <widget class="DROLabel" name="drolabel_46">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -38302,7 +42148,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_4">
+                <widget class="ActionButton" name="axisactionbutton_21">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -40594,8 +44440,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>95</y>
+     <x>212</x>
+     <y>606</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -40626,8 +44472,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>95</y>
+     <x>159</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -40642,8 +44488,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>89</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -40690,8 +44536,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>111</x>
+     <y>606</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -40898,8 +44744,8 @@ font: 11pt bebas kai;
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
+     <x>385</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -40914,8 +44760,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>103</y>
+     <x>670</x>
+     <y>602</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -40930,8 +44776,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>311</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -40946,8 +44792,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>95</y>
+     <x>235</x>
+     <y>545</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -40998,8 +44844,8 @@ font: 11pt bebas kai;
      <y>664</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>103</y>
+     <x>670</x>
+     <y>602</y>
     </hint>
    </hints>
   </connection>
@@ -41042,8 +44888,8 @@ font: 11pt bebas kai;
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
+     <x>385</x>
+     <y>606</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -41090,8 +44936,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>95</y>
+     <x>311</x>
+     <y>606</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -41388,7 +45234,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_axis_button_10</sender>
+   <sender>offset_table_clear_selected_button</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
    <slot>deleteSelectedOffset()</slot>
@@ -41404,7 +45250,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_axis_button_13</sender>
+   <sender>offset_table_save_button</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
    <slot>saveOffsetTable()</slot>
@@ -41420,7 +45266,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_axis_button_11</sender>
+   <sender>offset_table_clear_all_button</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
    <slot>clearOffsetTable()</slot>
@@ -41436,7 +45282,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_axis_button_14</sender>
+   <sender>offset_table_reload_button</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
    <slot>loadOffsetTable()</slot>
@@ -41522,8 +45368,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>201</x>
@@ -41538,8 +45384,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
      <x>248</x>
@@ -41554,8 +45400,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>89</y>
     </hint>
     <hint type="destinationlabel">
      <x>248</x>
@@ -41570,8 +45416,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>248</x>
@@ -41586,8 +45432,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41602,8 +45448,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41618,8 +45464,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41666,8 +45512,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>88</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41682,8 +45528,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41698,8 +45544,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>89</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41714,8 +45560,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41730,8 +45576,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>92</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41746,8 +45592,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41762,8 +45608,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>522</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41778,8 +45624,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>76</y>
+     <x>272</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41794,8 +45640,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>76</y>
+     <x>272</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41810,8 +45656,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>79</x>
-     <y>80</y>
+     <x>308</x>
+     <y>100</y>
     </hint>
     <hint type="destinationlabel">
      <x>119</x>
@@ -41842,8 +45688,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>92</x>
-     <y>83</y>
+     <x>393</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41858,8 +45704,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>92</x>
-     <y>83</y>
+     <x>236</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41874,8 +45720,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>92</x>
-     <y>83</y>
+     <x>315</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -41890,8 +45736,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>92</x>
-     <y>83</y>
+     <x>315</x>
+     <y>104</y>
     </hint>
     <hint type="destinationlabel">
      <x>200</x>
@@ -42098,8 +45944,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1084</x>
-     <y>142</y>
+     <x>1162</x>
+     <y>263</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42114,8 +45960,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1041</x>
-     <y>142</y>
+     <x>1148</x>
+     <y>204</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42130,8 +45976,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1041</x>
-     <y>142</y>
+     <x>1148</x>
+     <y>272</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42162,8 +46008,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1034</x>
-     <y>147</y>
+     <x>1253</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42178,8 +46024,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1034</x>
-     <y>147</y>
+     <x>1403</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42194,8 +46040,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1034</x>
-     <y>147</y>
+     <x>1177</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42210,8 +46056,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1034</x>
-     <y>147</y>
+     <x>1293</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42226,8 +46072,8 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1034</x>
-     <y>147</y>
+     <x>1409</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
      <x>178</x>
@@ -42318,18 +46164,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="probehelpGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>
