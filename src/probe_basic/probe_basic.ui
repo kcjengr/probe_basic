@@ -5741,7 +5741,7 @@ QTabWidget QTabBar::tab {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>240</width>
+                          <width>80</width>
                           <height>811</height>
                          </rect>
                         </property>
@@ -30042,7 +30042,7 @@ padding: 20px;</string>
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_111">
                                <item>
-                                <widget class="ActionButton" name="b_minus_jogbutton">
+                                <widget class="ActionButton" name="c_minus_jogbutton">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                    <horstretch>0</horstretch>
@@ -30069,7 +30069,7 @@ padding: 20px;</string>
                                  </property>
                                  <property name="icon">
                                   <iconset resource="probe_basic.qrc">
-                                   <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
+                                   <normaloff>:/images/c_minus_jog_button.png</normaloff>:/images/c_minus_jog_button.png</iconset>
                                  </property>
                                  <property name="iconSize">
                                   <size>
@@ -30081,12 +30081,12 @@ padding: 20px;</string>
                                   <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
-                                  <string>machine.jog.axis:b,neg</string>
+                                  <string>machine.jog.axis:c,neg</string>
                                  </property>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="ActionButton" name="b_plus_jogbutton">
+                                <widget class="ActionButton" name="c_plus_jogbutton">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                    <horstretch>0</horstretch>
@@ -30113,7 +30113,7 @@ padding: 20px;</string>
                                  </property>
                                  <property name="icon">
                                   <iconset resource="probe_basic.qrc">
-                                   <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
+                                   <normaloff>:/images/c_plus_jog_button.png</normaloff>:/images/c_plus_jog_button.png</iconset>
                                  </property>
                                  <property name="iconSize">
                                   <size>
@@ -30125,7 +30125,7 @@ padding: 20px;</string>
                                   <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
                                  </property>
                                  <property name="actionName" stdset="0">
-                                  <string>machine.jog.axis:b,pos</string>
+                                  <string>machine.jog.axis:c,pos</string>
                                  </property>
                                 </widget>
                                </item>
@@ -38058,7 +38058,7 @@ QLabel[style=&quot;homing&quot;]{
                 <number>1</number>
                </property>
                <item>
-                <widget class="MDIButton" name="zero_b_button_3">
+                <widget class="MDIButton" name="zero_c_button_3">
                  <property name="enabled">
                   <bool>false</bool>
                  </property>
@@ -38089,7 +38089,7 @@ QLabel[style=&quot;homing&quot;]{
 }</string>
                  </property>
                  <property name="text">
-                  <string>B</string>
+                  <string>C</string>
                  </property>
                  <property name="icon">
                   <iconset resource="probe_basic.qrc">
@@ -38118,7 +38118,7 @@ QLabel[style=&quot;homing&quot;]{
 ]</string>
                  </property>
                  <property name="MDICommand" stdset="0">
-                  <string>G10 L20 P{ch[0]} B0.0</string>
+                  <string>G10 L20 P{ch[0]} C0.0</string>
                  </property>
                 </widget>
                </item>
@@ -38163,8 +38163,23 @@ QLabel[style=&quot;homing&quot;]{
                  <property name="alignment">
                   <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                  </property>
+                 <property name="referenceType" stdset="0">
+                  <number>1</number>
+                 </property>
                  <property name="axisNumber" stdset="0">
-                  <number>4</number>
+                  <number>5</number>
+                 </property>
+                 <property name="inchFormat" stdset="0">
+                  <string>%9.4f</string>
+                 </property>
+                 <property name="millimeterFormat" stdset="0">
+                  <string>%10.3f</string>
+                 </property>
+                 <property name="degreeFormat" stdset="0">
+                  <string>%10.2f</string>
+                 </property>
+                 <property name="latheMode" stdset="0">
+                  <number>0</number>
                  </property>
                 </widget>
                </item>
@@ -38215,7 +38230,7 @@ QLabel[style=&quot;homing&quot;]{
                   <number>0</number>
                  </property>
                  <property name="axisNumber" stdset="0">
-                  <number>4</number>
+                  <number>5</number>
                  </property>
                  <property name="inchFormat" stdset="0">
                   <string>%9.4f</string>
@@ -38270,7 +38285,7 @@ QLabel[style=&quot;homing&quot;]{
                   <number>2</number>
                  </property>
                  <property name="axisNumber" stdset="0">
-                  <number>4</number>
+                  <number>5</number>
                  </property>
                  <property name="inchFormat" stdset="0">
                   <string>%9.4f</string>
@@ -38315,10 +38330,10 @@ QLabel[style=&quot;homing&quot;]{
 }</string>
                  </property>
                  <property name="text">
-                  <string>REF B</string>
+                  <string>REF C</string>
                  </property>
                  <property name="actionName" stdset="0">
-                  <string>machine.home.axis:b</string>
+                  <string>machine.home.axis:c</string>
                  </property>
                 </widget>
                </item>
@@ -42303,18 +42318,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
