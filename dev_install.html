@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Development Install &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probe Basic Parameters" href="probe_basic_parameters.html" />
+    <link rel="prev" title="Probe Basic .deb Install" href="quick_start.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="stable_quick_start_apt.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_quick_start_apt.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stable_develop_branch_change.html">Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Probe Basic .deb Install</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Development Install</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI and HAL)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Development Install</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/dev_install.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="development-install">
+<h1>Development Install<a class="headerlink" href="#development-install" title="Permalink to this heading"></a></h1>
+<p><strong>Probe Basic Development Installation Guide</strong></p>
+<p><strong>Note: Probe Basic is currently designed for 1920x1080 screen sizes only!</strong></p>
+<p><strong>For Whatever reason mesa ehternet setups go much more smoothly when a wired ethernet internet connection is used during linux installation.  The debian installer does some magic that sets up the network perfectly with only one minor tweak once installed.  The wireless setup after install is much easier to get working.  I HIGHLY RECOMMEND using the wired internet connection and choosing to setup that connection during installation to avoid unforeseen issues in connecting to the mesa card(s) post install.</strong></p>
+<p><strong>1- Download the Linuxcnc ISO Image File</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">http</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">linuxcnc</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">downloads</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>Select the “LinuxCNC 2.8.0 Debian 10 Buster PREEMPT-RT ISO” option. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.balena.io/etcher/?ref=etcher_update
+</pre></div>
+</div>
+<p>Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.</p>
+<p>After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">update</span>
+
+<span class="n">sudo</span> <span class="n">apt</span> <span class="n">upgrade</span>
+</pre></div>
+</div>
+<p><strong>2- Start Linuxcnc first time</strong></p>
+<p>Now linuxcnc needs to be started for the first time for it to create its directory folders. This can be done by the drop down menu and selecting CNC and then LinuxCNC. After the program has started, you can shut it down and continue below.</p>
+<p><strong>3- Install qtpyvcp dependencies</strong></p>
+<p>Copy the following in the main terminal it is all one line, hit enter, select Y for yes f asked at any point during installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtquick</span> <span class="n">python</span><span class="o">-</span><span class="n">dbus</span><span class="o">.</span><span class="n">mainloop</span><span class="o">.</span><span class="n">pyqt5</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtopengl</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qsci</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtmultimedia</span> <span class="n">python</span><span class="o">-</span><span class="n">pyqt5</span><span class="o">.</span><span class="n">qtwebkit</span> <span class="n">qml</span><span class="o">-</span><span class="n">module</span><span class="o">-</span><span class="n">qtquick</span><span class="o">-</span><span class="n">controls</span> <span class="n">gstreamer1</span><span class="mf">.0</span><span class="o">-</span><span class="n">plugins</span><span class="o">-</span><span class="n">bad</span> <span class="n">libqt5multimedia5</span><span class="o">-</span><span class="n">plugins</span> <span class="n">pyqt5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span> <span class="n">python</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">setuptools</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span> <span class="n">git</span><span class="p">:</span>
+</pre></div>
+</div>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span> <span class="n">install</span> <span class="n">qttools5</span><span class="o">.</span><span class="n">dev</span> <span class="n">qttools5</span><span class="o">-</span><span class="n">dev</span><span class="o">-</span><span class="n">tools</span> <span class="n">python</span><span class="o">-</span><span class="n">pip</span>
+</pre></div>
+</div>
+<p><strong>4- Install qtpyvcp</strong></p>
+<p>Copy the following in the main terminal, hit enter, select Y for yes if asked at any point during installation.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kcjengr</span><span class="o">/</span><span class="n">qtpyvcp</span> <span class="n">qtpyvcp</span>
+
+<span class="n">cd</span> <span class="n">qtpyvcp</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">editable</span> <span class="o">.</span>
+
+<span class="n">cd</span>
+
+<span class="n">cd</span> <span class="o">~/</span><span class="n">qtpyvcp</span><span class="o">/</span><span class="n">pyqt5designer</span><span class="o">/</span><span class="n">Qt5</span><span class="mf">.7.1</span><span class="o">-</span><span class="mi">64</span><span class="n">bit</span><span class="o">/</span>
+
+<span class="n">sudo</span> <span class="o">./</span><span class="n">install</span><span class="o">.</span><span class="n">sh</span>
+
+<span class="n">cp</span> <span class="o">~/</span><span class="n">qtpyvcp</span><span class="o">/</span><span class="n">scripts</span><span class="o">/.</span><span class="n">xsessionrc</span> <span class="o">~/</span>
+</pre></div>
+</div>
+<p><strong>IMPORTANT: now Log Off of Linux, then Log In again for the previous installation to take effect, then continue with step 6 after in a main terminal!</strong></p>
+<p><strong>5- Install probe_basic</strong></p>
+<p>Copy the following in the main terminal, hit enter.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kcjengr</span><span class="o">/</span><span class="n">probe_basic</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p><strong>6- Setup the probe_basic directory and install using pip.</strong></p>
+<p>From the main terminal paste the following and press enter after each, if asked, type Y and enter to continue install.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="n">probe_basic</span>
+
+<span class="n">qcompile</span> <span class="o">.</span>
+
+<span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">e</span> <span class="o">.</span>
+
+<span class="n">cd</span>
+
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="n">probe_basic</span><span class="o">/</span><span class="n">probe_basic</span><span class="o">/</span><span class="n">fonts</span><span class="o">/</span> <span class="o">~/.</span><span class="n">local</span><span class="o">/</span><span class="n">share</span><span class="o">/</span>
+
+<span class="n">cp</span> <span class="o">-</span><span class="n">r</span> <span class="o">~/</span><span class="n">probe_basic</span><span class="o">/</span><span class="n">config</span><span class="o">/</span><span class="n">probe_basic</span><span class="o">/</span> <span class="o">~/</span><span class="n">linuxcnc</span><span class="o">/</span><span class="n">configs</span><span class="o">/</span>
+</pre></div>
+</div>
+<p>And install the conversational widgets</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">pip</span> <span class="n">install</span> <span class="n">git</span><span class="o">+</span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">kcjengr</span><span class="o">/</span><span class="n">qtpyvcp_conversational_gcode</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>More details about conversational widgets:</p>
+<p><a class="reference external" href="https://github.com/kcjengr/qtpyvcp_conversational_gcode">https://github.com/kcjengr/qtpyvcp_conversational_gcode</a></p>
+<p><strong>7- Edit probe_basic</strong></p>
+<p>To be able to edit the probe_basic gui, you will enter the following in the main terminal.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">editvcp</span> <span class="n">probe_basic</span>
+</pre></div>
+</div>
+<p><strong>8- You are Finished with Installation!</strong></p>
+<p>This should complete the installation of QtPyVCP and the probe_basic GUI, you can now run the sim to get to know it, as well open and play with the GUI design.  If you would like to make a Desktop Icon to launch the editor for probe_basic,  follow the below instructions:</p>
+<p>right click on the desktop and select “Create Launcher”</p>
+<p>In the field entries you can put the following information:</p>
+<p><strong>NOTE: for the command line be sure to change the “YOUR_COMPUTER_NAME_HERE” for you actual computer name, for example /home/jacob/.local/bin/editvcp probe_basic or the launcher will give an error!</strong></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Name</span><span class="p">:</span> <span class="n">QTDesigner</span>
+
+<span class="n">Comment</span><span class="p">:</span> <span class="n">probe_basic</span> <span class="n">gui</span> <span class="n">editor</span>
+
+<span class="n">Command</span><span class="p">:</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="n">YOUR_COMPUTER_NAME_HERE</span><span class="o">/.</span><span class="n">local</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">editvcp</span> <span class="n">probe_basic</span>
+
+<span class="n">Working</span> <span class="n">Directory</span><span class="p">:</span>
+</pre></div>
+</div>
+<p>Press the Save button once completed.</p>
+<p>The first launch select Mark Executable when prompted.</p>
+<p><strong>9- Congratualtions you have made it through and should be ready to start having fun!</strong></p>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="quick_start.html" class="btn btn-neutral float-left" title="Probe Basic .deb Install" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="probe_basic_parameters.html" class="btn btn-neutral float-right" title="Probe Basic Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
