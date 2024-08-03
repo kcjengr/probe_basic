@@ -174,9 +174,26 @@ o<probe_cal_square_boss> sub
       (calculate calibration error and adjust calibration offset)
       #<x_cal_error> = [[#<x_cal_width> - #<x_probed_width>] / 2]
       #<new_x_cal_offset> = [#<x_cal_error>]
-  o110 else(author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+  o110 else
+      #<x_cal_error> = [[#<x_probed_width> - #<x_cal_width>] / 2]
+      #<new_x_cal_offset> = [#<x_cal_error>]
+  o110 endif
+
+  o120 if [#<y_cal_width> GT #<y_probed_width>]
+      (calculate calibration error and adjust calibration offset)
+      #<y_cal_error> = [[#<y_cal_width> - #<y_probed_width>] / 2]
+      #<new_y_cal_offset> = [#<y_cal_error>]
+  o120 else
+      #<y_cal_error> = [[#<y_probed_width> - #<y_cal_width>] / 2]
+      #<new_y_cal_offset> = [#<y_cal_error>]
+  o120 endif
+
+  #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
+
+  o130 if [#<sq_cal_axis> EQ 0]
+      #3032 = [ABS[#<new_avg_cal_offset>]]
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
+  o130 else if [#<sq_cal_axis> EQ 1]
       #3032 = [ABS[#<new_x_cal_offset>]]
       (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 else

@@ -5,6 +5,16 @@ G90
 G53 G0 Z0
 G53 G0 X0 Y0
 
+o100 if [EXISTS[#<_ini[traj]axes>]]
+    #<geometry> = #<_ini[traj]axes>
+o100 endif
+
+o110 if [#<geometry> EQ 4]
+    G53 G0 A0
+o110 else if [#<geometry> EQ 5]
+    G53 G0 A0 C0
+o110 endif
+
 o<go_to_home> endsub
 
 M2
