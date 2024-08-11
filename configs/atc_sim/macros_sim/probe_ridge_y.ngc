@@ -10,22 +10,21 @@
 o<probe_ridge_y> sub
 
   (uses NGCGUI style arg spec)
-  (number after "=" in comment is default value)
-  #<probe_tool_number> = #3014    (=99)
-  #<probe_slow_fr> = #3015        (=0)
-  #<probe_fast_fr> = #3016        (=10.0)
-  #<probe_traverse_fr> = #3017    (=50)
-  #<max_xy_distance> = #3018      (=0.5000)
-  #<xy_clearance> = #3019         (=0.1000)
-  #<max_z_distance> = #3020       (=0.5000)
-  #<z_clearance> = #3021          (=0.1000)
-  #<extra_probe_depth> = #3022    (=0.0000)  
-  #<step_off_width> = #3023       (=0.5000)
-  #<edge_width> = #3024           (=0.5000)
-  #<x_hint_ridge_valley> = #3028  (=0)
-  #<y_hint_ridge_valley> = #3029  (=0)
-  #<probe_mode> = #3030           (=0)
-  #<calibration_offset> = #3032   (=0)
+  #<probe_tool_number> = #3014
+  #<probe_slow_fr> = #3015
+  #<probe_fast_fr> = #3016
+  #<probe_traverse_fr> = #3017
+  #<max_xy_distance> = #3018
+  #<xy_clearance> = #3019
+  #<max_z_distance> = #3020
+  #<z_clearance> = #3021
+  #<extra_probe_depth> = #3022  
+  #<step_off_width> = #3023
+  #<edge_width> = #3024
+  #<x_hint_ridge_valley> = #3028
+  #<y_hint_ridge_valley> = #3029
+  #<probe_mode> = #3030
+  #<calibration_offset> = #3032
 
   (Cancel G92 offsets)
   G92.1
@@ -63,7 +62,7 @@ o<probe_ridge_y> sub
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  #<probe_traverse_fr> = #16      (=50) Z-[#<z_probe_stack>]
+  Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_plus" to Probe y+ side of Workpiece)
   o<probe_y_plus> call [#3014][#3015][#3016][#3017][#3018][#3019][#3032]
@@ -81,7 +80,7 @@ o<probe_ridge_y> sub
 
   (Probe Y Positioning Move, to Probing Depth)
   F[#<probe_fast_fr>]
-  #<probe_traverse_fr> = #16      (=50) Z-[#<z_probe_stack>]
+  Z-[#<z_probe_stack>]
 
   (Call sub "probe_y_minus" to Probe y- side of Workpiece)
   o<probe_y_minus> call [#3014][#3015][#3016][#3017][#3018][#3019][#3032]
