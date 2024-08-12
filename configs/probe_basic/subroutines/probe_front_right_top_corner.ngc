@@ -29,6 +29,9 @@ o<probe_front_right_top_corner> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
 
@@ -106,6 +109,9 @@ o<probe_front_right_top_corner> sub
       G10 L2 P#5220 Y[#<y_plus_zero_edge> + #<workspace_y>]
       o<probe_front_right_top_corner> return
   o130 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_front_right_top_corner> endsub
 

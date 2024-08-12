@@ -21,6 +21,9 @@ o<probe_z_minus_wco> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_z> = #[5203 + [20 * #5220]]
 
   (Probe Tool Safety Check)
@@ -78,6 +81,9 @@ o<probe_z_minus_wco> sub
       G10 L2 P#5220 Z[#<z_minus_probed> + #<workspace_z>]
       o<probe_z_minus_wco> return
   o130 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_z_minus_wco> endsub
 

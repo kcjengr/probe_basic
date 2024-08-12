@@ -26,6 +26,9 @@ o<toolsetter_wco> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   o100 if [2 EQ 2]
   G49
   o100 endif
@@ -82,6 +85,9 @@ o<toolsetter_wco> sub
   
   (pause for dust boot)
   M0 (replace the dust boot)
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<toolsetter_wco> endsub
 

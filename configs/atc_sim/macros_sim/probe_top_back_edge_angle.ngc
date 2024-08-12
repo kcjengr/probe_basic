@@ -29,6 +29,9 @@ o<probe_top_back_edge_angle> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   (set rotation offset to zero for new probe cycle)
   G10 L2 P[#5220] R0
 
@@ -118,6 +121,9 @@ o<probe_top_back_edge_angle> sub
       G10 L2 P#5220 X[#<x_start_position>] Y[#<y_minus_zero_edge_start> + #<workspace_y>] R[#<edge_angle>]
       o<probe_top_back_edge_angle> return
   o140 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_top_back_edge_angle> endsub
 

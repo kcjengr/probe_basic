@@ -27,6 +27,9 @@ o<Probe_right_top_side> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
 
   (Probe Tool Safety Check)
@@ -78,6 +81,9 @@ o<Probe_right_top_side> sub
       G10 L2 P#5220 X[#<x_minus_zero_edge> + #<workspace_x>]
       o<probe_right_top_side> return
   o120 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<Probe_right_top_side> endsub
 

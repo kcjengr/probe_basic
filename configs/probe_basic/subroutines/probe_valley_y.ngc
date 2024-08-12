@@ -30,6 +30,9 @@ o<probe_valley_y> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_y> = #[5202 + [20 * #5220]]
 
   (Probe Tool Safety Check)
@@ -95,6 +98,9 @@ o<probe_valley_y> sub
       G10 L2 P#5220 Y[#<y_center_probed> + #<workspace_y>]
       o<probe_valley_y> return
   o110 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_valley_y> endsub
 

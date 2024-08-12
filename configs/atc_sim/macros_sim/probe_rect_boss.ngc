@@ -30,6 +30,9 @@ o<probe_rect_boss> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
   #<workspace_z> = #[5203 + [20 * #5220]]
@@ -174,6 +177,9 @@ o<probe_rect_boss> sub
       (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
       o<probe_rect_boss> return
   o110 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_rect_boss> endsub
 

@@ -29,6 +29,9 @@ o<probe_ridge_y> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_y> = #[5202 + [20 * #5220]]
   #<workspace_z> = #[5203 + [20 * #5220]]
 
@@ -117,6 +120,9 @@ o<probe_ridge_y> sub
       (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
       o<probe_ridge_y> return
   o110 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_ridge_y> endsub
 

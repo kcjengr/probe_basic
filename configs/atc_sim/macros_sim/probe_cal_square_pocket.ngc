@@ -30,6 +30,9 @@ o<probe_cal_square_pocket> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
 
@@ -166,6 +169,9 @@ o<probe_cal_square_pocket> sub
       G10 L2 P#5220 X[#<x_zero>] Y[#<y_zero>]
       o<probe_cal_square_pocket> return
   o140 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_cal_square_pocket> endsub
 

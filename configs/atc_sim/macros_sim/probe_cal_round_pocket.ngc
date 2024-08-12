@@ -28,6 +28,9 @@ o<probe_cal_round_pocket> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
 
@@ -211,6 +214,9 @@ o<probe_cal_round_pocket> sub
       (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
       o<probe_cal_round_pocket> return
   o140 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_cal_round_pocket> endsub
 
