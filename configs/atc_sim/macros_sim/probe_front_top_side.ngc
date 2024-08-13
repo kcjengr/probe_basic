@@ -36,6 +36,7 @@ o<Probe_front_top_side> sub
     (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
       (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      M50 P1
       o<Probe_front_top_side> return
   o100 endif
 
@@ -65,6 +66,7 @@ o<Probe_front_top_side> sub
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
       (MSG, Missing Y Sub returned edge parameter, aborting)
+      M50 P1
       o<probe_front_top_side> return
   o110 endif
 
@@ -80,7 +82,6 @@ o<Probe_front_top_side> sub
   o120 if [#<probe_mode> EQ 0]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 Y[#<y_plus_zero_edge> + #<workspace_y>]
-      o<probe_front_top_side> return
   o120 endif
 
   (Reinstate Feedrate Override)

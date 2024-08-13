@@ -35,6 +35,7 @@ o<probe_y_minus_wco> sub
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
       (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      M50 P1
       o<probe_y_minus_wco> return
   o100 endif
 
@@ -62,7 +63,7 @@ o<probe_y_minus_wco> sub
       G90
       G1 F[#<probe_traverse_fr>] Y#<y>
       F[#<probe_fast_fr>]
-      (return from sub)
+      M50 P1
       o<probe_y_minus_wco> return
   o110 endif
 
@@ -94,7 +95,6 @@ o<probe_y_minus_wco> sub
   o130 if [#<probe_mode> EQ 0]
       (Record Y Zero in selected WCO)
       G10 L2 P#5220 Y[#<y_minus_zero_edge> + #<workspace_y>]
-      o<probe_y_minus_wco> return
   o130 endif
 
   (Reinstate Feedrate Override)

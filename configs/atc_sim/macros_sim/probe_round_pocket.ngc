@@ -37,6 +37,7 @@ o<probe_round_pocket> sub
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
       (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      M50 P1
       o<probe_round_pocket> return
   o100 endif
 
@@ -173,8 +174,6 @@ o<probe_round_pocket> sub
       (Record Y Zero in selected WCO)
       G10 L2 P#5220 X[#<x_center_probed> + #<workspace_x>]
       G10 L2 P#5220 Y[#<y_center_probed> + #<workspace_y>]
-      (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
-      o<probe_round_pocket> return
   o110 endif
 
   (Reinstate Feedrate Override)

@@ -40,6 +40,7 @@ o<probe_top_front_edge_angle> sub
     (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
       (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      M50 P1
       o<probe_top_front_edge_angle> return
   o100 endif
 
@@ -71,6 +72,7 @@ o<probe_top_front_edge_angle> sub
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
       (MSG, Missing Y Sub returned edge parameter, aborting)
+      M50 P1
       o<probe_top_front_edge_angle> return
   o110 endif
 
@@ -87,6 +89,7 @@ o<probe_top_front_edge_angle> sub
   (value returned safety check, aborts if no value returned)
   o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
       (MSG, Missing Y Sub returned edge parameter, aborting)
+      M50 P1
       o<probe_top_front_edge_angle> return
   o120 endif
 
@@ -112,14 +115,12 @@ o<probe_top_front_edge_angle> sub
   o130 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_start_position>] Y[#<y_plus_zero_edge_start> + #<workspace_y>]
-      o<probe_top_front_edge_angle> return
   o130 endif
 
   (probe mode rules for WCO, Rotation and probe position measuring only)
   o140 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_start_position>] Y[#<y_plus_zero_edge_start> + #<workspace_y>] R[#<edge_angle>]
-      o<probe_top_front_edge_angle> return
   o140 endif
 
   (Reinstate Feedrate Override)

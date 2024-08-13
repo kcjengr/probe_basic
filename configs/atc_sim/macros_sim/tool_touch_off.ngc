@@ -17,6 +17,7 @@ o<tool_touch_off> sub
 #<tool_diameter> = #5410    (current tool's diameter used for offseting probe position in x axis)
 
 G92.1    (Cancel G92 offset)
+M50 P0
 
 #<tool_touch_x_coords> = #5181
 #<tool_touch_y_coords> = #5182
@@ -92,6 +93,8 @@ G53 G1 F[#<traverse_fr>] Z0 (Send Spindle to home zero position)
 G10 L1 P #5400 Z [#<new_tool_length_offset>]  (5400 = tool number)
 
 T #5400 G43  H #5400    (enable tool length offset)
+
+M50 P1  (reinstate feedrate override)
 
 o<tool_touch_off> endsub
 
