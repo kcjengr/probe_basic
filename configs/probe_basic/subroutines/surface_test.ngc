@@ -1,0 +1,44 @@
+o<surface_test> sub
+  ;(MSG, SURFACE_TEST.NGC)
+  M64 P0  (turn off compensation)
+  ;T1 M6 (Install probe)
+  #<x0> = #3050 ;(debug, x0: [#<x0>])
+  #<y0> = #3051 ;(debug, y0: [#<y0>])
+  #<height> = #3052 ;(debug, height: [#<height>])
+  #<width> = #3053 ;(debug, width: [#<width>])
+  #<step> = #3054 ;(debug, step: [#<step>])
+  #<search_feed> = #3055 ;(debug, search_feed: [#<search_feed>])
+  #<latch_feed> = #3056 ;(debug, latch_feed: [#<latch_feed>])
+  #<safe_z> = #3057 ;(debug, safe_z: [#<safe_z>])
+  #<search_z> = #3058 ;(debug, search_z: [#<search_z>])
+           
+  ;(PROBEOPEN filename.txt)
+
+  G0 Z#<safe_z>
+  #<y> = #<y0>
+  o101 while [#<y> LT #<height>+#<y0>]
+    #<x> = #<x0>
+    o102 while [#<x> LE #<width>+#<x0>]
+     G0 X#<x> Y#<y>
+      G38.2 Z#<search_z> F#<search_feed>
+      G0 Z#<safe_z>
+      #<x> = [#<x>+#<step>]
+    o102 endwhile
+    
+    #<y> = [#<y>+#<step>]
+    #<x> = [#<x0>+#<width>]
+    
+    o103 while [#<x> GE #<x0>]
+     G0 X#<x> Y#<y>
+      G38.2 Z#<search_z> F#<search_feed>
+      G0 Z#<safe_z>
+      #<x> = [#<x>-#<step>]
+    o103 endwhile
+    
+    #<y> = [#<y>+#<step>]
+  o101 endwhile
+
+  ;(PROBECLOSE)
+o<surface_test> endsub
+
+M2
