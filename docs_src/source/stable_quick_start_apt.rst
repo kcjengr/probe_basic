@@ -21,7 +21,7 @@ Probe Basic APT Stable Install
     .. image:: images/xfce_check_doc.png
         :align: center
 
-|
+    |    
 
 
 
@@ -32,11 +32,17 @@ Probe Basic APT Stable Install
         https://www.debian.org/download
 
 
+    |
+
+
     Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
     ::
 
         https://www.balena.io/etcher/?ref=etcher_update
+
+
+    |
 
 
     Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.  When you are greeted by the Linux Desktop Selection Page, uncheck the GNOME option and check the XFCE4 option.
@@ -49,6 +55,8 @@ Probe Basic APT Stable Install
 
         sudo apt upgrade
 
+    |
+
 
 
 **If you have not already installed linuxcnc from apt, use the following line in main terminal:**
@@ -56,6 +64,9 @@ Probe Basic APT Stable Install
     ::
 
         sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
+
+
+    |
 
 
 
@@ -78,12 +89,18 @@ Probe Basic APT Stable Install
         gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
 
 
+    |
+
+
 
 **Update the Repositories**
 
     ::
 
         sudo apt update
+
+
+    |
 
 
 
@@ -95,6 +112,8 @@ Probe Basic APT Stable Install
 
         sudo apt install python3-probe-basic
 
+        
+    |
 
 
 **You are all installed!  You should now be able to launch the Probe Basic sim from within the linuxcnc applications dropdown menu.**
