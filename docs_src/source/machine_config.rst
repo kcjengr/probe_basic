@@ -1,6 +1,7 @@
-=====================================================
-Machine Configuration (INI, HAL and Supporting Files)
-=====================================================
+=======================================
+Machine Configuration (INI, HAL, Files)
+=======================================
+
 
 **Creating a working Machine Configuration for Probe Basic**
 
@@ -55,6 +56,7 @@ Machine Configuration (INI, HAL and Supporting Files)
 |
 
 
+
 **Files Copied to pncconfig folder**
 
 
@@ -102,28 +104,24 @@ Machine Configuration (INI, HAL and Supporting Files)
 
    Now we will make an addition to the hal file for adding digital and analog IO.  add the highlighted data in red shown in the image below to the end of the following line as shown in the picture:
 
-::
-
-      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
-   |
+      ::
+         loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
+   
 
    Add this: 
 
-::
-
-      num_dio=6 num_aio=3
-   |
+      ::
+         num_dio=6 num_aio=3
+   
 
    The finished edit should have the data added to the end like this:
 
-::
-
-      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
-   |
+      ::
+         loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+   
 
    See the below image for verification:
 
-|
 
    .. image:: images/pb_instruction_8.png
       :align: center
