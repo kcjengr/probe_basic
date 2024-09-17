@@ -15,100 +15,100 @@ Step by Step how to change the sources list name for the stable and develop apt 
 **1- Type or copy and paste the following line in a terminal, click ENTER, type in your sudo password when prompted, click ENTER.**
 
 
-::
+   ::
 
 
 
-   sudo nano /etc/apt/sources.list.d/kcjengr.list
+      sudo nano /etc/apt/sources.list.d/kcjengr.list
 
 
 
-|
+   |
 
 
-.. image:: images/pb_sources_list.png
-   :align: center
-   :scale: 80%
-|
+   .. image:: images/pb_sources_list.png
+      :align: center
+      :scale: 80%
+   |
 
 
 
 **2- Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic as shown below:**
 
 
-.. image:: images/nano_sources_list.png
-   :align: center
-   :scale: 80%
-|
+   .. image:: images/nano_sources_list.png
+      :align: center
+      :scale: 80%
+   |
 
 
-.. image:: images/nano_sources_list_edited.png
-   :align: center
-   :scale: 80%
-|
+   .. image:: images/nano_sources_list_edited.png
+      :align: center
+      :scale: 80%
+   |
 
 
 
 **3- Exit and Save the changes, CTRL + X, Y, ENTER as shown below:**
 
 
-.. image:: images/yes_nano_to_save.png
-   :align: center
-   :scale: 80%
-|
+   .. image:: images/yes_nano_to_save.png
+      :align: center
+      :scale: 80%
+   |
 
 
-.. image:: images/enter_nano_file_save_name.png
-   :align: center
-   :scale: 80%
-|
+   .. image:: images/enter_nano_file_save_name.png
+      :align: center
+      :scale: 80%
+   |
 
 
 
 **4- Run uninstall the current installation of Probe Basic with the following commands in terminal:**
 
-::
+   ::
 
 
 
-   sudo dpkg -P python3-probe-basic
+      sudo dpkg -P python3-probe-basic
 
 
 
-|
+   |
 
-::
-
-
-
-   sudo dpkg -P python3-qtpyvcp
+   ::
 
 
 
-|
+      sudo dpkg -P python3-qtpyvcp
+
+
+
+   |
 
 
 **5- Run install of Probe Basic and QtPyVCP with the following commands in terminal:**
 
-::
+   ::
 
 
 
-   sudo apt install python3-qtpyvcp
+      sudo apt install python3-qtpyvcp
 
 
 
-|
+   |
 
-::
-
-
-
-   sudo apt install python3-probe-basic
+   ::
 
 
 
-|
+      sudo apt install python3-probe-basic
+
+
+
+   |
 
 
 
@@ -117,24 +117,24 @@ Step by Step how to change the sources list name for the stable and develop apt 
 **6- Run apt update/upgrade, copy the following in the main terminal one line at a time , select Y for yes if asked at any point during the update**
 
 
-::
+   ::
 
 
 
-   sudo apt update
+      sudo apt update
 
 
 
 
-::
+   ::
 
 
 
-   sudo apt upgrade
+      sudo apt upgrade
 
 
 
-|
+   |
 
 
 
