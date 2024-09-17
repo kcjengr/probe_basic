@@ -102,38 +102,41 @@ Machine Configuration (INI, HAL, Files)
 **Step 4:**
 
 
-   Now we will make an addition to the hal file for adding digital and analog IO.  add the highlighted data in red shown in the image below to the end of the following line as shown in the picture:
+Now we will make an addition to the hal file for adding digital and analog IO.  add the highlighted data in red shown in the image below to the end of the following line as shown in the picture:
 
-      ::
-         loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
+   ::
+      
+      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
    
 
-   Add this: 
+Add this: 
 
-      ::
-         num_dio=6 num_aio=3
+   ::
+      
+      num_dio=6 num_aio=3
    
 
-   The finished edit should have the data added to the end like this:
+The finished edit should have the data added to the end like this:
 
-      ::
-         loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+   ::
+      
+      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
    
 
-   See the below image for verification:
+See the below image for verification:
 
 
-   .. image:: images/pb_instruction_8.png
-      :align: center
+.. image:: images/pb_instruction_8.png
+   :align: center
 
 |
 
 
-**The second edit is to remove the tool change section show below in the image:**
+**The second edit is to remove the tool change section shown below in the image:**
 
 
-   .. image:: images/pb_instruction_9.png
-      :align: center
+.. image:: images/pb_instruction_9.png
+   :align: center
 
 
 |
