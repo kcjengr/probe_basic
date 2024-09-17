@@ -1,0 +1,48 @@
+# example of a machine specific settings
+windows:
+  mainwindow:
+    kwargs:
+      confirm_exit: false
+
+data_plugins:
+  tooltable:
+    provider: qtpyvcp.plugins.tool_table:ToolTable
+    kwargs:
+      columns: TZDR
+
+  offsettable:
+    provider: qtpyvcp.plugins.offset_table:OffsetTable
+    kwargs:
+      columns: "XYZACR"
+
+settings:
+
+  # VTK backplot view settings
+
+  backplot.show-grid:
+    default_value: false
+
+  backplot.show-program-bounds:
+    default_value: false
+
+  backplot.show-program-labels:
+    default_value: false
+
+  backplot.show-program-ticks:
+    default_value: false
+
+  backplot.show-machine-bounds:
+    default_value: false
+
+  backplot.show-machine-labels:
+    default_value: false
+
+  backplot.show-machine-ticks:
+    default_value: false
+
+  backplot.perspective-view:
+    default_value: false
+
+  backplot.multitool-colors:
+    default_value: True
+

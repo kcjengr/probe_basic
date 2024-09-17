@@ -4,7 +4,7 @@
 # kinematics
 loadrt [KINS]KINEMATICS
 # motion controller, get name and thread periods from ini file
-loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS unlock_joints_mask=16 num_dio=20 num_aio=64
+loadrt [EMCMOT]EMCMOT base_period_nsec=[EMCMOT]BASE_PERIOD servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS unlock_joints_mask=16 num_dio=6 num_aio=3
 # load 6 differentiators (for velocity and accel signals)
 loadrt ddt names=ddt_x,ddt_xv,ddt_y,ddt_yv,ddt_z,ddt_zv
 # load additional blocks
@@ -73,5 +73,5 @@ net spindle-rev spindle.0.reverse
 # net lube iocontrol.0.lube  # deprecated in lcnc 2.10
 net flood iocontrol.0.coolant-flood
 net mist iocontrol.0.coolant-mist
-net tlo motion.analog-in-30 <= halui.tool.length_offset.z
+net tlo motion.analog-in-01 <= halui.tool.length_offset.z
 
