@@ -13,13 +13,11 @@ Probe Basic Parameters
    :scale: 100%
 
 |
-|
 
 .. image:: images/params_tool_setter.png
    :align: center
    :scale: 100%
 
-|
 |
 
 .. image:: images/params_touch_probe.png
@@ -27,8 +25,10 @@ Probe Basic Parameters
    :scale: 100%
 
 |
-|
 
 .. image:: images/params_atc.png
    :align: center
    :scale: 100%
+
+|
+
