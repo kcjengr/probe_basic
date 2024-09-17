@@ -27,40 +27,40 @@ Probe Basic APT Develop Install
 
 **Download the Linux Debian 12 Bookworkm ISO Image File**
 
-    ::
+        ::
 
-        https://www.debian.org/download
+            https://www.debian.org/download
 
-    [Blank line here]
+
 
     Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. you will need to make a bootable dvd or USB thumb drive depending on how you plan to install.  The below software is extremely easy and works flawlessly with linux debian OS images. Below is the link for it. I recommend using 2-4gb USB drive for quicker flashing.
 
-    ::
+        ::
 
-        https://www.balena.io/etcher/?ref=etcher_update
+            https://www.balena.io/etcher/?ref=etcher_update
 
-    [Blank line here]
+
+
 
     Once you have created your flash stick for linuxcnc proceed to install and boot the system. (note: It is advised to have an ethernet cable internet connection during install).  Select the graphical installation option. Follow the steps on screen to complete installation.  When you are greeted by the Linux Desktop Selection Page, uncheck the GNOME option and check the XFCE4 option.
 
     After installation, copy the following in the main terminal one line at a time and hit enter, select Y for yes if asked at any point during installation.  If the return shows "All up to Date" then you can proceed to the next step.
 
-    ::
+        ::
 
-        sudo apt update
+            sudo apt update
 
-        sudo apt upgrade
+            sudo apt upgrade
 
-    [Blank line here]
-
+            
 
 **If you have not already installed linuxcnc from apt, use the following line in main terminal:**
 
-    ::
+        ::
 
-        sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
-    
-    [Blank line here]
+            sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
+
+                    
 
 
 **Once you have installed linuxcnc, open linuxcnc and start the axis sim briefly and then you can shut it down to ensure the installation was succesful.**
@@ -68,42 +68,38 @@ Probe Basic APT Develop Install
 
 **Adding the apt repository to Debian 12, Run the following Lines in Main terminal one at a time**
 
-    ::
+        ::
 
-        sudo apt install curl
-
-
-        echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt develop main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
+            sudo apt install curl
 
 
-        curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
+            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt develop main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
-        gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
-    
-    [Blank line here]
+            curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
+
+
+            gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
+
 
 
 
 **Update the Repositories**
 
-    ::
+        ::
 
-        sudo apt update
-    
-    [Blank line here]
+            sudo apt update
+
 
 
 
 **Install QtPyVCP and Probe Basic**
 
-    ::
+        ::
 
-        sudo apt install python3-qtpyvcp
+            sudo apt install python3-qtpyvcp
 
-        sudo apt install python3-probe-basic
-    
-    [Blank line here]
+            sudo apt install python3-probe-basic
 
 
 
