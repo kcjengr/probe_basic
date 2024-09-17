@@ -15,11 +15,11 @@ Probe Basic APT Stable Install
     - DO NOT enter a Root password during installation, leave blank and skip this page.
 
 
-        During installation, this screen below will appear, be sure to uncheck gnome and check xfce as pictured below. no other changes on this page are needed.
+    During installation, this screen below will appear, be sure to uncheck gnome and check xfce as pictured below. no other changes on this page are needed.
 
 
     .. image:: images/xfce_check_doc.png
-    :align: center
+        :align: center
 
 |
 
