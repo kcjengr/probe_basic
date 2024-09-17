@@ -18,8 +18,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 
 **As built pncconfig folder**
 
-.. image:: images/pb_instruction_1.png
-   :align: center
+   .. image:: images/pb_instruction_1.png
+      :align: center
 
 
 |
@@ -28,8 +28,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 
 **Unneeded pncconfig files highlighted**
 
-.. image:: images/pb_instruction_2.png
-   :align: center
+   .. image:: images/pb_instruction_2.png
+      :align: center
 
 
 |
@@ -38,8 +38,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 
 **Cleaned up pncconfig folder**
 
-.. image:: images/pb_instruction_3.png
-   :align: center
+   .. image:: images/pb_instruction_3.png
+      :align: center
 
 
 |
@@ -48,8 +48,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 
 **Files to be Copied from probe_basic_machine_config_setup_files folder to pncconfig folder**
 
-.. image:: images/pb_instruction_4.png
-   :align: center
+   .. image:: images/pb_instruction_4.png
+      :align: center
 
 
 |
@@ -58,8 +58,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 **Files Copied to pncconfig folder**
 
 
-.. image:: images/pb_instruction_5.png
-   :align: center
+   .. image:: images/pb_instruction_5.png
+      :align: center
 
 
 |
@@ -88,8 +88,8 @@ Machine Configuration (INI, HAL and Supporting Files)
 **Side by Side ini files for editing shown below**
 
 
-.. image:: images/pb_instruction_7.png
-   :align: center
+   .. image:: images/pb_instruction_7.png
+      :align: center
 
 
 |
@@ -104,34 +104,35 @@ Machine Configuration (INI, HAL and Supporting Files)
 
 ::
 
-    loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
+      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
 
    Add this: 
 
 ::
 
-    num_dio=6 num_aio=3
+      num_dio=6 num_aio=3
 
    The finished edit should have the data added to the end like this:
 
 ::
 
-    loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+      loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
 
    See the below image for verification:
 
+|
 
+   .. image:: images/pb_instruction_8.png
+      :align: center
 
-.. image:: images/pb_instruction_8.png
-   :align: center
-
+|
 
 
 **The second edit is to remove the tool change section show below in the image:**
 
 
-.. image:: images/pb_instruction_9.png
-   :align: center
+   .. image:: images/pb_instruction_9.png
+      :align: center
 
 
 |
