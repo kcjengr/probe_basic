@@ -1,5 +1,5 @@
-General installation approach
-=============================
+Probe Basic Development Installation
+====================================
 
 
 This Dev install method uses an installer script and will install QtPyVCP and Probe Basic into a virtual environment (venv) which is now a requirement for pip installations on systems running python version 3.11 which is what comes on Linux Debian 12 Bookworm. This has been tested to work on a clean install of debian 12 bookworm using the xfce4 option and nonfree firmware cdnetinst iso. Download and install the bookworm iso from the link below for your pc type, typically the amd64 on normal pc's:
