@@ -105,18 +105,21 @@ Machine Configuration (INI, HAL and Supporting Files)
 ::
 
       loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS
+   |
 
    Add this: 
 
 ::
 
       num_dio=6 num_aio=3
+   |
 
    The finished edit should have the data added to the end like this:
 
 ::
 
       loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+   |
 
    See the below image for verification:
 
