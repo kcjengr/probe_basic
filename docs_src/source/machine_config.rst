@@ -18,32 +18,44 @@ After you have completed the Pncconf configuration builder and have created a ne
 
 In the Linuxcnc config folder, there should now be a config folder from the output of Pncconf, there should also be a folder called "probe_basic_machine_config_setup_files".  Both will be used for copying required files over to the new machine config folder.  Open two folder windows on the desktop, the new Pncconf folder created for your machine and the probe_basic_machine_config_setup_files folder. I have shown an example with the stock pncconfig folder contents and a cleaned up version showing which files will be used and which can be discarded for a basic installation.  If you have a special case for having any of these files then please use your discretion for your use case. This guide will assume you will delete the unneeded files as shown below.  Once the folder has been cleaned up, highlight and copy the files shown below from the probe_basic_machine_config_setup_files folder to the Pncconf config folder. What is shown will be the minimum starting point for the config conversion for Probe Basic:
 
-**As built pncconfig folder**
 
+**As built pncconfig folder**
 
 .. image:: images/pb_instruction_1.png
    :align: center
 
 
-**Unneeded pncconfig files highlighted**
+|
 
+
+
+**Unneeded pncconfig files highlighted**
 
 .. image:: images/pb_instruction_2.png
    :align: center
 
 
-**Cleaned up pncconfig folder**
+|
 
+
+
+**Cleaned up pncconfig folder**
 
 .. image:: images/pb_instruction_3.png
    :align: center
 
 
-**Files to be Copied from probe_basic_machine_config_setup_files folder to pncconfig folder**
+|
 
+
+
+**Files to be Copied from probe_basic_machine_config_setup_files folder to pncconfig folder**
 
 .. image:: images/pb_instruction_4.png
    :align: center
+
+
+|
 
 
 **Files Copied to pncconfig folder**
@@ -51,6 +63,10 @@ In the Linuxcnc config folder, there should now be a config folder from the outp
 
 .. image:: images/pb_instruction_5.png
    :align: center
+
+
+|
+
 
 
 
@@ -70,11 +86,17 @@ If a line is not in your machine file in the corresponding ini section, copy the
 Once this task has been completed, You can delete the "probe_basic_required_ini_items.ini" file in the folder as it will not be used.
 
 
+
 **Side by Side ini files for editing shown below**
 
 
 .. image:: images/pb_instruction_7.png
    :align: center
+
+
+|
+
+
 
 
 **Step 4:**
@@ -96,7 +118,7 @@ The finished edit should have the data added to the end like this:
 
 ::
 
-    loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTSnum_dio=6 num_aio=3
+    loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
 
 See the below image for verification:
 
