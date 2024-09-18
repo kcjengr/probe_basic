@@ -65,7 +65,7 @@ Updating QtPyVCP and Probe Basic
 Uninstalling QtPyVCP and Probe Basic
 ------------------------------------
 
-   To uninstall QtPyVCP and Probe Basic, delete the /dev folder. Since this is a venv run in place install, it is removed once the directory is deleted.
+   To uninstall QtPyVCP and Probe Basic, delete the **/home/(your_pc_name)/dev** folder. Since this is a venv run in place install, it is removed once the directory is deleted.
 
 
 Note
