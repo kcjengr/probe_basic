@@ -26,7 +26,7 @@ Step 2: Copy required files
    4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
 
 
-**As built pncconfig folder**
+   **As built pncconfig folder**
 
    .. image:: images/pb_instruction_1.png
       :align: center
@@ -34,7 +34,7 @@ Step 2: Copy required files
    |
 
 
-**Unneeded pncconfig files highlighted**
+   **Unneeded pncconfig files highlighted**
 
    .. image:: images/pb_instruction_2.png
       :align: center
@@ -42,14 +42,14 @@ Step 2: Copy required files
    |
 
 
-**Cleaned up pncconfig folder**
+   **Cleaned up pncconfig folder**
    .. image:: images/pb_instruction_3.png
       :align: center
 
    |
 
 
-**Files to be Copied from probe_basic_machine_config_setup_files folder**
+   **Files to be Copied from probe_basic_machine_config_setup_files folder**
 
    .. image:: images/pb_instruction_4.png
       :align: center
@@ -57,7 +57,7 @@ Step 2: Copy required files
    |
 
 
-**Files Copied to pncconfig folder**
+   **Files Copied to pncconfig folder**
 
    .. image:: images/pb_instruction_5.png
       :align: center
@@ -76,8 +76,8 @@ Step 3: Edit INI files
    4. Save the file and delete the "probe_basic_required_ini_items.ini" file from the folder.
 
 
-**Side by Side ini files for editing
-**
+   **Side by Side ini files for editing**
+
    .. image:: images/pb_instruction_7.png
       :align: center
 
