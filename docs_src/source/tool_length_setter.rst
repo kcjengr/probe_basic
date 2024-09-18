@@ -27,6 +27,7 @@ Tool Touch Off Parameter Settings
 ---------------------------------
 
    1. Enter the desired Parameter settings for all parameters:
+
       - Spindle Zero
       - Fast Probe Feedrate
       - Slow Probe Feedrate
@@ -34,6 +35,8 @@ Tool Touch Off Parameter Settings
       - Z Max Travel
       - XY Max Travel
       - Retract distance
+
+   |
 
    .. important::
       Spindle Zero is the length/distance from the empty spindle nose at the Z home Position Z0.0000 to the top of the tool setter (at the trip point)
