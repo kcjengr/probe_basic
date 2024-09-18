@@ -25,9 +25,11 @@ Step 2: Copy required files
    3. Clean up the Pncconf folder by removing unneeded files (see images below for reference).
    4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
 
+
+**As built pncconfig folder**
+
    .. image:: images/pb_instruction_1.png
       :align: center
-      :alt: As built pncconfig folder
 
    |
 
