@@ -27,13 +27,13 @@ Tool Touch Off Parameter Settings
 ---------------------------------
 
    1. Enter the desired Parameter settings for all parameters:
-      -  Spindle Zero
-      -  Fast Probe Feedrate
-      -  Slow Probe Feedrate
-      -  Traverse Feedrate
-      -  Z Max Travel
-      -  XY Max Travel
-      -  Retract distance
+      - Spindle Zero
+      - Fast Probe Feedrate
+      - Slow Probe Feedrate
+      - Traverse Feedrate
+      - Z Max Travel
+      - XY Max Travel
+      - Retract distance
 
    .. important::
       Spindle Zero is the length/distance from the empty spindle nose at the Z home Position Z0.0000 to the top of the tool setter (at the trip point)
@@ -56,8 +56,9 @@ Tool Touch Off Parameter Settings
 Measuring Tools
 ---------------
 
-   1- To measure a tool, Load the tool in the spindle using the tool page in the probe basic interface
-   2- Press the "TOUCH OFF CURRENT TOOL" button, this will  initiate the tool touch off routine and move the machine to the tool touch off position and probe the tool length to capture and store the current length of the tool in the tool table.
+   1. To measure a tool, Load the tool in the spindle using the tool page in the probe basic interface
+   
+   2. Press the "TOUCH OFF CURRENT TOOL" button, this will  initiate the tool touch off routine and move the machine to the tool touch off position and probe the tool length to capture and store the current length of the tool in the tool table.
 
    .. image:: images/mill/tool_length_measure.png
       :align: center
