@@ -9,7 +9,6 @@ Probe Basic has number of include probing routines.
 
    |
 
-
 Probing Setup
 -------------
 
@@ -81,6 +80,8 @@ Work Offsets
    .. image:: images/mill/probe_00_work_offsets.png
       :align: center
 
+   |
+
    This area allows you to select a Workpiece Coordinate Offsets (WCO) and if it is to be updated as a result of probing.
 
    G5x:
@@ -98,28 +99,30 @@ Parameters
    .. image:: images/mill/probe_00_parameters.png
       :align: center
 
-   PROBE TOOL#:
-   This should be set to match the probe entry in you tool table.
-   STEP OFF WIDTH:
-   How far the probe will travel in either X or Y before moving down a side.
-   PROBE FAST FDRATE:
-   Fast feed rate, for first touch when probing.
-   PROBE SLOW FDRATE:
-   Slow feed rate for second touch when probing. If set to 0 (zero) a second touch will not be perform and the result from the fast probe is used.
-   PROBE TRAVERSE FDRATE:
-   This is the speed at which non probing motion will move at such as travesing the top of a work piece or repositioning for a subsequent probe event.
-   MAX X/Y DISTANCE:
-   Maximum distance to travel in either X or Y before tripping out.
-   X/Y CLEARANCE:
-   Retract distance for X and Y probing after touch, this should be at least larger than any backlash in the axis.
-   MAX Z DISTANCE:
-   Maximum distance to travel in Z before tripping out.
-   Z CLEARANCE:
-   Retract distance for Z probing after touch, this should be at least larger than any backlash in the axis.
-   EXTRA PROBE DEPTH:
-   Extra distance to move down a side (after probe diameter) before probing in X or Y.
-   EDGE WIDTH:
-   Distance between test points when probing for Edge Angle's.
+   |
+
+   - PROBE TOOL#:
+      This should be set to match the probe entry in you tool table.
+   - STEP OFF WIDTH:
+      How far the probe will travel in either X or Y before moving down a side.
+   - PROBE FAST FDRATE:
+      Fast feed rate, for first touch when probing.
+   - PROBE SLOW FDRATE:
+      Slow feed rate for second touch when probing. If set to 0 (zero) a second touch will not be perform and the result from the fast probe is used.
+   - PROBE TRAVERSE FDRATE:
+      This is the speed at which non probing motion will move at such as travesing the top of a work piece or repositioning for a subsequent probe event.
+   - MAX X/Y DISTANCE:
+      Maximum distance to travel in either X or Y before tripping out.
+   - X/Y CLEARANCE:
+      Retract distance for X and Y probing after touch, this should be at least larger than any backlash in the axis.
+   - MAX Z DISTANCE:
+      Maximum distance to travel in Z before tripping out.
+   - Z CLEARANCE:
+      Retract distance for Z probing after touch, this should be at least larger than any backlash in the axis.
+   - EXTRA PROBE DEPTH:
+      Extra distance to move down a side (after probe diameter) before probing in X or Y.
+   - EDGE WIDTH:
+      Distance between test points when probing for Edge Angle's.
 
 
 Probe Results
@@ -143,8 +146,8 @@ Outside Corners
       :align: center
 
    |
-Inside Corners
-~~~~~~~~~~~~~~~
+Inside Corners and Straigh probes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
    .. image:: images/mill/probe_02_inside_corners.png
       :align: center
 
