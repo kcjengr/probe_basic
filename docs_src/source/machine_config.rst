@@ -43,6 +43,7 @@ Step 2: Copy required files
 
 
    **Cleaned up pncconfig folder**
+   
    .. image:: images/pb_instruction_3.png
       :align: center
 
