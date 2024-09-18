@@ -31,23 +31,31 @@ Step 2: Copy required files
 
    |
 
+
+**Unneeded pncconfig files highlighted**
+
    .. image:: images/pb_instruction_2.png
       :align: center
-      :alt: Unneeded pncconfig files highlighted
 
    |
 
+
+**Cleaned up pncconfig folder**
    .. image:: images/pb_instruction_3.png
       :align: center
-      :alt: Cleaned up pncconfig folder
 
    |
+
+
+**Files to be Copied from probe_basic_machine_config_setup_files folder**
 
    .. image:: images/pb_instruction_4.png
       :align: center
-      :alt: Files to be Copied from probe_basic_machine_config_setup_files folder
 
    |
+
+
+**Files Copied to pncconfig folder**
 
    .. image:: images/pb_instruction_5.png
       :align: center
@@ -65,13 +73,14 @@ Step 3: Edit INI files
    3. Note that only ONE postgui HAL file can be called. Add any additional items to the existing probe_basic_postgui.hal file.
    4. Save the file and delete the "probe_basic_required_ini_items.ini" file from the folder.
 
+
+**Side by Side ini files for editing
+**
    .. image:: images/pb_instruction_7.png
       :align: center
-      :alt: Side by Side ini files for editing
 
    |
    
-
 Step 4: Modify HAL file
 ^^^^^^^^^^^^^^^^^^^^^^^
 
@@ -99,7 +108,7 @@ Step 4: Modify HAL file
 
    |
 
-   2. Remove the tool change section as shown in the image below:
+   2. Remove the red highlighted manual tool change dialog section from the bottom of the hal file as shown in the image below.  Probe basic uses its own built in dialog for manual tool changes which give the user better tool information and matches the ui visual theme more appropriately.
 
    .. image:: images/pb_instruction_9.png
       :align: center
@@ -114,7 +123,7 @@ Launching Probe Basic
    2. Check the box at the bottom of the launch window to create a desktop icon for easier starts.
    3. To set the Probe Basic icon:
       - Right-click the desktop launcher and select "edit launcher"
-      - Click the current icon image
+      - Click the current icon image, this will open the icon folder
       - Find and select the icon named "probe_basic_mill"
 
    You should now be ready to use Probe Basic with your machine configuration.
