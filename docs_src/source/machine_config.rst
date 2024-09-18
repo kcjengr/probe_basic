@@ -29,21 +29,31 @@ Step 2: Copy required files
       :align: center
       :alt: As built pncconfig folder
 
+   |
+
    .. image:: images/pb_instruction_2.png
       :align: center
       :alt: Unneeded pncconfig files highlighted
+
+   |
 
    .. image:: images/pb_instruction_3.png
       :align: center
       :alt: Cleaned up pncconfig folder
 
+   |
+
    .. image:: images/pb_instruction_4.png
       :align: center
       :alt: Files to be Copied from probe_basic_machine_config_setup_files folder
 
+   |
+
    .. image:: images/pb_instruction_5.png
       :align: center
       :alt: Files Copied to pncconfig folder
+
+   |
 
 Step 3: Edit INI files
 ^^^^^^^^^^^^^^^^^^^^^^
@@ -58,6 +68,9 @@ Step 3: Edit INI files
    .. image:: images/pb_instruction_7.png
       :align: center
       :alt: Side by Side ini files for editing
+
+   |
+   
 
 Step 4: Modify HAL file
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -84,11 +97,15 @@ Step 4: Modify HAL file
       :align: center
       :alt: HAL file modification
 
+   |
+
    2. Remove the tool change section as shown in the image below:
 
    .. image:: images/pb_instruction_9.png
       :align: center
       :alt: Tool change section to remove
+
+   |
 
 Launching Probe Basic
 ---------------------
