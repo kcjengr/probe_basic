@@ -127,6 +127,7 @@ Probe Results
    .. image:: images/mill/probe_00_results.png
       :align: center
 
+   |
    This shows the results from the last probing run. There are reset buttons to clear the data if needed.
 
 Probing Routines
