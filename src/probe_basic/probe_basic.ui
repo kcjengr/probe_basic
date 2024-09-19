@@ -29368,7 +29368,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="probe_fast_fr_3018">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_fast_fr_3055">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -29412,7 +29412,7 @@ color: white;
                         <string>probe-parameters.probe-fast-fr</string>
                        </property>
                        <property name="textFormat" stdset="0">
-                        <string/>
+                        <string>{:.1f}</string>
                        </property>
                       </widget>
                      </item>
@@ -29451,7 +29451,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="probe_slow_fr_3017">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_slow_fr_3056">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -29495,7 +29495,7 @@ color: white;
                         <string>probe-parameters.probe-slow-fr</string>
                        </property>
                        <property name="textFormat" stdset="0">
-                        <string/>
+                        <string>{:.1f}</string>
                        </property>
                       </widget>
                      </item>
@@ -29541,7 +29541,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="surface_scan_safe_z_2">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_safe_z_3057">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -29581,13 +29581,16 @@ color: white;
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                        </property>
                        <property name="placeholderText">
-                        <string>0.0</string>
+                        <string>0.0000</string>
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="settingName" stdset="0">
-                        <string>surface-scan.height</string>
+                        <string>surface-scan.safez</string>
+                       </property>
+                       <property name="textFormat" stdset="0">
+                        <string/>
                        </property>
                       </widget>
                      </item>
@@ -29620,7 +29623,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="surface_scan_search_depth_2">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_search_depth_3058">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -29660,13 +29663,13 @@ color: white;
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                        </property>
                        <property name="placeholderText">
-                        <string>0.0</string>
+                        <string>0.0000</string>
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="settingName" stdset="0">
-                        <string>surface-scan.x0</string>
+                        <string>surface-scan.depth</string>
                        </property>
                        <property name="textFormat" stdset="0">
                         <string/>
@@ -47999,6 +48002,70 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>surface_scan_safe_z_3057</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_digitizing_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>420</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>surface_scan_search_depth_3058</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_digitizing_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>420</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>surface_scan_fast_fr_3055</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_digitizing_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>235</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>surface_scan_slow_fr_3056</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_digitizing_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>487</x>
+     <y>379</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>295</x>
+     <y>478</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -48018,18 +48085,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="settertabGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
