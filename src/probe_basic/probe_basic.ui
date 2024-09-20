@@ -362,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>0</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -3939,6 +3939,57 @@ QPushButton:checked {
                        <attribute name="buttonGroup">
                         <string notr="true">gcodemdibtnGroup</string>
                        </attribute>
+                      </widget>
+                     </item>
+                     <item>
+                      <widget class="HalButton" name="probe_sim_btn">
+                       <property name="minimumSize">
+                        <size>
+                         <width>90</width>
+                         <height>42</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>90</width>
+                         <height>42</height>
+                        </size>
+                       </property>
+                       <property name="focusPolicy">
+                        <enum>Qt::NoFocus</enum>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QPushButton {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    color: white;
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #4e4e4e, stop: 1.0 #3a3a3a);
+    border-style: solid;
+    border-color: black;
+    border-top-width: 2px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
+    border-left-width: 1px;
+    padding: 2px;
+    border-top-left-radius: 0px;
+    border-top-right-radius: 4px;
+    border-bottom-left-radius: 0px;
+    border-bottom-right-radius: 4px;
+}
+
+QPushButton:pressed, QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(112, 112, 238, 255), stop:0.121053 rgba(123, 123, 232, 255), stop:0.3 rgba(85, 85, 238, 255), stop:0.694737 rgba(85, 85, 238, 255), stop:0.915789 rgba(123, 123, 232, 255), stop:1 rgba(112, 112, 238, 255))
+}</string>
+                       </property>
+                       <property name="text">
+                        <string>Probe</string>
+                       </property>
                       </widget>
                      </item>
                     </layout>
@@ -17011,7 +17062,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::East</enum>
               </property>
               <property name="currentIndex">
-               <number>2</number>
+               <number>0</number>
               </property>
               <property name="elideMode">
                <enum>Qt::ElideNone</enum>
@@ -28841,12 +28892,18 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="label_131">
+                      <widget class="QLabel" name="label_150">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
+                       </property>
+                       <property name="baseSize">
+                        <size>
+                         <width>140</width>
+                         <height>30</height>
+                        </size>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel{
@@ -28858,7 +28915,7 @@ color: white;
                         <number>0</number>
                        </property>
                        <property name="text">
-                        <string>height</string>
+                        <string>width</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -28869,7 +28926,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="surface_scan_height_3052">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_width_3052">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -28915,7 +28972,7 @@ color: white;
                         <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="settingName" stdset="0">
-                        <string>surface-scan.height</string>
+                        <string>surface-scan.width</string>
                        </property>
                        <property name="textFormat" stdset="0">
                         <string>{:.4f}</string>
@@ -29024,18 +29081,12 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="QLabel" name="label_150">
+                      <widget class="QLabel" name="label_131">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                          <horstretch>0</horstretch>
                          <verstretch>0</verstretch>
                         </sizepolicy>
-                       </property>
-                       <property name="baseSize">
-                        <size>
-                         <width>140</width>
-                         <height>30</height>
-                        </size>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QLabel{
@@ -29047,7 +29098,7 @@ color: white;
                         <number>0</number>
                        </property>
                        <property name="text">
-                        <string>width</string>
+                        <string>length</string>
                        </property>
                        <property name="alignment">
                         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -29058,7 +29109,7 @@ color: white;
                       </widget>
                      </item>
                      <item>
-                      <widget class="VCPSettingsLineEdit" name="surface_scan_width_3053">
+                      <widget class="VCPSettingsLineEdit" name="surface_scan_length_3053">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                          <horstretch>0</horstretch>
@@ -29104,7 +29155,7 @@ color: white;
                         <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                        </property>
                        <property name="settingName" stdset="0">
-                        <string>surface-scan.width</string>
+                        <string>surface-scan.length</string>
                        </property>
                        <property name="textFormat" stdset="0">
                         <string>{:.4f}</string>
@@ -29813,7 +29864,7 @@ color: white;
                        </widget>
                       </item>
                       <item>
-                       <widget class="HalButton" name="halbutton_3">
+                       <widget class="HalButton" name="halbutton_compensation_enable">
                         <property name="sizePolicy">
                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                           <horstretch>0</horstretch>
@@ -29846,7 +29897,7 @@ color: white;
                          <bool>true</bool>
                         </property>
                         <property name="pinBaseName" stdset="0">
-                         <string>halbutton_compensation_enable</string>
+                         <string>compensation_enable</string>
                         </property>
                        </widget>
                       </item>
@@ -47955,7 +48006,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>surface_scan_height_3052</sender>
+   <sender>surface_scan_length_3053</sender>
    <signal>editingFinished()</signal>
    <receiver>update_digitizing_parameters_btn</receiver>
    <slot>click()</slot>
@@ -47971,7 +48022,7 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>surface_scan_width_3053</sender>
+   <sender>surface_scan_width_3052</sender>
    <signal>editingFinished()</signal>
    <receiver>update_digitizing_parameters_btn</receiver>
    <slot>click()</slot>
@@ -48085,18 +48136,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="settertabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>

@@ -4,7 +4,7 @@ o<surface_test> sub
   ;T1 M6 (Install probe)
   #<x0> = #3050 ;(debug, x0: [#<x0>])
   #<y0> = #3051 ;(debug, y0: [#<y0>])
-  #<height> = #3052 ;(debug, height: [#<height>])
+  #<length> = #3052 ;(debug, length: [#<length>])
   #<width> = #3053 ;(debug, width: [#<width>])
   #<step> = #3054 ;(debug, step: [#<step>])
   #<search_feed> = #3055 ;(debug, search_feed: [#<search_feed>])
@@ -12,11 +12,11 @@ o<surface_test> sub
   #<safe_z> = #3057 ;(debug, safe_z: [#<safe_z>])
   #<search_z> = #3058 ;(debug, search_z: [#<search_z>])
            
-  ;(PROBEOPEN filename.txt)
+  (PROBEOPEN probe-results.txt)
 
   G0 Z#<safe_z>
   #<y> = #<y0>
-  o101 while [#<y> LT #<height>+#<y0>]
+  o101 while [#<y> LT #<length>+#<y0>]
     #<x> = #<x0>
     o102 while [#<x> LE #<width>+#<x0>]
      G0 X#<x> Y#<y>
@@ -38,7 +38,7 @@ o<surface_test> sub
     #<y> = [#<y>+#<step>]
   o101 endwhile
 
-  ;(PROBECLOSE)
+  (PROBECLOSE)
 o<surface_test> endsub
 
 M2
