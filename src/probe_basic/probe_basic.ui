@@ -362,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>5</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -5792,7 +5792,7 @@ QTabWidget QTabBar::tab {
                          <rect>
                           <x>0</x>
                           <y>0</y>
-                          <width>240</width>
+                          <width>80</width>
                           <height>811</height>
                          </rect>
                         </property>
@@ -17062,7 +17062,7 @@ QTabBar::tab:only-one {
                <enum>QTabWidget::East</enum>
               </property>
               <property name="currentIndex">
-               <number>0</number>
+               <number>2</number>
               </property>
               <property name="elideMode">
                <enum>Qt::ElideNone</enum>
@@ -30423,7 +30423,18 @@ QPushButton:checked {
                           </widget>
                          </item>
                          <item>
-                          <widget class="QWidget" name="widget_103" native="true"/>
+                          <widget class="QWidget" name="widget_103" native="true">
+                           <widget class="GCodeProperties" name="gcodeproperties">
+                            <property name="geometry">
+                             <rect>
+                              <x>130</x>
+                              <y>150</y>
+                              <width>511</width>
+                              <height>351</height>
+                             </rect>
+                            </property>
+                           </widget>
+                          </widget>
                          </item>
                         </layout>
                        </widget>
@@ -46035,6 +46046,11 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
   </customwidget>
   <customwidget>
+   <class>GCodeProperties</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.gcode_properties</header>
+  </customwidget>
+  <customwidget>
    <class>VCPLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.line_edit</header>
@@ -48136,18 +48152,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
  </buttongroups>
 </ui>

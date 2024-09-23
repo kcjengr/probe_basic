@@ -17,7 +17,7 @@ from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
-
+from qtpyvcp.plugins import getPlugin
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
@@ -38,6 +38,10 @@ class ProbeBasic(VCPMainWindow):
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+        
+        self.stat = getPlugin('status')
+        self.gcode_properties = getPlugin("gcode_properties")
+        self.stat.file.notify(self.get_extents)
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
@@ -53,6 +57,12 @@ class ProbeBasic(VCPMainWindow):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
     
         self.load_user_tabs()
+
+    def get_extents(self, file_path):
+        width = self.gcode_properties.x_extents_size()
+        height = self.gcode_properties.y_extents_size()
+        setSetting('surface-scan.xdist', width)
+        setSetting('surface-scan.ydist', height)
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
