@@ -65,7 +65,7 @@ class ProbeBasic(VCPMainWindow):
         x0 = self.gcode_properties.x_min_extents()
         y0 = self.gcode_properties.y_min_extents()
         
-        grid_spacing = 30
+        grid_spacing = getSetting('surface-scan.grid-spacing').getValue()
         grid_xdist = math.ceil(xdist/grid_spacing)*grid_spacing
         grid_ydist = math.ceil(ydist/grid_spacing)*grid_spacing
         grid_x0 = x0-(grid_xdist-xdist)/2
