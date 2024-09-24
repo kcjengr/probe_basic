@@ -41,7 +41,7 @@ class ProbeBasic(VCPMainWindow):
         
         self.stat = getPlugin('status')
         self.gcode_properties = getPlugin("gcode_properties")
-        self.stat.file.notify(self.get_extents)
+        self.actionbutton.clicked.connect(self.get_extents)
 
         if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
@@ -61,8 +61,13 @@ class ProbeBasic(VCPMainWindow):
     def get_extents(self, file_path):
         width = self.gcode_properties.x_extents_size()
         height = self.gcode_properties.y_extents_size()
+        x0 = self.gcode_properties.x_min_extents()
+        y0 = self.gcode_properties.y_min_extents()
+        
         setSetting('surface-scan.xdist', width)
         setSetting('surface-scan.ydist', height)
+        setSetting('surface-scan.x0', x0)
+        setSetting('surface-scan.y0', y0)
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
