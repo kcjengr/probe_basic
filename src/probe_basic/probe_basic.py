@@ -6,6 +6,7 @@
 import os
 import sys
 import importlib.util
+import math
 
 import linuxcnc
 
@@ -59,15 +60,20 @@ class ProbeBasic(VCPMainWindow):
         self.load_user_tabs()
 
     def get_extents(self, file_path):
-        width = self.gcode_properties.x_extents_size()
-        height = self.gcode_properties.y_extents_size()
+        xdist = self.gcode_properties.x_extents_size()
+        ydist = self.gcode_properties.y_extents_size()
         x0 = self.gcode_properties.x_min_extents()
         y0 = self.gcode_properties.y_min_extents()
         
-        setSetting('surface-scan.xdist', width)
-        setSetting('surface-scan.ydist', height)
-        setSetting('surface-scan.x0', x0)
-        setSetting('surface-scan.y0', y0)
+        grid_spacing = 30
+        grid_xdist = math.ceil(xdist/grid_spacing)*grid_spacing
+        grid_ydist = math.ceil(ydist/grid_spacing)*grid_spacing
+        grid_x0 = x0-(grid_xdist-xdist)/2
+        grid_y0 = x0-(grid_ydist-ydist)/2
+        setSetting('surface-scan.xdist', grid_xdist)
+        setSetting('surface-scan.ydist', grid_ydist)
+        setSetting('surface-scan.x0', grid_x0)
+        setSetting('surface-scan.y0', grid_y0)
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
