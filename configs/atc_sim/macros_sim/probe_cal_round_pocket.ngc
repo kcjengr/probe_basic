@@ -195,13 +195,13 @@ o<probe_cal_round_pocket> sub
 
   o130 if [#<sq_cal_axis> EQ 0]
       #3032 = [ABS[#<new_avg_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 else if [#<sq_cal_axis> EQ 1]
       #3032 = [ABS[#<new_x_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 else
       #3032 = [ABS[#<new_y_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]

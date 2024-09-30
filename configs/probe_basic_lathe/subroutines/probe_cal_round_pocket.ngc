@@ -28,6 +28,9 @@ o<probe_cal_round_pocket> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_x> = #[5201 + [20 * #5220]]
   #<workspace_y> = #[5202 + [20 * #5220]]
 
@@ -38,6 +41,7 @@ o<probe_cal_round_pocket> sub
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
       (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      M50 P1
        o<probe_cal_round_pocket> return
   o100 endif
 
@@ -191,13 +195,13 @@ o<probe_cal_round_pocket> sub
 
   o130 if [#<sq_cal_axis> EQ 0]
       #3032 = [ABS[#<new_avg_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 else if [#<sq_cal_axis> EQ 1]
       #3032 = [ABS[#<new_x_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 else
       #3032 = [ABS[#<new_y_cal_offset>]]
-      (DEBUG, EVAL[vcp.getWidget{"calibration_offset"}.setValue{#3032}])
+      (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
   o130 endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]
@@ -209,8 +213,10 @@ o<probe_cal_round_pocket> sub
       (Record Y Zero in selected WCO)
       G10 L2 P#5220 X[#<x_zero>] Y[#<y_zero>]
       (Probe Completion Move to Z Clearance Plane, and X Zero, Y Zero)
-      o<probe_cal_round_pocket> return
   o140 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_cal_round_pocket> endsub
 
