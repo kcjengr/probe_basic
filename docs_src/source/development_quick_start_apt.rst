@@ -54,11 +54,10 @@ Installation Steps
 
     Once you have installed LinuxCNC, open it and start the axis sim briefly and then shut it down to ensure the installation was successful.
 
-4. Add the APT Repository for the Installation type, AMD64 = PC, ARM64 = Raspberry Pi 4 and 5
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+4. Add the APT Repository for the Installation type
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    AMD64 for PC Installation Repository:
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    **AMD64 for PC Installation Repository:**
 
         Run the following commands in the main terminal one at a time:
 
@@ -70,8 +69,7 @@ Installation Steps
             gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
 
     
-    (NEW) ARM64 Raspberry Pi 4 and 5 Installation Repository:
-    ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    **NEW - ARM64 Raspberry Pi 4 and 5 Installation Repository:**
 
         Run the following commands in the main terminal one at a time:
 
