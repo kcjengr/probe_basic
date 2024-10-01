@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" >
+<head>
+  <meta charset="utf-8" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Configuration (INI, HAL, Files) &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+      <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <!--[if lt IE 9]>
+    <script src="_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script data-url_root="./" id="documentation_options" src="_static/documentation_options.js"></script>
+        <script src="_static/doctools.js"></script>
+        <script src="_static/sphinx_highlight.js"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Carousel ATC Setup" href="atc_setup.html" />
+    <link rel="prev" title="Probe Basic Parameters" href="probe_basic_parameters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="stable_quick_start_apt.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="development_quick_start_apt.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="stable_develop_branch_change.html">Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="quick_start.html">Probe Basic .deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Machine Configuration (INI, HAL, Files)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-working-machine-configuration-for-probe-basic">Creating a working Machine Configuration for Probe Basic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-basic-configuration">Step 1: Create a basic configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-copy-required-files">Step 2: Copy required files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-edit-ini-files">Step 3: Edit INI files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-modify-hal-file">Step 4: Modify HAL file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#launching-probe-basic">Launching Probe Basic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Machine Configuration (INI, HAL, Files)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/machine_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-configuration-ini-hal-files">
+<h1>Machine Configuration (INI, HAL, Files)<a class="headerlink" href="#machine-configuration-ini-hal-files" title="Permalink to this heading"></a></h1>
+<section id="creating-a-working-machine-configuration-for-probe-basic">
+<h2>Creating a working Machine Configuration for Probe Basic<a class="headerlink" href="#creating-a-working-machine-configuration-for-probe-basic" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><p>Probe Basic uses some different methods to offer its feature-rich user experience, which requires customized files and settings inside the HAL and INI files to function properly. Below is a guide to help create a working machine configuration for Probe Basic. This guide assumes a basic installation with manual tool changes. A future document will be available for more complex configurations with ATC and Coolant Cannon functionality.</p>
+</div></blockquote>
+<section id="step-1-create-a-basic-configuration">
+<h3>Step 1: Create a basic configuration<a class="headerlink" href="#step-1-create-a-basic-configuration" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Create a configuration for your machine using Pncconf or mesact/mesact2 from the LinuxCNC menu in the applications drop-down in the upper menu bar. In this example, we are using Pncconf.</p></li>
+<li><p>It is recommended to use the Axis GUI display for this initial build.</p></li>
+<li><p>Have your machine’s wiring schematic premade to make filling in the required information fast, easy, and accurate in Pncconf.</p></li>
+<li><p>After completing the Pncconf configuration builder and creating a new machine configuration saved in the LinuxCNC config directory, start LinuxCNC using your new config to verify there are no errors.</p></li>
+<li><p>Test the machine to verify the base functionality is correct (e.g., jogging, spindle function, axis motion).</p></li>
+<li><p>Once completed and found to function correctly, proceed to step 2.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="step-2-copy-required-files">
+<h3>Step 2: Copy required files<a class="headerlink" href="#step-2-copy-required-files" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>In the LinuxCNC config folder, locate your new config folder and the “probe_basic_machine_config_setup_files” folder.</p></li>
+<li><p>Open two folder windows on the desktop: the new Pncconf folder created for your machine and the probe_basic_machine_config_setup_files folder.</p></li>
+<li><p>Clean up the Pncconf folder by removing unneeded files (see images below for reference).</p></li>
+<li><p>Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.</p></li>
+</ol>
+<p><strong>As built pncconfig folder</strong></p>
+<img alt="_images/pb_instruction_1.png" class="align-center" src="_images/pb_instruction_1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Unneeded pncconfig files highlighted</strong></p>
+<img alt="_images/pb_instruction_2.png" class="align-center" src="_images/pb_instruction_2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Cleaned up pncconfig folder</strong></p>
+<img alt="_images/pb_instruction_3.png" class="align-center" src="_images/pb_instruction_3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Files to be Copied from probe_basic_machine_config_setup_files folder</strong></p>
+<img alt="_images/pb_instruction_4.png" class="align-center" src="_images/pb_instruction_4.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Files Copied to pncconfig folder</strong></p>
+<img alt="Files Copied to pncconfig folder" class="align-center" src="_images/pb_instruction_5.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</section>
+<section id="step-3-edit-ini-files">
+<h3>Step 3: Edit INI files<a class="headerlink" href="#step-3-edit-ini-files" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Open the Pncconf “my_LinuxCNC_machine.ini” file side by side with the supplied “probe_basic_required_ini_items.ini” file in a text editor.</p></li>
+<li><p>Integrate the lines from “probe_basic_required_ini_items.ini” into your existing file:
+- If a line is present in your machine file, use the Probe Basic settings for that line.
+- If a line is not in your machine file, copy it to the appropriate section in “my_LinuxCNC_machine.ini”.</p></li>
+<li><p>Note that only ONE postgui HAL file can be called. Add any additional items to the existing probe_basic_postgui.hal file.</p></li>
+<li><p>Save the file and delete the “probe_basic_required_ini_items.ini” file from the folder.</p></li>
+</ol>
+<p><strong>Side by Side ini files for editing</strong></p>
+<img alt="_images/pb_instruction_7.png" class="align-center" src="_images/pb_instruction_7.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</section>
+<section id="step-4-modify-hal-file">
+<h3>Step 4: Modify HAL file<a class="headerlink" href="#step-4-modify-hal-file" title="Permalink to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Add digital and analog IO to the HAL file by modifying the following line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loadrt</span> <span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">EMCMOT</span> <span class="n">servo_period_nsec</span><span class="o">=</span><span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">SERVO_PERIOD</span> <span class="n">num_joints</span><span class="o">=</span><span class="p">[</span><span class="n">KINS</span><span class="p">]</span><span class="n">JOINTS</span>
+</pre></div>
+</div>
+<p>Add this to the end of the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_dio</span><span class="o">=</span><span class="mi">6</span> <span class="n">num_aio</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>The finished edit should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loadrt</span> <span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">EMCMOT</span> <span class="n">servo_period_nsec</span><span class="o">=</span><span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">SERVO_PERIOD</span> <span class="n">num_joints</span><span class="o">=</span><span class="p">[</span><span class="n">KINS</span><span class="p">]</span><span class="n">JOINTS</span> <span class="n">num_dio</span><span class="o">=</span><span class="mi">6</span> <span class="n">num_aio</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<img alt="HAL file modification" class="align-center" src="_images/pb_instruction_8.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Remove the red highlighted manual tool change dialog section from the bottom of the hal file as shown in the image below.  Probe basic uses its own built in dialog for manual tool changes which give the user better tool information and matches the ui visual theme more appropriately.</p></li>
+</ol>
+<img alt="Tool change section to remove" class="align-center" src="_images/pb_instruction_9.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="launching-probe-basic">
+<h2>Launching Probe Basic<a class="headerlink" href="#launching-probe-basic" title="Permalink to this heading"></a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Under the CNC section of the drop-down applications menu, find your machine configuration and select it to launch.</p></li>
+<li><p>Check the box at the bottom of the launch window to create a desktop icon for easier starts.</p></li>
+<li><p>To set the Probe Basic icon:
+- Right-click the desktop launcher and select “edit launcher”
+- Click the current icon image, this will open the icon folder
+- Find and select the icon named “probe_basic_mill”</p></li>
+</ol>
+<p>You should now be ready to use Probe Basic with your machine configuration.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="probe_basic_parameters.html" class="btn btn-neutral float-left" title="Probe Basic Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="atc_setup.html" class="btn btn-neutral float-right" title="Carousel ATC Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
