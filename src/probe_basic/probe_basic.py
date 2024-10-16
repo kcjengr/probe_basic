@@ -1,8 +1,5 @@
 #!/usr/bin/env python
 
-# import sys;sys.path.append(r'~/.p2/pool/plugins/org.python.pydev.core_8.3.0.202104101217/pysrc')
-# import pydevd;pydevd.settrace()
-
 import os
 import sys
 import importlib.util
@@ -18,7 +15,6 @@ from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
-
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
 
@@ -33,8 +29,8 @@ class ProbeBasic(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasic, self).__init__(*args, **kwargs)
-        self.filesystemtable.sortByColumn(3, Qt.DescendingOrder) # sorting via 'datemodified' header 3
-        self.filesystemtable_2.sortByColumn(3, Qt.DescendingOrder) # sorting via 'datemodified' header 3
+        self.filesystemtable.sortByColumn(3, Qt.DescendingOrder)
+        self.filesystemtable_2.sortByColumn(3, Qt.DescendingOrder)
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
@@ -43,21 +39,19 @@ class ProbeBasic(VCPMainWindow):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
             self.tabWidget.setTabVisible(atc_tab_index, False)
             self.tabWidget.removeTab(atc_tab_index)
-            
-        self.vtk.setViewMachine()  # set view to machine at startup
+        self.vtk.setViewMachine()
 
         if (getSetting("spindle-rpm-display.calculated-rpm").getValue()):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_calculated_rpm_button.property('page'))
-        
         else:
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
-    
         self.load_user_tabs()
+        self.template_user_buttons = self.get_template_user_buttons()
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
         self.user_tabs = {}
-        sidebar_loaded = False;
+        sidebar_loaded = False
         user_tabs_paths = INIFILE.findall("DISPLAY", "USER_TABS_PATH")
 
         for user_tabs_path in user_tabs_paths:
@@ -67,26 +61,31 @@ class ProbeBasic(VCPMainWindow):
                 if not os.path.isdir(os.path.join(user_tabs_path, user_tab)):
                     continue
 
-                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tabs_path
-                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py"))
+                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tab
+                spec = importlib.util.spec_from_file_location(module_name, os.path.join(user_tabs_path, user_tab, user_tab + ".py"))
                 self.user_tab_modules[module_name] = importlib.util.module_from_spec(spec)
                 sys.modules[module_name] = self.user_tab_modules[module_name]
                 spec.loader.exec_module(self.user_tab_modules[module_name])
                 self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
+
                 if self.user_tabs[module_name].property("sidebar"):
-                    if sidebar_loaded == False:
+                    if not sidebar_loaded:
                         sidebar_loaded = True
                         self.user_tabs[module_name].setParent(self.sb_page_4)
                         self.user_sb_tab.setText(self.user_tabs[module_name].objectName().replace("_", " "))
-                    else:
-                        # can not load more than one sidebar widget
-                        pass
+                elif module_name == "user_tab.user_tabs.template_user_buttons":
+                    self.user_tabs[module_name].setParent(self.user_buttons_widget)
+                    self.user_buttons_widget.layout().addWidget(self.user_tabs[module_name])
                 else:
                     self.tabWidget.addTab(self.user_tabs[module_name], self.user_tabs[module_name].objectName().replace("_", " "))
 
-        if sidebar_loaded == False:
+        if not sidebar_loaded:
             self.user_sb_tab.hide()
             self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
+        
+
+    def get_template_user_buttons(self):
+        return self.user_tabs.get("template_user_buttons")
 
     @Slot(QAbstractButton)
     def on_probetabGroup_buttonClicked(self, button):
@@ -108,7 +107,6 @@ class ProbeBasic(VCPMainWindow):
     def on_gcodemdibtnGroup_buttonClicked(self, button):
         self.gcode_mdi.setCurrentIndex(button.property('page'))
 
-    # Fwd/Back buttons off the stacked widget
     def on_probe_help_next_released(self):
         lastPage = 6
         currentIndex = self.probe_help_widget.currentIndex()
@@ -125,7 +123,6 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.probe_help_widget.setCurrentIndex(currentIndex - 1)
 
-
     @Slot(QAbstractButton)
     def on_fileviewerbtnGroup_buttonClicked(self, button):
         self.file_viewer_widget.setCurrentIndex(button.property('page'))
@@ -138,7 +135,6 @@ class ProbeBasic(VCPMainWindow):
 
         actions.program_actions.run(lineNum)
 
-    # MDI Panel
     @Slot(QAbstractButton)
     def on_btngrpMdi_buttonClicked(self, button):
         char = str(button.text())
@@ -156,9 +152,6 @@ class ProbeBasic(VCPMainWindow):
 
     def mdiSpace_clicked(parent):
         text = parent.mdiEntry.text() or 'null'
-        # if no text then do not add a space
         if text != 'null':
             text += ' '
             parent.mdiEntry.setText(text)
-
-
