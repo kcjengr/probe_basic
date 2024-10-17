@@ -25,7 +25,7 @@ Step 2: Copy required files
    3. Clean up the Pncconf folder by removing unneeded files (see images below for reference).
    4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
 
-   ***the latest version requires the "user_buttons" folder to be copied from over also!***
+   ***the latest DEVELOP version requires the "user_buttons" folder to be copied over also (not shown in pics below)!***
 
 
    **As built pncconfig folder**
