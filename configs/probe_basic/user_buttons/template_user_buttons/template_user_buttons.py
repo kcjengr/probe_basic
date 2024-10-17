@@ -16,8 +16,8 @@ TOOL_TABLE = getPlugin('tooltable')
 INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
 
 
-class UserTab(QWidget):
+class UserButton(QWidget):
     def __init__(self, parent=None):
-        super(UserTab, self).__init__(parent)
+        super(UserButton, self).__init__(parent)
         ui_file = os.path.splitext(os.path.basename(__file__))[0] + ".ui"
         uic.loadUi(os.path.join(os.path.dirname(__file__), ui_file), self)
