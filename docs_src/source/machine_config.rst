@@ -25,6 +25,8 @@ Step 2: Copy required files
    3. Clean up the Pncconf folder by removing unneeded files (see images below for reference).
    4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
 
+   ***the latest version requires the "user_buttons" folder to be copied from over also!***
+
 
    **As built pncconfig folder**
 
@@ -77,7 +79,33 @@ Step 3: Edit INI files
    4. Save the file and delete the "probe_basic_required_ini_items.ini" file from the folder.
 
 
-   **Side by Side ini files for editing**
+   **Required ini file items for Probe Basic**
+
+   ::
+      [DISPLAY]
+      DISPLAY = probe_basic
+      OPEN_FILE = ~/linuxcnc/nc_files/pb_examples/blank.ngc
+      CONFIG_FILE = custom_config.yml
+      MAX_FEED_OVERRIDE = 2.000000            # Recommended Setting for Probe Basic
+      MAX_SPINDLE_OVERRIDE = 2.000000         # Recommended Setting for Probe Basic
+      MIN_SPINDLE_OVERRIDE = 0.500000         # Recommended Setting for Probe Basic
+      INCREMENTS = JOG .01in .001in .0001in   # REQUIRED Setting for Probe Basic
+      USER_TABS_PATH = user_tabs/             # REQUIRED Setting for Probe Basic
+      USER_BUTTONS_PATH = user_buttons/       # REQUIRED Setting for Probe Basic
+
+      [RS274NGC]
+      RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P0.001 G80 G90 G91.1 G92.1 G94 G97 G98
+      PARAMETER_FILE = sim.var
+      OWORD_NARGS = 1
+      NO_DOWNCASE_OWORD = 1
+      SUBROUTINE_PATH = subroutines
+
+      [HAL]
+      POSTGUI_HALFILE = hallib/probe_basic_postgui.hal
+      TWOPASS = on
+
+   |
+
 
    .. image:: images/pb_instruction_7.png
       :align: center
