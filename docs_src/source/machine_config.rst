@@ -113,8 +113,8 @@ Step 3: Edit INI files
 
    |
    
-Step 4: Modify Post Gui Hal Files
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Step 4: Modify Post Gui Hal File
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    Modify the following lines by commenting them out, they are used for testing in probe basic sim only and will error in the real machine configs.  the spindle feedback line can be used if it is setup in the main hal and the hardware is on the machine to provide a spindle speed input to linuxcnc.
 
