@@ -113,7 +113,42 @@ Step 3: Edit INI files
 
    |
    
-Step 4: Modify HAL file
+Step 4: Modify Post Gui Hal Files
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+   Modify the following lines by commenting them out, they are used for testing in probe basic sim only and will error in the real machine configs.  the spindle feedback line can be used if it is setup in the main hal and the hardware is on the machine to provide a spindle speed input to linuxcnc.
+
+   .. code-block:: bash
+
+      loadrt time
+      loadrt not
+      
+      addf time.0 servo-thread
+      addf not.0 servo-thread
+      net prog-running not.0.in <= halui.program.is-idle
+      net prog-paused halui.program.is-paused => time.0.pause
+      net cycle-timer time.0.start <= not.0.out
+      net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
+      net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
+      net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
+      # *** Time items required for Probe Basic to run ***
+      
+      #  ---manual tool change signals---
+      net tool-change-request     =>  qtpyvcp_manualtoolchange.change
+      net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
+      net tool-number             =>  qtpyvcp_manualtoolchange.number
+      
+      # *** Probe graphic simulation trigger push probe tip ***
+      # net probe-in  =>  qtpyvcp.probe-in.out     <----comment this line out>
+      net probe-in  <=  qtpyvcp.probe-led.on
+      
+      # *** Set line below for actual spindle readout from your hal file ***
+      # net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in   <----comment this line out>
+
+
+
+
+Step 5: Modify HAL file
 ^^^^^^^^^^^^^^^^^^^^^^^
 
    1. Add digital and analog IO to the HAL file by modifying the following line:
