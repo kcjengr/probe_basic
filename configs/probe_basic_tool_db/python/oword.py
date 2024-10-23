@@ -1,10 +1,6 @@
 from qtpyvcp.lib.db_tool.base import Session
 from qtpyvcp.lib.db_tool.tool_table import ToolTable, Tool, ToolProperties
 
-def foo(*args):
-    print("foo!")
-
-    return
 
 def tool_props(self, *args):
 
@@ -33,8 +29,12 @@ def tool_props(self, *args):
                 elif query.split('.')[1] == "bullnose_radious":
                     result = tool_data.bullnose_radious
                     print(f"Bullnose radious: {result}")
+                
+                return result
             else:
                 print("NO DATA")
+                return
+            
         elif query.split('.')[0] == "tool":
             tool_data = session.query(Tool).filter(Tool.tool_no == tool_no).first()
         
@@ -84,9 +84,10 @@ def tool_props(self, *args):
                 elif query.split('.')[1] == "diameter":
                     result = tool_data.diameter
                     print(f"Diameter: {result}")
+        
+                return result
                 
             else:
                 print("NO DATA")
-                
-        
-        return result
+                return
+            
