@@ -66,22 +66,13 @@ Installation Steps
             sudo apt install curl
 
 
-        .. code-block:: bash
-
             echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt develop main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
-
-        .. code-block:: bash
 
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
-        .. code-block:: bash
-
             gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
-        
-
-
 
     
     **NEW - ARM64 Raspberry Pi 4 and 5 Installation Repository:**
@@ -90,23 +81,13 @@ Installation Steps
 
         .. code-block:: bash
 
-
             sudo apt install curl
-
-
-        .. code-block:: bash
 
 
             echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt develop main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
-        .. code-block:: bash
-
-
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-        .. code-block:: bash
 
 
             gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
@@ -126,6 +107,8 @@ Installation Steps
     .. code-block:: bash
 
         sudo apt install python3-qtpyvcp
+
+        
         sudo apt install python3-probe-basic
 
     You are now installed! You should be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.
