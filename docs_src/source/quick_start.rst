@@ -118,8 +118,10 @@ Uninstallation
     .. code-block:: bash
 
         sudo dpkg -P python3-probe-basic
-        sudo dpkg -P python3-hiyapyco
+        
         sudo dpkg -P python3-qtpyvcp
+
+        sudo dpkg -P python3-hiyapyco
     
     |
     

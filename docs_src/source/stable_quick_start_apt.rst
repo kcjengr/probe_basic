@@ -43,6 +43,8 @@ Installation Steps
     .. code-block:: bash
 
         sudo apt update
+        
+        
         sudo apt upgrade
 
 

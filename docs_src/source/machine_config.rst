@@ -105,6 +105,9 @@ Step 3: Edit INI files
          POSTGUI_HALFILE = hallib/probe_basic_postgui.hal
          TWOPASS = on
 
+         [TRAJ]
+         AXES = 3 # or number of axes of your machine
+
       |
 
 

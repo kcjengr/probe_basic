@@ -41,7 +41,10 @@ Installation Steps
     .. code-block:: bash
 
         sudo apt update
+        
+        
         sudo apt upgrade
+        
 
 3. Install LinuxCNC
 ^^^^^^^^^^^^^^^^^^^
@@ -108,7 +111,7 @@ Installation Steps
 
         sudo apt install python3-qtpyvcp
 
-        
+
         sudo apt install python3-probe-basic
 
     You are now installed! You should be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.
