@@ -14,6 +14,7 @@ def tool_props(self, *args):
 
         tool_no = args[0]
         query = self.blocks[0].comment
+        result = 0
 
         print(f"Quering {query} for tool {tool_no}")
         session = Session()
@@ -86,8 +87,6 @@ def tool_props(self, *args):
                 
             else:
                 print("NO DATA")
-                result = 0
                 
-            return result
         
-        return
+        return result
