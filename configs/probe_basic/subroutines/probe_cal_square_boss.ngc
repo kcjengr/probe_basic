@@ -42,7 +42,7 @@ o<probe_cal_square_boss> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
       M50 P1
       o<probe_cal_square_boss> return
   o100 endif

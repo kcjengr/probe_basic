@@ -34,7 +34,7 @@ o<probe_x_plus_wco> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
+      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
       M50 P1
       o<probe_x_plus_wco> return
   o100 endif

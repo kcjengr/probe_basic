@@ -72,12 +72,12 @@ o120 endif
 o130 if [#5070 EQ 1]    (verify probe event was succesful)
     #<z_slow_probe> = #5063    (save slow probe result to parameters)
 o130 else
-    (MSG,Tool Length Offset Probe Failed)
+    (DEBUG,Tool Length Offset Probe Failed)
 o130 endif
 
 (Tool Diameter Probe Mode Section, User must define this section as needed)
 o140 if [#<tool_diameter_probe_mode> EQ 1]
-    (MSG, Tool Diameter Probing is Not Defined in Subroutine)
+    (DEBUG, Tool Diameter Probing is Not Defined in Subroutine)
 o140 endif
 
 o150 if [3 EQ 3]
