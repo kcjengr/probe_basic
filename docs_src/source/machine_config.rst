@@ -54,7 +54,7 @@ Step 2: Copy required files
 
    **Files to be Copied from probe_basic_machine_config_setup_files folder**
 
-   .. image:: images/pb_instruction_4.png
+   .. image:: images/pb_instruction_4_2.png
       :align: center
 
    |
@@ -62,7 +62,7 @@ Step 2: Copy required files
 
    **Files Copied to pncconfig folder**
 
-   .. image:: images/pb_instruction_5.png
+   .. image:: images/pb_instruction_5_2.png
       :align: center
       :alt: Files Copied to pncconfig folder
 
