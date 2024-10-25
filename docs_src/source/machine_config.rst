@@ -68,6 +68,7 @@ Step 2: Copy required files
 
    |
 
+
 Step 3: Edit INI files
 ^^^^^^^^^^^^^^^^^^^^^^
 
@@ -114,10 +115,6 @@ Step 3: Edit INI files
       |
 
 
-   .. image:: images/pb_instruction_7.png
-      :align: center
-
-   |
    
 Step 4: Modify Post Gui Hal File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
