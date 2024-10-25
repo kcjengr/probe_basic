@@ -11,7 +11,7 @@ Step 1: Create a basic configuration
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    1. Create a configuration for your machine using Pncconf or mesact/mesact2 from the LinuxCNC menu in the applications drop-down in the upper menu bar. In this example, we are using Pncconf.
-   2. It is recommended to use the Axis GUI display for this initial build.
+   2. It is Recommended to use the Axis GUI display for this initial build.
    3. Have your machine's wiring schematic premade to make filling in the required information fast, easy, and accurate in Pncconf.
    4. After completing the Pncconf configuration builder and creating a new machine configuration saved in the LinuxCNC config directory, start LinuxCNC using your new config to verify there are no errors.
    5. Test the machine to verify the base functionality is correct (e.g., jogging, spindle function, axis motion).
@@ -90,20 +90,23 @@ Step 3: Edit INI files
          MAX_FEED_OVERRIDE = 2.000000            # Recommended Setting for Probe Basic
          MAX_SPINDLE_OVERRIDE = 2.000000         # Recommended Setting for Probe Basic
          MIN_SPINDLE_OVERRIDE = 0.500000         # Recommended Setting for Probe Basic
+         INTRO_GRAPHIC = pbsplash.png            # Recommended Setting for Probe Basic
+         INTRO_TIME = 5                          # Recommended Setting for Probe Basic
          INCREMENTS = JOG .01in .001in .0001in   # REQUIRED Setting for Probe Basic
          USER_TABS_PATH = user_tabs/             # REQUIRED Setting for Probe Basic
          USER_BUTTONS_PATH = user_buttons/       # REQUIRED Setting for Probe Basic
 
          [RS274NGC]
-         RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P0.001 G80 G90 G91.1 G92.1 G94 G97 G98
+         RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P.001 G80 G90 G91.1 G92.1 G94 G97 G98
          PARAMETER_FILE = linuxcnc.var
          OWORD_NARGS = 1
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
          
          [HAL]
-         POSTGUI_HALFILE = hallib/probe_basic_postgui.hal
-         TWOPASS = on
+         HALUI = halui                              # Use local path to your hal file directory
+         POSTGUI_HALFILE = probe_basic_postgui.hal  # ONLY 1 postgui hal file can be called at launch
+         TWOPASS = on                               # Add to pr edit the PB postgui hal file
 
          [TRAJ]
          AXES = 3 # or number of axes of your machine
@@ -146,7 +149,7 @@ Step 4: Modify Post Gui Hal File
       net probe-in  <=  qtpyvcp.probe-led.on
       
       # *** Set line below for actual spindle readout from your hal file ***
-      # net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in   <----comment this line out>
+      # net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in   <----comment this line out or connect to your rpm net pin>
 
 
 

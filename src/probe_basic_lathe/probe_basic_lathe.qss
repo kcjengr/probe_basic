@@ -124,6 +124,7 @@ GcodeBackplot {
     border-radius: 4px;
     background-color: black;
     margin: 10px;
+    font: 12pt "Bebas Kai";
 }
 
 GcodeEditor {
@@ -133,14 +134,12 @@ GcodeEditor {
     border-width: 2px;
     border-radius: 4px;
     padding: 2px;
+    font: 12pt "Bebas Kai";
 }
 
-GcodeBackplot {
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 4px;
-    padding: 10px;
+GcodeTextEdit {
+    background-color: white;
+    font: 12pt "Bebas Kai";
 }
 
 QScrollArea {
@@ -280,36 +279,6 @@ JogIncrementWidget {
 }
 
 /*===========================================================================*/
-/*                            Big Buttons                                    */
-/*===========================================================================*/
-
-#copy_from_usb,
-#copy_to_usb {
-    color: white;
-    border-color: black;
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 2px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(183, 185, 185, 255), stop:0.077 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.918 rgba(82, 82, 83, 255), stop:1 rgba(183, 185, 185, 255));
-}
-
-#copy_from_usb:disabled,
-#copy_to_usb:disabled {
-    border-color: gray;
-}
-
-#copy_from_usb:hover,
-#copy_to_usb:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
-
-#copy_from_usb:pressed,
-#copy_to_usb:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-/*===========================================================================*/
 /*                             QMenuBar                                      */
 /*===========================================================================*/
 
@@ -355,6 +324,24 @@ QMessageBox {
     border-radius: 4px;
 }
 
+QMessageBox QLabel {
+    font: 12pt "Bebas Kai";
+    color: white;
+}
+
+QDialog {
+    background-color: #2e3436;
+    border-color: black;
+    border-style: solid;
+    border-width: 2px;
+    border-radius: 4px;
+}
+
+QDialog QLabel {
+    font: 12pt "Bebas Kai";
+    color: white;
+}
+
 /*===========================================================================*/
 /*                               QMenu                                       */
 /*===========================================================================*/
@@ -397,7 +384,6 @@ QMenu::indicator {
     height: 12px;
     padding-left:6px;
 }
-
 
 /*===========================================================================*/
 /*                             probe buttons                                 */
