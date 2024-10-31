@@ -21,15 +21,6 @@ o110 endif
 
 o<program_coolant> call
 
-
-o<tool_db> CALL [#1] (tool_properties.max_rpm)
-(print,#<_value>)
-#<max_rpm> = #<_value>
-
-o120 if [2 EQ 2]
-  S#<max_rpm>
-o120 endif
-
 o<m6_tool_call_main_panel> endsub
 
 M2 (end program)
