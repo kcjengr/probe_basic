@@ -50,11 +50,26 @@ Installation Steps
 3. Install LinuxCNC (if not already installed)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    .. code-block:: bash
+   Download and Install linuxcnc from deb file:
 
-        sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
+      .. code-block:: bash
 
-    Once you have installed LinuxCNC, open it and start the axis sim briefly, then shut it down to ensure the installation was successful.
+         https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+
+
+
+   In a terminal, enter the following lines one at a time and press enter after each:
+
+      .. code-block:: bash
+
+         cd ~
+         
+         cd Downloads
+         
+         sudo dpkg -i linuxcnc-uspace_2.9.3_amd64.deb
+
+
+    Once you have installed LinuxCNC, open it and start the axis sim briefly and then shut it down to ensure the installation was successful.
 
 
 4. Add the APT Repository for the Installation type

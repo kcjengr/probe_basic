@@ -62,14 +62,29 @@ Installing Probe Basic
     - QtPyVCP
     - hiyapyco
 
-    If you haven't installed LinuxCNC, use the following command:
+  
+  Download and Install linuxcnc from deb file:
 
-    .. code-block:: bash
+      .. code-block:: bash
 
-        sudo apt install linuxcnc-uspace linuxcnc-uspace-dev mesaflash
+         https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
 
-    After installation, open LinuxCNC and start the axis sim briefly to ensure successful installation.
 
+
+   In a terminal, enter the following lines one at a time and press enter after each:
+
+      .. code-block:: bash
+
+         cd ~
+         
+         cd Downloads
+         
+         sudo dpkg -i linuxcnc-uspace_2.9.3_amd64.deb
+
+
+    Once you have installed LinuxCNC, open it and start the axis sim briefly and then shut it down to ensure the installation was successful.
+
+    
     Download the following files:
 
     .. parsed-literal::
