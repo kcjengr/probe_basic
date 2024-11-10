@@ -64,10 +64,8 @@ Installing Probe Basic
 
   
   Download and Install linuxcnc from deb file:
-
-      .. code-block:: bash
-
-         https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+  
+    https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
 
 
 

@@ -21,7 +21,6 @@ Installation Steps
          https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
 
 
-
    In a terminal, enter the following lines one at a time and press enter after each:
 
       .. code-block:: bash
