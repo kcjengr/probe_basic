@@ -50,9 +50,14 @@ Installation Steps
 3. Install LinuxCNC (if not already installed)
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-   Download and Install linuxcnc from deb file:
+   Amd64 Deb (for PC's):
    
-    https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+
+   
+   Arm64 Deb (for Pi 4/5)
+
+      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-arm64/linuxcnc-uspace_2.9.3_arm64.deb
 
 
 
