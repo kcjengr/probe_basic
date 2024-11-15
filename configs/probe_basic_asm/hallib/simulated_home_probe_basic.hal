@@ -1,0 +1,53 @@
+loadrt or2 names=or2_0
+loadrt comp names=comp_x,comp_y,comp_z,comp_a,comp_c
+
+net Xhomeswpos => comp_x.in0
+net Yhomeswpos => comp_y.in0
+net Zhomeswpos => comp_z.in0
+net Ahomeswpos => comp_a.in0
+#net Bhomeswpos => comp_b.in0
+net Chomeswpos => comp_c.in0
+
+
+
+sets Xhomeswpos 1
+sets Yhomeswpos .5
+sets Zhomeswpos 2
+sets Ahomeswpos 2
+#sets Bhomeswpos 2
+sets Chomeswpos 2
+
+net Xpos => comp_x.in1
+net Ypos => comp_y.in1
+net Zpos => comp_z.in1
+net Apos => comp_a.in1
+#net Bpos => comp_b.in1
+net Cpos => comp_c.in1
+
+setp comp_x.hyst .02
+setp comp_y.hyst .02
+setp comp_z.hyst .02
+setp comp_a.hyst .02
+#setp comp_b.hyst .02
+setp comp_c.hyst .02
+
+
+net Xhomesw <= comp_x.out => joint.0.home-sw-in
+net Yhomesw <= comp_y.out => joint.1.home-sw-in
+net Zhomesw <= comp_z.out => joint.2.home-sw-in
+net Ahomesw <= comp_a.out => joint.3.home-sw-in
+#net Bhomesw <= comp_b.out => joint.4.home-sw-in
+net Chomesw <= comp_c.out => joint.4.home-sw-in
+
+# net Xhomesw => or2_0.in0
+# net Zhomesw => or2_0.in1
+# net XZhomesw or2_0.out => joint.0.home-sw-in joint.2.home-sw-in
+
+addf comp_x servo-thread
+addf comp_y servo-thread
+addf comp_z servo-thread
+addf comp_a servo-thread
+#addf comp_b servo-thread
+addf comp_c servo-thread
+
+addf or2_0 servo-thread

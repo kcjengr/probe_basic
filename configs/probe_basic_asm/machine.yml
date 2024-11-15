@@ -1,0 +1,50 @@
+ root:
+    id: "frame"
+    model: "machine/frame.stl"
+    type: "table"
+    position: [0, 0, 0, 0, 0, 0]
+    origin: [0, 0, 0]
+    axis: null
+    joint: null
+    child_saddle:
+        id: "saddle"
+        model: "machine/saddle.stl"
+        type: "linear"
+        position: [0, 8, 0, 0, 0, 0]
+        origin: [0, 0, 0]
+        axis: "y"
+        joint: 0
+        child_table:
+            id: "table"
+            model: "machine/table.stl"
+            type: "linear"
+            position: [-12.5, 8, 0, 0, 0, 0]
+            origin: [0, 0, 0]
+            axis: "x"
+            joint: 1  
+            child_a_axis:
+               id: "a_axis"
+               model: "machine/a_axis.stl"
+               type: "angular"
+               position: [-12.5, 8, -18, 0, 0, 0]
+               origin: [-12.5, 8, -18]
+               axis: "a"
+               joint: 3
+               child_c_axis:
+                  id: "c_axis"
+                  model: "machine/c_axis.stl"
+                  type: "angular"
+                  position: [-12.5, 8, -18, 0, 0, 0]
+                  origin: [0, 0, 0]
+                  axis: "c"
+                  joint: 4
+
+    child_headstock:
+        id: "saddle"
+        model: "machine/headstock.stl"
+        type: "linear"
+        position: [0, 0, 0, 0, 0, 0]
+        origin: [0, 0, 0]
+        axis: "z"
+        joint: 2
+    
