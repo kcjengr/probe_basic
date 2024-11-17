@@ -280,14 +280,14 @@ o<probe_cal_round_boss> sub
   F[#<probe_traverse_fr>]
   G38.3 X[#<x_center_probed>] Y[#<y_center_probed>]
 
-  o130 if [#<cal_diameter> GT #<x_probed_width>]
+  o430 if [#<cal_diameter> GT #<x_probed_width>]
       (calculate calibration error and adjust calibration offset)
       #<x_cal_error> = [[#<cal_diameter> - #<x_probed_width>] / 2]
       #<new_x_cal_offset> = [#<x_cal_error>]
-  o130 else
+  o430 else
       #<x_cal_error> = [[#<x_probed_width> - #<cal_diameter>] / 2]
       #<new_x_cal_offset> = [#<x_cal_error>]
-  o130 endif
+  o430 endif
 
   o140 if [#<cal_diameter> GT #<y_probed_width>]
       (calculate calibration error and adjust calibration offset)

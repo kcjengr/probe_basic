@@ -280,10 +280,10 @@ o<probe_round_boss> sub
   #<y_zero> = [#<y_center_probed> + #<workspace_y>]
 
   (probe mode rules for WCO or probe position measuring only)
-  o130 if [#<probe_mode> EQ 0]
+  o430 if [#<probe_mode> EQ 0]
       (Record XY Zero in selected WCO)
       G10 L2 P#5220 X[#<x_zero>] Y[#<y_zero>]
-  o130 endif
+  o430 endif
 
   (Reinstate Feedrate Override)
   M50 P1

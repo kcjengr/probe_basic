@@ -106,11 +106,11 @@ o<probe_front_right_top_corner> sub
   G38.3 X[#<x_minus_zero_edge>] Y[#<y_plus_zero_edge>]
 
   (probe mode rules for WCO or probe position measuring only)
-  o130 if [#<probe_mode> EQ 0]
+  o430 if [#<probe_mode> EQ 0]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_minus_zero_edge> + #<workspace_x>]
       G10 L2 P#5220 Y[#<y_plus_zero_edge> + #<workspace_y>]
-  o130 endif
+  o430 endif
 
   (Reinstate Feedrate Override)
   M50 P1

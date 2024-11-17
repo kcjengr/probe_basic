@@ -31,9 +31,9 @@ o120 if [EXISTS[#<_ini[atc]z_tool_change_height>]]
     #<atc_z_tool_change_height> = #<_ini[atc]z_tool_change_height>
 o120 endif
 #<atc_z_tool_clearance_height> = [#<_ini[AXIS_Z]MAX_LIMIT>-0.01]
-o130 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
+o430 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
     #<atc_z_tool_clearance_height> = #<_ini[atc]z_tool_clearance_height>
-o130 endif
+o430 endif
 
 ; assign the variables passed by M6 change_prolog to some parameters
 #100 = #<selected_tool>
@@ -59,17 +59,17 @@ o150 endif
 
 #<next_pocket> = 0 ; assigns 0 to the next pocket for a later check if the tool is found in the carousel
 #<open_pocket> = 0
-#130 = #<number_of_pockets> ; assign test parameter the number of pockets in the carousel
+#430 = #<number_of_pockets> ; assign test parameter the number of pockets in the carousel
 
 o160 do
-    o161 if [#[4000 + #130] EQ #<selected_tool>] ; checks all pockets to see if it contains tool number requested as the new tool
-        #<next_pocket> = #130 ; if tool is found in pocket, assigns the next pocket
+    o161 if [#[4000 + #430] EQ #<selected_tool>] ; checks all pockets to see if it contains tool number requested as the new tool
+        #<next_pocket> = #430 ; if tool is found in pocket, assigns the next pocket
     o161 endif
-    o162 if [#[4000 + #130] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
-        #<open_pocket> = #130
+    o162 if [#[4000 + #430] EQ 0] ; checks if the pocket is empty, last pocket checked will be the lowest empty pocket number, for putting tool in spindle away.
+        #<open_pocket> = #430
     o162 endif
-    #130 = [#130 - 1]
-o160 while [#130 GT 0]
+    #430 = [#430 - 1]
+o160 while [#430 GT 0]
 o170 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, Tool T%d#<selected_tool> not found in carousel)
 o170 endif

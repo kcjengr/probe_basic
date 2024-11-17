@@ -30,7 +30,7 @@ o120 endif
 
 M64 P4 ; Move atc motor FWD
 
-o130 do
+o430 do
     M66 P4 L1 Q3 ; wait for rising edge on rotation index
     o131 if [#5399 LT 0]
         M65 P4 ; Stop atc motor
@@ -38,7 +38,7 @@ o130 do
     o131 endif
     #3990 = [[[#3990+2] MOD #<number_of_pockets>]-1] ; Pocket is no.1-#<number_of_pockets>
     #<steps_to_move> = [#<steps_to_move>-1]
-o130 while [#<steps_to_move> GT 0]
+o430 while [#<steps_to_move> GT 0]
 
 M65 P4 ; Stop motor
 

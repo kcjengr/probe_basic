@@ -112,10 +112,10 @@ o<probe_top_back_edge_angle> sub
   G38.3 X[#<x_start_position>] Y[#<y_minus_zero_edge_start>]
 
   (probe mode rules for WCO, Rotation and probe position measuring only)
-  o130 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
+  o430 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_start_position>] Y[#<y_minus_zero_edge_start> + #<workspace_y>]
-  o130 endif
+  o430 endif
 
   (probe mode rules for WCO, Rotation and probe position measuring only)
   o140 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]

@@ -29,10 +29,10 @@ o120 endif
 
 M65 P0 ; Move Carousel home
 M66 P0 L3 Q4 ; check carousel in position sensor
-o130 if [#5399 LT 0]
+o430 if [#5399 LT 0]
     M65 P1 ; turn off the solenoid to send atc home
     (abort, Failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
-o130 endif
+o430 endif
 
 ;M65 P1 ; Turn off carousel home position solenoid
 

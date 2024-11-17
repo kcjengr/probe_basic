@@ -194,16 +194,16 @@ o<probe_cal_square_boss> sub
 
   #<new_avg_cal_offset> = [[#<new_x_cal_offset> + #<new_y_cal_offset>] / 2]
 
-  o130 if [#<sq_cal_axis> EQ 0]
+  o430 if [#<sq_cal_axis> EQ 0]
       #3032 = [ABS[#<new_avg_cal_offset>]]
       (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
-  o130 else if [#<sq_cal_axis> EQ 1]
+  o430 else if [#<sq_cal_axis> EQ 1]
       #3032 = [ABS[#<new_x_cal_offset>]]
       (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
-  o130 else
+  o430 else
       #3032 = [ABS[#<new_y_cal_offset>]]
       (DEBUG, EVAL[vcp.getWidget{"calibration_offset_3032"}.setValue{#3032}])
-  o130 endif
+  o430 endif
 
   #<x_zero> = [#<x_center_probed> + #<workspace_x>]
 

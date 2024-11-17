@@ -121,11 +121,11 @@ o<probe_corner_y_minus_edge_angle> sub
   #<p3y> = #<_value>
 
   (value returned safety check, aborts if no value returned)
-  o130 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
+  o430 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
       (DEBUG, Missing Y Sub returned edge parameter, aborting)
       M50 P1
       o<probe_corner_y_minus_edge_angle> return
-  o130 endif
+  o430 endif
 
   #<edge_delta> = [#<p2y> - #<p3y>]
 
