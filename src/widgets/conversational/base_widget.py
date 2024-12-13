@@ -28,7 +28,7 @@ class ConversationalBaseWidget(QWidget):
         uic.loadUi(os.path.join(os.path.dirname(__file__), ui_file), self)
 
         self._tool_is_valid = False
-        self._tool_table = TOOL_TABLE.getToolTable()
+        self._tool_table = TOOL_TABLE
 
         self._validators = [self._validate_z_heights,
                             self._validate_spindle_rpm,
@@ -89,14 +89,17 @@ class ConversationalBaseWidget(QWidget):
         self.set_tool_description_from_tool_num()
 
     def set_tool_description_from_tool_num(self):
-        tool_table = self._tool_table
+        tool_table = self._tool_table.getToolTable()
         tool_number = self.tool_number()
-        try:
-            desc = tool_table[tool_number]['R']
+
+        tool = tool_table.get(tool_number)
+        
+        if tool is not None:
+            desc = tool.get('R')
             self.tool_description.setText((desc[:30] + '...') if len(desc) > 30 else desc)
             self.tool_description.setToolTip(desc)
             self._tool_is_valid = (tool_number > 0)
-        except KeyError:
+        else:
             self._tool_is_valid = False
             self.tool_description.setText('TOOL NOT IN TOOL TABLE')
             self.tool_description.setToolTip('TOOL NOT IN TOOL TABLE')
@@ -115,9 +118,14 @@ class ConversationalBaseWidget(QWidget):
 
     def tool_diameter(self):
         if self._tool_is_valid:
-            return self._tool_table[self.tool_number()]['D']
+            
+            tool_table = self._tool_table.getToolTable()
+            tool = tool_table.get(self.tool_number())
+            dia = tool.get('D')
+            
+            return dia
         else:
-            return 0.
+            return 0.0
 
     def spindle_rpm(self):
         return self.spindle_rpm_input.value()
