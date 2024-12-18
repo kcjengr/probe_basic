@@ -74,6 +74,8 @@ class ConversationalBaseWidget(QWidget):
         self.z_feed_rate_input.editingFinished.connect(self._validate_z_feed_rate)
         self.retract_height_input.editingFinished.connect(self._validate_retract_height)
 
+        self._tool_table.tool_table_changed.connect(self._update_fields)
+
         STATUS.g5x_index.onValueChanged(self.update_wcs)
         STATUS.program_units.onValueChanged(self.update_selected_unit)
         STATUS.tool_in_spindle.onValueChanged(self.update_tool_number)
@@ -283,6 +285,10 @@ class ConversationalBaseWidget(QWidget):
                           Qt.FramelessWindowHint)
 
         msg.exec_()
+
+    def _update_fields(self, tool_table):
+        self.update_tool_number()
+        self.set_tool_description_from_tool_num()
 
     @Slot(str)
     def setFilePath(self, path):
