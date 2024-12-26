@@ -63,7 +63,7 @@ o<probe_spindle_nose> sub
   (output to gui DRO "Z PROBED POSITION")
   #1009 = #<z_minus_probed_position>
   #3010 = [ABS[#<z_minus_probed_position> - #<offset_z>]]
-  #<max_z_travel_default> = [#3010 + 0.01]
+  #<max_z_travel_default> = [#3010 * 1.001]
   #3007 = #<max_z_travel_default>
 
   (DEBUG, EVAL[vcp.getWidget{"z_minus_probed_position"}.setValue{#1009}])
