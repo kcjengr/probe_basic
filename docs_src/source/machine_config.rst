@@ -78,6 +78,7 @@ Step 3: Edit INI files
       - If a line is not in your machine file, copy it to the appropriate section in "my_LinuxCNC_machine.ini".
    3. Note that only ONE postgui HAL file can be called. Add any additional items to the existing probe_basic_postgui.hal file.
    4. Save the file and delete the "probe_basic_required_ini_items.ini" file from the folder.
+   5. once you have finished editing the ini file, delete the comments to the side of the parameters. **# Recommended Setting for Probe Basic** as an example or it can cause some load errors.
 
 
    **Required ini file items for Probe Basic**
