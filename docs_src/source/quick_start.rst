@@ -110,11 +110,11 @@ Installation Commands
 
     .. parsed-literal::
 
-        sudo dpkg -i |qtpyvcp_deb|
+        sudo dpkg -i |qtpyvcp_amd64_deb|
 
     .. parsed-literal::
 
-        sudo dpkg -i |probe_basic_deb|
+        sudo dpkg -i |probe_basic_amd64_deb|
 
     You should now be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.
 
