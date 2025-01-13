@@ -54,11 +54,16 @@ with open("/home/buildbot/versions/pb_dev_version.txt", "r") as v_file:
 rst_epilog = f"""
 .. |code_version| replace:: {pb_version}
 .. |code_release| replace:: {pb_release}
-.. |qtpyvcp_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
-.. |qtpyvcp_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_all.deb
-.. |probe_basic_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_all.deb
-.. |probe_basic_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_{probe_basic_dev_latest_version}.dev_all.deb
+.. |qtpyvcp_amd64_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_amd64.deb
+.. |qtpyvcp_arm64_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_arm64.deb
+.. |qtpyvcp_arm64_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_amd64.deb
+.. |qtpyvcp_arm64_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_arm.deb
+.. |probe_basic_amd64_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_amd64.deb
+.. |probe_basic_arm64_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_arm64.deb
+.. |probe_basic_amd64_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_{probe_basic_dev_latest_version}.dev_amd64.deb
+.. |probe_basic_arm64_deb_link| replace:: https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_{probe_basic_dev_latest_version}.dev_arm64.deb
 """
+
 # -- General configuration ---------------------------------------------------
 
 # If your documentation needs a minimal Sphinx version, state it here.

@@ -9,6 +9,7 @@ Probe Basic .deb Install
 Important Requirements
 ----------------------
 
+    - The Deb file install in this doc page is intended for AMD64 pc installs only, do not try to use for arm64/pi installs.
     - Probe Basic is currently designed for 1920x1080 screen sizes only!
     - Probe Basic requires graphics hardware that supports OpenGL 3.2 and OpenGL Shading Language (GLSL) 1.50 or later
     - Probe Basic is tested on xfce4, during install of Debian 12 ISO:
@@ -87,9 +88,9 @@ Installing Probe Basic
 
     .. parsed-literal::
         
-        |probe_basic_deb_link|
+        |probe_basic_amd64_deb|
         
-        |qtpyvcp_deb_link|
+        |qtpyvcp_amd64_deb|
         
         https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 
