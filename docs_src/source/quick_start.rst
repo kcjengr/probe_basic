@@ -88,9 +88,9 @@ Installing Probe Basic
 
     .. parsed-literal::
         
-        |probe_basic_amd64_deb|
+        |probe_basic_amd64_deb_link|
         
-        |qtpyvcp_amd64_deb|
+        |qtpyvcp_amd64_deb_link|
         
         https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb
 

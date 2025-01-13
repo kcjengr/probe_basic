@@ -56,7 +56,7 @@ rst_epilog = f"""
 .. |code_release| replace:: {pb_release}
 .. |qtpyvcp_amd64_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_amd64.deb
 .. |qtpyvcp_arm64_deb| replace:: python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_arm64.deb
-.. |qtpyvcp_arm64_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_amd64.deb
+.. |qtpyvcp_amd64_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_amd64.deb
 .. |qtpyvcp_arm64_deb_link| replace:: https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_{qtpyvcp_dev_latest_version}.dev_arm.deb
 .. |probe_basic_amd64_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_amd64.deb
 .. |probe_basic_arm64_deb| replace:: python3-probe-basic_{probe_basic_dev_latest_version}.dev_arm64.deb
