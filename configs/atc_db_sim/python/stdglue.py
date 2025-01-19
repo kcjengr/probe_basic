@@ -132,10 +132,11 @@ def change_epilog(self, **words):
             if self.return_value > 0.0:
                 # commit change
                 self.selected_pocket =  int(self.params["selected_pocket"])
-                emccanon.CHANGE_TOOL()
+                # emccanon.CHANGE_TOOL()
                 self.current_pocket = self.selected_pocket
                 self.selected_pocket = -1
                 self.selected_tool = -1
+                emccanon.CHANGE_TOOL(self.selected_tool)
                 # cause a sync()
                 self.set_tool_parameters()
                 self.toolchange_flag = True
