@@ -1,0 +1,22 @@
+(author: Chris P)
+(version: 0.2)
+(date: 06/27/24)
+
+(store spindle tool in carousel macro)
+
+o<store_tool_in_carousel> sub
+(PRINT, o<store_tool_in_carousel>)
+
+#5400 = #1
+
+o<tool_db> CALL [#1] (tool_properties.atc)
+#<atc> = [#<_value>]
+
+o100 if [#<atc> EQ 1]
+    (abort, Tool #5400 is manual load and unload only, please remove from spindle manually)
+o100 else
+    G49
+    T0 M6
+o100 end if
+
+o<store_tool_in_carousel> endsub

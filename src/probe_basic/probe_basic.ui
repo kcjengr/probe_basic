@@ -362,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>8</number>
+           <number>3</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -8755,6 +8755,114 @@ QPushButton:checked {
                      </attribute>
                     </widget>
                    </item>
+                   <item>
+                    <widget class="QWidget" name="widget_78" native="true">
+                     <property name="minimumSize">
+                      <size>
+                       <width>200</width>
+                       <height>0</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>250</width>
+                       <height>16777215</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <layout class="QVBoxLayout" name="verticalLayout_80">
+                      <property name="spacing">
+                       <number>3</number>
+                      </property>
+                      <property name="topMargin">
+                       <number>0</number>
+                      </property>
+                      <property name="rightMargin">
+                       <number>0</number>
+                      </property>
+                      <item>
+                       <widget class="QLabel" name="tool_db_label">
+                        <property name="minimumSize">
+                         <size>
+                          <width>0</width>
+                          <height>35</height>
+                         </size>
+                        </property>
+                        <property name="maximumSize">
+                         <size>
+                          <width>16777215</width>
+                          <height>35</height>
+                         </size>
+                        </property>
+                        <property name="styleSheet">
+                         <string notr="true">QLabel{
+    border-style: solid;
+    border-color: rgb(176, 179, 172);
+    border-width: 2px;
+    border-radius: 5px;
+    color: white;
+    background: rgb(90, 90, 90);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                        </property>
+                        <property name="text">
+                         <string>TOOL PROPERTy</string>
+                        </property>
+                        <property name="alignment">
+                         <set>Qt::AlignCenter</set>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="DBIntField" name="dbintfield">
+                        <property name="layoutDirection">
+                         <enum>Qt::LeftToRight</enum>
+                        </property>
+                        <property name="labelText" stdset="0">
+                         <string>TOOL</string>
+                        </property>
+                        <property name="maximum" stdset="0">
+                         <number>99999</number>
+                        </property>
+                        <property name="query" stdset="0">
+                         <string>Tool.tool_no</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="DBCheckBoxField" name="dbcheckboxfield">
+                        <property name="layoutDirection">
+                         <enum>Qt::LeftToRight</enum>
+                        </property>
+                        <property name="labelText" stdset="0">
+                         <string>ATC</string>
+                        </property>
+                        <property name="query" stdset="0">
+                         <string>ToolProperties.atc</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QLabel" name="label_8">
+                        <property name="sizePolicy">
+                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                          <horstretch>0</horstretch>
+                          <verstretch>1</verstretch>
+                         </sizepolicy>
+                        </property>
+                        <property name="text">
+                         <string/>
+                        </property>
+                       </widget>
+                      </item>
+                     </layout>
+                    </widget>
+                   </item>
                   </layout>
                  </item>
                  <item>
@@ -8888,6 +8996,39 @@ QPushButton:checked {
                      </property>
                      <property name="text">
                       <string>RELOAD TABLE</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="db_property_update_btn">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>160</width>
+                       <height>33</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>140</width>
+                       <height>33</height>
+                      </size>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>UPDATE DB</string>
                      </property>
                     </widget>
                    </item>
@@ -44068,6 +44209,16 @@ font: 11pt bebas kai;
    <container>1</container>
   </customwidget>
   <customwidget>
+   <class>DBCheckBoxField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
+   <class>DBIntField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
    <class>DynATC</class>
    <extends>QQuickWidget</extends>
    <header>widgets.atc_widget.atc</header>
@@ -44201,8 +44352,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>212</x>
-     <y>606</y>
+     <x>93</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -44233,8 +44384,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>545</y>
+     <x>92</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -44249,8 +44400,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>545</y>
+     <x>83</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -44275,30 +44426,14 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_table_delete_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>deleteSelectedTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>270</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btn_run_from_line_mdi</sender>
    <signal>clicked()</signal>
    <receiver>mdihistory</receiver>
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>606</y>
+     <x>83</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -44333,8 +44468,8 @@ font: 11pt bebas kai;
      <y>664</y>
     </hint>
     <hint type="destinationlabel">
-     <x>122</x>
-     <y>664</y>
+     <x>136</x>
+     <y>663</y>
     </hint>
    </hints>
   </connection>
@@ -44435,22 +44570,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_table_save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>saveToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>722</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>clear_button</sender>
    <signal>clicked()</signal>
    <receiver>vtk</receiver>
@@ -44505,12 +44624,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>385</x>
-     <y>545</y>
+     <x>121</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44521,12 +44640,12 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>670</x>
-     <y>602</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44537,8 +44656,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>545</y>
+     <x>108</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -44553,8 +44672,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>235</x>
-     <y>545</y>
+     <x>100</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -44601,12 +44720,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>122</x>
-     <y>664</y>
+     <x>136</x>
+     <y>663</y>
     </hint>
     <hint type="destinationlabel">
-     <x>670</x>
-     <y>602</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
    </hints>
   </connection>
@@ -44649,12 +44768,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>385</x>
-     <y>606</y>
+     <x>117</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44675,50 +44794,18 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>tool_table_add_tool_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>addTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>496</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>btn_copy_to_editor_mdi</sender>
    <signal>clicked()</signal>
    <receiver>mdihistory</receiver>
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>606</y>
+     <x>103</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
      <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_reload_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>loadToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>948</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -45507,22 +45594,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>load_spindle_tool_number_2</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_spindle_button_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1486</x>
-     <y>267</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1615</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>filesystemtable</sender>
    <signal>rootChanged(QString)</signal>
    <receiver>facingwidget</receiver>
@@ -45891,6 +45962,70 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
+   <sender>tool_table_add_tool_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>addTool()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>420</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_reload_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>loadToolTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>796</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_delete_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>deleteSelectedTool()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>232</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>saveToolTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>608</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>tool_number_entry_tool_page</sender>
    <signal>returnPressed()</signal>
    <receiver>m6_tool_call_button_tool_page</receiver>
@@ -45903,6 +46038,86 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>1522</x>
      <y>367</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>load_spindle_tool_number_2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>load_spindle_button_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1486</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1615</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>792</x>
+     <y>197</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>822</x>
+     <y>149</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>dbcheckboxfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>783</x>
+     <y>305</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>927</x>
+     <y>210</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>db_property_update_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>dbcheckboxfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>902</x>
+     <y>619</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>954</x>
+     <y>180</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>db_property_update_btn</sender>
+   <signal>clicked()</signal>
+   <receiver>dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>621</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>912</x>
+     <y>156</y>
     </hint>
    </hints>
   </connection>

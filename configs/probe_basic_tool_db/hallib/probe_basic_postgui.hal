@@ -1,0 +1,25 @@
+loadrt time
+loadrt not
+
+addf time.0 servo-thread
+addf not.0 servo-thread
+
+net prog-running not.0.in <= halui.program.is-idle
+net prog-paused halui.program.is-paused => time.0.pause
+net cycle-timer time.0.start <= not.0.out
+net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
+net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
+net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
+# *** Time items required for Probe Basic to run ***
+
+#  ---manual tool change signals---
+net tool-change-request     =>  qtpyvcp_manualtoolchange.change
+net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
+net tool-number             =>  qtpyvcp_manualtoolchange.number
+
+# *** Probe graphic simulation trigger push probe tip ***
+net probe-in  =>  qtpyvcp.probe-in.out
+net probe-in  <=  qtpyvcp.probe-led.on
+
+# *** Set line below for actual spindle readout from your hal file ***
+net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in
