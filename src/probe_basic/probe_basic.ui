@@ -5821,7 +5821,7 @@ QTabWidget QTabBar::tab {
                           <x>0</x>
                           <y>0</y>
                           <width>240</width>
-                          <height>811</height>
+                          <height>810</height>
                          </rect>
                         </property>
                         <layout class="QVBoxLayout" name="verticalLayout_70">
@@ -8819,7 +8819,7 @@ QPushButton:checked {
                        </widget>
                       </item>
                       <item>
-                       <widget class="DBIntField" name="dbintfield">
+                       <widget class="DBIntField" name="dbintfield" native="true">
                         <property name="layoutDirection">
                          <enum>Qt::LeftToRight</enum>
                         </property>
@@ -8844,6 +8844,19 @@ QPushButton:checked {
                         </property>
                         <property name="query" stdset="0">
                          <string>ToolProperties.atc</string>
+                        </property>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="DBFloatField" name="dbfloatfield">
+                        <property name="labelText" stdset="0">
+                         <string>max_rpm</string>
+                        </property>
+                        <property name="maximum" stdset="0">
+                         <double>9999999.990000000223517</double>
+                        </property>
+                        <property name="query" stdset="0">
+                         <string>ToolProperties.max_rpm</string>
                         </property>
                        </widget>
                       </item>
@@ -29698,7 +29711,7 @@ border-radius: 4px;
 }</string>
                  </property>
                  <property name="text">
-                  <string>30%</string>
+                  <string>20%</string>
                  </property>
                  <property name="alignment">
                   <set>Qt::AlignCenter</set>
@@ -42858,7 +42871,7 @@ border: 2px solid gray;
 }</string>
            </property>
            <property name="maximum">
-            <number>100</number>
+            <number>200</number>
            </property>
            <property name="orientation">
             <enum>Qt::Horizontal</enum>
@@ -43081,7 +43094,7 @@ border-radius: 4px;
 }</string>
              </property>
              <property name="text">
-              <string>30%</string>
+              <string>50%</string>
              </property>
              <property name="alignment">
               <set>Qt::AlignCenter</set>
@@ -44214,7 +44227,7 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
   </customwidget>
   <customwidget>
-   <class>DBIntField</class>
+   <class>DBFloatField</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
   </customwidget>
@@ -44242,6 +44255,11 @@ font: 11pt bebas kai;
    <class>QQuickWidget</class>
    <extends>QWidget</extends>
    <header location="global">QtQuickWidgets/QQuickWidget</header>
+  </customwidget>
+  <customwidget>
+   <class>DBIntField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -46140,18 +46158,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
  </buttongroups>
 </ui>
