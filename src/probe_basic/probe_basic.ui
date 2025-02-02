@@ -36142,7 +36142,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_13">
+                <widget class="ActionButton" name="ref_x_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -36171,6 +36171,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF X</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:x</string>
@@ -36426,7 +36429,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_10">
+                <widget class="ActionButton" name="ref_y_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -36455,6 +36458,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Y</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:y</string>
@@ -36710,7 +36716,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_11">
+                <widget class="ActionButton" name="ref_z_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -36739,6 +36745,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Z</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:z</string>
@@ -36829,7 +36838,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="ref_all_button_4">
+                <widget class="ActionButton" name="ref_all_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>1</horstretch>
@@ -36860,7 +36869,7 @@ QLabel[style=&quot;homing&quot;]{
                   <string>REF ALL</string>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.all</string>
@@ -37392,7 +37401,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_9">
+                <widget class="ActionButton" name="ref_x_button_1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -37421,6 +37430,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF X</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:x</string>
@@ -37676,7 +37688,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_5">
+                <widget class="ActionButton" name="ref_y_button_1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -37705,6 +37717,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Y</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:y</string>
@@ -37960,7 +37975,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_7">
+                <widget class="ActionButton" name="ref_z_button_1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -37989,6 +38004,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Z</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:z</string>
@@ -38243,7 +38261,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_8">
+                <widget class="ActionButton" name="ref_a_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -38272,6 +38290,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF A</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:a</string>
@@ -38362,7 +38383,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="ref_all_button_5">
+                <widget class="ActionButton" name="ref_all_button_1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>1</horstretch>
@@ -38393,7 +38414,7 @@ QLabel[style=&quot;homing&quot;]{
                   <string>REF ALL</string>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.all</string>
@@ -38668,7 +38689,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="ref_all_button">
+                <widget class="ActionButton" name="ref_all_button_3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>1</horstretch>
@@ -38699,7 +38720,7 @@ QLabel[style=&quot;homing&quot;]{
                   <string>REF ALL</string>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.all</string>
@@ -38976,7 +38997,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_6">
+                <widget class="ActionButton" name="ref_x_button_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -39005,6 +39026,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF X</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:x</string>
@@ -39260,7 +39284,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_3">
+                <widget class="ActionButton" name="ref_y_button_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -39289,6 +39313,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Y</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:y</string>
@@ -39541,7 +39568,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton">
+                <widget class="ActionButton" name="ref_z_button_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -39570,6 +39597,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Z</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:z</string>
@@ -39824,7 +39854,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_2">
+                <widget class="ActionButton" name="ref_a_button_1">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -39853,6 +39883,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF A</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:a</string>
@@ -40123,7 +40156,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_4">
+                <widget class="ActionButton" name="ref_b_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -40152,6 +40185,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF B</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:b</string>
@@ -40426,7 +40462,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="ref_all_button_3">
+                <widget class="ActionButton" name="ref_all_button_4">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                    <horstretch>1</horstretch>
@@ -40457,7 +40493,7 @@ QLabel[style=&quot;homing&quot;]{
                   <string>REF ALL</string>
                  </property>
                  <property name="rules" stdset="0">
-                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+                  <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.all</string>
@@ -40734,7 +40770,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_17">
+                <widget class="ActionButton" name="ref_x_button_3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -40763,6 +40799,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF X</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:x</string>
@@ -41018,7 +41057,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_18">
+                <widget class="ActionButton" name="ref_y_button_3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -41047,6 +41086,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Y</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:y</string>
@@ -41299,7 +41341,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_19">
+                <widget class="ActionButton" name="ref_z_button_3">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -41328,6 +41370,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF Z</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:z</string>
@@ -41582,7 +41627,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_20">
+                <widget class="ActionButton" name="ref_a_button_2">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -41611,6 +41656,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF A</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:a</string>
@@ -41881,7 +41929,7 @@ QLabel[style=&quot;homing&quot;]{
                 </widget>
                </item>
                <item>
-                <widget class="ActionButton" name="axisactionbutton_21">
+                <widget class="ActionButton" name="ref_c_button">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                    <horstretch>0</horstretch>
@@ -41910,6 +41958,9 @@ QLabel[style=&quot;homing&quot;]{
                  </property>
                  <property name="text">
                   <string>REF C</string>
+                 </property>
+                 <property name="rules" stdset="0">
+                  <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
                  </property>
                  <property name="actionName" stdset="0">
                   <string>machine.home.axis:c</string>
@@ -44164,8 +44215,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>212</x>
-     <y>606</y>
+     <x>93</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -44196,8 +44247,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>159</x>
-     <y>545</y>
+     <x>92</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -44212,8 +44263,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>89</x>
-     <y>545</y>
+     <x>83</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -44260,8 +44311,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>606</y>
+     <x>83</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -44296,8 +44347,8 @@ font: 11pt bebas kai;
      <y>664</y>
     </hint>
     <hint type="destinationlabel">
-     <x>122</x>
-     <y>664</y>
+     <x>136</x>
+     <y>663</y>
     </hint>
    </hints>
   </connection>
@@ -44468,12 +44519,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>385</x>
-     <y>545</y>
+     <x>121</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44484,12 +44535,12 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>670</x>
-     <y>602</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44500,8 +44551,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>545</y>
+     <x>108</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -44516,8 +44567,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>235</x>
-     <y>545</y>
+     <x>100</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -44564,12 +44615,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>122</x>
-     <y>664</y>
+     <x>136</x>
+     <y>663</y>
     </hint>
     <hint type="destinationlabel">
-     <x>670</x>
-     <y>602</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
    </hints>
   </connection>
@@ -44612,12 +44663,12 @@ font: 11pt bebas kai;
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>385</x>
-     <y>606</y>
+     <x>117</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -44660,8 +44711,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>311</x>
-     <y>606</y>
+     <x>103</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -45888,18 +45939,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="probetabGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="settertabGroup"/>
  </buttongroups>
 </ui>
