@@ -37,10 +37,16 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
-        if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
+        if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
             self.tabWidget.setTabVisible(atc_tab_index, False)
             self.tabWidget.removeTab(atc_tab_index)
+
+        elif (1 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 1)):
+            self.load_atc()
+
+        else:
+            self.load_rack_atc()
             
         self.vtk.setViewMachine()
 
@@ -52,26 +58,29 @@ class ProbeBasic(VCPMainWindow):
     
         self.load_user_tabs()
 
-        self.load_atc()
-
-        self.load_rack_atc()
-        
         self.load_user_buttons()
 
     def load_atc(self):
         self.atc_modules = {}
         self.atc = {}
         
-        atc_paths = INIFILE.findall("DISPLAY", "ATC_PATH")
+        atc_paths = [os.path.join(VCP_DIR, "atc")]
 
         for atc_path in atc_paths:
             atc_path = os.path.expanduser(atc_path)
+            if not os.path.exists(atc_path):
+                LOG.warning(f"ATC path does not exist: {atc_path}")
+                continue
+                
             atc_folders = os.listdir(atc_path)
             for atc in atc_folders:
-                if not os.path.isdir(os.path.join(atc_path, atc)):
+                atc_dir = os.path.join(atc_path, atc)
+                if not os.path.isdir(atc_dir):
                     continue
-                module_name = "atc." + os.path.basename(atc_path) + "." + atc_path
-                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(atc_path), atc, atc + ".py"))
+                    
+                module_name = f"atc.{atc}"
+                module_file = os.path.join(atc_dir, f"{atc}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
                 self.atc_modules[module_name] = importlib.util.module_from_spec(spec)
                 sys.modules[module_name] = self.atc_modules[module_name]
                 spec.loader.exec_module(self.atc_modules[module_name])
@@ -83,17 +92,24 @@ class ProbeBasic(VCPMainWindow):
     def load_rack_atc(self):
         self.rack_atc_modules = {}
         self.rack_atc = {}
-        
-        rack_atc_paths = INIFILE.findall("DISPLAY", "RACK_ATC_PATH")
+
+        rack_atc_paths = [os.path.join(VCP_DIR, "rack_atc")]
 
         for rack_atc_path in rack_atc_paths:
             rack_atc_path = os.path.expanduser(rack_atc_path)
+            if not os.path.exists(rack_atc_path):
+                LOG.warning(f"Rack ATC path does not exist: {rack_atc_path}")
+                continue
+                
             rack_atc_folders = os.listdir(rack_atc_path)
             for rack_atc in rack_atc_folders:
-                if not os.path.isdir(os.path.join(rack_atc_path, rack_atc)):
+                rack_atc_dir = os.path.join(rack_atc_path, rack_atc)
+                if not os.path.isdir(rack_atc_dir):
                     continue
-                module_name = "rack_atc." + os.path.basename(rack_atc_path) + "." + rack_atc_path
-                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(rack_atc_path), rack_atc, rack_atc + ".py"))
+                    
+                module_name = f"rack_atc.{rack_atc}"
+                module_file = os.path.join(rack_atc_dir, f"{rack_atc}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
                 self.rack_atc_modules[module_name] = importlib.util.module_from_spec(spec)
                 sys.modules[module_name] = self.rack_atc_modules[module_name]
                 spec.loader.exec_module(self.rack_atc_modules[module_name])
