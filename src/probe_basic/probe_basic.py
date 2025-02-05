@@ -51,9 +51,57 @@ class ProbeBasic(VCPMainWindow):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
     
         self.load_user_tabs()
+
+        self.load_atc()
+
+        self.load_rack_atc()
         
         self.load_user_buttons()
 
+    def load_atc(self):
+        self.atc_modules = {}
+        self.atc = {}
+        
+        atc_paths = INIFILE.findall("DISPLAY", "ATC_PATH")
+
+        for atc_path in atc_paths:
+            atc_path = os.path.expanduser(atc_path)
+            atc_folders = os.listdir(atc_path)
+            for atc in atc_folders:
+                if not os.path.isdir(os.path.join(atc_path, atc)):
+                    continue
+                module_name = "atc." + os.path.basename(atc_path) + "." + atc_path
+                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(atc_path), atc, atc + ".py"))
+                self.atc_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.atc_modules[module_name]
+                spec.loader.exec_module(self.atc_modules[module_name])
+                
+                self.atc[module_name] = self.atc_modules[module_name].Atc()
+                
+                self.atc_layout.addWidget( self.atc[module_name])
+
+    def load_rack_atc(self):
+        self.rack_atc_modules = {}
+        self.rack_atc = {}
+        
+        rack_atc_paths = INIFILE.findall("DISPLAY", "RACK_ATC_PATH")
+
+        for rack_atc_path in rack_atc_paths:
+            rack_atc_path = os.path.expanduser(rack_atc_path)
+            rack_atc_folders = os.listdir(rack_atc_path)
+            for rack_atc in rack_atc_folders:
+                if not os.path.isdir(os.path.join(rack_atc_path, rack_atc)):
+                    continue
+                module_name = "rack_atc." + os.path.basename(rack_atc_path) + "." + rack_atc_path
+                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(rack_atc_path), rack_atc, rack_atc + ".py"))
+                self.rack_atc_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.rack_atc_modules[module_name]
+                spec.loader.exec_module(self.rack_atc_modules[module_name])
+                
+                self.rack_atc[module_name] = self.rack_atc_modules[module_name].RackAtc()
+                
+                self.atc_layout.addWidget( self.rack_atc[module_name])
+    
     def load_user_buttons(self):
         self.user_button_modules = {}
         self.user_buttons = {}
