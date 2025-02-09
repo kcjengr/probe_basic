@@ -10,6 +10,7 @@ import linuxcnc
 from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
+from qtpy.QtWidgets import QAction, QWidget
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
@@ -59,6 +60,29 @@ class ProbeBasic(VCPMainWindow):
         self.load_user_tabs()
 
         self.load_user_buttons()
+
+        self.help_menu = self.menuBar().addMenu("Help")
+        self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
+        self.interactive_help_action.setChecked(False)
+        self.interactive_help_action.toggled.connect(self.toggle_tooltips)
+        self.help_menu.addAction(self.interactive_help_action)  # Moved to HELP menu
+        self.store_original_tooltips()
+        self.toggle_tooltips(False)
+
+    def store_original_tooltips(self):
+        """Store the original tooltips for all widgets to restore later."""
+        for widget in self.findChildren(QWidget):
+            if widget.toolTip():  # Only store if a tooltip exists
+                widget.setProperty("original_tooltip", widget.toolTip())
+
+    def toggle_tooltips(self, enabled):
+        """Enable or disable tooltips across all widgets."""
+        for widget in self.findChildren(QWidget):
+            original_tooltip = widget.property("original_tooltip")
+            if enabled and original_tooltip:
+                widget.setToolTip(original_tooltip)  # Restore tooltip
+            else:
+                widget.setToolTip("")  # Disable tooltip
 
     def load_atc(self):
         self.atc_modules = {}
