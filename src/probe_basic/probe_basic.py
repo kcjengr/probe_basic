@@ -69,6 +69,29 @@ class ProbeBasic(VCPMainWindow):
         self.store_original_tooltips()
         self.toggle_tooltips(False)
 
+        self.filesystemtable.gcodeFileSelected['bool'].connect(lambda x: self.main_load_gcode_button.setEnabled(True))
+
+        self.filesystemtable_2.rootChanged.connect(lambda: self.device_folder_up_button.setEnabled(False) 
+           if self.filesystemtable_2.model.rootPath().lower() == '/home'
+           else self.device_folder_up_button.setEnabled(True))
+
+        self.filesystemtable.rootChanged.connect(lambda: self.main_folder_up_button.setEnabled(False) 
+           if self.filesystemtable.model.rootPath().lower() == '/home'
+           else self.main_folder_up_button.setEnabled(True))
+        self.filesystemtable.gcodeFileSelected['bool'].connect(lambda x: (
+           self.main_load_gcode_button.setText("SELECT FOLDER") if not x else None,
+           self.main_load_gcode_button.setText("LOAD G-CODE") if x else None
+        ))
+
+        self.main_load_gcode_button.clicked.connect(lambda: ( 
+            self.main_load_gcode_button.setText("LOAD G-CODE") if self.main_load_gcode_button.text() == 'SELECT FOLDER' else None
+        ))
+
+        self.filesystemtable.model.rootPathChanged.connect(lambda: (
+            self.filesystemtable.clearSelection(),
+            self.main_load_gcode_button.setEnabled(False)
+        ))
+
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
         for widget in self.findChildren(QWidget):

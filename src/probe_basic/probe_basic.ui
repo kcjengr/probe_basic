@@ -362,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>2</number>
+           <number>8</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -4611,6 +4611,9 @@ QPushButton:checked {
               </property>
               <item>
                <widget class="QFrame" name="frame_35">
+                <property name="enabled">
+                 <bool>true</bool>
+                </property>
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -5060,7 +5063,7 @@ QHeaderView {
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>100</width>
+                       <width>110</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5127,19 +5130,19 @@ QHeaderView {
                       <bool>true</bool>
                      </property>
                      <property name="hiddenColumns" stdset="0">
-                      <string>2</string>
+                      <string>1, 2</string>
                      </property>
                      <property name="fixedNameColumn" stdset="0">
                       <bool>true</bool>
                      </property>
                      <property name="nameColumnsWidth" stdset="0">
-                      <number>310</number>
+                      <number>410</number>
                      </property>
                      <attribute name="horizontalHeaderCascadingSectionResizes">
                       <bool>true</bool>
                      </attribute>
-                     <attribute name="horizontalHeaderStretchLastSection">
-                      <bool>true</bool>
+                     <attribute name="horizontalHeaderMinimumSectionSize">
+                      <number>18</number>
                      </attribute>
                     </widget>
                    </item>
@@ -5151,9 +5154,85 @@ QHeaderView {
                     <number>6</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="copy_to_usb_2">
+                    <widget class="QPushButton" name="usb_show_hide">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
+                       <width>50</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>50</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="focusPolicy">
+                      <enum>Qt::NoFocus</enum>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>USB</string>
+                     </property>
+                     <property name="iconSize">
+                      <size>
+                       <width>30</width>
+                       <height>17</height>
+                      </size>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="checked">
+                      <bool>false</bool>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="copy_to_usb_2">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5166,7 +5245,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>90</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5194,7 +5273,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_delete_item_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5207,7 +5286,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>90</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5237,7 +5316,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_new_file_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5250,7 +5329,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>100</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5280,7 +5359,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_new_folder_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5293,7 +5372,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>125</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5323,7 +5402,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_rename_item_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5336,7 +5415,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>90</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -18142,7 +18221,7 @@ SubCallButton:checked[option=&quot;false&quot;] {
 }</string>
                           </property>
                           <property name="currentIndex">
-                           <number>4</number>
+                           <number>0</number>
                           </property>
                           <widget class="QWidget" name="Page1">
                            <layout class="QHBoxLayout" name="horizontalLayout_132">
@@ -24158,42 +24237,41 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_8">
+                         <widget class="VCPSettingsLineEdit" name="tool_setter_user_1_name">
+                          <property name="enabled">
+                           <bool>false</bool>
+                          </property>
                           <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>100</width>
+                            <width>0</width>
                             <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>100</width>
+                            <width>16777215</width>
                             <height>38</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::ClickFocus</enum>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QLabel{
-font: 15pt &quot;Bebas Kai&quot;;
+                           <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string>USER SETTER 1</string>
+background-color: #929695;</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
-                          <property name="indent">
-                           <number>0</number>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.user-param-name-1</string>
                           </property>
                          </widget>
                         </item>
@@ -24433,42 +24511,41 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="QLabel" name="label_155">
+                         <widget class="VCPSettingsLineEdit" name="tool_setter_user_2_name">
+                          <property name="enabled">
+                           <bool>false</bool>
+                          </property>
                           <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>100</width>
+                            <width>0</width>
                             <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>100</width>
+                            <width>16777215</width>
                             <height>38</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::ClickFocus</enum>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QLabel{
-font: 15pt &quot;Bebas Kai&quot;;
+                           <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string>USER SETTER 2</string>
+background-color: #929695;</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                           </property>
-                          <property name="indent">
-                           <number>0</number>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.user-param-name-2</string>
                           </property>
                          </widget>
                         </item>
@@ -41783,8 +41860,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>95</y>
+     <x>93</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -41815,8 +41892,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>95</y>
+     <x>92</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -41831,8 +41908,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>83</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -41879,8 +41956,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>83</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
@@ -42075,8 +42152,8 @@ font: 11pt bebas kai;
      <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -42087,12 +42164,12 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>103</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -42103,8 +42180,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>108</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -42119,8 +42196,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>95</y>
+     <x>100</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -42171,8 +42248,8 @@ font: 11pt bebas kai;
      <y>663</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>103</y>
+     <x>109</x>
+     <y>140</y>
     </hint>
    </hints>
   </connection>
@@ -42203,8 +42280,8 @@ font: 11pt bebas kai;
      <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>379</x>
-     <y>75</y>
+     <x>385</x>
+     <y>52</y>
     </hint>
    </hints>
   </connection>
@@ -42247,8 +42324,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>95</y>
+     <x>103</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -42333,182 +42410,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>1384</x>
      <y>626</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>transferFileRequest(QString)</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>transferFile(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>atDeviceRoot(bool)</signal>
-   <receiver>device_folder_up_button</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>129</x>
-     <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>removabledevicecombobox</sender>
-   <signal>currentDeviceEjectable(bool)</signal>
-   <receiver>device_eject_usb_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>234</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>438</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>removabledevicecombobox</sender>
-   <signal>currentPathChanged(QString)</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>setRootPath(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>234</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>transferFileRequest(QString)</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>transferFile(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copy_from_usb_2</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>doFileTransfer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>442</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>removabledevicecombobox</sender>
-   <signal>usbPresent(bool)</signal>
-   <receiver>device_eject_usb_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>234</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>438</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_rename_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>rename()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>258</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_folder_up_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>viewParentDirectory()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>129</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_delete_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>deleteItem()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_eject_usb_button</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>removabledevicecombobox</receiver>
-   <slot>ejectDevice()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>438</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>234</x>
-     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -42683,8 +42584,8 @@ font: 11pt bebas kai;
      <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>685</x>
-     <y>82</y>
+     <x>705</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42699,8 +42600,8 @@ font: 11pt bebas kai;
      <y>216</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1034</x>
-     <y>82</y>
+     <x>1056</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42715,8 +42616,8 @@ font: 11pt bebas kai;
      <y>169</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1034</x>
-     <y>82</y>
+     <x>1056</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42731,8 +42632,8 @@ font: 11pt bebas kai;
      <y>263</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1034</x>
-     <y>82</y>
+     <x>1056</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42747,8 +42648,8 @@ font: 11pt bebas kai;
      <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1159</x>
-     <y>82</y>
+     <x>1182</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42763,8 +42664,8 @@ font: 11pt bebas kai;
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1159</x>
-     <y>82</y>
+     <x>1182</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42779,8 +42680,8 @@ font: 11pt bebas kai;
      <y>403</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1289</x>
-     <y>82</y>
+     <x>1312</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42791,12 +42692,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>204</x>
-     <y>298</y>
+     <x>225</x>
+     <y>314</y>
     </hint>
     <hint type="destinationlabel">
-     <x>861</x>
-     <y>82</y>
+     <x>882</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42807,12 +42708,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>169</x>
-     <y>343</y>
+     <x>190</x>
+     <y>360</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1549</x>
-     <y>82</y>
+     <x>1574</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -42827,8 +42728,8 @@ font: 11pt bebas kai;
      <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42843,8 +42744,8 @@ font: 11pt bebas kai;
      <y>216</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42859,8 +42760,8 @@ font: 11pt bebas kai;
      <y>169</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42875,8 +42776,8 @@ font: 11pt bebas kai;
      <y>263</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42891,8 +42792,8 @@ font: 11pt bebas kai;
      <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42907,8 +42808,8 @@ font: 11pt bebas kai;
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42923,8 +42824,8 @@ font: 11pt bebas kai;
      <y>403</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42939,8 +42840,8 @@ font: 11pt bebas kai;
      <y>357</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42955,8 +42856,8 @@ font: 11pt bebas kai;
      <y>403</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42971,8 +42872,8 @@ font: 11pt bebas kai;
      <y>546</y>
     </hint>
     <hint type="destinationlabel">
-     <x>372</x>
-     <y>573</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -42983,12 +42884,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>169</x>
-     <y>389</y>
+     <x>190</x>
+     <y>407</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1419</x>
-     <y>82</y>
+     <x>1443</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43003,8 +42904,8 @@ font: 11pt bebas kai;
      <y>548</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1419</x>
-     <y>82</y>
+     <x>1443</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43019,8 +42920,8 @@ font: 11pt bebas kai;
      <y>548</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1419</x>
-     <y>82</y>
+     <x>1443</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43035,8 +42936,8 @@ font: 11pt bebas kai;
      <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1419</x>
-     <y>82</y>
+     <x>1443</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43051,8 +42952,8 @@ font: 11pt bebas kai;
      <y>595</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1419</x>
-     <y>82</y>
+     <x>1443</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43095,12 +42996,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>285</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43111,12 +43012,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>533</x>
+     <y>250</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43127,12 +43028,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>285</x>
+     <y>289</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43143,12 +43044,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>285</x>
+     <y>328</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43159,12 +43060,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>285</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43175,12 +43076,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>285</x>
+     <y>406</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43191,12 +43092,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>533</x>
+     <y>289</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43207,12 +43108,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>533</x>
+     <y>328</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43223,12 +43124,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>533</x>
+     <y>367</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43239,12 +43140,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>76</y>
+     <x>533</x>
+     <y>406</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43255,12 +43156,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>204</x>
-     <y>80</y>
+     <x>1474</x>
+     <y>344</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43271,12 +43172,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>80</y>
+     <x>1460</x>
+     <y>533</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43287,12 +43188,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>80</y>
+     <x>1460</x>
+     <y>601</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43303,12 +43204,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>183</x>
-     <y>85</y>
+     <x>1448</x>
+     <y>628</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43319,12 +43220,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>85</y>
+     <x>1253</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43335,12 +43236,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>85</y>
+     <x>1403</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43351,12 +43252,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>85</y>
+     <x>1177</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43367,12 +43268,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>85</y>
+     <x>1293</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43383,12 +43284,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>154</x>
-     <y>85</y>
+     <x>1409</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43403,8 +43304,8 @@ font: 11pt bebas kai;
      <y>559</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43419,8 +43320,8 @@ font: 11pt bebas kai;
      <y>598</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43435,8 +43336,8 @@ font: 11pt bebas kai;
      <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>169</x>
-     <y>72</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43463,12 +43364,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>448</x>
-     <y>429</y>
+     <x>522</x>
+     <y>450</y>
     </hint>
     <hint type="destinationlabel">
-     <x>437</x>
-     <y>564</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -43479,12 +43380,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>470</x>
-     <y>481</y>
+     <x>522</x>
+     <y>497</y>
     </hint>
     <hint type="destinationlabel">
-     <x>470</x>
-     <y>559</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
@@ -43495,12 +43396,204 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>497</x>
-     <y>526</y>
+     <x>522</x>
+     <y>544</y>
     </hint>
     <hint type="destinationlabel">
-     <x>494</x>
-     <y>564</y>
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copy_from_usb_2</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>doFileTransfer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>442</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable</sender>
+   <signal>transferFileRequest(QString)</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>transferFile(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removabledevicecombobox</sender>
+   <signal>currentDeviceEjectable(bool)</signal>
+   <receiver>device_eject_usb_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>438</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_folder_up_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>viewParentDirectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_eject_usb_button</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>removabledevicecombobox</receiver>
+   <slot>ejectDevice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_rename_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>rename()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable_2</sender>
+   <signal>atDeviceRoot(bool)</signal>
+   <receiver>device_folder_up_button</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable_2</sender>
+   <signal>transferFileRequest(QString)</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>transferFile(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_delete_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>deleteItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removabledevicecombobox</sender>
+   <signal>usbPresent(bool)</signal>
+   <receiver>device_eject_usb_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>438</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>removabledevicecombobox</sender>
+   <signal>currentPathChanged(QString)</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>setRootPath(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>usb_show_hide</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frame_35</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>499</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>449</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -43523,18 +43616,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="settertabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
  </buttongroups>
 </ui>
