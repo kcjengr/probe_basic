@@ -11,10 +11,9 @@ ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 
 # end of Workarround
 
-from qtpy.QtCore import Property, Slot
 from qtpy.QtGui import QColor
 
-from qtpy.QtCore import Signal, Slot, QUrl, QTimer
+from qtpy.QtCore import Property, Signal, Slot, QUrl, QTimer
 from qtpy.QtQuickWidgets import QQuickWidget
 
 from qtpyvcp.plugins import getPlugin

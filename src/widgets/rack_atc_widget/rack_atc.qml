@@ -1,22 +1,20 @@
 import QtQuick 2.7
-import QtQuick.Controls 1.5
+import QtQuick.Controls 2.5
 import QtQuick.Layouts 1.3
 
 Rectangle {
 
     id: main_rectangle
     visible: true
+    color: bg_color
     width: widget_width
     height: 120
-    color: bg_color
     z: 0
 
 
     Repeater {
         id: pocket_slot
         model: pocket_slots
-        width: 512
-        height: 70
 
         delegate: Item {
 
@@ -25,50 +23,60 @@ Rectangle {
             property string pocket_num: index+1
 //            property var anim: pocket_anim
 
-            Rectangle {
+            Image {
+                id: fork_image
 
-                id: pocket_rectangle
-                opacity: 1
-                width: main_rectangle.width/pocket_slots
-                height: 96
-//                    radius: tool_diam/2
-                color: "white"
-                border.color: "black"
+                source: "images/rack_fork.png"
 
-                x: index * width
 
-                y: 0
+                fillMode: Image.PreserveAspectFit
 
-                border.width: 1
+                width: (main_rectangle.width/pocket_slots) -4
+                height: 120
+
+                x: (index * width) +2
+                transformOrigin: Item.Center
+                verticalAlignment: Text.AlignVCenter
+                horizontalAlignment: Text.AlignHCenter
                 z: 1
-//                rotation: 360/pocket_slots * index + 90
 
-                Image {
-                    id: fork_image
+                Rectangle {
 
-                    source: "qrc:///images/rack_fork_small.png"
-                    // fillMode: Image.PreserveAspectFit
+                    id: pocket_rectangle
+                    opacity: 1
 
-                    width: 72
-                    height: 80
+                    width: 36
+                    height: 28
+
+    //                    radius: tool_diam/2
+                    color: "white"
+                    border.color: "black"
+
+                    x: parent.width / 2 - width / 2
+                    y: parent.height / 2 - height / 2 + 24
+
+
                     transformOrigin: Item.Center
-                    verticalAlignment: Text.AlignVCenter
-                    horizontalAlignment: Text.AlignHCenter
+
+                    border.width: 1
                     z: 2
+                    Text {
+                        id: pocket_text
+                        text: "P" + pocket_num
+                        font.family: "Bebas Kai"
+                        font.bold: true
+                        x: parent.width / 2 - width / 2
+                        y: parent.height / 2 - height / 2
+                        //transformOrigin: Item.Center
+                        //verticalAlignment: Text.AlignVCenter
+                        horizontalAlignment: Text.AlignHCenter
+                        font.pixelSize: 24
+
+                        z: 3
+                    }
+//                rotation: 360/pocket_slots * index + 90
                 }
-                Text {
-                    id: pocket_text
-                    text: "P" + pocket_num
-                    font.family: "Bebas Kai"
-                    font.bold: true
-                    transformOrigin: Item.Center
-                    //verticalAlignment: Text.AlignVCenter
-                    //horizontalAlignment: Text.AlignHCenter
-                    font.pixelSize: 24
-                    x: 0
-                    y: 0
-                    z: 3
-                }
+
             }
         }
 	}
@@ -150,8 +158,8 @@ Rectangle {
     }
 
     // carousel size
-    property int widget_width: 500
-    property int widget_height: 500
+    property int widget_width: 1024
+    property int widget_height: 120
 
     // color properties
     property color bg_color: "grey"
