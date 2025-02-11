@@ -362,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>9</number>
+           <number>2</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -28181,52 +28181,6 @@ padding: 20px;</string>
             </item>
            </layout>
           </widget>
-          <widget class="QWidget" name="tab_3">
-           <attribute name="title">
-            <string>RACK TEST</string>
-           </attribute>
-           <layout class="QVBoxLayout" name="verticalLayout_6">
-            <item>
-             <widget class="QWidget" name="widget_3" native="true">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="RackATC" name="rackatc">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>0</width>
-                <height>129</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>129</height>
-               </size>
-              </property>
-              <property name="backgroundColor" stdset="0">
-               <color alpha="0">
-                <red>0</red>
-                <green>0</green>
-                <blue>0</blue>
-               </color>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </widget>
          </widget>
         </item>
        </layout>
@@ -41793,19 +41747,9 @@ font: 11pt bebas kai;
    <header>widgets.conversational.hole_circle</header>
   </customwidget>
   <customwidget>
-   <class>RackATC</class>
-   <extends>QQuickWidget</extends>
-   <header>widgets.rack_atc_widget.rack_atc</header>
-  </customwidget>
-  <customwidget>
    <class>XYCoordWidget</class>
    <extends>QWidget</extends>
    <header>widgets.conversational.xy_coord</header>
-  </customwidget>
-  <customwidget>
-   <class>QQuickWidget</class>
-   <extends>QWidget</extends>
-   <header location="global">QtQuickWidgets/QQuickWidget</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -41830,98 +41774,34 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>ortho_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewOrtho()</slot>
+   <sender>x_hint_ridge_valley_3028</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>877</x>
-     <y>597</y>
+     <x>1253</x>
+     <y>555</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
+     <x>189</x>
+     <y>444</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>main_folder_up_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>viewParentDirectory()</slot>
+   <sender>slow_probe_fr_3005</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>setter_slow_fr</receiver>
+   <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>595</x>
-     <y>112</y>
+     <x>522</x>
+     <y>216</y>
     </hint>
     <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>zoom_in_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>zoomIn()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>327</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>iso_view_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewP()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>102</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>zoom_out_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>zoomOut()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>372</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_run_selection_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>runSelection()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>93</x>
-     <y>122</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>259</x>
-     <y>52</y>
+     <x>1056</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -41942,326 +41822,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>btn_del_all_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>removeAll()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>92</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>143</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_del_history_row_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>removeSelectedItem()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>83</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>114</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pan_button</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>vtk</receiver>
-   <slot>enable_panning(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>282</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_delete_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>deleteSelectedTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>270</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_run_from_line_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>runFromSelection()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>83</x>
-     <y>122</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>163</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>path_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewPath()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>507</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mdi_page</sender>
-   <signal>clicked()</signal>
-   <receiver>mdiEntry</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>772</x>
-     <y>664</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>136</x>
-     <y>663</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>find_replace_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>findDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1327</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1619</x>
-     <y>587</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_view_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewZ()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>237</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1458</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1619</x>
-     <y>410</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_new_file_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>newFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>788</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>edit_gcode_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>EditorReadWrite(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1196</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1619</x>
-     <y>410</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>saveToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>722</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clear_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>clearLivePlot()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>552</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copy_to_usb_2</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>doFileTransfer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>576</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_rename_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>rename()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1025</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_row_up_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>moveRowItemUp()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>enter</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>submit()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>109</x>
-     <y>140</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_pause_mdi</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>mdihistory</receiver>
-   <slot>toggleQueue(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>108</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>306</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_clear_queue_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>clearQueue()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>100</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>238</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>main_load_gcode_button</sender>
    <signal>clicked()</signal>
    <receiver>filesystemtable</receiver>
@@ -42274,838 +41834,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>581</x>
      <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>gcodeFileSelected(bool)</signal>
-   <receiver>main_load_gcode_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1027</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mdiEntry</sender>
-   <signal>returnPressed()</signal>
-   <receiver>enter</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>136</x>
-     <y>663</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>109</x>
-     <y>140</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_delete_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>deleteItem()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>677</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_row_down_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>moveRowItemDown()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>385</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>y_view_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewY()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>192</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_add_tool_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>addTool()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>496</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>btn_copy_to_editor_mdi</sender>
-   <signal>clicked()</signal>
-   <receiver>mdihistory</receiver>
-   <slot>copySelectionToGcodeEditor()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>103</x>
-     <y>122</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>320</x>
-     <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_reload_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>loadToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>948</x>
-     <y>640</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>96</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>x_view_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewX()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>147</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>perspective_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewPersp()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>642</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_as_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFileAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1589</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1619</x>
-     <y>410</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>linear_jog_slider</sender>
-   <signal>sliderMoved(int)</signal>
-   <receiver>anglular_jog_slider</receiver>
-   <slot>setValue(int)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1606</x>
-     <y>853</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1384</x>
-     <y>626</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>machine_zoom_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewMachine()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>462</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>program_zoom_button</sender>
-   <signal>clicked()</signal>
-   <receiver>vtk</receiver>
-   <slot>setViewProgram()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>877</x>
-     <y>417</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1177</x>
-     <y>345</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>offset_table_clear_selected_button</sender>
-   <signal>clicked()</signal>
-   <receiver>offset_table</receiver>
-   <slot>deleteSelectedOffset()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>175</x>
-     <y>567</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>117</x>
-     <y>473</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>offset_table_save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>offset_table</receiver>
-   <slot>saveOffsetTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>545</x>
-     <y>567</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>474</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>offset_table_clear_all_button</sender>
-   <signal>clicked()</signal>
-   <receiver>offset_table</receiver>
-   <slot>clearOffsetTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>360</x>
-     <y>567</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>492</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>offset_table_reload_button</sender>
-   <signal>clicked()</signal>
-   <receiver>offset_table</receiver>
-   <slot>loadOffsetTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>730</x>
-     <y>567</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>130</x>
-     <y>492</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>activate_programmable_coolant_3000</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1628</x>
-     <y>150</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1221</x>
-     <y>456</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>horizontal_spindle_nozzle_dist_3001</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1628</x>
-     <y>201</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1221</x>
-     <y>456</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vertical_spindle_nozzle_dist_3002</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1628</x>
-     <y>251</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1221</x>
-     <y>456</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pc_angle_offset_3003</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1628</x>
-     <y>302</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1221</x>
-     <y>456</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>spindle_zero_height_3010</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>setter_fast_fr</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>122</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>705</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>slow_probe_fr_3005</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>setter_slow_fr</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>216</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1056</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fast_probe_fr_3004</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>setter_slow_fr</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>169</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1056</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>traverse_fr_3006</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>setter_slow_fr</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>263</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1056</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_max_travel_3007</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>xyz_max_travel</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>310</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1182</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xy_max_travel_3008</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>xyz_max_travel</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1182</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>retract_distance_3009</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>setter_retract_dist</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>403</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1312</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>set_g30_1_position</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_spindle_zero</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>225</x>
-     <y>314</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>882</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_probe_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_touch_position</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>190</x>
-     <y>360</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1574</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>spindle_zero_height_3010</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>122</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>slow_probe_fr_3005</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>216</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>fast_probe_fr_3004</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>169</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>traverse_fr_3006</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>263</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_max_travel_3007</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>310</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xy_max_travel_3008</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>retract_distance_3009</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>403</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_probe_mode_3011</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>272</x>
-     <y>357</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_offset_mode_3012</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>272</x>
-     <y>403</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_direction_3013</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>179</x>
-     <y>546</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_offset_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>190</x>
-     <y>407</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1443</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_right_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>264</x>
-     <y>548</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1443</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_left_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>107</x>
-     <y>548</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1443</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_left_Btn_2</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>184</x>
-     <y>501</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1443</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_right_Btn_3</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>184</x>
-     <y>595</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1443</x>
-     <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>load_spindle_tool_number_2</sender>
-   <signal>returnPressed()</signal>
-   <receiver>load_spindle_button_2</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1486</x>
-     <y>267</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1615</x>
-     <y>268</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>rootChanged(QString)</signal>
-   <receiver>facingwidget</receiver>
-   <slot>setFilePath(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>738</x>
-     <y>304</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_tool_number_3014</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>285</x>
-     <y>250</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_slow_fr_3015</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>533</x>
-     <y>250</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_traverse_fr_3017</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>285</x>
-     <y>289</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>max_xy_distance_3018</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>285</x>
-     <y>328</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
     </hint>
    </hints>
   </connection>
@@ -43126,50 +41854,50 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>extra_probe_depth_3022</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>removabledevicecombobox</sender>
+   <signal>currentDeviceEjectable(bool)</signal>
+   <receiver>device_eject_usb_button</receiver>
+   <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>285</x>
-     <y>406</y>
+     <x>234</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>438</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>probe_fast_fr_3016</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>y_view_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>533</x>
-     <y>289</y>
+     <x>877</x>
+     <y>192</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>1177</x>
+     <y>345</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>xy_clearance_3019</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
+   <sender>tool_diameter_probe_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_touch_position</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>533</x>
-     <y>328</y>
+     <x>190</x>
+     <y>360</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>1574</x>
+     <y>85</y>
     </hint>
    </hints>
   </connection>
@@ -43182,22 +41910,6 @@ font: 11pt bebas kai;
     <hint type="sourcelabel">
      <x>533</x>
      <y>367</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>step_off_width_3023</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>533</x>
-     <y>406</y>
     </hint>
     <hint type="destinationlabel">
      <x>189</x>
@@ -43222,14 +41934,14 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_cal_width_3034</sender>
-   <signal>editingFinished()</signal>
+   <sender>probe_mode_3030</sender>
+   <signal>textChanged(QString)</signal>
    <receiver>update_probe_parameters_btn</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1460</x>
-     <y>533</y>
+     <x>1555</x>
+     <y>559</y>
     </hint>
     <hint type="destinationlabel">
      <x>189</x>
@@ -43238,66 +41950,66 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>y_cal_width_3035</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>program_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1460</x>
-     <y>601</y>
+     <x>877</x>
+     <y>417</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>1177</x>
+     <y>345</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>edge_width_3024</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
+   <sender>tool_diameter_offset_mode_3012</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1448</x>
-     <y>628</y>
+     <x>272</x>
+     <y>403</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>522</x>
+     <y>595</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>x_hint_ridge_valley_3028</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>offset_table_clear_selected_button</sender>
+   <signal>clicked()</signal>
+   <receiver>offset_table</receiver>
+   <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1253</x>
-     <y>555</y>
+     <x>175</x>
+     <y>567</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>117</x>
+     <y>473</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>y_hint_ridge_valley_3029</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>tool_table_save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1403</x>
-     <y>555</y>
+     <x>722</x>
+     <y>640</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
+     <x>130</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -43318,274 +42030,18 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_hint_boss_pocket_3026</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
+   <sender>usb_show_hide</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>frame_35</receiver>
+   <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1293</x>
-     <y>555</y>
+     <x>499</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>y_hint_boss_pocket_3027</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1409</x>
-     <y>555</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_mode_3030</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1555</x>
-     <y>559</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>wco_rotation_3031</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1555</x>
-     <y>598</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sq_cal_axis_3036</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1555</x>
-     <y>637</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>189</x>
-     <y>444</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_number_entry_tool_page</sender>
-   <signal>returnPressed()</signal>
-   <receiver>m6_tool_call_button_tool_page</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1464</x>
-     <y>370</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1522</x>
-     <y>367</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>breakage_tolerance_3037</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>450</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>user_setter_1_3038</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>497</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>user_setter_2_3039</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>522</x>
-     <y>544</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>522</x>
-     <y>595</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>copy_from_usb_2</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>doFileTransfer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>442</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>transferFileRequest(QString)</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>transferFile(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>581</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>removabledevicecombobox</sender>
-   <signal>currentDeviceEjectable(bool)</signal>
-   <receiver>device_eject_usb_button</receiver>
-   <slot>setEnabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>234</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>438</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_folder_up_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>viewParentDirectory()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>129</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_eject_usb_button</sender>
-   <signal>clicked(bool)</signal>
-   <receiver>removabledevicecombobox</receiver>
-   <slot>ejectDevice()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>438</x>
-     <y>112</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>234</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>device_rename_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable_2</receiver>
-   <slot>rename()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>258</x>
-     <y>632</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>atDeviceRoot(bool)</signal>
-   <receiver>device_folder_up_button</receiver>
-   <slot>setDisabled(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>129</x>
-     <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>transferFileRequest(QString)</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>transferFile(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>146</x>
-     <y>153</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>581</x>
-     <y>153</y>
+     <x>449</x>
+     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -43606,6 +42062,134 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
+   <sender>traverse_fr_3006</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>setter_slow_fr</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1056</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_in_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>zoomIn()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>327</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>ortho_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewOrtho()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>597</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_del_all_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>removeAll()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>92</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>143</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_diameter_probe_mode_3011</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>272</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spindle_zero_height_3010</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_folder_up_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>viewParentDirectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>595</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_clear_queue_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>clearQueue()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>100</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>238</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>removabledevicecombobox</sender>
    <signal>usbPresent(bool)</signal>
    <receiver>device_eject_usb_button</receiver>
@@ -43618,6 +42202,1190 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>438</x>
      <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>iso_view_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewP()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>102</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>offset_table_clear_all_button</sender>
+   <signal>clicked()</signal>
+   <receiver>offset_table</receiver>
+   <slot>clearOffsetTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>360</x>
+     <y>567</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>step_off_width_3023</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_cal_width_3034</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1460</x>
+     <y>533</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>perspective_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewPersp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>642</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_hint_boss_pocket_3026</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1293</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_row_up_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>moveRowItemUp()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_setter_offset_right_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_diam_offset</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>264</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1443</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>zoom_out_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>zoomOut()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>372</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>horizontal_spindle_nozzle_dist_3001</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_programmable_coolant_param</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1628</x>
+     <y>201</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1221</x>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mdiEntry</sender>
+   <signal>returnPressed()</signal>
+   <receiver>enter</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>136</x>
+     <y>663</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>109</x>
+     <y>140</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_max_travel_3007</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_delete_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>deleteSelectedTool()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>270</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_hint_boss_pocket_3027</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1409</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable</sender>
+   <signal>rootChanged(QString)</signal>
+   <receiver>facingwidget</receiver>
+   <slot>setFilePath(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>738</x>
+     <y>304</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_fast_fr_3016</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pan_button</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>vtk</receiver>
+   <slot>enable_panning(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>282</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>clear_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>clearLivePlot()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>552</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_eject_usb_button</sender>
+   <signal>clicked(bool)</signal>
+   <receiver>removabledevicecombobox</receiver>
+   <slot>ejectDevice()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>438</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>234</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>user_setter_1_3038</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>497</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>max_xy_distance_3018</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_copy_to_editor_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>copySelectionToGcodeEditor()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>103</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>320</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_setter_offset_direction_3013</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>179</x>
+     <y>546</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>sq_cal_axis_3036</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1555</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xy_max_travel_3008</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>xyz_max_travel</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1182</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edge_width_3024</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1448</x>
+     <y>628</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pc_angle_offset_3003</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_programmable_coolant_param</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1628</x>
+     <y>302</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1221</x>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_add_tool_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>addTool()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>496</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>offset_table_save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>offset_table</receiver>
+   <slot>saveOffsetTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>545</x>
+     <y>567</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>474</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable</sender>
+   <signal>transferFileRequest(QString)</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>transferFile(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable_2</sender>
+   <signal>transferFileRequest(QString)</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>transferFile(QString)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>wco_rotation_3031</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1555</x>
+     <y>598</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>extra_probe_depth_3022</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>406</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fast_probe_fr_3004</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_row_down_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>moveRowItemDown()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>81</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_setter_offset_left_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_diam_offset</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>107</x>
+     <y>548</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1443</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>linear_jog_slider</sender>
+   <signal>sliderMoved(int)</signal>
+   <receiver>anglular_jog_slider</receiver>
+   <slot>setValue(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1606</x>
+     <y>853</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1384</x>
+     <y>626</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_as_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodetextedit</receiver>
+   <slot>saveFileAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1589</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1619</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_traverse_fr_3017</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>289</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_gcode_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gcodetextedit</receiver>
+   <slot>EditorReadWrite(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1196</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1619</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_view_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewZ()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>retract_distance_3009</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>traverse_fr_3006</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>263</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>offset_table_reload_button</sender>
+   <signal>clicked()</signal>
+   <receiver>offset_table</receiver>
+   <slot>loadOffsetTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>730</x>
+     <y>567</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>492</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_cal_width_3035</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1460</x>
+     <y>601</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>user_setter_2_3039</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>544</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_slow_fr_3015</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>250</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>machine_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>462</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>fast_probe_fr_3004</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>setter_slow_fr</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>169</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1056</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_delete_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>deleteItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>677</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_reload_button</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>loadToolTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>948</x>
+     <y>640</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>130</x>
+     <y>96</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable</sender>
+   <signal>gcodeFileSelected(bool)</signal>
+   <receiver>main_load_gcode_button</receiver>
+   <slot>setEnabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1027</x>
+     <y>112</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_rename_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>rename()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1025</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>load_spindle_tool_number_2</sender>
+   <signal>returnPressed()</signal>
+   <receiver>load_spindle_button_2</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1486</x>
+     <y>267</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1615</x>
+     <y>268</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_run_from_line_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>runFromSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>163</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_setter_offset_right_Btn_3</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_diam_offset</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>184</x>
+     <y>595</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1443</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>z_max_travel_3007</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>xyz_max_travel</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>310</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1182</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_new_file_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>newFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>788</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copy_to_usb_2</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>doFileTransfer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>576</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>581</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_pause_mdi</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>mdihistory</receiver>
+   <slot>toggleQueue(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>108</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>306</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_folder_up_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>viewParentDirectory()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>129</x>
+     <y>80</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>device_rename_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>rename()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>258</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xy_max_travel_3008</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>357</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>retract_distance_3009</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>setter_retract_dist</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>403</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1312</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>filesystemtable_2</sender>
+   <signal>atDeviceRoot(bool)</signal>
+   <receiver>device_folder_up_button</receiver>
+   <slot>setDisabled(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>129</x>
+     <y>80</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>mdi_page</sender>
+   <signal>clicked()</signal>
+   <receiver>mdiEntry</receiver>
+   <slot>setFocus()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>772</x>
+     <y>664</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>136</x>
+     <y>663</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>btn_del_history_row_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>removeSelectedItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>83</x>
+     <y>112</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>114</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copy_from_usb_2</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable_2</receiver>
+   <slot>doFileTransfer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>442</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>146</x>
+     <y>153</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>enter</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>submit()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>109</x>
+     <y>140</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>385</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>slow_probe_fr_3005</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>216</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>spindle_zero_height_3010</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>setter_fast_fr</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>122</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>705</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_number_entry_tool_page</sender>
+   <signal>returnPressed()</signal>
+   <receiver>m6_tool_call_button_tool_page</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1464</x>
+     <y>370</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1522</x>
+     <y>367</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_setter_offset_left_Btn_2</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_diam_offset</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>184</x>
+     <y>501</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1443</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>find_replace_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodetextedit</receiver>
+   <slot>findDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1327</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1619</x>
+     <y>587</y>
     </hint>
    </hints>
   </connection>
@@ -43638,18 +43406,194 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>usb_show_hide</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>frame_35</receiver>
-   <slot>setHidden(bool)</slot>
+   <sender>btn_run_selection_mdi</sender>
+   <signal>clicked()</signal>
+   <receiver>mdihistory</receiver>
+   <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>499</x>
-     <y>95</y>
+     <x>93</x>
+     <y>122</y>
     </hint>
     <hint type="destinationlabel">
-     <x>449</x>
-     <y>84</y>
+     <x>259</x>
+     <y>52</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>xy_clearance_3019</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>533</x>
+     <y>328</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>breakage_tolerance_3037</sender>
+   <signal>cursorPositionChanged(int,int)</signal>
+   <receiver>update_tool_setter_params</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>522</x>
+     <y>450</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>522</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>path_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewPath()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>507</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>set_g30_1_position</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_spindle_zero</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>225</x>
+     <y>314</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>882</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>y_hint_ridge_valley_3029</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1403</x>
+     <y>555</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_diameter_offset_Btn</sender>
+   <signal>clicked()</signal>
+   <receiver>setter_diam_offset</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>190</x>
+     <y>407</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1443</x>
+     <y>85</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodetextedit</receiver>
+   <slot>saveFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1458</x>
+     <y>632</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1619</x>
+     <y>410</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>probe_tool_number_3014</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_probe_parameters_btn</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>285</x>
+     <y>250</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>189</x>
+     <y>444</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>vertical_spindle_nozzle_dist_3002</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_programmable_coolant_param</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1628</x>
+     <y>251</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1221</x>
+     <y>456</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>x_view_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtk</receiver>
+   <slot>setViewX()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>877</x>
+     <y>147</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1177</x>
+     <y>345</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>activate_programmable_coolant_3000</sender>
+   <signal>editingFinished()</signal>
+   <receiver>update_programmable_coolant_param</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1628</x>
+     <y>150</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1221</x>
+     <y>456</y>
     </hint>
    </hints>
   </connection>
@@ -43672,18 +43616,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
  </buttongroups>
 </ui>
