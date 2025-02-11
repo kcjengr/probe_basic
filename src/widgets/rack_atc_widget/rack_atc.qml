@@ -8,20 +8,28 @@ Rectangle {
     visible: true
     color: bg_color
     width: widget_width
-    height: 120
+    height: 129  // Set to exact image height
     z: 0
 
+    // Image dimension properties
+    property int imageWidth: 115
+    property int imageHeight: 129
+    property int spacing: 5
+    property real widget_width: 1650
+    property real exactWidth: imageWidth  // Use actual image width
+    property real availableSpace: widget_width - (imageWidth * pocket_slots)
+    property real calculatedSpacing: availableSpace / (pocket_slots - 1)
 
     Repeater {
         id: pocket_slot
-        model: pocket_slots
+        model: pocket_slots    // This determines how many items are created
 
         delegate: Item {
 
             id: pocket_item
 
             property string pocket_num: index+1
-//            property var anim: pocket_anim
+            // ...existing code...
 
             Image {
                 id: fork_image
@@ -31,10 +39,11 @@ Rectangle {
 
                 fillMode: Image.PreserveAspectFit
 
-                width: (main_rectangle.width/pocket_slots) -4
-                height: 120
+                width: imageWidth
+                height: imageHeight
 
-                x: (index * width) +2
+                // Simple centering calculation
+                x: index * (imageWidth + calculatedSpacing)
                 transformOrigin: Item.Center
                 verticalAlignment: Text.AlignVCenter
                 horizontalAlignment: Text.AlignHCenter
@@ -44,24 +53,19 @@ Rectangle {
 
                     id: pocket_rectangle
                     opacity: 1
-
                     width: 36
                     height: 28
-
     //                    radius: tool_diam/2
-                    color: "white"
-                    border.color: "black"
-
+                    color: "transparent"
+                    border.color: "transparent"
                     x: parent.width / 2 - width / 2
-                    y: parent.height / 2 - height / 2 + 24
-
-
+                    y: parent.height / 2 - height / 2 + 40
                     transformOrigin: Item.Center
-
                     border.width: 1
                     z: 2
                     Text {
                         id: pocket_text
+                        color: "white"
                         text: "P" + pocket_num
                         font.family: "Bebas Kai"
                         font.bold: true
@@ -70,8 +74,7 @@ Rectangle {
                         //transformOrigin: Item.Center
                         //verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
-                        font.pixelSize: 24
-
+                        font.pixelSize: 24  // Fixed size instead of scaled
                         z: 3
                     }
 //                rotation: 360/pocket_slots * index + 90
@@ -158,11 +161,10 @@ Rectangle {
     }
 
     // carousel size
-    property int widget_width: 1024
-    property int widget_height: 120
+    property int widget_height: 129
 
     // color properties
-    property color bg_color: "grey"
+    property color bg_color: "#929695"
 
     // Animation Properties
     property int anim_from: 0;
@@ -223,7 +225,7 @@ Rectangle {
 //    }
 
     Connections {
-        target: atc_rack;
+        target: rackatc;
 
         function onAtcInitSig(pockets, step_duration) {
             rotation_duration = step_duration;
@@ -277,10 +279,11 @@ Rectangle {
         }
 
         function onResizeSig(width, height) {
-            widget_width = width;
-            widget_height = height;
-            pocket_position = width - ((width/2) * 0.5);
-            tool_diam = width/ 7.85;
+            widget_width = width  // This will propagate through the single width binding
+            widget_height = height
+            // Recalculate spacing when width changes
+            availableSpace = widget_width - (imageWidth * pocket_slots)
+            calculatedSpacing = availableSpace / (pocket_slots - 1)
         }
 
         function onBgColorSig(color) {
