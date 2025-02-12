@@ -1,0 +1,82 @@
+# example of a machine specific settings
+windows:
+  mainwindow:
+    kwargs:
+      confirm_exit: false
+
+data_plugins:
+  tooltable:
+    provider: qtpyvcp.plugins.tool_table:ToolTable
+    kwargs:
+      columns: TZDR
+
+  offsettable:
+    provider: qtpyvcp.plugins.offset_table:OffsetTable
+    kwargs:
+      columns: "XYZR"
+
+settings:
+
+  # VTK backplot view settings
+
+  backplot.show-grid:
+    default_value: false
+
+  backplot.show-program-bounds:
+    default_value: false
+
+  backplot.show-program-labels:
+    default_value: false
+
+  backplot.show-program-ticks:
+    default_value: false
+
+  backplot.show-machine-bounds:
+    default_value: false
+
+  backplot.show-machine-labels:
+    default_value: false
+
+  backplot.show-machine-ticks:
+    default_value: false
+
+  backplot.perspective-view:
+    default_value: false
+
+  backplot.multitool-colors:
+    default_value: True
+
+  rack-atc-setup.user-param-1:
+    description: user param label name
+    default_value: user param 1 
+    persistent: true
+
+  rack-atc-setup.user-param-2:
+    description: user param label name
+    default_value: user param 2
+    persistent: true
+
+  rack-atc-setup.user-param-3:
+    description: user param label name
+    default_value: user param 3
+    persistent: true
+
+  rack-atc-setup.user-param-4:
+    description: user param label name
+    default_value: user param 4
+    persistent: true
+
+  rack-atc-setup.user-param-5:
+    description: user param label name
+    default_value: user param 5
+    persistent: true
+
+  tool-setter-probe.user-param-name-1:
+    description: tool setter user param 1
+    default_value: user param 1
+    persistent: true
+
+  tool-setter-probe.user-param-name-2:
+    description: tool setter user param 2
+    default_value: user param 2
+    persistent: true
