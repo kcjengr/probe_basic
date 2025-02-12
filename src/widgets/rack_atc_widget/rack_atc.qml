@@ -29,7 +29,6 @@ Rectangle {
             id: pocket_item
 
             property string pocket_num: index+1
-            // ...existing code...
 
             Image {
                 id: fork_image
@@ -55,7 +54,6 @@ Rectangle {
                     opacity: 1
                     width: 36
                     height: 28
-    //                    radius: tool_diam/2
                     color: "transparent"
                     border.color: "transparent"
                     x: parent.width / 2 - width / 2
@@ -71,18 +69,15 @@ Rectangle {
                         font.bold: true
                         x: parent.width / 2 - width / 2
                         y: parent.height / 2 - height / 2
-                        //transformOrigin: Item.Center
-                        //verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
                         font.pixelSize: 24  // Fixed size instead of scaled
                         z: 3
                     }
-//                rotation: 360/pocket_slots * index + 90
                 }
 
             }
         }
-	}
+    }
     Repeater {
         id: tool_slot
         model: pocket_slots
@@ -158,18 +153,30 @@ Rectangle {
     property int prev_pocket: 1;
 
     Connections {
-        target: qml_rack_widget;
+        target: rack_atc;
 
         function onAtcInitSig(pockets) {
+            pocket_slots = pockets
+            console.log(pockets)
         }
 
-        function onResizeSig(width, height) {
-            widget_width = width  // This will propagate through the single width binding
-            widget_height = height
-            // Recalculate spacing when width changes
-            availableSpace = widget_width - (imageWidth * pocket_slots)
-            calculatedSpacing = availableSpace / (pocket_slots - 1)
+        function onHideToolSig(pocket) {
+            tool_slot.itemAt(pocket - 1).state = "hidden";
         }
+
+        function onShowToolSig(pocket, tool_num) {
+            tool_slot.itemAt(pocket - 1).tool_num = tool_num;
+            tool_slot.itemAt(pocket - 1).state = "visible";
+        }
+
+
+//        function onResizeSig(width, height) {
+//            widget_width = width  // This will propagate through the single width binding
+//            widget_height = height
+//            // Recalculate spacing when width changes
+//            availableSpace = widget_width - (imageWidth * pocket_slots)
+//            calculatedSpacing = availableSpace / (pocket_slots - 1)
+//        }
 
         function onBgColorSig(color) {
             bg_color = color;

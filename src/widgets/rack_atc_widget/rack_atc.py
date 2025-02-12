@@ -27,16 +27,15 @@ WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
 class RackATC(QQuickWidget):
-    atcInitSig = Signal(int, int, arguments=['pockets', 'step_duration'])
+    atcInitSig = Signal(int, arguments=['pockets'])
     
     resizeSig = Signal(int, int, arguments=["width", "height"])
     
-    rotateSig = Signal(int, int, arguments=['steps', 'direction'])
-
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
     hideToolSig = Signal(float, arguments=['pocket'])
 
     bgColorSig = Signal(QColor, arguments=["color"])
+
     homeMsgSig = Signal(str, arguments=["message"])
 
     def __init__(self, parent=None):
@@ -52,7 +51,7 @@ class RackATC(QQuickWidget):
         self.pocket_slots = int(INIFILE.find("ATC", "POCKETS") or 12)
         self.rotaion_duration = int(INIFILE.find("ATC", "STEP_TIME") or 1000)
         
-        self.engine().rootContext().setContextProperty("atc_rack", self)
+        self.engine().rootContext().setContextProperty("rack_atc", self)
         qml_path = os.path.join(WIDGET_PATH, "rack_atc.qml")
         url = QUrl.fromLocalFile(qml_path)
 
@@ -63,14 +62,17 @@ class RackATC(QQuickWidget):
         self.pockets = dict()
         self.tools = None
 
-        self.atcInitSig.emit(self.pocket_slots, self.rotaion_duration)
-        
+        self.atcInitSig.emit(self.pocket_slots)
+
+#        for i in range(12):
+#            self.showToolSig.emit(i+1, 13)
+
         if not IN_DESIGNER:
             for pocket in range(1, self.pocket_slots+1):
                 self.hideToolSig.emit(pocket)
      
     def resizeEvent(self, event):
-        self.resizeSig.emit(self.maximumWidth(), self.maximumHeight())
+        # self.resizeSig.emit(self.maximumWidth(), self.maximumHeight())
         super().resizeEvent(event)
 
     @Property(QColor)
@@ -105,11 +107,3 @@ class RackATC(QQuickWidget):
             # print("Hide tool at pocket {}".format(pocket))
             self.hideToolSig.emit(pocket)
 
-    def atc_message(self, msg=""):
-        self.homeMsgSig.emit(msg)
-
-    def rotate(self, steps, direction):
-        if direction == "cw":
-            self.rotateSig.emit(int(steps), 1)
-        elif direction == "ccw":
-            self.rotateSig.emit(int(steps), -1)
