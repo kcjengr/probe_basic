@@ -45,10 +45,17 @@ o<rack_id_calc> sub
   #<rack_id> = 0
   #<temp> = 0
 
+  (Pull ini pocket count and write to ui)
+  o100 if [EXISTS[#<_ini[atc]pockets>]]
+    #<number_of_pockets> = #<_ini[atc]pockets>
+    #3973 = #<number_of_pockets>
+    (DEBUG, EVAL[vcp.getWidget{"rack_pocket_count"}.setValue{#3973}])
+  o100 endif
+
   (Check for duplicate pocket positions)
   o110 if [#<rack_pocket_1_x_3983> EQ #<rack_pocket_2_x_3985>]
     o111 if [#<rack_pocket_1_y_3984> EQ #<rack_pocket_2_y_3986>]
-      (MSG, "Error: Duplicate pocket positions detected!")
+      (PRINT, "Error: Duplicate pocket positions detected!")
       #3979 = 0
       (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
       o<rack_id_calc> return
@@ -57,7 +64,7 @@ o<rack_id_calc> sub
 
   (Check if row is parallel to the Y-axis)
   o120 if [#<rack_pocket_1_x_3983> EQ #<rack_pocket_2_x_3985>]
-    (MSG, "Row is parallel to Y-axis")
+    (PRINT, "Row is parallel to Y-axis")
 
     (Determine pocket order)
     o121 if [#<rack_pocket_2_y_3986> GT #<rack_pocket_1_y_3984>]
@@ -72,7 +79,7 @@ o<rack_id_calc> sub
     o122 elseif [#<pocket_1_x_clearance_3987> LT #<rack_pocket_1_x_3983>]
       #<clearance_direction> = 2 (-X)
     o122 else
-      (MSG, "Error: Clearance direction must be perpendicular to pocket row!")
+      (PRINT, "Error: Clearance direction must be perpendicular to pocket row!")
       #3979 = 0
       (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
       o<rack_id_calc> return
@@ -90,7 +97,7 @@ o<rack_id_calc> sub
 
   (Check if row is parallel to the X-axis)
   o130 if [#<rack_pocket_1_y_3984> EQ #<rack_pocket_2_y_3986>]
-    (MSG, "Row is parallel to X-axis")
+    (PRINT, "Row is parallel to X-axis")
 
     (Determine pocket order)
     o131 if [#<rack_pocket_2_x_3985> GT #<rack_pocket_1_x_3983>]
@@ -105,7 +112,7 @@ o<rack_id_calc> sub
     o132 elseif [#<pocket_1_y_clearance_3988> LT #<rack_pocket_1_y_3984>]
       #<clearance_direction> = 2 (-Y)
     o132 else
-      (MSG, "Error: Clearance direction must be perpendicular to pocket row!")
+      (PRINT, "Error: Clearance direction must be perpendicular to pocket row!")
       #3979 = 0
       (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
       o<rack_id_calc> return
