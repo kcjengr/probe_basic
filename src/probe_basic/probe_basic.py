@@ -163,8 +163,43 @@ class ProbeBasic(VCPMainWindow):
                 
                 self.rack_atc[module_name] = self.rack_atc_modules[module_name].RackAtc()
                 
-                self.atc_layout.addWidget( self.rack_atc[module_name])
-    
+                self.atc_layout.addWidget(self.rack_atc[module_name])
+                
+                # Load user ATC buttons after loading the rack ATC
+                if hasattr(self.rack_atc[module_name], 'user_atc_buttons_layout'):
+                    self.load_user_atc_buttons(self.rack_atc[module_name].user_atc_buttons_layout)
+                else:
+                    LOG.warning(f"user_atc_buttons_layout not found in {module_name}. Unable to add ATC buttons.")
+
+    def load_user_atc_buttons(self, layout):
+        self.user_atc_button_modules = {}
+        self.user_atc_buttons = {}
+        
+        user_atc_buttons_paths = INIFILE.findall("DISPLAY", "USER_ATC_BUTTONS_PATH")
+
+        for user_atc_buttons_path in user_atc_buttons_paths:
+            user_atc_button_path = os.path.expanduser(user_atc_buttons_path)
+            if not os.path.exists(user_atc_button_path):
+                LOG.warning(f"User ATC buttons path does not exist: {user_atc_button_path}")
+                continue
+            
+            user_atc_button_folders = os.listdir(user_atc_button_path)
+            for user_atc_button in user_atc_button_folders:
+                button_dir = os.path.join(user_atc_button_path, user_atc_button)
+                if not os.path.isdir(button_dir):
+                    continue
+                
+                module_name = f"user_atc_buttons.{os.path.basename(user_atc_button_path)}.{user_atc_button}"
+                module_file = os.path.join(button_dir, f"{user_atc_button}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
+                self.user_atc_button_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.user_atc_button_modules[module_name]
+                spec.loader.exec_module(self.user_atc_button_modules[module_name])
+                
+                self.user_atc_buttons[module_name] = self.user_atc_button_modules[module_name].UserAtcButton()
+                
+                layout.addWidget(self.user_atc_buttons[module_name])
+
     def load_user_buttons(self):
         self.user_button_modules = {}
         self.user_buttons = {}
