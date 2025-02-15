@@ -134,7 +134,13 @@ class ProbeBasic(VCPMainWindow):
                 
                 self.atc[module_name] = self.atc_modules[module_name].Atc()
                 
-                self.atc_layout.addWidget( self.atc[module_name])
+                self.atc_layout.addWidget(self.atc[module_name])
+
+                # Load user ATC buttons after loading the ATC
+                if hasattr(self.atc[module_name], 'user_atc_buttons_layout'):
+                    self.load_user_atc_buttons(self.atc[module_name].user_atc_buttons_layout)
+                else:
+                    LOG.warning(f"user_atc_buttons_layout not found in {module_name}. Unable to add ATC buttons.")
 
     def load_rack_atc(self):
         self.rack_atc_modules = {}
