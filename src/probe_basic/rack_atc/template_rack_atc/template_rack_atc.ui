@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1521</width>
-    <height>651</height>
+    <height>609</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -101,13 +101,19 @@ QTabBar::tab:only-one {
         <number>40</number>
        </property>
        <property name="bottomMargin">
-        <number>20</number>
+        <number>10</number>
        </property>
        <item>
         <widget class="QWidget" name="widget_5" native="true">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+           <horstretch>0</horstretch>
+           <verstretch>1</verstretch>
+          </sizepolicy>
+         </property>
          <layout class="QVBoxLayout" name="verticalLayout">
           <property name="spacing">
-           <number>10</number>
+           <number>20</number>
           </property>
           <property name="leftMargin">
            <number>0</number>
@@ -123,6 +129,18 @@ QTabBar::tab:only-one {
           </property>
           <item>
            <widget class="QWidget" name="widget" native="true">
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+              <horstretch>0</horstretch>
+              <verstretch>1</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="minimumSize">
+             <size>
+              <width>0</width>
+              <height>450</height>
+             </size>
+            </property>
             <layout class="QHBoxLayout" name="horizontalLayout_2">
              <property name="spacing">
               <number>40</number>
@@ -1742,56 +1760,29 @@ QPushButton:checked {
            </widget>
           </item>
           <item>
-           <widget class="QWidget" name="qml_rack_widget" native="true">
-            <property name="sizePolicy">
-             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-              <horstretch>1</horstretch>
-              <verstretch>0</verstretch>
-             </sizepolicy>
-            </property>
+           <widget class="RackATC" name="rackatc">
             <property name="minimumSize">
              <size>
               <width>0</width>
-              <height>150</height>
+              <height>129</height>
              </size>
             </property>
             <property name="maximumSize">
              <size>
               <width>16777215</width>
-              <height>150</height>
+              <height>129</height>
              </size>
             </property>
-            <layout class="QVBoxLayout" name="verticalLayout_9" stretch="0">
-             <property name="spacing">
-              <number>0</number>
-             </property>
-             <property name="leftMargin">
-              <number>0</number>
-             </property>
-             <property name="topMargin">
-              <number>20</number>
-             </property>
-             <property name="rightMargin">
-              <number>0</number>
-             </property>
-             <property name="bottomMargin">
-              <number>1</number>
-             </property>
-             <item>
-              <widget class="RackATC" name="rackatc">
-               <property name="resizeMode">
-                <enum>QQuickWidget::SizeRootObjectToView</enum>
-               </property>
-               <property name="backgroundColor" stdset="0">
-                <color>
-                 <red>146</red>
-                 <green>150</green>
-                 <blue>149</blue>
-                </color>
-               </property>
-              </widget>
-             </item>
-            </layout>
+            <property name="resizeMode">
+             <enum>QQuickWidget::SizeRootObjectToView</enum>
+            </property>
+            <property name="backgroundColor" stdset="0">
+             <color>
+              <red>146</red>
+              <green>150</green>
+              <blue>149</blue>
+             </color>
+            </property>
            </widget>
           </item>
          </layout>
@@ -4185,6 +4176,7 @@ color: white;</string>
   </customwidget>
  </customwidgets>
  <resources>
+  <include location="../../probe_basic.qrc"/>
   <include location="../../probe_basic.qrc"/>
  </resources>
  <connections>

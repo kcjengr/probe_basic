@@ -58,6 +58,7 @@ Rectangle {
     Item {
         id: container
         anchors.fill: parent
+        height: parent.height * scaleToFit  // Scale container height with images
 
         // Fixed dimensions
         property real imageSpace: imageWidth
@@ -75,6 +76,7 @@ Rectangle {
             console.log("Item width:", scaledWidth)
             console.log("Space between:", spaceBetween)
             console.log("Total used:", (scaledWidth * pocket_slots) + (spaceBetween * (pocket_slots - 1)))
+            console.log("Container height:", height)
         }
 
         // Fork images
@@ -92,8 +94,9 @@ Rectangle {
                     height: imageHeight
                     scale: container.scaleToFit
 
-                    // Position each item with exact spacing
+                    // Position each item with exact spacing and align to bottom
                     x: index * (container.scaledWidth + container.spaceBetween)
+                    y: parent.parent.height - (height * scale)  // Align to bottom
                     transformOrigin: Item.TopLeft
 
                     Rectangle {
@@ -113,13 +116,13 @@ Rectangle {
                         Text {
                             id: pocket_text
                             color: "white"
-                            text: "P" + parent.parent.parent.pocket_num  // Fix pocket number reference
+                            text: pocket_slots > 24 ? parent.parent.parent.pocket_num : "P" + parent.parent.parent.pocket_num  // Conditional P prefix
                             font.family: "Bebas Kai"
-                            font.bold: true
+                            font.bold: true 
                             x: parent.width / 2 - width / 2
                             y: parent.height / 2 - height / 2
                             horizontalAlignment: Text.AlignHCenter
-                            font.pixelSize: 22  // Fixed size instead of scaled
+                            font.pixelSize: pocket_slots > 24 ? 20 : 22  // Size adjustment stays the same
                             z: 3
                         }
                     }
@@ -136,7 +139,7 @@ Rectangle {
                 
                 // Position using same calculation as fork images
                 x: index * (container.scaledWidth + container.spaceBetween)
-                y: 0
+                y: parent.height - (imageHeight * container.scaleToFit)  // Match fork image bottom alignment
                 width: container.scaledWidth
                 height: imageHeight * container.scaleToFit
                 
@@ -166,10 +169,10 @@ Rectangle {
                     Text {
                         id: tool_text
                         anchors.centerIn: parent
-                        text: "T" + tool_item.tool_num
+                        text: tool_item.tool_num  // Remove T prefix
                         font.family: "Bebas Kai"
                         font.bold: false
-                        font.pixelSize: 22
+                        font.pixelSize: pocket_slots > 24 ? 20 : 22  // Size adjustment stays the same
                     }
                 }
 
