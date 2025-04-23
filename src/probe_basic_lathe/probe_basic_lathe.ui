@@ -31850,7 +31850,7 @@ border-radius: 1px;
                <string>REF ALL</string>
               </property>
               <property name="rules" stdset="0">
-               <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:homed?anum=0&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:homed?anum=1&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] and ch[1] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}]</string>
+               <string>[{&quot;name&quot;: &quot;reference_all&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}]}]</string>
               </property>
               <property name="actionName" stdset="0">
                <string>machine.home.all</string>
@@ -32121,6 +32121,9 @@ DROLabel[style=&quot;homing&quot;]{
               </property>
               <property name="text">
                <string>REF X</string>
+              </property>
+              <property name="rules" stdset="0">
+               <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}]}]</string>
               </property>
               <property name="actionName" stdset="0">
                <string>machine.home.axis:x</string>
@@ -32405,6 +32408,9 @@ DROLabel[style=&quot;homing&quot;]{
               </property>
               <property name="text">
                <string>REF Z</string>
+              </property>
+              <property name="rules" stdset="0">
+               <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}]}]</string>
               </property>
               <property name="actionName" stdset="0">
                <string>machine.home.axis:z</string>
@@ -35694,11 +35700,11 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="diamradbtngroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="diamradbtngroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

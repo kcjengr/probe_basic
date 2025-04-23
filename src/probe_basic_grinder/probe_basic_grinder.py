@@ -28,7 +28,6 @@ class ProbeBasicGrinder(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasicGrinder, self).__init__(*args, **kwargs)
-        self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.feed_unit_per_minute = 0.0
         self.feed_per_rev = 0.0
         self.css_sword = 0.0
@@ -117,14 +116,6 @@ class ProbeBasicGrinder(VCPMainWindow):
             self.use_tcp_mode.setText('1')
         else:
             self.use_tcp_mode.setText('0')
-
-    def on_run_from_line_Btn_clicked(self):
-        try:
-            lineNum = int(self.run_from_line_Num.text())
-        except:
-            return False
-
-        actions.program_actions.run(lineNum)
 
     @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
