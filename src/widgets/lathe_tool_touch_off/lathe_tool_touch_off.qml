@@ -685,9 +685,7 @@ Rectangle {
 
     Connections {
         target: handler
-
-        onToolResetSig: {
-
+		function onToolResetSig() {
             for (var i = 0; i < 5; i++){
                 upper_tools.itemAt(i).state = "released"
                 lower_tools.itemAt(i).state = "released"
@@ -701,7 +699,7 @@ Rectangle {
             vertical_dimensions.visible = false
         }
 
-        onToolActiveImageSig: {
+        function onToolActiveImageSig(group, index) {
             var tool_options = false
 
             if (group === "lower"){
