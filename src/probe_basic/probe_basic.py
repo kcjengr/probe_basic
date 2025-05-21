@@ -10,6 +10,8 @@ import linuxcnc
 from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
+from qtpy.QtWidgets import QWidget
+from qtpy import uic
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
@@ -55,6 +57,8 @@ class ProbeBasic(VCPMainWindow):
         self.load_user_buttons()
 
         self.load_user_dros()
+
+        self.load_offset_dro()
 
     def load_user_buttons(self):
         self.user_button_modules = {}
@@ -105,7 +109,32 @@ class ProbeBasic(VCPMainWindow):
                     self.user_dros[module_name] = module.UserDRO()
                     self.dro_display_layout.addWidget(self.user_dros[module_name])
                 return  # Only load one DRO, then exit
-               
+
+    def load_offset_dro(self):
+        # Clear any existing widgets from the layout
+        while self.offset_dro_layout.count():
+            child = self.offset_dro_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
+
+        dro_type = INIFILE.find("DISPLAY", "DRO_DISPLAY")
+        if not dro_type:
+            LOG.warning("No DRO_DISPLAY specified in INI.")
+            return
+
+        user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
+
+        for user_dros_path in user_dros_paths:
+            user_dros_path = os.path.expanduser(user_dros_path)
+            dro_folder = f"{dro_type}_dros"
+            offset_ui_file = f"offset_dros_{dro_type}.ui"
+            offset_ui_path = os.path.join(user_dros_path, dro_folder, offset_ui_file)
+            if os.path.isfile(offset_ui_path):
+                offset_widget = QWidget()
+                uic.loadUi(offset_ui_path, offset_widget)
+                self.offset_dro_layout.addWidget(offset_widget)
+                return  # Only load one offset DRO, then exit
+
     def load_user_tabs(self):
         self.user_tab_modules = {}
         self.user_tabs = {}
