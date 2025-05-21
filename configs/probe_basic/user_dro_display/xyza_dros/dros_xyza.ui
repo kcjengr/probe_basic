@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>461</width>
-    <height>274</height>
+    <width>469</width>
+    <height>272</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -74,7 +74,7 @@
          <number>1</number>
         </property>
         <item>
-         <widget class="QFrame" name="frame_43">
+         <widget class="QFrame" name="frame">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -120,7 +120,7 @@
             <number>20</number>
            </property>
            <item>
-            <widget class="StatusLabel" name="statuslabel_23">
+            <widget class="StatusLabel" name="axis_column_header">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -159,7 +159,7 @@
             </widget>
            </item>
            <item>
-            <widget class="StatusLabel" name="statuslabel_24">
+            <widget class="StatusLabel" name="work_column_header">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -194,7 +194,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="work_column_header_9">
+            <widget class="QLabel" name="machine_column_header">
              <property name="enabled">
               <bool>false</bool>
              </property>
@@ -231,7 +231,7 @@
             </widget>
            </item>
            <item>
-            <widget class="QLabel" name="dtg_column_header_4">
+            <widget class="QLabel" name="dtg_column_header">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -265,7 +265,7 @@
             </widget>
            </item>
            <item>
-            <widget class="StatusLabel" name="statuslabel_25">
+            <widget class="StatusLabel" name="ref_column_header">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -308,7 +308,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="x_axis_dro_layout_2">
+       <layout class="QHBoxLayout" name="x_axis_dro_layout_3">
         <property name="spacing">
          <number>7</number>
         </property>
@@ -325,7 +325,7 @@
          <number>1</number>
         </property>
         <item>
-         <widget class="MDIButton" name="zero_x_button_4">
+         <widget class="MDIButton" name="zero_x_button">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -393,7 +393,7 @@
          </widget>
         </item>
         <item>
-         <widget class="DROLineEdit" name="drowidget_4">
+         <widget class="DROLineEdit" name="drowidget_x">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -430,13 +430,37 @@
     font: 17pt &quot;Bebas Kai&quot;;
 }</string>
           </property>
+          <property name="text">
+           <string>     0.000</string>
+          </property>
+          <property name="cursorPosition">
+           <number>10</number>
+          </property>
           <property name="alignment">
            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+          </property>
+          <property name="referenceType" stdset="0">
+           <number>1</number>
+          </property>
+          <property name="axisNumber" stdset="0">
+           <number>0</number>
+          </property>
+          <property name="inchFormat" stdset="0">
+           <string>%9.4f</string>
+          </property>
+          <property name="millimeterFormat" stdset="0">
+           <string>%10.3f</string>
+          </property>
+          <property name="degreeFormat" stdset="0">
+           <string>%10.2f</string>
+          </property>
+          <property name="latheMode" stdset="0">
+           <number>0</number>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_7">
+         <widget class="DROLabel" name="drolabel_machine_x">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -499,7 +523,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_8">
+         <widget class="DROLabel" name="drolabel_dtg_x">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -554,7 +578,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="ActionButton" name="ref_x_button_1">
+         <widget class="ActionButton" name="ref_x_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -585,7 +609,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF X</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.axis:x</string>
@@ -595,7 +619,7 @@ QLabel[style=&quot;homing&quot;]{
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="y_axis_dro_layout_2">
+       <layout class="QHBoxLayout" name="y_axis_dro_layout_3">
         <property name="spacing">
          <number>7</number>
         </property>
@@ -612,7 +636,7 @@ QLabel[style=&quot;homing&quot;]{
          <number>1</number>
         </property>
         <item>
-         <widget class="MDIButton" name="zero_y_button_4">
+         <widget class="MDIButton" name="zero_y_button">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -677,7 +701,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLineEdit" name="drowidget_5">
+         <widget class="DROLineEdit" name="drowidget_y">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -723,7 +747,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_9">
+         <widget class="DROLabel" name="drolabel_machine_y">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -786,7 +810,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_10">
+         <widget class="DROLabel" name="drolabel_dtg_y">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -841,7 +865,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="ActionButton" name="ref_y_button_1">
+         <widget class="ActionButton" name="ref_y_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -872,7 +896,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF Y</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.axis:y</string>
@@ -882,7 +906,7 @@ QLabel[style=&quot;homing&quot;]{
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="z_axis_dro_layout_2">
+       <layout class="QHBoxLayout" name="z_axis_dro_layout_3">
         <property name="spacing">
          <number>7</number>
         </property>
@@ -899,7 +923,7 @@ QLabel[style=&quot;homing&quot;]{
          <number>1</number>
         </property>
         <item>
-         <widget class="MDIButton" name="zero_z_button_4">
+         <widget class="MDIButton" name="zero_z_button">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -964,7 +988,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLineEdit" name="drowidget_6">
+         <widget class="DROLineEdit" name="drowidget_z">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -1010,7 +1034,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_11">
+         <widget class="DROLabel" name="drolabel_machine_z">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1073,7 +1097,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_12">
+         <widget class="DROLabel" name="drolabel_dtg_z">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1128,7 +1152,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="ActionButton" name="ref_z_button_1">
+         <widget class="ActionButton" name="ref_z_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1159,7 +1183,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF Z</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.axis:z</string>
@@ -1186,7 +1210,7 @@ QLabel[style=&quot;homing&quot;]{
          <number>1</number>
         </property>
         <item>
-         <widget class="MDIButton" name="zero_a_button_4">
+         <widget class="MDIButton" name="zero_a_button">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1250,7 +1274,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLineEdit" name="drowidget_7">
+         <widget class="DROLineEdit" name="drowidget_a">
           <property name="minimumSize">
            <size>
             <width>100</width>
@@ -1296,7 +1320,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_13">
+         <widget class="DROLabel" name="drolabel_machine_a">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1359,7 +1383,7 @@ QLabel[style=&quot;homing&quot;]{
          </widget>
         </item>
         <item>
-         <widget class="DROLabel" name="drolabel_14">
+         <widget class="DROLabel" name="drolabel_dtg_a">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
             <horstretch>0</horstretch>
@@ -1455,7 +1479,7 @@ QLabel[style=&quot;homing&quot;]{
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_140">
+       <layout class="QHBoxLayout" name="horizontalLayout_104">
         <property name="spacing">
          <number>20</number>
         </property>
@@ -1463,7 +1487,7 @@ QLabel[style=&quot;homing&quot;]{
          <number>3</number>
         </property>
         <property name="topMargin">
-         <number>3</number>
+         <number>1</number>
         </property>
         <property name="rightMargin">
          <number>3</number>
@@ -1472,7 +1496,7 @@ QLabel[style=&quot;homing&quot;]{
          <number>1</number>
         </property>
         <item>
-         <widget class="MDIButton" name="zero_all_button_5">
+         <widget class="MDIButton" name="zero_all_button">
           <property name="enabled">
            <bool>false</bool>
           </property>
@@ -1531,12 +1555,12 @@ QLabel[style=&quot;homing&quot;]{
 ]</string>
           </property>
           <property name="MDICommand" stdset="0">
-           <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0 A0.0</string>
+           <string>G10 L20 P{ch[0]} X0.0 Y0.0 Z0.0</string>
           </property>
          </widget>
         </item>
         <item>
-         <widget class="ActionButton" name="ref_all_button_1">
+         <widget class="ActionButton" name="ref_all_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -1567,7 +1591,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF ALL</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.all</string>
