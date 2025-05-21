@@ -54,6 +54,8 @@ class ProbeBasic(VCPMainWindow):
         
         self.load_user_buttons()
 
+        self.load_user_dros()
+
     def load_user_buttons(self):
         self.user_button_modules = {}
         self.user_buttons = {}
@@ -75,6 +77,34 @@ class ProbeBasic(VCPMainWindow):
                 self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
                 
                 self.user_buttons_layout.addWidget( self.user_buttons[module_name])
+
+    def load_user_dros(self):
+        self.user_dros_modules = {}
+        self.user_dros = {}
+
+        dro_type = INIFILE.find("DISPLAY", "DRO_DISPLAY")
+        if not dro_type:
+            LOG.warning("No DRO_DISPLAY specified in INI.")
+            return
+
+        user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
+
+        for user_dros_path in user_dros_paths:
+            user_dros_path = os.path.expanduser(user_dros_path)
+            dro_folder = f"{dro_type}_dros"
+            dro_py_file = f"dros_{dro_type}.py"
+            dro_folder_path = os.path.join(user_dros_path, dro_folder)
+            dro_py_path = os.path.join(dro_folder_path, dro_py_file)
+            if os.path.isfile(dro_py_path):
+                module_name = f"user_dros.{dro_folder}.{dro_py_file[:-3]}"
+                spec = importlib.util.spec_from_file_location(module_name, dro_py_path)
+                module = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = module
+                spec.loader.exec_module(module)
+                if hasattr(module, "UserDRO"):
+                    self.user_dros[module_name] = module.UserDRO()
+                    self.dro_display_layout.addWidget(self.user_dros[module_name])
+                return  # Only load one DRO, then exit
                
     def load_user_tabs(self):
         self.user_tab_modules = {}
