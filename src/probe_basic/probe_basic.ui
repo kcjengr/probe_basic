@@ -24938,7 +24938,7 @@ color: black;
 padding: 20px;</string>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline; color:#170cd9;&quot;&gt;1/5/2025 Develop Branch has now become Stable Branch! &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Droid Sans Mono','monospace','monospace'; font-size:14px; color:#000000;&quot;&gt;Probe Basic has moved to a stable and development apt version. This is to give users the ability to try and test the latest working branch of Probe Basic easily via changing the apt source list file. If you are seeing this message, you were already on the develop version, or were on the Stable version and now will need to make some changes to your configuration files. The changes are required and will need to be done before using the interface succesfully. you can follow the guide linked below to accomplish these changes. important note, all the files shown being copied over are required, do not reuse the old version of those files as they will no longer work and cause errors.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Droid Sans Mono','monospace','monospace'; font-size:14px; font-weight:600; color:#000000;&quot;&gt;**Notes:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Droid Sans Mono','monospace','monospace'; font-size:14px; color:#000000;&quot;&gt;see machine config doc for new ini line needed for &amp;quot;user_buttons&amp;quot; and copy over the user_buttons folder from sim into your machine config. this allows users to edit the buttons in the main bottom window left side under the cycle start to adjust for their own use case and machine type. these edits can be done by running editvcp in terminal and navigating to the user_buttons folder and selecting the template_user_buttons.ui file. the changes will remain in the config folder and will not be overwritten on updates.&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-family:'Droid Sans Mono','monospace','monospace'; font-size:14px; color:#000000;&quot;&gt;A new subroutine has been added for probing the spindle zero height, be sure to copy it over and check for any other changes in subroutines to your existing config's sub files.  meld is a great program for comparing folders and files content!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; text-decoration: underline;&quot;&gt;For Instructions on changing your config documents, please visit the following url and follow the instructions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/machine_config.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://kcjengr.github.io/probe_basic/machine_config.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;p&gt;If on Develop version you may wish to lock in this new stable release by changing the apt source list to stable, this can be done following the instruction link below:&lt;/p&gt;&lt;p&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline; color:#170cd9;&quot;&gt;5/21/2025 Latest Update Requires config modification for dro display to work, see instructions below: &lt;/span&gt;&lt;/p&gt;&lt;p&gt;Open the newly updated probe basic sim config folder, locate the user_dro_display folder.  Copy this folder to your machine's config folder, this contains several sub ui files which will load the appropriate dro display based on new ini settings as shown below:&lt;/p&gt;&lt;p&gt;Edit your machine ini file as follows.  under the &amp;quot;DISPLAY&amp;quot; section, add the following ini entries:&lt;/p&gt;&lt;p&gt;[DISPLAY]&lt;/p&gt;&lt;p&gt;USER_DROS_PATH = user_dro_display/&lt;/p&gt;&lt;p&gt;DRP_DISPLAY = xyz&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;Note: the options for dro display are: xyz, xyza, xyzab, xyzac, xyzbc, user&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600;&quot;&gt;the user option is for those hwo need a customized dro displayed. the new dro folder contains a dros_user folder with templates for users to edit in qtdesigner.&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="textFormat">
                   <enum>Qt::AutoText</enum>
@@ -34825,18 +34825,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="settertabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
  </buttongroups>
 </ui>

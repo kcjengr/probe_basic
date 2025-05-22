@@ -23,9 +23,10 @@ Step 2: Copy required files
    1. In the LinuxCNC config folder, locate your new config folder and the "probe_basic_machine_config_setup_files" folder.
    2. Open two folder windows on the desktop: the new Pncconf folder created for your machine and the probe_basic_machine_config_setup_files folder.
    3. Clean up the Pncconf folder by removing unneeded files (see images below for reference).
-   4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
+   4. Copy ALL files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
+   **Note, the image may not show all of the same files in the latest version, ignore any discrepency here and copy ALL files in the probe_basic_machine_config_setup_files folder**
 
-   ***the latest DEVELOP version requires the "user_buttons" folder to be copied over also (not shown in pics below)!***
+   ***the latest DEVELOP version requires the "user_buttons" and "user_dro_display" folder to be copied over also (not shown in pics below)!***
 
 
    **As built pncconfig folder**
@@ -95,8 +96,11 @@ Step 3: Edit INI files
          INTRO_GRAPHIC = pbsplash.png            # Recommended Setting for Probe Basic
          INTRO_TIME = 5                          # Recommended Setting for Probe Basic
          INCREMENTS = JOG .01in .001in .0001in   # REQUIRED Setting for Probe Basic
+         GEOMETRY = xyz                          # REQUIRED Setting for Probe Basic
          USER_TABS_PATH = user_tabs/             # REQUIRED Setting for Probe Basic
          USER_BUTTONS_PATH = user_buttons/       # REQUIRED Setting for Probe Basic
+         USER_DROS_PATH = user_dro_display/      # REQUIRED Setting for Probe Basic
+         DRO_DISPLAY = xyz                       # REQUIRED Setting for Probe Basic, Options: xyz, xyza, xyzab, xyzac, xyzbc, user
 
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P.001 G80 G90 G91.1 G92.1 G94 G97 G98
@@ -104,7 +108,7 @@ Step 3: Edit INI files
          OWORD_NARGS = 1
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
-         
+
          [HAL]
          HALUI = halui                              # Use local path to your hal file directory
          POSTGUI_HALFILE = probe_basic_postgui.hal  # ONLY 1 postgui hal file can be called at launch
