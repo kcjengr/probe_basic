@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-
 import os
 import sys
 import importlib.util
@@ -17,7 +16,6 @@ from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
-
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
 import probe_basic_rc
