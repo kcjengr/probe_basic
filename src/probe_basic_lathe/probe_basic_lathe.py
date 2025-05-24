@@ -48,7 +48,10 @@ class ProbeBasicLathe(VCPMainWindow):
         self.load_offset_dro()
 
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
-        dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").lower()
+        dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
+
+        # Normalize DRO_DISPLAY value to lowercase so user can enter XZ, xz, etc.
+        dro_display = dro_display.lower()
 
         # Determine lathe type by key presence only
         if INIFILE.find("DISPLAY", "LATHE") is not None:
@@ -99,6 +102,7 @@ class ProbeBasicLathe(VCPMainWindow):
         if not dro_type:
             LOG.warning("No DRO_DISPLAY specified in INI.")
             return
+        dro_type = dro_type.strip().lower()  # Normalize to lowercase
 
         user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
 
@@ -130,6 +134,7 @@ class ProbeBasicLathe(VCPMainWindow):
         if not dro_type:
             LOG.warning("No DRO_DISPLAY specified in INI.")
             return
+        dro_type = dro_type.strip().lower()  # Normalize to lowercase
 
         user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
 
