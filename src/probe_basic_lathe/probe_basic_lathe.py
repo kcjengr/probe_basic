@@ -38,7 +38,7 @@ class ProbeBasicLathe(VCPMainWindow):
         self.rpm_mode = 0.0
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
-
+        
         self.load_user_tabs()
         
         self.load_user_buttons()
@@ -53,13 +53,19 @@ class ProbeBasicLathe(VCPMainWindow):
         # Normalize DRO_DISPLAY value to lowercase so user can enter XZ, xz, etc.
         dro_display = dro_display.lower()
 
-        # Determine lathe type by key presence only
-        if INIFILE.find("DISPLAY", "LATHE") is not None:
+        lathe_mode = INIFILE.find("DISPLAY", "LATHE") or False
+        lathe_back_mode = INIFILE.find("DISPLAY", "BACK_TOOL_LATHE") or False
+        
+        lathe_type = "LATHE"
+        
+        if lathe_mode:
             lathe_type = "LATHE"
-        elif INIFILE.find("DISPLAY", "BACK_TOOL_LATHE") is not None:
+            self.vtkbackplot.setViewXZ2()
+            
+        if lathe_back_mode:
             lathe_type = "BACK_TOOL_LATHE"
-        else:
-            lathe_type = "LATHE"  # Default fallback
+            self.vtkbackplot.setViewXZ()
+
 
         index_map = {
             ("xz", "LATHE"): 0,
