@@ -11,6 +11,7 @@ from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QAction, QWidget
+from qtpy import uic
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
@@ -38,7 +39,7 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
-        if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
+        if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
             self.tabWidget.setTabVisible(atc_tab_index, False)
             self.tabWidget.removeTab(atc_tab_index)
@@ -60,8 +61,13 @@ class ProbeBasic(VCPMainWindow):
         self.load_user_tabs()
 
         self.load_user_buttons()
+	
+	self.load_user_dros()
 
+        self.load_offset_dro()
+        
         self.help_menu = self.menuBar().addMenu("Help")
+        
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
         self.interactive_help_action.setChecked(False)
         self.interactive_help_action.toggled.connect(self.toggle_tooltips)
@@ -227,7 +233,60 @@ class ProbeBasic(VCPMainWindow):
                 self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
                 
                 self.user_buttons_layout.addWidget( self.user_buttons[module_name])
-               
+
+    def load_user_dros(self):
+        self.user_dros_modules = {}
+        self.user_dros = {}
+
+        dro_type = INIFILE.find("DISPLAY", "DRO_DISPLAY")
+        if not dro_type:
+            LOG.warning("No DRO_DISPLAY specified in INI.")
+            return
+
+        user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
+
+        for user_dros_path in user_dros_paths:
+            user_dros_path = os.path.expanduser(user_dros_path)
+            dro_folder = f"{dro_type}_dros"
+            dro_py_file = f"dros_{dro_type}.py"
+            dro_folder_path = os.path.join(user_dros_path, dro_folder)
+            dro_py_path = os.path.join(dro_folder_path, dro_py_file)
+            if os.path.isfile(dro_py_path):
+                module_name = f"user_dros.{dro_folder}.{dro_py_file[:-3]}"
+                spec = importlib.util.spec_from_file_location(module_name, dro_py_path)
+                module = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = module
+                spec.loader.exec_module(module)
+                if hasattr(module, "UserDRO"):
+                    self.user_dros[module_name] = module.UserDRO()
+                    self.dro_display_layout.addWidget(self.user_dros[module_name])
+                return  # Only load one DRO, then exit
+
+    def load_offset_dro(self):
+        # Clear any existing widgets from the layout
+        while self.offset_dro_layout.count():
+            child = self.offset_dro_layout.takeAt(0)
+            if child.widget():
+                child.widget().deleteLater()
+
+        dro_type = INIFILE.find("DISPLAY", "DRO_DISPLAY")
+        if not dro_type:
+            LOG.warning("No DRO_DISPLAY specified in INI.")
+            return
+
+        user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
+
+        for user_dros_path in user_dros_paths:
+            user_dros_path = os.path.expanduser(user_dros_path)
+            dro_folder = f"{dro_type}_dros"
+            offset_ui_file = f"offset_dros_{dro_type}.ui"
+            offset_ui_path = os.path.join(user_dros_path, dro_folder, offset_ui_file)
+            if os.path.isfile(offset_ui_path):
+                offset_widget = QWidget()
+                uic.loadUi(offset_ui_path, offset_widget)
+                self.offset_dro_layout.addWidget(offset_widget)
+                return  # Only load one offset DRO, then exit
+
     def load_user_tabs(self):
         self.user_tab_modules = {}
         self.user_tabs = {}
