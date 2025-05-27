@@ -62,7 +62,7 @@ class ProbeBasic(VCPMainWindow):
 
         self.load_user_buttons()
 	
-	self.load_user_dros()
+        self.load_user_dros()
 
         self.load_offset_dro()
         
