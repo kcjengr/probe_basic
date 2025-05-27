@@ -220,7 +220,7 @@ bottom-margin: 0px;
            <string notr="true">QTabWidget QTabBar::tab {
     margin-top: 2px;
     margin-bottom: 2px;
-    min-width: 130px;
+    min-width: 150px;
     min-height: 30px;
     font: 15pt &quot;bebas kai&quot;;
 }</string>
@@ -229,11 +229,11 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
-            <string>          MAIN          </string>
+            <string>MAIN</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout">
             <item>
@@ -4414,7 +4414,7 @@ QPushButton:checked {
           </widget>
           <widget class="QWidget" name="file_tab">
            <attribute name="title">
-            <string>          FILE          </string>
+            <string>FILE</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_9">
             <item>
@@ -4438,7 +4438,7 @@ QPushButton:checked {
                <number>20</number>
               </property>
               <item>
-               <widget class="QFrame" name="frame_35">
+               <widget class="QFrame" name="usb_file_frame">
                 <property name="sizePolicy">
                  <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                   <horstretch>0</horstretch>
@@ -4544,7 +4544,14 @@ QPushButton:checked {
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">font: 12pt &quot;Bebas Kai&quot;;</string>
+                      <string notr="true">QComboBox::drop-down:button {
+    width: 30px;
+}
+
+QComboBox {
+    color: white;
+    font: 12pt &quot;Bebas Kai&quot;;
+}</string>
                      </property>
                     </widget>
                    </item>
@@ -4859,7 +4866,14 @@ QHeaderView {
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">font: 12pt &quot;Bebas Kai&quot;;</string>
+                      <string notr="true">QComboBox::drop-down:button {
+    width: 30px;
+}
+
+QComboBox {
+    color: white;
+    font: 12pt &quot;Bebas Kai&quot;;
+}</string>
                      </property>
                     </widget>
                    </item>
@@ -4967,9 +4981,12 @@ QHeaderView {
                     <number>6</number>
                    </property>
                    <item>
-                    <widget class="QPushButton" name="copy_to_usb_2">
+                    <widget class="VCPSettingsPushButton" name="usb_show_hide_button">
+                     <property name="enabled">
+                      <bool>true</bool>
+                     </property>
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -4982,7 +4999,77 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
+                       <width>16777215</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+    color: white;
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton {
+    font-family: &quot;Bebas Kai&quot;;
+    font-size: 16pt;
+}
+
+QPushButton:disabled {
+    border-color: gray;
+}
+
+QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>HIDE USB</string>
+                     </property>
+                     <property name="checkable">
+                      <bool>true</bool>
+                     </property>
+                     <property name="rules" stdset="0">
+                      <string>[{&quot;name&quot;: &quot;usb_hide_show&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'SHOW USB' if ch[0] else 'HIDE USB'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:startup-settings.usb-hide-show&quot;, &quot;trigger&quot;: true}]}]</string>
+                     </property>
+                     <property name="settingName" stdset="0">
+                      <string>startup-settings.usb-hide-show</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="QPushButton" name="copy_to_usb_2">
+                     <property name="sizePolicy">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                       <horstretch>0</horstretch>
+                       <verstretch>0</verstretch>
+                      </sizepolicy>
+                     </property>
+                     <property name="minimumSize">
+                      <size>
                        <width>90</width>
+                       <height>35</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5010,7 +5097,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_delete_item_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5023,7 +5110,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>90</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5053,7 +5140,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_new_file_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5066,7 +5153,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>100</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5096,7 +5183,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_new_folder_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5109,7 +5196,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>125</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5139,7 +5226,7 @@ QHeaderView {
                    <item>
                     <widget class="QPushButton" name="main_rename_item_button">
                      <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                        <horstretch>0</horstretch>
                        <verstretch>0</verstretch>
                       </sizepolicy>
@@ -5152,7 +5239,7 @@ QHeaderView {
                      </property>
                      <property name="maximumSize">
                       <size>
-                       <width>90</width>
+                       <width>16777215</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -5422,7 +5509,7 @@ color: white;</string>
           </widget>
           <widget class="QWidget" name="offsets_tab">
            <attribute name="title">
-            <string>        OFFSETS        </string>
+            <string>OFFSETS</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_8">
             <item>
@@ -7038,7 +7125,7 @@ padding-left: 5px;
           </widget>
           <widget class="QWidget" name="touch_off_tab">
            <attribute name="title">
-            <string>        TOUCH OFF        </string>
+            <string>TOUCH OFF</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <item>
@@ -10038,7 +10125,7 @@ padding-right: 10px;
                             <string>touch-parameters.master-tool-number</string>
                            </property>
                            <property name="textFormat" stdset="0">
-                            <string>{:0.0f}</string>
+                            <string/>
                            </property>
                           </widget>
                          </item>
@@ -10434,7 +10521,7 @@ padding-right: 10px;
                             <string>touch-parameters.gage-thickness</string>
                            </property>
                            <property name="textFormat" stdset="0">
-                            <string>{:4f}</string>
+                            <string/>
                            </property>
                           </widget>
                          </item>
@@ -10652,7 +10739,7 @@ padding-right: 10px;
           </widget>
           <widget class="QWidget" name="tooling_tab">
            <attribute name="title">
-            <string>        TOOL TABLE        </string>
+            <string>TOOL TABLE</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_41">
             <item>
@@ -12245,7 +12332,7 @@ background-color: transparent;
           </widget>
           <widget class="QWidget" name="probing_tab">
            <attribute name="title">
-            <string>          PROBING          </string>
+            <string>PROBING</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_70">
             <item>
@@ -13418,7 +13505,7 @@ color: white;
                       <string>probe-parameters.max-x-distance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string/>
                      </property>
                     </widget>
                    </item>
@@ -13501,7 +13588,7 @@ color: white;
                       <string>probe-parameters.x-clearance</string>
                      </property>
                      <property name="textFormat" stdset="0">
-                      <string>{:0.4f}</string>
+                      <string/>
                      </property>
                     </widget>
                    </item>
@@ -15124,7 +15211,7 @@ color: white;
           </widget>
           <widget class="QWidget" name="conversational_tab">
            <attribute name="title">
-            <string>          CONVERSATIONAL          </string>
+            <string>CONVERSATIONAL</string>
            </attribute>
            <widget class="QTabWidget" name="tabWidget_3">
             <property name="geometry">
@@ -21263,7 +21350,7 @@ border-image: url(:/images/Threading.png);
           </widget>
           <widget class="QWidget" name="settings_tab">
            <attribute name="title">
-            <string>          SETTINGS           </string>
+            <string>SETTINGS</string>
            </attribute>
            <widget class="QFrame" name="frame_24">
             <property name="geometry">
@@ -21412,10 +21499,199 @@ border-image: url(:/images/Threading.png);
              </item>
             </layout>
            </widget>
+           <widget class="QFrame" name="frame_26">
+            <property name="geometry">
+             <rect>
+              <x>1277</x>
+              <y>150</y>
+              <width>351</width>
+              <height>111</height>
+             </rect>
+            </property>
+            <property name="sizePolicy">
+             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+              <horstretch>0</horstretch>
+              <verstretch>0</verstretch>
+             </sizepolicy>
+            </property>
+            <property name="styleSheet">
+             <string notr="true"/>
+            </property>
+            <layout class="QVBoxLayout" name="verticalLayout_54">
+             <item>
+              <widget class="QLabel" name="startup_settings_label">
+               <property name="enabled">
+                <bool>true</bool>
+               </property>
+               <property name="sizePolicy">
+                <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>25</height>
+                </size>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+               </property>
+               <property name="text">
+                <string>START UP SETTINGS</string>
+               </property>
+               <property name="alignment">
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_3" native="true">
+               <layout class="QHBoxLayout" name="horizontalLayout_12">
+                <item>
+                 <widget class="QLabel" name="startup_tab_label">
+                  <property name="enabled">
+                   <bool>true</bool>
+                  </property>
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>100</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>16777215</width>
+                    <height>25</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                  </property>
+                  <property name="text">
+                   <string>START UP TAB</string>
+                  </property>
+                  <property name="alignment">
+                   <set>Qt::AlignCenter</set>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="VCPSettingsComboBox" name="startup_tab_combobox">
+                  <property name="sizePolicy">
+                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                    <horstretch>0</horstretch>
+                    <verstretch>0</verstretch>
+                   </sizepolicy>
+                  </property>
+                  <property name="minimumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="maximumSize">
+                   <size>
+                    <width>200</width>
+                    <height>40</height>
+                   </size>
+                  </property>
+                  <property name="styleSheet">
+                   <string notr="true">VCPSettingsComboBox::drop-down:button {
+    width: 36px;
+}
+
+VCPSettingsComboBox {
+    color: white;
+    font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+                  </property>
+                  <property name="currentText">
+                   <string>MAIN</string>
+                  </property>
+                  <property name="settingName" stdset="0">
+                   <string>startup-settings.startup-tab</string>
+                  </property>
+                  <item>
+                   <property name="text">
+                    <string>MAIN</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>FILE</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>OFFSETS</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>TOUCH OFF</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>TOOL TABLE</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>PROBING</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>CONVERSATIONAL</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>SETTINGS</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>STATUS</string>
+                   </property>
+                  </item>
+                  <item>
+                   <property name="text">
+                    <string>USER</string>
+                   </property>
+                  </item>
+                 </widget>
+                </item>
+               </layout>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
           <widget class="QWidget" name="status_tab">
            <attribute name="title">
-            <string>          STATUS           </string>
+            <string>STATUS</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_15">
             <item>
@@ -22131,7 +22407,7 @@ border-image: url(:/images/Threading.png);
 }</string>
                        </property>
                        <property name="currentIndex">
-                        <number>0</number>
+                        <number>3</number>
                        </property>
                        <widget class="QWidget" name="sb_page_1">
                         <property name="styleSheet">
@@ -28501,6 +28777,11 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
+   <class>VCPSettingsComboBox</class>
+   <extends>QComboBox</extends>
+   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
+  </customwidget>
+  <customwidget>
    <class>OffsetTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.offset_table</header>
@@ -29133,86 +29414,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>copy_to_usb_2</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>doFileTransfer()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>568</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>572</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_delete_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>deleteItem()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>670</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>572</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_new_file_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>newFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>782</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>572</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_new_folder_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>newFolder()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>919</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>572</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>main_rename_item_button</sender>
-   <signal>clicked()</signal>
-   <receiver>filesystemtable</receiver>
-   <slot>rename()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1021</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>572</x>
-     <y>144</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>main_load_gcode_button</sender>
    <signal>clicked()</signal>
    <receiver>filesystemtable</receiver>
@@ -29404,6 +29605,118 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>main_new_folder_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>newFolder()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_new_file_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>newFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>782</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_delete_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>deleteItem()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>670</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>main_rename_item_button</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>rename()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1021</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>copy_to_usb_2</sender>
+   <signal>clicked()</signal>
+   <receiver>filesystemtable</receiver>
+   <slot>doFileTransfer()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>608</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>572</x>
+     <y>144</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>usb_show_hide_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>usb_file_frame</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>494</x>
+     <y>609</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>439</x>
+     <y>526</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>usb_show_hide_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>copy_to_usb_2</receiver>
+   <slot>setHidden(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>534</x>
+     <y>609</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>627</x>
+     <y>595</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -29423,10 +29736,10 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
  </buttongroups>
 </ui>

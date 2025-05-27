@@ -71,7 +71,6 @@ class ProbeBasic(VCPMainWindow):
         dro_display = dro_display.lower()
         
         self.help_menu = self.menuBar().addMenu("Help")
-        
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
         self.interactive_help_action.setChecked(False)
         self.interactive_help_action.toggled.connect(self.toggle_tooltips)
@@ -101,6 +100,25 @@ class ProbeBasic(VCPMainWindow):
             self.filesystemtable.clearSelection(),
             self.main_load_gcode_button.setEnabled(False)
         ))
+
+        # --- Startup Tab Selection Logic (using tab text property) ---
+        startup_tab_text = getSetting("startup-settings:user-startup-tab").getValue()
+        if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
+            # Populate ComboBox with current tab texts if not already set
+            self.startup_tab_combobox.clear()
+            for i in range(self.tabWidget.count()):
+                self.startup_tab_combobox.addItem(self.tabWidget.tabText(i))
+            # Set ComboBox to saved tab text, or default to first tab
+            idx = self.startup_tab_combobox.findText(startup_tab_text)
+            if idx != -1:
+                self.startup_tab_combobox.setCurrentIndex(idx)
+            else:
+                self.startup_tab_combobox.setCurrentIndex(0)
+            # Connect to save selection and switch tab on change
+            self.startup_tab_combobox.currentTextChanged.connect(self.on_startup_tab_combobox_changed)
+            # Set the main tab widget to the correct tab at startup
+            self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
+        # --- End Startup Tab Selection Logic ---
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
@@ -399,3 +417,16 @@ class ProbeBasic(VCPMainWindow):
         if text != 'null':
             text += ' '
             parent.mdiEntry.setText(text)
+
+    def set_startup_tab_by_text(self, tab_text):
+        """Set the main tab widget to the tab matching tab_text."""
+        if hasattr(self, "tabWidget"):
+            for i in range(self.tabWidget.count()):
+                if self.tabWidget.tabText(i).strip() == tab_text.strip():
+                    self.tabWidget.setCurrentIndex(i)
+                    break
+
+    def on_startup_tab_combobox_changed(self, value):
+        """Save ComboBox selection for startup, but do not change the current tab."""
+        setSetting("startup-settings:user-startup-tab", value)
+        # Do not call self.set_startup_tab_by_text(value)

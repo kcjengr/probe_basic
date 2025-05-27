@@ -47,6 +47,22 @@ class ProbeBasicLathe(VCPMainWindow):
 
         self.load_offset_dro()
 
+        # --- Startup Tab Selection Logic (using tab text property) ---
+        from qtpyvcp.utilities.settings import getSetting, setSetting
+        startup_tab_text = getSetting("startup-settings:user-startup-tab").getValue()
+        if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
+            self.startup_tab_combobox.clear()
+            for i in range(self.tabWidget.count()):
+                self.startup_tab_combobox.addItem(self.tabWidget.tabText(i))
+            idx = self.startup_tab_combobox.findText(startup_tab_text)
+            if idx != -1:
+                self.startup_tab_combobox.setCurrentIndex(idx)
+            else:
+                self.startup_tab_combobox.setCurrentIndex(0)
+            self.startup_tab_combobox.currentTextChanged.connect(self.on_startup_tab_combobox_changed)
+            self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
+        # --- End Startup Tab Selection Logic ---
+
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
 
@@ -55,16 +71,15 @@ class ProbeBasicLathe(VCPMainWindow):
 
         lathe_mode = INIFILE.find("DISPLAY", "LATHE") or False
         lathe_back_mode = INIFILE.find("DISPLAY", "BACK_TOOL_LATHE") or False
-        
-        lathe_type = "LATHE"
-        
+
         if lathe_mode:
             lathe_type = "LATHE"
             self.vtkbackplot.setViewXZ2()
-            
-        if lathe_back_mode:
+        elif lathe_back_mode:
             lathe_type = "BACK_TOOL_LATHE"
             self.vtkbackplot.setViewXZ()
+        else:
+            lathe_type = "LATHE"
 
 
         index_map = {
@@ -158,7 +173,7 @@ class ProbeBasicLathe(VCPMainWindow):
     def load_user_tabs(self):
         self.user_tab_modules = {}
         self.user_tabs = {}
-        sidebar_loaded = False;
+        sidebar_loaded = False
         user_tabs_paths = INIFILE.findall("DISPLAY", "USER_TABS_PATH")
 
         for user_tabs_path in user_tabs_paths:
@@ -203,7 +218,7 @@ class ProbeBasicLathe(VCPMainWindow):
         if value:
             self.feed_per_rev = float(value)
         else:
-            self.feed_per_rev = 0.0000
+            self.feed_per_rev = 0.0  # Consistent with other methods
 
     def on_feed_per_rev_entry_returnPressed(self):
         cmd = "G95 F{}".format(self.feed_per_rev)
@@ -277,3 +292,16 @@ class ProbeBasicLathe(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_spindlerpmsourcebtnGroup_buttonClicked(self, button):
         self.spindle_rpm_source_widget.setCurrentIndex(button.property('page'))
+
+    def set_startup_tab_by_text(self, tab_text):
+        """Set the main tab widget to the tab matching tab_text."""
+        if hasattr(self, "tabWidget"):
+            for i in range(self.tabWidget.count()):
+                if self.tabWidget.tabText(i).strip() == tab_text.strip():
+                    self.tabWidget.setCurrentIndex(i)
+                    break
+
+    def on_startup_tab_combobox_changed(self, value):
+        """Save ComboBox selection for startup, but do not change the current tab."""
+        setSetting("startup-settings:user-startup-tab", value)
+        # Do not call self.set_startup_tab_by_text(value)
