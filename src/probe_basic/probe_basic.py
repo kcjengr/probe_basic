@@ -9,7 +9,7 @@ import linuxcnc
 from qtpy.QtCore import Slot, QRegExp, Qt
 from qtpy.QtGui import QFontDatabase, QRegExpValidator
 from qtpy.QtWidgets import QAbstractButton
-from qtpy.QtWidgets import QWidget
+from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
 from qtpyvcp import actions
@@ -41,6 +41,12 @@ class ProbeBasic(VCPMainWindow):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
             self.tabWidget.setTabVisible(atc_tab_index, False)
             self.tabWidget.removeTab(atc_tab_index)
+
+        elif (1 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 1)):
+            self.load_atc()
+
+        else:
+            self.load_rack_atc()
             
         self.vtk.setViewMachine()
 
@@ -51,12 +57,158 @@ class ProbeBasic(VCPMainWindow):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_encoder_rpm_button.property('page'))
     
         self.load_user_tabs()
-        
-        self.load_user_buttons()
 
+        self.load_user_buttons()
+	
         self.load_user_dros()
 
         self.load_offset_dro()
+        
+        self.help_menu = self.menuBar().addMenu("Help")
+        
+        self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
+        self.interactive_help_action.setChecked(False)
+        self.interactive_help_action.toggled.connect(self.toggle_tooltips)
+        self.help_menu.addAction(self.interactive_help_action)  # Moved to HELP menu
+        self.store_original_tooltips()
+        self.toggle_tooltips(False)
+
+        self.filesystemtable.gcodeFileSelected['bool'].connect(lambda x: self.main_load_gcode_button.setEnabled(True))
+
+        self.filesystemtable_2.rootChanged.connect(lambda: self.device_folder_up_button.setEnabled(False) 
+           if self.filesystemtable_2.model.rootPath().lower() == '/home'
+           else self.device_folder_up_button.setEnabled(True))
+
+        self.filesystemtable.rootChanged.connect(lambda: self.main_folder_up_button.setEnabled(False) 
+           if self.filesystemtable.model.rootPath().lower() == '/home'
+           else self.main_folder_up_button.setEnabled(True))
+        self.filesystemtable.gcodeFileSelected['bool'].connect(lambda x: (
+           self.main_load_gcode_button.setText("SELECT FOLDER") if not x else None,
+           self.main_load_gcode_button.setText("LOAD G-CODE") if x else None
+        ))
+
+        self.main_load_gcode_button.clicked.connect(lambda: ( 
+            self.main_load_gcode_button.setText("LOAD G-CODE") if self.main_load_gcode_button.text() == 'SELECT FOLDER' else None
+        ))
+
+        self.filesystemtable.model.rootPathChanged.connect(lambda: (
+            self.filesystemtable.clearSelection(),
+            self.main_load_gcode_button.setEnabled(False)
+        ))
+
+    def store_original_tooltips(self):
+        """Store the original tooltips for all widgets to restore later."""
+        for widget in self.findChildren(QWidget):
+            if widget.toolTip():  # Only store if a tooltip exists
+                widget.setProperty("original_tooltip", widget.toolTip())
+
+    def toggle_tooltips(self, enabled):
+        """Enable or disable tooltips across all widgets."""
+        for widget in self.findChildren(QWidget):
+            original_tooltip = widget.property("original_tooltip")
+            if enabled and original_tooltip:
+                widget.setToolTip(original_tooltip)  # Restore tooltip
+            else:
+                widget.setToolTip("")  # Disable tooltip
+
+    def load_atc(self):
+        self.atc_modules = {}
+        self.atc = {}
+        
+        atc_paths = [os.path.join(VCP_DIR, "atc")]
+
+        for atc_path in atc_paths:
+            atc_path = os.path.expanduser(atc_path)
+            if not os.path.exists(atc_path):
+                LOG.warning(f"ATC path does not exist: {atc_path}")
+                continue
+                
+            atc_folders = os.listdir(atc_path)
+            for atc in atc_folders:
+                atc_dir = os.path.join(atc_path, atc)
+                if not os.path.isdir(atc_dir):
+                    continue
+                    
+                module_name = f"atc.{atc}"
+                module_file = os.path.join(atc_dir, f"{atc}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
+                self.atc_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.atc_modules[module_name]
+                spec.loader.exec_module(self.atc_modules[module_name])
+                
+                self.atc[module_name] = self.atc_modules[module_name].Atc()
+                
+                self.atc_layout.addWidget(self.atc[module_name])
+
+                # Load user ATC buttons after loading the ATC
+                if hasattr(self.atc[module_name], 'user_atc_buttons_layout'):
+                    self.load_user_atc_buttons(self.atc[module_name].user_atc_buttons_layout)
+                else:
+                    LOG.warning(f"user_atc_buttons_layout not found in {module_name}. Unable to add ATC buttons.")
+
+    def load_rack_atc(self):
+        self.rack_atc_modules = {}
+        self.rack_atc = {}
+
+        rack_atc_paths = [os.path.join(VCP_DIR, "rack_atc")]
+
+        for rack_atc_path in rack_atc_paths:
+            rack_atc_path = os.path.expanduser(rack_atc_path)
+            if not os.path.exists(rack_atc_path):
+                LOG.warning(f"Rack ATC path does not exist: {rack_atc_path}")
+                continue
+                
+            rack_atc_folders = os.listdir(rack_atc_path)
+            for rack_atc in rack_atc_folders:
+                rack_atc_dir = os.path.join(rack_atc_path, rack_atc)
+                if not os.path.isdir(rack_atc_dir):
+                    continue
+                    
+                module_name = f"rack_atc.{rack_atc}"
+                module_file = os.path.join(rack_atc_dir, f"{rack_atc}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
+                self.rack_atc_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.rack_atc_modules[module_name]
+                spec.loader.exec_module(self.rack_atc_modules[module_name])
+                
+                self.rack_atc[module_name] = self.rack_atc_modules[module_name].RackAtc()
+                
+                self.atc_layout.addWidget(self.rack_atc[module_name])
+                
+                # Load user ATC buttons after loading the rack ATC
+                if hasattr(self.rack_atc[module_name], 'user_atc_buttons_layout'):
+                    self.load_user_atc_buttons(self.rack_atc[module_name].user_atc_buttons_layout)
+                else:
+                    LOG.warning(f"user_atc_buttons_layout not found in {module_name}. Unable to add ATC buttons.")
+
+    def load_user_atc_buttons(self, layout):
+        self.user_atc_button_modules = {}
+        self.user_atc_buttons = {}
+        
+        user_atc_buttons_paths = INIFILE.findall("DISPLAY", "USER_ATC_BUTTONS_PATH")
+
+        for user_atc_buttons_path in user_atc_buttons_paths:
+            user_atc_button_path = os.path.expanduser(user_atc_buttons_path)
+            if not os.path.exists(user_atc_button_path):
+                LOG.warning(f"User ATC buttons path does not exist: {user_atc_button_path}")
+                continue
+            
+            user_atc_button_folders = os.listdir(user_atc_button_path)
+            for user_atc_button in user_atc_button_folders:
+                button_dir = os.path.join(user_atc_button_path, user_atc_button)
+                if not os.path.isdir(button_dir):
+                    continue
+                
+                module_name = f"user_atc_buttons.{os.path.basename(user_atc_button_path)}.{user_atc_button}"
+                module_file = os.path.join(button_dir, f"{user_atc_button}.py")
+                spec = importlib.util.spec_from_file_location(module_name, module_file)
+                self.user_atc_button_modules[module_name] = importlib.util.module_from_spec(spec)
+                sys.modules[module_name] = self.user_atc_button_modules[module_name]
+                spec.loader.exec_module(self.user_atc_button_modules[module_name])
+                
+                self.user_atc_buttons[module_name] = self.user_atc_button_modules[module_name].UserAtcButton()
+                
+                layout.addWidget(self.user_atc_buttons[module_name])
 
     def load_user_buttons(self):
         self.user_button_modules = {}

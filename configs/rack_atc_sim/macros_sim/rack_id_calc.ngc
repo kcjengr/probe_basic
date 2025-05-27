@@ -1,0 +1,139 @@
+(author: Chris P, Lcvette)
+(version: 0.1)
+(date: 02/8/25)
+
+(This sub will write user parameters to the var file and ui widgets)
+(Determine ATC Rack Position, Pocket Order, and Clearance Direction)
+(Requires Pockets to be aligned parallel with X or Y Axis Travels)
+
+o<rack_id_calc> sub
+
+  #<rack_traverse_speed_3980> = #1 (0)
+  #<rack_z_load_height_3981> = #2 (0)
+  #<rack_safe_z_height_3982> = #3 (0)
+  #<rack_pocket_1_x_3983> = #4 (0)
+  #<rack_pocket_1_y_3984> = #5 (0)
+  #<rack_pocket_2_x_3985> = #6 (0)
+  #<rack_pocket_2_y_3986> = #7 (0)
+  #<pocket_1_x_clearance_3987> = #8 (0)
+  #<pocket_1_y_clearance_3988> = #9 (0)
+  #<rack_atc_user_1_3974> = #10 (0)
+  #<rack_atc_user_2_3975> = #11 (0)
+  #<rack_atc_user_3_3976> = #12 (0)
+  #<rack_atc_user_4_3977> = #13 (0)
+  #<rack_atc_user_5_3978> = #14 (0)
+
+  #3974 = #<rack_atc_user_1_3974>
+  #3975 = #<rack_atc_user_2_3975>
+  #3976 = #<rack_atc_user_3_3976>
+  #3977 = #<rack_atc_user_4_3977>
+  #3978 = #<rack_atc_user_5_3978>
+  #3980 = #<rack_traverse_speed_3980>
+  #3981 = #<rack_z_load_height_3981>
+  #3982 = #<rack_safe_z_height_3982>
+  #3983 = #<rack_pocket_1_x_3983>
+  #3984 = #<rack_pocket_1_y_3984>
+  #3985 = #<rack_pocket_2_x_3985>
+  #3986 = #<rack_pocket_2_y_3986>
+  #3987 = #<pocket_1_x_clearance_3987>
+  #3988 = #<pocket_1_y_clearance_3988>
+
+  (Initialize ALL variables first)
+  #3979 = 0
+  #<pocket_order> = 0
+  #<clearance_direction> = 0
+  #<rack_id> = 0
+  #<temp> = 0
+
+  (Pull ini pocket count and write to ui)
+  o100 if [EXISTS[#<_ini[atc]pockets>]]
+    #<number_of_pockets> = #<_ini[atc]pockets>
+    #3973 = #<number_of_pockets>
+    (DEBUG, EVAL[vcp.getWidget{"rack_pocket_count"}.setValue{#3973}])
+  o100 endif
+
+  (Check for duplicate pocket positions)
+  o110 if [#<rack_pocket_1_x_3983> EQ #<rack_pocket_2_x_3985>]
+    o111 if [#<rack_pocket_1_y_3984> EQ #<rack_pocket_2_y_3986>]
+      (PRINT, "Error: Duplicate pocket positions detected!")
+      #3979 = 0
+      (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+      o<rack_id_calc> return
+    o111 endif
+  o110 endif
+
+  (Check if row is parallel to the Y-axis)
+  o120 if [#<rack_pocket_1_x_3983> EQ #<rack_pocket_2_x_3985>]
+    (PRINT, "Row is parallel to Y-axis")
+
+    (Determine pocket order)
+    o121 if [#<rack_pocket_2_y_3986> GT #<rack_pocket_1_y_3984>]
+      #<pocket_order> = 1 (-Y to +Y)
+    o121 else
+      #<pocket_order> = 2 (+Y to -Y)
+    o121 endif
+
+    (Determine clearance direction - MUST be in X)
+    o122 if [#<pocket_1_x_clearance_3987> GT #<rack_pocket_1_x_3983>]
+      #<clearance_direction> = 1 (+X)
+    o122 elseif [#<pocket_1_x_clearance_3987> LT #<rack_pocket_1_x_3983>]
+      #<clearance_direction> = 2 (-X)
+    o122 else
+      (PRINT, "Error: Clearance direction must be perpendicular to pocket row!")
+      #3979 = 0
+      (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+      o<rack_id_calc> return
+    o122 endif
+
+    (Assign rack_id - break down calculation steps)
+    #<temp> = [#<pocket_order> - 1]
+    #<temp> = [#<temp> * 2]
+    #<temp> = [#<temp> + #<clearance_direction>]
+    #<rack_id> = #<temp>
+    #3979 = #<rack_id>
+    (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+    o<rack_id_calc> return
+  o120 endif
+
+  (Check if row is parallel to the X-axis)
+  o130 if [#<rack_pocket_1_y_3984> EQ #<rack_pocket_2_y_3986>]
+    (PRINT, "Row is parallel to X-axis")
+
+    (Determine pocket order)
+    o131 if [#<rack_pocket_2_x_3985> GT #<rack_pocket_1_x_3983>]
+      #<pocket_order> = 1 (-X to +X)
+    o131 else
+      #<pocket_order> = 2 (+X to -X)
+    o131 endif
+
+    (Determine clearance direction - MUST be in Y)
+    o132 if [#<pocket_1_y_clearance_3988> GT #<rack_pocket_1_y_3984>]
+      #<clearance_direction> = 1 (+Y)
+    o132 elseif [#<pocket_1_y_clearance_3988> LT #<rack_pocket_1_y_3984>]
+      #<clearance_direction> = 2 (-Y)
+    o132 else
+      (PRINT, "Error: Clearance direction must be perpendicular to pocket row!")
+      #3979 = 0
+      (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+      o<rack_id_calc> return
+    o132 endif
+    
+    (Assign rack_id - break down calculation steps)
+    #<temp> = [#<pocket_order> - 1]
+    #<temp> = [#<temp> * 2]
+    #<temp> = [#<temp> + #<clearance_direction>]
+    #<temp> = [#<temp> + 4]
+    #<rack_id> = #<temp>
+    #3979 = #<rack_id>
+    (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+    o<rack_id_calc> return
+    
+  o130 endif
+
+  (MSG, "Error: No Conditions Met, Rack ID Not Set")
+  #3979 = 0
+  (DEBUG, EVAL[vcp.getWidget{"atc_rack_id"}.setValue{#3979}])
+
+o<rack_id_calc> endsub
+
+M2
