@@ -2,4 +2,4 @@
 
 source ~/dev/venv/bin/activate
 cd ~/dev/probe_basic/configs/rack_atc_sim
-linuxcnc vmc_rack_index_inch.ini
+linuxcnc vmc_index_inch.ini

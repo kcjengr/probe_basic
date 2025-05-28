@@ -8,12 +8,12 @@ data_plugins:
   tooltable:
     provider: qtpyvcp.plugins.tool_table:ToolTable
     kwargs:
-      columns: TZDR
+      columns: {{ ini.DISPLAY.tool_table_columns }}
 
   offsettable:
     provider: qtpyvcp.plugins.offset_table:OffsetTable
     kwargs:
-      columns: "XYZR"
+      columns: {{ ini.DISPLAY.offset_columns }}
 
 settings:
 
