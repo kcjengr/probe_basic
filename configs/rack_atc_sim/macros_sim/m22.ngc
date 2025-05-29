@@ -1,42 +1,88 @@
 o<m22> sub
 
-; Move Carousel to the home position - IN
-; after loading any tool in the current pocket to the spindle
-; #<atc_z_tool_change_height> is the height you spindle needs to be at to clamp/unclamp a tool form the ATC (Set via INI [ATC]Z_TOOL_CHANGE_HEIGHT)
-; #<atc_z_tool_clearance_height> is the clearance height you spindle needs to be at to safely clear the ATC (Set via INI [ATC]Z_TOOL_CLEARANCE_HEIGHT)
-(PRINT, o<m22>)
+; Use P-word as target pocket (if called as M22 Pn)
+#<target_pocket> = #1
 
-#<atc_z_tool_change_height> = -3.9000
-o100 if [EXISTS[#<_ini[atc]z_tool_change_height>]]
-    #<atc_z_tool_change_height> = #<_ini[atc]z_tool_change_height>
+; --- Parameter assignments for clarity ---
+#<rack_id>                = #3979
+#<rack_traverse_speed>    = #3980
+#<rack_z_load_height>     = #3981
+#<rack_safe_z_height>     = #3982
+#<rack_pocket_1_x>        = #3983
+#<rack_pocket_1_y>        = #3984
+#<rack_pocket_2_x>        = #3985
+#<rack_pocket_2_y>        = #3986
+#<pocket_1_x_clearance>   = #3987
+#<pocket_1_y_clearance>   = #3988
+
+; --- Calculate pocket position ---
+#<dx> = [#<rack_pocket_2_x> - #<rack_pocket_1_x>]
+#<dy> = [#<rack_pocket_2_y> - #<rack_pocket_1_y>]
+#<pocket_index> = [#<target_pocket> - 1]
+#<pocket_x> = [#<rack_pocket_1_x> + #<pocket_index> * #<dx>]
+#<pocket_y> = [#<rack_pocket_1_y> + #<pocket_index> * #<dy>]
+
+; --- Determine clearance position, axis, and direction ---
+#<clearance_x> = #<pocket_x>
+#<clearance_y> = #<pocket_y>
+#<retrieve_axis> = 0
+#<retrieve_sign> = 1
+
+o100 if [#<rack_id> EQ 1] ; -Y to +Y, clearance +X, retrieve +X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 2] ; -Y to +Y, clearance -X, retrieve -X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 3] ; +Y to -Y, clearance +X, retrieve +X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 4] ; +Y to -Y, clearance -X, retrieve -X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 5] ; -X to +X, clearance +Y, retrieve +Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 6] ; -X to +X, clearance -Y, retrieve -Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 7] ; +X to -X, clearance +Y, retrieve +Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 8] ; +X to -X, clearance -Y, retrieve -Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = -1
+o100 else
+    (PRINT, "Error: Invalid rack_id!")
+    o<m22> return
 o100 endif
-#<atc_z_tool_clearance_height> = [#<_ini[AXIS_Z]MAX_LIMIT>-0.01]
-o110 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
-    #<atc_z_tool_clearance_height> = #<_ini[atc]z_tool_clearance_height>
-o110 endif
 
-;M19 R0 Q2
-M24
-;M19 R0 Q1
-;G90
-G0 G53 Z#<atc_z_tool_change_height> ; rapid move to above the tool change height
-M65 P2 ; release the drawbar to clamp the tool
-M5
-M66 P5 L3 Q1 ; check the tool clamped sensor
-o120 if [#5399 LT 0]
-    (abort, Failed to reclamp tool)
-o120 endif
+; --- Motions ---
+G90
+G0 G53 Z[#<rack_safe_z_height>]
+G0 G53 X[#<pocket_x>] Y[#<pocket_y>]
+M19 ; spindle orientation
+M24 ; unclamp drawbar to receive tool
+G1 G53 F[#<rack_traverse_speed>] Z[#<rack_z_load_height>]
+M25 ; clamp tool in spindle
 
-M65 P0 ; Move Carousel home
-M66 P0 L3 Q4 ; check carousel in position sensor
-o130 if [#5399 LT 0]
-    M65 P1 ; turn off the solenoid to send atc home
-    (abort, Failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
-o130 endif
+; Move tool out of pocket - single axis, correct direction
+o200 if [#<retrieve_axis> EQ 1]
+    G1 G53 F[#<rack_traverse_speed>] X[#<clearance_x>]
+o200 else
+    G1 G53 F[#<rack_traverse_speed>] Y[#<clearance_y>]
+o200 endif
 
-;M65 P1 ; Turn off carousel home position solenoid
+G0 G53 Z[#<rack_safe_z_height>]
 
-(PRINT, o<m22> endsub)
-o<m22> endsub [1]
+o<m22> endsub
 
 M2
