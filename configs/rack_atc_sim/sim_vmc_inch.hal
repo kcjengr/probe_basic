@@ -4,7 +4,7 @@
 # ie, this creates things like limit switches which would be driven by real hardware on a real machine. 
 
 # load the vismach model
-loadusr -W ./vmcgui
+# loadusr -W ./vmcgui
 
 loadrt mult2 count=3
 
@@ -29,12 +29,12 @@ setp mult2.0.in0 25.4
 setp mult2.1.in0 25.4
 setp mult2.2.in0 25.4
 
-setp xlim.max 12.1
-setp xlim.min -12.1
-setp ylim.max 0.1
-setp ylim.min -8.1
-setp zlim.max 0.1
-setp zlim.min -16.1
+setp xlim.max 2.0
+setp xlim.min -2.0
+setp ylim.max 2.0
+setp ylim.min -2.0
+setp zlim.max 2.0
+setp zlim.min -2.0
 
 net x-pos-lim xlim.over
 net x-neg-lim xlim.under
@@ -45,17 +45,17 @@ net z-neg-lim zlim.under
 
 
 net x-pos xlim.in mult2.0.in1
-net x-conv mult2.0.out vmcgui.X
+# net x-conv mult2.0.out vmcgui.X
 
 net y-pos ylim.in mult2.1.in1
-net y-conv mult2.1.out vmcgui.Y
+# net y-conv mult2.1.out vmcgui.Y
 
 net z-pos zlim.in mult2.2.in1
-net z-conv mult2.2.out vmcgui.Z
+# net z-conv mult2.2.out vmcgui.Z
 
 
 #simulated arm
-setp vmcgui.arm -20
+# setp vmcgui.arm -20
 addf armpos servo-thread
 addf armlim servo-thread
 addf armsw servo-thread
@@ -63,7 +63,7 @@ setp armpos.in0 -20
 setp armpos.in1 5
 net arm-act armpos.sel
 net arm-set armpos.out armlim.in
-net arm-pos armlim.out armsw.in vmcgui.arm
+# net arm-pos armlim.out armsw.in vmcgui.arm
 setp armlim.max 5
 setp armlim.min -20
 setp armlim.maxv 20
@@ -80,7 +80,7 @@ setp cardir.in3 0
 net car-cw cardir.sel1
 net car-ccw cardir.sel0
 net car-dir cardir.out carpos.in0
-net car-pos carpos.out carpos.in1 vmcgui.carousel
+# net car-pos carpos.out carpos.in1 vmcgui.carousel
 loadrt conv_float_u32
 addf conv-float-u32.0 servo-thread
 net car-pos conv-float-u32.0.in 
@@ -136,10 +136,10 @@ net spindle-cmd spindlelim.in
 net spindle-vel spindlelim.out spindlepos.in0
 setp spindlepos.gain0 .00001666
 setp spindlepos.in1 0
-net spindle-pos spindlepos.out spindlepos.in1 vmcgui.spindle
+# net spindle-pos spindlepos.out spindlepos.in1 vmcgui.spindle
 
 #simulated drawbar
-setp vmcgui.drawbar 5
+# setp vmcgui.drawbar 5
 addf drawpos servo-thread
 addf drawlim servo-thread
 addf drawsw servo-thread
@@ -150,14 +150,14 @@ net draw-set drawpos.out drawlim.in
 setp drawlim.max 5
 setp drawlim.min 0
 setp drawlim.maxv 20
-net draw-pos drawlim.out drawsw.in vmcgui.drawbar
+# net draw-pos drawlim.out drawsw.in vmcgui.drawbar
 setp drawsw.max 4
 setp drawsw.min 1
 net tool-locked drawsw.over
 net tool-released drawsw.under
 
 #simulated carousel lock
-setp vmcgui.lock 5
+# setp vmcgui.lock 5
 addf lockpos servo-thread
 addf locklim servo-thread
 addf locksw servo-thread
@@ -168,7 +168,7 @@ net lock-set lockpos.out locklim.in
 setp locklim.max 5
 setp locklim.min 0
 setp locklim.maxv 20
-net lock-pos locklim.out locksw.in vmcgui.lock
+# net lock-pos locklim.out locksw.in vmcgui.lock
 setp locksw.max 4
 setp locksw.min 1
 net car-locked locksw.over
