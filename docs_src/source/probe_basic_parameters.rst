@@ -6,16 +6,17 @@ Probe Basic Parameters
 
    Probe Basic's devlop version is now using the var file in the configs folder for storing parameters used in subroutines and other functions throughout linuxcnc. These are callable the same as all other parameters which allows them to be used in remap subroutines.  This will allow users a greater degree of flexibility in modifying and using features such as tool touch off during tool changes, programmable coolant, probing etc all while being able to make changes from the from within the probe basic user interfaces entry boxes.  Once changes to the entries are made they are recorded to the var file and are available immediately after the changes are made.  This allows users the ability to change vital settings to ensure their machines run optimally and reliably without major config modifications.
 
-   The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine connfiguration for proper functionality.  
+   The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine connfiguration for proper functionality.
 
 
-.. list-table:: **Probe Basic Numbered Parameters**
+
+.. list-table::
    :header-rows: 1
-   :widths: 10 40 10 300
+   :widths: 10 50 10 150
 
    * - Var #
      - Used For
-     - Persistent/Volatile
+     - Persistence
      - Description of stored Variable
    * - 3000
      - Programmed Coolant
@@ -60,7 +61,7 @@ Probe Basic Parameters
    * - 3010
      - Tool Setting
      - Persistent
-     - Spindle zero, distance from spindle nose home position to tool setter trigger height (abs)
+     - Spindle zero, spindle nose home position to tool setter trigger height (abs)
    * - 3011
      - Tool Setting
      - Persistent
@@ -80,7 +81,7 @@ Probe Basic Parameters
    * - 3015
      - Touch Probe
      - Persistent
-     - Probe Slow Feedrate, secondary probing speed for final probing moves, (no secondary probing if set to 0.0)
+     - Probe Slow Feedrate, secondary probing speed probing moves (single touch if set to 0)
    * - 3016
      - Touch Probe
      - Persistent
@@ -88,55 +89,55 @@ Probe Basic Parameters
    * - 3017
      - Touch Probe
      - Persistent
-     - Probe Traverse Feedrate, repositioning probing speed for traversing work piece to next initial probing position
+     - Probe Traverse Feedrate, probing speed for traversing work piece to next probe position
    * - 3018
      - Touch Probe
      - Persistent
-     - Max XY Distance, max distance in XY probing routine will move before stopping with error (safety Feature)
+     - Max XY Distance, XY probe motion distance before triggering an error (safety Feature)
    * - 3019
      - Touch Probe
      - Persistent
-     - XY Clearance, distance in XY the probe after recording a probe event and between initial and secondary probes
+     - XY Clearance, XY retract distance after probe trigger event
    * - 3020
      - Touch Probe
      - Persistent
-     - Max Z Distance, max distance in Z probing routine will move before stopping with error (safety Feature)
+     - Max Z Distance, Z probe motion distance before triggering an error (safety Feature)
    * - 3021
      - Touch Probe
      - Persistent
-     - Z Clearance, distance in Z the probe after recording a probe event and between initial and secondary probes
+     - Z Clearance, Z retract distance after probe trigger event
    * - 3022
      - Touch Probe
      - Persistent
-     - Extra Probe Depth, Additional Probe Depth added to the probe Z- move, Added to the Probe Tip's Diameter
+     - Extra Probe Depth, distance added to probe tip diameter to control z- probe depth
    * - 3023
      - Touch Probe
      - Persistent
-     - Step Off Width, Distance probe moves from the starting position in X and Y to clear work edge
+     - Step Off Width, XY move distance from start probe position to clear work edge
    * - 3024
      - Touch Probe
      - Persistent
-     - Edge Width, Distance between edge probes when probing to find the angle offset of a work piece
+     - Edge Width, Distance between edge probes when probing angle offset of a work piece
    * - 3025
      - Touch Probe
      - Persistent
-     - Boss and Pocket Diameter Hint
+     - Boss and Pocket Diameter Hint use to set rough probing motion distances
    * - 3026
      - Touch Probe
      - Persistent
-     - Boss and Pocket X Hint
+     - Boss and Pocket X Hint use to set rough probing motion distances
    * - 3027
      - Touch Probe
      - Persistent
-     - Boss and Pocket Y Hint
+     - Boss and Pocket Y Hint use to set rough probing motion distances
    * - 3028
      - Touch Probe
      - Persistent
-     - Ridge and Valley X Hint
+     - Ridge and Valley X Hint use to set rough probing motion distances
    * - 3029
      - Touch Probe
      - Persistent
-     - Ridge and Valley Y Hint
+     - Ridge and Valley Y Hint use to set rough probing motion distances
    * - 3030
      - Touch Probe
      - Persistent
@@ -144,7 +145,7 @@ Probe Basic Parameters
    * - 3031
      - Touch Probe
      - Persistent
-     - wco rotation mode, for switching between setting rotational wco or to probe angle of probed work only
+     - wco rotation mode, sets rotation wco or probes to find angle of work only
    * - 3032
      - Touch Probe
      - Persistent
