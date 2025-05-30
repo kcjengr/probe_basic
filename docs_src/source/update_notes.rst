@@ -82,7 +82,9 @@ Probe basic and probe basic lathe have just received major updates that will req
          - probe_valley_y.ngc
          - probe_valley_y_center_start.ngc
 
+- User Convenience settings were also added by request, these are a settings drop down box to set persistently the active start up tab that is displayed.
 
+- The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.
 
 Overview of updates for LATHE configurations
 --------------------------------------------
@@ -133,3 +135,7 @@ Probe basic lathe received major updates that will require users to make some ch
          USER_TABS_PATH = user_tabs/
 
 - Custom config YAML file will require edits or the newly edited version in the sim config will need to be copied over for some of the above features to work. Be sure to do this or you will receive some errors.
+
+- User Convenience settings were also added by request, these are a settings drop down box to set persistently the active start up tab that is displayed.
+
+- The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.
