@@ -23,6 +23,12 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
 
 .. toctree::
    :maxdepth: 2
+   :caption: Update Release Notes:
+
+   update_notes
+
+.. toctree::
+   :maxdepth: 2
    :caption: Configuration:
 
    probe_basic_parameters

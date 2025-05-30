@@ -23,10 +23,9 @@ Step 2: Copy required files
    1. In the LinuxCNC config folder, locate your new config folder and the "probe_basic_machine_config_setup_files" folder.
    2. Open two folder windows on the desktop: the new Pncconf folder created for your machine and the probe_basic_machine_config_setup_files folder.
    3. Clean up the Pncconf folder by removing unneeded files (see images below for reference).
-   4. Copy ALL files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
-   **Note, the image may not show all of the same files in the latest version, ignore any discrepency here and copy ALL files in the probe_basic_machine_config_setup_files folder**
+   4. Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.
 
-   ***the latest DEVELOP version requires the "user_buttons" and "user_dro_display" folder to be copied over also (not shown in pics below)!***
+   ***the latest DEVELOP version requires ALL folders and files to be copied over (newly added files may not be shown in the images below)!***
 
 
    **As built pncconfig folder**
@@ -79,7 +78,6 @@ Step 3: Edit INI files
       - If a line is not in your machine file, copy it to the appropriate section in "my_LinuxCNC_machine.ini".
    3. Note that only ONE postgui HAL file can be called. Add any additional items to the existing probe_basic_postgui.hal file.
    4. Save the file and delete the "probe_basic_required_ini_items.ini" file from the folder.
-   5. once you have finished editing the ini file, delete the comments to the side of the parameters. **# Recommended Setting for Probe Basic** as an example or it can cause some load errors.
 
 
    **Required ini file items for Probe Basic**
@@ -90,18 +88,30 @@ Step 3: Edit INI files
          DISPLAY = probe_basic
          OPEN_FILE = ~/linuxcnc/nc_files/pb_examples/blank.ngc
          CONFIG_FILE = custom_config.yml
-         MAX_FEED_OVERRIDE = 2.000000            # Recommended Setting for Probe Basic
-         MAX_SPINDLE_OVERRIDE = 2.000000         # Recommended Setting for Probe Basic
-         MIN_SPINDLE_OVERRIDE = 0.500000         # Recommended Setting for Probe Basic
-         INTRO_GRAPHIC = pbsplash.png            # Recommended Setting for Probe Basic
-         INTRO_TIME = 5                          # Recommended Setting for Probe Basic
-         INCREMENTS = JOG .01in .001in .0001in   # REQUIRED Setting for Probe Basic
-         GEOMETRY = xyz                          # REQUIRED Setting for Probe Basic
-         USER_TABS_PATH = user_tabs/             # REQUIRED Setting for Probe Basic
-         USER_BUTTONS_PATH = user_buttons/       # REQUIRED Setting for Probe Basic
-         USER_DROS_PATH = user_dro_display/      # REQUIRED Setting for Probe Basic
-         DRO_DISPLAY = xyz                       # REQUIRED Setting for Probe Basic, Options: xyz, xyza, xyzab, xyzac, xyzbc, user
+         MAX_FEED_OVERRIDE = 2.000000
+         MAX_SPINDLE_OVERRIDE = 2.000000
+         MIN_SPINDLE_OVERRIDE = 0.500000
+         INTRO_GRAPHIC = pbsplash.png
+         INTRO_TIME = 3
+         INCREMENTS = JOG .01in .001in .0001in
+         USER_TABS_PATH = user_tabs/
+         USER_BUTTONS_PATH = user_buttons/
+         USER_DROS_PATH = user_dro_display/
+         DRO_DISPLAY = XYZ
+         GEOMETRY = XYZ
+         OFFSET_COLUMNS = XYZ
+         TOOL_TABLE_COLUMNS = TZDR
+         KEYBOARD_JOG = true
+         KEYBOARD_JOG_SAFETY_OFF = true
+         USER_ATC_BUTTONS_PATH = user_atc_buttons/
+         ATC_TAB_DISPLAY = 0
+         #  ATC tab display options
+         #  0 = Hide atc tab
+         #  1 = Carousel atc display
+         #  2 = Rack atc display
 
+         
+         #  Non ATC machines use the following RS274NGC section.
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P.001 G80 G90 G91.1 G92.1 G94 G97 G98
          PARAMETER_FILE = linuxcnc.var
@@ -109,13 +119,32 @@ Step 3: Edit INI files
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
 
+         #  ATC machines use the following RS274NGC section.
+         [RS274NGC]
+         RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P0.001 G80 G90 G91.1 G92.1 G94 G97 G98
+         PARAMETER_FILE = linuxcnc.var
+         OWORD_NARGS = 1
+         NO_DOWNCASE_OWORD = 1
+         SUBROUTINE_PATH = subroutines
+         REMAP=M6  modalgroup=6 prolog=change_prolog ngc=toolchange epilog=change_epilog
+         REMAP=M10 modalgroup=6 argspec=P ngc=m10
+         REMAP=M11 modalgroup=6 argspec=p ngc=m11
+         REMAP=M12 modalgroup=6 argspec=p ngc=m12
+         REMAP=M13 modalgroup=6 ngc=m13
+         REMAP=M21 modalgroup=6 ngc=m21
+         REMAP=M22 modalgroup=6 ngc=m22
+         REMAP=M23 modalgroup=6 ngc=m23
+         REMAP=M24 modalgroup=6 ngc=m24
+         REMAP=M25 modalgroup=6 ngc=m25
+         REMAP=M26 modalgroup=6 ngc=m26
+         
          [HAL]
-         HALUI = halui                              # Use local path to your hal file directory
-         POSTGUI_HALFILE = probe_basic_postgui.hal  # ONLY 1 postgui hal file can be called at launch
-         TWOPASS = on                               # Add to pr edit the PB postgui hal file
+         HALUI = halui
+         POSTGUI_HALFILE = probe_basic_postgui.hal
+         TWOPASS = on
 
          [TRAJ]
-         AXES = 3 # or number of axes of your machine
+         AXES = 3
 
       |
 
@@ -126,32 +155,32 @@ Step 4: Modify Post Gui Hal File
 
    Modify the following lines by commenting them out, they are used for testing in probe basic sim only and will error in the real machine configs.  the spindle feedback line can be used if it is setup in the main hal and the hardware is on the machine to provide a spindle speed input to linuxcnc.
 
-   .. code-block:: bash
+      .. code-block:: bash
 
-      loadrt time
-      loadrt not
-      
-      addf time.0 servo-thread
-      addf not.0 servo-thread
-      net prog-running not.0.in <= halui.program.is-idle
-      net prog-paused halui.program.is-paused => time.0.pause
-      net cycle-timer time.0.start <= not.0.out
-      net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
-      net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
-      net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
-      # *** Time items required for Probe Basic to run ***
-      
-      #  ---manual tool change signals---
-      net tool-change-request     =>  qtpyvcp_manualtoolchange.change
-      net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
-      net tool-number             =>  qtpyvcp_manualtoolchange.number
-      
-      # *** Probe graphic simulation trigger push probe tip ***
-      # net probe-in  =>  qtpyvcp.probe-in.out     <----comment this line out>
-      net probe-in  <=  qtpyvcp.probe-led.on
-      
-      # *** Set line below for actual spindle readout from your hal file ***
-      # net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in   <----comment this line out or connect to your rpm net pin>
+         loadrt time
+         loadrt not
+         
+         addf time.0 servo-thread
+         addf not.0 servo-thread
+         net prog-running not.0.in <= halui.program.is-idle
+         net prog-paused halui.program.is-paused => time.0.pause
+         net cycle-timer time.0.start <= not.0.out
+         net cycle-seconds qtpyvcp.timerseconds.in <= time.0.seconds
+         net cycle-minutes qtpyvcp.timerminutes.in <= time.0.minutes
+         net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
+         # *** Time items required for Probe Basic to run ***
+         
+         #  ---manual tool change signals---
+         net tool-change-request     =>  qtpyvcp_manualtoolchange.change
+         net tool-change-confirmed   <=  qtpyvcp_manualtoolchange.changed
+         net tool-number             =>  qtpyvcp_manualtoolchange.number
+         
+         # *** Probe graphic simulation trigger push probe tip ***
+         # net probe-in  =>  qtpyvcp.probe-in.out     <----comment this line out>
+         net probe-in  <=  qtpyvcp.probe-led.on
+         
+         # *** Set line below for actual spindle readout from your hal file ***
+         # net spindle-rpm-filtered scale_to_rpm.out  =>  qtpyvcp.spindle-encoder-rpm.in   <----comment this line out or connect to your rpm net pin>
 
 
 
