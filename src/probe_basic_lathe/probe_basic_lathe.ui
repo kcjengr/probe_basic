@@ -21623,10 +21623,14 @@ border-image: url(:/images/Threading.png);
 VCPSettingsComboBox {
     color: white;
     font: 16pt &quot;Bebas Kai&quot;;
+    padding-left: 15px;
 }</string>
                   </property>
                   <property name="currentText">
-                   <string>MAIN</string>
+                   <string>STATUS</string>
+                  </property>
+                  <property name="currentIndex">
+                   <number>8</number>
                   </property>
                   <property name="settingName" stdset="0">
                    <string>startup-settings.startup-tab</string>
@@ -21699,7 +21703,36 @@ VCPSettingsComboBox {
               <property name="styleSheet">
                <string notr="true"/>
               </property>
-              <layout class="QVBoxLayout" name="verticalLayout_16"/>
+              <layout class="QHBoxLayout" name="horizontalLayout_13">
+               <item>
+                <widget class="QLabel" name="label_5">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: white;
+border-radius: 6px;
+color: black;
+padding: 20px;</string>
+                 </property>
+                 <property name="text">
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; color:#170cd9;&quot;&gt;5/30/2025 Latest Update Requires config modification see release notes at link below for update and config edit instructions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Click Me: &lt;/span&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/update_notes.html&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;Probe Basic Update Release Notes and Instructions&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::AutoText</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                 </property>
+                 <property name="wordWrap">
+                  <bool>true</bool>
+                 </property>
+                 <property name="openExternalLinks">
+                  <bool>true</bool>
+                 </property>
+                 <property name="textInteractionFlags">
+                  <set>Qt::LinksAccessibleByKeyboard|Qt::LinksAccessibleByMouse|Qt::TextBrowserInteraction|Qt::TextSelectableByKeyboard|Qt::TextSelectableByMouse</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
              </widget>
             </item>
             <item>
@@ -22407,7 +22440,7 @@ VCPSettingsComboBox {
 }</string>
                        </property>
                        <property name="currentIndex">
-                        <number>3</number>
+                        <number>0</number>
                        </property>
                        <widget class="QWidget" name="sb_page_1">
                         <property name="styleSheet">
@@ -29736,10 +29769,10 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

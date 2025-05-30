@@ -24,7 +24,6 @@ LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
-# Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
 class ProbeBasic(VCPMainWindow):
@@ -37,7 +36,7 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
 
-        if (0 == int(INIFILE.find("ATC", "POCKETS") or 0)):
+        if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
             self.tabWidget.setTabVisible(atc_tab_index, False)
             self.tabWidget.removeTab(atc_tab_index)
@@ -67,7 +66,6 @@ class ProbeBasic(VCPMainWindow):
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
 
-        # Normalize DRO_DISPLAY value to lowercase so user can enter XZ, xz, etc.
         dro_display = dro_display.lower()
         
         self.help_menu = self.menuBar().addMenu("Help")
@@ -164,7 +162,6 @@ class ProbeBasic(VCPMainWindow):
                 
                 self.atc_layout.addWidget(self.atc[module_name])
 
-                # Load user ATC buttons after loading the ATC
                 if hasattr(self.atc[module_name], 'user_atc_buttons_layout'):
                     self.load_user_atc_buttons(self.atc[module_name].user_atc_buttons_layout)
                 else:
@@ -199,7 +196,6 @@ class ProbeBasic(VCPMainWindow):
                 
                 self.atc_layout.addWidget(self.rack_atc[module_name])
                 
-                # Load user ATC buttons after loading the rack ATC
                 if hasattr(self.rack_atc[module_name], 'user_atc_buttons_layout'):
                     self.load_user_atc_buttons(self.rack_atc[module_name].user_atc_buttons_layout)
                 else:
@@ -208,31 +204,48 @@ class ProbeBasic(VCPMainWindow):
     def load_user_atc_buttons(self, layout):
         self.user_atc_button_modules = {}
         self.user_atc_buttons = {}
-        
-        user_atc_buttons_paths = INIFILE.findall("DISPLAY", "USER_ATC_BUTTONS_PATH")
 
-        for user_atc_buttons_path in user_atc_buttons_paths:
-            user_atc_button_path = os.path.expanduser(user_atc_buttons_path)
-            if not os.path.exists(user_atc_button_path):
-                LOG.warning(f"User ATC buttons path does not exist: {user_atc_button_path}")
-                continue
-            
-            user_atc_button_folders = os.listdir(user_atc_button_path)
-            for user_atc_button in user_atc_button_folders:
-                button_dir = os.path.join(user_atc_button_path, user_atc_button)
-                if not os.path.isdir(button_dir):
-                    continue
-                
-                module_name = f"user_atc_buttons.{os.path.basename(user_atc_button_path)}.{user_atc_button}"
-                module_file = os.path.join(button_dir, f"{user_atc_button}.py")
-                spec = importlib.util.spec_from_file_location(module_name, module_file)
-                self.user_atc_button_modules[module_name] = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = self.user_atc_button_modules[module_name]
-                spec.loader.exec_module(self.user_atc_button_modules[module_name])
-                
-                self.user_atc_buttons[module_name] = self.user_atc_button_modules[module_name].UserAtcButton()
-                
-                layout.addWidget(self.user_atc_buttons[module_name])
+        atc_tab_display = int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)
+        if atc_tab_display == 0:
+            return  # Do not load any user ATC buttons
+
+        if atc_tab_display == 1:
+            folder_name = "template_user_atc_buttons"
+            file_name = "template_user_atc_buttons.py"
+            class_name = "UserAtcButton"
+        elif atc_tab_display == 2:
+            folder_name = "template_user_rack_atc_buttons"
+            file_name = "template_user_rack_atc_buttons.py"
+            class_name = "UserRackAtcButton"
+        else:
+            return
+
+        user_atc_buttons_path = INIFILE.find("DISPLAY", "USER_ATC_BUTTONS_PATH")
+        if not user_atc_buttons_path:
+            LOG.warning("USER_ATC_BUTTONS_PATH not set in INI.")
+            return
+
+        user_atc_buttons_path = os.path.expanduser(user_atc_buttons_path)
+        full_folder = os.path.join(user_atc_buttons_path, folder_name)
+        target_path = os.path.join(full_folder, file_name)
+        if not os.path.isdir(full_folder):
+            LOG.warning(f"User ATC buttons folder does not exist: {full_folder}")
+            return
+        if not os.path.isfile(target_path):
+            LOG.warning(f"User ATC button file does not exist: {target_path}")
+            return
+
+        module_name = f"user_atc_buttons.{folder_name}.{folder_name}"
+        spec = importlib.util.spec_from_file_location(module_name, target_path)
+        module = importlib.util.module_from_spec(spec)
+        sys.modules[module_name] = module
+        spec.loader.exec_module(module)
+
+        if hasattr(module, class_name):
+            self.user_atc_buttons[module_name] = getattr(module, class_name)()
+            layout.addWidget(self.user_atc_buttons[module_name])
+        else:
+            LOG.warning(f"{class_name} not found in {target_path}")
 
     def load_user_buttons(self):
         self.user_button_modules = {}

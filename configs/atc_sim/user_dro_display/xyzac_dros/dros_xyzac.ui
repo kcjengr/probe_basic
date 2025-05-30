@@ -331,7 +331,7 @@
            <string>REF ALL</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.all</string>
@@ -1499,7 +1499,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF A</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.axis:a</string>
@@ -1635,7 +1635,7 @@ QLabel[style=&quot;homing&quot;]{
            <number>1</number>
           </property>
           <property name="axisNumber" stdset="0">
-           <number>5</number>
+           <number>4</number>
           </property>
           <property name="inchFormat" stdset="0">
            <string>%9.4f</string>
@@ -1698,7 +1698,7 @@ QLabel[style=&quot;homing&quot;]{
            <number>0</number>
           </property>
           <property name="axisNumber" stdset="0">
-           <number>5</number>
+           <number>4</number>
           </property>
           <property name="inchFormat" stdset="0">
            <string>%9.4f</string>
@@ -1753,7 +1753,7 @@ QLabel[style=&quot;homing&quot;]{
            <number>2</number>
           </property>
           <property name="axisNumber" stdset="0">
-           <number>5</number>
+           <number>4</number>
           </property>
           <property name="inchFormat" stdset="0">
            <string>%9.4f</string>
@@ -1801,7 +1801,7 @@ QLabel[style=&quot;homing&quot;]{
            <string>REF C</string>
           </property>
           <property name="rules" stdset="0">
-           <string>[{&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           <string>[{&quot;name&quot;: &quot;home_prohibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1] or ch[2] or ch[3] or ch[4])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.2.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.3.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.4.homing&quot;, &quot;trigger&quot;: true}]}]</string>
           </property>
           <property name="actionName" stdset="0">
            <string>machine.home.axis:c</string>

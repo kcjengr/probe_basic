@@ -45,6 +45,13 @@ o<rack_id_calc> sub
   #<rack_id> = 0
   #<temp> = 0
 
+  (Pull ini pocket count and write to ui)
+  o100 if [EXISTS[#<_ini[atc]pockets>]]
+    #<number_of_pockets> = #<_ini[atc]pockets>
+    #3973 = #<number_of_pockets>
+    (DEBUG, EVAL[vcp.getWidget{"rack_pocket_count"}.setValue{#3973}])
+  o100 endif
+
   (Check for duplicate pocket positions)
   o110 if [#<rack_pocket_1_x_3983> EQ #<rack_pocket_2_x_3985>]
     o111 if [#<rack_pocket_1_y_3984> EQ #<rack_pocket_2_y_3986>]
