@@ -8,33 +8,10 @@ Probe Basic Parameters
 
    The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine connfiguration for proper functionality.  
 
-.. image:: images/params_programmable_coolant.png
-   :align: center
-   :scale: 100%
-
-|
-
-.. image:: images/params_tool_setter.png
-   :align: center
-   :scale: 100%
-
-|
-
-.. image:: images/params_touch_probe.png
-   :align: center
-   :scale: 100%
-
-|
-
-.. image:: images/params_atc.png
-   :align: center
-   :scale: 100%
-
-|
 
 .. list-table:: **Probe Basic Numbered Parameters**
    :header-rows: 1
-   :widths: 10 20 10 60
+   :widths: 10 40 10 300
 
    * - Var #
      - Used For
