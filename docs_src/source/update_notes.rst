@@ -36,11 +36,13 @@ Probe basic and probe basic lathe have just received major updates that will req
 - Keyboard jog settings are now user configurable with the following ini file `[DISPLAY]` entries:
 
       .. code-block:: bash
+        
          KEYBOARD_JOG = true
          - true sets KB jog active
          - false turns KB jog off
 
       .. code-block:: bash
+
          KEYBOARD_JOG_SAFETY_OFF = true
          - true turns requirement of safety keys off for KB jogging
          - false sets KB jog safety keys active
@@ -49,14 +51,16 @@ Probe basic and probe basic lathe have just received major updates that will req
 - ATC updates: you can now set the desired ATC Tab Display Setting to hide the ATC tab, display carousel ATC, or display rack ATC from the ini `[DISPLAY]` section in the following line:
 
       .. code-block:: bash
+        
          ATC_TAB_DISPLAY = 0
-            - 0 sets the ATC tab hidden
-            - 1 sets the ATC tab to display the carousel type ATC
-            - 2 sets the ATC tab to display the new rack type ATC
+         - 0 sets the ATC tab hidden
+         - 1 sets the ATC tab to display the carousel type ATC
+         - 2 sets the ATC tab to display the new rack type ATC
 
 - ATC page received a user button widget. Users can now easily customize their required ATC buttons in this widget separate from the main UI so it will not be overwritten during future updates. The `user_atc_buttons` folder is located in the updated sim config folder and will need to be copied to the user's machine config folder for use. User will need to add the following line to the `[DISPLAY]` section of the ini file to activate it:
 
       .. code-block:: bash
+
          USER_ATC_BUTTONS_PATH = user_atc_buttons/
 
 
