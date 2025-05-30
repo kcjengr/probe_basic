@@ -1,7 +1,6 @@
 ====================
 Update Release Notes
 ====================
-|
 
 
 Overview of updates for MILL configurations

@@ -94,7 +94,7 @@ Step 3: Edit INI files
          INTRO_GRAPHIC = pbsplash.png
          INTRO_TIME = 3
          INCREMENTS = JOG .01in .001in .0001in
-         # USER_TABS_PATH = user_tabs/
+         USER_TABS_PATH = user_tabs/
          USER_BUTTONS_PATH = user_buttons/
          USER_DROS_PATH = user_dro_display/
          DRO_DISPLAY = XYZ
@@ -103,10 +103,15 @@ Step 3: Edit INI files
          TOOL_TABLE_COLUMNS = TZDR
          KEYBOARD_JOG = true
          KEYBOARD_JOG_SAFETY_OFF = true
-         # ATC tab display options, 0 = no atc tab displayed, 1 = Carousel atc display, 2 = rack atc display
-         ATC_TAB_DISPLAY = 0
          USER_ATC_BUTTONS_PATH = user_atc_buttons/
+         ATC_TAB_DISPLAY = 0
+         #  ATC tab display options
+         #  0 = Hide atc tab
+         #  1 = Carousel atc display
+         #  2 = Rack atc display
 
+         
+         #  Non ATC machines use the following RS274NGC section.
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P.001 G80 G90 G91.1 G92.1 G94 G97 G98
          PARAMETER_FILE = linuxcnc.var
@@ -114,8 +119,7 @@ Step 3: Edit INI files
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
 
-         #  ATC use requires the RS274NGC section to contain the following
-         
+         #  ATC machines use the following RS274NGC section.
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P0.001 G80 G90 G91.1 G92.1 G94 G97 G98
          PARAMETER_FILE = linuxcnc.var
