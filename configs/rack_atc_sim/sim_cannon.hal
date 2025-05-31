@@ -1,0 +1,15 @@
+loadrt pwmgen output_type=0
+addf scale.1 servo-thread
+
+addf pwmgen.update servo-thread
+addf pwmgen.make-pulses servo-thread
+
+setp pwmgen.0.enable 1
+setp pwmgen.0.pwm-freq 50
+
+setp scale.1.gain 0.00059
+setp scale.1.offset 0.05
+
+#CONNECTIONS
+net scale-sig    motion.analog-out-00    =>    scale.1.in
+net scale-pwm    scale.1.out    =>    pwmgen.0.value

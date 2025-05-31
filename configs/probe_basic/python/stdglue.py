@@ -1,3 +1,4 @@
+
 #NOTE:
 #     The legacy names *selected_pocket* and *current_pocket* actually reference
 #     a sequential tooldata index for tool items loaded from a tool
@@ -10,9 +11,14 @@
 
 
 import emccanon
+
+from linuxcnc import version
 from interpreter import *
 from emccanon import MESSAGE
+
 throw_exceptions = 1
+
+VERSION = version
 
 # used so screens can get info.
 # add this to toplevel to call it:
@@ -130,9 +136,17 @@ def change_epilog(self, **words):
             yield INTERP_OK
         else:
             if self.return_value > 0.0:
+                
                 # commit change
+                
                 self.selected_pocket =  int(self.params["selected_pocket"])
-                emccanon.CHANGE_TOOL(self.selected_pocket)
+                                
+                if "2.9" in VERSION:
+                    emccanon.CHANGE_TOOL(self.selected_pocket)
+                elif "2.10" in VERSION:
+                    emccanon.SELECT_TOOL(self.selected_tool)
+                    emccanon.CHANGE_TOOL()
+
                 self.current_pocket = self.selected_pocket
                 self.selected_pocket = -1
                 self.selected_tool = -1
@@ -148,3 +162,4 @@ def change_epilog(self, **words):
     except Exception as e:
         self.set_errormsg("M6/change_epilog: %s" % (e))
         yield INTERP_ERROR
+

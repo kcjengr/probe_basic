@@ -86,6 +86,7 @@ Probe basic and probe basic lathe have just received major updates that will req
 
 - The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.
 
+
 Overview of updates for LATHE configurations
 --------------------------------------------
 

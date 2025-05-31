@@ -2,6 +2,7 @@ from qtpyvcp.widgets.qtdesigner import _DesignerPlugin
 
 from widgets.lathe_tool_touch_off.lathe_tool_touch_off import LatheToolTouchOff
 from widgets.atc_widget.atc import DynATC
+from widgets.rack_atc_widget.rack_atc import RackATC
 
 from widgets.conversational.facing import FacingWidget
 from widgets.conversational.xy_coord import XYCoordWidget
@@ -19,6 +20,10 @@ class LatheToolTouchOff_Plugin(_DesignerPlugin):
 class DynATC_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return DynATC
+    
+class RackATC_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return RackATC
 
 
 class FloatLineEditPlugin(_DesignerPlugin):

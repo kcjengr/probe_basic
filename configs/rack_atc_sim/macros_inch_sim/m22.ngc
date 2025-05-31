@@ -1,0 +1,88 @@
+o<m22> sub
+
+; Use P-word as target pocket (if called as M22 Pn)
+#<target_pocket> = #1
+
+; --- Parameter assignments for clarity ---
+#<rack_id>                = #3979
+#<rack_traverse_speed>    = #3980
+#<rack_z_load_height>     = #3981
+#<rack_safe_z_height>     = #3982
+#<rack_pocket_1_x>        = #3983
+#<rack_pocket_1_y>        = #3984
+#<rack_pocket_2_x>        = #3985
+#<rack_pocket_2_y>        = #3986
+#<pocket_1_x_clearance>   = #3987
+#<pocket_1_y_clearance>   = #3988
+
+; --- Calculate pocket position ---
+#<dx> = [#<rack_pocket_2_x> - #<rack_pocket_1_x>]
+#<dy> = [#<rack_pocket_2_y> - #<rack_pocket_1_y>]
+#<pocket_index> = [#<target_pocket> - 1]
+#<pocket_x> = [#<rack_pocket_1_x> + #<pocket_index> * #<dx>]
+#<pocket_y> = [#<rack_pocket_1_y> + #<pocket_index> * #<dy>]
+
+; --- Determine clearance position, axis, and direction ---
+#<clearance_x> = #<pocket_x>
+#<clearance_y> = #<pocket_y>
+#<retrieve_axis> = 0
+#<retrieve_sign> = 1
+
+o100 if [#<rack_id> EQ 1] ; -Y to +Y, clearance +X, retrieve +X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 2] ; -Y to +Y, clearance -X, retrieve -X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 3] ; +Y to -Y, clearance +X, retrieve +X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 4] ; +Y to -Y, clearance -X, retrieve -X
+    #<clearance_x> = #<pocket_1_x_clearance>
+    #<retrieve_axis> = 1
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 5] ; -X to +X, clearance +Y, retrieve +Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 6] ; -X to +X, clearance -Y, retrieve -Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = -1
+o100 elseif [#<rack_id> EQ 7] ; +X to -X, clearance +Y, retrieve +Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = 1
+o100 elseif [#<rack_id> EQ 8] ; +X to -X, clearance -Y, retrieve -Y
+    #<clearance_y> = #<pocket_1_y_clearance>
+    #<retrieve_axis> = 2
+    #<retrieve_sign> = -1
+o100 else
+    (PRINT, "Error: Invalid rack_id!")
+    o<m22> return
+o100 endif
+
+; --- Motions ---
+G90
+G0 G53 Z[#<rack_safe_z_height>]
+G0 G53 X[#<pocket_x>] Y[#<pocket_y>]
+M19 ; spindle orientation
+M24 ; unclamp drawbar to receive tool
+G1 G53 F[#<rack_traverse_speed>] Z[#<rack_z_load_height>]
+M25 ; clamp tool in spindle
+
+; Move tool out of pocket - single axis, correct direction
+o200 if [#<retrieve_axis> EQ 1]
+    G1 G53 F[#<rack_traverse_speed>] X[#<clearance_x>]
+o200 else
+    G1 G53 F[#<rack_traverse_speed>] Y[#<clearance_y>]
+o200 endif
+
+G0 G53 Z[#<rack_safe_z_height>]
+
+o<m22> endsub
+
+M2
