@@ -211,7 +211,7 @@ Rectangle {
     property int prev_pocket: 1;
 
     Connections {
-        target: rack_atc;
+        target: rackatc;
 
         function onAtcInitSig(pockets) {
             pocket_slots = pockets
