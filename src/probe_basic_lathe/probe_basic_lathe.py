@@ -16,6 +16,7 @@ from qtpy import uic
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
+from qtpyvcp.utilities.settings import getSetting, setSetting  # <-- ADD THIS LINE
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic_lathe')
 from . import probe_basic_lathe_rc
@@ -48,18 +49,21 @@ class ProbeBasicLathe(VCPMainWindow):
         self.load_offset_dro()
 
         # --- Startup Tab Selection Logic (using tab text property) ---
-        from qtpyvcp.utilities.settings import getSetting, setSetting
-        startup_tab_text = getSetting("startup-settings:user-startup-tab").getValue()
+        startup_tab_text = getSetting("startup-settings.user-startup-tab").getValue()
         if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
+            # Populate ComboBox with current tab texts if not already set
             self.startup_tab_combobox.clear()
             for i in range(self.tabWidget.count()):
                 self.startup_tab_combobox.addItem(self.tabWidget.tabText(i))
+            # Set ComboBox to saved tab text, or default to first tab
             idx = self.startup_tab_combobox.findText(startup_tab_text)
             if idx != -1:
                 self.startup_tab_combobox.setCurrentIndex(idx)
             else:
                 self.startup_tab_combobox.setCurrentIndex(0)
+            # Connect to save selection and switch tab on change
             self.startup_tab_combobox.currentTextChanged.connect(self.on_startup_tab_combobox_changed)
+            # Set the main tab widget to the correct tab at startup
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
 
@@ -303,5 +307,5 @@ class ProbeBasicLathe(VCPMainWindow):
 
     def on_startup_tab_combobox_changed(self, value):
         """Save ComboBox selection for startup, but do not change the current tab."""
-        setSetting("startup-settings:user-startup-tab", value)
+        setSetting("startup-settings.user-startup-tab", value)
         # Do not call self.set_startup_tab_by_text(value)

@@ -100,7 +100,7 @@ class ProbeBasic(VCPMainWindow):
         ))
 
         # --- Startup Tab Selection Logic (using tab text property) ---
-        startup_tab_text = getSetting("startup-settings:user-startup-tab").getValue()
+        startup_tab_text = getSetting("startup-settings.user-startup-tab").getValue()
         if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
             # Populate ComboBox with current tab texts if not already set
             self.startup_tab_combobox.clear()
@@ -441,5 +441,5 @@ class ProbeBasic(VCPMainWindow):
 
     def on_startup_tab_combobox_changed(self, value):
         """Save ComboBox selection for startup, but do not change the current tab."""
-        setSetting("startup-settings:user-startup-tab", value)
+        setSetting("startup-settings.user-startup-tab", value)
         # Do not call self.set_startup_tab_by_text(value)

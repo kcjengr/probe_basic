@@ -21596,7 +21596,7 @@ border-image: url(:/images/Threading.png);
                  </widget>
                 </item>
                 <item>
-                 <widget class="VCPSettingsComboBox" name="startup_tab_combobox">
+                 <widget class="QComboBox" name="startup_tab_combobox">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                     <horstretch>0</horstretch>
@@ -21616,11 +21616,11 @@ border-image: url(:/images/Threading.png);
                    </size>
                   </property>
                   <property name="styleSheet">
-                   <string notr="true">VCPSettingsComboBox::drop-down:button {
+                   <string notr="true">QComboBox::drop-down:button {
     width: 36px;
 }
 
-VCPSettingsComboBox {
+QComboBox {
     color: white;
     font: 16pt &quot;Bebas Kai&quot;;
     padding-left: 15px;
@@ -21628,12 +21628,6 @@ VCPSettingsComboBox {
                   </property>
                   <property name="currentText">
                    <string>STATUS</string>
-                  </property>
-                  <property name="currentIndex">
-                   <number>8</number>
-                  </property>
-                  <property name="settingName" stdset="0">
-                   <string>startup-settings.startup-tab</string>
                   </property>
                   <item>
                    <property name="text">
@@ -24059,7 +24053,7 @@ padding: 20px;</string>
                                 </widget>
                                </item>
                                <item>
-                                <widget class="VCPSettingsSlider" name="settings_slider">
+                                <widget class="VCPSettingsSlider" name="linear_jog_slider">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                                    <horstretch>0</horstretch>
@@ -28810,11 +28804,6 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
-   <class>VCPSettingsComboBox</class>
-   <extends>QComboBox</extends>
-   <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
    <class>OffsetTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.offset_table</header>
@@ -28877,8 +28866,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>113</y>
+     <x>96</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -28909,8 +28898,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>99</x>
-     <y>103</y>
+     <x>101</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -28957,8 +28946,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>113</y>
+     <x>76</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -28989,8 +28978,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29069,8 +29058,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>103</y>
+     <x>93</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29105,8 +29094,8 @@ font: 11pt bebas kai;
      <y>631</y>
     </hint>
     <hint type="destinationlabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>
@@ -29149,8 +29138,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>113</y>
+     <x>86</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29197,8 +29186,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>103</y>
+     <x>85</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29769,10 +29758,10 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
