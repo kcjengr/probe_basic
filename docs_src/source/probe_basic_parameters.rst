@@ -145,7 +145,7 @@ Probe Basic Parameters
    * - 3031
      - Touch Probe
      - Persistent
-     - wco rotation mode, sets rotation wco or probes to find angle of work only
+     - WCO rotation mode, sets rotation wco or probes to find angle of work only
    * - 3032
      - Touch Probe
      - Persistent
@@ -166,6 +166,18 @@ Probe Basic Parameters
      - Touch Probe
      - Persistent
      - Square Calibration Axis Selection
+   * - 3037
+     - Tool Setting
+     - Persistent
+     - Tool Breakage Tolerance
+   * - 3038
+     - Tool Setting
+     - Persistent
+     - User Setting 1 Tool Setter
+   * - 3039
+     - Tool Setting
+     - Persistent
+     - User Setting 2 Tool Setter
    * - 3973
      - ATC Tool Change
      - Persistent
