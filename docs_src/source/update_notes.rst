@@ -73,7 +73,7 @@ Probe basic and probe basic lathe have just received major updates that will req
 
 - Custom config YAML file will require edits or the newly edited version in the sim config will need to be copied over for some of the above features to work. Be sure to do this or you will receive some errors.
 
-- A few probing routines were found to have an error using the hints, particularly the following, and will need to be copied from the sim config subroutines folder to the user's machine config subroutines folder. Below are the corrected file names for reference:
+- Probing Routine errors were fixed pertaining to using "hints". The following files and will need to be copied from the sim config subroutines folder to the user's machine config subroutines folder. Below are the corrected file names for reference:
 
       .. code-block:: bash
 
@@ -81,6 +81,8 @@ Probe basic and probe basic lathe have just received major updates that will req
          - probe_valley_x_center_start.ngc
          - probe_valley_y.ngc
          - probe_valley_y_center_start.ngc
+
+- Subroutines updates, Many other subroutines received important edits. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines.
 
 - User Convenience settings were also added by request, these are a settings drop down box to set persistently the active start up tab that is displayed.
 
