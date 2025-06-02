@@ -7,6 +7,12 @@ Overview of updates for MILL configurations
 
 Probe basic and probe basic lathe have just received major updates that will require users to make some changes to their configurations in order for probe basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
 
+- User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the `user_buttons` folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the `[DISPLAY]` section of the ini:
+  
+      .. code-block:: bash
+
+         USER_BUTTONS_PATH = user_buttons/
+
 - DRO Displays are now user configurable from the ini file with options for mill configs being xyz, xyza, xyzab, xyzac, xyzbc, xyzabc. A user template has been included with xyzabc DROs for users to easily edit and make changes to suit their machine builds. Using only the DROs required has significantly sped up probe basic where it is not having to track and query multiple hidden DROs as it previously was doing. The jog button display will also update based on the DRO display settings. Users will need to copy the `user_dro_display` folder from the sim config to their machine config and edit the ini file to set the appropriate DROs and jog buttons to display by adding the following lines to the `[DISPLAY]` section of the ini:
   
       .. code-block:: bash
@@ -101,6 +107,12 @@ Probe basic lathe received major updates that will require users to make some ch
          LATHE = 1 (for front tool post machines)
 
          BACK_TOOL_LATHE = 1 (for back tool post machines)
+
+- User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the `user_buttons` folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the `[DISPLAY]` section of the ini:
+  
+      .. code-block:: bash
+
+         USER_BUTTONS_PATH = user_buttons/
 
 - DRO Displays are now user configurable from the ini file with options for lathe configs being xz, xzc, xyzc. A user template has been included also for custom DRO displays with xyzc DROs for users to easily edit and make changes to suit their machine builds. This also gives users using fewer axes some additional space for customizations specific to their machine right in the main lower panel DRO section. Using only the DROs required has significantly sped up probe basic where it is not having to track and query multiple hidden DROs as it previously was doing. The jog button display will also update based on the DRO display settings. Users will need to copy the `user_dro_display` folder from the sim config to their machine config and edit the ini file to set the appropriate DROs and jog buttons to display by adding the following lines to the `[DISPLAY]` section of the ini:
   
