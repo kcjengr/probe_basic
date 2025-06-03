@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>479</width>
-    <height>193</height>
+    <width>491</width>
+    <height>308</height>
    </rect>
   </property>
   <property name="sizePolicy">
@@ -42,13 +42,13 @@
     <widget class="QWidget" name="widget_xz" native="true">
      <layout class="QVBoxLayout" name="verticalLayout_55">
       <property name="spacing">
-       <number>19</number>
+       <number>15</number>
       </property>
       <property name="leftMargin">
        <number>0</number>
       </property>
       <property name="topMargin">
-       <number>0</number>
+       <number>2</number>
       </property>
       <property name="rightMargin">
        <number>0</number>
@@ -77,74 +77,6 @@
          <property name="bottomMargin">
           <number>0</number>
          </property>
-         <item>
-          <widget class="MDIButton" name="zero_all_button">
-           <property name="enabled">
-            <bool>false</bool>
-           </property>
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>60</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="layoutDirection">
-            <enum>Qt::LeftToRight</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">MDIButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
-           <property name="text">
-            <string>ALL</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../../../src/probe_basic/probe_basic.qrc">
-             <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
-           </property>
-           <property name="iconSize">
-            <size>
-             <width>20</width>
-             <height>20</height>
-            </size>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[
-    {
-        &quot;channels&quot;: [
-            {
-                &quot;url&quot;: &quot;status:g5x_index&quot;,
-                &quot;trigger&quot;: true,
-                &quot;type&quot;: &quot;int&quot;
-            }
-        ],
-        &quot;expression&quot;: &quot;&quot;,
-        &quot;name&quot;: &quot;G5x Index&quot;,
-        &quot;property&quot;: &quot;None&quot;
-    }
-]</string>
-           </property>
-           <property name="MDICommand" stdset="0">
-            <string>G10 L20 P{ch[0]} X0.0 Z0.0</string>
-           </property>
-          </widget>
-         </item>
          <item>
           <widget class="QFrame" name="frame_53">
            <property name="sizePolicy">
@@ -191,6 +123,43 @@
             <property name="rightMargin">
              <number>0</number>
             </property>
+            <item>
+             <widget class="QLabel" name="machine_column_header_2">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>48</width>
+                <height>17</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>48</width>
+                <height>17</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
+}</string>
+              </property>
+              <property name="text">
+               <string>AXIS</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
             <item>
              <widget class="StatusLabel" name="work_column_header">
               <property name="sizePolicy">
@@ -297,46 +266,44 @@
               </property>
              </widget>
             </item>
-           </layout>
-          </widget>
-         </item>
-         <item>
-          <widget class="ActionButton" name="ref_all_button">
-           <property name="sizePolicy">
-            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-             <horstretch>1</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize">
-            <size>
-             <width>62</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="maximumSize">
-            <size>
-             <width>62</width>
-             <height>40</height>
-            </size>
-           </property>
-           <property name="focusPolicy">
-            <enum>Qt::NoFocus</enum>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
+            <item>
+             <widget class="QLabel" name="machine_column_header_3">
+              <property name="enabled">
+               <bool>false</bool>
+              </property>
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="minimumSize">
+               <size>
+                <width>60</width>
+                <height>17</height>
+               </size>
+              </property>
+              <property name="maximumSize">
+               <size>
+                <width>60</width>
+                <height>17</height>
+               </size>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">QLabel{
+    color: rgb(238, 238, 236);
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
-           </property>
-           <property name="text">
-            <string>REF ALL</string>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}]}]</string>
-           </property>
-           <property name="actionName" stdset="0">
-            <string>machine.home.all</string>
-           </property>
+              </property>
+              <property name="text">
+               <string>REF</string>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+             </widget>
+            </item>
+           </layout>
           </widget>
          </item>
         </layout>
@@ -344,6 +311,12 @@
       </item>
       <item>
        <widget class="QWidget" name="widget_88" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -623,6 +596,12 @@ DROLabel[style=&quot;homing&quot;]{
       </item>
       <item>
        <widget class="QWidget" name="widget_89" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
         <property name="minimumSize">
          <size>
           <width>0</width>
@@ -915,7 +894,167 @@ DROLabel[style=&quot;homing&quot;]{
        </widget>
       </item>
       <item>
-       <widget class="QWidget" name="widget" native="true"/>
+       <widget class="QWidget" name="widget_2" native="true">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>1</verstretch>
+         </sizepolicy>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_5">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>2</height>
+         </size>
+        </property>
+        <property name="lineWidth">
+         <number>0</number>
+        </property>
+        <property name="midLineWidth">
+         <number>1</number>
+        </property>
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="QWidget" name="widget" native="true">
+        <property name="maximumSize">
+         <size>
+          <width>16777215</width>
+          <height>45</height>
+         </size>
+        </property>
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <property name="spacing">
+          <number>30</number>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="MDIButton" name="zero_all_button">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">MDIButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>ALL</string>
+           </property>
+           <property name="icon">
+            <iconset resource="../../../../src/probe_basic/probe_basic.qrc">
+             <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+           </property>
+           <property name="MDICommand" stdset="0">
+            <string>G10 L20 P{ch[0]} X0.0 Z0.0</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="ActionButton" name="ref_all_button">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>62</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>REF ALL</string>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'HOMED' if ch[0] else 'REF ALL'&quot;, &quot;name&quot;: &quot;reference_all&quot;}, {&quot;name&quot;: &quot;home_inhibit&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;not (ch[0] or ch[1])&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:joint.0.homing&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:joint.1.homing&quot;, &quot;trigger&quot;: true}]}]</string>
+           </property>
+           <property name="actionName" stdset="0">
+            <string>machine.home.all</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </widget>
       </item>
      </layout>
     </widget>
