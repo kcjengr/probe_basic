@@ -8802,21 +8802,37 @@ ActionButton:checked {
                  </property>
                  <property name="maximumSize">
                   <size>
-                   <width>284</width>
+                   <width>290</width>
                    <height>630</height>
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">font: 13.5pt &quot;Bebas Kai&quot;;</string>
+                  <string notr="true">QTabWidget QTabBar::tab {
+    margin-top: 2px;
+    margin-bottom: 2px;
+    min-width: 130px;
+    min-height: 30px;
+    font: 13.5pt &quot;bebas kai&quot;;
+}
+</string>
                  </property>
                  <property name="currentIndex">
                   <number>0</number>
                  </property>
+                 <property name="usesScrollButtons">
+                  <bool>false</bool>
+                 </property>
                  <widget class="QWidget" name="tabWidget_7Page1">
                   <attribute name="title">
-                   <string>    STANDARD MODE     </string>
+                   <string>STANDARD MODE</string>
                   </attribute>
                   <layout class="QVBoxLayout" name="verticalLayout_10">
+                   <property name="leftMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
                    <item>
                     <widget class="QFrame" name="frame_51">
                      <property name="sizePolicy">
@@ -9961,9 +9977,15 @@ background-color: transparent;
                  </widget>
                  <widget class="QWidget" name="tab">
                   <attribute name="title">
-                   <string>    MASTER TOOL MODE   </string>
+                   <string>MASTER TOOL MODE</string>
                   </attribute>
                   <layout class="QVBoxLayout" name="verticalLayout_11">
+                   <property name="leftMargin">
+                    <number>7</number>
+                   </property>
+                   <property name="rightMargin">
+                    <number>0</number>
+                   </property>
                    <item>
                     <widget class="QFrame" name="frame_50">
                      <property name="sizePolicy">
@@ -27159,14 +27181,11 @@ QPushButton:checked {
                     <property name="text">
                      <string>G97  S</string>
                     </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
                     <property name="checked">
                      <bool>false</bool>
                     </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G97\&quot; in ch[0] else False\n&quot;, &quot;name&quot;: &quot;check_g97&quot;}]</string>
+                     <string>[]</string>
                     </property>
                     <property name="MDICommand" stdset="0">
                      <string>G97 S#&lt;rpm_s_word&gt;</string>
@@ -27291,14 +27310,11 @@ QPushButton:checked {
                     <property name="text">
                      <string>G96  M3</string>
                     </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
                     <property name="checked">
                      <bool>false</bool>
                     </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G96\&quot; in ch[0] and \&quot;M3\&quot; in ch[1] else False\n&quot;, &quot;name&quot;: &quot;check_g96_m3&quot;}]</string>
+                     <string>[]</string>
                     </property>
                     <property name="MDICommand" stdset="0">
                      <string>G96 D#&lt;css_max_rpm&gt; S#&lt;css_surface_speed&gt; M3</string>
@@ -27336,14 +27352,11 @@ QPushButton:checked {
                     <property name="text">
                      <string>G96  M4</string>
                     </property>
-                    <property name="checkable">
-                     <bool>true</bool>
-                    </property>
                     <property name="checked">
                      <bool>false</bool>
                     </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G96\&quot; in ch[0] and \&quot;M4\&quot; in ch[1] else False\n&quot;, &quot;name&quot;: &quot;check_g96_m4&quot;}]</string>
+                     <string>[]</string>
                     </property>
                     <property name="MDICommand" stdset="0">
                      <string>G96 D[#&lt;css_max_rpm&gt;] S[#&lt;css_surface_speed&gt;] M4</string>
@@ -30248,11 +30261,11 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
  </buttongroups>
 </ui>
