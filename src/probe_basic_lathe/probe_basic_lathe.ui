@@ -8807,7 +8807,12 @@ ActionButton:checked {
                   </size>
                  </property>
                  <property name="styleSheet">
-                  <string notr="true">QTabWidget QTabBar::tab {
+                  <string notr="true">QTabWidget::pane {
+    border: 0px;
+}
+
+
+QTabWidget QTabBar::tab {
     margin-top: 2px;
     margin-bottom: 2px;
     min-width: 130px;
@@ -8817,7 +8822,7 @@ ActionButton:checked {
 </string>
                  </property>
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
                  <property name="usesScrollButtons">
                   <bool>false</bool>
@@ -14916,6 +14921,18 @@ color: white;
                      <family>Bebas Kai</family>
                      <pointsize>13</pointsize>
                     </font>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QTabWidget::pane {
+    border: 0px;
+}
+
+
+QTabWidget QTabBar::tab {
+    min-width: 145px;
+    min-height: 30px;
+    font: 14pt &quot;bebas kai&quot;;
+}</string>
                    </property>
                    <property name="tabPosition">
                     <enum>QTabWidget::North</enum>
@@ -30262,10 +30279,10 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
