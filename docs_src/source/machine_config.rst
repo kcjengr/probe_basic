@@ -215,8 +215,7 @@ Step 3: Edit INI files
          #  false = keyboard jogging turned off
 
          KEYBOARD_JOG_SAFETY_OFF = true
-         #  true =  keyboard jog safty off
-         #          defaults to keyboard jog safty turned off, only jog key is needed
+         #  true =  keyboard jog safty off, only jog key is needed for motion
          #          jog key speed adheres to config jog speed setting and jog speed slider
          #          shift+jog key jogs at max linear velocity rapid speed
          #  false = keyboard jog safty activeon
