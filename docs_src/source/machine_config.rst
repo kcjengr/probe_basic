@@ -86,43 +86,172 @@ Step 3: Edit INI files
 
          [DISPLAY]
          DISPLAY = probe_basic
+         #  This sets the display to use the probe basic interface
+
          OPEN_FILE = ~/linuxcnc/nc_files/pb_examples/blank.ngc
+         #  This sets the default file to open when starting probe basic
+
          CONFIG_FILE = custom_config.yml
+         #  This sets the custom config file to use for probe basic
+         #  and is used to set the custom config settings for probe basic
+         #  or to add persisten widget settings that users add to the
+         #  interface in any of the user tabs or user button customizable
+         #  ui files.
+
+         #  If Lathe configuration is used, choose only one the following settings.
+         LATHE = 1
+         #  This sets the lathe mode to on, if your machine is a lathe
+         #  with front tool post setting active for correct backplotter
+         #  and x axis jog key functionality.
+
+         BACK_TOOL_LATHE = 1
+         #  This sets the lathe back tool post setting to on, if your machine
+         #  has a back tool post, this will set the backplotter and x axis jog
+         #  key functionality to use the back tool post for lathe machines.
+
          MAX_FEED_OVERRIDE = 2.000000
+         #  This sets the maximum feed override for the feed override slider
+         
          MAX_SPINDLE_OVERRIDE = 2.000000
+         #  This sets the maximum spindle override for the spindle override slider
+
          MIN_SPINDLE_OVERRIDE = 0.500000
+         #  This sets the minimum spindle override for the spindle override slider
+         #  this is safest not set to zero to prevent spindle damage
+
          INTRO_GRAPHIC = pbsplash.png
          INTRO_TIME = 3
+         #  These settings set the splash screen graphic and
+         #  the time in seconds to display it during startup.
+
          INCREMENTS = JOG .01in .001in .0001in
+         #  The recommended increments setting is 
+         #  JOG + 3 Increment Settings for best display
+         #  appearance in the interface without button
+         #  spacing becoming a problem.
+
          USER_TABS_PATH = user_tabs/
+         #  This sets the path for the user tabs
+         #  a main user tab and a sidebar user tab
+         #  can be created in the user_tabs folder
+         #  these tabs can be customized for adding
+         #  any features or widgets from qtpyvcp
+         #  in QT Designer and will not be overwritten
+         #  during updates to probe basic.
+
          USER_BUTTONS_PATH = user_buttons/
+         #  This sets the path for the user buttons to be
+         #  loaded from the USER_BUTTONS folder, this ui file
+         #  can be edited for customized button display in the
+         #  lower left section of the main screen and the ui file
+         #  will not be overwritten on update.
+
          USER_DROS_PATH = user_dro_display/
+         #  This sets the poath for the dro sub ui files
+         #  to be loaded from the DRO_DISPLAY setting below
+
          DRO_DISPLAY = XYZ
+         #  This setting sets the Axes to display in the DRO
+         #  Options for mill are:
+         #      XYZ
+         #      XYZA
+         #      XYZAB
+         #      XYZAC
+         #      XYZBC
+         #      USER (which contains XYZABC, and can be edited or customized)
+         #  Options for lathe are:
+         #      XZ
+         #      XZC
+         #      XYZC
+         #      USER (which contains XYZABC, and can be edited or customized)
+
          GEOMETRY = XYZ
+         #  This setting is used by the backplotter to set axes translation
+         #  and should match your machine configuration axes.
+
          OFFSET_COLUMNS = XYZ
+         #  This setting sets the columns to display in the Offsets Table
+         #  Typical settings for mill are: XYZR
+         #  Typical settings for lathe are: XZ
+         #  Options are:
+         #      X = X Offset
+         #      Y = Y Offset
+         #      Z = Z Offset
+         #      A = A Offset
+         #      B = B Offset
+         #      C = C Offset
+         #      U = U Offset
+         #      V = V Offset
+         #      W = W Offset
+         #      R = Rotation Offset
+
          TOOL_TABLE_COLUMNS = TZDR
+         #  This setting sets the columns to display in the tool table
+         #  Typical settings for mill are: TZDR
+         #  Typical settings for lathe are: TXZIJDQR
+         #  Options are:
+         #      T = Tool Number
+         #      P = Pocket Number
+         #      X = Tool X Offset
+         #      Y = Tool Y Offset
+         #      Z = Tool Z Offset
+         #      A = Tool A Offset
+         #      B = Tool B Offset
+         #      C = Tool C Offset
+         #      U = Tool U Offset
+         #      V = Tool V Offset
+         #      W = Tool W Offset
+         #      D = Tool Diameter Offset
+         #      I = Front Angle (Lathe Only)
+         #      J = Back Angle (Lathe Only)
+         #      Q = Tool Orientation (Lathe Only)
+         #      R = Remark or Tool Description
+
          KEYBOARD_JOG = true
+         #  true =  keyboard jogging turned on
+         #          defaults to keyboard jog safty active requiring ctrl+jog key
+         #          ctrl+jog key speed adheres to config jog speed and jog speed slider
+         #          ctrl+shift+jog key jogs at max linear velocity rapid speed
+         #  false = keyboard jogging turned off
+
          KEYBOARD_JOG_SAFETY_OFF = true
-         USER_ATC_BUTTONS_PATH = user_atc_buttons/
+         #  true =  keyboard jog safty off
+         #          defaults to keyboard jog safty turned off, only jog key is needed
+         #          jog key speed adheres to config jog speed setting and jog speed slider
+         #          shift+jog key jogs at max linear velocity rapid speed
+         #  false = keyboard jog safty activeon
+
          ATC_TAB_DISPLAY = 0
          #  ATC tab display options
-         #  0 = Hide atc tab
-         #  1 = Carousel atc display
-         #  2 = Rack atc display
+         #      0 = Hide atc tab
+         #      1 = Carousel atc display
+         #      2 = Rack atc display
 
-         
+         USER_ATC_BUTTONS_PATH = user_atc_buttons/
+         #  This can be commented out if not using ATC
+         #  This sets the path for the user atc buttons to be
+         #  loaded from the USER_ATC_BUTTONS folder, this ui file
+         #  can be edited for customized button display in the
+         #  MANUAL ATC tab in the ATC tab, the ui file will reside
+         #  in the usrs config folder
+
          #  Non ATC machines use the following RS274NGC section.
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P.001 G80 G90 G91.1 G92.1 G94 G97 G98
-         PARAMETER_FILE = linuxcnc.var
+         PARAMETER_FILE = probe_basic.var
          OWORD_NARGS = 1
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
 
-         #  ATC machines use the following RS274NGC section.
+         #  ATC machines use the following PYTHON and RS274NGC section.
+
+         [PYTHON]
+         TOPLEVEL = ./python/toplevel.py
+         PATH_APPEND = ./python/
+
          [RS274NGC]
          RS274NGC_STARTUP_CODE = F10 S300 G20 G17 G40 G49 G54 G64 P0.001 G80 G90 G91.1 G92.1 G94 G97 G98
-         PARAMETER_FILE = linuxcnc.var
+         PARAMETER_FILE = probe_basic.var
          OWORD_NARGS = 1
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
@@ -145,6 +274,7 @@ Step 3: Edit INI files
 
          [TRAJ]
          AXES = 3
+         COORDINATES = X Y Z
 
       |
 
