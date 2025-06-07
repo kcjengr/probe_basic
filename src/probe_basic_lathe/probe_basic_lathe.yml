@@ -215,31 +215,42 @@ settings:
     description: sets x id end diameter for conversational programming
     default_value: 0.0
     persistent: true
-
+    min_value: -10000
+    max_value: 10000
   facing.x-start-diam:
     description: sets x od end diameter for conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   facing.z-distance:
     description: sets z distance from start to end facing position for conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   facing.rough-step:
     description: sets roughing stepover amount for facing conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   facing.finish-step:
     description: sets finishing stepover for facing conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   facing.lead-in:
     description: sets lead in distance for facing conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   facing.lead-out:
     description: sets lead out distance for facing conversational programming
@@ -248,51 +259,80 @@ settings:
 
   conversational.wcs:
     description: work coordinate system for conversational programming
+    default_value: 54
     persistent: true
+    min_value: 54
+    max_value: 59
 
   conversational.units:
     description: program units for conversational programming
+    default_value: 20
     persistent: true
+    min_value: 20
+    max_value: 21
 
   conversational.diam-rad:
     description: diameter or radius mode for conversational programming
+    default_value: 7
     persistent: true
+    min_value: 7
+    max_value: 8
 
   conversational.tool:
     description: sets tool number for conversational programming
-    default_value: 0.0
+    default_value: 0
     persistent: true
+    min_value: 0
+    max_value: 99999
 
   conversational.coolant:
     description: coolant state for conversational programming
+    default_value: 9
     persistent: true
+    min_value: 7
+    max_value: 9
 
   conversational.feed:
     description: feed mode for conversational programming
+    default_value: 95
     persistent: true
+    min_value: 94
+    max_value: 95
 
   conversational.feedrate:
     description: sets feed per unit for conversational programming
     default_value: 0.0
     persistent: true
+    min_value: 0
+    max_value: 100000
 
   conversational.rpm-mode:
     description: spindle rpm mode conversational programming
+    default_value: 96
     persistent: true
+    min_value: 96
+    max_value: 97
 
   conversational.rpm:
     description: sets spindle rpm and max rpm conversational programming
-    default_value: 0.0
+    default_value: 500
     persistent: true
+    min_value: 0
+    max_value: 10000
 
   conversational.surface-speed:
     description: sets constant surface speed for conversational programming
-    default_value: 0.0
+    default_value: 0
     persistent: true
+    min_value: 0
+    max_value: 100000
 
   conversational.rotation:
     description: spindle rotation direction for conversational programming
+    default_value: 3
     persistent: true
+    min_value: 3
+    max_value: 4
 
   backplot.show-grid:
     default_value: 0
