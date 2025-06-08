@@ -15332,10 +15332,22 @@ QTabWidget QTabBar::tab {
                 <layout class="QHBoxLayout" name="horizontalLayout_50">
                  <item>
                   <widget class="QFrame" name="frame">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>0</verstretch>
+                    </sizepolicy>
+                   </property>
                    <property name="minimumSize">
                     <size>
-                     <width>200</width>
+                     <width>800</width>
                      <height>0</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>16777215</width>
+                     <height>800</height>
                     </size>
                    </property>
                    <property name="styleSheet">
@@ -15345,7 +15357,7 @@ border-color: rgb(186, 189, 182);
 background-color: rgb(51, 57, 59);
 border-width: 2px;
 border-radius: 6px;
-border-image: url(:/images/Turn.png);
+border-image: url(:/images/turn.png);
 }</string>
                    </property>
                    <property name="frameShape">
@@ -15466,566 +15478,38 @@ border-image: url(:/images/Turn.png);
                      <double>90.000000000000000</double>
                     </property>
                    </widget>
-                  </widget>
-                 </item>
-                 <item>
-                  <widget class="QFrame" name="frame_8">
-                   <property name="frameShape">
-                    <enum>QFrame::StyledPanel</enum>
-                   </property>
-                   <property name="frameShadow">
-                    <enum>QFrame::Raised</enum>
-                   </property>
-                   <widget class="QWidget" name="verticalLayoutWidget">
+                   <widget class="SubCallButton" name="brun_turning">
                     <property name="geometry">
                      <rect>
-                      <x>40</x>
-                      <y>29</y>
-                      <width>364</width>
-                      <height>511</height>
+                      <x>480</x>
+                      <y>100</y>
+                      <width>360</width>
+                      <height>42</height>
                      </rect>
                     </property>
-                    <layout class="QVBoxLayout" name="verticalLayout_55">
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_235">
-                       <item>
-                        <widget class="QLabel" name="label_234">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>G20 INCH or G21 MM</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="turning_units">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="minimum">
-                          <number>20</number>
-                         </property>
-                         <property name="maximum">
-                          <number>21</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_193">
-                       <item>
-                        <widget class="QLabel" name="label_165">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>Surface Speed (Units/min)</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="turning_ss">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="minimum">
-                          <number>1</number>
-                         </property>
-                         <property name="maximum">
-                          <number>999</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_198">
-                       <item>
-                        <widget class="QLabel" name="label_170">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>Max rpm</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="turning_maxrpm">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="minimum">
-                          <number>20</number>
-                         </property>
-                         <property name="maximum">
-                          <number>2240</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_201">
-                       <item>
-                        <widget class="QLabel" name="label_173">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>feed (Units/rev)</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="VCPSettingsDoubleSpinBox" name="turning_feed">
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="locale">
-                          <locale language="English" country="UnitedKingdom"/>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="singleStep">
-                          <double>0.100000000000000</double>
-                         </property>
-                         <property name="value">
-                          <double>0.500000000000000</double>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_241">
-                       <item>
-                        <widget class="QLabel" name="label_205">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>DEPTH OF CUT</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="VCPSettingsDoubleSpinBox" name="turning_doc">
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="locale">
-                          <locale language="English" country="UnitedKingdom"/>
-                         </property>
-                         <property name="maximum">
-                          <double>10.000000000000000</double>
-                         </property>
-                         <property name="value">
-                          <double>2.000000000000000</double>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>turning.feed</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_199">
-                       <item>
-                        <widget class="QLabel" name="label_171">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>TOOL NUMBER</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="turning_tool">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>9999</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_200">
-                       <item>
-                        <widget class="QLabel" name="label_172">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>COOLANT</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="turning_coolant">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>1</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>1</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_202">
-                       <item>
-                        <widget class="SubCallButton" name="brun_turning">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>100</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>0</width>
-                           <height>42</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>16777215</width>
-                           <height>42</height>
-                          </size>
-                         </property>
-                         <property name="focusPolicy">
-                          <enum>Qt::NoFocus</enum>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">.SubCallButton {
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>100</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>0</width>
+                      <height>42</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>42</height>
+                     </size>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::NoFocus</enum>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">.SubCallButton {
     color: white;    
     border-color: black;
     border-style: solid;
@@ -16059,18 +15543,13 @@ border-image: url(:/images/Turn.png);
 .SubCallButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
-                         </property>
-                         <property name="text">
-                          <string>Turning</string>
-                         </property>
-                         <property name="filename" stdset="0">
-                          <string>turning.ngc</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                    </layout>
+                    </property>
+                    <property name="text">
+                     <string>Turning</string>
+                    </property>
+                    <property name="filename" stdset="0">
+                     <string>turning.ngc</string>
+                    </property>
                    </widget>
                   </widget>
                  </item>
@@ -16106,7 +15585,7 @@ border-color: rgb(186, 189, 182);
 background-color: rgb(51, 57, 59);
 border-width: 2px;
 border-radius: 6px;
-border-image: url(:/images/Bore.png);
+border-image: url(:/images/bore.png);
 }</string>
                    </property>
                    <property name="frameShape">
@@ -16770,615 +16249,38 @@ border-image: url(:/images/Bore.png);
                   <property name="textFormat" stdset="0">
                    <string/>
                   </property>
-                  <widget class="QLabel" name="label_21">
+                  <widget class="SubCallButton" name="run_facing">
                    <property name="geometry">
                     <rect>
-                     <x>440</x>
-                     <y>4</y>
-                     <width>550</width>
-                     <height>550</height>
+                     <x>1090</x>
+                     <y>510</y>
+                     <width>191</width>
+                     <height>38</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
+                    <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                     <horstretch>1</horstretch>
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>550</width>
-                     <height>550</height>
+                     <width>0</width>
+                     <height>38</height>
                     </size>
                    </property>
                    <property name="maximumSize">
                     <size>
-                     <width>550</width>
-                     <height>550</height>
+                     <width>16777215</width>
+                     <height>38</height>
                     </size>
                    </property>
-                   <property name="text">
-                    <string/>
-                   </property>
-                   <property name="pixmap">
-                    <pixmap>../../../../Desktop/conversational edits/images/conversational_lathe_facing.png</pixmap>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_22">
-                   <property name="geometry">
-                    <rect>
-                     <x>493</x>
-                     <y>92</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>FINISH STEP</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_23">
-                   <property name="geometry">
-                    <rect>
-                     <x>646</x>
-                     <y>15</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>Z START</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_80">
-                   <property name="geometry">
-                    <rect>
-                     <x>800</x>
-                     <y>54</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>ROUGH STEP</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_81">
-                   <property name="geometry">
-                    <rect>
-                     <x>903</x>
-                     <y>319</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>X START DIAM</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_82">
-                   <property name="geometry">
-                    <rect>
-                     <x>787</x>
-                     <y>319</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>X END DIAM</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_x_start_diam">
-                   <property name="geometry">
-                    <rect>
-                     <x>923</x>
-                     <y>344</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::NoFocus</enum>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.x-start-diam</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_x_end_diam">
-                   <property name="geometry">
-                    <rect>
-                     <x>807</x>
-                     <y>344</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="frame">
-                    <bool>false</bool>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.x-end-diam</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_rough_step">
-                   <property name="geometry">
-                    <rect>
-                     <x>820</x>
-                     <y>79</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.rough-step</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_z_distance">
-                   <property name="geometry">
-                    <rect>
-                     <x>666</x>
-                     <y>39</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.z-distance</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_finish_step">
-                   <property name="geometry">
-                    <rect>
-                     <x>513</x>
-                     <y>117</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.finish-step</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_83">
-                   <property name="geometry">
-                    <rect>
-                     <x>964</x>
-                     <y>104</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>LEAD IN</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_lead_in">
-                   <property name="geometry">
-                    <rect>
-                     <x>984</x>
-                     <y>128</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.lead-in</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_lead_out">
-                   <property name="geometry">
-                    <rect>
-                     <x>833</x>
-                     <y>149</y>
-                     <width>80</width>
-                     <height>35</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 16pt &quot;Bebas Kai&quot;;
-    margin-right: 2px;
-}</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.lead-out</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
-                  </widget>
-                  <widget class="QLabel" name="label_84">
-                   <property name="geometry">
-                    <rect>
-                     <x>813</x>
-                     <y>124</y>
-                     <width>120</width>
-                     <height>23</height>
-                    </rect>
-                   </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
-                   <property name="styleSheet">
-                    <string notr="true">QLabel {
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
-                   <property name="text">
-                    <string>LEAD OUT</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
-                   </property>
-                  </widget>
-                  <widget class="QWidget" name="layoutWidget">
-                   <property name="geometry">
-                    <rect>
-                     <x>460</x>
-                     <y>520</y>
-                     <width>336</width>
-                     <height>45</height>
-                    </rect>
-                   </property>
-                   <layout class="QHBoxLayout" name="horizontalLayout_212">
-                    <property name="spacing">
-                     <number>12</number>
-                    </property>
-                    <property name="leftMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="topMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="rightMargin">
-                     <number>3</number>
-                    </property>
-                    <property name="bottomMargin">
-                     <number>3</number>
-                    </property>
-                    <item>
-                     <widget class="QPushButton" name="append_to_gcode">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>1</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="text">
-                       <string>Send to Gcode</string>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="SubCallButton" name="run_facing">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>1</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>0</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>16777215</width>
-                        <height>38</height>
-                       </size>
-                      </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::NoFocus</enum>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">.SubCallButton {
+                    <string notr="true">.SubCallButton {
     color: white;    
     border-color: black;
     border-style: solid;
@@ -17412,24 +16314,21 @@ border-image: url(:/images/Bore.png);
 .SubCallButton:checked {
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
-                      </property>
-                      <property name="text">
-                       <string>facing</string>
-                      </property>
-                      <property name="filename" stdset="0">
-                       <string>facing.ngc</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
+                   </property>
+                   <property name="text">
+                    <string>RUN FACING OPERATION</string>
+                   </property>
+                   <property name="filename" stdset="0">
+                    <string>facing.ngc</string>
+                   </property>
                   </widget>
-                  <widget class="VCPSettingsLineEdit" name="facing_z_distance_2">
+                  <widget class="QLabel" name="label_6">
                    <property name="geometry">
                     <rect>
-                     <x>520</x>
-                     <y>38</y>
-                     <width>80</width>
-                     <height>35</height>
+                     <x>300</x>
+                     <y>30</y>
+                     <width>570</width>
+                     <height>500</height>
                     </rect>
                    </property>
                    <property name="sizePolicy">
@@ -17438,11 +16337,109 @@ border-image: url(:/images/Bore.png);
                      <verstretch>0</verstretch>
                     </sizepolicy>
                    </property>
-                   <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                   <property name="minimumSize">
+                    <size>
+                     <width>570</width>
+                     <height>500</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>570</width>
+                     <height>500</height>
+                    </size>
+                   </property>
+                   <property name="text">
+                    <string/>
+                   </property>
+                   <property name="pixmap">
+                    <pixmap resource="probe_basic_lathe.qrc">:/images/facing3.png</pixmap>
+                   </property>
+                   <property name="alignment">
+                    <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                   </property>
+                  </widget>
+                  <widget class="QWidget" name="widget_28" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>807</x>
+                     <y>250</y>
+                     <width>101</width>
+                     <height>73</height>
+                    </rect>
                    </property>
                    <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_27">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_81">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>X START DIAM</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_x_start_diam">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>30</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17452,48 +16449,595 @@ border-image: url(:/images/Bore.png);
 	font: 16pt &quot;Bebas Kai&quot;;
     margin-right: 2px;
 }</string>
-                   </property>
-                   <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                   </property>
-                   <property name="placeholderText">
-                    <string>0</string>
-                   </property>
-                   <property name="settingName" stdset="0">
-                    <string>facing.z-distance</string>
-                   </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
-                   </property>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.x-start-diam</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
                   </widget>
-                  <widget class="QLabel" name="label_24">
+                  <widget class="QWidget" name="widget_38" native="true">
                    <property name="geometry">
                     <rect>
-                     <x>499</x>
-                     <y>14</y>
-                     <width>120</width>
-                     <height>23</height>
+                     <x>729</x>
+                     <y>373</y>
+                     <width>101</width>
+                     <height>73</height>
                     </rect>
                    </property>
-                   <property name="sizePolicy">
-                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                     <horstretch>0</horstretch>
-                     <verstretch>0</verstretch>
-                    </sizepolicy>
-                   </property>
                    <property name="styleSheet">
-                    <string notr="true">QLabel {
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_36">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_82">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
     color: white;
 	font: 14pt &quot;Bebas Kai&quot;;
 }</string>
+                      </property>
+                      <property name="text">
+                       <string>X END</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_x_end_diam">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 16pt &quot;Bebas Kai&quot;;
+    margin-right: 2px;
+}</string>
+                      </property>
+                      <property name="frame">
+                       <bool>false</bool>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.x-end-diam</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="widget_40" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>674</x>
+                     <y>101</y>
+                     <width>121</width>
+                     <height>73</height>
+                    </rect>
                    </property>
-                   <property name="text">
-                    <string>Z END</string>
+                   <property name="styleSheet">
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
                    </property>
-                   <property name="alignment">
-                    <set>Qt::AlignCenter</set>
+                   <layout class="QVBoxLayout" name="verticalLayout_41">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_80">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>ROUGH STEP</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_rough_step">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 16pt &quot;Bebas Kai&quot;;
+    margin-right: 2px;
+}</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.rough-step</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="widget_41" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>310</x>
+                     <y>102</y>
+                     <width>111</width>
+                     <height>71</height>
+                    </rect>
+                   </property>
+                   <property name="layoutDirection">
+                    <enum>Qt::RightToLeft</enum>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_55">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_22">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>FINISH STEP</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_finish_step">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 16pt &quot;Bebas Kai&quot;;
+    margin-right: 2px;
+}</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.finish-step</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="widget_42" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>676</x>
+                     <y>7</y>
+                     <width>101</width>
+                     <height>71</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_57">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_23">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Z START</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_z_start">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 16pt &quot;Bebas Kai&quot;;
+    margin-right: 2px;
+}</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.z-start</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="widget_43" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>321</x>
+                     <y>7</y>
+                     <width>101</width>
+                     <height>71</height>
+                    </rect>
+                   </property>
+                   <property name="styleSheet">
+                    <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                   </property>
+                   <layout class="QVBoxLayout" name="verticalLayout_71">
+                    <property name="topMargin">
+                     <number>3</number>
+                    </property>
+                    <property name="bottomMargin">
+                     <number>15</number>
+                    </property>
+                    <item>
+                     <widget class="QLabel" name="label_24">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">QLabel {
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                      </property>
+                      <property name="text">
+                       <string>Z END</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignCenter</set>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="VCPSettingsLineEdit" name="facing_z_end">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                      <property name="minimumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="maximumSize">
+                       <size>
+                        <width>83</width>
+                        <height>25</height>
+                       </size>
+                      </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::ClickFocus</enum>
+                      </property>
+                      <property name="styleSheet">
+                       <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 16pt &quot;Bebas Kai&quot;;
+    margin-right: 2px;
+}</string>
+                      </property>
+                      <property name="alignment">
+                       <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                      </property>
+                      <property name="placeholderText">
+                       <string>0</string>
+                      </property>
+                      <property name="settingName" stdset="0">
+                       <string>facing.z-end</string>
+                      </property>
+                      <property name="textFormat" stdset="0">
+                       <string>{:.4f}</string>
+                      </property>
+                     </widget>
+                    </item>
+                   </layout>
+                  </widget>
+                  <widget class="QWidget" name="widget_45" native="true">
+                   <property name="geometry">
+                    <rect>
+                     <x>466</x>
+                     <y>20</y>
+                     <width>164</width>
+                     <height>40</height>
+                    </rect>
+                   </property>
+                   <property name="minimumSize">
+                    <size>
+                     <width>164</width>
+                     <height>40</height>
+                    </size>
+                   </property>
+                   <property name="maximumSize">
+                    <size>
+                     <width>164</width>
+                     <height>40</height>
+                    </size>
                    </property>
                   </widget>
+                  <zorder>label_6</zorder>
+                  <zorder>run_facing</zorder>
+                  <zorder>widget_28</zorder>
+                  <zorder>widget_38</zorder>
+                  <zorder>widget_40</zorder>
+                  <zorder>widget_41</zorder>
+                  <zorder>widget_42</zorder>
+                  <zorder>widget_43</zorder>
+                  <zorder>widget_45</zorder>
                  </widget>
                 </item>
                </layout>
@@ -19273,7 +18817,7 @@ border-color: rgb(186, 189, 182);
 background-color: rgb(51, 57, 59);
 border-width: 2px;
 border-radius: 6px;
-border-image: url(:/images/Threading.png);
+border-image: url(:/images/threading.png);
 }</string>
                    </property>
                    <property name="frameShape">
@@ -20016,7 +19560,7 @@ border-color: rgb(186, 189, 182);
 background-color: rgb(51, 57, 59);
 border-width: 2px;
 border-radius: 6px;
-border-image: url(:/images/Threading.png);
+border-image: url(:/images/threading.png);
 }</string>
                    </property>
                    <property name="frameShape">
@@ -20733,7 +20277,7 @@ border-color: rgb(186, 189, 182);
 background-color: rgb(51, 57, 59);
 border-width: 2px;
 border-radius: 6px;
-border-image: url(:/images/Facing.png);
+border-image: url(:/images/facing.png);
 }</string>
                    </property>
                    <property name="frameShape">
@@ -20822,81 +20366,6 @@ border-image: url(:/images/Facing.png);
                     </property>
                     <layout class="QVBoxLayout" name="verticalLayout_62">
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_237">
-                       <item>
-                        <widget class="QLabel" name="label_236">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>G20 INCH or G21 MM</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="drilling_units">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="minimum">
-                          <number>20</number>
-                         </property>
-                         <property name="maximum">
-                          <number>21</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_250">
                        <item>
                         <widget class="QLabel" name="label_216">
@@ -20951,225 +20420,6 @@ border-image: url(:/images/Facing.png);
                            <width>100</width>
                            <height>31</height>
                           </size>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>turning.feed</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_229">
-                       <item>
-                        <widget class="QLabel" name="label_195">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>SURFACE SPEED (UNITS/MIN)</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="drill_ss">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>9999</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                         <property name="value">
-                          <number>20</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_230">
-                       <item>
-                        <widget class="QLabel" name="label_196">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>MAX RPM</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="drill_maxrpm">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>2240</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                         <property name="value">
-                          <number>800</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_231">
-                       <item>
-                        <widget class="QLabel" name="label_197">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>FEED (UNITS/REV)</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="VCPSettingsDoubleSpinBox" name="drill_feed">
-                         <property name="minimumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="singleStep">
-                          <double>0.100000000000000</double>
-                         </property>
-                         <property name="value">
-                          <double>0.200000000000000</double>
                          </property>
                          <property name="settingName" stdset="0">
                           <string>turning.feed</string>
@@ -21245,78 +20495,6 @@ border-image: url(:/images/Facing.png);
                       </layout>
                      </item>
                      <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_232">
-                       <item>
-                        <widget class="QLabel" name="label_198">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>TOOL NUMBER</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="drill_tool">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>9999</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>10</number>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
                       <layout class="QHBoxLayout" name="horizontalLayout_249">
                        <item>
                         <widget class="QLabel" name="label_215">
@@ -21380,78 +20558,6 @@ border-image: url(:/images/Facing.png);
                          </property>
                          <property name="settingName" stdset="0">
                           <string>turning.feed</string>
-                         </property>
-                        </widget>
-                       </item>
-                      </layout>
-                     </item>
-                     <item>
-                      <layout class="QHBoxLayout" name="horizontalLayout_233">
-                       <item>
-                        <widget class="QLabel" name="label_199">
-                         <property name="sizePolicy">
-                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                           <horstretch>0</horstretch>
-                           <verstretch>0</verstretch>
-                          </sizepolicy>
-                         </property>
-                         <property name="minimumSize">
-                          <size>
-                           <width>120</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>250</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="styleSheet">
-                          <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                         </property>
-                         <property name="lineWidth">
-                          <number>0</number>
-                         </property>
-                         <property name="text">
-                          <string>COOLANT</string>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignCenter</set>
-                         </property>
-                         <property name="indent">
-                          <number>0</number>
-                         </property>
-                        </widget>
-                       </item>
-                       <item>
-                        <widget class="QSpinBox" name="drill_coolant">
-                         <property name="minimumSize">
-                          <size>
-                           <width>50</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="maximumSize">
-                          <size>
-                           <width>100</width>
-                           <height>31</height>
-                          </size>
-                         </property>
-                         <property name="layoutDirection">
-                          <enum>Qt::LeftToRight</enum>
-                         </property>
-                         <property name="alignment">
-                          <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                         </property>
-                         <property name="maximum">
-                          <number>1</number>
-                         </property>
-                         <property name="singleStep">
-                          <number>1</number>
                          </property>
                         </widget>
                        </item>
@@ -21556,7 +20662,7 @@ border-image: url(:/images/Facing.png);
                 <widget class="QFrame" name="frame_21">
                  <property name="minimumSize">
                   <size>
-                   <width>380</width>
+                   <width>280</width>
                    <height>0</height>
                   </size>
                  </property>
@@ -21568,13 +20674,13 @@ border-image: url(:/images/Facing.png);
                  </property>
                  <layout class="QVBoxLayout" name="verticalLayout_26">
                   <property name="spacing">
-                   <number>9</number>
+                   <number>6</number>
                   </property>
                   <property name="leftMargin">
                    <number>20</number>
                   </property>
                   <property name="topMargin">
-                   <number>20</number>
+                   <number>9</number>
                   </property>
                   <property name="rightMargin">
                    <number>20</number>
@@ -21582,6 +20688,46 @@ border-image: url(:/images/Facing.png);
                   <property name="bottomMargin">
                    <number>20</number>
                   </property>
+                  <item>
+                   <widget class="QLabel" name="label_221">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>1</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
+                    <property name="minimumSize">
+                     <size>
+                      <width>120</width>
+                      <height>32</height>
+                     </size>
+                    </property>
+                    <property name="maximumSize">
+                     <size>
+                      <width>16777215</width>
+                      <height>32</height>
+                     </size>
+                    </property>
+                    <property name="styleSheet">
+                     <string notr="true">QLabel{
+    color: white;
+	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+                    </property>
+                    <property name="lineWidth">
+                     <number>0</number>
+                    </property>
+                    <property name="text">
+                     <string>LATHE CONVERSATIONAL PARAMETERS</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignCenter</set>
+                    </property>
+                    <property name="indent">
+                     <number>0</number>
+                    </property>
+                   </widget>
+                  </item>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_251">
                     <property name="spacing">
@@ -21591,13 +20737,13 @@ border-image: url(:/images/Facing.png);
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_253">
@@ -21610,13 +20756,13 @@ border-image: url(:/images/Facing.png);
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21644,13 +20790,13 @@ border-image: url(:/images/Facing.png);
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21715,13 +20861,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_213">
@@ -21734,13 +20880,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21768,13 +20914,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21816,13 +20962,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_211">
@@ -21835,13 +20981,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21869,13 +21015,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -21917,13 +21063,13 @@ padding-left: 20px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_180">
@@ -21936,13 +21082,13 @@ padding-left: 20px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22024,13 +21170,13 @@ padding-left: 20px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_249">
@@ -22043,13 +21189,13 @@ padding-left: 20px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22077,13 +21223,13 @@ padding-left: 20px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22130,13 +21276,13 @@ padding-left: 20px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_251">
@@ -22149,13 +21295,13 @@ padding-left: 20px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22183,13 +21329,13 @@ padding-left: 20px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22231,13 +21377,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_181">
@@ -22250,13 +21396,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="layoutDirection">
@@ -22341,13 +21487,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_266">
@@ -22360,13 +21506,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22394,13 +21540,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22442,13 +21588,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_267">
@@ -22461,13 +21607,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22546,13 +21692,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_247">
@@ -22565,13 +21711,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="layoutDirection">
@@ -22656,13 +21802,13 @@ padding-left: 15px;</string>
                      <number>3</number>
                     </property>
                     <property name="topMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <property name="rightMargin">
                      <number>3</number>
                     </property>
                     <property name="bottomMargin">
-                     <number>3</number>
+                     <number>1</number>
                     </property>
                     <item>
                      <widget class="QLabel" name="label_246">
@@ -22675,13 +21821,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>120</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -22709,13 +21855,13 @@ padding-left: 15px;</string>
                       <property name="minimumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>75</width>
-                        <height>35</height>
+                        <height>32</height>
                        </size>
                       </property>
                       <property name="styleSheet">
@@ -31652,11 +30798,11 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
  </buttongroups>
 </ui>

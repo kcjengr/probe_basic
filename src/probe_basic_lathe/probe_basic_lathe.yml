@@ -217,6 +217,7 @@ settings:
     persistent: true
     min_value: -10000
     max_value: 10000
+
   facing.x-start-diam:
     description: sets x od end diameter for conversational programming
     default_value: 0.0
@@ -224,11 +225,18 @@ settings:
     min_value: 0
     max_value: 10000
 
-  facing.z-distance:
+  facing.z-start:
     description: sets z distance from start to end facing position for conversational programming
     default_value: 0.0
     persistent: true
-    min_value: 0
+    min_value: -10000
+    max_value: 10000
+
+  facing.z-end:
+    description: sets z end position position for conversational programming
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
     max_value: 10000
 
   facing.rough-step:
@@ -244,18 +252,6 @@ settings:
     persistent: true
     min_value: 0
     max_value: 10000
-
-  facing.lead-in:
-    description: sets lead in distance for facing conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  facing.lead-out:
-    description: sets lead out distance for facing conversational programming
-    default_value: 0.0
-    persistent: true
 
   conversational.wcs:
     description: work coordinate system for conversational programming
