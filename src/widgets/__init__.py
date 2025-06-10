@@ -9,8 +9,9 @@ from widgets.conversational.xy_coord import XYCoordWidget
 from widgets.conversational.hole_circle import HoleCircleWidget
 from widgets.conversational.int_line_edit import IntLineEdit
 from widgets.conversational.float_line_edit import FloatLineEdit
-from widgets.conversational.lathe_profile_conv import LatheProfileConvWidget
 
+from widgets.conversational.lathe_profile_conv import LatheProfileConvWidget
+from widgets.conversational.lathe_profile_conv import LatheProfileConvQML
 
 
 
@@ -52,7 +53,11 @@ class FacingWidgetPlugin(_DesignerPlugin):
     def pluginClass(self):
         return FacingWidget
 
-
 class LatheProfileConvWidgetPlugin(_DesignerPlugin):
     def pluginClass(self):
         return LatheProfileConvWidget
+    
+    
+class LatheProfileConvQMLPlugin(_DesignerPlugin):
+    def pluginClass(self):
+        return LatheProfileConvQML
