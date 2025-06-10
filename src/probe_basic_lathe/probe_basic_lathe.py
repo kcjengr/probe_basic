@@ -44,6 +44,10 @@ class ProbeBasicLathe(VCPMainWindow):
 
         self.load_offset_dro()
 
+        # --- Synchronize conversational_tab_widget and conversational_stackedwidget ---
+        if hasattr(self, "conversational_tab_widget") and hasattr(self, "conversational_stackedwidget"):
+            self.conversational_tab_widget.currentChanged.connect(self.sync_conversational_stack)
+
         # --- Startup Tab Selection Logic (using tab text property) ---
         startup_tab_text = getSetting("startup-settings.user-startup-tab").getValue()
         if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
@@ -80,7 +84,6 @@ class ProbeBasicLathe(VCPMainWindow):
             self.vtkbackplot.setViewXZ()
         else:
             lathe_type = "LATHE"
-
 
         index_map = {
             ("xz", "LATHE"): 0,
@@ -265,3 +268,8 @@ class ProbeBasicLathe(VCPMainWindow):
         """Save ComboBox selection for startup, but do not change the current tab."""
         setSetting("startup-settings.user-startup-tab", value)
         # Do not call self.set_startup_tab_by_text(value)
+
+    def sync_conversational_stack(self, index):
+        """Synchronize stacked widget with tab widget selection."""
+        if hasattr(self, "conversational_stackedwidget"):
+            self.conversational_stackedwidget.setCurrentIndex(index)

@@ -1,0 +1,21 @@
+(author: Chris P)
+(version: 0.2)
+(date: 06/9/25)
+
+o<set_z_tlo_atc>  sub
+
+G49
+
+#<tlo_tool_atc> = #1    (set from manual measure tool entry)
+
+G10 L1 P#<tlo_tool_atc> Z#5422
+
+M61 Q#<tlo_tool_atc>
+
+T#<tlo_tool_atc> G43  H#<tlo_tool_atc>   (enable tool length offset)
+
+(DEBUG, EVAL[vcp.getWidget{"tlo_tool_atc"}.setValue{0}])
+
+o<set_z_tlo_atc> endsub
+
+M2 (end program)
