@@ -35,15 +35,14 @@ class LatheProfileConvModel(QStandardItemModel):
     
     editCompleted = Signal(dict)
     
-    def __init__(self,):
-        super(LatheProfileConvModel, self).__init__()
+    def __init__(self, parent=None):
+        super(LatheProfileConvModel, self).__init__(parent)
         
         self._data  = {}
-        self._segments = [[0, 0, 0],[0, 0, 0],[0, 0, 0],[0, 0, 0],[0, 0, 0],[0, 0, 0]]
-        
+        self._empty_row = [0.0] * 3
         self._column_names = ['X', 'Z', 'R']
         
-        self.setRowCount(6)
+#        self.setRowCount(1)
         self.setColumnCount(3)
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):
@@ -56,8 +55,8 @@ class LatheProfileConvModel(QStandardItemModel):
         return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
 
     def data(self, index, role=Qt.DisplayRole):
-        if (role == Qt.DisplayRole or role == Qt.EditRole) and index.row() < len(self._segments):
-            return self._segments[index.row()][index.column()]
+        if (role == Qt.DisplayRole or role == Qt.EditRole) and index.row() < len(self._data):
+            return self._data[index.row()][index.column()]
         elif role == Qt.TextAlignmentRole:
             return Qt.AlignVCenter | Qt.AlignRight
 
@@ -65,27 +64,48 @@ class LatheProfileConvModel(QStandardItemModel):
 
     def setData(self, index, value, role):
         
-        if index.row() == len(self._segments):
-            self._segments.append([0, 0])
-            if index.row() == self.rowCount() - 1:
-                self.insertRow(len(self._segments))
-        if index.row() < len(self._segments):
-            self._segments[index.row()][index.column()] = float(value)
-        
-
-        for data_column, data_row in enumerate(self._segments):
-            self._data[data_column] =  data_row
-                    
-        self.editCompleted.emit(self._data )
+        self._data[index.row()][index.column()] = float(value)
+        self.editCompleted.emit(self._data)
         
         return True
 
+
+    def addRow(self, indexes):
+    
+        current_row_count = self.rowCount()
+        
+        # If no rows are selected, insert the new row at the bottom
+        if not indexes:
+            #current_row_count = self.rowCount()
+            
+            self.beginInsertRows(QModelIndex(), current_row_count, 0)
+            
+            self._data[current_row_count] = self._empty_row
+            self.setRowCount(current_row_count+1)
+            self.endInsertRows()
+            
+            new_index = self.index(current_row_count, 0)  # Get the index of the newly added row
+        else:
+            # Get the first selected index (assuming only one for simplicity)
+            selected_index = indexes[0].row()
+            
+            self.beginInsertRows(indexes[0], selected_index, selected_index)
+
+            self._data[selected_index+1] =  self._empty_row.copy()
+            self.setRowCount(current_row_count+1)
+            self.endInsertRows()
+            
+            new_index =  self.index(selected_index+1, 0)
+            
+        return new_index
+
+
     def deleteRow(self, position):
-        if position < len(self._segments):
+        if position < len(self._data):
             self.beginRemoveRows(QModelIndex(), position, position)
-            del self._segments[position]
+            del self._data[position]
             self.endRemoveRows()
-            self.insertRows(len(self._segments), 1, QModelIndex())
+            # self.insertRows(len(self._data), 1, QModelIndex())
             return True
         else:
             return False
@@ -94,12 +114,12 @@ class LatheProfileConvModel(QStandardItemModel):
     
 
     def deleteAll(self):
-        remove_count = len(self._segments)
+        remove_count = len(self._data)
         if remove_count > 0:
             self.beginRemoveRows(QModelIndex(), 0, remove_count - 1)
-            del self._segments[:]
+            del self._data[:]
             self.endRemoveRows()
-            self.insertRows(0, remove_count, QModelIndex())
+            # self.insertRows(0, remove_count, QModelIndex())
             return True
         else:
             return False
@@ -154,25 +174,10 @@ class LatheProfileConvWidget(QTableView):
     
     @Slot()
     def addRow(self):
-        """Insert a new empty row next to the selected row or at the end of the model."""
         indexes = self.selectionModel().selectedIndexes()
-    
-        # If no rows are selected, insert the new row at the bottom
-        if not indexes:
-            current_row_count = self.model().rowCount()
-            self.model().insertRows(current_row_count, 1)
-            new_index = self.model().index(current_row_count, 0)  # Get the index of the newly added row
-        else:
-            # Get the first selected index (assuming only one for simplicity)
-            selected_index = indexes[0]
-            
-            # Insert a new row next to the selected row
-            row = selected_index.row() + 1  # Get the row just after the current selection
-            self.model().insertRows(row, 1)
-            new_index = self.model().index(row, 0)  # Get the index of the newly added row
+        new_index = self._lathe_profile_conv_model.addRow(indexes)
         
         self.setCurrentIndex(new_index)
-        
     
 class LatheProfileConvQML(QQuickWidget):
 
