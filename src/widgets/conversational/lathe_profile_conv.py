@@ -19,9 +19,9 @@ class LatheProfileConvItemDelegate(QStyledItemDelegate):
         if value == '':
             return ''
         try:
-            return "{0:.3f}".format(float(value))
+            return "{0:.4f}".format(float(value))
         except ValueError:
-            return "0.000"
+            return "0.0000"
 
     def createEditor(self, parent, option, index):
         editor = QLineEdit(parent)
@@ -32,6 +32,7 @@ class LatheProfileConvItemDelegate(QStyledItemDelegate):
 
         editor.setFrame(False)
         editor.setAlignment(Qt.AlignVCenter | Qt.AlignRight)
+        editor.setButtonSymbols(QAbstractSpinBox.NoButtons)  # <-- Disable arrows
         return editor
     
 
