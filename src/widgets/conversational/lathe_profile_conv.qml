@@ -6,9 +6,24 @@ import QtQuick.Shapes 1.9
 Rectangle {
     id: main
     visible: true
-    width: 512
-    height: 240
-    color: "lightgray"
+    width: 800
+    height: 400
+    
+    // Visual Properties - QML compatible color formats
+    property color backgroundColor: "#929695"  // Hex format
+    property color borderColor: "darkgrey"      // Hex for darkgray
+    property int borderWidth: 3
+    property int borderRadius: 0
+    
+    // Plot line properties
+    property color plotLineColor: "blue"    // Hex for blue
+    property color plotFillColor: "darkgrey"    // Hex for darkgray
+    property int plotLineWidth: 3
+    
+    color: backgroundColor
+    border.color: borderColor
+    border.width: borderWidth
+    radius: borderRadius
 
     Shape {
         anchors.fill: parent
@@ -21,21 +36,20 @@ Rectangle {
 
         ShapePath {
             id: shapepath
-            strokeWidth: 2
-            strokeColor: "blue"
-            fillColor: "gray"
+            strokeWidth: plotLineWidth
+            strokeColor: plotLineColor
+            fillColor: plotFillColor
             fillRule: ShapePath.OddEvenFill
 
             startX: main.width
             startY: main.height
-
         }
 
         Instantiator {
             id: instantiator
             model: segments_position
 
-            delegate: Loader {  // Fix: Changed from "Loader" to "Loader" (typo)
+            delegate: Loader {
                 property var modelData: model
                 sourceComponent: modelData.type === "line" ? lineComponent : arcComponent
 
@@ -46,7 +60,6 @@ Rectangle {
                         y: modelData.y
                     }
                 }
-
 
                 Component {
                     id: arcComponent
@@ -75,13 +88,60 @@ Rectangle {
                         y: modelData.y
                         radiusX: radiusTrue
                         radiusY: radiusTrue
-                        direction: modelData.r < 0 ? PathArc.Clockwise : PathArc.Counterclockwise
+                        direction: modelData.r > 0 ? PathArc.Clockwise : PathArc.Counterclockwise
                     }
                 }
             }
 
             onObjectAdded: shapepath.pathElements.push(object.item)
         }
+    }
+
+    // Simple function to calculate dynamic scale factor only
+    function calculateScale(segment_data) {
+        var minX = Number.MAX_VALUE;
+        var maxX = Number.MIN_VALUE;
+        var minZ = Number.MAX_VALUE;
+        var maxZ = Number.MIN_VALUE;
+        var hasData = false;
+
+        // Find bounds
+        for (var key in segment_data) {
+            if (segment_data.hasOwnProperty(key)) {
+                var x = parseFloat(segment_data[key][0]);
+                var z = parseFloat(segment_data[key][1]);
+
+                if (!isNaN(x) && !isNaN(z)) {
+                    minX = Math.min(minX, x);
+                    maxX = Math.max(maxX, x);
+                    minZ = Math.min(minZ, z);
+                    maxZ = Math.max(maxZ, z);
+                    hasData = true;
+                }
+            }
+        }
+
+        if (!hasData) {
+            return 100; // Default scale
+        }
+
+        var xRange = Math.abs(maxX - minX);
+        var zRange = Math.abs(maxZ - minZ);
+
+        // Ensure minimum range for very small parts
+        if (xRange < 0.1) xRange = 0.1;
+        if (zRange < 0.1) zRange = 0.1;
+
+        // Calculate scale to fit nicely in window
+        var maxRange = Math.max(xRange, zRange);
+        var targetSize = Math.min(main.width, main.height) * 0.6; // Use 60% of smaller dimension
+        var scale = targetSize / maxRange;
+
+        // Reasonable scale limits
+        scale = Math.max(10, Math.min(scale, 1000));
+
+        console.log("Dynamic scale calculated:", scale, "for ranges X:", xRange, "Z:", zRange);
+        return scale;
     }
 
     Connections {
@@ -97,6 +157,9 @@ Rectangle {
                 shapepath.pathElements = [];
             }
 
+            // Calculate dynamic scale factor
+            var dynamicScale = calculateScale(segment_data);
+
             var moves = 0;
 
             for (var key in segment_data) {
@@ -111,15 +174,14 @@ Rectangle {
                     var z_pos;
                     var r_pos;
 
-
                     console.log("DATA X Z R = ", x, z, r);
 
                     if (r !== 0) {
 
-                        x_pos = (main.height) - ((x)/2)*100;
-                        z_pos = (main.width) + (z*100);
-                        r_pos = (r*2) * 100;
-
+                        // Apply dynamic scale to existing calculation
+                        x_pos = (main.height) - ((x)/2)*dynamicScale;
+                        z_pos = (main.width) + (z*dynamicScale);
+                        r_pos = (r*2) * dynamicScale;
 
                         console.log("ARC ZX Z R", x, z, r_pos);
 
@@ -132,13 +194,13 @@ Rectangle {
                     }
                     else {
 
-                        x_pos = (main.height) - ((x)/2)*100;
-                        z_pos = (main.width) + (z*100);
+                        // Apply dynamic scale to existing calculation
+                        x_pos = (main.height) - ((x)/2)*dynamicScale;
+                        z_pos = (main.width) + (z*dynamicScale);
                         r_pos = 0.0;
 
                         console.log("X Z R = ", x_pos, z_pos, r_pos);
 
-                        //segments_position.insert(moves, {
                         segments_position.append( {
                             "type": "line",
                             "x": z_pos,  // origin at right, offset QML X - 10

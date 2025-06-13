@@ -1,8 +1,8 @@
 import os
 import json
 
-from qtpy.QtCore import Qt, QModelIndex, QUrl, Signal, Slot, QObject, QItemSelectionModel
-from qtpy.QtGui import QStandardItemModel
+from qtpy.QtCore import Qt, QModelIndex, QUrl, Signal, Slot, QObject, QItemSelectionModel, QTimer, QEvent
+from qtpy.QtGui import QStandardItemModel, QKeyEvent, QColor
 from qtpy.QtWidgets import QWidget, QTableView, QStyledItemDelegate, QLineEdit
 from qtpy.QtQuickWidgets import QQuickWidget
 
@@ -15,26 +15,32 @@ class LatheProfileConvItemDelegate(QStyledItemDelegate):
         super(LatheProfileConvItemDelegate, self).__init__()
 
     def displayText(self, value, locale):
-        
-        if value == '':
+        # Keep empty cells as empty, don't convert to "0.0000"
+        if value == '' or value is None:
             return ''
         try:
             return "{0:.4f}".format(float(value))
-        except ValueError:
-            return "0.0000"
+        except (ValueError, TypeError):
+            return ''
 
     def createEditor(self, parent, option, index):
         editor = QLineEdit(parent)
-        
-        # editor.setMinimum(-9999.0)
-        # editor.setMaximum(9999.0)
-        #
-
         editor.setFrame(False)
         editor.setAlignment(Qt.AlignVCenter | Qt.AlignRight)
-        editor.setButtonSymbols(QAbstractSpinBox.NoButtons)  # <-- Disable arrows
         return editor
-    
+
+    def setEditorData(self, editor, index):
+        """Set data and prevent auto-selection"""
+        value = index.model().data(index, Qt.EditRole)
+        text = str(value) if value is not None else ''
+        editor.setText(text)
+        # Position cursor at end instead of selecting all
+        editor.setCursorPosition(len(text))
+
+    def setModelData(self, editor, model, index):
+        """Handle empty text properly"""
+        text = editor.text().strip()
+        model.setData(index, text, Qt.EditRole)
 
 class LatheProfileConvModel(QStandardItemModel):
     
@@ -46,13 +52,29 @@ class LatheProfileConvModel(QStandardItemModel):
         self._data  = {}
         self._empty_row = [''] * 3
         self._column_names = ['X', 'Z', 'R']
+        self._max_display_rows = 50
+        self._active_rows = set()  # Track which rows have been used
+        self._active_rows.add(0)  # Always show first row number
         
-#        self.setRowCount(1)
         self.setColumnCount(3)
+        self.setRowCount(self._max_display_rows)
 
     def headerData(self, section, orientation, role=Qt.DisplayRole):
-        if role == Qt.DisplayRole and orientation == Qt.Horizontal:
-            return self._column_names[section]
+        if role == Qt.DisplayRole:
+            if orientation == Qt.Horizontal:
+                return self._column_names[section]
+            elif orientation == Qt.Vertical:
+                # Always show first row, then only active rows
+                if section == 0 or section in self._active_rows:
+                    return str(section + 1)
+                else:
+                    return ""
+        elif role == Qt.BackgroundRole and orientation == Qt.Vertical:
+            # Different background for active vs inactive row headers
+            if section == 0 or section in self._active_rows:
+                return QColor(114, 121, 242)  # for active rows
+            else:
+                return QColor(240, 240, 240)  # Light gray for inactive rows
 
         return QStandardItemModel.headerData(self, section, orientation, role)
 
@@ -60,130 +82,215 @@ class LatheProfileConvModel(QStandardItemModel):
         return Qt.ItemIsEnabled | Qt.ItemIsSelectable | Qt.ItemIsEditable
 
     def data(self, index, role=Qt.DisplayRole):
-        if (role == Qt.DisplayRole or role == Qt.EditRole) and index.row() < len(self._data):
-            return self._data[index.row()][index.column()]
+        if role == Qt.DisplayRole or role == Qt.EditRole:
+            if index.row() in self._data:
+                return self._data[index.row()][index.column()]
+            else:
+                return ''
         elif role == Qt.TextAlignmentRole:
             return Qt.AlignVCenter | Qt.AlignRight
+        # Remove custom background role to let stylesheet handle alternating colors
 
         return QStandardItemModel.data(self, index, role)
 
     def setData(self, index, value, role):
+        # Ensure the row exists in our data structure
+        if index.row() not in self._data:
+            self._data[index.row()] = self._empty_row.copy()
         
         self._data[index.row()][index.column()] = value
+        
+        # Mark this row as active if it has any content
+        if value and str(value).strip():
+            self._active_rows.add(index.row())
+        else:
+            # Check if row still has content in other columns
+            row_has_content = False
+            for col in range(3):
+                if (index.row() in self._data and 
+                    self._data[index.row()][col] and 
+                    str(self._data[index.row()][col]).strip()):
+                    row_has_content = True
+                    break
+            
+            # Don't remove row 0 from active rows (always keep it visible)
+            if not row_has_content and index.row() != 0:
+                self._active_rows.discard(index.row())
+        
+        # Update header display
+        self.headerDataChanged.emit(Qt.Vertical, index.row(), index.row())
+        
         self.editCompleted.emit(self._data)
         
         return True
 
-
     def addRow(self, indexes):
-    
-        current_row_count = self.rowCount()
-        
-        # If no rows are selected, insert the new row at the bottom
-        if not indexes:
-            #current_row_count = self.rowCount()
+        """Add a new row by finding the next available row"""
+        try:
+            # Find the next available row
+            next_row = 0
+            while next_row < self._max_display_rows and next_row in self._active_rows:
+                next_row += 1
             
-            self.beginInsertRows(QModelIndex(), current_row_count, 0)
+            if next_row >= self._max_display_rows:
+                # Find the highest active row and use the next one
+                if self._active_rows:
+                    next_row = max(self._active_rows) + 1
+                else:
+                    next_row = 0
+                    
+                if next_row >= self._max_display_rows:
+                    print(f"Maximum of {self._max_display_rows} rows reached")
+                    return QModelIndex()
             
-            self._data[current_row_count] = self._empty_row.copy()
-            self.setRowCount(current_row_count+1)
-            self.endInsertRows()
+            # Initialize the row data
+            if next_row not in self._data:
+                self._data[next_row] = self._empty_row.copy()
             
-            new_index = self.index(current_row_count, 0)  # Get the index of the newly added row
-        else:
-            # Get the first selected index (assuming only one for simplicity)
-            selected_index = indexes[0].row()
+            # Mark as active and update header
+            self._active_rows.add(next_row)
+            self.headerDataChanged.emit(Qt.Vertical, next_row, next_row)
             
-            self.beginInsertRows(indexes[0], selected_index, selected_index)
-
-            self._data[selected_index+1] =  self._empty_row.copy()
-            self.setRowCount(current_row_count+1)
-            self.endInsertRows()
+            self.editCompleted.emit(self._data)
             
-            new_index =  self.index(selected_index+1, 0)
-            
-        return new_index
-
+            return self.index(next_row, 0)
+                
+        except Exception as e:
+            print(f"Error in addRow: {e}")
+            return QModelIndex()
 
     def deleteRow(self, position):
-        if position < len(self._data):
-            self.beginRemoveRows(QModelIndex(), position, position)
-            del self._data[position]
-            self.endRemoveRows()
-            # self.insertRows(len(self._data), 1, QModelIndex())
+        if position < self._max_display_rows and position in self._data:
+            # Clear the row data
+            self._data[position] = self._empty_row.copy()
+            # Remove from active rows (but keep row 0 always active)
+            if position != 0:
+                self._active_rows.discard(position)
+            # Update header
+            self.headerDataChanged.emit(Qt.Vertical, position, position)
+            self.editCompleted.emit(self._data)
             return True
         else:
             return False
-        
-
-    
 
     def deleteAll(self):
-        remove_count = len(self._data)
-        if remove_count > 0:
-            self.beginRemoveRows(QModelIndex(), 0, remove_count - 1)
-            del self._data[:]
-            self.endRemoveRows()
-            # self.insertRows(0, remove_count, QModelIndex())
-            return True
-        else:
-            return False
-
+        # Clear all data
+        self._data.clear()
+        self._active_rows.clear()
+        self._active_rows.add(0)  # Keep first row always visible
+        # Update all headers
+        self.headerDataChanged.emit(Qt.Vertical, 0, self._max_display_rows - 1)
+        self.editCompleted.emit(self._data)
+        return True
 
 class LatheProfileConvWidget(QTableView):
     dataChangedSignal = Signal(dict)
     
-    
-    
     def __init__(self, parent=None):
         super(LatheProfileConvWidget, self).__init__(parent)
-
 
         self._lathe_profile_conv_item_delegate = LatheProfileConvItemDelegate()
         self._lathe_profile_conv_model = LatheProfileConvModel()
         
         self.setModel(self._lathe_profile_conv_model)
         self.setItemDelegate(self._lathe_profile_conv_item_delegate)
-        self.setAlternatingRowColors(True)
-        self.setSelectionBehavior(QTableView.SelectRows)
+        
+        # Keep existing stylesheet styling - restore alternating colors
+        self.setAlternatingRowColors(True)  # Let stylesheet handle alternating colors
+        self.setGridStyle(Qt.SolidLine)
+        self.setShowGrid(True)
+        self.setSelectionBehavior(QTableView.SelectItems)
         self.setSelectionMode(QTableView.SingleSelection)
         
+        # Style the headers
+        self.verticalHeader().setDefaultSectionSize(25)
+        self.verticalHeader().setMinimumSectionSize(25)
+        self.horizontalHeader().setStretchLastSection(True)
+        
+        # Control edit triggers
+        self.setEditTriggers(QTableView.DoubleClicked | QTableView.EditKeyPressed | QTableView.AnyKeyPressed)
+        
         self._lathe_profile_conv_model.editCompleted.connect(self.onDataChanged)
+        self._last_data_length = 0
 
-        #  self._lathe_profile_conv_table.show()
-        # self.delete_all_input.clicked.connect(self.deleteAll)
-        # self.delete_selected_input.clicked.connect(self.deleteSelected)
+    def moveCursor(self, cursorAction, modifiers):
+        """Override to handle tab navigation and new row creation"""
+        current_index = self.currentIndex()
         
+        # Handle Tab key (MoveNext) behavior
+        if cursorAction == QTableView.MoveNext:
+            print(f"Tab navigation from row={current_index.row()}, col={current_index.column()}")
+            
+            # If we're in the last column (R column, index 2)
+            if current_index.isValid() and current_index.column() == 2:
+                print("In last column - creating new row...")
+                # Add new row and move to first column of new row
+                new_index = self._lathe_profile_conv_model.addRow([])
+                if new_index.isValid():
+                    print(f"New row created at row={new_index.row()}")
+                    return new_index
+                else:
+                    print("Failed to create new row")
+                    return current_index
         
+        # Use default behavior for all other cursor movements
+        return super(LatheProfileConvWidget, self).moveCursor(cursorAction, modifiers)
+
+    def keyPressEvent(self, event):
+        try:
+            # Clear current cell with Delete key
+            if event.key() == Qt.Key_Delete:
+                current_index = self.currentIndex()
+                if current_index.isValid():
+                    self._lathe_profile_conv_model.setData(current_index, '', Qt.EditRole)
+                    print(f"Cleared cell at row={current_index.row()}, col={current_index.column()}")
+                return
+                
+            # Insert new row with Insert key
+            elif event.key() == Qt.Key_Insert:
+                self.addRow()
+                print("Insert key - added new row")
+                return
+            
+            # Let parent handle all other keys (including Tab, Return, etc.)
+            super(LatheProfileConvWidget, self).keyPressEvent(event)
+            
+        except Exception as e:
+            print(f"Error in keyPressEvent: {e}")
+            import traceback
+            traceback.print_exc()
+            super(LatheProfileConvWidget, self).keyPressEvent(event)
+    
     @Slot(dict)
     def onDataChanged(self, data):
-        print("Table data changed:", data)
-        self.dataChangedSignal.emit(data)
-    
-    @Slot()
-    def deleteSelected(self):
-        for i in self.selectionModel().selectedIndexes():
-            if i.column() == 1:
-                self.model().deleteRow(i.row())
-                
-        self.setFocus()
-
-    @Slot()
-    def deleteAll(self):
-        if len(self.drill_op.holes) > 0:
-            if self._confirm_action('Delete All', 'Are you sure you want to delete all coordinates?'):
-                self.model().deleteAll()
-                self.selectRow(0)
-                self.setFocus()
-
+        # Only emit data for rows that have content
+        filtered_data = {}
+        for row_index, row_data in data.items():
+            if any(cell != '' and cell is not None for cell in row_data):
+                filtered_data[row_index] = row_data
+        
+        if len(filtered_data) != self._last_data_length:
+            print(f"Active rows changed: {len(filtered_data)} rows with data")
+            self._last_data_length = len(filtered_data)
+        
+        print(f"Data changed: {filtered_data}")
+        self.dataChangedSignal.emit(filtered_data)
     
     @Slot()
     def addRow(self):
-        indexes = self.selectionModel().selectedIndexes()
-        new_index = self._lathe_profile_conv_model.addRow(indexes)
-        
-        self.setCurrentIndex(new_index)
+        new_index = self._lathe_profile_conv_model.addRow([])
+        if new_index.isValid():
+            self.setCurrentIndex(new_index)
 
+    @Slot()
+    def deleteRow(self):
+        current_index = self.currentIndex()
+        if current_index.isValid():
+            self._lathe_profile_conv_model.deleteRow(current_index.row())
+    
+    @Slot()
+    def deleteAll(self):
+        self._lathe_profile_conv_model.deleteAll()
 
 class LatheProfileConvQML(QQuickWidget):
 
@@ -198,22 +305,57 @@ class LatheProfileConvQML(QQuickWidget):
 
     @Slot(dict)
     def update(self, values):
+        try:
+            print("VALUES received in QML handler:")
+            print(values)
+            
+            # Process inheritance in a single pass
+            processed_values = self.processInheritance(values)
+            
+            print("Processed values for plotting:")
+            print(processed_values)
+            
+            json_data = json.dumps(processed_values)
+            print(f"Emitting JSON: {json_data}")
+            self.segmentsSig.emit(json_data)
+            
+        except Exception as e:
+            print(f"Error in update method: {e}")
+            import traceback
+            traceback.print_exc()
+
+    def processInheritance(self, values):
+        """Process inheritance logic for empty cells"""
+        processed = {}
         
-        print("VALUES")
-        
-        new_values = {}
-        
-        for index, value in values.items():
-            print(index, value)
-                
-            for i, pos in enumerate(value):
-                print(pos)
-                if pos == '':
-                    previous_pos = values.get(index-1)[i]
-                    
-                    print(previous_pos)
-                    new_values.get(index)[i] = previous_pos
+        for row_index in sorted(values.keys()):
+            row_data = values[row_index]
+            processed[row_index] = row_data.copy() if row_data else ['', '', '']
+            
+            if row_data:
+                for col_index, cell_value in enumerate(row_data):
+                    if cell_value == '' or cell_value is None:
+                        print(f"Found empty cell at row {row_index}, col {col_index}")
                         
+                        # Special handling for R column (index 2)
+                        if col_index == 2:  # R column
+                            print(f"R column empty at row {row_index} - setting to 0")
+                            processed[row_index][col_index] = '0'
+                        else:
+                            # X and Z columns inherit from previous rows
+                            inherited_value = self.findInheritedValue(processed, row_index, col_index)
+                            if inherited_value:
+                                print(f"Inheriting value for row {row_index}, col {col_index}: {inherited_value}")
+                                processed[row_index][col_index] = inherited_value
         
-        json_data = json.dumps(new_values)
-        self.segmentsSig.emit(json_data)
+        return processed
+
+    def findInheritedValue(self, processed_data, current_row, column):
+        """Find the nearest non-empty value in the same column from previous rows"""
+        for prev_row in range(current_row - 1, -1, -1):
+            if prev_row in processed_data:
+                prev_row_data = processed_data[prev_row]
+                if (prev_row_data and column < len(prev_row_data) and 
+                    prev_row_data[column] != '' and prev_row_data[column] is not None):
+                    return prev_row_data[column]
+        return None
