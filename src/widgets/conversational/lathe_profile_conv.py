@@ -3,7 +3,7 @@ import json
 
 from qtpy.QtCore import Qt, QModelIndex, QUrl, Signal, Slot, QObject, QItemSelectionModel
 from qtpy.QtGui import QStandardItemModel
-from qtpy.QtWidgets import QWidget, QTableView, QStyledItemDelegate, QDoubleSpinBox
+from qtpy.QtWidgets import QWidget, QTableView, QStyledItemDelegate, QLineEdit
 from qtpy.QtQuickWidgets import QQuickWidget
 
 
@@ -15,17 +15,21 @@ class LatheProfileConvItemDelegate(QStyledItemDelegate):
         super(LatheProfileConvItemDelegate, self).__init__()
 
     def displayText(self, value, locale):
+        
+        if value == '':
+            return ''
         try:
             return "{0:.3f}".format(float(value))
         except ValueError:
             return "0.000"
 
     def createEditor(self, parent, option, index):
-        editor = QDoubleSpinBox(parent)
+        editor = QLineEdit(parent)
         
-        editor.setMinimum(-9999.0)
-        editor.setMaximum(9999.0)
-        
+        # editor.setMinimum(-9999.0)
+        # editor.setMaximum(9999.0)
+        #
+
         editor.setFrame(False)
         editor.setAlignment(Qt.AlignVCenter | Qt.AlignRight)
         return editor
@@ -39,7 +43,7 @@ class LatheProfileConvModel(QStandardItemModel):
         super(LatheProfileConvModel, self).__init__(parent)
         
         self._data  = {}
-        self._empty_row = [0.0] * 3
+        self._empty_row = [''] * 3
         self._column_names = ['X', 'Z', 'R']
         
 #        self.setRowCount(1)
@@ -64,7 +68,7 @@ class LatheProfileConvModel(QStandardItemModel):
 
     def setData(self, index, value, role):
         
-        self._data[index.row()][index.column()] = float(value)
+        self._data[index.row()][index.column()] = value
         self.editCompleted.emit(self._data)
         
         return True
@@ -193,6 +197,22 @@ class LatheProfileConvQML(QQuickWidget):
 
     @Slot(dict)
     def update(self, values):
-        print(values)
-        json_data = json.dumps(values)
+        
+        print("VALUES")
+        
+        new_values = {}
+        
+        for index, value in values.items():
+            print(index, value)
+                
+            for i, pos in enumerate(value):
+                print(pos)
+                if pos == '':
+                    previous_pos = values.get(index-1)[i]
+                    
+                    print(previous_pos)
+                    new_values.get(index)[i] = previous_pos
+                        
+        
+        json_data = json.dumps(new_values)
         self.segmentsSig.emit(json_data)
