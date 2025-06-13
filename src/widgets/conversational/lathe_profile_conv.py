@@ -23,8 +23,8 @@ class LatheProfileConvItemDelegate(QStyledItemDelegate):
     def createEditor(self, parent, option, index):
         editor = QDoubleSpinBox(parent)
         
-        editor.setMinimum(-9999)
-        editor.setMaximum(9999)
+        editor.setMinimum(-9999.0)
+        editor.setMaximum(9999.0)
         
         editor.setFrame(False)
         editor.setAlignment(Qt.AlignVCenter | Qt.AlignRight)
@@ -80,7 +80,7 @@ class LatheProfileConvModel(QStandardItemModel):
             
             self.beginInsertRows(QModelIndex(), current_row_count, 0)
             
-            self._data[current_row_count] = self._empty_row
+            self._data[current_row_count] = self._empty_row.copy()
             self.setRowCount(current_row_count+1)
             self.endInsertRows()
             
@@ -152,7 +152,7 @@ class LatheProfileConvWidget(QTableView):
         
     @Slot(dict)
     def onDataChanged(self, data):
-        # print("Table data changed:", data)
+        print("Table data changed:", data)
         self.dataChangedSignal.emit(data)
     
     @Slot()
@@ -178,7 +178,8 @@ class LatheProfileConvWidget(QTableView):
         new_index = self._lathe_profile_conv_model.addRow(indexes)
         
         self.setCurrentIndex(new_index)
-    
+
+
 class LatheProfileConvQML(QQuickWidget):
 
     segmentsSig = Signal(str, arguments=['data'])
@@ -192,7 +193,6 @@ class LatheProfileConvQML(QQuickWidget):
 
     @Slot(dict)
     def update(self, values):
+        print(values)
         json_data = json.dumps(values)
         self.segmentsSig.emit(json_data)
-
-
