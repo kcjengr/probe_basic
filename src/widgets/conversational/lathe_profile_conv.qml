@@ -16,8 +16,8 @@ Rectangle {
     property int borderRadius: 0
     
     // Plot line properties
-    property color plotLineColor: "blue"    // Hex for blue
-    property color plotFillColor: "darkgrey"    // Hex for darkgray
+    property color plotLineColor: "#2F303C"   // Hex for blue
+    property color plotFillColor: "#2F303C"    // Hex for darkgray
     property int plotLineWidth: 3
     
     color: backgroundColor
@@ -132,15 +132,24 @@ Rectangle {
         if (xRange < 0.1) xRange = 0.1;
         if (zRange < 0.1) zRange = 0.1;
 
-        // Calculate scale to fit nicely in window
-        var maxRange = Math.max(xRange, zRange);
-        var targetSize = Math.min(main.width, main.height) * 0.6; // Use 60% of smaller dimension
-        var scale = targetSize / maxRange;
+        // Account for the /2 division in the X coordinate transformation
+        var effectiveXRange = xRange / 2;  // This matches the actual plotting transformation
+
+        // Calculate scale based on actual axis usage
+        // Z maps to screen width (800), X maps to screen height (400)
+        var availableWidth = main.width * 0.8;   // 80% of width for Z axis
+        var availableHeight = main.height * 0.8; // 80% of height for X axis
+        
+        var scaleForZ = availableWidth / zRange;        // Scale to fit Z range in width
+        var scaleForX = availableHeight / effectiveXRange; // Scale to fit effective X range in height
+        
+        // Use the smaller scale to maintain aspect ratio
+        var scale = Math.min(scaleForZ, scaleForX);
 
         // Reasonable scale limits
         scale = Math.max(10, Math.min(scale, 1000));
 
-        console.log("Dynamic scale calculated:", scale, "for ranges X:", xRange, "Z:", zRange);
+        console.log("Dynamic scale calculated:", scale, "X range:", xRange, "effective X range:", effectiveXRange, "Z range:", zRange, "scaleForX:", scaleForX, "scaleForZ:", scaleForZ);
         return scale;
     }
 
@@ -161,6 +170,8 @@ Rectangle {
             var dynamicScale = calculateScale(segment_data);
 
             var moves = 0;
+            var firstZ = null;
+            var lastZ = null;
 
             for (var key in segment_data) {
 
@@ -173,6 +184,10 @@ Rectangle {
                     var x_pos;
                     var z_pos;
                     var r_pos;
+
+                    // Track first and last Z positions for proper fill closure
+                    if (firstZ === null) firstZ = z;
+                    lastZ = z;
 
                     console.log("DATA X Z R = ", x, z, r);
 
@@ -212,6 +227,30 @@ Rectangle {
                     }
                     moves ++;
                 }
+            }
+
+            // Close the path properly for lathe profile fill
+            if (moves > 0) {
+                // Add line to centerline at end of profile
+                var centerlineY = main.height; // X=0 centerline position
+                var endZ = (main.width) + (lastZ*dynamicScale);
+                
+                segments_position.append({
+                    "type": "line",
+                    "x": endZ,
+                    "y": centerlineY,
+                    "r": 0.0
+                });
+
+                // Add line along centerline back to start
+                var startZ = (main.width) + (firstZ*dynamicScale);
+                
+                segments_position.append({
+                    "type": "line", 
+                    "x": startZ,
+                    "y": centerlineY,
+                    "r": 0.0
+                });
             }
         }
     }
