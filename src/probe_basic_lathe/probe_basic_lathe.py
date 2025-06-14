@@ -96,6 +96,7 @@ class ProbeBasicLathe(VCPMainWindow):
         idx = index_map.get((dro_display, lathe_type), 0)
         self.jog_button_stacked_widget.setCurrentIndex(idx)
 
+    
     def load_user_buttons(self):
         self.user_button_modules = {}
         self.user_buttons = {}
