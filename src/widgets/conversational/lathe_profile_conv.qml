@@ -6,18 +6,18 @@ import QtQuick.Shapes 1.9
 Rectangle {
     id: main
     visible: true
-    width: 800
-    height: 400
+    width: 600
+    height: 300
     
     // Visual Properties - QML compatible color formats
-    property color backgroundColor: "#929695"  // Hex format
-    property color borderColor: "darkgrey"      // Hex for darkgray
+    property color backgroundColor: "#929695"
+    property color borderColor: "white"
     property int borderWidth: 3
     property int borderRadius: 0
     
     // Plot line properties
-    property color plotLineColor: "#2F303C"   // Hex for blue
-    property color plotFillColor: "#2F303C"    // Hex for darkgray
+    property color plotLineColor: "#4d5055"
+    property color plotFillColor: "#4d5055"
     property int plotLineWidth: 3
     
     color: backgroundColor
@@ -136,9 +136,9 @@ Rectangle {
         var effectiveXRange = xRange / 2;  // This matches the actual plotting transformation
 
         // Calculate scale based on actual axis usage
-        // Z maps to screen width (800), X maps to screen height (400)
-        var availableWidth = main.width * 0.8;   // 80% of width for Z axis
-        var availableHeight = main.height * 0.8; // 80% of height for X axis
+        // Z maps to screen width (600), X maps to screen height (300)
+        var availableWidth = main.width * 0.9;   // 80% of width for Z axis
+        var availableHeight = main.height * 0.6; // 80% of height for X axis
         
         var scaleForZ = availableWidth / zRange;        // Scale to fit Z range in width
         var scaleForX = availableHeight / effectiveXRange; // Scale to fit effective X range in height
