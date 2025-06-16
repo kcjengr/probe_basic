@@ -8,49 +8,71 @@ Rectangle {
     visible: true
     width: 600
     height: 300
-    
-    // Visual Properties - QML compatible color formats
+
+    // Visual Properties
     property color backgroundColor: "#929695"
     property color borderColor: "white"
     property int borderWidth: 3
     property int borderRadius: 0
-    
+
     // Plot line properties
-    property color plotLineColor: "#4d5055"
+    property color plotLineColor: "#000000"
     property color plotFillColor: "#4d5055"
-    property int plotLineWidth: 3
-    
+    property color selectedColor: "#7171ED" // Color for selected segments
+    property int plotLineWidth: 2
+    property int selectedLineWidth: 2 // Thicker line for selected segments
+
+    // Selection properties
+    property int selectedIndex: -1 // Currently selected segment index
+    property bool hasSelection: selectedIndex >= 0
+
     color: backgroundColor
     border.color: borderColor
     border.width: borderWidth
     radius: borderRadius
 
     Shape {
+        id: mainShape
         anchors.fill: parent
-
-        // transform: Scale{ xScale: -1; yScale: -1 }
 
         ListModel {
             id: segments_position;
         }
+        // Main shape path
+         ShapePath {
+             id: shapepath
+             strokeWidth: plotLineWidth
+             strokeColor: plotLineColor
+             fillColor: plotFillColor
+             fillRule: ShapePath.OddEvenFill
+             startX: main.width
+             startY: main.height
+         }
 
-        ShapePath {
-            id: shapepath
-            strokeWidth: plotLineWidth
-            strokeColor: plotLineColor
-            fillColor: plotFillColor
-            fillRule: ShapePath.OddEvenFill
+        // Highlight shape (always present but empty when no selection)
+        Shape {
+            id: highlightShape
+            anchors.fill: parent
 
-            startX: main.width
-            startY: main.height
+            ShapePath {
+                id: selectedPath
+                strokeWidth: selectedLineWidth
+                strokeColor: selectedColor
+                fillColor: "transparent"
+
+                Component.onCompleted: {
+                    // Start with empty path
+                    pathElements = []
+                }
+            }
         }
-
         Instantiator {
             id: instantiator
             model: segments_position
 
             delegate: Loader {
                 property var modelData: model
+                property int segmentIndex: index
                 sourceComponent: modelData.type === "line" ? lineComponent : arcComponent
 
                 Component {
@@ -64,26 +86,19 @@ Rectangle {
                 Component {
                     id: arcComponent
                     PathArc {
-                        property real lastX;
-                        property real lastY;
-
-                        // Get last point or start position
-                        lastX: shapepath.pathElements.length > 0 ?
+                        property real lastX: shapepath.pathElements.length > 0 ?
                                             shapepath.pathElements[shapepath.pathElements.length-1].x :
                                             shapepath.startX
-                        lastY: shapepath.pathElements.length > 0 ?
+                        property real lastY: shapepath.pathElements.length > 0 ?
                                             shapepath.pathElements[shapepath.pathElements.length-1].y :
                                             shapepath.startY
 
-                        // Calculate chord length
                         property real chordLength: Math.sqrt(Math.pow(modelData.x - lastX, 2) +
-                                                          Math.pow(modelData.y - lastY, 2))
+                                                Math.pow(modelData.y - lastY, 2))
 
-                        // Calculate true radius for desired arc height
                         property real radiusTrue: (Math.pow(chordLength, 2) / (8 * Math.abs(modelData.r))) +
                                                 (Math.abs(modelData.r) / 2)
 
-                        // Configure arc
                         x: modelData.x
                         y: modelData.y
                         radiusX: radiusTrue
@@ -93,9 +108,104 @@ Rectangle {
                 }
             }
 
-            onObjectAdded: shapepath.pathElements.push(object.item)
+            onObjectAdded: {
+                shapepath.pathElements.push(object.item)
+            }
+        }
+
+        // Mouse area for selection
+        MouseArea {
+            anchors.fill: parent
+            onClicked: {
+                var closestIndex = -1
+                var minDistance = Number.MAX_VALUE
+                var clickPoint = Qt.point(mouse.x, mouse.y)
+
+                // Find the closest segment to the click point
+                for (var i = 0; i < segments_position.count; i++) {
+                    var segment = segments_position.get(i)
+                    var prevSegment = i > 0 ? segments_position.get(i-1) :
+                                            {x: shapepath.startX, y: shapepath.startY}
+
+                    var distance = distanceToSegment(
+                        clickPoint,
+                        Qt.point(prevSegment.x, prevSegment.y),
+                        Qt.point(segment.x, segment.y)
+                    )
+
+                    if (distance < minDistance) {
+                        minDistance = distance
+                        closestIndex = i
+                    }
+                }
+
+                // Select if within reasonable distance
+                if (minDistance < 15) { // 15 pixel threshold
+                    selectedIndex = closestIndex
+                    updateSelectedPath()
+                } else {
+                    selectedIndex = -1
+                    selectedPath.pathElements = []
+                }
+            }
+
+
+            // Helper function to calculate distance from point to line segment
+            function distanceToSegment(p, v, w) {
+                function sqr(x) { return x * x }
+                function dist2(v, w) { return sqr(v.x - w.x) + sqr(v.y - w.y) }
+
+                var l2 = dist2(v, w)
+                if (l2 === 0) return dist2(p, v)
+
+                var t = ((p.x - v.x) * (w.x - v.x) + (p.y - v.y) * (w.y - v.y)) / l2
+                t = Math.max(0, Math.min(1, t))
+
+                return Math.sqrt(dist2(p, {
+                    x: v.x + t * (w.x - v.x),
+                    y: v.y + t * (w.y - v.y)
+                }))
+            }
         }
     }
+
+    function updateSelectedPath() {
+        selectedPath.pathElements = [] // Clear previous selection
+
+        if (selectedIndex < 0 || selectedIndex >= segments_position.count) {
+            return
+        }
+
+        var selectedSegment = segments_position.get(selectedIndex)
+        var prevSegment = selectedIndex > 0 ? segments_position.get(selectedIndex-1) :
+                                            {x: shapepath.startX, y: shapepath.startY}
+
+        selectedPath.startX = prevSegment.x
+        selectedPath.startY = prevSegment.y
+
+        if (selectedSegment.type === "line") {
+            var line = Qt.createQmlObject('import QtQuick 2.15; import QtQuick.Shapes 1.15; PathLine {}', selectedPath)
+            line.x = selectedSegment.x
+            line.y = selectedSegment.y
+            selectedPath.pathElements.push(line)
+        } else {
+            var arc = Qt.createQmlObject('import QtQuick 2.15; import QtQuick.Shapes 1.15; PathArc {}', selectedPath)
+            arc.x = selectedSegment.x
+            arc.y = selectedSegment.y
+
+            var chordLength = Math.sqrt(Math.pow(selectedSegment.x - prevSegment.x, 2) +
+                                     Math.pow(selectedSegment.y - prevSegment.y, 2))
+            var radiusTrue = (Math.pow(chordLength, 2) / (8 * Math.abs(selectedSegment.r))) +
+                           (Math.abs(selectedSegment.r) / 2)
+
+            arc.radiusX = radiusTrue
+            arc.radiusY = radiusTrue
+            arc.direction = selectedSegment.r > 0 ? PathArc.Clockwise : PathArc.Counterclockwise
+
+            selectedPath.pathElements.push(arc)
+        }
+    }
+
 
     // Simple function to calculate dynamic scale factor only
     function calculateScale(segment_data) {
@@ -139,10 +249,10 @@ Rectangle {
         // Z maps to screen width (600), X maps to screen height (300)
         var availableWidth = main.width * 0.9;   // 80% of width for Z axis
         var availableHeight = main.height * 0.6; // 80% of height for X axis
-        
+
         var scaleForZ = availableWidth / zRange;        // Scale to fit Z range in width
         var scaleForX = availableHeight / effectiveXRange; // Scale to fit effective X range in height
-        
+
         // Use the smaller scale to maintain aspect ratio
         var scale = Math.min(scaleForZ, scaleForX);
 
@@ -155,6 +265,12 @@ Rectangle {
 
     Connections {
         target: handler
+
+        function onSelectedSig(index) {
+            console.log("Segments Active row", index);
+            selectedIndex = index;
+            updateSelectedPath();
+        }
 
         function onSegmentsSig(data) {
 
@@ -234,7 +350,7 @@ Rectangle {
                 // Add line to centerline at end of profile
                 var centerlineY = main.height; // X=0 centerline position
                 var endZ = (main.width) + (lastZ*dynamicScale);
-                
+
                 segments_position.append({
                     "type": "line",
                     "x": endZ,
@@ -244,9 +360,9 @@ Rectangle {
 
                 // Add line along centerline back to start
                 var startZ = (main.width) + (firstZ*dynamicScale);
-                
+
                 segments_position.append({
-                    "type": "line", 
+                    "type": "line",
                     "x": startZ,
                     "y": centerlineY,
                     "r": 0.0

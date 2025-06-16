@@ -1,8 +1,13 @@
 import os
 import json
+import csv
+import tempfile
+import time
+
+from io import StringIO
 
 from qtpy.QtCore import Qt, QModelIndex, QUrl, Signal, Slot, QObject, QItemSelectionModel, QTimer, QEvent
-from qtpy.QtGui import QStandardItemModel, QKeyEvent, QColor
+from qtpy.QtGui import QStandardItemModel, QKeyEvent, QColor, QMouseEvent
 from qtpy.QtWidgets import QWidget, QTableView, QStyledItemDelegate, QLineEdit
 from qtpy.QtQuickWidgets import QQuickWidget
 
@@ -185,6 +190,9 @@ class LatheProfileConvModel(QStandardItemModel):
 
 class LatheProfileConvWidget(QTableView):
     dataChangedSignal = Signal(dict)
+    selectedRowSignal = Signal(int)
+    
+    exportCSVSignal = Signal(str, arguments=['csv_file'])
     
     def __init__(self, parent=None):
         super(LatheProfileConvWidget, self).__init__(parent)
@@ -212,14 +220,108 @@ class LatheProfileConvWidget(QTableView):
         
         self._lathe_profile_conv_model.editCompleted.connect(self.onDataChanged)
         self._last_data_length = 0
+        
+        
+        self.selectionModel().selectionChanged.connect(self.onSelectionChanged)
+        
+    @Slot(result=str)
+    def exportToCSV(self):
+        """Export table data to CSV file in /tmp and return file path"""
+        try:
+            # Generate timestamped filename
+            # timestamp = time.strftime("%Y%m%d_%H%M%S")
+            filename = f"lathe_profile_save.csv"
+            filepath = os.path.join(tempfile.gettempdir(), filename)
+            
+            with open(filepath, 'w', newline='') as csvfile:
+                writer = csv.writer(csvfile)
+                
+                # Write headers
+                writer.writerow(['Row', 'X', 'Z', 'R'])
+                
+                # Write data rows
+                for row in sorted(self._lathe_profile_conv_model._data.keys()):
+                    row_data = self._lathe_profile_conv_model._data[row]
+                    if any(cell != '' and cell is not None for cell in row_data):
+                        writer.writerow([row + 1] + row_data)  # +1 to match displayed row numbers
+            
+            print(f"CSV saved to: {filepath}")
+            return filepath
+            
+        except Exception as e:
+            print(f"Error exporting to CSV: {e}")
+            return ""
+        
+    @Slot(result=bool)
+    def loadFromCSV(self):
+        """Load table data from CSV file in /tmp"""
+        try:
+            self._lathe_profile_conv_model.deleteAll()  # Clear existing data
+            
+            filename = "lathe_profile_save.csv"
+            filepath = os.path.join(tempfile.gettempdir(), filename)
+            
+            if not os.path.exists(filepath):
+                print(f"CSV file not found: {filepath}")
+                return False
+                
+            with open(filepath, 'r') as csvfile:
+                reader = csv.reader(csvfile)
+                next(reader)  # Skip header row
+                
+                for row_idx, row in enumerate(reader):
+                    if len(row) >= 4:  # Row, X, Z, R columns
+                        try:
+                            # Convert displayed row number (1-based) to model index (0-based)
+                            model_row = int(row[0]) - 1
+                            x_val = row[1].strip()
+                            z_val = row[2].strip()
+                            r_val = row[3].strip()
+                            
+                            # Set data in model
+                            if model_row >= 0 and model_row < self._lathe_profile_conv_model._max_display_rows:
+                                index_x = self._lathe_profile_conv_model.index(model_row, 0)
+                                index_z = self._lathe_profile_conv_model.index(model_row, 1)
+                                index_r = self._lathe_profile_conv_model.index(model_row, 2)
+                                
+                                self._lathe_profile_conv_model.setData(index_x, x_val, Qt.EditRole)
+                                self._lathe_profile_conv_model.setData(index_z, z_val, Qt.EditRole)
+                                self._lathe_profile_conv_model.setData(index_r, r_val, Qt.EditRole)
+                                
+                        except (ValueError, IndexError) as e:
+                            print(f"Skipping malformed row {row_idx}: {e}")
+                            
+            print("CSV data loaded successfully")
+            return True
+            
+        except Exception as e:
+            print(f"Error loading CSV: {e}")
+            return False
 
+    def onSelectionChanged(self, selected, deselected):
+        """Handle selection changes and emit the current row"""
+        current_index = self.currentIndex()
+        if current_index.isValid():
+            self.selectedRowSignal.emit(current_index.row())
+    
+    def mousePressEvent(self, e: QMouseEvent) -> None:
+        """Handle mouse clicks and ensure selection is emitted"""
+        current_index = self.currentIndex()
+        if current_index.isValid():
+            self.selectedRowSignal.emit(current_index.row())
+
+        super().mousePressEvent(e)
+        
     def moveCursor(self, cursorAction, modifiers):
         """Override to handle tab navigation and new row creation"""
         current_index = self.currentIndex()
         
+        self.selectedRowSignal.emit(current_index.row())
+        
         # Handle Tab key (MoveNext) behavior
         if cursorAction == QTableView.MoveNext:
             print(f"Tab navigation from row={current_index.row()}, col={current_index.column()}")
+            
             
             # If we're in the last column (R column, index 2)
             if current_index.isValid() and current_index.column() == 2:
@@ -259,7 +361,7 @@ class LatheProfileConvWidget(QTableView):
             print(f"Error in keyPressEvent: {e}")
             import traceback
             traceback.print_exc()
-            super(LatheProfileConvWidget, self).keyPressEvent(event)
+        super(LatheProfileConvWidget, self).keyPressEvent(event)
     
     @Slot(dict)
     def onDataChanged(self, data):
@@ -291,10 +393,12 @@ class LatheProfileConvWidget(QTableView):
     @Slot()
     def deleteAll(self):
         self._lathe_profile_conv_model.deleteAll()
+        self.dataChangedSignal.emit({})
 
 class LatheProfileConvQML(QQuickWidget):
 
     segmentsSig = Signal(str, arguments=['data'])
+    selectedSig = Signal(int, arguments=['index'])
 
     def __init__(self, parent=None):
         super(LatheProfileConvQML, self).__init__(parent) 
@@ -302,6 +406,12 @@ class LatheProfileConvQML(QQuickWidget):
         self.engine().rootContext().setContextProperty("handler", self)
         url = QUrl.fromLocalFile(os.path.join(WIDGET_PATH, "lathe_profile_conv.qml"))
         self.setSource(url)
+
+
+    @Slot(int)
+    def selected(self, value):
+        print(f"Emitting INT: {value}")
+        self.selectedSig.emit(value)
 
     @Slot(dict)
     def update(self, values):
