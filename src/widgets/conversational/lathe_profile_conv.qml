@@ -39,15 +39,15 @@ Rectangle {
             id: segments_position;
         }
         // Main shape path
-         ShapePath {
-             id: shapepath
-             strokeWidth: plotLineWidth
-             strokeColor: plotLineColor
-             fillColor: plotFillColor
-             fillRule: ShapePath.OddEvenFill
-             startX: main.width
-             startY: main.height
-         }
+        ShapePath {
+            id: shapepath
+            strokeWidth: plotLineWidth
+            strokeColor: plotLineColor
+            fillColor: plotFillColor
+            fillRule: ShapePath.OddEvenFill
+            startX: main.width
+            startY: main.height
+        }
 
         // Highlight shape (always present but empty when no selection)
         Shape {
