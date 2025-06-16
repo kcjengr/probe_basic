@@ -147,7 +147,9 @@ Rectangle {
                     selectedIndex = -1
                     selectedPath.pathElements = []
                 }
+                handler.clicked(selectedIndex);
             }
+
 
 
             // Helper function to calculate distance from point to line segment
