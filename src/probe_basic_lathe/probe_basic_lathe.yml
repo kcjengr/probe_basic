@@ -697,6 +697,13 @@ settings:
     min_value: 0
     max_value: 10000
 
+  profile.max-rpm:
+    description: sets spindle max rpm for profile operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
   profile.sf-speed-rough:
     description: sets constant surface speed for rough profile operations
     default_value: 0
@@ -718,32 +725,32 @@ settings:
     min_value: 3
     max_value: 4
 
-  profile.x-start-diam:
+  profile.stock-diam:
     description: sets x start diameter for profile operations
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 10000
 
-  profile.x-end-diam:
+  profile.x-clearance:
     description: sets x end diameter for profile operations
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 10000
 
-  profile.z-start:
+  profile.z-stock-face:
     description: sets z start position for profile operations
     default_value: 0.0
     persistent: true
     min_value: -10000
     max_value: 10000
 
-  profile.z-end:
-    description: sets z end position for profile operations
+  profile.z-clearance:
+    description: sets z clearance distance for profile operations
     default_value: 0.0
     persistent: true
-    min_value: -10000
+    min_value: 0
     max_value: 10000
 
   profile.rough-step:
@@ -759,20 +766,6 @@ settings:
     persistent: true
     min_value: 0
     max_value: 10000
-
-  profile.corner-rad:
-    description: sets corner radius for profile operations
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  profile.z-taper:
-    description: sets taper angle for profile operations
-    default_value: 0.0
-    persistent: true
-    min_value: -45
-    max_value: 45
 
   # Facing Conversational Parameters
   facing.wcs:
@@ -993,6 +986,13 @@ settings:
     min_value: 0
     max_value: 10000
 
+  radius.max-rpm:
+    description: sets spindle max rpm for radius operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
   radius.sf-speed-rough:
     description: sets constant surface speed for rough radius operations
     default_value: 0
@@ -1130,6 +1130,13 @@ settings:
 
   chamfer.rpm:
     description: sets spindle rpm for chamfer operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  chamfer.max-rpm:
+    description: sets spindle max rpm for chamfer operations
     default_value: 500
     persistent: true
     min_value: 0
@@ -1277,6 +1284,13 @@ settings:
     min_value: 0
     max_value: 10000
 
+  groove.max-rpm:
+    description: sets spindle max rpm for groove operations
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
   groove.sf-speed-rough:
     description: sets constant surface speed for rough groove operations
     default_value: 0
@@ -1380,25 +1394,18 @@ settings:
     description: coolant for drill operations
     default_value: 9
     persistent: true
-    min_value: 7
-    max_value: 9
+    min_value: 0
+    max_value: 100000
 
   drill.feed-mode:
-    description: feed mode for drill operations
+    description: feed mode for groove operations
     default_value: 95
     persistent: true
     min_value: 94
     max_value: 95
 
   drill.feedrate:
-    description: sets feed rate for drill operations
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 100000
-
-  drill.retract-feed:
-    description: sets retract feed rate for drill operations
+    description: sets rough feed rate for groove operations
     default_value: 0.0
     persistent: true
     min_value: 0
@@ -1424,6 +1431,13 @@ settings:
     persistent: true
     min_value: 3
     max_value: 4
+
+  drill.bottom-dwell:
+    description: sets bottom dwell time for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10
 
   drill.z-start:
     description: sets z start position for drill operations
@@ -1452,6 +1466,13 @@ settings:
     persistent: true
     min_value: 0
     max_value: 1000
+
+  drill.retract-feed:
+    description: sets retract feedrate for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 30000
 
   # Thread Conversational Parameters
   thread.wcs:
@@ -1720,3 +1741,4 @@ dialogs:
     provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
     kwargs:
       ui_file: {{ file.dir }}/toolchange_dialog_pb.ui
+
