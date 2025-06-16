@@ -207,8 +207,9 @@ class LatheProfileConvWidget(QTableView):
         self.setAlternatingRowColors(True)  # Let stylesheet handle alternating colors
         self.setGridStyle(Qt.SolidLine)
         self.setShowGrid(True)
-        self.setSelectionBehavior(QTableView.SelectItems)
-        self.setSelectionMode(QTableView.SingleSelection)
+        self.setSelectionBehavior(QTableView.SelectRows);
+        # self.setSelectionBehavior(QTableView.SelectItems)
+        # self.setSelectionMode(QTableView.SingleSelection) 
         
         # Style the headers
         self.verticalHeader().setDefaultSectionSize(25)
@@ -224,6 +225,7 @@ class LatheProfileConvWidget(QTableView):
         
         self.selectionModel().selectionChanged.connect(self.onSelectionChanged)
         
+    
     @Slot(result=str)
     def exportToCSV(self):
         """Export table data to CSV file in /tmp and return file path"""
@@ -399,6 +401,7 @@ class LatheProfileConvQML(QQuickWidget):
 
     segmentsSig = Signal(str, arguments=['data'])
     selectedSig = Signal(int, arguments=['index'])
+    clickedSig = Signal(int, arguments=['index'])
 
     def __init__(self, parent=None):
         super(LatheProfileConvQML, self).__init__(parent) 
@@ -410,9 +413,14 @@ class LatheProfileConvQML(QQuickWidget):
 
     @Slot(int)
     def selected(self, value):
-        print(f"Emitting INT: {value}")
+        print(f"Emitting Table Event INT: {value}")
         self.selectedSig.emit(value)
 
+    @Slot(int)
+    def clicked(self, value):
+        print(f"Emitting Plot Event INT: {value}")
+        self.clickedSig.emit(value)
+        
     @Slot(dict)
     def update(self, values):
         try:
