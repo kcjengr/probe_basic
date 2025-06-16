@@ -211,63 +211,56 @@ settings:
     min_value: 0
     max_value: 1
 
-  turning.x-end-diam:
+  turn-id.x-end-diam:
     description: sets x id end diameter for conversational programming
     default_value: 0.0
     persistent: true
     min_value: -10000
     max_value: 10000
 
-  turning.x-start-diam:
+  turn-id.x-start-diam:
     description: sets x od start diameter for conversational programming
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 10000
 
-  turning.z-start:
+  turn-id.z-start:
     description: sets z start position turning for conversational programming
     default_value: 0.0
     persistent: true
     min_value: -10000
     max_value: 10000
 
-  turning.z-end:
+  turn-id.z-end:
     description: sets z end position for conversational programming
     default_value: 0.0
     persistent: true
     min_value: -10000
     max_value: 10000
 
-  turning.rough-step:
+  turn-id.rough-step:
     description: sets roughing stepover amount for z turning conversational programming
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 10000
 
-  turning.z-finish-step:
+  turn-id.finish-step:
     description: sets finishing stepover for z turning conversational programming
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 10000
 
-  turning.x-finish-step:
-    description: sets finishing stepover for x turning conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turning.taper-angle:
+  turn-id.taper-angle:
     description: sets taper angle of z for conversational programming
     default_value: 0.0
     persistent: true
     min_value: -10000
     max_value: 10000
 
-  turning.corner-radius:
+  turn-id.corner-radius:
     description: sets zx transition radius for conversational programming
     default_value: 0.0
     persistent: true
@@ -316,77 +309,98 @@ settings:
     min_value: 0
     max_value: 10000
 
-  conversational.wcs:
-    description: work coordinate system for conversational programming
+  turn-id.wcs:
+    description: work coordinate system
     default_value: 54
     persistent: true
     min_value: 54
     max_value: 59
 
-  conversational.units:
-    description: program units for conversational programming
+  turn-id.units:
+    description: program units
     default_value: 20
     persistent: true
     min_value: 20
     max_value: 21
 
-  conversational.diam-rad:
-    description: diameter or radius mode for conversational programming
+  turn-id.diam-rad:
+    description: diameter or radius mode
     default_value: 7
     persistent: true
     min_value: 7
     max_value: 8
 
-  conversational.tool-profile:
-    description: sets tool number for conversational programming
+  turn-id.tool:
+    description: sets tool number
     default_value: 0
     persistent: true
     min_value: 0
     max_value: 99999
 
-  conversational.coolant:
-    description: coolant state for conversational programming
+  turn-id.coolant:
+    description: coolant
     default_value: 9
     persistent: true
     min_value: 7
     max_value: 9
 
-  conversational.feed:
-    description: feed mode for conversational programming
+  turn-id.feed-mode:
+    description: feed mode
     default_value: 95
     persistent: true
     min_value: 94
     max_value: 95
 
-  conversational.feedrate:
-    description: sets feed per unit for conversational programming
+  turn-id.rough-feedrate:
+    description: sets feed unit
     default_value: 0.0
     persistent: true
     min_value: 0
     max_value: 100000
 
-  conversational.rpm-mode:
-    description: spindle rpm mode conversational programming
+  turn-id.finish-feedrate:
+    description: sets feed unit
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.rpm-mode:
+    description: spindle rpm mode
     default_value: 96
     persistent: true
     min_value: 96
     max_value: 97
 
-  conversational.rpm:
-    description: sets spindle rpm and max rpm conversational programming
+  turn-id.rpm:
+    description: sets spindle rpm
     default_value: 500
     persistent: true
     min_value: 0
     max_value: 10000
 
-  conversational.surface-speed:
+  turn-id.max-rpm:
+    description: sets spindle max rpm
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.sf-speed-rough:
     description: sets constant surface speed for conversational programming
     default_value: 0
     persistent: true
     min_value: 0
     max_value: 100000
 
-  conversational.rotation:
+  turn-id.sf-speed-finish:
+    description: sets constant surface speed for conversational programming
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.rotation:
     description: spindle rotation direction for conversational programming
     default_value: 3
     persistent: true
