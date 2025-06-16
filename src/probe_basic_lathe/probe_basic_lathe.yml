@@ -211,202 +211,6 @@ settings:
     min_value: 0
     max_value: 1
 
-  turn-id.x-end-diam:
-    description: sets x id end diameter for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  turn-id.x-start-diam:
-    description: sets x od start diameter for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.z-start:
-    description: sets z start position turning for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  turn-id.z-end:
-    description: sets z end position for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  turn-id.rough-step:
-    description: sets roughing stepover amount for z turning conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.finish-step:
-    description: sets finishing stepover for z turning conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.taper-angle:
-    description: sets taper angle of z for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  turn-id.corner-radius:
-    description: sets zx transition radius for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  facing.x-end-diam:
-    description: sets x id end diameter for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  facing.x-start-diam:
-    description: sets x od end diameter for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  facing.z-start:
-    description: sets z start position for facing conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  facing.z-end:
-    description: sets z end position for conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: -10000
-    max_value: 10000
-
-  facing.rough-step:
-    description: sets roughing stepover amount for facing conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  facing.finish-step:
-    description: sets finishing stepover for facing conversational programming
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.wcs:
-    description: work coordinate system
-    default_value: 54
-    persistent: true
-    min_value: 54
-    max_value: 59
-
-  turn-id.units:
-    description: program units
-    default_value: 20
-    persistent: true
-    min_value: 20
-    max_value: 21
-
-  turn-id.diam-rad:
-    description: diameter or radius mode
-    default_value: 7
-    persistent: true
-    min_value: 7
-    max_value: 8
-
-  turn-id.tool:
-    description: sets tool number
-    default_value: 0
-    persistent: true
-    min_value: 0
-    max_value: 99999
-
-  turn-id.coolant:
-    description: coolant
-    default_value: 9
-    persistent: true
-    min_value: 7
-    max_value: 9
-
-  turn-id.feed-mode:
-    description: feed mode
-    default_value: 95
-    persistent: true
-    min_value: 94
-    max_value: 95
-
-  turn-id.rough-feedrate:
-    description: sets feed unit
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 100000
-
-  turn-id.finish-feedrate:
-    description: sets feed unit
-    default_value: 0.0
-    persistent: true
-    min_value: 0
-    max_value: 100000
-
-  turn-id.rpm-mode:
-    description: spindle rpm mode
-    default_value: 96
-    persistent: true
-    min_value: 96
-    max_value: 97
-
-  turn-id.rpm:
-    description: sets spindle rpm
-    default_value: 500
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.max-rpm:
-    description: sets spindle max rpm
-    default_value: 200
-    persistent: true
-    min_value: 0
-    max_value: 10000
-
-  turn-id.sf-speed-rough:
-    description: sets constant surface speed for conversational programming
-    default_value: 0
-    persistent: true
-    min_value: 0
-    max_value: 100000
-
-  turn-id.sf-speed-finish:
-    description: sets constant surface speed for conversational programming
-    default_value: 0
-    persistent: true
-    min_value: 0
-    max_value: 100000
-
-  turn-id.rotation:
-    description: spindle rotation direction for conversational programming
-    default_value: 3
-    persistent: true
-    min_value: 3
-    max_value: 4
-
   backplot.show-grid:
     default_value: 0
     persistent: true
@@ -495,6 +299,1406 @@ settings:
     persistent: true
     min_value: -10000
     max_value: 10000
+
+# Add these conversational settings after your existing settings in probe_basic_lathe.yml
+
+  # Turn OD Conversational Parameters
+  turn-od.wcs:
+    description: work coordinate system for od turning
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  turn-od.tool:
+    description: sets tool number for od turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  turn-od.units:
+    description: program units for od turning
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  turn-od.diam-rad:
+    description: diameter or radius mode for od turning
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  turn-od.coolant:
+    description: coolant for od turning
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  turn-od.feed-mode:
+    description: feed mode for od turning
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  turn-od.rough-feedrate:
+    description: sets rough feed rate for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-od.finish-feedrate:
+    description: sets finish feed rate for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-od.rpm-mode:
+    description: spindle rpm mode for od turning
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  turn-od.rpm:
+    description: sets spindle rpm for od turning
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.max-rpm:
+    description: sets spindle max rpm for od turning
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.sf-speed-rough:
+    description: sets constant surface speed for rough od turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-od.sf-speed-finish:
+    description: sets constant surface speed for finish od turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-od.rotation:
+    description: spindle rotation direction for od turning
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  turn-od.x-start-diam:
+    description: sets x start diameter for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.x-end-diam:
+    description: sets x end diameter for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.z-start:
+    description: sets z start position for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  turn-od.z-end:
+    description: sets z end position for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  turn-od.rough-step:
+    description: sets roughing stepover for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.finish-step:
+    description: sets finishing stepover for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.corner-rad:
+    description: sets corner radius for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-od.z-taper:
+    description: sets taper angle for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: -45
+    max_value: 45
+
+  turn-od.xz-clearance:
+    description: sets tool clearance for od turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  # Turn ID Conversational Parameters
+  turn-id.wcs:
+    description: work coordinate system for id turning
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  turn-id.tool:
+    description: sets tool number for id turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  turn-id.units:
+    description: program units for id turning
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  turn-id.diam-rad:
+    description: diameter or radius mode for id turning
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  turn-id.coolant:
+    description: coolant for id turning
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  turn-id.feed-mode:
+    description: feed mode for id turning
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  turn-id.rough-feedrate:
+    description: sets rough feed rate for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.finish-feedrate:
+    description: sets finish feed rate for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.rpm-mode:
+    description: spindle rpm mode for id turning
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  turn-id.rpm:
+    description: sets spindle rpm for id turning
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.max-rpm:
+    description: sets spindle max rpm for id turning
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.sf-speed-rough:
+    description: sets constant surface speed for rough id turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.sf-speed-finish:
+    description: sets constant surface speed for finish id turning
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  turn-id.rotation:
+    description: spindle rotation direction for id turning
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  turn-id.x-start-diam:
+    description: sets x start diameter for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.x-end-diam:
+    description: sets x end diameter for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.z-start:
+    description: sets z start position for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  turn-id.z-end:
+    description: sets z end position for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  turn-id.rough-step:
+    description: sets roughing stepover for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.finish-step:
+    description: sets finishing stepover for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.corner-rad:
+    description: sets corner radius for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  turn-id.z-taper:
+    description: sets taper angle for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: -45
+    max_value: 45
+
+  turn-id.xz-clearance:
+    description: sets tool clearance for id turning
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  # Profile Conversational Parameters
+  profile.wcs:
+    description: work coordinate system for profile operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  profile.units:
+    description: program units for profile operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  profile.diam-rad:
+    description: diameter or radius mode for profile operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  profile.tool:
+    description: sets tool number for profile operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  profile.coolant:
+    description: coolant for profile operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  profile.feed-mode:
+    description: feed mode for profile operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  profile.rough-feedrate:
+    description: sets rough feed rate for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  profile.finish-feedrate:
+    description: sets finish feed rate for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  profile.rpm-mode:
+    description: spindle rpm mode for profile operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  profile.rpm:
+    description: sets spindle rpm for profile operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.sf-speed-rough:
+    description: sets constant surface speed for rough profile operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  profile.sf-speed-finish:
+    description: sets constant surface speed for finish profile operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  profile.rotation:
+    description: spindle rotation direction for profile operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  profile.x-start-diam:
+    description: sets x start diameter for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.x-end-diam:
+    description: sets x end diameter for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.z-start:
+    description: sets z start position for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  profile.z-end:
+    description: sets z end position for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  profile.rough-step:
+    description: sets roughing stepover for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.finish-step:
+    description: sets finishing stepover for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.corner-rad:
+    description: sets corner radius for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  profile.z-taper:
+    description: sets taper angle for profile operations
+    default_value: 0.0
+    persistent: true
+    min_value: -45
+    max_value: 45
+
+  # Facing Conversational Parameters
+  facing.wcs:
+    description: work coordinate system for facing operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  facing.tool:
+    description: sets tool number for facing operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  facing.units:
+    description: program units for facing operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  facing.diam-rad:
+    description: diameter or radius mode for facing operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  facing.coolant:
+    description: coolant for facing operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  facing.feed-mode:
+    description: feed mode for facing operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  facing.rough-feedrate:
+    description: sets rough feed rate for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  facing.finish-feedrate:
+    description: sets finish feed rate for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  facing.rpm-mode:
+    description: spindle rpm mode for facing operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  facing.rpm:
+    description: sets spindle rpm for facing operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  facing.max-rpm:
+    description: sets spindle max rpm for facing operations
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  facing.sf-speed-rough:
+    description: sets constant surface speed for rough facing operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  facing.sf-speed-finish:
+    description: sets constant surface speed for finish facing operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  facing.rotation:
+    description: spindle rotation direction for facing operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  facing.clearance:
+    description: sets tool clearance for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  facing.x-start-diam:
+    description: sets x start diameter for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  facing.x-end-diam:
+    description: sets x end diameter for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  facing.z-start:
+    description: sets z start position for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  facing.z-end:
+    description: sets z end position for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  facing.rough-step:
+    description: sets roughing stepover for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  facing.finish-step:
+    description: sets finishing stepover for facing operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  # Radius Conversational Parameters
+  radius.wcs:
+    description: work coordinate system for radius operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  radius.units:
+    description: program units for radius operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  radius.diam-rad:
+    description: diameter or radius mode for radius operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  radius.tool:
+    description: sets tool number for radius operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  radius.coolant:
+    description: coolant for radius operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  radius.feed-mode:
+    description: feed mode for radius operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  radius.rough-feedrate:
+    description: sets rough feed rate for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  radius.finish-feedrate:
+    description: sets finish feed rate for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  radius.rpm-mode:
+    description: spindle rpm mode for radius operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  radius.rpm:
+    description: sets spindle rpm for radius operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  radius.sf-speed-rough:
+    description: sets constant surface speed for rough radius operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  radius.sf-speed-finish:
+    description: sets constant surface speed for finish radius operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  radius.rotation:
+    description: spindle rotation direction for radius operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  radius.clearance:
+    description: sets tool clearance for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  radius.x-diam:
+    description: sets x diameter for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  radius.z-face:
+    description: sets z face position for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  radius.rough-step:
+    description: sets roughing stepover for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  radius.finish-step:
+    description: sets finishing stepover for radius operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  radius.int-front:
+    description: interior front setting for radius operations
+    default_value: false
+    persistent: true
+
+  radius.ext-front:
+    description: exterior front setting for radius operations
+    default_value: false
+    persistent: true
+
+  radius.ext-back:
+    description: exterior back setting for radius operations
+    default_value: false
+    persistent: true
+
+  # Chamfer Conversational Parameters
+  chamfer.wcs:
+    description: work coordinate system for chamfer operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  chamfer.units:
+    description: program units for chamfer operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  chamfer.diam-rad:
+    description: diameter or radius mode for chamfer operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  chamfer.tool:
+    description: sets tool number for chamfer operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  chamfer.coolant:
+    description: coolant for chamfer operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  chamfer.feed-mode:
+    description: feed mode for chamfer operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  chamfer.rough-feedrate:
+    description: sets rough feed rate for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  chamfer.finish-feedrate:
+    description: sets finish feed rate for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  chamfer.rpm-mode:
+    description: spindle rpm mode for chamfer operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  chamfer.rpm:
+    description: sets spindle rpm for chamfer operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  chamfer.sf-speed-rough:
+    description: sets constant surface speed for rough chamfer operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  chamfer.sf-speed-finish:
+    description: sets constant surface speed for finish chamfer operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  chamfer.rotation:
+    description: spindle rotation direction for chamfer operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  chamfer.clearance:
+    description: sets tool clearance for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  chamfer.x-diam:
+    description: sets x diameter for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  chamfer.z-face:
+    description: sets z face position for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  chamfer.rough-step:
+    description: sets roughing stepover for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  chamfer.finish-step:
+    description: sets finishing stepover for chamfer operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  chamfer.int-front:
+    description: interior front setting for chamfer operations
+    default_value: false
+    persistent: true
+
+  chamfer.ext-front:
+    description: exterior front setting for chamfer operations
+    default_value: false
+    persistent: true
+
+  chamfer.ext-back:
+    description: exterior back setting for chamfer operations
+    default_value: false
+    persistent: true
+
+  # Groove Conversational Parameters
+  groove.wcs:
+    description: work coordinate system for groove operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  groove.units:
+    description: program units for groove operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  groove.diam-rad:
+    description: diameter or radius mode for groove operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  groove.tool:
+    description: sets tool number for groove operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  groove.coolant:
+    description: coolant for groove operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  groove.feed-mode:
+    description: feed mode for groove operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  groove.rough-feedrate:
+    description: sets rough feed rate for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  groove.finish-feedrate:
+    description: sets finish feed rate for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  groove.rpm-mode:
+    description: spindle rpm mode for groove operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  groove.rpm:
+    description: sets spindle rpm for groove operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  groove.sf-speed-rough:
+    description: sets constant surface speed for rough groove operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  groove.sf-speed-finish:
+    description: sets constant surface speed for finish groove operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  groove.rotation:
+    description: spindle rotation direction for groove operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  groove.clearance:
+    description: sets tool clearance for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  groove.x-start-diam:
+    description: sets x start diameter for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  groove.x-end-diam:
+    description: sets x end diameter for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  groove.z-start:
+    description: sets z start position for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  groove.z-end:
+    description: sets z end position for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  groove.rough-step:
+    description: sets roughing stepover for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  groove.finish-step:
+    description: sets finishing stepover for groove operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  # Drill Conversational Parameters
+  drill.wcs:
+    description: work coordinate system for drill operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  drill.units:
+    description: program units for drill operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  drill.diam-rad:
+    description: diameter or radius mode for drill operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  drill.tool:
+    description: sets tool number for drill operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  drill.coolant:
+    description: coolant for drill operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  drill.feed-mode:
+    description: feed mode for drill operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  drill.feedrate:
+    description: sets feed rate for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  drill.retract-feed:
+    description: sets retract feed rate for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  drill.rpm:
+    description: sets spindle rpm for drill operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  drill.tip-angle:
+    description: sets drill tip angle for drill operations
+    default_value: 118.0
+    persistent: true
+    min_value: 0
+    max_value: 180
+
+  drill.rotation:
+    description: spindle rotation direction for drill operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  drill.z-start:
+    description: sets z start position for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  drill.z-end:
+    description: sets z end position for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  drill.tool-clearance:
+    description: sets tool clearance for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  drill.peck-depth:
+    description: sets peck depth for drill operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  # Thread Conversational Parameters
+  thread.wcs:
+    description: work coordinate system for thread operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  thread.units:
+    description: program units for thread operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  thread.diam-rad:
+    description: diameter or radius mode for thread operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  thread.tool:
+    description: sets tool number for thread operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  thread.coolant:
+    description: coolant for thread operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  thread.rpm:
+    description: sets spindle rpm for thread operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  thread.rotation:
+    description: spindle rotation direction for thread operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  thread.x-start-diam:
+    description: sets x start diameter for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  thread.x-end-diam:
+    description: sets x end diameter for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  thread.z-start:
+    description: sets z start position for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  thread.z-end:
+    description: sets z end position for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  thread.depth-of-cut:
+    description: sets depth of cut for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  thread.lead-length:
+    description: sets lead length for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  thread.pass-count:
+    description: sets pass count for thread operations
+    default_value: 1
+    persistent: true
+    min_value: 1
+    max_value: 50
+
+  # Parting Conversational Parameters
+  parting.wcs:
+    description: work coordinate system for parting operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  parting.units:
+    description: program units for parting operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  parting.diam-rad:
+    description: diameter or radius mode for parting operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  parting.tool:
+    description: sets tool number for parting operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  parting.coolant:
+    description: coolant for parting operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  parting.feed-mode:
+    description: feed mode for parting operations
+    default_value: 95
+    persistent: true
+    min_value: 94
+    max_value: 95
+
+  parting.feedrate:
+    description: sets feed rate for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  parting.rpm-mode:
+    description: spindle rpm mode for parting operations
+    default_value: 96
+    persistent: true
+    min_value: 96
+    max_value: 97
+
+  parting.rpm:
+    description: sets spindle rpm for parting operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  parting.max-rpm:
+    description: sets spindle max rpm for parting operations
+    default_value: 200
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  parting.sf-speed:
+    description: sets constant surface speed for parting operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 100000
+
+  parting.rotation:
+    description: spindle rotation direction for parting operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  parting.x-start-diam:
+    description: sets x start diameter for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  parting.x-end-diam:
+    description: sets x end diameter for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  parting.z-start:
+    description: sets z start position for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  parting.z-end:
+    description: sets z end position for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  parting.peck-dist:
+    description: sets peck distance for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  parting.retract:
+    description: sets retract amount for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  parting.tool-width:
+    description: sets tool width for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  parting.edge-break:
+    description: sets edge break for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  parting.tool-clearance:
+    description: sets tool clearance for parting operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
 
   startup-settings.user-startup-tab:
     description: startup tab preference setting.
