@@ -18,9 +18,9 @@ Rectangle {
     // Plot line properties
     property color plotLineColor: "#000000"
     property color plotFillColor: "#4d5055"
-    property color selectedColor: "#7171ED" // Color for selected segments
-    property int plotLineWidth: 2
-    property int selectedLineWidth: 2 // Thicker line for selected segments
+    property color selectedColor: "#3a3aff" // Color for selected segments
+    property int plotLineWidth: 1
+    property int selectedLineWidth: 3 // Thicker line for selected segments
 
     // Selection properties
     property int selectedIndex: -1 // Currently selected segment index
