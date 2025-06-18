@@ -302,7 +302,7 @@ bottom-margin: 0px;
                      <widget class="RecentFileComboBox" name="recentfilecombobox">
                       <property name="minimumSize">
                        <size>
-                        <width>142</width>
+                        <width>145</width>
                         <height>30</height>
                        </size>
                       </property>
@@ -320,7 +320,7 @@ bottom-margin: 0px;
 	border: 1px solid black;
 	border-radius: 3px;
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
-	padding: 1px 23px 1px 3px;
+	padding: 1px 23px 1px 6px;
 	min-width: 6em;
 	color: #ffffff;
     font: 12pt &quot;Bebas Kai&quot;;
@@ -4539,7 +4539,7 @@ QPushButton:checked {
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>0</width>
+                       <width>145</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -4550,14 +4550,36 @@ QPushButton:checked {
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QComboBox::drop-down:button {
-    width: 30px;
+                      <string notr="true">QComboBox {
+	border: 1px solid black;
+	border-radius: 3px;
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+	padding: 1px 23px 1px 6px;
+	min-width: 6em;
+	color: #ffffff;
+    font: 12pt &quot;Bebas Kai&quot;;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px;
+ 	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+    font: 12pt &quot;Bebas Kai&quot;;
+}
+QComboBox::down-arrow {
+     image: url(:/images/combobox-arrow.png);
 }
 
-QComboBox {
-    color: white;
-    font: 12pt &quot;Bebas Kai&quot;;
+QComboBox QAbstractItemView{
+	background-color: #4f4f4f;
+	color: #999999;
+ 	selection-background-color: #999999;
+	selection-color: #4f4f4f;
 }</string>
+                     </property>
+                     <property name="currentIndex">
+                      <number>2</number>
                      </property>
                     </widget>
                    </item>
@@ -4861,7 +4883,7 @@ QHeaderView {
                      </property>
                      <property name="minimumSize">
                       <size>
-                       <width>0</width>
+                       <width>145</width>
                        <height>35</height>
                       </size>
                      </property>
@@ -4872,14 +4894,36 @@ QHeaderView {
                       </size>
                      </property>
                      <property name="styleSheet">
-                      <string notr="true">QComboBox::drop-down:button {
-    width: 30px;
+                      <string notr="true">QComboBox {
+	border: 1px solid black;
+	border-radius: 3px;
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+	padding: 1px 23px 1px 6px;
+	min-width: 6em;
+	color: #ffffff;
+    font: 12pt &quot;Bebas Kai&quot;;
+}
+QComboBox::drop-down {
+	subcontrol-origin: padding;
+	subcontrol-position: top right;
+	width: 20px;
+ 	border-top-right-radius: 3px;
+	border-bottom-right-radius: 3px;
+    font: 12pt &quot;Bebas Kai&quot;;
+}
+QComboBox::down-arrow {
+     image: url(:/images/combobox-arrow.png);
 }
 
-QComboBox {
-    color: white;
-    font: 12pt &quot;Bebas Kai&quot;;
+QComboBox QAbstractItemView{
+	background-color: #4f4f4f;
+	color: #999999;
+ 	selection-background-color: #999999;
+	selection-color: #4f4f4f;
 }</string>
+                     </property>
+                     <property name="currentIndex">
+                      <number>0</number>
                      </property>
                     </widget>
                    </item>
@@ -16872,11 +16916,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17142,11 +17182,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17280,11 +17316,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17415,11 +17447,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17555,11 +17583,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -17945,11 +17969,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -18083,11 +18103,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -20258,11 +20274,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -20528,11 +20540,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -20666,11 +20674,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -20801,11 +20805,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -20941,11 +20941,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -21331,11 +21327,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -21469,11 +21461,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -23440,11 +23428,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -23710,11 +23694,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -23848,11 +23828,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -23983,11 +23959,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -24123,11 +24095,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -24513,11 +24481,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -24651,11 +24615,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -26620,11 +26580,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -26890,11 +26846,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -27028,11 +26980,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -27163,11 +27111,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -27303,11 +27247,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -27693,11 +27633,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -27831,11 +27767,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -29831,11 +29763,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -30101,11 +30029,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -30239,11 +30163,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -30374,11 +30294,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -30514,11 +30430,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -30904,11 +30816,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -31042,11 +30950,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -31808,7 +31712,7 @@ border: none;</string>
                        <property name="geometry">
                         <rect>
                          <x>625</x>
-                         <y>197</y>
+                         <y>220</y>
                          <width>93</width>
                          <height>65</height>
                         </rect>
@@ -32360,8 +32264,8 @@ background-color: #929695;
                       <widget class="QWidget" name="widget_123" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>625</x>
-                         <y>46</y>
+                         <x>617</x>
+                         <y>49</y>
                          <width>93</width>
                          <height>65</height>
                         </rect>
@@ -32499,8 +32403,8 @@ background-color: #929695;
                       <widget class="QWidget" name="widget_150" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>644</x>
-                         <y>120</y>
+                         <x>643</x>
+                         <y>125</y>
                          <width>89</width>
                          <height>34</height>
                         </rect>
@@ -32592,8 +32496,8 @@ background-color: #929695;
                       <widget class="QLabel" name="label_132">
                        <property name="geometry">
                         <rect>
-                         <x>626</x>
-                         <y>155</y>
+                         <x>625</x>
+                         <y>160</y>
                          <width>130</width>
                          <height>25</height>
                         </rect>
@@ -33045,11 +32949,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -33315,11 +33215,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -33453,11 +33349,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -33588,11 +33480,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -33728,11 +33616,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -34118,11 +34002,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -34256,11 +34136,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -36066,11 +35942,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -36336,11 +36208,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -36474,11 +36342,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -36609,11 +36473,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -36749,11 +36609,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -37139,11 +36995,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -37277,11 +37129,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -38726,11 +38574,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -38848,7 +38692,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -38939,7 +38783,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -38986,7 +38830,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39074,7 +38918,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39121,7 +38965,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39140,11 +38984,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -39218,7 +39058,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39265,7 +39105,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39284,11 +39124,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -39364,7 +39200,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39411,7 +39247,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39430,11 +39266,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -39508,7 +39340,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39555,7 +39387,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39684,7 +39516,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39813,7 +39645,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39901,7 +39733,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                           <property name="surface units" stdset="0">
                            <string/>
@@ -39951,7 +39783,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -39970,11 +39802,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -40048,7 +39876,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -40095,7 +39923,7 @@ QComboBox {
                            <number>0</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -40183,7 +40011,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="buddy">
-                           <cstring></cstring>
+                           <cstring>widget_164</cstring>
                           </property>
                          </widget>
                         </item>
@@ -40259,19 +40087,28 @@ QTabBar::tab {
                       <enum>QTabWidget::West</enum>
                      </property>
                      <property name="currentIndex">
-                      <number>0</number>
+                      <number>1</number>
                      </property>
-                     <widget class="QWidget" name="tabWidget_109Page1">
+                     <widget class="QWidget" name="tab_4">
+                      <attribute name="title">
+                       <string>INTERNAL THREADS</string>
+                      </attribute>
+                     </widget>
+                     <widget class="QWidget" name="external_threads_tab_page">
+                      <property name="styleSheet">
+                       <string notr="true"># background-color: #929695;
+</string>
+                      </property>
                       <attribute name="title">
                        <string>EXTERNAL THREADS</string>
                       </attribute>
                       <widget class="QWidget" name="widget_156" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>154</x>
-                         <y>20</y>
-                         <width>880</width>
-                         <height>531</height>
+                         <x>230</x>
+                         <y>40</y>
+                         <width>750</width>
+                         <height>500</height>
                         </rect>
                        </property>
                        <property name="sizePolicy">
@@ -40282,20 +40119,20 @@ QTabBar::tab {
                        </property>
                        <property name="minimumSize">
                         <size>
-                         <width>880</width>
-                         <height>531</height>
+                         <width>750</width>
+                         <height>500</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
-                         <width>880</width>
-                         <height>16777215</height>
+                         <width>750</width>
+                         <height>500</height>
                         </size>
                        </property>
                        <widget class="QLabel" name="label_69">
                         <property name="geometry">
                          <rect>
-                          <x>210</x>
+                          <x>93</x>
                           <y>17</y>
                           <width>560</width>
                           <height>500</height>
@@ -40332,7 +40169,7 @@ QTabBar::tab {
                        <widget class="QWidget" name="widget_126" native="true">
                         <property name="geometry">
                          <rect>
-                          <x>595</x>
+                          <x>478</x>
                           <y>250</y>
                           <width>93</width>
                           <height>65</height>
@@ -40416,7 +40253,7 @@ background-color: #929695;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="x_start_diam_turn_id_2">
+                          <widget class="VCPSettingsLineEdit" name="x_end_diam_thread_ext">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -40456,7 +40293,7 @@ background-color: #929695;
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>turn-id.x-start-diam</string>
+                            <string>thread-ext.x-end-diam</string>
                            </property>
                            <property name="textFormat" stdset="0">
                             <string>{:.4f}</string>
@@ -40468,7 +40305,7 @@ background-color: #929695;
                        <widget class="QWidget" name="widget_113" native="true">
                         <property name="geometry">
                          <rect>
-                          <x>712</x>
+                          <x>595</x>
                           <y>250</y>
                           <width>93</width>
                           <height>65</height>
@@ -40546,7 +40383,7 @@ background-color: #929695;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="x_end_diam_turn_id_2">
+                          <widget class="VCPSettingsLineEdit" name="x_start_diam_thread_ext">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -40589,7 +40426,7 @@ background-color: #929695;
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>turn-id.x-end-diam</string>
+                            <string>thread-ext.x-start-diam</string>
                            </property>
                            <property name="textFormat" stdset="0">
                             <string>{:.4f}</string>
@@ -40601,7 +40438,7 @@ background-color: #929695;
                        <widget class="QWidget" name="widget_127" native="true">
                         <property name="geometry">
                          <rect>
-                          <x>387</x>
+                          <x>270</x>
                           <y>12</y>
                           <width>157</width>
                           <height>65</height>
@@ -40673,7 +40510,7 @@ background-color: #929695;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="x_end_diam_turn_id_3">
+                          <widget class="VCPSettingsLineEdit" name="clearance_x_thread_ext">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -40716,10 +40553,10 @@ background-color: #929695;
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>turn-id.x-end-diam</string>
+                            <string>thread-ext.x-clearance</string>
                            </property>
                            <property name="textFormat" stdset="0">
-                            <string>{:.4f}</string>
+                            <string/>
                            </property>
                           </widget>
                          </item>
@@ -40728,8 +40565,8 @@ background-color: #929695;
                        <widget class="QWidget" name="widget_169" native="true">
                         <property name="geometry">
                          <rect>
-                          <x>280</x>
-                          <y>360</y>
+                          <x>132</x>
+                          <y>331</y>
                           <width>93</width>
                           <height>65</height>
                          </rect>
@@ -40815,7 +40652,7 @@ background: transparent;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="facing_z_end_6">
+                          <widget class="VCPSettingsLineEdit" name="taper_thread_ext">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -40855,7 +40692,7 @@ background: transparent;
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>facing.z-end</string>
+                            <string>thread-ext.taper</string>
                            </property>
                            <property name="textFormat" stdset="0">
                             <string>{:.4f}</string>
@@ -40867,7 +40704,7 @@ background: transparent;
                        <widget class="VCPStackedWidget" name="thread_start_end_right_stacked_widget">
                         <property name="geometry">
                          <rect>
-                          <x>588</x>
+                          <x>471</x>
                           <y>8</y>
                           <width>184</width>
                           <height>42</height>
@@ -40899,10 +40736,10 @@ background: transparent;
 border: none;</string>
                         </property>
                         <property name="currentIndex">
-                         <number>0</number>
+                         <number>1</number>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] else 1&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] else 1&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                         <widget class="QWidget" name="z_start_rh_ext">
                          <property name="sizePolicy">
@@ -40925,7 +40762,7 @@ border: none;</string>
                            <number>3</number>
                           </property>
                           <item>
-                           <widget class="VCPSettingsLineEdit" name="z_start_rh_ext_thread">
+                           <widget class="VCPSettingsLineEdit" name="z_start_thread_rh_ext">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -40965,7 +40802,7 @@ border: none;</string>
                              <string>0.0000</string>
                             </property>
                             <property name="settingName" stdset="0">
-                             <string>facing.x-start-diam</string>
+                             <string>thread-ext.z-start-rh</string>
                             </property>
                             <property name="textFormat" stdset="0">
                              <string>{:.4f}</string>
@@ -41041,7 +40878,7 @@ border: none;</string>
                            <number>3</number>
                           </property>
                           <item>
-                           <widget class="VCPSettingsLineEdit" name="z_end_lh_ext_thread">
+                           <widget class="VCPSettingsLineEdit" name="z_end_thread_lh_ext">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -41081,7 +40918,7 @@ border: none;</string>
                              <string>0.0000</string>
                             </property>
                             <property name="settingName" stdset="0">
-                             <string>facing.x-start-diam</string>
+                             <string>thread-ext.z-end-lh</string>
                             </property>
                             <property name="textFormat" stdset="0">
                              <string>{:.4f}</string>
@@ -41131,7 +40968,7 @@ border: none;</string>
                        <widget class="VCPStackedWidget" name="thread_start_end_left_stacked_widget">
                         <property name="geometry">
                          <rect>
-                          <x>167</x>
+                          <x>50</x>
                           <y>8</y>
                           <width>184</width>
                           <height>42</height>
@@ -41166,7 +41003,7 @@ border: none;</string>
                          <number>1</number>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;1 if ch[0] else 0&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;1 if ch[0] else 0&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                         <widget class="QWidget" name="z_start_lh_ext">
                          <property name="sizePolicy">
@@ -41226,7 +41063,7 @@ border: none;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="VCPSettingsLineEdit" name="z_start_lh_ext_thread">
+                           <widget class="VCPSettingsLineEdit" name="z_start_thread_lh_ext">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -41266,7 +41103,7 @@ border: none;</string>
                              <string>0.0000</string>
                             </property>
                             <property name="settingName" stdset="0">
-                             <string>facing.x-start-diam</string>
+                             <string>thread-ext.z-start-lh</string>
                             </property>
                             <property name="textFormat" stdset="0">
                              <string>{:.4f}</string>
@@ -41342,7 +41179,7 @@ border: none;</string>
                            </widget>
                           </item>
                           <item>
-                           <widget class="VCPSettingsLineEdit" name="z_end_rh_ext_thread">
+                           <widget class="VCPSettingsLineEdit" name="z_end_thread_rh_ext">
                             <property name="sizePolicy">
                              <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                               <horstretch>0</horstretch>
@@ -41382,7 +41219,7 @@ border: none;</string>
                              <string>0.0000</string>
                             </property>
                             <property name="settingName" stdset="0">
-                             <string>facing.x-start-diam</string>
+                             <string>thread-ext.z-end-rh</string>
                             </property>
                             <property name="textFormat" stdset="0">
                              <string>{:.4f}</string>
@@ -41395,7 +41232,7 @@ border: none;</string>
                        <widget class="StatusLabel" name="statuslabel_9">
                         <property name="geometry">
                          <rect>
-                          <x>274</x>
+                          <x>157</x>
                           <y>50</y>
                           <width>101</width>
                           <height>61</height>
@@ -41408,13 +41245,13 @@ border: none;</string>
                          <string/>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;background_color&quot;, &quot;property&quot;: &quot;Style Sheet&quot;, &quot;expression&quot;: &quot;'background-color: #929695;' if ch[0] else 'background-color: transparent;'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;background_color&quot;, &quot;property&quot;: &quot;Style Sheet&quot;, &quot;expression&quot;: &quot;'background-color: #929695;' if ch[0] else 'background-color: transparent;'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                        </widget>
                        <widget class="StatusLabel" name="statuslabel_10">
                         <property name="geometry">
                          <rect>
-                          <x>557</x>
+                          <x>440</x>
                           <y>52</y>
                           <width>91</width>
                           <height>61</height>
@@ -41427,20 +41264,20 @@ border: none;</string>
                          <string/>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;background_color&quot;, &quot;property&quot;: &quot;Style Sheet&quot;, &quot;expression&quot;: &quot;'background-color: transparent;' if ch[0] else 'background-color: #929695;'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;background_color&quot;, &quot;property&quot;: &quot;Style Sheet&quot;, &quot;expression&quot;: &quot;'background-color: transparent;' if ch[0] else 'background-color: #929695;'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                        </widget>
                        <widget class="VCPWidget" name="widget_130">
                         <property name="geometry">
                          <rect>
-                          <x>122</x>
+                          <x>9</x>
                           <y>52</y>
                           <width>187</width>
                           <height>48</height>
                          </rect>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;hide_widget&quot;, &quot;property&quot;: &quot;Visible&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.lh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;hide_widget&quot;, &quot;property&quot;: &quot;Visible&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.lh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                         <layout class="QHBoxLayout" name="horizontalLayout_130">
                          <property name="leftMargin">
@@ -41493,7 +41330,7 @@ border: none;</string>
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="lead_length_ext_rh_thread_2">
+                          <widget class="VCPSettingsLineEdit" name="lead_length_thread_lh_ext">
                            <property name="enabled">
                             <bool>true</bool>
                            </property>
@@ -41536,7 +41373,7 @@ border: none;</string>
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>facing.x-start-diam</string>
+                            <string>thread-ext.lead-length-lh</string>
                            </property>
                            <property name="textFormat" stdset="0">
                             <string>{:.4f}</string>
@@ -41548,7 +41385,7 @@ border: none;</string>
                        <widget class="VCPWidget" name="widget_162">
                         <property name="geometry">
                          <rect>
-                          <x>620</x>
+                          <x>503</x>
                           <y>56</y>
                           <width>184</width>
                           <height>42</height>
@@ -41560,7 +41397,7 @@ background-color: #929695;
 }</string>
                         </property>
                         <property name="rules" stdset="0">
-                         <string>[{&quot;name&quot;: &quot;hide_widget&quot;, &quot;property&quot;: &quot;Visible&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
+                         <string>[{&quot;name&quot;: &quot;hide_widget&quot;, &quot;property&quot;: &quot;Visible&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
                         </property>
                         <layout class="QHBoxLayout" name="horizontalLayout_131">
                          <property name="leftMargin">
@@ -41576,7 +41413,7 @@ background-color: #929695;
                           <number>3</number>
                          </property>
                          <item>
-                          <widget class="VCPSettingsLineEdit" name="lead_length_ext_rh_thread">
+                          <widget class="VCPSettingsLineEdit" name="lead_length_thread_rh_ext">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -41616,7 +41453,7 @@ background-color: #929695;
                             <string>0.0000</string>
                            </property>
                            <property name="settingName" stdset="0">
-                            <string>facing.x-start-diam</string>
+                            <string>thread-ext.lead-length-rh</string>
                            </property>
                            <property name="textFormat" stdset="0">
                             <string>{:.4f}</string>
@@ -41677,10 +41514,10 @@ background-color: #929695;
                       <widget class="QLabel" name="label_73">
                        <property name="geometry">
                         <rect>
-                         <x>1100</x>
-                         <y>29</y>
-                         <width>101</width>
-                         <height>160</height>
+                         <x>1035</x>
+                         <y>170</y>
+                         <width>181</width>
+                         <height>312</height>
                         </rect>
                        </property>
                        <property name="sizePolicy">
@@ -41702,10 +41539,10 @@ background-color: #929695;
                       <widget class="QWidget" name="widget_172" native="true">
                        <property name="geometry">
                         <rect>
-                         <x>1089</x>
-                         <y>27</y>
+                         <x>1060</x>
+                         <y>180</y>
                          <width>190</width>
-                         <height>42</height>
+                         <height>34</height>
                         </rect>
                        </property>
                        <property name="sizePolicy">
@@ -41717,13 +41554,13 @@ background-color: #929695;
                        <property name="minimumSize">
                         <size>
                          <width>190</width>
-                         <height>42</height>
+                         <height>34</height>
                         </size>
                        </property>
                        <property name="maximumSize">
                         <size>
                          <width>190</width>
-                         <height>42</height>
+                         <height>34</height>
                         </size>
                        </property>
                        <property name="styleSheet">
@@ -41752,7 +41589,7 @@ background-color: #929695;
                          <number>0</number>
                         </property>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="turning_rough_step_16">
+                         <widget class="VCPSettingsLineEdit" name="depth_of_cut_thread_ext">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -41761,13 +41598,13 @@ background-color: #929695;
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>87</width>
+                            <width>80</width>
                             <height>30</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>87</width>
+                            <width>80</width>
                             <height>30</height>
                            </size>
                           </property>
@@ -41792,7 +41629,7 @@ background-color: #929695;
                            <string>0.0000</string>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>turning.rough-step</string>
+                           <string>thread-ext.depth-of-cut</string>
                           </property>
                           <property name="textFormat" stdset="0">
                            <string/>
@@ -41803,19 +41640,19 @@ background-color: #929695;
                          <widget class="QLabel" name="label_146">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
+                            <horstretch>1</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>90</width>
+                            <width>0</width>
                             <height>25</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>90</width>
+                            <width>16777215</width>
                             <height>25</height>
                            </size>
                           </property>
@@ -41838,67 +41675,259 @@ background-color: #929695;
                         </item>
                        </layout>
                       </widget>
-                      <widget class="QWidget" name="widget_128" native="true">
+                      <widget class="QFrame" name="frame_128">
                        <property name="geometry">
                         <rect>
-                         <x>1080</x>
-                         <y>220</y>
-                         <width>151</width>
-                         <height>92</height>
+                         <x>1023</x>
+                         <y>0</y>
+                         <width>240</width>
+                         <height>161</height>
                         </rect>
                        </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>240</width>
+                         <height>16777215</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">.QFrame {
+    background-color: rgb(100,100,100);
+    border-style: solid;
+    border-color: rgb(186, 189, 182);
+    border-width: 2px;
+    border-radius: 6px;
+}</string>
+                       </property>
                        <layout class="QVBoxLayout" name="verticalLayout_114">
+                        <property name="spacing">
+                         <number>6</number>
+                        </property>
                         <property name="leftMargin">
-                         <number>1</number>
+                         <number>15</number>
                         </property>
                         <property name="topMargin">
-                         <number>1</number>
+                         <number>15</number>
                         </property>
                         <property name="rightMargin">
-                         <number>1</number>
+                         <number>15</number>
                         </property>
                         <property name="bottomMargin">
-                         <number>1</number>
+                         <number>6</number>
                         </property>
                         <item>
-                         <widget class="QLabel" name="label_71">
+                         <widget class="QLabel" name="label_155">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>37</height>
-                           </size>
-                          </property>
                           <property name="styleSheet">
                            <string notr="true">QLabel {
     color: white;
-	font: 17pt &quot;Bebas Kai&quot;;
+	font: 16pt &quot;Bebas Kai&quot;;
 }</string>
                           </property>
                           <property name="text">
-                           <string>THREAD HAND</string>
+                           <string>THREAD SPECIFICATIONS</string>
                           </property>
                           <property name="alignment">
                            <set>Qt::AlignCenter</set>
                           </property>
+                          <property name="indent">
+                           <number>0</number>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="VCPStackedWidget" name="thread_size">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>48</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>48</height>
+                           </size>
+                          </property>
+                          <property name="layoutDirection">
+                           <enum>Qt::LeftToRight</enum>
+                          </property>
+                          <property name="currentIndex">
+                           <number>1</number>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 20 else 1&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.units&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <widget class="QWidget" name="sae_thread_page">
+                           <property name="styleSheet">
+                            <string notr="true">background: transparent;
+</string>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_148">
+                            <property name="spacing">
+                             <number>3</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>3</number>
+                            </property>
+                            <item>
+                             <widget class="VCPSettingsComboBox" name="sae_threads_combobox">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>42</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>42</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QComboBox {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-size: 14pt;
+    padding-left: 6px;
+}</string>
+                              </property>
+                              <property name="placeholderText">
+                               <string>THREADS  SAE</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
+                          <widget class="QWidget" name="metric_thread_page">
+                           <property name="styleSheet">
+                            <string notr="true">background: transparent;</string>
+                           </property>
+                           <layout class="QHBoxLayout" name="horizontalLayout_134">
+                            <property name="spacing">
+                             <number>3</number>
+                            </property>
+                            <property name="leftMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="topMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="rightMargin">
+                             <number>3</number>
+                            </property>
+                            <property name="bottomMargin">
+                             <number>3</number>
+                            </property>
+                            <item>
+                             <widget class="VCPSettingsComboBox" name="metric_threads_combobox">
+                              <property name="sizePolicy">
+                               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                                <horstretch>0</horstretch>
+                                <verstretch>0</verstretch>
+                               </sizepolicy>
+                              </property>
+                              <property name="minimumSize">
+                               <size>
+                                <width>0</width>
+                                <height>42</height>
+                               </size>
+                              </property>
+                              <property name="maximumSize">
+                               <size>
+                                <width>16777215</width>
+                                <height>42</height>
+                               </size>
+                              </property>
+                              <property name="styleSheet">
+                               <string notr="true">QComboBox {
+    color: white;    
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    font-size: 14pt;
+    padding-left: 6px;
+}</string>
+                              </property>
+                              <property name="placeholderText">
+                               <string>THREADS  METRIC</string>
+                              </property>
+                             </widget>
+                            </item>
+                           </layout>
+                          </widget>
                          </widget>
                         </item>
                         <item>
                          <widget class="QWidget" name="widget_109" native="true">
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>48</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>48</height>
+                           </size>
+                          </property>
                           <layout class="QHBoxLayout" name="horizontalLayout_128">
+                           <property name="spacing">
+                            <number>10</number>
+                           </property>
+                           <property name="leftMargin">
+                            <number>3</number>
+                           </property>
+                           <property name="topMargin">
+                            <number>1</number>
+                           </property>
+                           <property name="rightMargin">
+                            <number>3</number>
+                           </property>
+                           <property name="bottomMargin">
+                            <number>1</number>
+                           </property>
                            <item>
-                            <widget class="VCPSettingsPushButton" name="settings_pushbutton_2">
+                            <widget class="VCPSettingsPushButton" name="threads_ext_lh_pushbutton">
                              <property name="enabled">
                               <bool>true</bool>
                              </property>
                              <property name="sizePolicy">
-                              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>1</horstretch>
                                <verstretch>0</verstretch>
                               </sizepolicy>
                              </property>
@@ -41914,8 +41943,11 @@ background-color: #929695;
                                <height>42</height>
                               </size>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true">font: 14pt;</string>
+                             </property>
                              <property name="text">
-                              <string>LH</string>
+                              <string>LEFT HAND</string>
                              </property>
                              <property name="checked">
                               <bool>false</bool>
@@ -41924,7 +41956,7 @@ background-color: #929695;
                               <bool>true</bool>
                              </property>
                              <property name="settingName" stdset="0">
-                              <string>thread.lh-ext-button</string>
+                              <string>thread-ext.lh-ext-button</string>
                              </property>
                              <attribute name="buttonGroup">
                               <string notr="true">extthreadhandbtnGroup</string>
@@ -41932,13 +41964,13 @@ background-color: #929695;
                             </widget>
                            </item>
                            <item>
-                            <widget class="VCPSettingsPushButton" name="settings_pushbutton">
+                            <widget class="VCPSettingsPushButton" name="threads_ext_rh_pushbutton">
                              <property name="enabled">
                               <bool>true</bool>
                              </property>
                              <property name="sizePolicy">
-                              <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
-                               <horstretch>0</horstretch>
+                              <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                               <horstretch>1</horstretch>
                                <verstretch>0</verstretch>
                               </sizepolicy>
                              </property>
@@ -41954,8 +41986,11 @@ background-color: #929695;
                                <height>42</height>
                               </size>
                              </property>
+                             <property name="styleSheet">
+                              <string notr="true">font: 14pt;</string>
+                             </property>
                              <property name="text">
-                              <string>RH</string>
+                              <string>RIGHT HAND</string>
                              </property>
                              <property name="checked">
                               <bool>true</bool>
@@ -41964,7 +41999,7 @@ background-color: #929695;
                               <bool>true</bool>
                              </property>
                              <property name="settingName" stdset="0">
-                              <string>thread.rh-ext-button</string>
+                              <string>thread-ext.rh-ext-button</string>
                              </property>
                              <attribute name="buttonGroup">
                               <string notr="true">extthreadhandbtnGroup</string>
@@ -41976,11 +42011,181 @@ background-color: #929695;
                         </item>
                        </layout>
                       </widget>
-                     </widget>
-                     <widget class="QWidget" name="tab_4">
-                      <attribute name="title">
-                       <string>INTERNAL THREADS</string>
-                      </attribute>
+                      <widget class="QWidget" name="widget_164" native="true">
+                       <property name="geometry">
+                        <rect>
+                         <x>1060</x>
+                         <y>480</y>
+                         <width>190</width>
+                         <height>34</height>
+                        </rect>
+                       </property>
+                       <property name="sizePolicy">
+                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                         <horstretch>0</horstretch>
+                         <verstretch>0</verstretch>
+                        </sizepolicy>
+                       </property>
+                       <property name="minimumSize">
+                        <size>
+                         <width>190</width>
+                         <height>34</height>
+                        </size>
+                       </property>
+                       <property name="maximumSize">
+                        <size>
+                         <width>190</width>
+                         <height>34</height>
+                        </size>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                       </property>
+                       <layout class="QHBoxLayout" name="horizontalLayout_414">
+                        <property name="leftMargin">
+                         <number>3</number>
+                        </property>
+                        <property name="topMargin">
+                         <number>0</number>
+                        </property>
+                        <property name="rightMargin">
+                         <number>3</number>
+                        </property>
+                        <property name="bottomMargin">
+                         <number>3</number>
+                        </property>
+                        <item>
+                         <widget class="VCPSettingsLineEdit" name="pitch_thread_ext">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>80</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>80</width>
+                            <height>30</height>
+                           </size>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::ClickFocus</enum>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-color: rgb(235, 235, 235);
+    border-width: 1px;
+    border-radius: 5px;
+    color: black;
+    background: rgb(235, 235, 235);
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                          </property>
+                          <property name="placeholderText">
+                           <string>0.0000</string>
+                          </property>
+                          <property name="settingName" stdset="0">
+                           <string>thread-ext.pitch</string>
+                          </property>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.4f}</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="QLabel" name="label_602">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                            <horstretch>1</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>0</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>16777215</width>
+                            <height>25</height>
+                           </size>
+                          </property>
+                          <property name="styleSheet">
+                           <string notr="true">QLabel{
+    color: white;
+	font: 15pt &quot;Bebas Kai&quot;;
+}</string>
+                          </property>
+                          <property name="lineWidth">
+                           <number>0</number>
+                          </property>
+                          <property name="text">
+                           <string>THREAD PITCH</string>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                          </property>
+                          <property name="indent">
+                           <number>0</number>
+                          </property>
+                         </widget>
+                        </item>
+                       </layout>
+                      </widget>
+                      <widget class="QWidget" name="widget_165" native="true">
+                       <property name="geometry">
+                        <rect>
+                         <x>1026</x>
+                         <y>433</y>
+                         <width>51</width>
+                         <height>20</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                       </property>
+                      </widget>
+                      <widget class="QWidget" name="widget_166" native="true">
+                       <property name="geometry">
+                        <rect>
+                         <x>1093</x>
+                         <y>150</y>
+                         <width>71</width>
+                         <height>31</height>
+                        </rect>
+                       </property>
+                       <property name="styleSheet">
+                        <string notr="true">QWidget {
+border: none;
+background-color: #929695;
+}</string>
+                       </property>
+                      </widget>
+                      <zorder>widget_156</zorder>
+                      <zorder>label_73</zorder>
+                      <zorder>widget_172</zorder>
+                      <zorder>widget_164</zorder>
+                      <zorder>widget_165</zorder>
+                      <zorder>widget_166</zorder>
+                      <zorder>frame_128</zorder>
                      </widget>
                     </widget>
                    </item>
@@ -42021,7 +42226,7 @@ background-color: #929695;
                        <number>18</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>4</number>
+                       <number>15</number>
                       </property>
                       <item>
                        <layout class="QHBoxLayout" name="horizontalLayout_452">
@@ -42066,7 +42271,7 @@ background-color: #929695;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="wcs_thread">
+                         <widget class="VCPSettingsComboBox" name="wcs_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -42080,11 +42285,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -42102,7 +42303,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.wcs</string>
+                           <string>thread-ext.wcs</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -42196,7 +42397,7 @@ QComboBox {
                            <string>T</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42204,7 +42405,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="tool_thread">
+                         <widget class="VCPSettingsLineEdit" name="tool_thread_ext">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -42244,7 +42445,7 @@ QComboBox {
                            <string>0</string>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.tool</string>
+                           <string>thread-ext.tool</string>
                           </property>
                          </widget>
                         </item>
@@ -42325,7 +42526,7 @@ QComboBox {
                            <string>G</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42333,7 +42534,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="units_thread">
+                         <widget class="VCPSettingsComboBox" name="units_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -42347,11 +42548,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -42369,7 +42566,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.units</string>
+                           <string>thread-ext.units</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -42463,7 +42660,7 @@ QComboBox {
                            <string>G</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42471,7 +42668,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="diam_rad_thread">
+                         <widget class="VCPSettingsComboBox" name="diam_rad_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -42485,11 +42682,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -42507,7 +42700,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.diam-rad</string>
+                           <string>thread-ext.diam-rad</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -42598,7 +42791,7 @@ QComboBox {
                            <string>M</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42606,7 +42799,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="coolant_thread">
+                         <widget class="VCPSettingsComboBox" name="coolant_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -42620,11 +42813,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -42642,7 +42831,7 @@ QComboBox {
                            <number>3</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.coolant</string>
+                           <string>thread-ext.coolant</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -42738,7 +42927,7 @@ QComboBox {
                            <string>S</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42746,7 +42935,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="rpm_thread">
+                         <widget class="VCPSettingsLineEdit" name="rpm_thread_ext">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -42786,7 +42975,7 @@ QComboBox {
                            <string>0</string>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.rpm</string>
+                           <string>thread-ext.rpm</string>
                           </property>
                           <property name="textFormat" stdset="0">
                            <string/>
@@ -42870,7 +43059,7 @@ QComboBox {
                            <string>M</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                           <set>Qt::AlignCenter</set>
                           </property>
                           <property name="indent">
                            <number>0</number>
@@ -42878,7 +43067,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="rotation_thread">
+                         <widget class="VCPSettingsComboBox" name="rotation_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -42892,11 +43081,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -42914,7 +43099,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.rotation</string>
+                           <string>thread-ext.rotation</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -43016,7 +43201,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="pass_count_thread">
+                         <widget class="VCPSettingsComboBox" name="pass_count_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -43052,7 +43237,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.pass-count</string>
+                           <string>thread-ext.pass-count</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -43154,7 +43339,7 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="spring_passes_thread">
+                         <widget class="VCPSettingsComboBox" name="spring_passes_thread_ext">
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -43190,7 +43375,7 @@ QComboBox {
                            <number>2</number>
                           </property>
                           <property name="settingName" stdset="0">
-                           <string>thread.spring-passes-thread</string>
+                           <string>thread-ext.spring-passes</string>
                           </property>
                           <property name="storeIndex" stdset="0">
                            <bool>false</bool>
@@ -43209,282 +43394,6 @@ QComboBox {
                         </item>
                         <item>
                          <widget class="QLabel" name="label_600">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>1</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>100</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string>SPRING PASSES</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="indent">
-                           <number>2</number>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_414">
-                        <item>
-                         <widget class="QLabel" name="label_601">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>15</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>15</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="indent">
-                           <number>0</number>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="VCPSettingsComboBox" name="spring_passes_thread_2">
-                          <property name="minimumSize">
-                           <size>
-                            <width>75</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>75</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 15pt &quot;Bebas Kai&quot;;
-    padding-left: 30px;
-}</string>
-                          </property>
-                          <property name="maxVisibleItems">
-                           <number>2</number>
-                          </property>
-                          <property name="maxCount">
-                           <number>2</number>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>thread.spring-passes-thread</string>
-                          </property>
-                          <property name="storeIndex" stdset="0">
-                           <bool>false</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>4</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_602">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>1</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>100</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>16777215</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string>SPRING PASSES</string>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="indent">
-                           <number>2</number>
-                          </property>
-                         </widget>
-                        </item>
-                       </layout>
-                      </item>
-                      <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_415">
-                        <item>
-                         <widget class="QLabel" name="label_603">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>15</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>15</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                          </property>
-                          <property name="lineWidth">
-                           <number>0</number>
-                          </property>
-                          <property name="text">
-                           <string/>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                          </property>
-                          <property name="indent">
-                           <number>0</number>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="VCPSettingsComboBox" name="spring_passes_thread_3">
-                          <property name="minimumSize">
-                           <size>
-                            <width>75</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>75</width>
-                            <height>30</height>
-                           </size>
-                          </property>
-                          <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 15pt &quot;Bebas Kai&quot;;
-    padding-left: 30px;
-}</string>
-                          </property>
-                          <property name="maxVisibleItems">
-                           <number>2</number>
-                          </property>
-                          <property name="maxCount">
-                           <number>2</number>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>thread.spring-passes-thread</string>
-                          </property>
-                          <property name="storeIndex" stdset="0">
-                           <bool>false</bool>
-                          </property>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>4</string>
-                           </property>
-                          </item>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="QLabel" name="label_604">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                             <horstretch>1</horstretch>
@@ -43711,11 +43620,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -43981,11 +43886,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -44119,11 +44020,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -44254,11 +44151,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -44661,11 +44554,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -45369,11 +45258,7 @@ background: transparent;</string>
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -46820,11 +46705,7 @@ background-color: #929695;
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47090,11 +46971,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47228,11 +47105,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47363,11 +47236,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47503,11 +47372,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47767,11 +47632,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -47905,11 +47766,7 @@ QComboBox {
                            </size>
                           </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">QComboBox {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -54926,7 +54783,7 @@ QPushButton:checked {
                   <number>1</number>
                  </property>
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="spindle_status_rpm">
                   <property name="sizePolicy">
@@ -57519,12 +57376,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="extthreadhandbtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="btngrpMdi"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="extthreadhandbtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="sidebartabGroup"/>
  </buttongroups>
 </ui>
