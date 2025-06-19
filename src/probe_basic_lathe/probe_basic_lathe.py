@@ -3,6 +3,7 @@
 import os
 import sys
 import importlib.util
+import csv
 
 import linuxcnc
 
@@ -96,7 +97,16 @@ class ProbeBasicLathe(VCPMainWindow):
         idx = index_map.get((dro_display, lathe_type), 0)
         self.jog_button_stacked_widget.setCurrentIndex(idx)
 
-    
+        # Load thread data
+        self.load_thread_data()
+        
+        # Connect your existing combo boxes
+        self.sae_threads_combobox.currentTextChanged.connect(self.on_sae_thread_changed)
+        self.metric_threads_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
+        
+        # Populate the combo boxes
+        self.populate_thread_combos()
+
     def load_user_buttons(self):
         self.user_button_modules = {}
         self.user_buttons = {}
@@ -274,3 +284,143 @@ class ProbeBasicLathe(VCPMainWindow):
         """Synchronize stacked widget with tab widget selection."""
         if hasattr(self, "conversational_stackedwidget"):
             self.conversational_stackedwidget.setCurrentIndex(index)
+
+    def load_thread_data(self):
+        """Load thread data from CSV files"""
+        import csv
+        import os
+        from collections import OrderedDict
+        
+        self.metric_threads = OrderedDict()
+        self.sae_threads = OrderedDict()
+
+        # Load metric threads
+        metric_file = os.path.join(VCP_DIR, '../widgets/conversational/threads_metric.csv')
+        if os.path.exists(metric_file):
+            with open(metric_file, 'r') as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if row and not row[0].startswith('#') and len(row) >= 7:
+                        desc, pitch, e_maj, e_min, i_maj, i_min, l_len = row[:7]
+                        self.metric_threads[desc.strip()] = {
+                            'description': desc.strip(),
+                            'pitch': float(pitch),
+                            'e_maj': float(e_maj),
+                            'e_min': float(e_min),
+                            'i_maj': float(i_maj),
+                            'i_min': float(i_min),
+                            'l_len': float(l_len)
+                        }
+
+        # Load SAE threads  
+        sae_file = os.path.join(VCP_DIR, '../widgets/conversational/threads_sae.csv')
+        if os.path.exists(sae_file):
+            with open(sae_file, 'r') as f:
+                reader = csv.reader(f)
+                for row in reader:
+                    if row and not row[0].startswith('#') and len(row) >= 7:
+                        desc, tpi, e_maj, e_min, i_maj, i_min, l_len = row[:7]
+                        # Convert TPI to pitch (inches per thread)
+                        pitch = 1.0 / float(tpi) if float(tpi) > 0 else 0
+                        self.sae_threads[desc.strip()] = {
+                            'description': desc.strip(),
+                            'pitch': pitch,
+                            'e_maj': float(e_maj),
+                            'e_min': float(e_min),
+                            'i_maj': float(i_maj),
+                            'i_min': float(i_min),
+                            'l_len': float(l_len)
+                        }
+
+    def populate_thread_combos(self):
+        """Populate both thread combo boxes"""
+        
+        # Populate SAE threads combo (preserve file order)
+        self.sae_threads_combobox.clear()
+        sae_items = list(self.sae_threads.keys())
+        self.sae_threads_combobox.addItems(sae_items)
+        
+        # Populate Metric threads combo (preserve file order)
+        self.metric_threads_combobox.clear()
+        metric_items = list(self.metric_threads.keys())
+        self.metric_threads_combobox.addItems(metric_items)
+
+    def on_sae_thread_changed(self, thread_size):
+        """Handle SAE thread selection"""
+        if not thread_size or thread_size not in self.sae_threads:
+            return
+            
+        thread_data = self.sae_threads[thread_size]
+        self.populate_thread_fields(thread_data)
+
+    def on_metric_thread_changed(self, thread_size):
+        """Handle Metric thread selection"""
+        if not thread_size or thread_size not in self.metric_threads:
+            return
+            
+        thread_data = self.metric_threads[thread_size]
+        self.populate_thread_fields(thread_data)
+
+    def calculate_npt_taper_change(self, z_start, z_end, lead_length, is_external=True):
+        """Calculate X radius change for NPT taper"""
+        import math
+        
+        # Total Z distance: difference between start and end + lead length
+        z_distance = abs(z_end - z_start) + lead_length
+        
+        # NPT taper: 1.7899 degrees from centerline
+        taper_angle_rad = math.radians(1.7899)
+        
+        # X radius change (short leg of right triangle)
+        x_radius_change = z_distance * math.tan(taper_angle_rad)
+        
+        # Apply sign based on thread type:
+        # External NPT: positive taper (pipe gets smaller toward end)
+        # Internal NPT: negative taper (hole gets larger toward end)
+        if is_external:
+            return x_radius_change  # Positive for external
+        else:
+            return -x_radius_change  # Negative for internal
+
+    def calculate_and_set_npt_taper(self, is_external=True):
+        """Calculate NPT taper X change and update the taper widget"""
+        try:
+            # Get current Z positions and lead length using .text() method
+            z_start = float(self.z_start_thread_rh_ext.text()) if self.z_start_thread_rh_ext.text() else 0.0
+            z_end = float(self.z_end_thread_rh_ext.text()) if self.z_end_thread_rh_ext.text() else 0.0
+            lead_length = float(self.lead_length_thread_rh_ext.text()) if self.lead_length_thread_rh_ext.text() else 0.0
+            
+            # Calculate X radius change with proper sign
+            x_change = self.calculate_npt_taper_change(z_start, z_end, lead_length, is_external)
+            
+            # Set the calculated value in the taper widget
+            self.taper_thread_ext.setValue(x_change)
+            
+        except Exception as e:
+            # If we can't get the values or calculation fails, set to 0
+            self.taper_thread_ext.setValue(0.0)
+
+    def populate_thread_fields(self, thread_data):
+        """Populate VCPSettingsLineEdit widgets with thread data"""
+        
+        # Calculate depth of cut (half the difference between major and minor)
+        depth = (thread_data['e_maj'] - thread_data['e_min']) / 2
+        
+        # Populate shared widgets (no LH/RH variants)
+        self.pitch_thread_ext.setValue(thread_data['pitch'])
+        self.x_start_diam_thread_ext.setValue(thread_data['e_maj'])
+        self.x_end_diam_thread_ext.setValue(thread_data['e_min'])
+        self.depth_of_cut_thread_ext.setValue(depth)
+        
+        # Populate BOTH LH and RH lead length widgets with the CSV data
+        self.lead_length_thread_lh_ext.setValue(thread_data['l_len'])
+        self.lead_length_thread_rh_ext.setValue(thread_data['l_len'])
+        
+        # Handle NPT taper calculation
+        thread_desc = thread_data.get('description', '')
+        if 'NPT' in thread_desc.upper():
+            # External threads always get positive taper
+            self.calculate_and_set_npt_taper(is_external=True)
+        else:
+            # Clear taper for non-NPT threads (straight threads)
+            self.taper_thread_ext.setValue(0.0)

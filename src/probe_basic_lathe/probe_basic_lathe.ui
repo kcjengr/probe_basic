@@ -40556,7 +40556,7 @@ background-color: #929695;
                             <string>thread-ext.x-clearance</string>
                            </property>
                            <property name="textFormat" stdset="0">
-                            <string/>
+                            <string>{:.4f}</string>
                            </property>
                           </widget>
                          </item>
@@ -41000,7 +41000,7 @@ border: none;</string>
 border: none;</string>
                         </property>
                         <property name="currentIndex">
-                         <number>1</number>
+                         <number>0</number>
                         </property>
                         <property name="rules" stdset="0">
                          <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;1 if ch[0] else 0&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.rh-ext-button&quot;, &quot;trigger&quot;: true}]}]</string>
@@ -41632,7 +41632,7 @@ background-color: #929695;
                            <string>thread-ext.depth-of-cut</string>
                           </property>
                           <property name="textFormat" stdset="0">
-                           <string/>
+                           <string>{:.4f}</string>
                           </property>
                          </widget>
                         </item>
@@ -41764,7 +41764,7 @@ background-color: #929695;
                            <enum>Qt::LeftToRight</enum>
                           </property>
                           <property name="currentIndex">
-                           <number>1</number>
+                           <number>0</number>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;set_current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 20 else 1&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:thread-ext.units&quot;, &quot;trigger&quot;: true}]}]</string>
@@ -41820,6 +41820,13 @@ background-color: #929695;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-size: 14pt;
     padding-left: 6px;
+}
+
+QComboBox QAbstractItemView{
+	background-color: #4f4f4f;
+	color: #999999;
+ 	selection-background-color: #999999;
+	selection-color: #4f4f4f;
 }</string>
                               </property>
                               <property name="placeholderText">
@@ -41879,6 +41886,13 @@ background-color: #929695;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
     font-size: 14pt;
     padding-left: 6px;
+}
+
+QComboBox QAbstractItemView{
+	background-color: #4f4f4f;
+	color: #999999;
+ 	selection-background-color: #999999;
+	selection-color: #4f4f4f;
 }</string>
                               </property>
                               <property name="placeholderText">
@@ -43201,7 +43215,13 @@ background-color: #929695;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="pass_count_thread_ext">
+                         <widget class="VCPSettingsLineEdit" name="pass_count_thread_ex">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -43214,12 +43234,11 @@ background-color: #929695;
                             <height>30</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::ClickFocus</enum>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -43227,31 +43246,20 @@ QComboBox {
     color: black;
     background: rgb(235, 235, 235);
 	font: 15pt &quot;Bebas Kai&quot;;
-    padding-left: 30px;
 }</string>
                           </property>
-                          <property name="maxVisibleItems">
-                           <number>2</number>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
                           </property>
-                          <property name="maxCount">
-                           <number>2</number>
+                          <property name="placeholderText">
+                           <string>0</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>thread-ext.pass-count</string>
                           </property>
-                          <property name="storeIndex" stdset="0">
-                           <bool>false</bool>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.0f}</string>
                           </property>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>4</string>
-                           </property>
-                          </item>
                          </widget>
                         </item>
                         <item>
@@ -43339,7 +43347,13 @@ QComboBox {
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsComboBox" name="spring_passes_thread_ext">
+                         <widget class="VCPSettingsLineEdit" name="spring_passes_thread_ext">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
                           <property name="minimumSize">
                            <size>
                             <width>75</width>
@@ -43352,12 +43366,11 @@ QComboBox {
                             <height>30</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::ClickFocus</enum>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">QComboBox::drop-down:button {
-    width: 0px;
-}
-
-QComboBox {
+                           <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
     border-color: rgb(235, 235, 235);
     border-width: 1px;
@@ -43365,31 +43378,20 @@ QComboBox {
     color: black;
     background: rgb(235, 235, 235);
 	font: 15pt &quot;Bebas Kai&quot;;
-    padding-left: 30px;
 }</string>
                           </property>
-                          <property name="maxVisibleItems">
-                           <number>2</number>
+                          <property name="alignment">
+                           <set>Qt::AlignCenter</set>
                           </property>
-                          <property name="maxCount">
-                           <number>2</number>
+                          <property name="placeholderText">
+                           <string>0</string>
                           </property>
                           <property name="settingName" stdset="0">
                            <string>thread-ext.spring-passes</string>
                           </property>
-                          <property name="storeIndex" stdset="0">
-                           <bool>false</bool>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.0f}</string>
                           </property>
-                          <item>
-                           <property name="text">
-                            <string>3</string>
-                           </property>
-                          </item>
-                          <item>
-                           <property name="text">
-                            <string>4</string>
-                           </property>
-                          </item>
                          </widget>
                         </item>
                         <item>
@@ -57376,12 +57378,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="extthreadhandbtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="extthreadhandbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>
