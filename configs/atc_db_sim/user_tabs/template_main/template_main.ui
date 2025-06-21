@@ -22,7 +22,551 @@
   <property name="sidebar" stdset="0">
    <bool>false</bool>
   </property>
+  <layout class="QHBoxLayout" name="horizontalLayout_2">
+   <item>
+    <layout class="QVBoxLayout" name="verticalLayout_3">
+     <item>
+      <widget class="ToolTable" name="tooltable"/>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="horizontalLayout">
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout">
+         <item>
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string>DATA FROM TOOL TABLE:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBIntField" name="tool_no_dbintfield">
+           <property name="labelText" stdset="0">
+            <string>Tool NO</string>
+           </property>
+           <property name="maximum" stdset="0">
+            <number>9999</number>
+           </property>
+           <property name="query" stdset="0">
+            <string>Tool.tool_no</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBFloatField" name="tool_dia_dbfloatfield">
+           <property name="labelText" stdset="0">
+            <string>DIAM</string>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>9999.000000000000000</double>
+           </property>
+           <property name="query" stdset="0">
+            <string>Tool.diameter</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBFloatField" name="too_z_offset_dbfloatfield">
+           <property name="labelText" stdset="0">
+            <string>Z OFFSET</string>
+           </property>
+           <property name="minimum" stdset="0">
+            <double>-9999.000000000000000</double>
+           </property>
+           <property name="maximum" stdset="0">
+            <double>9999.000000000000000</double>
+           </property>
+           <property name="query" stdset="0">
+            <string>Tool.z_offset</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBIntField" name="tool_pocket_dbintfield">
+           <property name="labelText" stdset="0">
+            <string>POCKET</string>
+           </property>
+           <property name="minimum" stdset="0">
+            <number>0</number>
+           </property>
+           <property name="maximum" stdset="0">
+            <number>9999</number>
+           </property>
+           <property name="query" stdset="0">
+            <string>Tool.pocket</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBTextField" name="tool_desc_dbtextfield">
+           <property name="labelText" stdset="0">
+            <string>REMARK</string>
+           </property>
+           <property name="query" stdset="0">
+            <string>Tool.remark</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="verticalLayout_2">
+         <item>
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string>DATA FROM TOOLP ROPERTIES TABLE:</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBIntField" name="max_rpm_dbintfield">
+           <property name="labelText" stdset="0">
+            <string>MAX RPM</string>
+           </property>
+           <property name="minimum" stdset="0">
+            <number>-99999</number>
+           </property>
+           <property name="maximum" stdset="0">
+            <number>99999</number>
+           </property>
+           <property name="query" stdset="0">
+            <string>ToolProperties.max_rpm</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBIntField" name="wear_factor_dbintfield">
+           <property name="labelText" stdset="0">
+            <string>WEAR FACTOR</string>
+           </property>
+           <property name="minimum" stdset="0">
+            <number>-99999</number>
+           </property>
+           <property name="maximum" stdset="0">
+            <number>99999</number>
+           </property>
+           <property name="query" stdset="0">
+            <string>ToolProperties.wear_factor</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBIntField" name="bullnose_radious_dbintfield">
+           <property name="labelText" stdset="0">
+            <string>BULLNOSE RADIOUS</string>
+           </property>
+           <property name="minimum" stdset="0">
+            <number>-99999</number>
+           </property>
+           <property name="maximum" stdset="0">
+            <number>99999</number>
+           </property>
+           <property name="query" stdset="0">
+            <string>ToolProperties.bullnose_radious</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBFileField" name="dbfilefield">
+           <property name="labelText" stdset="0">
+            <string>TOOL 3D MODEL</string>
+           </property>
+           <property name="query" stdset="0">
+            <string>ToolProperties.model</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="DBCheckBoxField" name="dbcheckboxfield">
+           <property name="labelText" stdset="0">
+            <string>ATC</string>
+           </property>
+           <property name="query" stdset="0">
+            <string>ToolProperties.atc</string>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton">
+       <property name="text">
+        <string>SAVE FIELDS</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+   <item>
+    <spacer name="horizontalSpacer">
+     <property name="orientation">
+      <enum>Qt::Horizontal</enum>
+     </property>
+     <property name="sizeHint" stdset="0">
+      <size>
+       <width>40</width>
+       <height>20</height>
+      </size>
+     </property>
+    </spacer>
+   </item>
+  </layout>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ToolTable</class>
+   <extends>QTableView</extends>
+   <header>qtpyvcp.widgets.input_widgets.tool_table</header>
+  </customwidget>
+  <customwidget>
+   <class>DBFileField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
+   <class>DBTextField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
+   <class>DBCheckBoxField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
+   <class>DBIntField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+  <customwidget>
+   <class>DBFloatField</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.db_widgets.tool_fields</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>tool_no_dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>518</x>
+     <y>241</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>188</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>tool_desc_dbtextfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>530</x>
+     <y>260</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_no_dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1004</x>
+     <y>191</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>79</x>
+     <y>421</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_desc_dbtextfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1060</x>
+     <y>198</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>175</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>tool_dia_dbfloatfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>876</x>
+     <y>291</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>263</x>
+     <y>440</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>too_z_offset_dbfloatfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>924</x>
+     <y>353</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>237</x>
+     <y>515</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>tool_pocket_dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>903</x>
+     <y>356</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>147</x>
+     <y>562</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_dia_dbfloatfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1079</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>85</x>
+     <y>463</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>too_z_offset_dbfloatfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1114</x>
+     <y>208</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>174</x>
+     <y>515</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_pocket_dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1122</x>
+     <y>221</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>184</x>
+     <y>562</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>dbcheckboxfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>904</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>993</x>
+     <y>615</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>dbcheckboxfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1032</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1039</x>
+     <y>583</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>max_rpm_dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1073</x>
+     <y>215</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1077</x>
+     <y>398</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>wear_factor_dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1090</x>
+     <y>230</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1081</x>
+     <y>467</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>dbfilefield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1096</x>
+     <y>211</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1087</x>
+     <y>540</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>max_rpm_dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>919</x>
+     <y>146</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>406</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>wear_factor_dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>826</x>
+     <y>238</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>823</x>
+     <y>463</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>dbfilefield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>760</x>
+     <y>313</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>765</x>
+     <y>531</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tooltable</sender>
+   <signal>toolSelected(int)</signal>
+   <receiver>bullnose_radious_dbintfield</receiver>
+   <slot>toolSelected(int)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>785</x>
+     <y>338</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>781</x>
+     <y>495</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>bullnose_radious_dbintfield</receiver>
+   <slot>saveField()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1011</x>
+     <y>235</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1009</x>
+     <y>504</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
 </ui>
