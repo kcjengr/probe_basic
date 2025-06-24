@@ -3,7 +3,7 @@
 import os
 import sys
 import importlib.util
-import csv
+import json
 
 import linuxcnc
 
@@ -33,6 +33,12 @@ class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasicLathe, self).__init__(*args, **kwargs)
+        
+        # Initialize thread data containers
+        self.sae_threads = {}
+        self.metric_threads = {}
+        self.custom_threads = {}
+        
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
@@ -100,12 +106,27 @@ class ProbeBasicLathe(VCPMainWindow):
         # Load thread data
         self.load_thread_data()
         
-        # Connect your existing combo boxes
-        self.sae_threads_combobox.currentTextChanged.connect(self.on_sae_thread_changed)
-        self.metric_threads_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
-        
-        # Populate the combo boxes
+        # Populate combo boxes with loaded thread data
         self.populate_thread_combos()
+        
+        # Connect thread combo boxes (matching the working version's approach)
+        if hasattr(self, 'sae_ext_threads_combobox'):
+            self.sae_ext_threads_combobox.currentTextChanged.connect(self.on_sae_thread_changed)
+        if hasattr(self, 'metric_ext_threads_combobox'):
+            self.metric_ext_threads_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
+        if hasattr(self, 'custom_ext_threads_combobox'):
+            self.custom_ext_threads_combobox.currentTextChanged.connect(self.on_custom_thread_changed)
+        
+        # Also connect internal combo boxes to the same handlers (since they use the same thread data)
+        if hasattr(self, 'sae_threads_int_combobox'):
+            self.sae_threads_int_combobox.currentTextChanged.connect(self.on_sae_thread_changed)
+        if hasattr(self, 'metric_threads_int_combobox'):
+            self.metric_threads_int_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
+        if hasattr(self, 'custom_threads_int_combobox'):
+            self.custom_threads_int_combobox.currentTextChanged.connect(self.on_custom_thread_changed)
+        
+        # Connect thread store buttons
+        self.connect_thread_store_buttons()
 
     def load_user_buttons(self):
         self.user_button_modules = {}
@@ -285,142 +306,1124 @@ class ProbeBasicLathe(VCPMainWindow):
         if hasattr(self, "conversational_stackedwidget"):
             self.conversational_stackedwidget.setCurrentIndex(index)
 
-    def load_thread_data(self):
-        """Load thread data from CSV files"""
-        import csv
+    def resolve_config_path(self, path):
+        """Resolve a path from INI file relative to the config directory"""
         import os
-        from collections import OrderedDict
         
-        self.metric_threads = OrderedDict()
-        self.sae_threads = OrderedDict()
-
-        # Load metric threads
-        metric_file = os.path.join(VCP_DIR, '../widgets/conversational/threads_metric.csv')
-        if os.path.exists(metric_file):
-            with open(metric_file, 'r') as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    if row and not row[0].startswith('#') and len(row) >= 7:
-                        desc, pitch, e_maj, e_min, i_maj, i_min, l_len = row[:7]
-                        self.metric_threads[desc.strip()] = {
-                            'description': desc.strip(),
-                            'pitch': float(pitch),
-                            'e_maj': float(e_maj),
-                            'e_min': float(e_min),
-                            'i_maj': float(i_maj),
-                            'i_min': float(i_min),
-                            'l_len': float(l_len)
-                        }
-
-        # Load SAE threads  
-        sae_file = os.path.join(VCP_DIR, '../widgets/conversational/threads_sae.csv')
-        if os.path.exists(sae_file):
-            with open(sae_file, 'r') as f:
-                reader = csv.reader(f)
-                for row in reader:
-                    if row and not row[0].startswith('#') and len(row) >= 7:
-                        desc, tpi, e_maj, e_min, i_maj, i_min, l_len = row[:7]
-                        # Convert TPI to pitch (inches per thread)
-                        pitch = 1.0 / float(tpi) if float(tpi) > 0 else 0
-                        self.sae_threads[desc.strip()] = {
-                            'description': desc.strip(),
-                            'pitch': pitch,
-                            'e_maj': float(e_maj),
-                            'e_min': float(e_min),
-                            'i_maj': float(i_maj),
-                            'i_min': float(i_min),
-                            'l_len': float(l_len)
-                        }
-
-    def populate_thread_combos(self):
-        """Populate both thread combo boxes"""
+        # Expand user home directory if present
+        expanded_path = os.path.expanduser(path)
         
-        # Populate SAE threads combo (preserve file order)
-        self.sae_threads_combobox.clear()
-        sae_items = list(self.sae_threads.keys())
-        self.sae_threads_combobox.addItems(sae_items)
+        # If it's already an absolute path, return as-is
+        if os.path.isabs(expanded_path):
+            return expanded_path
         
-        # Populate Metric threads combo (preserve file order)
-        self.metric_threads_combobox.clear()
-        metric_items = list(self.metric_threads.keys())
-        self.metric_threads_combobox.addItems(metric_items)
-
-    def on_sae_thread_changed(self, thread_size):
-        """Handle SAE thread selection"""
-        if not thread_size or thread_size not in self.sae_threads:
-            return
-            
-        thread_data = self.sae_threads[thread_size]
-        self.populate_thread_fields(thread_data)
-
-    def on_metric_thread_changed(self, thread_size):
-        """Handle Metric thread selection"""
-        if not thread_size or thread_size not in self.metric_threads:
-            return
-            
-        thread_data = self.metric_threads[thread_size]
-        self.populate_thread_fields(thread_data)
-
-    def calculate_npt_taper_change(self, z_start, z_end, lead_length, is_external=True):
-        """Calculate X radius change for NPT taper"""
-        import math
-        
-        # Total Z distance: difference between start and end + lead length
-        z_distance = abs(z_end - z_start) + lead_length
-        
-        # NPT taper: 1.7899 degrees from centerline
-        taper_angle_rad = math.radians(1.7899)
-        
-        # X radius change (short leg of right triangle)
-        x_radius_change = z_distance * math.tan(taper_angle_rad)
-        
-        # Apply sign based on thread type:
-        # External NPT: positive taper (pipe gets smaller toward end)
-        # Internal NPT: negative taper (hole gets larger toward end)
-        if is_external:
-            return x_radius_change  # Positive for external
+        # For relative paths, resolve relative to the INI file directory
+        ini_file_path = os.getenv("INI_FILE_NAME")
+        if ini_file_path:
+            config_dir = os.path.dirname(os.path.abspath(ini_file_path))
+            resolved_path = os.path.join(config_dir, expanded_path)
+            return resolved_path
         else:
-            return -x_radius_change  # Negative for internal
+            # Fallback: resolve relative to current directory
+            return os.path.abspath(expanded_path)
 
-    def calculate_and_set_npt_taper(self, is_external=True):
-        """Calculate NPT taper X change and update the taper widget"""
+    def get_machine_units(self):
+        """Get machine units from INI file"""
         try:
-            # Get current Z positions and lead length using .text() method
-            z_start = float(self.z_start_thread_rh_ext.text()) if self.z_start_thread_rh_ext.text() else 0.0
-            z_end = float(self.z_end_thread_rh_ext.text()) if self.z_end_thread_rh_ext.text() else 0.0
-            lead_length = float(self.lead_length_thread_rh_ext.text()) if self.lead_length_thread_rh_ext.text() else 0.0
+            linear_units = INIFILE.find("TRAJ", "LINEAR_UNITS")
+            if linear_units:
+                linear_units = linear_units.strip().lower()
+                if linear_units in ['mm', 'millimeter', 'metric']:
+                    return 'mm'
+                elif linear_units in ['inch', 'in', 'imperial']:
+                    return 'inch'
+            LOG.warning(f"Unknown or missing LINEAR_UNITS: {linear_units}, defaulting to inch")
+            return 'inch'
+        except Exception as e:
+            LOG.error(f"Error reading LINEAR_UNITS from INI: {e}")
+            return 'inch'
+
+    def load_thread_data(self):
+        """Load thread data from JSON files"""
+        try:
+            import json
+            import os
             
-            # Calculate X radius change with proper sign
-            x_change = self.calculate_npt_taper_change(z_start, z_end, lead_length, is_external)
+            # Initialize containers
+            self.sae_threads = {}
+            self.metric_threads = {}
+            self.custom_threads = {}
             
-            # Set the calculated value in the taper widget
-            self.taper_thread_ext.setValue(x_change)
+            # Get machine units
+            self.machine_units = self.get_machine_units()
+            LOG.info(f"Machine units from INI: {self.machine_units}")
+            
+            LOG.info("Starting thread data loading...")
+            
+            # Determine file suffixes based on machine units
+            if self.machine_units == 'mm':
+                sae_suffix = '_mm'
+                metric_suffix = '_mm'
+            else:  # inch
+                sae_suffix = '_inch'
+                metric_suffix = '_inch'
+            
+            # Load SAE threads (from installation directory)
+            sae_file = os.path.join(VCP_DIR, f'../widgets/conversational/threads_sae{sae_suffix}.json')
+            LOG.info(f"Loading SAE threads from: {sae_file}")
+            
+            if os.path.exists(sae_file):
+                try:
+                    with open(sae_file, 'r') as f:
+                        data = json.load(f)
+                        self.sae_threads = data.get('sae_threads', {})
+                        LOG.info(f"Loaded {len(self.sae_threads)} SAE threads ({self.machine_units} units)")
+                except Exception as e:
+                    LOG.error(f"Error loading SAE threads: {e}")
+                    self.sae_threads = {}
+            else:
+                LOG.warning(f"SAE threads file not found: {sae_file}")
+            
+            # Load Metric threads (from installation directory)
+            metric_file = os.path.join(VCP_DIR, f'../widgets/conversational/threads_metric{metric_suffix}.json')
+            LOG.info(f"Loading Metric threads from: {metric_file}")
+            
+            if os.path.exists(metric_file):
+                try:
+                    with open(metric_file, 'r') as f:
+                        data = json.load(f)
+                        self.metric_threads = data.get('metric_threads', {})
+                        LOG.info(f"Loaded {len(self.metric_threads)} metric threads ({self.machine_units} units)")
+                except Exception as e:
+                    LOG.error(f"Error loading metric threads: {e}")
+                    self.metric_threads = {}
+            else:
+                LOG.warning(f"Metric threads file not found: {metric_file}")
+            
+            # Load Custom threads
+            custom_threads_file = INIFILE.find("DISPLAY", "USER_CUSTOM_THREADS_FILE")
+            LOG.info(f"Custom threads file setting from INI: '{custom_threads_file}'")
+            
+            if custom_threads_file:
+                # Get the config directory (where the INI file is located)
+                ini_file_path = os.getenv("INI_FILE_NAME")
+                LOG.info(f"INI_FILE_NAME environment variable: '{ini_file_path}'")
+                
+                if ini_file_path:
+                    config_dir = os.path.dirname(os.path.abspath(ini_file_path))
+                    LOG.info(f"Config directory resolved to: '{config_dir}'")
+                    
+                    custom_file_path = os.path.join(config_dir, custom_threads_file)
+                    LOG.info(f"Full custom threads path: '{custom_file_path}'")
+                    LOG.info(f"Custom threads file exists: {os.path.exists(custom_file_path)}")
+                    
+                    if os.path.exists(custom_file_path):
+                        try:
+                            LOG.info(f"Attempting to read custom threads file...")
+                            with open(custom_file_path, 'r') as f:
+                                file_content = f.read()
+                                LOG.info(f"File content length: {len(file_content)} characters")
+                                
+                                # Parse JSON
+                                data = json.loads(file_content)
+                                LOG.info(f"JSON parsed successfully. Keys: {list(data.keys())}")
+                                
+                                self.custom_threads = data.get('custom_threads', {})
+                                LOG.info(f"Custom threads extracted: {list(self.custom_threads.keys())}")
+                                LOG.info(f"Loaded {len(self.custom_threads)} custom threads")
+                        except json.JSONDecodeError as e:
+                            LOG.error(f"JSON decode error in custom threads file: {e}")
+                        except Exception as e:
+                            LOG.error(f"Error loading custom threads: {e}")
+                    else:
+                        LOG.warning(f"Custom threads file not found at: {custom_file_path}")
+                        # Let's also check what files ARE in that directory
+                        try:
+                            config_files = os.listdir(config_dir)
+                            LOG.info(f"Files in config directory: {config_files}")
+                        except Exception as e:
+                            LOG.error(f"Error listing config directory: {e}")
+                else:
+                    LOG.warning("Could not determine config directory (INI_FILE_NAME not set)")
+            else:
+                LOG.warning("No USER_CUSTOM_THREADS_FILE setting found in INI file")
+                # Let's also show what settings ARE available
+                try:
+                    display_section = {}
+                    for option in INIFILE.options("DISPLAY"):
+                        display_section[option] = INIFILE.find("DISPLAY", option)
+                    LOG.info(f"Available DISPLAY section settings: {display_section}")
+                except Exception as e:
+                    LOG.error(f"Error reading DISPLAY section: {e}")
+                
+            LOG.info(f"Thread loading complete. SAE: {len(self.sae_threads)}, Metric: {len(self.metric_threads)}, Custom: {len(self.custom_threads)}")
+                
+        except Exception as e:
+            LOG.error(f"Error in load_thread_data: {e}")
+            # Ensure we have empty containers even if loading fails
+            self.sae_threads = {}
+            self.metric_threads = {}
+            self.custom_threads = {}
+
+    def load_custom_threads(self):
+        """Load custom thread data (universal file with unit metadata)"""
+        try:
+            import json
+            
+            custom_file_path = self.get_custom_threads_file_path()
+            
+            if custom_file_path and os.path.exists(custom_file_path):
+                try:
+                    LOG.info(f"Loading custom threads from: {custom_file_path}")
+                    with open(custom_file_path, 'r') as f:
+                        data = json.load(f)
+                        all_custom_threads = data.get('custom_threads', {})
+                        
+                        # Load all custom threads but log unit information
+                        self.custom_threads = {}
+                        for thread_name, thread_data in all_custom_threads.items():
+                            thread_units = thread_data.get('units', 'unknown')
+                            if thread_units != self.machine_units and thread_units != 'unknown':
+                                LOG.info(f"Custom thread '{thread_name}' is in {thread_units} units (machine: {self.machine_units})")
+                            self.custom_threads[thread_name] = thread_data
+                        
+                        LOG.info(f"Loaded {len(self.custom_threads)} custom threads")
+                except Exception as e:
+                    LOG.error(f"Error loading custom threads: {e}")
+            else:
+                if custom_file_path:
+                    LOG.info(f"Custom threads file not found, creating: {custom_file_path}")
+                    self.create_default_custom_threads_file(custom_file_path)
+                else:
+                    LOG.warning("Could not determine custom threads file path")
+                    
+        except Exception as e:
+            LOG.error(f"Error in load_custom_threads: {e}")
+
+    def get_custom_threads_file_path(self):
+        """Get the path to the custom threads file (universal)"""
+        try:
+            custom_threads_file = INIFILE.find("DISPLAY", "USER_CUSTOM_THREADS_FILE") or "threads_custom.json"
+            
+            # Get the config directory (where the INI file is located)
+            ini_file_path = os.getenv("INI_FILE_NAME")
+            if ini_file_path:
+                config_dir = os.path.dirname(os.path.abspath(ini_file_path))
+                return os.path.join(config_dir, custom_threads_file)
+            return None
+        except Exception as e:
+            LOG.error(f"Error determining custom threads file path: {e}")
+            return None
+
+    def create_default_custom_threads_file(self, file_path):
+        """Create a default custom threads file if it doesn't exist"""
+        try:
+            import json
+            
+            # Create universal template (starts empty except for template)
+            template = {
+                "custom_threads": {
+                    "BLANK-TEMPLATE": {
+                        "pitch": 0.0000 if self.machine_units == 'inch' else 0.000,
+                        "external": {
+                            "major_diameter": 0.0000 if self.machine_units == 'inch' else 0.000,
+                            "minor_diameter": 0.0000 if self.machine_units == 'inch' else 0.000,
+                            "pitch_diameter": 0.0000 if self.machine_units == 'inch' else 0.000
+                        },
+                        "internal": {
+                            "major_diameter": 0.0000 if self.machine_units == 'inch' else 0.000,
+                            "minor_diameter": 0.0000 if self.machine_units == 'inch' else 0.000,
+                            "pitch_diameter": 0.0000 if self.machine_units == 'inch' else 0.000
+                        },
+                        "lead_length": 0.0000 if self.machine_units == 'inch' else 0.000,
+                        "description": "NONE",
+                        "thread_type": "CUSTOM",
+                        "npt_taper": False,
+                        "units": self.machine_units,
+                        "drill_sizes": {
+                            "tap_drill": "NONE",
+                            "clearance_close": "NONE",
+                            "clearance_free": "NONE"
+                        }
+                    }
+                }
+            }
+            
+            with open(file_path, 'w') as f:
+                json.dump(template, f, indent=2)
+            
+            LOG.info(f"Created default custom threads file: {file_path}")
+            self.custom_threads = template.get('custom_threads', {})
             
         except Exception as e:
-            # If we can't get the values or calculation fails, set to 0
-            self.taper_thread_ext.setValue(0.0)
+            LOG.error(f"Error creating default custom threads file: {e}")
+
+    def save_custom_thread(self, thread_name, thread_data):
+        """Save a custom thread to the universal JSON file"""
+        try:
+            import json
+            
+            # Get the custom threads file path
+            custom_file_path = self.get_custom_threads_file_path()
+            
+            if not custom_file_path:
+                LOG.error("Could not determine custom threads file path")
+                return False
+            
+            # Load existing custom threads or create new structure
+            if os.path.exists(custom_file_path):
+                try:
+                    with open(custom_file_path, 'r') as f:
+                        data = json.load(f)
+                except Exception as e:
+                    LOG.error(f"Error reading existing custom threads file: {e}")
+                    data = {"custom_threads": {}}
+            else:
+                data = {"custom_threads": {}}
+            
+            # Add or update the thread
+            data["custom_threads"][thread_name] = thread_data
+            
+            # Save back to file
+            with open(custom_file_path, 'w') as f:
+                json.dump(data, f, indent=2)
+            
+            # Update our in-memory copy
+            self.custom_threads[thread_name] = thread_data
+            
+            # Refresh the combo boxes
+            self.populate_thread_combos()
+            
+            LOG.info(f"Saved custom thread '{thread_name}' to {custom_file_path} ({thread_data.get('units', 'unknown')} units)")
+            return True
+            
+        except Exception as e:
+            LOG.error(f"Error saving custom thread: {e}")
+            return False
+
+    def load_thread_data(self):
+        """Load thread data from JSON files"""
+        try:
+            import json
+            import os
+            
+            # Initialize containers
+            self.sae_threads = {}
+            self.metric_threads = {}
+            self.custom_threads = {}
+            
+            # Get machine units
+            self.machine_units = self.get_machine_units()
+            LOG.info(f"Machine units from INI: {self.machine_units}")
+            
+            LOG.info("Starting thread data loading...")
+            
+            # Determine file suffixes based on machine units
+            if self.machine_units == 'mm':
+                sae_suffix = '_mm'
+                metric_suffix = '_mm'
+            else:  # inch
+                sae_suffix = '_inch'
+                metric_suffix = '_inch'
+            
+            # Load SAE threads (from installation directory)
+            sae_file = os.path.join(VCP_DIR, f'../widgets/conversational/threads_sae{sae_suffix}.json')
+            LOG.info(f"Loading SAE threads from: {sae_file}")
+            
+            if os.path.exists(sae_file):
+                try:
+                    with open(sae_file, 'r') as f:
+                        data = json.load(f)
+                        self.sae_threads = data.get('sae_threads', {})
+                        LOG.info(f"Loaded {len(self.sae_threads)} SAE threads ({self.machine_units} units)")
+                except Exception as e:
+                    LOG.error(f"Error loading SAE threads: {e}")
+                    self.sae_threads = {}
+            else:
+                LOG.warning(f"SAE threads file not found: {sae_file}")
+            
+            # Load Metric threads (from installation directory)
+            metric_file = os.path.join(VCP_DIR, f'../widgets/conversational/threads_metric{metric_suffix}.json')
+            LOG.info(f"Loading Metric threads from: {metric_file}")
+            
+            if os.path.exists(metric_file):
+                try:
+                    with open(metric_file, 'r') as f:
+                        data = json.load(f)
+                        self.metric_threads = data.get('metric_threads', {})
+                        LOG.info(f"Loaded {len(self.metric_threads)} metric threads ({self.machine_units} units)")
+                except Exception as e:
+                    LOG.error(f"Error loading metric threads: {e}")
+                    self.metric_threads = {}
+            else:
+                LOG.warning(f"Metric threads file not found: {metric_file}")
+            
+            # Load Custom threads
+            custom_threads_file = INIFILE.find("DISPLAY", "USER_CUSTOM_THREADS_FILE")
+            LOG.info(f"Custom threads file setting from INI: '{custom_threads_file}'")
+            
+            if custom_threads_file:
+                # Get the config directory (where the INI file is located)
+                ini_file_path = os.getenv("INI_FILE_NAME")
+                LOG.info(f"INI_FILE_NAME environment variable: '{ini_file_path}'")
+                
+                if ini_file_path:
+                    config_dir = os.path.dirname(os.path.abspath(ini_file_path))
+                    LOG.info(f"Config directory resolved to: '{config_dir}'")
+                    
+                    custom_file_path = os.path.join(config_dir, custom_threads_file)
+                    LOG.info(f"Full custom threads path: '{custom_file_path}'")
+                    LOG.info(f"Custom threads file exists: {os.path.exists(custom_file_path)}")
+                    
+                    if os.path.exists(custom_file_path):
+                        try:
+                            LOG.info(f"Attempting to read custom threads file...")
+                            with open(custom_file_path, 'r') as f:
+                                file_content = f.read()
+                                LOG.info(f"File content length: {len(file_content)} characters")
+                                
+                                # Parse JSON
+                                data = json.loads(file_content)
+                                LOG.info(f"JSON parsed successfully. Keys: {list(data.keys())}")
+                                
+                                self.custom_threads = data.get('custom_threads', {})
+                                LOG.info(f"Custom threads extracted: {list(self.custom_threads.keys())}")
+                                LOG.info(f"Loaded {len(self.custom_threads)} custom threads")
+                        except json.JSONDecodeError as e:
+                            LOG.error(f"JSON decode error in custom threads file: {e}")
+                        except Exception as e:
+                            LOG.error(f"Error loading custom threads: {e}")
+                    else:
+                        LOG.warning(f"Custom threads file not found at: {custom_file_path}")
+                        # Let's also check what files ARE in that directory
+                        try:
+                            config_files = os.listdir(config_dir)
+                            LOG.info(f"Files in config directory: {config_files}")
+                        except Exception as e:
+                            LOG.error(f"Error listing config directory: {e}")
+                else:
+                    LOG.warning("Could not determine config directory (INI_FILE_NAME not set)")
+            else:
+                LOG.warning("No USER_CUSTOM_THREADS_FILE setting found in INI file")
+                # Let's also show what settings ARE available
+                try:
+                    display_section = {}
+                    for option in INIFILE.options("DISPLAY"):
+                        display_section[option] = INIFILE.find("DISPLAY", option)
+                    LOG.info(f"Available DISPLAY section settings: {display_section}")
+                except Exception as e:
+                    LOG.error(f"Error reading DISPLAY section: {e}")
+                
+            LOG.info(f"Thread loading complete. SAE: {len(self.sae_threads)}, Metric: {len(self.metric_threads)}, Custom: {len(self.custom_threads)}")
+                
+        except Exception as e:
+            LOG.error(f"Error in load_thread_data: {e}")
+            # Ensure we have empty containers even if loading fails
+            if not hasattr(self, 'sae_threads'):
+                self.sae_threads = {}
+            if not hasattr(self, 'metric_threads'):
+                self.metric_threads = {}
+            if not hasattr(self, 'custom_threads'):
+                self.custom_threads = {}
+
+    def connect_thread_store_buttons(self):
+        """Connect the custom thread store buttons"""
+        try:
+            if hasattr(self, 'store_custom_ext_thread'):
+                self.store_custom_ext_thread.clicked.connect(self.store_external_thread)
+                LOG.info("Connected external thread store button")
+            
+            if hasattr(self, 'store_custom_int_thread'):
+                self.store_custom_int_thread.clicked.connect(self.store_internal_thread)
+                LOG.info("Connected internal thread store button")
+        except Exception as e:
+            LOG.error(f"Error connecting thread store buttons: {e}")
+
+    def get_current_external_thread_values(self):
+        """Collect current external thread values from UI"""
+        values = {}
+        
+        try:
+            # Basic thread parameters - use .text() for line edits, .value() for spinboxes/DROs
+            if hasattr(self, 'pitch_thread_ext'):
+                try:
+                    # Try .value() first (for DROs/spinboxes), then .text() (for line edits)
+                    if hasattr(self.pitch_thread_ext, 'value'):
+                        values['pitch'] = float(self.pitch_thread_ext.value() or 0)
+                    else:
+                        values['pitch'] = float(self.pitch_thread_ext.text() or 0)
+                except (ValueError, AttributeError):
+                    values['pitch'] = 0.0
+            
+            # External thread diameters - these come from the conversational fields
+            if hasattr(self, 'x_start_diam_thread_ext'):
+                try:
+                    if hasattr(self.x_start_diam_thread_ext, 'value'):
+                        major_diam = float(self.x_start_diam_thread_ext.value() or 0)
+                    else:
+                        major_diam = float(self.x_start_diam_thread_ext.text() or 0)
+                    
+                    minor_diam = 0
+                    if hasattr(self, 'x_end_diam_thread_ext'):
+                        if hasattr(self.x_end_diam_thread_ext, 'value'):
+                            minor_diam = float(self.x_end_diam_thread_ext.value() or 0)
+                        else:
+                            minor_diam = float(self.x_end_diam_thread_ext.text() or 0)
+                    
+                    values['external'] = {
+                        'major_diameter': major_diam,
+                        'minor_diameter': minor_diam,
+                        'pitch_diameter': (major_diam + minor_diam) / 2 if minor_diam else major_diam
+                    }
+                except (ValueError, AttributeError):
+                    values['external'] = {'major_diameter': 0, 'minor_diameter': 0, 'pitch_diameter': 0}
+            
+            # Internal thread diameters - estimated from external for dialog pre-fill
+            if 'external' in values:
+                major = values['external']['major_diameter']
+                minor = values['external']['minor_diameter']
+                pitch = values.get('pitch', 0)
+                values['internal'] = {
+                    'major_diameter': major + (pitch * 0.25),  # Rough estimate
+                    'minor_diameter': minor,
+                    'pitch_diameter': (major + minor) / 2
+                }
+            
+            # Lead length calculation
+            if hasattr(self, 'z_start_thread_rh_ext') and hasattr(self, 'z_end_thread_rh_ext'):
+                try:
+                    if hasattr(self.z_start_thread_rh_ext, 'value'):
+                        z_start = float(self.z_start_thread_rh_ext.value() or 0)
+                        z_end = float(self.z_end_thread_rh_ext.value() or 0)
+                    else:
+                        z_start = float(self.z_start_thread_rh_ext.text() or 0)
+                        z_end = float(self.z_end_thread_rh_ext.text() or 0)
+                    values['lead_length'] = abs(z_end - z_start)
+                except (ValueError, AttributeError):
+                    values['lead_length'] = 0.0
+            
+            # Default values
+            values['thread_type'] = 'Custom'
+            values['npt_taper'] = False
+            values['drill_sizes'] = {
+                'tap_drill': '',
+                'clearance_close': '',
+                'clearance_free': ''
+            }
+            
+        except Exception as e:
+            LOG.error(f"Error getting external thread values: {e}")
+            
+        return values
+
+    def get_current_internal_thread_values(self):
+        """Collect current internal thread values from UI"""
+        values = {}
+        
+        try:
+            # Basic thread parameters
+            if hasattr(self, 'pitch_thread_int'):
+                try:
+                    if hasattr(self.pitch_thread_int, 'value'):
+                        values['pitch'] = float(self.pitch_thread_int.value() or 0)
+                    else:
+                        values['pitch'] = float(self.pitch_thread_int.text() or 0)
+                except (ValueError, AttributeError):
+                    values['pitch'] = 0.0
+            
+            # Internal thread diameters
+            if hasattr(self, 'x_start_diam_thread_int') and hasattr(self, 'x_end_diam_thread_int'):
+                try:
+                    if hasattr(self.x_start_diam_thread_int, 'value'):
+                        start_diam = float(self.x_start_diam_thread_int.value() or 0)
+                        end_diam = float(self.x_end_diam_thread_int.value() or 0)
+                    else:
+                        start_diam = float(self.x_start_diam_thread_int.text() or 0)
+                        end_diam = float(self.x_end_diam_thread_int.text() or 0)
+                    
+                    values['internal'] = {
+                        'major_diameter': max(start_diam, end_diam),  # Larger diameter is major for internal
+                        'minor_diameter': min(start_diam, end_diam),  # Smaller diameter is minor for internal
+                        'pitch_diameter': (start_diam + end_diam) / 2
+                    }
+                    
+                    # External thread diameters - estimated for dialog pre-fill
+                    pitch = values.get('pitch', 0)
+                    values['external'] = {
+                        'major_diameter': values['internal']['minor_diameter'],  # External minor ≈ internal major
+                        'minor_diameter': values['internal']['minor_diameter'] - (pitch * 0.75),  # Rough estimate
+                        'pitch_diameter': values['internal']['pitch_diameter']
+                    }
+                except (ValueError, AttributeError):
+                    values['internal'] = {'major_diameter': 0, 'minor_diameter': 0, 'pitch_diameter': 0}
+                    values['external'] = {'major_diameter': 0, 'minor_diameter': 0, 'pitch_diameter': 0}
+            
+            # Lead length calculation
+            if hasattr(self, 'z_start_thread_rh_int') and hasattr(self, 'z_end_thread_rh_int'):
+                try:
+                    if hasattr(self.z_start_thread_rh_int, 'value'):
+                        z_start = float(self.z_start_thread_rh_int.value() or 0)
+                        z_end = float(self.z_end_thread_rh_int.value() or 0)
+                    else:
+                        z_start = float(self.z_start_thread_rh_int.text() or 0)
+                        z_end = float(self.z_end_thread_rh_int.text() or 0)
+                    values['lead_length'] = abs(z_end - z_start)
+                except (ValueError, AttributeError):
+                    values['lead_length'] = 0.0
+            
+            # Default values
+            values['thread_type'] = 'Custom'
+            values['npt_taper'] = False
+            values['drill_sizes'] = {
+                'tap_drill': '',
+                'clearance_close': '',
+                'clearance_free': ''
+            }
+            
+        except Exception as e:
+            LOG.error(f"Error getting internal thread values: {e}")
+            
+        return values
+
+    def store_external_thread(self):
+        """Open dialog to store current external thread as custom thread"""
+        try:
+            from .custom_thread_dialog import CustomThreadDialog
+            
+            # Get current values from UI
+            current_values = self.get_current_external_thread_values()
+            print(f"DEBUG: Current UI values: {current_values}")
+            
+            # Try to get the currently selected thread data to pre-populate more fields
+            selected_thread_data = self.get_currently_selected_thread_data()
+            print(f"DEBUG: Selected thread data: {selected_thread_data}")
+            
+            # Get thread source type for informational display (not for unit determination)
+            thread_source_type = None
+            if selected_thread_data:
+                thread_source_type = selected_thread_data.get('thread_type')
+                # Merge selected thread data with current UI values
+                current_values = self.merge_thread_data(selected_thread_data, current_values)
+                print(f"DEBUG: Merged values: {current_values}")
+            
+            # Open dialog - data is always in machine units, source type is just informational
+            dialog = CustomThreadDialog(self, current_values, thread_source_type)
+            if dialog.exec_() == dialog.Accepted:
+                # Get the stored thread name and data from dialog attributes
+                thread_name = dialog.thread_name
+                thread_data = dialog.thread_data
+                if thread_name and thread_data:
+                    self.save_custom_thread(thread_name, thread_data)
+                    
+        except Exception as e:
+            LOG.error(f"Error storing external thread: {e}")
+            from qtpy.QtWidgets import QMessageBox
+            QMessageBox.critical(self, "Error", f"Failed to store custom thread: {str(e)}")
+
+    def store_internal_thread(self):
+        """Open dialog to store current internal thread as custom thread"""
+        try:
+            from .custom_thread_dialog import CustomThreadDialog
+            
+            # Get current values from UI
+            current_values = self.get_current_internal_thread_values()
+            
+            # Try to get the currently selected thread data for context
+            selected_thread_data = self.get_currently_selected_thread_data()
+            
+            # Get thread source type for informational display (not for unit determination)
+            thread_source_type = None
+            if selected_thread_data:
+                thread_source_type = selected_thread_data.get('thread_type')
+                # Merge selected thread data with current UI values for internal
+                current_values = self.merge_thread_data(selected_thread_data, current_values)
+            
+            # Open dialog - data is always in machine units, source type is just informational
+            dialog = CustomThreadDialog(self, current_values, thread_source_type)
+            if dialog.exec_() == dialog.Accepted:
+                # Get the stored thread name and data from dialog attributes
+                thread_name = dialog.thread_name
+                thread_data = dialog.thread_data
+                if thread_name and thread_data:
+                    self.save_custom_thread(thread_name, thread_data)
+                    
+        except Exception as e:
+            LOG.error(f"Error storing internal thread: {e}")
+            from qtpy.QtWidgets import QMessageBox
+            QMessageBox.critical(self, "Error", f"Failed to store custom thread: {str(e)}")
+
+    def save_custom_thread(self, thread_name, thread_data):
+        """Save a custom thread to the JSON file"""
+        try:
+            # Get the custom threads file path
+            custom_threads_file = self.get_custom_threads_file_path()
+            
+            # Load existing custom threads
+            custom_threads = {}
+            if os.path.exists(custom_threads_file):
+                try:
+                    with open(custom_threads_file, 'r') as f:
+                        data = json.load(f)
+                        custom_threads = data.get('custom_threads', {})
+                except Exception as e:
+                    LOG.error(f"Error loading existing custom threads: {e}")
+            
+            # Add new thread
+            custom_threads[thread_name] = thread_data
+            
+            # Save back to file
+            thread_file_data = {
+                "custom_threads": custom_threads
+            }
+            
+            # Ensure directory exists
+            os.makedirs(os.path.dirname(custom_threads_file), exist_ok=True)
+            
+            with open(custom_threads_file, 'w') as f:
+                json.dump(thread_file_data, f, indent=2)
+            
+            LOG.info(f"Saved custom thread '{thread_name}' to {custom_threads_file}")
+            
+            # Reload thread data and refresh combo boxes
+            self.load_thread_data()
+            self.populate_thread_combos()
+            
+            # Show success message
+            from qtpy.QtWidgets import QMessageBox
+            QMessageBox.information(self, "Success", 
+                                  f"Custom thread '{thread_name}' has been saved successfully!")
+            
+        except Exception as e:
+            LOG.error(f"Error saving custom thread: {e}")
+            from qtpy.QtWidgets import QMessageBox
+            QMessageBox.critical(self, "Error", f"Failed to save custom thread: {str(e)}")
+
+    def get_custom_threads_file_path(self):
+        """Get the path to the custom threads JSON file"""
+        try:
+            # Get from INI file
+            config_dir = os.path.dirname(os.environ.get('INI_FILE_NAME', ''))
+            custom_threads_filename = INIFILE.find('PROBE_BASIC_LATHE', 'USER_CUSTOM_THREADS_FILE') or 'threads_custom.json'
+            return os.path.join(config_dir, custom_threads_filename)
+        except:
+            # Fallback
+            return os.path.join(os.path.expanduser('~'), '.config', 'probe_basic_lathe', 'threads_custom.json')
+
+    def on_sae_thread_changed(self, thread_name):
+        """Handle SAE thread selection"""
+        if not thread_name or thread_name.startswith("---"):
+            return
+        
+        if thread_name in self.sae_threads:
+            thread_data = self.sae_threads[thread_name]
+            self.populate_thread_fields(thread_data)
+
+    def on_metric_thread_changed(self, thread_name):
+        """Handle metric thread selection"""
+        if not thread_name or thread_name.startswith("---"):
+            return
+            
+        if thread_name in self.metric_threads:
+            thread_data = self.metric_threads[thread_name]
+            self.populate_thread_fields(thread_data)
+
+    def on_custom_thread_changed(self, thread_name):
+        """Handle custom thread selection"""
+        if not thread_name or thread_name.startswith("---"):
+            return
+            
+        if thread_name in self.custom_threads:
+            thread_data = self.custom_threads[thread_name]
+            self.populate_thread_fields(thread_data)
 
     def populate_thread_fields(self, thread_data):
-        """Populate VCPSettingsLineEdit widgets with thread data"""
+        """Populate thread parameter fields with selected thread data"""
+        try:
+            # Get basic parameters
+            pitch = thread_data.get('pitch', 0)
+            lead_length = thread_data.get('lead_length', 0)
+            external_data = thread_data.get('external', {})
+            internal_data = thread_data.get('internal', {})
+            
+            LOG.info(f"Populating thread fields for: {thread_data.get('description', 'Unknown thread')}")
+            
+            # Populate external thread fields
+            if hasattr(self, 'pitch_thread_ext'):
+                try:
+                    if hasattr(self.pitch_thread_ext, 'setValue'):
+                        self.pitch_thread_ext.setValue(pitch)
+                    elif hasattr(self.pitch_thread_ext, 'setText'):
+                        self.pitch_thread_ext.setText(str(pitch))
+                    LOG.info(f"Set external pitch to: {pitch}")
+                except Exception as e:
+                    LOG.error(f"Error setting external pitch: {e}")
+            
+            # External diameter fields
+            if hasattr(self, 'x_start_diam_thread_ext'):
+                try:
+                    major_diam = external_data.get('major_diameter', 0)
+                    if hasattr(self.x_start_diam_thread_ext, 'setValue'):
+                        self.x_start_diam_thread_ext.setValue(major_diam)
+                    elif hasattr(self.x_start_diam_thread_ext, 'setText'):
+                        self.x_start_diam_thread_ext.setText(str(major_diam))
+                    LOG.info(f"Set external start diameter to: {major_diam}")
+                except Exception as e:
+                    LOG.error(f"Error setting external start diameter: {e}")
+            
+            if hasattr(self, 'x_end_diam_thread_ext'):
+                try:
+                    minor_diam = external_data.get('minor_diameter', 0)
+                    if hasattr(self.x_end_diam_thread_ext, 'setValue'):
+                        self.x_end_diam_thread_ext.setValue(minor_diam)
+                    elif hasattr(self.x_end_diam_thread_ext, 'setText'):
+                        self.x_end_diam_thread_ext.setText(str(minor_diam))
+                    LOG.info(f"Set external end diameter to: {minor_diam}")
+                except Exception as e:
+                    LOG.error(f"Error setting external end diameter: {e}")
+            
+            # Populate lead length for external threads (both left and right hand)
+            for widget_name in ['lead_length_thread_lh_ext', 'lead_length_thread_rh_ext']:
+                if hasattr(self, widget_name):
+                    try:
+                        widget = getattr(self, widget_name)
+                        if hasattr(widget, 'setValue'):
+                            widget.setValue(lead_length)
+                        elif hasattr(widget, 'setText'):
+                            widget.setText(str(lead_length))
+                        LOG.info(f"Set {widget_name} to: {lead_length}")
+                    except Exception as e:
+                        LOG.error(f"Error setting {widget_name}: {e}")
+            
+            # Populate internal thread fields  
+            if hasattr(self, 'pitch_thread_int'):
+                try:
+                    if hasattr(self.pitch_thread_int, 'setValue'):
+                        self.pitch_thread_int.setValue(pitch)
+                    elif hasattr(self.pitch_thread_int, 'setText'):
+                        self.pitch_thread_int.setText(str(pitch))
+                    LOG.info(f"Set internal pitch to: {pitch}")
+                except Exception as e:
+                    LOG.error(f"Error setting internal pitch: {e}")
+            
+            # Internal diameter fields
+            if hasattr(self, 'x_start_diam_thread_int'):
+                try:
+                    major_diam = internal_data.get('major_diameter', 0)
+                    if hasattr(self.x_start_diam_thread_int, 'setValue'):
+                        self.x_start_diam_thread_int.setValue(major_diam)
+                    elif hasattr(self.x_start_diam_thread_int, 'setText'):
+                        self.x_start_diam_thread_int.setText(str(major_diam))
+                    LOG.info(f"Set internal start diameter to: {major_diam}")
+                except Exception as e:
+                    LOG.error(f"Error setting internal start diameter: {e}")
+            
+            if hasattr(self, 'x_end_diam_thread_int'):
+                try:
+                    minor_diam = internal_data.get('minor_diameter', 0)
+                    if hasattr(self.x_end_diam_thread_int, 'setValue'):
+                        self.x_end_diam_thread_int.setValue(minor_diam)
+                    elif hasattr(self.x_end_diam_thread_int, 'setText'):
+                        self.x_end_diam_thread_int.setText(str(minor_diam))
+                    LOG.info(f"Set internal end diameter to: {minor_diam}")
+                except Exception as e:
+                    LOG.error(f"Error setting internal end diameter: {e}")
+            
+            # Populate lead length for internal threads (both left and right hand)
+            for widget_name in ['lead_length_thread_lh_int', 'lead_length_thread_rh_int']:
+                if hasattr(self, widget_name):
+                    try:
+                        widget = getattr(self, widget_name)
+                        if hasattr(widget, 'setValue'):
+                            widget.setValue(lead_length)
+                        elif hasattr(widget, 'setText'):
+                            widget.setText(str(lead_length))
+                        LOG.info(f"Set {widget_name} to: {lead_length}")
+                    except Exception as e:
+                        LOG.error(f"Error setting {widget_name}: {e}")
+            
+            # Handle NPT taper if applicable
+            if thread_data.get('npt_taper', False):
+                LOG.info("Thread has NPT taper - calculating taper values")
+                self.calculate_and_set_npt_taper(True)  # External
+                self.calculate_and_set_npt_taper(False) # Internal
+            
+        except Exception as e:
+            LOG.error(f"Error populating thread fields: {e}")
+
+    def populate_thread_combos(self):
+        """Populate all thread combo boxes with data from JSON files"""
+        try:
+            # Get sorted thread lists
+            sae_sorted = self.sort_threads_by_type_and_size(self.sae_threads)
+            metric_sorted = self.sort_threads_by_type_and_size(self.metric_threads)
+            custom_sorted = self.sort_threads_by_type_and_size(self.custom_threads)
+            
+            # Populate SAE external threads
+            if hasattr(self, 'sae_ext_threads_combobox'):
+                self.sae_ext_threads_combobox.clear()
+                self.sae_ext_threads_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in sae_sorted:
+                    if thread_data is None:  # Category separator
+                        self.sae_ext_threads_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.sae_ext_threads_combobox.model()
+                        item = model.item(self.sae_ext_threads_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.sae_ext_threads_combobox.addItem(thread_name)
+                LOG.info(f"Populated SAE external combo with {len(sae_sorted)} threads")
         
-        # Calculate depth of cut (half the difference between major and minor)
-        depth = (thread_data['e_maj'] - thread_data['e_min']) / 2
+            # Populate Metric external threads
+            if hasattr(self, 'metric_ext_threads_combobox'):
+                self.metric_ext_threads_combobox.clear()
+                self.metric_ext_threads_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in metric_sorted:
+                    if thread_data is None:  # Category separator
+                        self.metric_ext_threads_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.metric_ext_threads_combobox.model()
+                        item = model.item(self.metric_ext_threads_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.metric_ext_threads_combobox.addItem(thread_name)
+                LOG.info(f"Populated Metric external combo with {len(metric_sorted)} threads")
+                        
+            # Populate Custom external threads
+            if hasattr(self, 'custom_ext_threads_combobox'):
+                self.custom_ext_threads_combobox.clear()
+                self.custom_ext_threads_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in custom_sorted:
+                    if thread_data is None:  # Category separator
+                        self.custom_ext_threads_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.custom_ext_threads_combobox.model()
+                        item = model.item(self.custom_ext_threads_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.custom_ext_threads_combobox.addItem(thread_name)
+                LOG.info(f"Populated Custom external combo with {len(custom_sorted)} threads")
+            
+            # Populate internal thread combos (same data, different widgets)
+            if hasattr(self, 'sae_threads_int_combobox'):
+                self.sae_threads_int_combobox.clear()
+                self.sae_threads_int_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in sae_sorted:
+                    if thread_data is None:  # Category separator
+                        self.sae_threads_int_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.sae_threads_int_combobox.model()
+                        item = model.item(self.sae_threads_int_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.sae_threads_int_combobox.addItem(thread_name)
+                LOG.info(f"Populated SAE internal combo with {len(sae_sorted)} threads")
+                        
+            if hasattr(self, 'metric_threads_int_combobox'):
+                self.metric_threads_int_combobox.clear()
+                self.metric_threads_int_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in metric_sorted:
+                    if thread_data is None:  # Category separator
+                        self.metric_threads_int_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.metric_threads_int_combobox.model()
+                        item = model.item(self.metric_threads_int_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.metric_threads_int_combobox.addItem(thread_name)
+                LOG.info(f"Populated Metric internal combo with {len(metric_sorted)} threads")
+                        
+            if hasattr(self, 'custom_threads_int_combobox'):
+                self.custom_threads_int_combobox.clear()
+                self.custom_threads_int_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in custom_sorted:
+                    if thread_data is None:  # Category separator
+                        self.custom_threads_int_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.custom_threads_int_combobox.model()
+                        item = model.item(self.custom_threads_int_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.custom_threads_int_combobox.addItem(thread_name)
+                LOG.info(f"Populated Custom internal combo with {len(custom_sorted)} threads")
+                        
+        except Exception as e:
+            LOG.error(f"Error populating thread combos: {e}")
+    
+    def sort_threads_by_type_and_size(self, threads_dict):
+        """Sort threads by type and size for better organization"""
         
-        # Populate shared widgets (no LH/RH variants)
-        self.pitch_thread_ext.setValue(thread_data['pitch'])
-        self.x_start_diam_thread_ext.setValue(thread_data['e_maj'])
-        self.x_end_diam_thread_ext.setValue(thread_data['e_min'])
-        self.depth_of_cut_thread_ext.setValue(depth)
+        def get_major_diameter(thread_data):
+            """Extract major diameter for sorting"""
+            try:
+                # Use external major diameter as the sorting key
+                return float(thread_data.get('external', {}).get('major_diameter', 0))
+            except:
+                return 0
         
-        # Populate BOTH LH and RH lead length widgets with the CSV data
-        self.lead_length_thread_lh_ext.setValue(thread_data['l_len'])
-        self.lead_length_thread_rh_ext.setValue(thread_data['l_len'])
+        def get_thread_category(thread_name, thread_data):
+            """Categorize thread by type"""
+            thread_type = thread_data.get('thread_type', '').upper()
+            description = thread_data.get('description', '').upper()
+            
+            # NPT/Tapered threads
+            if (thread_data.get('npt_taper', False) or 
+                'NPT' in thread_type or 'NPT' in description or 'NPT' in thread_name.upper()):
+                return 1, "NPT/Tapered"
+            
+            # ACME threads
+            if ('ACME' in thread_type or 'ACME' in description or 'ACME' in thread_name.upper()):
+                return 2, "ACME" 
+            
+            # Custom threads (not UNC, UNF, or standard metric)
+            if (thread_type == 'CUSTOM' or 
+                ('UNC' not in thread_type and 'UNF' not in thread_type and 
+                 'COARSE' not in thread_type and 'FINE' not in thread_type and
+                 not thread_name.startswith('M') and 'Custom' in description)):
+                return 3, "Custom"
+            
+            # Standard threads (UNC, UNF, Metric)
+            return 0, "Standard"
         
-        # Handle NPT taper calculation
-        thread_desc = thread_data.get('description', '')
-        if 'NPT' in thread_desc.upper():
-            # External threads always get positive taper
-            self.calculate_and_set_npt_taper(is_external=True)
-        else:
-            # Clear taper for non-NPT threads (straight threads)
-            self.taper_thread_ext.setValue(0.0)
+        # Group threads by category
+        categorized = {}
+        for thread_name, thread_data in threads_dict.items():
+            category_order, category_name = get_thread_category(thread_name, thread_data)
+            if category_name not in categorized:
+                categorized[category_name] = []
+            categorized[category_name].append((thread_name, thread_data))
+        
+        # Sort each category by major diameter
+        sorted_threads = []
+        category_order = ["Standard", "NPT/Tapered", "ACME", "Custom"]
+        
+        for category in category_order:
+            if category in categorized:
+                # Sort threads in this category by major diameter
+                category_threads = sorted(categorized[category], 
+                                        key=lambda x: get_major_diameter(x[1]))
+                
+                # Add category separator (if not first category and has threads)
+                if sorted_threads and category_threads:
+                    sorted_threads.append(("--- " + category + " Threads ---", None))
+                elif category_threads:  # First category, just add threads
+                    pass
+                
+                # Add the sorted threads from this category
+                sorted_threads.extend(category_threads)
+        
+        return sorted_threads
+
+    def get_currently_selected_thread_data(self):
+        """Get the currently selected thread data from combo boxes"""
+        try:
+            # Check SAE external combo
+            if hasattr(self, 'sae_ext_threads_combobox'):
+                current_text = self.sae_ext_threads_combobox.currentText()
+                if current_text and current_text in self.sae_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.sae_threads[current_text],
+                        'thread_type': 'SAE'
+                    }
+            
+            # Check metric external combo
+            if hasattr(self, 'metric_ext_threads_combobox'):
+                current_text = self.metric_ext_threads_combobox.currentText()
+                if current_text and current_text in self.metric_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.metric_threads[current_text],
+                        'thread_type': 'Metric'
+                    }
+            
+            # Check custom external combo
+            if hasattr(self, 'custom_ext_threads_combobox'):
+                current_text = self.custom_ext_threads_combobox.currentText()
+                if current_text and current_text in self.custom_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.custom_threads[current_text],  # Fixed: was currentText
+                        'thread_type': 'Custom'
+                    }
+            
+            # Check internal combos as well
+            if hasattr(self, 'sae_threads_int_combobox'):
+                current_text = self.sae_threads_int_combobox.currentText()
+                if current_text and current_text in self.sae_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.sae_threads[current_text],
+                        'thread_type': 'SAE'
+                    }
+            
+            if hasattr(self, 'metric_threads_int_combobox'):
+                current_text = self.metric_threads_int_combobox.currentText()
+                if current_text and current_text in self.metric_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.metric_threads[current_text],
+                        'thread_type': 'Metric'
+                    }
+            
+            if hasattr(self, 'custom_threads_int_combobox'):
+                current_text = self.custom_threads_int_combobox.currentText()
+                if current_text and current_text in self.custom_threads and not current_text.startswith("---"):
+                    return {
+                        'thread_name': current_text,
+                        'thread_data': self.custom_threads[current_text],
+                        'thread_type': 'Custom'
+                    }
+            
+        except Exception as e:
+            LOG.error(f"Error getting selected thread data: {e}")
+        
+        return None
+
+    def merge_thread_data(self, selected_thread_data, current_values):
+        """Merge selected thread data with current UI values - UI data takes priority except for specific thread parameters"""
+        try:
+            thread_name = selected_thread_data['thread_name']
+            thread_data = selected_thread_data['thread_data']
+            
+            # Create the custom name with modifier
+            custom_name = f"{thread_name} CUSTOM"
+            
+            # Start with current UI values as the base
+            merged_values = current_values.copy()
+            
+            # Override UI lead_length with thread database lead_length (thread-specific parameter)
+            if 'lead_length' in thread_data:
+                merged_values['lead_length'] = thread_data['lead_length']
+                print(f"DEBUG: Overriding UI lead_length {current_values.get('lead_length')} with thread data lead_length {thread_data['lead_length']}")
+            
+            # Only add data from JSON that's NOT available from UI
+            # Add suggested name
+            merged_values['suggested_name'] = custom_name
+            merged_values['original_name'] = thread_name
+            
+            # Add description if not already set
+            if 'description' not in merged_values or not merged_values.get('description'):
+                merged_values['description'] = thread_data.get('description', '')
+            
+            # Add thread type from the JSON (override the default 'Custom')
+            merged_values['thread_type'] = thread_data.get('thread_type', 'Custom')
+            
+            # Add drill sizes (these usually aren't in the UI)
+            if 'drill_sizes' not in merged_values or not merged_values['drill_sizes'].get('tap_drill'):
+                merged_values['drill_sizes'] = thread_data.get('drill_sizes', {
+                    'tap_drill': '',
+                    'clearance_close': '',
+                    'clearance_free': ''
+                })
+            
+            return merged_values
+            
+        except Exception as e:
+            LOG.error(f"Error merging thread data: {e}")
+            return current_values
