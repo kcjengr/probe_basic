@@ -2,7 +2,7 @@
 
 from qtpy.QtWidgets import (QDialog, QVBoxLayout, QHBoxLayout, QGridLayout, 
                            QLabel, QLineEdit, QPushButton, QMessageBox, QGroupBox, 
-                           QSizePolicy, QRadioButton, QButtonGroup, QFrame)
+                           QSizePolicy, QRadioButton, QButtonGroup)
 from qtpy.QtCore import Qt
 from qtpyvcp.widgets.input_widgets.line_edit import VCPLineEdit
 import json
@@ -18,7 +18,7 @@ class CustomThreadDialog(QDialog):
         super(CustomThreadDialog, self).__init__(parent)
         self.setWindowTitle("Save Custom Thread")
         self.setModal(True)
-        self.setMinimumSize(450, 700)  # Increased height for additional fields
+        self.setMinimumSize(450, 700)
         
         # Get parent's machine units if available, otherwise determine from INI
         if hasattr(parent, 'machine_units'):
@@ -26,16 +26,14 @@ class CustomThreadDialog(QDialog):
         else:
             self.machine_units = self.get_machine_units()
         
-        # Store thread source type (SAE, Metric, Custom, or None)
-        # This is informational only - data is always in machine units
+        # Store thread source type for informational display
         self.thread_source_type = thread_source_type
         
-        # Track what units the fields currently contain
-        # Initially, fields will contain values in machine units
-        self.current_field_units = self.machine_units
+        # Track current display units (can be different from machine units)
+        self.current_display_units = self.machine_units
         
-        # Flag to prevent recursive unit conversions
-        self.updating_units = False
+        # Flag to prevent recursive updates
+        self.updating_values = False
         
         # Apply custom stylesheet
         self.setStyleSheet("""
@@ -132,7 +130,7 @@ class CustomThreadDialog(QDialog):
             }
         """)
         
-        # Store current values
+        # Store current values (data is always in machine units)
         self.current_values = current_values or {}
         
         # Setup UI
@@ -152,19 +150,13 @@ class CustomThreadDialog(QDialog):
         except:
             return 'inch'  # Default to inch if unable to determine
     
-    def get_preferred_display_units(self):
-        """Determine preferred display units based on machine units (data is always in machine units)"""
-        # Since data is always passed in machine units, default to machine units
-        # User can toggle to other units if desired for easier editing
-        return self.machine_units
-    
     def setup_ui(self):
         layout = QVBoxLayout(self)
         layout.setSpacing(15)
         layout.setSizeConstraint(QVBoxLayout.SetMinimumSize)
         
-        # Unit Selection Group (allow user to choose units for display/entry)
-        unit_group = QGroupBox("Entry Units")
+        # Unit Selection Group
+        unit_group = QGroupBox("Display Units")
         unit_group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
         unit_layout = QHBoxLayout(unit_group)
         unit_layout.setSpacing(20)
@@ -174,13 +166,11 @@ class CustomThreadDialog(QDialog):
         self.inch_radio = QRadioButton("Inch")
         self.mm_radio = QRadioButton("Millimeter")
         
-        # Always default to machine units since data is passed in machine units
+        # Default to machine units
         if self.machine_units == 'mm':
             self.mm_radio.setChecked(True)
-            print(f"DEBUG: Setting initial display units to MM (machine units)")
         else:
             self.inch_radio.setChecked(True)
-            print(f"DEBUG: Setting initial display units to INCH (machine units)")
         
         self.unit_button_group.addButton(self.inch_radio)
         self.unit_button_group.addButton(self.mm_radio)
@@ -194,18 +184,13 @@ class CustomThreadDialog(QDialog):
         info_label.setStyleSheet("font-size: 10pt; color: #cccccc;")
         
         # Show thread source type for information
-        source_info = ""
-        if self.thread_source_type == 'SAE':
-            source_info = "SAE Thread"
-        elif self.thread_source_type == 'Metric':
-            source_info = "Metric Thread"  
-        elif self.thread_source_type == 'Custom':
-            source_info = "Custom Thread"
+        if self.thread_source_type:
+            source_info = f"Based on {self.thread_source_type} Thread"
+            source_label = QLabel(source_info)
+            source_label.setStyleSheet("font-size: 10pt; color: #cccccc;")
         else:
-            source_info = "Manual Entry"
-            
-        source_label = QLabel(f"Source: {source_info}")
-        source_label.setStyleSheet("font-size: 10pt; color: #cccccc;")
+            source_label = QLabel("Manual Entry")
+            source_label.setStyleSheet("font-size: 10pt; color: #cccccc;")
         
         unit_layout.addWidget(self.inch_radio)
         unit_layout.addWidget(self.mm_radio)
@@ -217,7 +202,7 @@ class CustomThreadDialog(QDialog):
         
         # Thread Info Group
         info_group = QGroupBox("Thread Info")
-        info_group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)  
+        info_group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
         info_layout = QGridLayout(info_group)
         info_layout.setHorizontalSpacing(9)
         info_layout.setVerticalSpacing(15)
@@ -243,56 +228,64 @@ class CustomThreadDialog(QDialog):
         layout.addWidget(info_group)
         
         # Thread Parameters Group
-        params_group = QGroupBox("Thread Parameters")
-        params_group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
-        params_layout = QGridLayout(params_group)
+        self.params_group = QGroupBox("Thread Parameters")
+        self.params_group.setSizePolicy(QSizePolicy.Expanding, QSizePolicy.Minimum)
+        params_layout = QGridLayout(self.params_group)
         params_layout.setHorizontalSpacing(9)
         params_layout.setVerticalSpacing(15)
         
         # Create labels that will be updated dynamically
         self.pitch_label = QLabel("Pitch")
+        self.lead_length_label = QLabel("Lead Length")
         self.ext_major_label = QLabel("Ext Major Diameter")
-        self.ext_minor_label = QLabel("Ext Minor Diameter") 
+        self.ext_minor_label = QLabel("Ext Minor Diameter")
         self.ext_pitch_label = QLabel("Ext Pitch Diameter")
         self.int_major_label = QLabel("Int Major Diameter")
         self.int_minor_label = QLabel("Int Minor Diameter")
         self.int_pitch_label = QLabel("Int Pitch Diameter")
-        self.lead_length_label = QLabel("Lead Length")
         
-        # Add labels and inputs
+        # Create input fields with high precision storage
         params_layout.addWidget(self.pitch_label, 0, 0)
-        self.pitch_edit = VCPLineEdit()
+        self.pitch_edit = VCPLineEdit(parent=self)
+        self.pitch_edit.highPrecisionStorage = True
         params_layout.addWidget(self.pitch_edit, 0, 1)
         
-        params_layout.addWidget(self.ext_major_label, 1, 0)
-        self.ext_major_edit = VCPLineEdit()
-        params_layout.addWidget(self.ext_major_edit, 1, 1)
+        params_layout.addWidget(self.lead_length_label, 1, 0)
+        self.lead_length_edit = VCPLineEdit(parent=self)
+        self.lead_length_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.lead_length_edit, 1, 1)
         
-        params_layout.addWidget(self.ext_minor_label, 2, 0)
-        self.ext_minor_edit = VCPLineEdit()
-        params_layout.addWidget(self.ext_minor_edit, 2, 1)
+        params_layout.addWidget(self.ext_major_label, 2, 0)
+        self.ext_major_edit = VCPLineEdit(parent=self)
+        self.ext_major_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.ext_major_edit, 2, 1)
         
-        params_layout.addWidget(self.ext_pitch_label, 3, 0)
-        self.ext_pitch_edit = VCPLineEdit()
-        params_layout.addWidget(self.ext_pitch_edit, 3, 1)
+        params_layout.addWidget(self.ext_minor_label, 3, 0)
+        self.ext_minor_edit = VCPLineEdit(parent=self)
+        self.ext_minor_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.ext_minor_edit, 3, 1)
         
-        params_layout.addWidget(self.int_major_label, 4, 0)
-        self.int_major_edit = VCPLineEdit()
-        params_layout.addWidget(self.int_major_edit, 4, 1)
+        params_layout.addWidget(self.ext_pitch_label, 4, 0)
+        self.ext_pitch_edit = VCPLineEdit(parent=self)
+        self.ext_pitch_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.ext_pitch_edit, 4, 1)
         
-        params_layout.addWidget(self.int_minor_label, 5, 0)
-        self.int_minor_edit = VCPLineEdit()
-        params_layout.addWidget(self.int_minor_edit, 5, 1)
+        params_layout.addWidget(self.int_major_label, 5, 0)
+        self.int_major_edit = VCPLineEdit(parent=self)
+        self.int_major_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.int_major_edit, 5, 1)
         
-        params_layout.addWidget(self.int_pitch_label, 6, 0)
-        self.int_pitch_edit = VCPLineEdit()
-        params_layout.addWidget(self.int_pitch_edit, 6, 1)
+        params_layout.addWidget(self.int_minor_label, 6, 0)
+        self.int_minor_edit = VCPLineEdit(parent=self)
+        self.int_minor_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.int_minor_edit, 6, 1)
         
-        params_layout.addWidget(self.lead_length_label, 7, 0)
-        self.lead_length_edit = VCPLineEdit()
-        params_layout.addWidget(self.lead_length_edit, 7, 1)
+        params_layout.addWidget(self.int_pitch_label, 7, 0)
+        self.int_pitch_edit = VCPLineEdit(parent=self)
+        self.int_pitch_edit.highPrecisionStorage = True
+        params_layout.addWidget(self.int_pitch_edit, 7, 1)
         
-        layout.addWidget(params_group)
+        layout.addWidget(self.params_group)
         
         # Drill Sizes Group
         drill_group = QGroupBox("Drill Sizes")
@@ -301,7 +294,6 @@ class CustomThreadDialog(QDialog):
         drill_layout.setHorizontalSpacing(9)
         drill_layout.setVerticalSpacing(15)
         
-        # Drill size labels and inputs
         drill_layout.addWidget(QLabel("Tap Drill"), 0, 0)
         self.tap_drill_edit = QLineEdit()
         self.tap_drill_edit.setPlaceholderText("e.g., #7 or 5.5mm")
@@ -321,7 +313,7 @@ class CustomThreadDialog(QDialog):
         
         # Update labels and formatting
         self.update_unit_labels()
-        self.update_formatting()
+        self.update_display_decimals()
         
         # Buttons
         button_layout = QHBoxLayout()
@@ -340,230 +332,173 @@ class CustomThreadDialog(QDialog):
 
     def on_unit_changed(self):
         """Handle unit selection change - convert all values to new units"""
-        if self.updating_units:
+        if self.updating_values:
             return  # Prevent recursive calls
-            
-        self.updating_units = True
+        
+        new_units = 'inch' if self.inch_radio.isChecked() else 'mm'
+        old_units = self.current_display_units
+        
+        if new_units == old_units:
+            return  # No change needed
+        
+        self.updating_values = True
         try:
-            print(f"DEBUG: Unit changed, converting values...")
-            
-            # Get current values before conversion
-            current_values = self.get_current_field_values()
-            print(f"DEBUG: Current field values before conversion: {current_values}")
-            
-            # Update labels and formatting
+            # Update labels and decimal places
             self.update_unit_labels()
-            self.update_formatting()
+            self.update_display_decimals()
             
-            # Convert and populate with new unit values
-            self.populate_fields_with_conversion(current_values)
+            # Convert all numeric field values
+            self.convert_field_values(old_units, new_units)
             
-            # Update the tracked field units to the new selection
-            self.current_field_units = self.get_selected_units()
+            # Update current display units
+            self.current_display_units = new_units
             
         finally:
-            self.updating_units = False
-    
-    def get_current_field_values(self):
-        """Get current values from all fields in the currently stored units"""
-        try:
-            return {
-                'pitch': float(self.pitch_edit.text() or "0"),
-                'lead_length': float(self.lead_length_edit.text() or "0"),
-                'external': {
-                    'major_diameter': float(self.ext_major_edit.text() or "0"),
-                    'minor_diameter': float(self.ext_minor_edit.text() or "0"),
-                    'pitch_diameter': float(self.ext_pitch_edit.text() or "0"),
-                },
-                'internal': {
-                    'major_diameter': float(self.int_major_edit.text() or "0"),
-                    'minor_diameter': float(self.int_minor_edit.text() or "0"),
-                    'pitch_diameter': float(self.int_pitch_edit.text() or "0"),
-                },
-                'units': self.current_field_units  # Use tracked field units, not radio button state
-            }
-        except ValueError:
-            # If conversion fails, return zeros
-            return {
-                'pitch': 0,
-                'lead_length': 0,
-                'external': {'major_diameter': 0, 'minor_diameter': 0, 'pitch_diameter': 0},
-                'internal': {'major_diameter': 0, 'minor_diameter': 0, 'pitch_diameter': 0},
-                'units': self.current_field_units
-            }
-    
-    def populate_fields_with_conversion(self, values):
-        """Populate fields with values, converting as needed"""
-        from_units = values.get('units', 'inch')
-        to_units = self.get_selected_units()
-        
-        if from_units == to_units:
-            return  # No conversion needed
-        
-        print(f"DEBUG: Converting values from {from_units} to {to_units}")
-        
-        # Convert and set basic parameters
-        if values['pitch'] != 0:
-            converted_pitch = self.convert_value(values['pitch'], from_units, to_units)
-            pitch_text = f"{converted_pitch:.4f}" if to_units == 'inch' else f"{converted_pitch:.3f}"
-            self.pitch_edit.setText(pitch_text)
-            print(f"DEBUG: Converted pitch: {values['pitch']} {from_units} -> {pitch_text} {to_units}")
-        
-        if values['lead_length'] != 0:
-            converted_lead = self.convert_value(values['lead_length'], from_units, to_units)
-            lead_text = f"{converted_lead:.4f}" if to_units == 'inch' else f"{converted_lead:.3f}"
-            self.lead_length_edit.setText(lead_text)
-            print(f"DEBUG: Converted lead length: {values['lead_length']} {from_units} -> {lead_text} {to_units}")
-        
-        # Convert external diameters
-        ext_data = values.get('external', {})
-        for diameter_type, edit_field in [
-            ('major_diameter', self.ext_major_edit),
-            ('minor_diameter', self.ext_minor_edit),
-            ('pitch_diameter', self.ext_pitch_edit)
-        ]:
-            value = ext_data.get(diameter_type, 0)
-            if value != 0:
-                converted_value = self.convert_value(value, from_units, to_units)
-                value_text = f"{converted_value:.4f}" if to_units == 'inch' else f"{converted_value:.3f}"
-                edit_field.setText(value_text)
-                print(f"DEBUG: Converted ext {diameter_type}: {value} {from_units} -> {value_text} {to_units}")
-        
-        # Convert internal diameters
-        int_data = values.get('internal', {})
-        for diameter_type, edit_field in [
-            ('major_diameter', self.int_major_edit),
-            ('minor_diameter', self.int_minor_edit),
-            ('pitch_diameter', self.int_pitch_edit)
-        ]:
-            value = int_data.get(diameter_type, 0)
-            if value != 0:
-                converted_value = self.convert_value(value, from_units, to_units)
-                value_text = f"{converted_value:.4f}" if to_units == 'inch' else f"{converted_value:.3f}"
-                edit_field.setText(value_text)
-                print(f"DEBUG: Converted int {diameter_type}: {value} {from_units} -> {value_text} {to_units}")
-    
-    def get_selected_units(self):
-        """Get the currently selected units"""
-        return 'inch' if self.inch_radio.isChecked() else 'mm'
-    
-    def convert_value(self, value, from_unit, to_unit):
-        """Convert value between units"""
-        if from_unit == to_unit:
-            return value
-        
-        if from_unit == 'inch' and to_unit == 'mm':
-            return value * 25.4
-        elif from_unit == 'mm' and to_unit == 'inch':
-            return value / 25.4
+            self.updating_values = False
+
+    def update_unit_labels(self):
+        """Update labels based on selected units"""
+        if self.inch_radio.isChecked():
+            # Inch labels
+            self.pitch_label.setText("Pitch (inch)")
+            self.lead_length_label.setText("Lead Length (inch)")
+            self.ext_major_label.setText("Ext Major Diameter (inch)")
+            self.ext_minor_label.setText("Ext Minor Diameter (inch)")
+            self.ext_pitch_label.setText("Ext Pitch Diameter (inch)")
+            self.int_major_label.setText("Int Major Diameter (inch)")
+            self.int_minor_label.setText("Int Minor Diameter (inch)")
+            self.int_pitch_label.setText("Int Pitch Diameter (inch)")
+            self.params_group.setTitle("Thread Parameters (inch)")
         else:
-            return value
-    
-    def load_current_values(self):
-        """Pre-fill dialog with current UI values"""
-        print(f"DEBUG: load_current_values called with: {self.current_values}")
+            # Metric labels
+            self.pitch_label.setText("Pitch (mm)")
+            self.lead_length_label.setText("Lead Length (mm)")
+            self.ext_major_label.setText("Ext Major Diameter (mm)")
+            self.ext_minor_label.setText("Ext Minor Diameter (mm)")
+            self.ext_pitch_label.setText("Ext Pitch Diameter (mm)")
+            self.int_major_label.setText("Int Major Diameter (mm)")
+            self.int_minor_label.setText("Int Minor Diameter (mm)")
+            self.int_pitch_label.setText("Int Pitch Diameter (mm)")
+            self.params_group.setTitle("Thread Parameters (mm)")
+
+    def update_display_decimals(self):
+        """Update display decimal places based on selected units"""
+        if self.inch_radio.isChecked():
+            decimal_places = 4  # Inch precision
+        else:
+            decimal_places = 3  # Metric precision
         
+        # Update all numeric fields
+        numeric_fields = [
+            self.pitch_edit, self.lead_length_edit,
+            self.ext_major_edit, self.ext_minor_edit, self.ext_pitch_edit,
+            self.int_major_edit, self.int_minor_edit, self.int_pitch_edit
+        ]
+        
+        for field in numeric_fields:
+            field.displayDecimals = decimal_places
+
+    def convert_field_values(self, from_units, to_units):
+        """Convert all field values from one unit to another"""
+        if from_units == to_units:
+            return
+        
+        # Conversion factor
+        if from_units == 'inch' and to_units == 'mm':
+            factor = 25.4
+        elif from_units == 'mm' and to_units == 'inch':
+            factor = 1.0 / 25.4
+        else:
+            return
+        
+        # Convert all numeric fields
+        numeric_fields = [
+            self.pitch_edit, self.lead_length_edit,
+            self.ext_major_edit, self.ext_minor_edit, self.ext_pitch_edit,
+            self.int_major_edit, self.int_minor_edit, self.int_pitch_edit
+        ]
+        
+        for field in numeric_fields:
+            try:
+                current_value = field.value()  # Get high precision value
+                if current_value != 0:
+                    new_value = current_value * factor
+                    field.setValue(new_value)  # Set high precision value
+            except (ValueError, TypeError):
+                pass  # Skip invalid values
+
+    def load_current_values(self):
+        """Pre-fill dialog with current UI values (convert from machine units to display units)"""
         if not self.current_values:
-            print("DEBUG: No current values provided")
             return
 
-        # Pre-fill suggested name if available
+        # Pre-fill text fields
         if 'suggested_name' in self.current_values:
-            print(f"DEBUG: Setting suggested name: {self.current_values['suggested_name']}")
             self.name_edit.setText(self.current_values['suggested_name'])
-        else:
-            print("DEBUG: No suggested_name found")
         
-        # Pre-fill description
         if 'description' in self.current_values:
-            print(f"DEBUG: Setting description: {self.current_values['description']}")
             self.description_edit.setText(self.current_values['description'])
         elif 'suggested_name' in self.current_values:
             desc_text = f"Custom variation of {self.current_values.get('original_name', 'thread')}"
-            print(f"DEBUG: Setting generated description: {desc_text}")
             self.description_edit.setText(desc_text)
 
-        # Get selected units for formatting
-        selected_units = self.get_selected_units()
-        
-        # Basic parameters - values are expected to be in machine units
-        # Convert to display units if needed
-        pitch = self.current_values.get('pitch')
-        if pitch is not None:
-            display_pitch = self.convert_value(pitch, self.machine_units, selected_units)
-            pitch_text = f"{display_pitch:.4f}" if selected_units == 'inch' else f"{display_pitch:.3f}"
-            print(f"DEBUG: Setting pitch: {pitch_text} (converted from {pitch} {self.machine_units} to {selected_units})")
-            self.pitch_edit.setText(pitch_text)
-        
-        lead_length = self.current_values.get('lead_length')
-        if lead_length is not None:
-            display_lead = self.convert_value(lead_length, self.machine_units, selected_units)
-            lead_text = f"{display_lead:.4f}" if selected_units == 'inch' else f"{display_lead:.3f}"
-            print(f"DEBUG: Setting lead_length: {lead_text} (converted from {lead_length} {self.machine_units} to {selected_units})")
-            self.lead_length_edit.setText(lead_text)
-        
         thread_type = self.current_values.get('thread_type', 'Custom')
-        print(f"DEBUG: Setting thread_type: {thread_type}")
         self.thread_type_edit.setText(thread_type)
         
-        # External diameters - convert and format based on selected units
-        ext_data = self.current_values.get('external', {})
-        ext_major = ext_data.get('major_diameter')
-        if ext_major is not None:
-            display_major = self.convert_value(ext_major, self.machine_units, selected_units)
-            major_text = f"{display_major:.4f}" if selected_units == 'inch' else f"{display_major:.3f}"
-            print(f"DEBUG: Setting external major: {major_text} (converted from {ext_major} {self.machine_units} to {selected_units})")
-            self.ext_major_edit.setText(major_text)
-            
-        ext_minor = ext_data.get('minor_diameter')
-        if ext_minor is not None:
-            display_minor = self.convert_value(ext_minor, self.machine_units, selected_units)
-            minor_text = f"{display_minor:.4f}" if selected_units == 'inch' else f"{display_minor:.3f}"
-            print(f"DEBUG: Setting external minor: {minor_text} (converted from {ext_minor} {self.machine_units} to {selected_units})")
-            self.ext_minor_edit.setText(minor_text)
+        # Convert values from machine units to display units
+        display_units = 'inch' if self.inch_radio.isChecked() else 'mm'
+        conversion_factor = 1.0
         
-        ext_pitch = ext_data.get('pitch_diameter')
-        if ext_pitch is not None:
-            display_pitch = self.convert_value(ext_pitch, self.machine_units, selected_units)
-            pitch_text = f"{display_pitch:.4f}" if selected_units == 'inch' else f"{display_pitch:.3f}"
-            print(f"DEBUG: Setting external pitch: {pitch_text} (converted from {ext_pitch} {self.machine_units} to {selected_units})")
-            self.ext_pitch_edit.setText(pitch_text)
+        if self.machine_units != display_units:
+            if self.machine_units == 'inch' and display_units == 'mm':
+                conversion_factor = 25.4
+            elif self.machine_units == 'mm' and display_units == 'inch':
+                conversion_factor = 1.0 / 25.4
         
-        # Internal diameters - convert and format based on selected units
-        int_data = self.current_values.get('internal', {})
-        int_major = int_data.get('major_diameter')
-        if int_major is not None:
-            display_major = self.convert_value(int_major, self.machine_units, selected_units)
-            major_text = f"{display_major:.4f}" if selected_units == 'inch' else f"{display_major:.3f}"
-            print(f"DEBUG: Setting internal major: {major_text} (converted from {int_major} {self.machine_units} to {selected_units})")
-            self.int_major_edit.setText(major_text)
-            
-        int_minor = int_data.get('minor_diameter')
-        if int_minor is not None:
-            display_minor = self.convert_value(int_minor, self.machine_units, selected_units)
-            minor_text = f"{display_minor:.4f}" if selected_units == 'inch' else f"{display_minor:.3f}"
-            print(f"DEBUG: Setting internal minor: {minor_text} (converted from {int_minor} {self.machine_units} to {selected_units})")
-            self.int_minor_edit.setText(minor_text)
+        # Fill numeric fields (convert from machine units to display units)
+        if 'pitch' in self.current_values:
+            value = self.current_values['pitch'] * conversion_factor
+            self.pitch_edit.setValue(value)
         
-        int_pitch = int_data.get('pitch_diameter')
-        if int_pitch is not None:
-            display_pitch = self.convert_value(int_pitch, self.machine_units, selected_units)
-            pitch_text = f"{display_pitch:.4f}" if selected_units == 'inch' else f"{display_pitch:.3f}"
-            print(f"DEBUG: Setting internal pitch: {pitch_text} (converted from {int_pitch} {self.machine_units} to {selected_units})")
-            self.int_pitch_edit.setText(pitch_text)
+        if 'lead_length' in self.current_values:
+            value = self.current_values['lead_length'] * conversion_factor
+            self.lead_length_edit.setValue(value)
         
-        # Drill sizes (if available) - these are usually text with descriptions
+        # External diameters
+        external_data = self.current_values.get('external', {})
+        if 'major_diameter' in external_data:
+            value = external_data['major_diameter'] * conversion_factor
+            self.ext_major_edit.setValue(value)
+        if 'minor_diameter' in external_data:
+            value = external_data['minor_diameter'] * conversion_factor
+            self.ext_minor_edit.setValue(value)
+        if 'pitch_diameter' in external_data:
+            value = external_data['pitch_diameter'] * conversion_factor
+            self.ext_pitch_edit.setValue(value)
+        
+        # Internal diameters
+        internal_data = self.current_values.get('internal', {})
+        if 'major_diameter' in internal_data:
+            value = internal_data['major_diameter'] * conversion_factor
+            self.int_major_edit.setValue(value)
+        if 'minor_diameter' in internal_data:
+            value = internal_data['minor_diameter'] * conversion_factor
+            self.int_minor_edit.setValue(value)
+        if 'pitch_diameter' in internal_data:
+            value = internal_data['pitch_diameter'] * conversion_factor
+            self.int_pitch_edit.setValue(value)
+        
+        # Handle drill sizes
         drill_data = self.current_values.get('drill_sizes', {})
-        tap_drill = drill_data.get('tap_drill', '')
-        clearance_close = drill_data.get('clearance_close', '')
-        clearance_free = drill_data.get('clearance_free', '')
-        print(f"DEBUG: Setting drill sizes - tap: {tap_drill}, close: {clearance_close}, free: {clearance_free}")
-        if tap_drill:
-            self.tap_drill_edit.setText(tap_drill)
-        if clearance_close:
-            self.clearance_close_edit.setText(clearance_close)
-        if clearance_free:
-            self.clearance_free_edit.setText(clearance_free)
+        if drill_data.get('tap_drill'):
+            self.tap_drill_edit.setText(drill_data['tap_drill'])
+        if drill_data.get('clearance_close'):
+            self.clearance_close_edit.setText(drill_data['clearance_close'])
+        if drill_data.get('clearance_free'):
+            self.clearance_free_edit.setText(drill_data['clearance_free'])
+        
+        # Set current display units
+        self.current_display_units = display_units
     
     def save_thread(self):
         """Validate and save the custom thread"""
@@ -575,33 +510,44 @@ class CustomThreadDialog(QDialog):
             return
         
         try:
-            # Get selected units
-            selected_units = self.get_selected_units()
+            # Get high precision values from fields
+            pitch = self.pitch_edit.value()
+            lead_length = self.lead_length_edit.value()
             
-            # Helper function to get and convert values to machine units
-            def get_converted_value(field, default=0.0):
-                text = field.text().strip()
-                if not text:
-                    return default
-                value = float(text)
-                return self.convert_value(value, selected_units, self.machine_units)
+            ext_major = self.ext_major_edit.value()
+            ext_minor = self.ext_minor_edit.value()
+            ext_pitch = self.ext_pitch_edit.value()
             
-            # Create thread data structure - all values stored in machine units
+            int_major = self.int_major_edit.value()
+            int_minor = self.int_minor_edit.value()
+            int_pitch = self.int_pitch_edit.value()
+            
+            # Convert values back to machine units for storage
+            display_units = 'inch' if self.inch_radio.isChecked() else 'mm'
+            conversion_factor = 1.0
+            
+            if self.machine_units != display_units:
+                if display_units == 'inch' and self.machine_units == 'mm':
+                    conversion_factor = 25.4
+                elif display_units == 'mm' and self.machine_units == 'inch':
+                    conversion_factor = 1.0 / 25.4
+            
+            # Create thread data structure (stored in machine units)
             thread_data = {
-                "pitch": get_converted_value(self.pitch_edit),
-                "lead_length": get_converted_value(self.lead_length_edit),
+                "pitch": pitch * conversion_factor,
+                "lead_length": lead_length * conversion_factor,
                 "thread_type": self.thread_type_edit.text() or "Custom",
                 "description": self.description_edit.text() or f"{name} Custom Thread",
                 "npt_taper": False,
                 "external": {
-                    "major_diameter": get_converted_value(self.ext_major_edit),
-                    "minor_diameter": get_converted_value(self.ext_minor_edit),
-                    "pitch_diameter": get_converted_value(self.ext_pitch_edit),
+                    "major_diameter": ext_major * conversion_factor,
+                    "minor_diameter": ext_minor * conversion_factor,
+                    "pitch_diameter": ext_pitch * conversion_factor,
                 },
                 "internal": {
-                    "major_diameter": get_converted_value(self.int_major_edit),
-                    "minor_diameter": get_converted_value(self.int_minor_edit),
-                    "pitch_diameter": get_converted_value(self.int_pitch_edit),
+                    "major_diameter": int_major * conversion_factor,
+                    "minor_diameter": int_minor * conversion_factor,
+                    "pitch_diameter": int_pitch * conversion_factor,
                 },
                 "drill_sizes": {
                     "tap_drill": self.tap_drill_edit.text(),
@@ -609,11 +555,9 @@ class CustomThreadDialog(QDialog):
                     "clearance_free": self.clearance_free_edit.text()
                 },
                 "created_date": datetime.now().isoformat(),
-                "units_created": selected_units,  # Record the units used for creation
-                "machine_units": self.machine_units  # Record machine units for reference
+                "machine_units": self.machine_units,
+                "source_type": self.thread_source_type
             }
-            
-            print(f"DEBUG: Saving thread data in {self.machine_units} units: {thread_data}")
             
             # Store for retrieval
             self.thread_name = name
@@ -627,113 +571,3 @@ class CustomThreadDialog(QDialog):
                               f"Please enter valid numeric values for diameters and measurements.\nError: {str(e)}")
         except Exception as e:
             QMessageBox.critical(self, "Error", f"An error occurred while saving: {str(e)}")
-    
-    def get_thread_data(self):
-        """Get thread data from dialog fields, converting to machine units for storage"""
-        try:
-            selected_units = self.get_selected_units()
-            
-            # Get raw values from dialog
-            pitch = float(self.pitch_edit.text() or "0")
-            ext_major = float(self.ext_major_edit.text() or "0")
-            ext_minor = float(self.ext_minor_edit.text() or "0")
-            ext_pitch = float(self.ext_pitch_edit.text() or "0")
-            int_major = float(self.int_major_edit.text() or "0")
-            int_minor = float(self.int_minor_edit.text() or "0")
-            int_pitch = float(self.int_pitch_edit.text() or "0")
-            lead_length = float(self.lead_length_edit.text() or "0")
-            
-            # Convert to machine units if needed
-            if selected_units != self.machine_units:
-                pitch = self.convert_value(pitch, selected_units, self.machine_units)
-                ext_major = self.convert_value(ext_major, selected_units, self.machine_units)
-                ext_minor = self.convert_value(ext_minor, selected_units, self.machine_units)
-                ext_pitch = self.convert_value(ext_pitch, selected_units, self.machine_units)
-                int_major = self.convert_value(int_major, selected_units, self.machine_units)
-                int_minor = self.convert_value(int_minor, selected_units, self.machine_units)
-                int_pitch = self.convert_value(int_pitch, selected_units, self.machine_units)
-                lead_length = self.convert_value(lead_length, selected_units, self.machine_units)
-            
-            # Apply proper decimal formatting for machine units
-            if self.machine_units == 'inch':
-                decimal_places = 4
-            else:
-                decimal_places = 3
-            
-            thread_data = {
-                "pitch": round(pitch, decimal_places),
-                "external": {
-                    "major_diameter": round(ext_major, decimal_places),
-                    "minor_diameter": round(ext_minor, decimal_places),
-                    "pitch_diameter": round(ext_pitch, decimal_places)
-                },
-                "internal": {
-                    "major_diameter": round(int_major, decimal_places),
-                    "minor_diameter": round(int_minor, decimal_places),
-                    "pitch_diameter": round(int_pitch, decimal_places)
-                },
-                "lead_length": round(lead_length, decimal_places),
-                "description": self.description_edit.text() or f"Custom {self.name_edit.text()}",
-                "thread_type": self.thread_type_edit.text() or "CUSTOM",
-                "npt_taper": False,
-                "units": self.machine_units,  # Always store in machine units
-                "created_date": datetime.now().isoformat(),
-                "drill_sizes": {
-                    "tap_drill": self.tap_drill_edit.text() or "CUSTOM",
-                    "clearance_close": self.clearance_close_edit.text() or "CUSTOM", 
-                    "clearance_free": self.clearance_free_edit.text() or "CUSTOM"
-                }
-            }
-            
-            return thread_data
-            
-        except ValueError as e:
-            print(f"Error converting thread values: {e}")
-            return None
-        except Exception as e:
-            print(f"Error getting thread data: {e}")
-            return None
-    
-    def update_unit_labels(self):
-        """Update labels based on selected units"""
-        if self.inch_radio.isChecked():
-            # Inch labels
-            self.pitch_label.setText("Pitch (inch)")
-            self.lead_length_label.setText("Lead Length (inch)")
-            self.ext_major_label.setText("Ext Major Diameter (inch)")
-            self.ext_minor_label.setText("Ext Minor Diameter (inch)")
-            self.ext_pitch_label.setText("Ext Pitch Diameter (inch)")
-            self.int_major_label.setText("Int Major Diameter (inch)")
-            self.int_minor_label.setText("Int Minor Diameter (inch)")
-            self.int_pitch_label.setText("Int Pitch Diameter (inch)")
-        else:
-            # Metric labels
-            self.pitch_label.setText("Pitch (mm)")
-            self.lead_length_label.setText("Lead Length (mm)")
-            self.ext_major_label.setText("Ext Major Diameter (mm)")
-            self.ext_minor_label.setText("Ext Minor Diameter (mm)")
-            self.ext_pitch_label.setText("Ext Pitch Diameter (mm)")
-            self.int_major_label.setText("Int Major Diameter (mm)")
-            self.int_minor_label.setText("Int Minor Diameter (mm)")
-            self.int_pitch_label.setText("Int Pitch Diameter (mm)")
-    
-    def update_formatting(self):
-        """Update field formatting based on selected units"""
-        if self.inch_radio.isChecked():
-            # Inch formatting - 4 decimal places
-            format_str = "{:.4f}"
-            placeholder = "0.0000"
-        else:
-            # Metric formatting - 3 decimal places
-            format_str = "{:.3f}"
-            placeholder = "0.000"
-        
-        # Update placeholders
-        numeric_fields = [
-            self.pitch_edit, self.lead_length_edit,
-            self.ext_major_edit, self.ext_minor_edit, self.ext_pitch_edit,
-            self.int_major_edit, self.int_minor_edit, self.int_pitch_edit
-        ]
-        
-        for field in numeric_fields:
-            field.setPlaceholderText(placeholder)

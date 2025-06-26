@@ -892,21 +892,18 @@ class ProbeBasicLathe(VCPMainWindow):
             
             # Get current values from UI
             current_values = self.get_current_external_thread_values()
-            print(f"DEBUG: Current UI values: {current_values}")
             
             # Try to get the currently selected thread data to pre-populate more fields
             selected_thread_data = self.get_currently_selected_thread_data()
-            print(f"DEBUG: Selected thread data: {selected_thread_data}")
             
-            # Get thread source type for informational display (not for unit determination)
+            # Get thread source type for informational display
             thread_source_type = None
             if selected_thread_data:
                 thread_source_type = selected_thread_data.get('thread_type')
                 # Merge selected thread data with current UI values
                 current_values = self.merge_thread_data(selected_thread_data, current_values)
-                print(f"DEBUG: Merged values: {current_values}")
             
-            # Open dialog - data is always in machine units, source type is just informational
+            # Open dialog - data is always in machine units
             dialog = CustomThreadDialog(self, current_values, thread_source_type)
             if dialog.exec_() == dialog.Accepted:
                 # Get the stored thread name and data from dialog attributes
@@ -1400,8 +1397,7 @@ class ProbeBasicLathe(VCPMainWindow):
             # Override UI lead_length with thread database lead_length (thread-specific parameter)
             if 'lead_length' in thread_data:
                 merged_values['lead_length'] = thread_data['lead_length']
-                print(f"DEBUG: Overriding UI lead_length {current_values.get('lead_length')} with thread data lead_length {thread_data['lead_length']}")
-            
+        
             # Only add data from JSON that's NOT available from UI
             # Add suggested name
             merged_values['suggested_name'] = custom_name
@@ -1427,3 +1423,16 @@ class ProbeBasicLathe(VCPMainWindow):
         except Exception as e:
             LOG.error(f"Error merging thread data: {e}")
             return current_values
+
+    def on_thread_selection_changed(self):
+        """Handle thread selection change"""
+        try:
+            # Get the currently selected thread data
+            selected_thread_data = self.get_currently_selected_thread_data()
+            
+            if selected_thread_data:
+                # Populate UI fields
+                self.populate_thread_fields(selected_thread_data)
+    
+        except Exception as e:
+            LOG.error(f"Error handling thread selection change: {e}")
