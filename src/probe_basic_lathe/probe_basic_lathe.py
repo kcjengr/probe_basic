@@ -124,6 +124,12 @@ class ProbeBasicLathe(VCPMainWindow):
             self.metric_threads_int_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
         if hasattr(self, 'custom_threads_int_combobox'):
             self.custom_threads_int_combobox.currentTextChanged.connect(self.on_custom_thread_changed)
+
+        # Connect tap combo boxes to the same handlers (since they use the same thread data)
+        if hasattr(self, 'sae_tap_combobox'):
+            self.sae_tap_combobox.currentTextChanged.connect(self.on_sae_thread_changed)
+        if hasattr(self, 'metric_tap_combobox'):
+            self.metric_tap_combobox.currentTextChanged.connect(self.on_metric_thread_changed)
         
         # Connect thread store buttons
         self.connect_thread_store_buttons()
@@ -1013,7 +1019,19 @@ class ProbeBasicLathe(VCPMainWindow):
         
         if thread_name in self.sae_threads:
             thread_data = self.sae_threads[thread_name]
-            self.populate_thread_fields(thread_data)
+            
+            # Determine which operation this is for based on the sender
+            sender = self.sender()
+            operation = "all"  # default fallback
+            
+            if sender == getattr(self, 'sae_ext_threads_combobox', None):
+                operation = "external"
+            elif sender == getattr(self, 'sae_threads_int_combobox', None):
+                operation = "internal"
+            elif sender == getattr(self, 'sae_tap_combobox', None):
+                operation = "tap"
+            
+            self.populate_thread_fields(thread_data, operation)
 
     def on_metric_thread_changed(self, thread_name):
         """Handle metric thread selection"""
@@ -1022,7 +1040,19 @@ class ProbeBasicLathe(VCPMainWindow):
             
         if thread_name in self.metric_threads:
             thread_data = self.metric_threads[thread_name]
-            self.populate_thread_fields(thread_data)
+            
+            # Determine which operation this is for based on the sender
+            sender = self.sender()
+            operation = "all"  # default fallback
+            
+            if sender == getattr(self, 'metric_ext_threads_combobox', None):
+                operation = "external"
+            elif sender == getattr(self, 'metric_threads_int_combobox', None):
+                operation = "internal"
+            elif sender == getattr(self, 'metric_tap_combobox', None):
+                operation = "tap"
+            
+            self.populate_thread_fields(thread_data, operation)
 
     def on_custom_thread_changed(self, thread_name):
         """Handle custom thread selection"""
@@ -1031,118 +1061,331 @@ class ProbeBasicLathe(VCPMainWindow):
             
         if thread_name in self.custom_threads:
             thread_data = self.custom_threads[thread_name]
-            self.populate_thread_fields(thread_data)
+            
+            # Determine which operation this is for based on the sender
+            sender = self.sender()
+            operation = "all"  # default fallback
+            
+            if sender == getattr(self, 'custom_ext_threads_combobox', None):
+                operation = "external"
+            elif sender == getattr(self, 'custom_threads_int_combobox', None):
+                operation = "internal"
+            # Note: No custom tap combo box in current implementation
+            
+            self.populate_thread_fields(thread_data, operation)
 
-    def populate_thread_fields(self, thread_data):
-        """Populate thread parameter fields with selected thread data"""
+    def populate_thread_fields(self, thread_data, operation="all"):
+        """Populate thread parameter fields with selected thread data for specific operation"""
         try:
+            from qtpyvcp.utilities.settings import setSetting
+            
             # Get basic parameters
             pitch = thread_data.get('pitch', 0)
             lead_length = thread_data.get('lead_length', 0)
             external_data = thread_data.get('external', {})
             internal_data = thread_data.get('internal', {})
+            thread_name = thread_data.get('description', 'Unknown thread')
             
-            LOG.info(f"Populating thread fields for: {thread_data.get('description', 'Unknown thread')}")
+            LOG.info(f"Populating thread fields for {operation}: {thread_name}")
             
-            # Populate external thread fields
-            if hasattr(self, 'pitch_thread_ext'):
+            # Populate external thread fields only if operation is 'external' or 'all'
+            if operation in ['external', 'all']:
+                # Set external thread size (both setting and widget)
                 try:
-                    if hasattr(self.pitch_thread_ext, 'setValue'):
-                        self.pitch_thread_ext.setValue(pitch)
-                    elif hasattr(self.pitch_thread_ext, 'setText'):
-                        self.pitch_thread_ext.setText(str(pitch))
-                    LOG.info(f"Set external pitch to: {pitch}")
+                    setSetting("thread-ext.size", thread_name)
+                    LOG.info(f"Set external thread size setting to: {thread_name}")
                 except Exception as e:
-                    LOG.error(f"Error setting external pitch: {e}")
-            
-            # External diameter fields
-            if hasattr(self, 'x_start_diam_thread_ext'):
-                try:
-                    major_diam = external_data.get('major_diameter', 0)
-                    if hasattr(self.x_start_diam_thread_ext, 'setValue'):
-                        self.x_start_diam_thread_ext.setValue(major_diam)
-                    elif hasattr(self.x_start_diam_thread_ext, 'setText'):
-                        self.x_start_diam_thread_ext.setText(str(major_diam))
-                    LOG.info(f"Set external start diameter to: {major_diam}")
-                except Exception as e:
-                    LOG.error(f"Error setting external start diameter: {e}")
-            
-            if hasattr(self, 'x_end_diam_thread_ext'):
-                try:
-                    minor_diam = external_data.get('minor_diameter', 0)
-                    if hasattr(self.x_end_diam_thread_ext, 'setValue'):
-                        self.x_end_diam_thread_ext.setValue(minor_diam)
-                    elif hasattr(self.x_end_diam_thread_ext, 'setText'):
-                        self.x_end_diam_thread_ext.setText(str(minor_diam))
-                    LOG.info(f"Set external end diameter to: {minor_diam}")
-                except Exception as e:
-                    LOG.error(f"Error setting external end diameter: {e}")
-            
-            # Populate lead length for external threads (both left and right hand)
-            for widget_name in ['lead_length_thread_lh_ext', 'lead_length_thread_rh_ext']:
-                if hasattr(self, widget_name):
+                    LOG.error(f"Error setting external thread size: {e}")
+                
+                # Also update the thread_ext_size widget directly if it exists
+                if hasattr(self, 'thread_ext_size'):
                     try:
-                        widget = getattr(self, widget_name)
-                        if hasattr(widget, 'setValue'):
-                            widget.setValue(lead_length)
-                        elif hasattr(widget, 'setText'):
-                            widget.setText(str(lead_length))
-                        LOG.info(f"Set {widget_name} to: {lead_length}")
+                        if hasattr(self.thread_ext_size, 'setText'):
+                            self.thread_ext_size.setText(thread_name)
+                        elif hasattr(self.thread_ext_size, 'setValue'):
+                            self.thread_ext_size.setValue(thread_name)
+                        LOG.info(f"Set external thread size widget to: {thread_name}")
                     except Exception as e:
-                        LOG.error(f"Error setting {widget_name}: {e}")
-            
-            # Populate internal thread fields  
-            if hasattr(self, 'pitch_thread_int'):
-                try:
-                    if hasattr(self.pitch_thread_int, 'setValue'):
-                        self.pitch_thread_int.setValue(pitch)
-                    elif hasattr(self.pitch_thread_int, 'setText'):
-                        self.pitch_thread_int.setText(str(pitch))
-                    LOG.info(f"Set internal pitch to: {pitch}")
-                except Exception as e:
-                    LOG.error(f"Error setting internal pitch: {e}")
-            
-            # Internal diameter fields
-            if hasattr(self, 'x_start_diam_thread_int'):
-                try:
-                    major_diam = internal_data.get('major_diameter', 0)
-                    if hasattr(self.x_start_diam_thread_int, 'setValue'):
-                        self.x_start_diam_thread_int.setValue(major_diam)
-                    elif hasattr(self.x_start_diam_thread_int, 'setText'):
-                        self.x_start_diam_thread_int.setText(str(major_diam))
-                    LOG.info(f"Set internal start diameter to: {major_diam}")
-                except Exception as e:
-                    LOG.error(f"Error setting internal start diameter: {e}")
-            
-            if hasattr(self, 'x_end_diam_thread_int'):
-                try:
-                    minor_diam = internal_data.get('minor_diameter', 0)
-                    if hasattr(self.x_end_diam_thread_int, 'setValue'):
-                        self.x_end_diam_thread_int.setValue(minor_diam)
-                    elif hasattr(self.x_end_diam_thread_int, 'setText'):
-                        self.x_end_diam_thread_int.setText(str(minor_diam))
-                    LOG.info(f"Set internal end diameter to: {minor_diam}")
-                except Exception as e:
-                    LOG.error(f"Error setting internal end diameter: {e}")
-            
-            # Populate lead length for internal threads (both left and right hand)
-            for widget_name in ['lead_length_thread_lh_int', 'lead_length_thread_rh_int']:
-                if hasattr(self, widget_name):
+                        LOG.error(f"Error setting external thread size widget: {e}")
+                
+                if hasattr(self, 'pitch_thread_ext'):
                     try:
-                        widget = getattr(self, widget_name)
-                        if hasattr(widget, 'setValue'):
-                            widget.setValue(lead_length)
-                        elif hasattr(widget, 'setText'):
-                            widget.setText(str(lead_length))
-                        LOG.info(f"Set {widget_name} to: {lead_length}")
+                        if hasattr(self.pitch_thread_ext, 'setValue'):
+                            self.pitch_thread_ext.setValue(pitch)
+                        elif hasattr(self.pitch_thread_ext, 'setText'):
+                            self.pitch_thread_ext.setText(str(pitch))
+                        LOG.info(f"Set external pitch to: {pitch}")
                     except Exception as e:
-                        LOG.error(f"Error setting {widget_name}: {e}")
+                        LOG.error(f"Error setting external pitch: {e}")
+                
+                # Set TPI for external threads
+                if hasattr(self, 'tpi_thread_ext'):
+                    try:
+                        # Calculate TPI from pitch (TPI = 1/pitch for inch threads)
+                        if pitch > 0:
+                            tpi = 1.0 / pitch
+                        else:
+                            tpi = 0
+                        
+                        LOG.info(f"Calculated TPI: {tpi} from pitch: {pitch}")
+                        
+                        if hasattr(self.tpi_thread_ext, 'setValue'):
+                            self.tpi_thread_ext.setValue(tpi)
+                            LOG.info(f"Set external TPI widget (setValue) to: {tpi}")
+                        elif hasattr(self.tpi_thread_ext, 'setText'):
+                            self.tpi_thread_ext.setText(str(round(tpi, 1)))
+                            LOG.info(f"Set external TPI widget (setText) to: {round(tpi, 1)}")
+                        else:
+                            LOG.warning(f"tpi_thread_ext widget has no setValue or setText method")
+                            
+                    except Exception as e:
+                        LOG.error(f"Error setting external TPI: {e}")
+                else:
+                    LOG.warning("tpi_thread_ext widget not found")
+                
+                # External diameter fields
+                if hasattr(self, 'x_start_diam_thread_ext'):
+                    try:
+                        major_diam = external_data.get('major_diameter', 0)
+                        if hasattr(self.x_start_diam_thread_ext, 'setValue'):
+                            self.x_start_diam_thread_ext.setValue(major_diam)
+                        elif hasattr(self.x_start_diam_thread_ext, 'setText'):
+                            self.x_start_diam_thread_ext.setText(str(major_diam))
+                        LOG.info(f"Set external start diameter to: {major_diam}")
+                    except Exception as e:
+                        LOG.error(f"Error setting external start diameter: {e}")
+                
+                if hasattr(self, 'x_end_diam_thread_ext'):
+                    try:
+                        minor_diam = external_data.get('minor_diameter', 0)
+                        if hasattr(self.x_end_diam_thread_ext, 'setValue'):
+                            self.x_end_diam_thread_ext.setValue(minor_diam)
+                        elif hasattr(self.x_end_diam_thread_ext, 'setText'):
+                            self.x_end_diam_thread_ext.setText(str(minor_diam))
+                        LOG.info(f"Set external end diameter to: {minor_diam}")
+                    except Exception as e:
+                        LOG.error(f"Error setting external end diameter: {e}")
+                
+                # Populate lead length for external threads (both left and right hand)
+                for widget_name in ['lead_length_thread_lh_ext', 'lead_length_thread_rh_ext']:
+                    if hasattr(self, widget_name):
+                        try:
+                            widget = getattr(self, widget_name)
+                            if hasattr(widget, 'setValue'):
+                                widget.setValue(lead_length)
+                            elif hasattr(widget, 'setText'):
+                                widget.setText(str(lead_length))
+                            LOG.info(f"Set {widget_name} to: {lead_length}")
+                        except Exception as e:
+                            LOG.error(f"Error setting {widget_name}: {e}")
+                
+                # Handle NPT taper for external if applicable
+                if thread_data.get('npt_taper', False):
+                    LOG.info("Thread has NPT taper - setting npt-taper flag")
+                    try:
+                        setSetting("thread-ext.npt-taper", True)
+                        LOG.info("Set thread-ext.npt-taper to True")
+                    except Exception as e:
+                        LOG.error(f"Error setting thread-ext.npt-taper: {e}")
+                else:
+                    try:
+                        setSetting("thread-ext.npt-taper", False)
+                    except Exception as e:
+                        LOG.error(f"Error setting thread-ext.npt-taper to False: {e}")
             
-            # Handle NPT taper if applicable
-            if thread_data.get('npt_taper', False):
-                LOG.info("Thread has NPT taper - calculating taper values")
-                self.calculate_and_set_npt_taper(True)  # External
-                self.calculate_and_set_npt_taper(False) # Internal
+            # Populate internal thread fields only if operation is 'internal' or 'all'
+            if operation in ['internal', 'all']:
+                # Set internal thread size (just like other field settings)
+                try:
+                    setSetting("thread-int.size", thread_name)
+                    LOG.info(f"Set internal thread size to: {thread_name}")
+                except Exception as e:
+                    LOG.error(f"Error setting internal thread size: {e}")
+                
+                if hasattr(self, 'pitch_thread_int'):
+                    try:
+                        if hasattr(self.pitch_thread_int, 'setValue'):
+                            self.pitch_thread_int.setValue(pitch)
+                        elif hasattr(self.pitch_thread_int, 'setText'):
+                            self.pitch_thread_int.setText(str(pitch))
+                        LOG.info(f"Set internal pitch to: {pitch}")
+                    except Exception as e:
+                        LOG.error(f"Error setting internal pitch: {e}")
+                
+                # Set TPI for internal threads
+                if hasattr(self, 'tpi_thread_int'):
+                    try:
+                        # Calculate TPI from pitch (TPI = 1/pitch for inch threads)
+                        if pitch > 0:
+                            tpi = 1.0 / pitch
+                        else:
+                            tpi = 0
+                        
+                        LOG.info(f"Calculated TPI: {tpi} from pitch: {pitch}")
+                        
+                        if hasattr(self.tpi_thread_int, 'setValue'):
+                            self.tpi_thread_int.setValue(tpi)
+                            LOG.info(f"Set internal TPI widget (setValue) to: {tpi}")
+                        elif hasattr(self.tpi_thread_int, 'setText'):
+                            self.tpi_thread_int.setText(str(round(tpi, 1)))
+                            LOG.info(f"Set internal TPI widget (setText) to: {round(tpi, 1)}")
+                        else:
+                            LOG.warning(f"tpi_thread_int widget has no setValue or setText method")
+                            
+                    except Exception as e:
+                        LOG.error(f"Error setting internal TPI: {e}")
+                else:
+                    LOG.warning("tpi_thread_int widget not found")
+                
+                # Internal diameter fields
+                if hasattr(self, 'x_start_diam_thread_int'):
+                    try:
+                        major_diam = internal_data.get('major_diameter', 0)
+                        if hasattr(self.x_start_diam_thread_int, 'setValue'):
+                            self.x_start_diam_thread_int.setValue(major_diam)
+                        elif hasattr(self.x_start_diam_thread_int, 'setText'):
+                            self.x_start_diam_thread_int.setText(str(major_diam))
+                        LOG.info(f"Set internal start diameter to: {major_diam}")
+                    except Exception as e:
+                        LOG.error(f"Error setting internal start diameter: {e}")
+                
+                if hasattr(self, 'x_end_diam_thread_int'):
+                    try:
+                        minor_diam = internal_data.get('minor_diameter', 0)
+                        if hasattr(self.x_end_diam_thread_int, 'setValue'):
+                            self.x_end_diam_thread_int.setValue(minor_diam)
+                        elif hasattr(self.x_end_diam_thread_int, 'setText'):
+                            self.x_end_diam_thread_int.setText(str(minor_diam))
+                        LOG.info(f"Set internal end diameter to: {minor_diam}")
+                    except Exception as e:
+                        LOG.error(f"Error setting internal end diameter: {e}")
+                
+                # Populate lead length for internal threads (both left and right hand)
+                for widget_name in ['lead_length_thread_lh_int', 'lead_length_thread_rh_int']:
+                    if hasattr(self, widget_name):
+                        try:
+                            widget = getattr(self, widget_name)
+                            if hasattr(widget, 'setValue'):
+                                widget.setValue(lead_length)
+                            elif hasattr(widget, 'setText'):
+                                widget.setText(str(lead_length))
+                            LOG.info(f"Set {widget_name} to: {lead_length}")
+                        except Exception as e:
+                            LOG.error(f"Error setting {widget_name}: {e}")
+                
+                # Handle NPT taper for internal if applicable
+                if thread_data.get('npt_taper', False):
+                    LOG.info("Thread has NPT taper - setting internal npt-taper flag")
+                    try:
+                        setSetting("thread-int.npt-taper", True)
+                        LOG.info("Set thread-int.npt-taper to True")
+                    except Exception as e:
+                        LOG.error(f"Error setting thread-int.npt-taper: {e}")
+                else:
+                    try:
+                        setSetting("thread-int.npt-taper", False)
+                    except Exception as e:
+                        LOG.error(f"Error setting thread-int.npt-taper to False: {e}")
+            
+            # Populate tap fields only if operation is 'tap' or 'all'
+            if operation in ['tap', 'all']:
+                # Set tap size (just like other field settings)
+                try:
+                    setSetting("tap.size", thread_name)
+                    LOG.info(f"Set tap size to: {thread_name}")
+                except Exception as e:
+                    LOG.error(f"Error setting tap size: {e}")
+                
+                # Also update the tap_size_tap widget directly if it exists
+                if hasattr(self, 'tap_size_tap'):
+                    try:
+                        if hasattr(self.tap_size_tap, 'setText'):
+                            self.tap_size_tap.setText(thread_name)
+                        elif hasattr(self.tap_size_tap, 'setValue'):
+                            self.tap_size_tap.setValue(thread_name)
+                        LOG.info(f"Set tap size widget to: {thread_name}")
+                    except Exception as e:
+                        LOG.error(f"Error setting tap size widget: {e}")
+                
+                # Set pitch for tap
+                if hasattr(self, 'pitch_thread_tap'):
+                    try:
+                        if hasattr(self.pitch_thread_tap, 'setValue'):
+                            self.pitch_thread_tap.setValue(pitch)
+                        elif hasattr(self.pitch_thread_tap, 'setText'):
+                            self.pitch_thread_tap.setText(str(pitch))
+                        LOG.info(f"Set tap pitch to: {pitch}")
+                    except Exception as e:
+                        LOG.error(f"Error setting tap pitch: {e}")
+                
+                # Set TPI for tap
+                if hasattr(self, 'tpi_thread_tap'):
+                    try:
+                        # Calculate TPI from pitch (TPI = 1/pitch for inch threads)
+                        if pitch > 0:
+                            tpi = 1.0 / pitch
+                        else:
+                            tpi = 0
+                        
+                        LOG.info(f"Calculated TPI: {tpi} from pitch: {pitch}")
+                        
+                        if hasattr(self.tpi_thread_tap, 'setValue'):
+                            self.tpi_thread_tap.setValue(tpi)
+                            LOG.info(f"Set tap TPI widget (setValue) to: {tpi}")
+                        elif hasattr(self.tpi_thread_tap, 'setText'):
+                            self.tpi_thread_tap.setText(str(round(tpi, 1)))
+                            LOG.info(f"Set tap TPI widget (setText) to: {round(tpi, 1)}")
+                        else:
+                            LOG.warning(f"tpi_thread_tap widget has no setValue or setText method")
+                            
+                    except Exception as e:
+                        LOG.error(f"Error setting tap TPI: {e}")
+                else:
+                    LOG.warning("tpi_thread_tap widget not found")
+                
+                # Set hole diameter for tap (using internal major diameter)
+                if hasattr(self, 'hole_diam_tap'):
+                    try:
+                        hole_diam = internal_data.get('major_diameter', 0)
+                        if hasattr(self.hole_diam_tap, 'setValue'):
+                            self.hole_diam_tap.setValue(hole_diam)
+                        elif hasattr(self.hole_diam_tap, 'setText'):
+                            self.hole_diam_tap.setText(str(hole_diam))
+                        LOG.info(f"Set tap hole diameter to: {hole_diam}")
+                    except Exception as e:
+                        LOG.error(f"Error setting tap hole diameter: {e}")
+                
+                # Set drill size for tap
+                if hasattr(self, 'drill_tap'):
+                    try:
+                        drill_sizes = thread_data.get('drill_sizes', {})
+                        tap_drill = drill_sizes.get('tap_drill', 'NONE')
+                        
+                        # Format the decimal value to 4 decimal places if it contains parentheses
+                        if '(' in tap_drill and ')' in tap_drill:
+                            # Extract the parts: "#7 (0.201000000)" -> "#7" and "0.201000000"
+                            parts = tap_drill.split('(')
+                            if len(parts) == 2:
+                                drill_name = parts[0].strip()
+                                decimal_part = parts[1].replace(')', '').strip()
+                                try:
+                                    # Convert to float and format to 4 decimal places
+                                    decimal_value = float(decimal_part)
+                                    formatted_drill = f"{drill_name} ({decimal_value:.4f})"
+                                    tap_drill = formatted_drill
+                                except ValueError:
+                                    # If conversion fails, use original value
+                                    pass
+                        
+                        if hasattr(self.drill_tap, 'setText'):
+                            self.drill_tap.setText(tap_drill)
+                        elif hasattr(self.drill_tap, 'setValue'):
+                            self.drill_tap.setValue(tap_drill)
+                        LOG.info(f"Set tap drill size to: {tap_drill}")
+                    except Exception as e:
+                        LOG.error(f"Error setting tap drill size: {e}")
+                
+                LOG.info(f"Populated all tap fields for: {thread_name}")
             
         except Exception as e:
             LOG.error(f"Error populating thread fields: {e}")
@@ -1248,6 +1491,37 @@ class ProbeBasicLathe(VCPMainWindow):
                     else:
                         self.custom_threads_int_combobox.addItem(thread_name)
                 LOG.info(f"Populated Custom internal combo with {len(custom_sorted)} threads")
+            
+            # Populate tap combo boxes (same data, different widgets)
+            if hasattr(self, 'sae_tap_combobox'):
+                self.sae_tap_combobox.clear()
+                self.sae_tap_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in sae_sorted:
+                    if thread_data is None:  # Category separator
+                        self.sae_tap_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.sae_tap_combobox.model()
+                        item = model.item(self.sae_tap_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.sae_tap_combobox.addItem(thread_name)
+                LOG.info(f"Populated SAE tap combo with {len(sae_sorted)} threads")
+                        
+            if hasattr(self, 'metric_tap_combobox'):
+                self.metric_tap_combobox.clear()
+                self.metric_tap_combobox.addItem("")  # Empty default option
+                for thread_name, thread_data in metric_sorted:
+                    if thread_data is None:  # Category separator
+                        self.metric_tap_combobox.addItem(thread_name)
+                        # Disable the separator item
+                        model = self.metric_tap_combobox.model()
+                        item = model.item(self.metric_tap_combobox.count() - 1)
+                        if item:
+                            item.setEnabled(False)
+                    else:
+                        self.metric_tap_combobox.addItem(thread_name)
+                LOG.info(f"Populated Metric tap combo with {len(metric_sorted)} threads")
                         
         except Exception as e:
             LOG.error(f"Error populating thread combos: {e}")

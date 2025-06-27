@@ -1589,8 +1589,22 @@ settings:
     min_value: 0
     max_value: 10
 
-  thread-int.taper:
-    description: sets spring pass count for thread operations
+  thread-int.tpi:
+    description: sets threads per inch for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  thread-int.taper-rh:
+    description: sets taper height for rh internal thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10
+    max_value: 10
+
+  thread-int.taper-lh:
+    description: sets taper height for lh internal thread operations
     default_value: 0.0
     persistent: true
     min_value: -10
@@ -1665,6 +1679,30 @@ settings:
     persistent: true
     min_value: 0
     max_value: 100
+
+  thread-int.npt-taper:
+    description: NPT taper flag for internal threading
+    default_value: false
+    value_type: bool
+    persistent: true
+
+  thread-int.size:
+    description: thread int size name for thread operations
+    default_value: ""
+    value_type: str
+    persistent: true
+
+  thread-ext.size:
+    description: thread ext size name for thread operations
+    default_value: ""
+    value_type: str
+    persistent: true
+
+  thread-ext.npt-taper:
+    description: NPT taper flag for external threading
+    default_value: false
+    value_type: bool
+    persistent: true
 
   thread-ext.sae-selector:
     description: SAE thread selector
@@ -1761,8 +1799,22 @@ settings:
     min_value: 0
     max_value: 10
 
-  thread-ext.taper:
-    description: sets spring pass count for thread operations
+  thread-ext.tpi:
+    description: sets threads per inch for thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  thread-ext.taper-rh:
+    description: sets taper angle for right-hand thread operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10
+    max_value: 10
+
+  thread-ext.taper-lh:
+    description: sets taper angle for left-hand thread operations
     default_value: 0.0
     persistent: true
     min_value: -10
@@ -1837,6 +1889,133 @@ settings:
     persistent: true
     min_value: 0
     max_value: 100
+
+  tap.sae-selector:
+    description: SAE thread selector tap page
+    default_value: true
+    persistent: true
+
+  tap.metric-selector:
+    description: Metric thread selector tap page
+    default_value: false
+    persistent: true
+
+  tap.wcs:
+    description: work coordinate system for tap operations
+    default_value: 54
+    persistent: true
+    min_value: 54
+    max_value: 59
+
+  tap.units:
+    description: program units for tap operations
+    default_value: 20
+    persistent: true
+    min_value: 20
+    max_value: 21
+
+  tap.diam-rad:
+    description: diameter or radius mode for tap operations
+    default_value: 7
+    persistent: true
+    min_value: 7
+    max_value: 8
+
+  tap.tool:
+    description: sets tool number for tap operations
+    default_value: 0
+    persistent: true
+    min_value: 0
+    max_value: 99999
+
+  tap.coolant:
+    description: coolant for tap operations
+    default_value: 9
+    persistent: true
+    min_value: 7
+    max_value: 9
+
+  tap.rpm:
+    description: sets spindle rpm for tap operations
+    default_value: 500
+    persistent: true
+    min_value: 0
+    max_value: 10000
+
+  tap.rotation:
+    description: spindle rotation direction for tap operations
+    default_value: 3
+    persistent: true
+    min_value: 3
+    max_value: 4
+
+  tap.peck-depth:
+    description: sets peck depth for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10
+
+  tap.retract-dist:
+    description: sets peck retract distance for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10
+
+  tap.pitch:
+    description: sets thread pitch for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 10
+
+  tap.thread-tpi:
+    description: sets thread pitch for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 100
+
+  tap.tool-clearance:
+    description: sets tool clearance for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  tap.z-start:
+    description: sets z start position for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tap.z-end:
+    description: sets z end position for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  tap.hole-diam:
+    description: hole diameter for tap operations
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1000
+
+  tap.drill:
+    description: drill size name for tap operations
+    default_value: ""
+    value_type: str
+    persistent: true
+
+  tap.size:
+    description: tap size name for tap operations
+    default_value: ""
+    value_type: str
+    persistent: true
 
   # Parting Conversational Parameters
   parting.wcs:
@@ -2006,4 +2185,5 @@ dialogs:
     provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
     kwargs:
       ui_file: {{ file.dir }}/toolchange_dialog_pb.ui
+
 
