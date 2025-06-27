@@ -1343,17 +1343,16 @@ class ProbeBasicLathe(VCPMainWindow):
                 else:
                     LOG.warning("tpi_thread_tap widget not found")
                 
-                # Set hole diameter for tap (using internal major diameter)
+                # Set hole diameter for tap (using drill_diam from drill_sizes if available)
                 if hasattr(self, 'hole_diam_tap'):
+                    drill_diam = None
+                    drill_sizes = thread_data.get('drill_sizes', {})
+                    # Try to get drill_diam as float, fallback to 0 if not found or not convertible
                     try:
-                        hole_diam = internal_data.get('major_diameter', 0)
-                        if hasattr(self.hole_diam_tap, 'setValue'):
-                            self.hole_diam_tap.setValue(hole_diam)
-                        elif hasattr(self.hole_diam_tap, 'setText'):
-                            self.hole_diam_tap.setText(str(hole_diam))
-                        LOG.info(f"Set tap hole diameter to: {hole_diam}")
-                    except Exception as e:
-                        LOG.error(f"Error setting tap hole diameter: {e}")
+                        drill_diam = float(drill_sizes.get('drill_diam', 0))
+                    except Exception:
+                        drill_diam = 0
+                    self.hole_diam_tap.setValue(drill_diam)
                 
                 # Set drill size for tap
                 if hasattr(self, 'drill_tap'):
