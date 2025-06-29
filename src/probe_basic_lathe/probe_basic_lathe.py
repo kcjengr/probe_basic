@@ -4,6 +4,7 @@ import os
 import sys
 import importlib.util
 import json
+import logging
 
 import linuxcnc
 
@@ -21,6 +22,9 @@ from qtpyvcp.utilities.settings import getSetting, setSetting  # <-- ADD THIS LI
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic_lathe')
 from . import probe_basic_lathe_rc
+
+from .conversational_facing import collect_facing_parameters_from_ui, generate_facing_gcode
+from .conversational_od_turning import collect_od_turning_parameters_from_ui, generate_od_turning_gcode
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -133,6 +137,11 @@ class ProbeBasicLathe(VCPMainWindow):
         
         # Connect thread store buttons
         self.connect_thread_store_buttons()
+
+        self.facing_gcode_button.clicked.connect(self.on_facing_gcode_button_clicked)
+        # Add this line to connect the OD turning button:
+        if hasattr(self, "turn_od_gcode_button"):
+            self.turn_od_gcode_button.clicked.connect(self.on_turn_od_gcode_button_clicked)
 
     def load_user_buttons(self):
         self.user_button_modules = {}
@@ -1709,3 +1718,121 @@ class ProbeBasicLathe(VCPMainWindow):
     
         except Exception as e:
             LOG.error(f"Error handling thread selection change: {e}")
+
+    @Slot(bool)
+    def on_facing_gcode_button_clicked(self, checked=False):
+        """Slot for facing_gcode_button: generates and loads facing G-code."""
+        from .conversational_facing import collect_facing_parameters_from_ui, generate_facing_gcode
+        import tempfile
+        import os
+        LOG.info("facing_gcode_button clicked: slot triggered.")
+        try:
+            params = collect_facing_parameters_from_ui(self)
+            LOG.info(f"Collected facing parameters: {params}")
+            gcode = generate_facing_gcode(params)
+            LOG.info(f"Generated facing G-code: {gcode}")
+
+            # Write G-code to a temp file
+            tmp_dir = tempfile.gettempdir()
+            gcode_path = os.path.join(tmp_dir, "probe_basic_facing.ngc")
+            with open(gcode_path, "w") as f:
+                f.write(gcode)
+           
+            LOG.info(f"Wrote facing G-code to: {gcode_path}")
+
+            # Load the file into LinuxCNC via QtPyVCP actions
+            from qtpyvcp import actions
+            actions.program_actions.load(gcode_path)
+            LOG.info(f"Loaded facing G-code file into LinuxCNC: {gcode_path}")
+
+            # Optionally, show the G-code in the text edit for reference
+            if hasattr(self, "gcodetextedit_2"):
+                self.gcodetextedit_2.setPlainText(gcode)
+                LOG.info("Loaded generated G-code into gcodetextedit_2.")
+            else:
+                LOG.warning("gcodetextedit_2 not found.")
+        except Exception as e:
+            LOG.error(f"Error in on_facing_gcode_button_clicked: {e}")
+            import traceback
+            LOG.error(traceback.format_exc())
+
+    @Slot(bool)
+    def on_turn_od_gcode_button_clicked(self, checked=False):
+        """Slot for turn_od_gcode_button: generates and loads OD turning G-code."""
+        import tempfile
+        import os
+        LOG.info("turn_od_gcode_button clicked: slot triggered.")
+        try:
+            params = collect_od_turning_parameters_from_ui(self)
+            LOG.info(f"Collected OD turning parameters: {params}")
+            gcode = generate_od_turning_gcode(params)
+            LOG.info(f"Generated OD turning G-code: {gcode}")
+
+            # Write G-code to a temp file
+            tmp_dir = tempfile.gettempdir()
+            gcode_path = os.path.join(tmp_dir, "probe_basic_turn_od.ngc")
+            with open(gcode_path, "w") as f:
+                f.write(gcode)
+            LOG.info(f"Wrote OD turning G-code to: {gcode_path}")
+
+            # Load the file into LinuxCNC via QtPyVCP actions
+            from qtpyvcp import actions
+            actions.program_actions.load(gcode_path)
+            LOG.info(f"Loaded OD turning G-code file into LinuxCNC: {gcode_path}")
+
+            # Optionally, show the G-code in the text edit for reference
+            if hasattr(self, "gcodetextedit_2"):
+                self.gcodetextedit_2.setPlainText(gcode)
+                LOG.info("Loaded generated OD turning G-code into gcodetextedit_2.")
+            else:
+                LOG.warning("gcodetextedit_2 not found.")
+        except Exception as e:
+            LOG.error(f"Error in on_turn_od_gcode_button_clicked: {e}")
+            import traceback
+            LOG.error(traceback.format_exc())
+
+def collect_facing_parameters_from_ui(ui):
+    """
+    Collect facing parameters from the Probe Basic Lathe UI instance.
+    Returns a dict of parameter values using widget names from the CSV mapping.
+    """
+    import logging
+    def get_val(obj, default=0):
+        if hasattr(ui, obj):
+            widget = getattr(ui, obj)
+            if hasattr(widget, 'value'):
+                return widget.value()
+            elif hasattr(widget, 'text'):
+                try:
+                    return float(widget.text())
+                except Exception:
+                    logging.warning(f"Could not convert text to float for widget '{obj}': {widget.text()}")
+                    return widget.text()
+        else:
+            logging.warning(f"UI does not have attribute '{obj}'")
+        return default
+
+    params = {
+        'wcs': get_val('wcs_facing', 54),
+        'tool': get_val('tool_facing', 0),
+        'units': get_val('units_facing', 20),
+        'diam_rad': get_val('diam_rad_facing', 7),
+        'coolant': get_val('coolant_facing', 9),
+        'feed_mode': get_val('feed_mode_facing', 95),
+        'rough_feed': get_val('rough_feed_facing', 0.1),
+        'finish_feed': get_val('finish_feed_facing', 0.05),
+        'rpm_mode': get_val('rpm_mode_facing', 96),
+        'rpm': get_val('rpm_facing', 500),
+        'max_rpm': get_val('max_rpm_facing', 1000),
+        'rough_ssp': get_val('rough_ssp_facing', 0),
+        'finish_ssp': get_val('finish_ssp_facing', 0),
+        'rotation': get_val('rotation_facing', 3),
+        'clearance': get_val('clearance_facing', 2),
+        'x_start': get_val('x_start_diam_facing', 50),
+        'x_end': get_val('x_end_diam_facing', 0),
+        'z_start': get_val('z_start_facing', 2),
+        'z_end': get_val('z_end_facing', 0),
+        'rough_step': get_val('rough_step_facing', 1),
+        'finish_step': get_val('finish_step_facing', 0.2),
+    }
+    return params
