@@ -496,6 +496,11 @@ G43 (Apply tool length/geometry offset)
                 gcode += f"G1 Z{z_pass_end:.4f}\n"
                 gcode += f"G1 X{x_output(x_end_pass):.4f} F{feed:.4f}\n"
 
+        # CRITICAL: Final cut move to x_start + clearance for complete face cutting
+        x_final_cut = x_start + abs(xz_clearance_val)
+        gcode += f"(Final cut move to X start + clearance for complete face)\n"
+        gcode += f"G1 X{x_output(x_final_cut):.4f} F{feed:.4f}\n"
+
         # Smart retraction to safe position after each pass
         gcode += f"G0 Z{z_safe:.4f}\n"
         
