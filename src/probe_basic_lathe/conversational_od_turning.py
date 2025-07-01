@@ -335,6 +335,85 @@ G43 (Apply tool length/geometry offset)
     gcode += f"(Z Safe Limit: {z_safe_limit:.4f})\n"
     gcode += f"(Intelligent boundary checking: Moves crossing X limit will be truncated)\n"
 
+    # PRE-CALCULATE LAST ROUGHING PASS GEOMETRY for non-tapered conditions with corner radius
+    last_roughing_pass_geometry = None
+    roughing_transition_points = {}
+    
+    if corner_radius > 0 and taper_angle_deg == 0 and has_separate_finish_pass:
+        # Calculate the last roughing pass geometry (finish pass offset by finish_step)
+        last_rough_x = x_end_final + finish_step
+        last_rough_z = z_end + finish_step  # CORRECTED: Last roughing Z should be offset from finish
+        
+        # Last roughing pass arc geometry (90-degree corner offset from finish)
+        last_rough_arc_center_x = last_rough_x + corner_radius
+        last_rough_arc_center_z = last_rough_z + corner_radius
+        last_rough_arc_start_z = last_rough_z + corner_radius
+        last_rough_arc_end_x = last_rough_x + corner_radius
+        last_rough_arc_end_z = last_rough_z  # CORRECTED: Arc ends at last roughing Z
+        
+        last_roughing_pass_geometry = {
+            'x_pos': last_rough_x,
+            'z_pos': last_rough_z,
+            'arc_center_x': last_rough_arc_center_x,
+            'arc_center_z': last_rough_arc_center_z,
+            'arc_start_z': last_rough_arc_start_z,
+            'arc_end_x': last_rough_arc_end_x,
+            'arc_end_z': last_rough_arc_end_z,
+            'radius': corner_radius
+        }
+        
+        # Calculate transition points for each roughing pass using roughing_step intervals
+        roughing_x_positions = x_positions[:-1] if has_separate_finish_pass else x_positions
+        
+        gcode += f"(===== LAST ROUGHING PASS GEOMETRY CALCULATION =====)\n"
+        gcode += f"(Last roughing X: {last_rough_x:.4f}, Z: {last_rough_z:.4f})\n"
+        gcode += f"(Arc center: X={last_rough_arc_center_x:.4f}, Z={last_rough_arc_center_z:.4f})\n"
+        gcode += f"(Arc radius: {corner_radius:.4f})\n"
+        
+        for i, rough_x in enumerate(roughing_x_positions):
+            # Determine if this roughing pass needs a transition point
+            # Only passes SMALLER than arc center X get arcs (use >= for at/beyond)
+            if rough_x < last_rough_arc_center_x:
+                # This pass is inside the arc center - needs transition
+                # Calculate where this X intersects the last roughing arc
+                dx_from_center = last_rough_arc_center_x - rough_x
+                
+                if dx_from_center <= corner_radius:
+                    # Calculate Z position on arc at this X
+                    dz_from_center = math.sqrt(corner_radius**2 - dx_from_center**2)
+                    transition_z = last_rough_arc_center_z - dz_from_center
+                    
+                    # Cascading arc end positions: end at previous pass's X position
+                    if i == 0:
+                        # First arc pass ends at reference arc center
+                        arc_end_x_for_this_pass = last_rough_arc_center_x
+                        arc_end_z_for_this_pass = last_rough_arc_center_z - corner_radius
+                    else:
+                        # Subsequent passes end at previous pass's X position
+                        arc_end_x_for_this_pass = roughing_x_positions[i - 1]
+                        # Calculate correct Z position to maintain radius from arc center
+                        dx_to_end = last_rough_arc_center_x - arc_end_x_for_this_pass
+                        if dx_to_end <= corner_radius:
+                            dz_to_end = math.sqrt(corner_radius**2 - dx_to_end**2)
+                            arc_end_z_for_this_pass = last_rough_arc_center_z - dz_to_end
+                        else:
+                            # Fallback to bottom of arc if geometry invalid
+                            arc_end_z_for_this_pass = last_rough_arc_center_z - corner_radius
+                    
+                    roughing_transition_points[rough_x] = {
+                        'transition_z': transition_z,
+                        'arc_center_x': last_rough_arc_center_x,
+                        'arc_center_z': last_rough_arc_center_z,
+                        'arc_end_x': arc_end_x_for_this_pass,
+                        'arc_end_z': arc_end_z_for_this_pass,
+                        'radius': corner_radius
+                    }
+                    gcode += f"(Roughing X={rough_x:.4f} transition at Z={transition_z:.4f}, arc to X={arc_end_x_for_this_pass:.4f})\n"
+                else:
+                    gcode += f"(Roughing X={rough_x:.4f} beyond arc radius - no transition)\n"
+            else:
+                gcode += f"(Roughing X={rough_x:.4f} at/beyond arc center - straight cut)\n"
+
     # --- OD turning passes ---
     for i, x_pos in enumerate(x_positions):
         is_last = (i == len(x_positions) - 1)
@@ -399,23 +478,64 @@ G43 (Apply tool length/geometry offset)
         # Arc calculation for corner radius
         if corner_radius > 0:
             if taper_angle_deg == 0:
-                # Simple 90-degree corner
-                arc_start_z = z_pass_end + abs(corner_radius)
-                arc_end_x = x_pos + abs(corner_radius)
-                arc_end_z = z_pass_end
-                
-                if arc_end_x <= x_safe_limit:
-                    arc_center_x = arc_end_x
-                    arc_center_z = z_pass_end + abs(corner_radius)
-                    i_offset = arc_center_x - x_pos
-                    k_offset = arc_center_z - arc_start_z
+                # Check if this roughing pass has a pre-calculated transition point
+                if x_pos in roughing_transition_points and not is_finish_pass:
+                    # Use sophisticated transition strategy
+                    transition_data = roughing_transition_points[x_pos]
+                    gcode += f"(Using pre-calculated transition strategy)\n"
                     
-                    if not math.isclose(z_start, arc_start_z, abs_tol=1e-6):
-                        gcode += f"G1 Z{arc_start_z:.4f}\n"
+                    # Cut straight down to transition point
+                    transition_z = transition_data['transition_z']
+                    if not math.isclose(z_start, transition_z, abs_tol=1e-6):
+                        gcode += f"G1 Z{transition_z:.4f}\n"
+                    
+                    # Follow the last roughing arc from current position to arc end
+                    arc_center_x = transition_data['arc_center_x']
+                    arc_center_z = transition_data['arc_center_z']
+                    arc_end_x = transition_data['arc_end_x']
+                    arc_end_z = transition_data['arc_end_z']
+                    
+                    # Calculate I,K offsets for arc move
+                    i_offset = arc_center_x - x_pos
+                    k_offset = arc_center_z - transition_z
+                    
+                    gcode += f"(Following last roughing arc: center X={arc_center_x:.4f}, Z={arc_center_z:.4f})\n"
                     gcode += f"G2 X{x_output(arc_end_x):.4f} Z{arc_end_z:.4f} I{i_offset:.4f} K{k_offset:.4f}\n"
                 else:
-                    gcode += f"(Arc exceeds boundaries - using straight cut)\n"
-                    gcode, _ = add_safe_interpolated_move(gcode, x_pos, z_start, x_end_pass, z_pass_end, feed)
+                    # Calculate dynamic apex detection for this parameter set
+                    if corner_radius > 0 and has_separate_finish_pass:
+                        # Dynamically calculate the arc center for current parameters
+                        current_last_rough_x = x_end_final + finish_step
+                        current_arc_center_x = current_last_rough_x + corner_radius
+                        
+                        # Check if this pass is at/beyond the dynamically calculated arc center
+                        if x_pos >= current_arc_center_x:
+                            # This pass is at/beyond arc center - use straight cut
+                            gcode += f"(Pass at/beyond dynamic arc center X={current_arc_center_x:.4f} - using straight cut)\n"
+                            gcode += f"G1 Z{z_pass_end:.4f}\n"
+                            gcode += f"G1 X{x_output(x_end_pass):.4f} F{feed:.4f}\n"
+                        else:
+                            # Use traditional 90-degree corner logic
+                            arc_start_z = z_pass_end + abs(corner_radius)
+                            arc_end_x = x_pos + abs(corner_radius)
+                            arc_end_z = z_pass_end
+                            
+                            if arc_end_x <= x_safe_limit:
+                                arc_center_x = arc_end_x
+                                arc_center_z = z_pass_end + abs(corner_radius)
+                                i_offset = arc_center_x - x_pos
+                                k_offset = arc_center_z - arc_start_z
+                                
+                                if not math.isclose(z_start, arc_start_z, abs_tol=1e-6):
+                                    gcode += f"G1 Z{arc_start_z:.4f}\n"
+                                gcode += f"G2 X{x_output(arc_end_x):.4f} Z{arc_end_z:.4f} I{i_offset:.4f} K{k_offset:.4f}\n"
+                            else:
+                                gcode += f"(Arc exceeds boundaries - using straight cut)\n"
+                                gcode, _ = add_safe_interpolated_move(gcode, x_pos, z_start, x_end_pass, z_pass_end, feed)
+                    else:
+                        # No corner radius - use straight cut
+                        gcode += f"G1 Z{z_pass_end:.4f}\n"
+                        gcode += f"G1 X{x_output(x_end_pass):.4f} F{feed:.4f}\n"
             else:
                 # CORRECTED TAPER ARC CALCULATION
                 if angle_deg > 0:
@@ -551,9 +671,18 @@ G43 (Apply tool length/geometry offset)
                 gcode += f"G1 Z{z_pass_end:.4f}\n"
                 gcode += f"G1 X{x_output(x_end_pass):.4f} F{feed:.4f}\n"
 
-        # Final cut move to complete face
-        x_final_cut = x_start + abs(xz_clearance_val)
-        gcode += f"(Final cut move to X start + clearance for complete face)\n"
+        # Final cut move to complete face - cascading feedout strategy
+        if is_finish_pass:
+            # Finishing pass feeds out to X start position (traditional behavior)
+            x_final_cut = x_start
+        elif i == 0:
+            # First roughing pass feeds out to X start position
+            x_final_cut = x_start
+        else:
+            # Subsequent roughing passes feed out to previous pass's X position
+            x_final_cut = x_positions[i - 1]
+        
+        gcode += f"(Final cut move to previous pass X position for cascading)\n"
         gcode += f"G1 X{x_output(x_final_cut):.4f} F{feed:.4f}\n"
         
         # Smart retraction
@@ -576,7 +705,3 @@ G43 (Apply tool length/geometry offset)
     return gcode
     
     # DELETE EVERYTHING BELOW THIS LINE - it's unreachable code!
-    # PRE-CALCULATE FINISHING PASS GEOMETRY for roughing pass constraints
-    # finish_pass_geometry = None
-    # if corner_radius > 0 and taper_angle_deg != 0 and has_separate_finish_pass:
-    #     ... (delete all this duplicate code)
