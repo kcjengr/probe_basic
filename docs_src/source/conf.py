@@ -44,10 +44,10 @@ pb_version = probe_basic.__version__.split('+')[0]
 pb_release = probe_basic.__version__
 
 
-with open("/home/buildbot/versions/qtpyvcp_dev_version.txt", "r") as v_file:
+with open("/home/bb/versions/qtpyvcp_dev_version.txt", "r") as v_file:
     qtpyvcp_dev_latest_version = v_file.readline().rstrip("\n")
     
-with open("/home/buildbot/versions/pb_dev_version.txt", "r") as v_file:
+with open("/home/bb/versions/pb_dev_version.txt", "r") as v_file:
     probe_basic_dev_latest_version = v_file.readline().rstrip("\n")
 
 
