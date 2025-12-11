@@ -34,7 +34,7 @@ qtpyvcp_version = qtpyvcp.__version__.split('+')[0]
 qtpyvcp_release = qtpyvcp.__version__
 
 # The short commit ID
-qtpyvcp_commit = qtpyvcp.__version__.split('.')[2]
+# qtpyvcp_commit = qtpyvcp.__version__.split('.')[2]  # unused
 
 
 # The short X.Y version.
