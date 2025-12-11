@@ -18,7 +18,7 @@ from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
-import probe_basic_rc
+from . import probe_basic_rc
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
