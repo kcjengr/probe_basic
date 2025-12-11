@@ -15,6 +15,8 @@
 import os
 import sys
 
+import sphinx
+
 vcp_dir = os.path.join(os.path.abspath('.'), '..', '..')
 sys.path.insert(0, os.path.abspath(vcp_dir))
 
@@ -215,4 +217,7 @@ epub_exclude_files = ['search.html']
 # -- Options for intersphinx extension ---------------------------------------
 
 # Example configuration for intersphinx: refer to the Python standard library.
-intersphinx_mapping = {'https://docs.python.org/': None}
+if sphinx.version_info[0] < 8:
+    intersphinx_mapping = {"http://docs.python.org/": None}
+else:
+    intersphinx_mapping = {'python': ('https://docs.python.org/', None)}
