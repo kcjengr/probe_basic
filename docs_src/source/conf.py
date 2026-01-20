@@ -17,7 +17,7 @@ import sys
 
 import sphinx
 
-vcp_dir = os.path.join(os.path.abspath('.'), '..', '..')
+vcp_dir = os.path.join(os.path.abspath('.'), '..', '..', 'src')
 sys.path.insert(0, os.path.abspath(vcp_dir))
 
 import qtpyvcp
@@ -45,12 +45,21 @@ pb_version = probe_basic.__version__.split('+')[0]
 # The full version, including alpha/beta/rc tags.
 pb_release = probe_basic.__version__
 
+# Try to read version files, but use defaults if they don't exist
+qtpyvcp_dev_latest_version = qtpyvcp_version
+probe_basic_dev_latest_version = pb_version
 
-with open("/home/bb/versions/qtpyvcp_dev_version.txt", "r") as v_file:
-    qtpyvcp_dev_latest_version = v_file.readline().rstrip("\n")
+try:
+    with open("/home/bb/versions/qtpyvcp_dev_version.txt", "r") as v_file:
+        qtpyvcp_dev_latest_version = v_file.readline().rstrip("\n")
+except (FileNotFoundError, IOError):
+    pass
     
-with open("/home/bb/versions/pb_dev_version.txt", "r") as v_file:
-    probe_basic_dev_latest_version = v_file.readline().rstrip("\n")
+try:
+    with open("/home/bb/versions/pb_dev_version.txt", "r") as v_file:
+        probe_basic_dev_latest_version = v_file.readline().rstrip("\n")
+except (FileNotFoundError, IOError):
+    pass
 
 
 rst_epilog = f"""
