@@ -137,56 +137,56 @@ Probing Routines
    The purple dot in each button shows the position at which your probe tip should be approximately placed before starting the probe run.
    The Z height above the workpiece should be no more than your "**MAX Z DISTANCE**" parameter.
 
-   Outside Corners
-   ~~~~~~~~~~~~~~~
+Outside Corners
+~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_01_outside_corners.png
       :align: center
 
    |
 
-   Inside Corners and Straight probes
-   ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+Inside Corners and Straight probes
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_02_inside_corners.png
       :align: center
 
    |
 
-   Boss and Pocket
-   ~~~~~~~~~~~~~~~
+Boss and Pocket
+~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_03_boss_and_pocket.png
       :align: center
 
    |
 
-   Ridge and Valley
-   ~~~~~~~~~~~~~~~~
+Ridge and Valley
+~~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_04_ridge_and_valley.png
       :align: center
 
    |
 
-   Edge Angle
-   ~~~~~~~~~~
+Edge Angle
+~~~~~~~~~~
 
    .. image:: images/mill/probe_05_edge_angle.png
       :align: center
 
    |
 
-   Rotary Axis
-   ~~~~~~~~~~~
+Rotary Axis
+~~~~~~~~~~~
 
    .. image:: images/mill/probe_06_rotary_axis.png
       :align: center
 
    |
 
-   Calibrate
-   ~~~~~~~~~
+Calibrate
+~~~~~~~~~
 
    .. image:: images/mill/probe_07_calibrate.png
       :align: center
