@@ -193,8 +193,8 @@ Calibrate
 
    |
 
-Help
-----
+Help Tab
+--------
 
    .. _probe_help:
 
@@ -205,35 +205,56 @@ Help
 
    **Included here for offline reference, though a running PB instance may have more up-to-date help.**
 
+Step Off Width
+~~~~~~~~~~~~~~
+
    .. image:: images/mill/probe_help_01_step_off_width.png
       :align: center
 
    |
+
+Extra Probing DEPTH
+~~~~~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_help_02_extra_probe_depth.png
       :align: center
 
    |
 
+Max Z Distance
+~~~~~~~~~~~~~~
+
    .. image:: images/mill/probe_help_03_max_z_distance.png
       :align: center
 
    |
+
+Max X/Y Distance
+~~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_help_04_max_xy_distance.png
       :align: center
 
    |
 
+Z Clearance
+~~~~~~~~~~~
+
    .. image:: images/mill/probe_help_05_z_clearance.png
       :align: center
 
    |
 
+XY Clearance
+~~~~~~~~~~~~
+
    .. image:: images/mill/probe_help_06_xz_clearance.png
       :align: center
 
    |
+
+Hints for Probe Routines
+~~~~~~~~~~~~~~~~~~~~~~~~
 
    .. image:: images/mill/probe_help_07_hint.png
       :align: center
