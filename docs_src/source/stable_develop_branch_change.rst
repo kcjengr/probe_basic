@@ -30,7 +30,7 @@ Step-by-Step Guide to Change the Sources List for Stable and Develop APT Reposit
 
     Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic:
 
-    .. image:: images/nano_sources_list.png
+    .. image:: images/bookworm_develop_main_image.png
        :align: center
        :scale: 80%
 
