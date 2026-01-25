@@ -9,7 +9,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1920</width>
+    <width>1927</width>
     <height>1083</height>
    </rect>
   </property>
@@ -229,13 +229,19 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
             <string>MAIN</string>
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout">
+            <property name="leftMargin">
+             <number>9</number>
+            </property>
+            <property name="rightMargin">
+             <number>9</number>
+            </property>
             <item>
              <widget class="QWidget" name="widget_49" native="true">
               <property name="sizePolicy">
@@ -7182,7 +7188,7 @@ padding-left: 5px;
            </attribute>
            <layout class="QHBoxLayout" name="horizontalLayout_5">
             <property name="spacing">
-             <number>15</number>
+             <number>20</number>
             </property>
             <property name="leftMargin">
              <number>20</number>
@@ -12518,7 +12524,7 @@ background-color: transparent;
               </property>
               <property name="maximumSize">
                <size>
-                <width>540</width>
+                <width>530</width>
                 <height>16777215</height>
                </size>
               </property>
@@ -15031,7 +15037,7 @@ color: white;
                    </property>
                    <property name="minimumSize">
                     <size>
-                     <width>1079</width>
+                     <width>1000</width>
                      <height>0</height>
                     </size>
                    </property>
@@ -15129,7 +15135,7 @@ QTabWidget QTabBar::tab {
                           <enum>QTabWidget::South</enum>
                          </property>
                          <property name="currentIndex">
-                          <number>0</number>
+                          <number>3</number>
                          </property>
                          <widget class="QWidget" name="tab_5">
                           <attribute name="title">
@@ -27096,8 +27102,14 @@ QPushButton:checked {
                 <number>0</number>
                </property>
                <item>
-                <widget class="QWidget" name="widget_65" native="true">
-                 <layout class="QHBoxLayout" name="horizontalLayout_76">
+                <widget class="QWidget" name="widget_29" native="true">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                   <horstretch>1</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <layout class="QHBoxLayout" name="horizontalLayout_22">
                   <property name="spacing">
                    <number>9</number>
                   </property>
@@ -27114,22 +27126,22 @@ QPushButton:checked {
                    <number>2</number>
                   </property>
                   <item>
-                   <widget class="MDIButton" name="feed_per_rev_button">
+                   <widget class="MDIButton" name="constant_surface_speed_m3">
                     <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                       <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>100</width>
+                      <width>0</width>
                       <height>40</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>100</width>
+                      <width>16777215</width>
                       <height>40</height>
                      </size>
                     </property>
@@ -27139,70 +27151,77 @@ QPushButton:checked {
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
+}
+
+QPushButton[style='inactive']{
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton[style='active']{
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                     </property>
                     <property name="text">
-                     <string>G95  F/REV</string>
-                    </property>
-                    <property name="checkable">
-                     <bool>true</bool>
+                     <string>G96</string>
                     </property>
                     <property name="checked">
                      <bool>false</bool>
                     </property>
-                    <property name="autoExclusive">
-                     <bool>true</bool>
-                    </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G95\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g95&quot;}]</string>
+                     <string>[{&quot;name&quot;: &quot;check_g96&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G96\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                     <property name="MDICommand" stdset="0">
-                     <string>G95 F#&lt;feed_unit_per_rev&gt;</string>
+                     <string>G96 D#&lt;css_max_rpm&gt; S#&lt;css_surface_speed&gt;</string>
                     </property>
-                    <attribute name="buttonGroup">
-                     <string notr="true">feedtypebtnGroup</string>
-                    </attribute>
                    </widget>
                   </item>
                   <item>
-                   <widget class="VCPSettingsLineEdit" name="feed_unit_per_rev">
+                   <widget class="MDIButton" name="rpm_mode_button">
+                    <property name="sizePolicy">
+                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                      <horstretch>0</horstretch>
+                      <verstretch>0</verstretch>
+                     </sizepolicy>
+                    </property>
                     <property name="minimumSize">
                      <size>
-                      <width>90</width>
-                      <height>38</height>
+                      <width>0</width>
+                      <height>40</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>90</width>
-                      <height>38</height>
+                      <width>16777215</width>
+                      <height>40</height>
                      </size>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
+                     <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}
+
+QPushButton[style='inactive']{
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton[style='active']{
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                     </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <property name="text">
+                     <string>G97</string>
                     </property>
-                    <property name="placeholderText">
-                     <string>0.0000</string>
+                    <property name="checked">
+                     <bool>false</bool>
                     </property>
-                    <property name="settingName" stdset="0">
-                     <string>feed-settings.feed-per-rev</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;check_g97&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G97\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:0.4f}</string>
+                    <property name="MDICommand" stdset="0">
+                     <string>G97 S#&lt;rpm_s_word&gt;</string>
                     </property>
                    </widget>
                   </item>
@@ -27298,12 +27317,19 @@ QPushButton:checked {
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
-    border-color: rgb(235, 235, 235);
     border-width: 1px;
+    border-color: rgb(235, 235, 235);
     border-radius: 5px;
     color: black;
-    background: rgb(235, 235, 235);
 	font: 75 17pt &quot;Bebas Kai&quot;;
+}
+
+VCPSettingsLineEdit[style='inactive']{
+    background: rgb(235, 235, 235);
+}
+
+VCPSettingsLineEdit[style='active']{
+	background-color: rgb(154, 152, 255);
 }</string>
                     </property>
                     <property name="alignment">
@@ -27311,6 +27337,9 @@ QPushButton:checked {
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
+                    </property>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;g94_active&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G94\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>feed-settings.feed-per-unit</string>
@@ -27324,14 +27353,8 @@ QPushButton:checked {
                 </widget>
                </item>
                <item>
-                <widget class="QWidget" name="widget_29" native="true">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>1</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <layout class="QHBoxLayout" name="horizontalLayout_22">
+                <widget class="QWidget" name="widget_65" native="true">
+                 <layout class="QHBoxLayout" name="horizontalLayout_76">
                   <property name="spacing">
                    <number>9</number>
                   </property>
@@ -27348,7 +27371,7 @@ QPushButton:checked {
                    <number>2</number>
                   </property>
                   <item>
-                   <widget class="MDIButton" name="rpm_mode_button">
+                   <widget class="MDIButton" name="feed_per_rev_button">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                       <horstretch>0</horstretch>
@@ -27363,7 +27386,7 @@ QPushButton:checked {
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>110</width>
+                      <width>100</width>
                       <height>40</height>
                      </size>
                     </property>
@@ -27373,32 +27396,33 @@ QPushButton:checked {
                     <property name="styleSheet">
                      <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
-}
-
-QPushButton[style='inactive']{
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton[style='active']{
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
                     </property>
                     <property name="text">
-                     <string>G97  S</string>
+                     <string>G95  F/REV</string>
+                    </property>
+                    <property name="checkable">
+                     <bool>true</bool>
                     </property>
                     <property name="checked">
                      <bool>false</bool>
                     </property>
+                    <property name="autoExclusive">
+                     <bool>true</bool>
+                    </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;check_g97&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G97\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+                     <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Checked&quot;, &quot;expression&quot;: &quot;True if \&quot;G95\&quot; in ch[0] else False&quot;, &quot;name&quot;: &quot;check_g95&quot;}]</string>
                     </property>
                     <property name="MDICommand" stdset="0">
-                     <string>G97 S#&lt;rpm_s_word&gt;</string>
+                     <string>G95 F#&lt;feed_unit_per_rev&gt;</string>
                     </property>
+                    <attribute name="buttonGroup">
+                     <string notr="true">feedtypebtnGroup</string>
+                    </attribute>
                    </widget>
                   </item>
                   <item>
-                   <widget class="VCPSettingsLineEdit" name="rpm_s_word">
+                   <widget class="VCPSettingsLineEdit" name="feed_unit_per_rev">
                     <property name="minimumSize">
                      <size>
                       <width>90</width>
@@ -27417,25 +27441,35 @@ QPushButton[style='active']{
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
-    border-color: rgb(235, 235, 235);
     border-width: 1px;
+    border-color: rgb(235, 235, 235);
     border-radius: 5px;
     color: black;
-    background: rgb(235, 235, 235);
 	font: 75 17pt &quot;Bebas Kai&quot;;
+}
+
+VCPSettingsLineEdit[style='inactive']{
+    background: rgb(235, 235, 235);
+}
+
+VCPSettingsLineEdit[style='active']{
+	background-color: rgb(154, 152, 255);
 }</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
-                     <string>0</string>
+                     <string>0.0000</string>
+                    </property>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;g95_active&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G95\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                     <property name="settingName" stdset="0">
-                     <string>rpm-settings.rpm-s-word</string>
+                     <string>feed-settings.feed-per-rev</string>
                     </property>
                     <property name="textFormat" stdset="0">
-                     <string>{:.0f}</string>
+                     <string>{:0.4f}</string>
                     </property>
                    </widget>
                   </item>
@@ -27498,102 +27532,93 @@ QPushButton[style='active']{
                    <number>2</number>
                   </property>
                   <item>
-                   <widget class="MDIButton" name="constant_surface_speed_m3">
+                   <widget class="StatusLabel" name="statuslabel_9">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>1</horstretch>
+                      <horstretch>0</horstretch>
                       <verstretch>0</verstretch>
                      </sizepolicy>
                     </property>
                     <property name="minimumSize">
                      <size>
-                      <width>0</width>
-                      <height>40</height>
+                      <width>70</width>
+                      <height>30</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>180</width>
-                      <height>40</height>
+                      <width>70</width>
+                      <height>30</height>
                      </size>
                     </property>
-                    <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
-                    </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
-}
-
-QPushButton[style='inactive']{
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-QPushButton[style='active']{
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+                     <string notr="true">StatusLabel{
+    border: none;
+    color: rgb(238, 238, 236);
+    background: transparent;
+	font: 17pt &quot;Bebas Kai&quot;;
 }</string>
                     </property>
                     <property name="text">
-                     <string>G96  M3</string>
+                     <string>S WORD</string>
                     </property>
-                    <property name="checked">
-                     <bool>false</bool>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;check_g96_m3&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G96\&quot; in ch[0] and \&quot;M3\&quot; in ch[1] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
-                    </property>
-                    <property name="MDICommand" stdset="0">
-                     <string>G96 D#&lt;css_max_rpm&gt; S#&lt;css_surface_speed&gt; M3</string>
+                     <string>[]</string>
                     </property>
                    </widget>
                   </item>
                   <item>
-                   <widget class="MDIButton" name="constant_surface_speed_m4">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                      <horstretch>1</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
+                   <widget class="VCPSettingsLineEdit" name="rpm_s_word">
                     <property name="minimumSize">
                      <size>
-                      <width>0</width>
-                      <height>40</height>
+                      <width>100</width>
+                      <height>38</height>
                      </size>
                     </property>
                     <property name="maximumSize">
                      <size>
-                      <width>180</width>
-                      <height>40</height>
+                      <width>100</width>
+                      <height>38</height>
                      </size>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
-                     <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
+                     <string notr="true">VCPSettingsLineEdit {
+    border-style: transparent;
+    border-width: 1px;
+    border-color: rgb(235, 235, 235);
+    border-radius: 5px;
+    color: black;
+	font: 75 17pt &quot;Bebas Kai&quot;;
 }
 
-QPushButton[style='inactive']{
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+VCPSettingsLineEdit[style='inactive']{
+    background: rgb(235, 235, 235);
 }
 
-QPushButton[style='active']{
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+VCPSettingsLineEdit[style='active']{
+	background-color: rgb(154, 152, 255);
 }</string>
                     </property>
-                    <property name="text">
-                     <string>G96  M4</string>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
-                    <property name="checked">
-                     <bool>false</bool>
+                    <property name="placeholderText">
+                     <string>0</string>
                     </property>
                     <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;check_g96_m4&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G96\&quot; in ch[0] and \&quot;M4\&quot; in ch[1] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+                     <string>[{&quot;name&quot;: &quot;g97_active&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G97\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
-                    <property name="MDICommand" stdset="0">
-                     <string>G96 D[#&lt;css_max_rpm&gt;] S[#&lt;css_surface_speed&gt;] M4</string>
+                    <property name="settingName" stdset="0">
+                     <string>rpm-settings.rpm-s-word</string>
+                    </property>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.0f}</string>
                     </property>
                    </widget>
                   </item>
@@ -27677,12 +27702,19 @@ QPushButton[style='active']{
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
-    border-color: rgb(235, 235, 235);
     border-width: 1px;
+    border-color: rgb(235, 235, 235);
     border-radius: 5px;
     color: black;
-    background: rgb(235, 235, 235);
 	font: 75 17pt &quot;Bebas Kai&quot;;
+}
+
+VCPSettingsLineEdit[style='inactive']{
+    background: rgb(235, 235, 235);
+}
+
+VCPSettingsLineEdit[style='active']{
+	background-color: rgb(154, 152, 255);
 }</string>
                     </property>
                     <property name="text">
@@ -27693,6 +27725,9 @@ QPushButton[style='active']{
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
+                    </property>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;g96_active&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G96\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>css-settings.max-rpm</string>
@@ -27785,12 +27820,19 @@ QPushButton[style='active']{
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
     border-style: transparent;
-    border-color: rgb(235, 235, 235);
     border-width: 1px;
+    border-color: rgb(235, 235, 235);
     border-radius: 5px;
     color: black;
-    background: rgb(235, 235, 235);
 	font: 75 17pt &quot;Bebas Kai&quot;;
+}
+
+VCPSettingsLineEdit[style='inactive']{
+    background: rgb(235, 235, 235);
+}
+
+VCPSettingsLineEdit[style='active']{
+	background-color: rgb(154, 152, 255);
 }</string>
                     </property>
                     <property name="alignment">
@@ -27798,6 +27840,9 @@ QPushButton[style='active']{
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
+                    </property>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;g96_active&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;G96\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>css-settings.surface-speed</string>
@@ -28235,39 +28280,46 @@ QPushButton[style='active']{
           </widget>
          </item>
          <item>
-          <widget class="QWidget" name="widget_67" native="true">
-           <layout class="QHBoxLayout" name="horizontalLayout_77">
-            <property name="leftMargin">
-             <number>1</number>
-            </property>
-            <property name="topMargin">
-             <number>2</number>
-            </property>
-            <property name="rightMargin">
-             <number>1</number>
-            </property>
-            <property name="bottomMargin">
-             <number>2</number>
-            </property>
-            <item>
-             <widget class="MDIButton" name="spindle_rev_m4_mdi_button">
-              <property name="minimumSize">
-               <size>
-                <width>130</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::LeftToRight</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
+          <widget class="VCPStackedWidget" name="spindle_controls_stacked_widget">
+           <property name="currentIndex">
+            <number>1</number>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;name&quot;: &quot;current_index&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if \&quot;G97\&quot; in ch[0] else 1&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+           </property>
+           <widget class="QWidget" name="g96_spindle_control_page">
+            <layout class="QHBoxLayout" name="horizontalLayout_43">
+             <property name="leftMargin">
+              <number>1</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>1</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item>
+              <widget class="MDIButton" name="spindle_rev_m4_mdi_button">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }
 
@@ -28278,72 +28330,72 @@ QPushButton[style='inactive']{
 QPushButton[style='active']{
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
-              </property>
-              <property name="text">
-               <string> REVERSE</string>
-              </property>
-              <property name="icon">
-               <iconset resource="probe_basic_lathe.qrc">
-                <normaloff>:/images/ccw_arrow.png</normaloff>:/images/ccw_arrow.png</iconset>
-              </property>
-              <property name="rules" stdset="0">
-               <string>[{&quot;name&quot;: &quot;check_m4&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M4\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
-              </property>
-              <property name="MDICommand" stdset="0">
-               <string>G97 S#&lt;rpm_s_word&gt; M4</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="widget_68" native="true"/>
-            </item>
-            <item>
-             <widget class="MDIButton" name="spindle_stop_m5_mdi_button">
-              <property name="minimumSize">
-               <size>
-                <width>100</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
-              </property>
-              <property name="text">
-               <string>STOP</string>
-              </property>
-              <property name="MDICommand" stdset="0">
-               <string>M5</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QWidget" name="widget_69" native="true"/>
-            </item>
-            <item>
-             <widget class="MDIButton" name="spindle_fwd_m3_mdi_button">
-              <property name="minimumSize">
-               <size>
-                <width>130</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="maximumSize">
-               <size>
-                <width>16777215</width>
-                <height>42</height>
-               </size>
-              </property>
-              <property name="layoutDirection">
-               <enum>Qt::RightToLeft</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">QPushButton {
+               </property>
+               <property name="text">
+                <string> REVERSE</string>
+               </property>
+               <property name="icon">
+                <iconset resource="probe_basic_lathe.qrc">
+                 <normaloff>:/images/ccw_arrow.png</normaloff>:/images/ccw_arrow.png</iconset>
+               </property>
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;check_m4&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M4\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>G97 S#&lt;rpm_s_word&gt; M4</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_68" native="true"/>
+             </item>
+             <item>
+              <widget class="MDIButton" name="spindle_stop_m5_mdi_button">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>STOP</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>M5</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_69" native="true"/>
+             </item>
+             <item>
+              <widget class="MDIButton" name="spindle_fwd_m3_mdi_button">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
    	font: 15pt &quot;Bebas Kai&quot;;
 }
 
@@ -28354,23 +28406,161 @@ QPushButton[style='inactive']{
 QPushButton[style='active']{
     background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }</string>
-              </property>
-              <property name="text">
-               <string>FORWARD </string>
-              </property>
-              <property name="icon">
-               <iconset resource="probe_basic_lathe.qrc">
-                <normaloff>:/images/cw_arrow.png</normaloff>:/images/cw_arrow.png</iconset>
-              </property>
-              <property name="rules" stdset="0">
-               <string>[{&quot;name&quot;: &quot;check_m3&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M3\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
-              </property>
-              <property name="MDICommand" stdset="0">
-               <string>G97 S#&lt;rpm_s_word&gt; M3</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
+               </property>
+               <property name="text">
+                <string>FORWARD </string>
+               </property>
+               <property name="icon">
+                <iconset resource="probe_basic_lathe.qrc">
+                 <normaloff>:/images/cw_arrow.png</normaloff>:/images/cw_arrow.png</iconset>
+               </property>
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;check_m3&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M3\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>G97 S#&lt;rpm_s_word&gt; M3</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="g97_spindle_control_page">
+            <layout class="QHBoxLayout" name="horizontalLayout_44">
+             <property name="leftMargin">
+              <number>1</number>
+             </property>
+             <property name="topMargin">
+              <number>2</number>
+             </property>
+             <property name="rightMargin">
+              <number>1</number>
+             </property>
+             <property name="bottomMargin">
+              <number>2</number>
+             </property>
+             <item>
+              <widget class="MDIButton" name="spindle_rev_m4_mdi_button_2">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::LeftToRight</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}
+
+QPushButton[style='inactive']{
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton[style='active']{
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
+               </property>
+               <property name="text">
+                <string> REVERSE</string>
+               </property>
+               <property name="icon">
+                <iconset resource="probe_basic_lathe.qrc">
+                 <normaloff>:/images/ccw_arrow.png</normaloff>:/images/ccw_arrow.png</iconset>
+               </property>
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;check_m4&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M4\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>G96 D#&lt;css_max_rpm&gt; S#&lt;css_surface_speed&gt; M4</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_85" native="true"/>
+             </item>
+             <item>
+              <widget class="MDIButton" name="spindle_stop_m5_mdi_button_2">
+               <property name="minimumSize">
+                <size>
+                 <width>100</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="text">
+                <string>STOP</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>M5</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QWidget" name="widget_81" native="true"/>
+             </item>
+             <item>
+              <widget class="MDIButton" name="spindle_fwd_m3_mdi_button_2">
+               <property name="minimumSize">
+                <size>
+                 <width>130</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="maximumSize">
+                <size>
+                 <width>16777215</width>
+                 <height>42</height>
+                </size>
+               </property>
+               <property name="layoutDirection">
+                <enum>Qt::RightToLeft</enum>
+               </property>
+               <property name="styleSheet">
+                <string notr="true">QPushButton {
+   	font: 15pt &quot;Bebas Kai&quot;;
+}
+
+QPushButton[style='inactive']{
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QPushButton[style='active']{
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
+               </property>
+               <property name="text">
+                <string>FORWARD </string>
+               </property>
+               <property name="icon">
+                <iconset resource="probe_basic_lathe.qrc">
+                 <normaloff>:/images/cw_arrow.png</normaloff>:/images/cw_arrow.png</iconset>
+               </property>
+               <property name="rules" stdset="0">
+                <string>[{&quot;name&quot;: &quot;check_m3&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if \&quot;M3\&quot; in ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:mcodes&quot;, &quot;trigger&quot;: true}]}]</string>
+               </property>
+               <property name="MDICommand" stdset="0">
+                <string>G96 D#&lt;css_max_rpm&gt; S#&lt;css_surface_speed&gt; M3</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
           </widget>
          </item>
         </layout>
@@ -28379,14 +28569,14 @@ QPushButton[style='active']{
       <item>
        <widget class="QFrame" name="main_override_tool_qframe">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="MinimumExpanding" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
         </property>
         <property name="minimumSize">
          <size>
-          <width>350</width>
+          <width>300</width>
           <height>340</height>
          </size>
         </property>
@@ -29174,7 +29364,7 @@ border: 2px solid gray;
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1920</width>
+     <width>1927</width>
      <height>26</height>
     </rect>
    </property>
@@ -29494,6 +29684,12 @@ font: 11pt bebas kai;
    <class>HalBarIndicator</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.hal_widgets.hal_bar_indicator</header>
+  </customwidget>
+  <customwidget>
+   <class>VCPStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>qtpyvcp.widgets.containers.stack</header>
+   <container>1</container>
   </customwidget>
   <customwidget>
    <class>LatheToolTouchOff</class>
@@ -30462,11 +30658,11 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="feedtypebtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
  </buttongroups>
 </ui>
