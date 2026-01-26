@@ -365,7 +365,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -432,24 +432,57 @@ QTabWidget QTabBar::tab {
                      <number>0</number>
                     </property>
                     <item>
-                     <widget class="RecentFileComboBox" name="recentfilecombobox">
+                     <widget class="QWidget" name="widget_6" native="true">
                       <property name="minimumSize">
                        <size>
-                        <width>142</width>
-                        <height>30</height>
+                        <width>0</width>
+                        <height>40</height>
                        </size>
                       </property>
                       <property name="maximumSize">
                        <size>
                         <width>16777215</width>
-                        <height>30</height>
+                        <height>40</height>
                        </size>
                       </property>
-                      <property name="focusPolicy">
-                       <enum>Qt::NoFocus</enum>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QComboBox {
+                      <layout class="QHBoxLayout" name="horizontalLayout_12">
+                       <property name="leftMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="topMargin">
+                        <number>1</number>
+                       </property>
+                       <property name="rightMargin">
+                        <number>0</number>
+                       </property>
+                       <property name="bottomMargin">
+                        <number>1</number>
+                       </property>
+                       <item>
+                        <widget class="RecentFileComboBox" name="recentfilecombobox">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                           <horstretch>1</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <property name="minimumSize">
+                          <size>
+                           <width>142</width>
+                           <height>32</height>
+                          </size>
+                         </property>
+                         <property name="maximumSize">
+                          <size>
+                           <width>16777215</width>
+                           <height>32</height>
+                          </size>
+                         </property>
+                         <property name="focusPolicy">
+                          <enum>Qt::NoFocus</enum>
+                         </property>
+                         <property name="styleSheet">
+                          <string notr="true">QComboBox {
 	border: 1px solid black;
 	border-radius: 3px;
 	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
@@ -476,10 +509,190 @@ QComboBox QAbstractItemView{
  	selection-background-color: #999999;
 	selection-color: #4f4f4f;
 }</string>
-                      </property>
-                      <property name="resource" stdset="0">
-                       <string/>
-                      </property>
+                         </property>
+                         <property name="resource" stdset="0">
+                          <string/>
+                         </property>
+                        </widget>
+                       </item>
+                       <item>
+                        <widget class="QWidget" name="widget_9" native="true">
+                         <property name="sizePolicy">
+                          <sizepolicy hsizetype="Minimum" vsizetype="Preferred">
+                           <horstretch>0</horstretch>
+                           <verstretch>0</verstretch>
+                          </sizepolicy>
+                         </property>
+                         <layout class="QHBoxLayout" name="horizontalLayout_14">
+                          <property name="spacing">
+                           <number>0</number>
+                          </property>
+                          <property name="leftMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="topMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="rightMargin">
+                           <number>1</number>
+                          </property>
+                          <property name="bottomMargin">
+                           <number>1</number>
+                          </property>
+                          <item>
+                           <widget class="QPushButton" name="find_m6_button">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="focusPolicy">
+                             <enum>Qt::NoFocus</enum>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton {
+	border: 1px solid black;
+    border-top-left-radius: 3px;
+    border-bottom-left-radius: 3px;
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+	color: white;
+    font: 13pt &quot;Bebas Kai&quot;;
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+}
+
+.QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+.QPushButton:pressed {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>FIND M6</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="VCPLineEdit" name="run_from_line_Num">
+                            <property name="sizePolicy">
+                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                              <horstretch>0</horstretch>
+                              <verstretch>0</verstretch>
+                             </sizepolicy>
+                            </property>
+                            <property name="minimumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="mouseTracking">
+                             <bool>false</bool>
+                            </property>
+                            <property name="focusPolicy">
+                             <enum>Qt::NoFocus</enum>
+                            </property>
+                            <property name="toolTip">
+                             <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline; color:#ff0000;&quot;&gt;IMPORTANT WARNING!!!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;RUN FROM LINE &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;does &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;NOT &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;account for any&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;preceding commands such as but not limited &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;too the following:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- XYZ positioning move Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Feedrate Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- G5x Work Offset Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool Change Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool length offsets that need to be active&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Spindle or Coolant ON Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- ANY Commands not on the current line&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;It is recommended to be run from a previous&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;tool change line that reissues all of those &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;commands to avoid unexpected behavior!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">color: white;
+border-radius: 0px;
+border-top: 1px solid black;
+border-bottom: 1px solid black;
+font: 13pt;
+background-color: transparent;</string>
+                            </property>
+                            <property name="text">
+                             <string/>
+                            </property>
+                            <property name="alignment">
+                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                            </property>
+                            <property name="readOnly">
+                             <bool>true</bool>
+                            </property>
+                            <property name="placeholderText">
+                             <string>0</string>
+                            </property>
+                           </widget>
+                          </item>
+                          <item>
+                           <widget class="QPushButton" name="run_from_line_Btn">
+                            <property name="minimumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="maximumSize">
+                             <size>
+                              <width>80</width>
+                              <height>32</height>
+                             </size>
+                            </property>
+                            <property name="focusPolicy">
+                             <enum>Qt::NoFocus</enum>
+                            </property>
+                            <property name="styleSheet">
+                             <string notr="true">QPushButton {
+	border: 1px solid black;
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    color: white;
+    font: 13pt &quot;Bebas Kai&quot;;
+	background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgb(81, 86, 85), stop:0.489795 rgb(99, 102, 102), stop:0.699799 rgb(85, 88, 94), stop:0.90444 rgb(77, 84, 86), stop:0.160246 rgb(83, 84, 91), stop:1 rgb(109, 115, 118));
+}
+
+QPushButton:pressed, QPushButton:hover {
+    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
+                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QPushButton:checked[option=&quot;true&quot;] {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+}
+
+QPushButton:checked {
+    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(112, 112, 238, 255), stop:0.18 rgba(123, 123, 232, 255), stop:0.39 rgba(85, 85, 238, 255), stop:0.61 rgba(85, 85, 238, 255), stop:0.82 rgba(123, 123, 232, 255), stop:1 rgba(112, 112, 238, 255))
+}</string>
+                            </property>
+                            <property name="text">
+                             <string>SET QUE</string>
+                            </property>
+                            <property name="checkable">
+                             <bool>true</bool>
+                            </property>
+                           </widget>
+                          </item>
+                         </layout>
+                        </widget>
+                       </item>
+                      </layout>
                      </widget>
                     </item>
                     <item>
@@ -3791,85 +4004,6 @@ QPushButton:checked {
                     </property>
                     <property name="mdi_history_size" stdset="0">
                      <number>0</number>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="ActionButton" name="run_from_line_Btn">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>120</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>120</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="focusPolicy">
-                     <enum>Qt::NoFocus</enum>
-                    </property>
-                    <property name="statusTip">
-                     <string>Can't run program when not enabled</string>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">QPushButton {
-   	font: 15pt &quot;Bebas Kai&quot;;
-}</string>
-                    </property>
-                    <property name="text">
-                     <string>RUN FROM LINE</string>
-                    </property>
-                    <property name="actionName" stdset="0">
-                     <string>program.run-from-line</string>
-                    </property>
-                   </widget>
-                  </item>
-                  <item>
-                   <widget class="VCPLineEdit" name="run_from_line_Num">
-                    <property name="sizePolicy">
-                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                      <horstretch>0</horstretch>
-                      <verstretch>0</verstretch>
-                     </sizepolicy>
-                    </property>
-                    <property name="minimumSize">
-                     <size>
-                      <width>70</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>70</width>
-                      <height>40</height>
-                     </size>
-                    </property>
-                    <property name="toolTip">
-                     <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; font-style:italic; text-decoration: underline; color:#ff0000;&quot;&gt;IMPORTANT WARNING!!!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;RUN FROM LINE &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;does &lt;/span&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;NOT &lt;/span&gt;&lt;span style=&quot; color:#000000;&quot;&gt;account for any&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;preceding commands such as but not limited &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;too the following:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- XYZ positioning move Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Feedrate Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- G5x Work Offset Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool Change Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Tool length offsets that need to be active&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- Spindle or Coolant ON Commands&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; color:#000000;&quot;&gt;- ANY Commands not on the current line&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;It is recommended to be run from a previous&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;tool change line that reissues all of those &lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-weight:600; color:#ff0000;&quot;&gt;commands to avoid unexpected behavior!&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
-                    </property>
-                    <property name="statusTip">
-                     <string>Warning! this run command does not account for preceding positioning moves or commands!</string>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">font: 17pt;</string>
-                    </property>
-                    <property name="text">
-                     <string/>
-                    </property>
-                    <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-                    </property>
-                    <property name="placeholderText">
-                     <string>0</string>
                     </property>
                    </widget>
                   </item>
@@ -7896,7 +8030,7 @@ QPushButton:checked {
                   </layout>
                  </item>
                  <item>
-                  <widget class="QWidget" name="" native="true">
+                  <widget class="QWidget" name="widget" native="true">
                    <layout class="QHBoxLayout" name="horizontalLayout_130">
                     <property name="spacing">
                      <number>10</number>
@@ -22577,7 +22711,7 @@ color: black;
 padding: 20px;</string>
                  </property>
                  <property name="text">
-                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;IMPORTANT: PLEASE READ, &lt;/span&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; text-decoration: underline;&quot;&gt;ACTION REQUIRED!&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;span style=&quot; font-size:14pt; font-weight:600; font-style:italic; color:#170cd9;&quot;&gt;5/30/2025 Latest Update Requires config modification see release notes at link below for update and config edit instructions:&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;br/&gt;&lt;span style=&quot; font-size:12pt; font-weight:600;&quot;&gt;Click me:&lt;/span&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/update_notes.html&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;Probe Basic Update Release Notes and Instructions&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+                  <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;&lt;a href=&quot;https://kcjengr.github.io/probe_basic/update_notes.html&quot;&gt;&lt;span style=&quot; font-size:12pt; font-weight:600; text-decoration: underline; color:#0000ff;&quot;&gt;Probe Basic Update Release Notes and Instructions&lt;/span&gt;&lt;/a&gt;&lt;span style=&quot; font-size:14pt; font-weight:600;&quot;&gt;&lt;br/&gt;&lt;/span&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
                  </property>
                  <property name="textFormat">
                   <enum>Qt::AutoText</enum>
@@ -26717,13 +26851,21 @@ QPushButton:checked {
              <property name="styleSheet">
               <string notr="true">QPushButton {
    	font: 17pt &quot;Bebas Kai&quot;;
+}
+
+QPushButton[style='inactive']{
+    border-color: black;
+}
+
+QPushButton[style='active']{
+	border-color: rgb(16, 37, 255);
 }</string>
              </property>
              <property name="text">
               <string>CYCLE START</string>
              </property>
              <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;probe_safety_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'RESUME FEED' if ch[0] else 'CYCLE START'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
+              <string>[{&quot;name&quot;: &quot;probe_safety_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'RESUME FEED' if ch[0] else 'CYCLE START'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program_style&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
              <property name="actionName" stdset="0">
               <string>program.run</string>
@@ -32433,18 +32575,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="settertabGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
  </buttongroups>
 </ui>
