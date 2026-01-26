@@ -7,7 +7,7 @@ import importlib.util
 import linuxcnc
 
 from qtpy.QtCore import Slot, QRegExp
-from qtpy.QtGui import QFontDatabase, QRegExpValidator
+from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
 from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QWidget
@@ -35,6 +35,14 @@ class ProbeBasicLathe(VCPMainWindow):
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+        
+        # M6 finder initialization
+        self.m6_lines = []
+        self.current_m6_index = 0
+        self.find_m6_button.clicked.connect(self.on_find_m6_clicked)
+        
+        # Cycle start button interception for run from line functionality
+        self.cycle_start_button.clicked.connect(self.on_cycle_start_clicked)
         
         self.load_user_tabs()
         
@@ -210,14 +218,6 @@ class ProbeBasicLathe(VCPMainWindow):
         else:
             self.use_tcp_mode.setText('0')
 
-    def on_run_from_line_Btn_clicked(self):
-        try:
-            lineNum = int(self.run_from_line_Num.text())
-        except:
-            return False
-
-        actions.program_actions.run(lineNum)
-
     @Slot(QAbstractButton)
     def on_sidebartabGroup_buttonClicked(self, button):
         self.sidebar_widget.setCurrentIndex(button.property('page'))
@@ -265,3 +265,97 @@ class ProbeBasicLathe(VCPMainWindow):
         """Save ComboBox selection for startup, but do not change the current tab."""
         setSetting("startup-settings.user-startup-tab", value)
         # Do not call self.set_startup_tab_by_text(value)
+
+    def extract_m6_line_numbers(self):
+        """Extract line numbers containing M6 commands from the loaded G-code file."""
+        m6_lines = []
+        if not hasattr(self, 'gcodetextedit_2'):
+            LOG.warning("gcodetextedit_2 not found")
+            return m6_lines
+        
+        try:
+            text = self.gcodetextedit_2.toPlainText()
+            if not text:
+                LOG.warning("No G-code loaded in gcodetextedit_2")
+                return m6_lines
+            
+            for line_num, line in enumerate(text.split('\n'), start=1):
+                # Search for M6 (tool change command) - case insensitive
+                if 'M6' in line.upper():
+                    m6_lines.append(line_num)
+            
+            LOG.info(f"Found {len(m6_lines)} M6 commands in G-code")
+        except Exception as e:
+            LOG.error(f"Error extracting M6 line numbers: {e}")
+        
+        return m6_lines
+
+    @Slot()
+    def on_find_m6_clicked(self):
+        """Find next M6 command in the loaded G-code file and display line number."""
+        # Re-extract M6 lines (in case file was reloaded)
+        self.m6_lines = self.extract_m6_line_numbers()
+        
+        if not self.m6_lines:
+            LOG.warning("No M6 commands found in G-code file")
+            self.run_from_line_Num.setText("")
+            return
+        
+        # Display the current M6 line number
+        line_num = self.m6_lines[self.current_m6_index]
+        self.run_from_line_Num.setText(str(line_num))
+        LOG.info(f"M6 found at line {line_num}")
+        
+        # Scroll and highlight the M6 line in gcodetextedit_2
+        self.scroll_to_line_in_gcode(line_num)
+        
+        # Advance to next M6 for next button click (wrap around at end)
+        self.current_m6_index = (self.current_m6_index + 1) % len(self.m6_lines)
+
+    def scroll_to_line_in_gcode(self, line_num):
+        """Scroll and highlight a specific line in the G-code text editor."""
+        if not hasattr(self, 'gcodetextedit_2'):
+            return
+        
+        try:
+            # Get the text cursor
+            cursor = self.gcodetextedit_2.textCursor()
+            
+            # Move cursor to the beginning of the desired line
+            # line_num is 1-based, so we need line_num - 1 blocks
+            cursor.movePosition(QTextCursor.Start)
+            for _ in range(line_num - 1):
+                cursor.movePosition(QTextCursor.Down)
+            
+            # Select the entire line
+            cursor.movePosition(QTextCursor.StartOfLine)
+            cursor.movePosition(QTextCursor.EndOfLine, QTextCursor.KeepAnchor)
+            
+            # Set the cursor (this will scroll the view to show the line)
+            self.gcodetextedit_2.setTextCursor(cursor)
+            
+            # Ensure the line is visible in the center of the view
+            self.gcodetextedit_2.ensureCursorVisible()
+            
+            LOG.info(f"Scrolled to M6 line {line_num}")
+        except Exception as e:
+            LOG.error(f"Error scrolling to line {line_num}: {e}")
+
+    @Slot()
+    def on_cycle_start_clicked(self):
+        """Intercept cycle start to check if running from M6 line is enabled."""
+        if self.run_from_line_Btn.isChecked():
+            # Run from the queued M6 line
+            try:
+                lineNum = int(self.run_from_line_Num.text())
+                actions.program_actions.run(lineNum)
+                LOG.info(f"Cycle started from M6 line {lineNum}")
+            except ValueError:
+                LOG.warning("No valid line number queued for run from line")
+            finally:
+                # Auto-uncheck the button after running
+                self.run_from_line_Btn.setChecked(False)
+        else:
+            # Normal cycle start - just run the program normally
+            actions.program_actions.run()
+            LOG.info("Normal cycle start")
