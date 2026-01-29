@@ -24,8 +24,7 @@ o<probe_y_minus> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-      o<probe_y_minus> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -52,8 +51,7 @@ o<probe_y_minus> sub
       G90
       G1 F[#<probe_traverse_fr>] Y#<y>
       F[#<probe_fast_fr>]
-      (return from sub)
-      o<probe_y_minus> return
+      (abort, Probe event did not record point data, aborting)
   o110 endif
 
   (Move to xy_clearance distance for slow probe)

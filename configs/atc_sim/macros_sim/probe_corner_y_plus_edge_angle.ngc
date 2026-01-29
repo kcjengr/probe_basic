@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+(version: 0.3)
+(date: 01/28/26)
 
 (Probe Corner Y Plus Edge Angle for x,y,z 0,0,0 position)
 (Start probe position is over front left corner of stock)
@@ -40,9 +40,7 @@ o<probe_corner_y_plus_edge_angle> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
-      M50 P1
-      o<probe_corner_y_plus_edge_angle> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -76,9 +74,7 @@ o<probe_corner_y_plus_edge_angle> sub
 
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing X Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_corner_y_plus_edge_angle> return
+      (abort, Missing X Sub returned edge parameter, aborting)
   o110 endif
 
   (Probe Y Positioning Move, up to Z clearance plane)
@@ -103,9 +99,7 @@ o<probe_corner_y_plus_edge_angle> sub
 
   (value returned safety check, aborts if no value returned)
   o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing Y Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_corner_y_plus_edge_angle> return
+      (abort, Missing Y Sub returned edge parameter, aborting)
   o120 endif
 
   (edge width move to edge second probing point)
@@ -122,9 +116,7 @@ o<probe_corner_y_plus_edge_angle> sub
 
   (value returned safety check, aborts if no value returned)
   o130 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing Y Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_corner_y_plus_edge_angle> return
+      (abort, Missing Y Sub returned edge parameter, aborting)
   o130 endif
 
   #<edge_delta> = [#<p3y> - #<p2y>]

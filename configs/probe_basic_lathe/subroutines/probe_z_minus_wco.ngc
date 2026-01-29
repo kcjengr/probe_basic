@@ -21,12 +21,14 @@ o<probe_z_minus_wco> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   #<workspace_z> = #[5203 + [20 * #5220]]
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-      o<probe_z_minus_wco> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Current Z Position including offsets in current program units)
@@ -44,8 +46,7 @@ o<probe_z_minus_wco> sub
       G90
       G1 F[#<probe_traverse_fr>] Z#<z>
       F[#<probe_fast_fr>]
-      (return from sub)
-      o<probe_z_minus_wco> return
+      (abort, Probe event did not record point data, aborting)
   o110 endif
 
   (Move to z_clearance height for slow probe)
@@ -76,8 +77,10 @@ o<probe_z_minus_wco> sub
   o130 if [#<probe_mode> EQ 0]
       (Record Z zero in selected WCO)
       G10 L2 P#5220 Z[#<z_minus_probed> + #<workspace_z>]
-      o<probe_z_minus_wco> return
   o130 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_z_minus_wco> endsub
 

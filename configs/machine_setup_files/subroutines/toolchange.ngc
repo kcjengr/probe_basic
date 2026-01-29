@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+(version: 0.3)
+(date: 01/28/26)
 
 o<toolchange> sub
 
@@ -70,6 +70,7 @@ o160 do
     o162 endif
     #130 = [#130 - 1]
 o160 while [#130 GT 0]
+
 o170 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
     (abort, Tool T%d#<selected_tool> not found in carousel)
 o170 endif

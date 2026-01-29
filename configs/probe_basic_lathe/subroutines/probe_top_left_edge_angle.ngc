@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.4)
-(date: 06/27/24)
+(version: 0.5)
+(date: 01/28/26)
 
 (Probe top left edge angle for y,z 0,0 position and edge angle)
 (Start probe position is over left edge of stock, set edge width,)
@@ -29,6 +29,9 @@ o<probe_top_left_edge_angle> sub
   (Cancel G92 offsets)
   G92.1
 
+  (Cancel Feedrate Override)
+  M50 P0
+
   (set rotation offset to zero for new probe cycle)
   G10 L2 P[#5220] R0
 
@@ -36,8 +39,7 @@ o<probe_top_left_edge_angle> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (MSG, Specified probe tool #<probe_tool_number> not in spindle, aborting)
-      o<probe_top_left_edge_angle> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -67,8 +69,7 @@ o<probe_top_left_edge_angle> sub
 
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-    (MSG, Missing X Sub returned edge parameter, aborting)
-    o<probe_top_left_edge_angle> return
+      (abort, Missing X Sub returned edge parameter, aborting)
   o110 endif
 
   (edge width move to edge second probing point)
@@ -83,8 +84,7 @@ o<probe_top_left_edge_angle> sub
 
   (value returned safety check, aborts if no value returned)
   o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (MSG, Missing X Sub returned edge parameter, aborting)
-      o<probe_top_left_edge_angle> return
+      (abort, Missing X Sub returned edge parameter, aborting)
   o120 endif
 
   #<edge_delta> = [#<x_plus_zero_edge_end> - #<x_plus_zero_edge_start>]
@@ -109,15 +109,16 @@ o<probe_top_left_edge_angle> sub
   o130 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 0]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_plus_zero_edge_start> + #<workspace_x>] Y[#<y_start_position>]
-      o<probe_top_left_edge_angle> return
   o130 endif
 
   (probe mode rules for WCO, Rotation and probe position measuring only)
   o140 if [#<probe_mode> EQ 0 AND #<wco_rotation> EQ 1]
       (Record Zero in selected axes and WCO)
       G10 L2 P#5220 X[#<x_plus_zero_edge_start> + #<workspace_x>] Y[#<y_start_position>] R[#<edge_angle>]
-      o<probe_top_left_edge_angle> return
   o140 endif
+
+  (Reinstate Feedrate Override)
+  M50 P1
 
 o<probe_top_left_edge_angle> endsub
 

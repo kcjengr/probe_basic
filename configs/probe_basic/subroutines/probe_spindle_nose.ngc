@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.0)
-(date: 12/26/24)
+(version: 0.1)
+(date: 01/28/26)
 
 (Probe Spindle Nose in Z Minus direction over tool setter and set Spindle Zero Distance)
 (Start probe position is over toolsetter platter within max z distance)
@@ -19,6 +19,8 @@ o<probe_spindle_nose> sub
 
   (Cancel G92 offsets)
   G92.1
+  (Cancel Feedrate Override)
+  M50 P0
 
   o100 if [2 EQ 2]
     G49
@@ -38,8 +40,7 @@ o<probe_spindle_nose> sub
       G90
       G1 F[#<probe_traverse_fr>] Z#<z>
       F[#<probe_fast_fr>]
-      (return from sub)
-      o<probe_spindle_nose> return
+      (abort, probe event failed to record point data, aborting)
   o110 endif
 
   (Move up retract_distance height for slow probe)
@@ -71,6 +72,8 @@ o<probe_spindle_nose> sub
   (DEBUG, EVAL[vcp.getWidget{"z_max_travel_3007"}.setValue{#3007}])
 
   G53 G0 Z0.0
+
+  M50 P1 (Reinstate Feedrate Override)
 
 o<probe_spindle_nose> endsub
 

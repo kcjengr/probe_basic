@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+(version: 0.3)
+(date: 01/28/26)
 
 (Probe back right top corner for x,y,z 0,0,0 position)
 (Start probe position is over back right corner of stock)
@@ -35,9 +35,7 @@ o<probe_back_right_top_corner> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
-      M50 P1
-      o<probe_back_right_top_corner> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -65,9 +63,7 @@ o<probe_back_right_top_corner> sub
 
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing X Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_back_right_top_corner> return
+      (abort, Missing X Sub returned edge parameter, aborting)
   o110 endif
 
   (Probe Y Positioning Move, up to Z clearance plane)
@@ -89,9 +85,7 @@ o<probe_back_right_top_corner> sub
 
   (value returned safety check, aborts if no value returned)
   o120 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing Y Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_back_right_top_corner> return
+      (abort, Missing Y Sub returned edge parameter, aborting)
   o120 endif
 
   (Probe Completion Move to Z Clearance Plane, and XY Zero)
