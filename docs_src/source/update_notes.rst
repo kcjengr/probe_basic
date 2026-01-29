@@ -7,6 +7,32 @@ Overview of updates for MILL configurations
 
 Probe basic and probe basic lathe have just received major updates that will require users to make some changes to their configurations in order for probe basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
 
+JANUARY 29, 2026 - Updates
+--------------------------
+
+- Updates to Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. the main update comes from using the native linuxcnc on_abort_command rather than msg or debug in the subroutines.  This will allow the user to edit their on_abort.ngc file to best suit their needs, the bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state.  Users will need to add the following line to their INI file under the [RS274NGC] section:
+  
+      .. code-block:: bash
+
+         ON_ABORT_COMMAND = o<on_abort> call
+
+- Version Identification.  you can now check what version of probe basic you have (from the latest version going forward) under the about menu bar drop down and selecting Probe basic and/or qtpyvcp:
+  
+   .. image:: images/pb_versioning.png
+      :align: center
+
+   |
+
+- Run from M6 gcode line in a program.  you can now easily button press through your program finding each M6 gcode command line, and select the one from which you would like to run the program from by checking the "SET QUE" button to blue (active) and then pressing the cyle start button.  This will set the program to run from that M6 tool change line onward.  This is useful for long programs where you may want to restart from a specific tool change without having to edit the gcode program file.  The button will automatically "uncheck" itself after use to prevent accidental restarts from M6 lines.
+
+   .. image:: images/runfromm6.gif
+      :align: center
+
+   |
+
+Previous Updates Notes
+----------------------
+
 - User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the `user_buttons` folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the `[DISPLAY]` section of the ini:
   
       .. code-block:: bash
@@ -99,6 +125,12 @@ Overview of updates for LATHE configurations
 --------------------------------------------
 
 Probe basic lathe received major updates that will require users to make some changes to their configurations in order for probe basic lathe to properly function. The lathe user interface had been lagging pretty far behind and is now brought up to the same place as the mill UI in terms of features and functionality. These changes offer a variety of benefits at the cost of some initial configuration editing. The layout for lathe has changed slightly to accommodate the configurable functionality. Below is a list of changes being rolled out in this update:
+
+- Updates to Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. the main update comes from using the native linuxcnc on_abort_command rather than msg or debug in the subroutines.  This will allow the user to edit their on_abort.ngc file to best suit their needs, the bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state.  Users will need to add the following line to their INI file under the [RS274NGC] section:
+  
+      .. code-block:: bash
+
+         ON_ABORT_COMMAND = o<on_abort> call
 
 - Tool Post location display (front or back) is now user configurable from the ini file, to display use one of the following lines under the `[DISPLAY]` section of the ini:
   
