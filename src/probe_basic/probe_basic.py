@@ -82,7 +82,7 @@ class ProbeBasic(VCPMainWindow):
         self.interactive_help_action.toggled.connect(self.toggle_tooltips)
         self.help_menu.addAction(self.interactive_help_action)  # Moved to HELP menu
         self.store_original_tooltips()
-        self.toggle_tooltips(False)
+        self.toggle_tooltips(False)  # Hide tooltips by default
 
         self.filesystemtable.gcodeFileSelected['bool'].connect(lambda x: self.main_load_gcode_button.setEnabled(True))
 
@@ -128,18 +128,27 @@ class ProbeBasic(VCPMainWindow):
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
+        self._stored_tooltips = {}
         for widget in self.findChildren(QWidget):
-            if widget.toolTip():  # Only store if a tooltip exists
-                widget.setProperty("original_tooltip", widget.toolTip())
+            tooltip = widget.toolTip()
+            if tooltip:  # Only store if a tooltip exists
+                self._stored_tooltips[widget] = tooltip
+                LOG.debug(f"Stored tooltip for {widget.objectName()}: {tooltip[:50]}...")
 
     def toggle_tooltips(self, enabled):
-        """Enable or disable tooltips across all widgets."""
-        for widget in self.findChildren(QWidget):
-            original_tooltip = widget.property("original_tooltip")
-            if enabled and original_tooltip:
-                widget.setToolTip(original_tooltip)  # Restore tooltip
+        """Show tooltips when Interactive Help is enabled, hide them otherwise."""
+        LOG.info(f"Toggle tooltips: enabled={enabled}")
+        count = 0
+        for widget, original_tooltip in self._stored_tooltips.items():
+            if enabled:
+                # Interactive Help ON: Show tooltip with extended duration
+                widget.setToolTip(original_tooltip)
+                widget.setToolTipDuration(-1)  # Tooltip stays until mouse moves away
+                count += 1
             else:
-                widget.setToolTip("")  # Disable tooltip
+                # Interactive Help OFF: Clear tooltip to avoid distractions
+                widget.setToolTip("")
+        LOG.info(f"Toggled {count} tooltips")
 
     def load_atc(self):
         self.atc_modules = {}
