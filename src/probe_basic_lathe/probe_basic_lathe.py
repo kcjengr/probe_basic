@@ -10,7 +10,7 @@ from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
 from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpy.QtWidgets import QAbstractButton
-from qtpy.QtWidgets import QWidget
+from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
 from qtpyvcp import actions
@@ -71,6 +71,14 @@ class ProbeBasicLathe(VCPMainWindow):
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
 
+        self.help_menu = self.menuBar().addMenu("Help")
+        self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
+        self.interactive_help_action.setChecked(False)
+        self.interactive_help_action.toggled.connect(self.toggle_tooltips)
+        self.help_menu.addAction(self.interactive_help_action)
+        self.store_original_tooltips()
+        self.toggle_tooltips(False)  # Hide tooltips by default
+
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
 
@@ -100,6 +108,30 @@ class ProbeBasicLathe(VCPMainWindow):
         }
         idx = index_map.get((dro_display, lathe_type), 0)
         self.jog_button_stacked_widget.setCurrentIndex(idx)
+
+    def store_original_tooltips(self):
+        """Store the original tooltips for all widgets to restore later."""
+        self._stored_tooltips = {}
+        for widget in self.findChildren(QWidget):
+            tooltip = widget.toolTip()
+            if tooltip:  # Only store if a tooltip exists
+                self._stored_tooltips[widget] = tooltip
+                LOG.debug(f"Stored tooltip for {widget.objectName()}: {tooltip[:50]}...")
+
+    def toggle_tooltips(self, enabled):
+        """Show tooltips when Interactive Help is enabled, hide them otherwise."""
+        LOG.info(f"Toggle tooltips: enabled={enabled}")
+        count = 0
+        for widget, original_tooltip in self._stored_tooltips.items():
+            if enabled:
+                # Interactive Help ON: Show tooltip with extended duration
+                widget.setToolTip(original_tooltip)
+                widget.setToolTipDuration(-1)  # Tooltip stays until mouse moves away
+                count += 1
+            else:
+                # Interactive Help OFF: Clear tooltip to avoid distractions
+                widget.setToolTip("")
+        LOG.info(f"Toggled {count} tooltips")
 
     def load_user_buttons(self):
         self.user_button_modules = {}
