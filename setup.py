@@ -1,11 +1,14 @@
 #!/usr/bin/env python3
-# -*- coding: utf-8 -*-
+import sys
+import os
 
-import setuptools
+# Add src to path so we can import versioneer
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), 'src'))
+
 import versioneer
+from setuptools import setup
 
-if __name__ == "__main__":
-    setuptools.setup(
-        version=versioneer.get_version(),
-        cmdclass=versioneer.get_cmdclass(),
-    )
+setup(
+    version=versioneer.get_version(),
+    cmdclass=versioneer.get_cmdclass(),
+)
