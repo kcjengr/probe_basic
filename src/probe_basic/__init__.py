@@ -3,24 +3,32 @@ try:
     from importlib.metadata import version, PackageNotFoundError
     try:
         __version__ = version("probe-basic")
-        # If version is placeholder (editable install), use versioneer
+        # If version is placeholder (editable install), use git version
         if __version__ in ("0.0", "0.0.0"):
-            from ._version import get_versions
-            __version__ = get_versions()['version']
-            del get_versions
+            raise PackageNotFoundError
     except PackageNotFoundError:
-        # Fall back to versioneer for development installations
-        from ._version import get_versions
-        __version__ = get_versions()['version']
-        del get_versions
+        # Fall back to dunamai for development installations
+        try:
+            from dunamai import Version
+            git_version = Version.from_git()
+            # Format to match poetry-dynamic-versioning: base+distance.gcommit
+            if git_version.distance > 0:
+                __version__ = f"{git_version.base}+{git_version.distance}.g{git_version.commit}"
+            else:
+                __version__ = git_version.base
+        except Exception:
+            __version__ = "0.0.0+unknown"
 except ImportError:
     # Python < 3.8 fallback
     try:
-        from ._version import get_versions
-        __version__ = get_versions()['version']
-        del get_versions
-    except:
-        __version__ = "unknown"
+        from dunamai import Version
+        git_version = Version.from_git()
+        if git_version.distance > 0:
+            __version__ = f"{git_version.base}+{git_version.distance}.g{git_version.commit}"
+        else:
+            __version__ = git_version.base
+    except Exception:
+        __version__ = "0.0.0+unknown"
 
 import os
 import qtpyvcp

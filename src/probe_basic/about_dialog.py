@@ -8,19 +8,29 @@ try:
     from importlib.metadata import version, PackageNotFoundError
     try:
         __version__ = version("probe-basic")
-        # If version is placeholder (editable install), use versioneer
+        # If version is placeholder (editable install), use git version
         if __version__ in ("0.0", "0.0.0"):
-            from ._version import get_versions
-            __version__ = get_versions()['version']
+            raise PackageNotFoundError
     except PackageNotFoundError:
-        # Fall back to versioneer for development installations
-        from ._version import get_versions
-        __version__ = get_versions()['version']
+        # Fall back to dunamai for development installations
+        try:
+            from dunamai import Version
+            git_version = Version.from_git()
+            if git_version.distance > 0:
+                __version__ = f"{git_version.base}+{git_version.distance}.g{git_version.commit}"
+            else:
+                __version__ = git_version.base
+        except Exception:
+            __version__ = "Unknown"
 except ImportError:
     # Python < 3.8 fallback
     try:
-        from ._version import get_versions
-        __version__ = get_versions()['version']
+        from dunamai import Version
+        git_version = Version.from_git()
+        if git_version.distance > 0:
+            __version__ = f"{git_version.base}+{git_version.distance}.g{git_version.commit}"
+        else:
+            __version__ = git_version.base
     except Exception:
         __version__ = "Unknown"
 
