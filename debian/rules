@@ -8,7 +8,7 @@ export PYTHONPATH=$(HOME)/.local/lib/python3.11/site-packages
 
 # Install poetry-dynamic-versioning before building
 override_dh_auto_configure:
-	pip3 install --user poetry-dynamic-versioning
+	pip3 install --user --break-system-packages poetry-dynamic-versioning
 	dh_auto_configure
 
 override_dh_auto_test:
