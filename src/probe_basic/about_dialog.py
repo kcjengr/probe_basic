@@ -4,10 +4,21 @@
 from PyQt5 import QtWidgets
 
 try:
-    from ._version import get_versions
-    __version__ = get_versions()['version']
-except Exception:
-    __version__ = "Unknown"
+    # Try to get version from package metadata (for installed packages)
+    from importlib.metadata import version, PackageNotFoundError
+    try:
+        __version__ = version("probe-basic")
+    except PackageNotFoundError:
+        # Fall back to versioneer for development installations
+        from ._version import get_versions
+        __version__ = get_versions()['version']
+except ImportError:
+    # Python < 3.8 fallback
+    try:
+        from ._version import get_versions
+        __version__ = get_versions()['version']
+    except Exception:
+        __version__ = "Unknown"
 
 from . import about_ui
 

@@ -1,6 +1,21 @@
-from ._version import get_versions
-__version__ = get_versions()['version']
-del get_versions
+try:
+    # Try to get version from package metadata (for installed packages)
+    from importlib.metadata import version, PackageNotFoundError
+    try:
+        __version__ = version("probe-basic")
+    except PackageNotFoundError:
+        # Fall back to versioneer for development installations
+        from ._version import get_versions
+        __version__ = get_versions()['version']
+        del get_versions
+except ImportError:
+    # Python < 3.8 fallback
+    try:
+        from ._version import get_versions
+        __version__ = get_versions()['version']
+        del get_versions
+    except:
+        __version__ = "unknown"
 
 import os
 import qtpyvcp
@@ -22,6 +37,3 @@ def main(opts=None):
 
 if __name__ == '__main__':
     main()
-
-from . import _version
-__version__ = _version.get_versions()['version']
