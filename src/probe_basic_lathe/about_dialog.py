@@ -8,6 +8,10 @@ try:
     from importlib.metadata import version, PackageNotFoundError
     try:
         __version__ = version("probe-basic")
+        # If version is placeholder (editable install), use versioneer
+        if __version__ in ("0.0", "0.0.0"):
+            from probe_basic._version import get_versions
+            __version__ = get_versions()['version']
     except PackageNotFoundError:
         # Fall back to versioneer for development installations
         from probe_basic._version import get_versions
