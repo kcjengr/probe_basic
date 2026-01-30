@@ -1,13 +1,14 @@
 #!/usr/bin/make -f
 
 export PYBUILD_SYSTEM=pyproject
+export PYTHONPATH=$(HOME)/.local/lib/python3.11/site-packages:$(PYTHONPATH)
 
 %:
 	dh $@ --with python3 --buildsystem=pybuild
 
 # Install poetry-dynamic-versioning before building
 override_dh_auto_configure:
-	pip3 install --break-system-packages poetry-dynamic-versioning || pip3 install poetry-dynamic-versioning
+	pip3 install --user poetry-dynamic-versioning
 	dh_auto_configure
 
 override_dh_auto_test:
