@@ -18,12 +18,12 @@ Installation Steps
    
    Amd64 Deb (for PC's):
    
-      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.8_amd64.deb
 
    
    Arm64 Deb (for Pi 4/5)
 
-      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-arm64/linuxcnc-uspace_2.9.3_arm64.deb
+      https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-arm64/linuxcnc-uspace_2.9.8_arm64.deb
 
 
    In a terminal, enter the following lines one at a time and press enter after each:
@@ -34,7 +34,7 @@ Installation Steps
          
          cd Downloads
          
-         sudo dpkg -i linuxcnc-uspace_2.9.3_amd64.deb
+         sudo dpkg -i linuxcnc-uspace_2.9.8_amd64.deb
 
 
    2. Next restart your computer

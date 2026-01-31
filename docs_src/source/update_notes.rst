@@ -5,25 +5,20 @@ Update Release Notes
 Overview of updates for MILL configurations
 -------------------------------------------
 
-Probe basic and probe basic lathe have just received major updates that will require users to make some changes to their configurations in order for probe basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
+Probe Basic and Probe Basic Lathe have just received major updates that will require users to make some changes to their configurations in order for Probe Basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
 
-JANUARY 29, 2026 - Updates
---------------------------
+JANUARY 31, 2026 - Updates Latest Develop version 0.6.1+2
+---------------------------------------------------------
 
-- Updates to Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. the main update comes from using the native linuxcnc on_abort_command rather than msg or debug in the subroutines.  This will allow the user to edit their on_abort.ngc file to best suit their needs, the bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state.  Users will need to add the following line to their INI file under the [RS274NGC] section:
+- Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. The main update comes from using the native LinuxCNC on_abort_command rather than msg or debug in the subroutines. This will allow the user to edit their on_abort.ngc file to best suit their needs. The bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state. Users will need to add the following line to their INI file under the [RS274NGC] section:
   
       .. code-block:: bash
 
          ON_ABORT_COMMAND = o<on_abort> call
 
-- Version Identification.  you can now check what version of probe basic you have (from the latest version going forward) under the about menu bar drop down and selecting Probe basic and/or qtpyvcp:
-  
-   .. image:: images/pb_versioning.png
-      :align: center
 
-   |
 
-- Run from M6 gcode line in a program.  you can now easily button press through your program finding each M6 gcode command line, and select the one from which you would like to run the program from by checking the "SET QUE" button to blue (active) and then pressing the cyle start button.  This will set the program to run from that M6 tool change line onward.  This is useful for long programs where you may want to restart from a specific tool change without having to edit the gcode program file.  The button will automatically "uncheck" itself after use to prevent accidental restarts from M6 lines.
+- Run from M6 gcode line in a program. You can now easily button press through your program, finding each M6 gcode command line, and select the one from which you would like to run the program by checking the "SET QUE" button to blue (active) and then pressing the cycle start button. This will set the program to run from that M6 tool change line onward. This is useful for long programs where you may want to restart from a specific tool change without having to edit the gcode program file. The button will automatically "uncheck" itself after use to prevent accidental restarts from M6 lines.
 
    .. image:: images/runfromm6.gif
       :align: center
@@ -105,7 +100,7 @@ Previous Updates Notes
 
 - Custom config YAML file will require edits or the newly edited version in the sim config will need to be copied over for some of the above features to work. Be sure to do this or you will receive some errors.
 
-- Probing Routine errors were fixed pertaining to using "hints". The following files and will need to be copied from the sim config subroutines folder to the user's machine config subroutines folder. Below are the corrected file names for reference:
+- Probing Routine errors were fixed pertaining to using "hints". The following files will need to be copied from the sim config subroutines folder to the user's machine config subroutines folder. Below are the corrected file names for reference:
 
       .. code-block:: bash
 
@@ -114,9 +109,9 @@ Previous Updates Notes
          - probe_valley_y.ngc
          - probe_valley_y_center_start.ngc
 
-- Subroutines updates, Many other subroutines received important edits. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines.
+- Subroutine updates: Many other subroutines received important edits. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines.
 
-- User Convenience settings were also added by request, these are a settings drop down box to set persistently the active start up tab that is displayed.
+- User Convenience settings were also added by request. These include a settings drop-down box to persistently set the active start-up tab that is displayed.
 
 - The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.
 
@@ -124,7 +119,7 @@ Previous Updates Notes
 Overview of updates for LATHE configurations
 --------------------------------------------
 
-Probe basic lathe received major updates that will require users to make some changes to their configurations in order for probe basic lathe to properly function. The lathe user interface had been lagging pretty far behind and is now brought up to the same place as the mill UI in terms of features and functionality. These changes offer a variety of benefits at the cost of some initial configuration editing. The layout for lathe has changed slightly to accommodate the configurable functionality. Below is a list of changes being rolled out in this update:
+Probe Basic Lathe received major updates that will require users to make some changes to their configurations in order for Probe Basic Lathe to properly function. The lathe user interface had been lagging pretty far behind and is now brought up to the same level as the mill UI in terms of features and functionality. These changes offer a variety of benefits at the cost of some initial configuration editing. The layout for lathe has changed slightly to accommodate the configurable functionality. Below is a list of changes being rolled out in this update:
 
 - Updates to Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. the main update comes from using the native linuxcnc on_abort_command rather than msg or debug in the subroutines.  This will allow the user to edit their on_abort.ngc file to best suit their needs, the bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state.  Users will need to add the following line to their INI file under the [RS274NGC] section:
   

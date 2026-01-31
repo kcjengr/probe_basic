@@ -66,7 +66,7 @@ Installing Probe Basic
   
   Download and Install linuxcnc from deb file:
   
-    https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.3_amd64.deb
+    https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.8_amd64.deb
 
 
 
@@ -78,7 +78,7 @@ Installing Probe Basic
          
          cd Downloads
          
-         sudo dpkg -i linuxcnc-uspace_2.9.3_amd64.deb
+         sudo dpkg -i linuxcnc-uspace_2.9.8_amd64.deb
 
 
     Once you have installed LinuxCNC, open it and start the axis sim briefly and then shut it down to ensure the installation was successful.

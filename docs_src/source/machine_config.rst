@@ -241,7 +241,7 @@ Step 3: Edit INI files
          OWORD_NARGS = 1
          NO_DOWNCASE_OWORD = 1
          SUBROUTINE_PATH = subroutines
-         ON_ABORT_COMMAND = o<on_abort> call
+         ON_ABORT_COMMAND = O<on_abort> CALL
 
          #  ATC machines use the following PYTHON and RS274NGC section.
 
