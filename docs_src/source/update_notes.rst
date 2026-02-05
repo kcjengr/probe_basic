@@ -7,8 +7,16 @@ Overview of updates for MILL configurations
 
 Probe Basic and Probe Basic Lathe have just received major updates that will require users to make some changes to their configurations in order for Probe Basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
 
-JANUARY 31, 2026 - Updates Latest Develop version 0.6.1+2
----------------------------------------------------------
+February 5, 2026 - Probe Basic Stable Release Version 0.6.2
+-----------------------------------------------------------
+
+Probe Basic has had a new stable release to version 0.6.2 in order to update to the latest stable release we have put it on a new repo and the sources list must be updated.  in order to install either the latest 0.6.2 stable or 0.6.2+ develop versions of Probe Basic, please use the 'Changing <-> Develop Versions' section of the documents.  you will need to uninstall your current versions of qtpyvcp and probe basic using the doc below and set the new sources list repo location in the sources.list.d/kcjengr.list file.  The doc below will walk you through how to go about this!  Please also see the other important updates below that will require some configuration changes to your existing machine configs in order for Probe Basic to function properly.
+
+   Changing Stable <-> Develop Versions:
+   
+      https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html
+
+
 
 - Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. The main update comes from using the native LinuxCNC on_abort_command rather than msg or debug in the subroutines. This will allow the user to edit their on_abort.ngc file to best suit their needs. The bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state. Users will need to add the following line to their INI file under the [RS274NGC] section:
   
