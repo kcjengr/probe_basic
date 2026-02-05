@@ -87,7 +87,7 @@ Installation Steps
             sudo apt install curl
 
 
-            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt stable main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
+            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt bookworm main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
@@ -107,7 +107,7 @@ Installation Steps
             sudo apt install curl
 
 
-            echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt stable main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
+            echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt bookworm main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
