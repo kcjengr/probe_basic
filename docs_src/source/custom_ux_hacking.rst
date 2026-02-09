@@ -2,7 +2,7 @@
 Customisation with Python
 =========================
 
-It is possible to make a simple customisations to the user interface, like renaming a button, by overriding the main window provider in you ``custom_config.yml`` and a simple python class that extends ``ProbeBasic``
+It is possible to make simple customizations to the user interface, like renaming a button, by overriding the main window provider in you ``custom_config.yml`` and a simple python class that extends ``ProbeBasic``
 
 These changes can be achieved with the standard instal of Probe Basic, no need for a Development install. Though you may need to dig into the ``probe_basic.ui`` file in Qt Designer to find the needed widget names (``editvcp probe_basic``).
 
