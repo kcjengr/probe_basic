@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>1927</width>
-    <height>1104</height>
+    <height>1106</height>
    </rect>
   </property>
   <property name="font">
@@ -223,7 +223,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <attribute name="title">
@@ -278,7 +278,7 @@ bottom-margin: 0px;
                   <property name="currentIndex">
                    <number>0</number>
                   </property>
-                  <widget class="QWidget" name="Page1_2">
+                  <widget class="QWidget" name="Page1_gcodeedit">
                    <layout class="QVBoxLayout" name="verticalLayout_4" stretch="0,0">
                     <property name="spacing">
                      <number>6</number>
@@ -618,7 +618,7 @@ QPushButton:checked {
                     </item>
                    </layout>
                   </widget>
-                  <widget class="QWidget" name="Page2_2">
+                  <widget class="QWidget" name="Page2_mdiedit">
                    <layout class="QHBoxLayout" name="horizontalLayout_35">
                     <property name="spacing">
                      <number>30</number>
@@ -1132,7 +1132,7 @@ QPushButton:checked {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_36" native="true">
+                     <widget class="QWidget" name="mdi_button_container_widget" native="true">
                       <property name="styleSheet">
                        <string notr="true"/>
                       </property>
@@ -1197,6 +1197,9 @@ QPushButton:checked {
                            <height>40</height>
                           </size>
                          </property>
+                         <attribute name="buttonGroup">
+                          <string notr="true">btngrpMdi</string>
+                         </attribute>
                         </widget>
                        </item>
                        <item row="10" column="5">
@@ -2227,7 +2230,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="0" column="6">
-                        <widget class="QPushButton" name="j">
+                        <widget class="QPushButton" name="J">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -2375,7 +2378,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="1" column="9">
-                        <widget class="QPushButton" name="A_2">
+                        <widget class="QPushButton" name="A">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -3163,7 +3166,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="1" column="6">
-                        <widget class="QPushButton" name="Y_2">
+                        <widget class="QPushButton" name="Y">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -3462,7 +3465,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="1" column="10">
-                        <widget class="QPushButton" name="B_2">
+                        <widget class="QPushButton" name="B">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -3688,7 +3691,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="12" column="6">
-                        <widget class="QPushButton" name="right_arrow">
+                        <widget class="QPushButton" name="btnMdiRight_arrow">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -3738,7 +3741,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="12" column="5">
-                        <widget class="QPushButton" name="left_arrow">
+                        <widget class="QPushButton" name="btnMdiLeft_arrow">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -29951,7 +29954,7 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
+     <x>94</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
@@ -29999,28 +30002,12 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>543</x>
-     <y>641</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
      <y>464</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mdi_page</sender>
-   <signal>clicked()</signal>
-   <receiver>mdiEntry</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>763</x>
-     <y>657</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>113</x>
-     <y>657</y>
     </hint>
    </hints>
   </connection>
@@ -30031,8 +30018,8 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>409</x>
-     <y>641</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>410</x>
@@ -30079,7 +30066,7 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>75</x>
+     <x>82</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
@@ -30111,8 +30098,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>142</x>
-     <y>641</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>139</x>
@@ -30239,8 +30226,8 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>276</x>
-     <y>641</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>260</x>
@@ -30767,12 +30754,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1169</x>
-     <y>822</y>
+     <x>1237</x>
+     <y>860</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1089</x>
-     <y>821</y>
+     <x>1128</x>
+     <y>861</y>
     </hint>
    </hints>
   </connection>
@@ -30803,8 +30790,8 @@ font: 11pt bebas kai;
      <y>858</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1104</x>
-     <y>760</y>
+     <x>1128</x>
+     <y>800</y>
     </hint>
    </hints>
   </connection>
@@ -30843,12 +30830,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
  </buttongroups>
 </ui>

@@ -35,6 +35,8 @@ class ProbeBasic(VCPMainWindow):
         self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
+        self.btnMdiLeft_arrow.clicked.connect(self.mdiLeftArrow_clicked)
+        self.btnMdiRight_arrow.clicked.connect(self.mdiRightArrow_clicked)
         
         # M6 finder initialization
         self.m6_lines = []
@@ -440,24 +442,59 @@ class ProbeBasic(VCPMainWindow):
     @Slot(QAbstractButton)
     def on_btngrpMdi_buttonClicked(self, button):
         char = str(button.text())
+        
+        # Skip special buttons that have their own handlers
+        if not char or len(char) > 1:
+            return
+            
         text = self.mdiEntry.text() or 'null'
+        cursor_pos = self.mdiEntry.cursorPosition()
+        
         if text != 'null':
-            text += char
+            new_text = text[:cursor_pos] + char + text[cursor_pos:]
         else:
-            text = char
-        self.mdiEntry.setText(text)
+            new_text = char
+            
+        self.mdiEntry.setText(new_text)
+        self.mdiEntry.setFocus()
+        self.mdiEntry.setCursorPosition(cursor_pos + 1)
+        self.mdiEntry.deselect()
 
     def mdiBackSpace_clicked(parent):
         if len(parent.mdiEntry.text()) > 0:
-            text = parent.mdiEntry.text()[:-1]
-            parent.mdiEntry.setText(text)
+            cursor_pos = parent.mdiEntry.cursorPosition()
+            if cursor_pos > 0:
+                text = parent.mdiEntry.text()
+                new_text = text[:cursor_pos-1] + text[cursor_pos:]
+                parent.mdiEntry.setText(new_text)
+                parent.mdiEntry.setFocus()
+                parent.mdiEntry.setCursorPosition(cursor_pos - 1)
+                parent.mdiEntry.deselect()
 
     def mdiSpace_clicked(parent):
         text = parent.mdiEntry.text() or 'null'
+        cursor_pos = parent.mdiEntry.cursorPosition()
         # if no text then do not add a space
         if text != 'null':
-            text += ' '
-            parent.mdiEntry.setText(text)
+            new_text = text[:cursor_pos] + ' ' + text[cursor_pos:]
+            parent.mdiEntry.setText(new_text)
+            parent.mdiEntry.setFocus()
+            parent.mdiEntry.setCursorPosition(cursor_pos + 1)
+            parent.mdiEntry.deselect()
+
+    def mdiLeftArrow_clicked(parent):
+        cursor_pos = parent.mdiEntry.cursorPosition()
+        if cursor_pos > 0:
+            parent.mdiEntry.setFocus()
+            parent.mdiEntry.setCursorPosition(cursor_pos - 1)
+            parent.mdiEntry.deselect()
+
+    def mdiRightArrow_clicked(parent):
+        cursor_pos = parent.mdiEntry.cursorPosition()
+        if cursor_pos < len(parent.mdiEntry.text()):
+            parent.mdiEntry.setFocus()
+            parent.mdiEntry.setCursorPosition(cursor_pos + 1)
+            parent.mdiEntry.deselect()
 
     def set_startup_tab_by_text(self, tab_text):
         """Set the main tab widget to the tab matching tab_text."""

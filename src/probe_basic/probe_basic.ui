@@ -37,9 +37,6 @@
     <pointsize>11</pointsize>
    </font>
   </property>
-  <property name="focusPolicy">
-   <enum>Qt::ClickFocus</enum>
-  </property>
   <property name="windowTitle">
    <string>Probe Basic</string>
   </property>
@@ -365,7 +362,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -411,7 +408,7 @@ QTabWidget QTabBar::tab {
                   <property name="currentIndex">
                    <number>0</number>
                   </property>
-                  <widget class="QWidget" name="Page1">
+                  <widget class="QWidget" name="Page1gcodeedit">
                    <layout class="QVBoxLayout" name="verticalLayout_2" stretch="0,0">
                     <property name="spacing">
                      <number>6</number>
@@ -766,7 +763,7 @@ QPushButton:checked {
                     </item>
                    </layout>
                   </widget>
-                  <widget class="QWidget" name="Page2">
+                  <widget class="QWidget" name="Page2_mdiedit">
                    <layout class="QHBoxLayout" name="horizontalLayout_16">
                     <property name="spacing">
                      <number>30</number>
@@ -1274,7 +1271,7 @@ QPushButton:checked {
                      </widget>
                     </item>
                     <item>
-                     <widget class="QWidget" name="widget_36" native="true">
+                     <widget class="QWidget" name="mdi_button_container_widget" native="true">
                       <property name="styleSheet">
                        <string notr="true"/>
                       </property>
@@ -1741,7 +1738,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="0" column="6">
-                        <widget class="QPushButton" name="j">
+                        <widget class="QPushButton" name="J">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -2154,6 +2151,9 @@ QPushButton:checked {
                          <property name="text">
                           <string>SPACE</string>
                          </property>
+                         <attribute name="buttonGroup">
+                          <string notr="true">btngrpMdi</string>
+                         </attribute>
                         </widget>
                        </item>
                        <item row="0" column="9">
@@ -3216,7 +3216,7 @@ QPushButton:checked {
                         </widget>
                        </item>
                        <item row="12" column="5">
-                        <widget class="QPushButton" name="left_arrow">
+                        <widget class="QPushButton" name="btnMdiLeft_arrow">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -3424,10 +3424,13 @@ QPushButton:checked {
                            <height>40</height>
                           </size>
                          </property>
+                         <attribute name="buttonGroup">
+                          <string notr="true">btngrpMdi</string>
+                         </attribute>
                         </widget>
                        </item>
                        <item row="12" column="6">
-                        <widget class="QPushButton" name="right_arrow">
+                        <widget class="QPushButton" name="btnMdiRight_arrow">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                            <horstretch>0</horstretch>
@@ -30845,7 +30848,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>192</y>
+     <y>186</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -30908,8 +30911,8 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>948</x>
-     <y>641</y>
+     <x>190</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -30925,7 +30928,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>417</y>
+     <y>411</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -30941,7 +30944,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>462</y>
+     <y>456</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31041,7 +31044,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>880</x>
-     <y>624</y>
+     <y>633</y>
     </hint>
    </hints>
   </connection>
@@ -31053,7 +31056,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>552</y>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31100,8 +31103,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>89</x>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>114</x>
@@ -31212,8 +31215,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>270</x>
-     <y>641</y>
+     <x>190</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -31261,7 +31264,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>282</y>
+     <y>276</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31313,7 +31316,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>880</x>
-     <y>544</y>
+     <y>622</y>
     </hint>
    </hints>
   </connection>
@@ -31341,7 +31344,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>327</y>
+     <y>321</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31389,7 +31392,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>237</y>
+     <y>231</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31420,8 +31423,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>114</x>
-     <y>95</y>
+     <x>311</x>
+     <y>607</y>
     </hint>
     <hint type="destinationlabel">
      <x>320</x>
@@ -31516,8 +31519,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>95</y>
+     <x>159</x>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>143</x>
@@ -31565,7 +31568,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>507</y>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31580,12 +31583,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1486</x>
-     <y>376</y>
+     <x>497</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1615</x>
-     <y>377</y>
+     <x>517</x>
+     <y>121</y>
     </hint>
    </hints>
   </connection>
@@ -31596,12 +31599,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1486</x>
-     <y>259</y>
+     <x>497</x>
+     <y>119</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1615</x>
-     <y>260</y>
+     <x>517</x>
+     <y>121</y>
     </hint>
    </hints>
   </connection>
@@ -31728,8 +31731,8 @@ font: 11pt bebas kai;
      <y>664</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>103</y>
+     <x>670</x>
+     <y>602</y>
     </hint>
    </hints>
   </connection>
@@ -31756,8 +31759,8 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>722</x>
-     <y>641</y>
+     <x>190</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -31917,7 +31920,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>102</y>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -31937,7 +31940,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>880</x>
-     <y>624</y>
+     <y>633</y>
     </hint>
    </hints>
   </connection>
@@ -31948,8 +31951,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>111</x>
-     <y>95</y>
+     <x>235</x>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>238</x>
@@ -32001,7 +32004,7 @@ font: 11pt bebas kai;
     </hint>
     <hint type="destinationlabel">
      <x>880</x>
-     <y>544</y>
+     <y>622</y>
     </hint>
    </hints>
   </connection>
@@ -32012,8 +32015,8 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>496</x>
-     <y>641</y>
+     <x>190</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -32044,8 +32047,8 @@ font: 11pt bebas kai;
    <slot>moveRowItemUp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
+     <x>385</x>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -32093,7 +32096,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>642</y>
+     <y>636</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -32108,8 +32111,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>103</y>
+     <x>670</x>
+     <y>602</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -32125,7 +32128,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>372</y>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -32140,8 +32143,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>104</x>
-     <y>95</y>
+     <x>212</x>
+     <y>607</y>
     </hint>
     <hint type="destinationlabel">
      <x>259</x>
@@ -32268,28 +32271,12 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>95</y>
+     <x>111</x>
+     <y>607</y>
     </hint>
     <hint type="destinationlabel">
      <x>163</x>
      <y>52</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>mdi_page</sender>
-   <signal>clicked()</signal>
-   <receiver>mdiEntry</receiver>
-   <slot>setFocus()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>772</x>
-     <y>665</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>133</x>
-     <y>664</y>
     </hint>
    </hints>
   </connection>
@@ -32364,8 +32351,8 @@ font: 11pt bebas kai;
    <slot>moveRowItemDown()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>81</x>
-     <y>95</y>
+     <x>385</x>
+     <y>607</y>
     </hint>
     <hint type="destinationlabel">
      <x>379</x>
@@ -32444,8 +32431,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>119</x>
-     <y>95</y>
+     <x>311</x>
+     <y>546</y>
     </hint>
     <hint type="destinationlabel">
      <x>306</x>
@@ -32461,7 +32448,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>147</y>
+     <y>141</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -32525,7 +32512,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>877</x>
-     <y>597</y>
+     <y>591</y>
     </hint>
     <hint type="destinationlabel">
      <x>1135</x>
@@ -32620,12 +32607,12 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>354</x>
-     <y>544</y>
+     <x>130</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>360</x>
-     <y>499</y>
+     <x>130</x>
+     <y>484</y>
     </hint>
    </hints>
   </connection>
@@ -32636,12 +32623,12 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>549</x>
-     <y>544</y>
+     <x>130</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>545</x>
-     <y>499</y>
+     <x>130</x>
+     <y>484</y>
     </hint>
    </hints>
   </connection>
@@ -32652,12 +32639,12 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>731</x>
-     <y>537</y>
+     <x>130</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>725</x>
-     <y>486</y>
+     <x>130</x>
+     <y>484</y>
     </hint>
    </hints>
   </connection>
@@ -32668,12 +32655,12 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>547</y>
+     <x>130</x>
+     <y>91</y>
     </hint>
     <hint type="destinationlabel">
-     <x>154</x>
-     <y>460</y>
+     <x>130</x>
+     <y>484</y>
     </hint>
    </hints>
   </connection>
@@ -32696,18 +32683,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
   <buttongroup name="settertabGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
  </buttongroups>
 </ui>
