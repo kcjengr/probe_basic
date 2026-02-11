@@ -552,5 +552,207 @@ QToolTip {
     background-color: rgb(77, 77, 77);
     color: white;
     border: 3px solid rgb(177, 177, 177);
+    font: 14pt "Bebas Kai";
+}
+
+/* QFileDialog styling for Save As dialog */
+QFileDialog {
+    border: none;
+}
+
+QFileDialog QLabel {
     font: 15pt "Bebas Kai";
+    padding-left: 8px;
+}
+
+QFileDialog QComboBox {
+    color: white;
+    font: 13pt "Bebas Kai";
+    margin: 8px;
+    min-height: 40px;
+    max-height: 40px;
+    min-width: 200px;
+    icon-size: 16px 16px;
+    /* Override global styles to prevent bleed-through */
+    border-color: black;
+    border-style: solid;
+    border-radius: 5px;
+    border-width: 2px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+    padding: 0px;
+    padding-right: 40px; /* Make room for drop-down button */
+    padding-left: 10px;
+}
+
+QFileDialog QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: top right;
+    width: 40px;
+    border: none;
+    border-left: 2px solid black;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+
+QFileDialog QComboBox::drop-down:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+}
+
+QFileDialog QComboBox::down-arrow {
+    image: url(images/down_arrow.png);
+    width: 16px;
+    height: 16px;
+}
+
+QFileDialog QLineEdit {
+    padding-left: 10px;
+    margin: 8px;
+    min-height: 40px;
+    max-height: 40px;
+    font: 12pt "sans";
+}
+
+QFileDialog QToolButton {
+    icon-size: 28px 28px;
+    min-width: 40px;
+    min-height: 40px;
+    background: transparent;
+    border: none;
+    margin: 8px;
+}
+
+QFileDialog QToolButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+    border: 0px solid transparent;
+    border-radius: 5px;
+}
+
+QFileDialog QToolButton:pressed {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+    border: 0px solid transparent;
+    border-radius: 5px;
+}
+
+QFileDialog QPushButton,
+QFileDialog QDialogButtonBox QPushButton,
+QFileDialog QDialogButtonBox * QPushButton,
+QFileDialog QWidget#buttonBox QPushButton {
+    color: white !important;
+    font-family: "Bebas Kai" !important;
+    font-size: 15pt !important;
+    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255)) !important;
+    border: 2px solid black !important;
+    border-radius: 5px !important;
+    margin: 8px !important;
+    padding: 0px 10px !important;
+    min-height: 40px !important;
+    min-width: 100px !important;
+    max-height: 40px !important;
+}
+
+QFileDialog QDialogButtonBox {
+    border: none !important;
+    border-radius: 0px !important;
+    background: transparent !important;
+}
+
+QFileDialog QPushButton:hover,
+QFileDialog QDialogButtonBox QPushButton:hover,
+QFileDialog QDialogButtonBox * QPushButton:hover,
+QFileDialog QWidget#buttonBox QPushButton:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959) !important;
+}
+
+QFileDialog QPushButton:pressed,
+QFileDialog QDialogButtonBox QPushButton:pressed,
+QFileDialog QDialogButtonBox * QPushButton:pressed,
+QFileDialog QWidget#buttonBox QPushButton:pressed {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255)) !important;
+}
+
+QFileDialog QSplitter::handle {
+    width: 8px;
+    background: #3a3a3a;
+}
+
+QFileDialog QSplitter {
+    margin: 10px;
+    border: 1px solid green !important;
+}
+
+QFileDialog QTreeView::item,
+QFileDialog QListView::item,
+QFileDialog QTableView::item {
+    border: none !important;
+    outline: none;
+}
+
+/* Sidebar (directory tree) specific item styling */
+QFileDialog QTreeView#sidebar::item {
+    padding: 4px 8px 4px 8px;
+    border: none !important;
+}
+
+QFileDialog QTreeView#sidebar::item:selected {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+    color: white;
+}
+
+QFileDialog QTreeView#sidebar::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+    color: white;
+}
+
+QFileDialog QTreeView::item:selected,
+QFileDialog QListView::item:selected,
+QFileDialog QTableView::item:selected {
+    background: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
+    color: white;
+}
+
+QFileDialog QTreeView::item:hover,
+QFileDialog QListView::item:hover,
+QFileDialog QTableView::item:hover {
+    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
+    color: white;
+}
+
+QFileDialog QAbstractScrollArea,
+QFileDialog QAbstractScrollArea QWidget {
+    border: none !important;
+}
+
+QFileDialog QFrame,
+QFileDialog QWidget {
+    border: none !important;
+}
+
+QFileDialog QHeaderView,
+QFileDialog QHeaderView::section {
+    border: none !important;
+}
+
+QFileDialog .QFrame {
+    border: none !important;
+    border-width: 0px !important;
+}
+
+/* Header styling - consistent with FileSystemTable */
+QFileDialog QHeaderView {
+    background-color: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    border-radius: none;
+    font: 13pt "Bebas Kai";
+}
+
+QFileDialog QHeaderView::section {
+    background-color: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    border-right: 1px solid rgb(180, 180, 180);
+    border-bottom: 1px solid rgb(180, 180, 180);
+    padding: 4px;
+    font: 13pt "Bebas Kai";
 }
