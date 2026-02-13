@@ -9045,12 +9045,12 @@ QTabWidget QTabBar::tab {
 </string>
                  </property>
                  <property name="currentIndex">
-                  <number>1</number>
+                  <number>0</number>
                  </property>
                  <property name="usesScrollButtons">
                   <bool>false</bool>
                  </property>
-                 <widget class="QWidget" name="tabWidget_7Page1">
+                 <widget class="QWidget" name="touch_tab_Page0">
                   <attribute name="title">
                    <string>STANDARD MODE</string>
                   </attribute>
@@ -9145,19 +9145,19 @@ padding-right: 10px;
                           <widget class="SubCallButton" name="touch_off_x">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>100</horstretch>
+                             <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>0</width>
+                             <width>110</width>
                              <height>42</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>100</width>
+                             <width>16777215</width>
                              <height>42</height>
                             </size>
                            </property>
@@ -9176,7 +9176,7 @@ padding-right: 10px;
 
 .SubCallButton {
     font-family: &quot;Bebas Kai&quot;;
-    font-size: 16pt;
+    font-size: 15pt;
 }
 
 .SubCallButton:disabled {
@@ -9201,7 +9201,10 @@ padding-right: 10px;
 }</string>
                            </property>
                            <property name="text">
-                            <string>TOUCH  X</string>
+                            <string>TOUCH X RAD</string>
+                           </property>
+                           <property name="rules" stdset="0">
+                            <string>[{&quot;name&quot;: &quot;New Rule&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'TOUCH X DIAM' if \&quot;G7\&quot; in ch[0] else 'TOUCH X RAD'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:gcodes&quot;, &quot;trigger&quot;: true}]}]</string>
                            </property>
                            <property name="filename" stdset="0">
                             <string>touch_off_x.ngc</string>
@@ -9209,16 +9212,16 @@ padding-right: 10px;
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPLineEdit" name="x_offset_touch_position">
+                          <widget class="VCPLineEdit" name="x_offset_touch_value">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>100</horstretch>
+                             <horstretch>1</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>110</width>
+                             <width>100</width>
                              <height>40</height>
                             </size>
                            </property>
@@ -9282,19 +9285,19 @@ padding-right: 10px;
                           <widget class="SubCallButton" name="touch_off_z">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>100</horstretch>
+                             <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>0</width>
+                             <width>110</width>
                              <height>42</height>
                             </size>
                            </property>
                            <property name="maximumSize">
                             <size>
-                             <width>100</width>
+                             <width>16777215</width>
                              <height>42</height>
                             </size>
                            </property>
@@ -9338,7 +9341,7 @@ padding-right: 10px;
 }</string>
                            </property>
                            <property name="text">
-                            <string>TOUCH  Z</string>
+                            <string>TOUCH Z FACE</string>
                            </property>
                            <property name="filename" stdset="0">
                             <string>touch_off_z.ngc</string>
@@ -9349,13 +9352,13 @@ padding-right: 10px;
                           <widget class="VCPLineEdit" name="z_offset_touch_position">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                             <horstretch>100</horstretch>
+                             <horstretch>0</horstretch>
                              <verstretch>0</verstretch>
                             </sizepolicy>
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>110</width>
+                             <width>100</width>
                              <height>40</height>
                             </size>
                            </property>
@@ -10212,7 +10215,7 @@ background-color: transparent;
                    </item>
                   </layout>
                  </widget>
-                 <widget class="QWidget" name="tab">
+                 <widget class="QWidget" name="touch_tab_Page1">
                   <attribute name="title">
                    <string>MASTER TOOL MODE</string>
                   </attribute>
@@ -29890,12 +29893,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>87</y>
+     <x>1301</x>
+     <y>111</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>92</y>
+     <x>1170</x>
+     <y>114</y>
     </hint>
    </hints>
   </connection>
@@ -29932,18 +29935,18 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>x_offset_touch_position</sender>
+   <sender>x_offset_touch_value</sender>
    <signal>returnPressed()</signal>
    <receiver>touch_off_x</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>93</y>
+     <x>1618</x>
+     <y>159</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>95</y>
+     <x>1491</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -29970,8 +29973,8 @@ font: 11pt bebas kai;
    <slot>reset_tools()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>92</y>
+     <x>1153</x>
+     <y>670</y>
     </hint>
     <hint type="destinationlabel">
      <x>60</x>
@@ -30002,8 +30005,8 @@ font: 11pt bebas kai;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>543</x>
+     <y>642</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
@@ -30018,8 +30021,8 @@ font: 11pt bebas kai;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>409</x>
+     <y>642</y>
     </hint>
     <hint type="destinationlabel">
      <x>410</x>
@@ -30098,8 +30101,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>142</x>
+     <y>642</y>
     </hint>
     <hint type="destinationlabel">
      <x>139</x>
@@ -30114,12 +30117,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>138</x>
-     <y>93</y>
+     <x>1618</x>
+     <y>219</y>
     </hint>
     <hint type="destinationlabel">
-     <x>128</x>
-     <y>95</y>
+     <x>1491</x>
+     <y>220</y>
     </hint>
    </hints>
   </connection>
@@ -30146,8 +30149,8 @@ font: 11pt bebas kai;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>80</y>
+     <x>823</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30210,8 +30213,8 @@ font: 11pt bebas kai;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>80</y>
+     <x>1002</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30226,8 +30229,8 @@ font: 11pt bebas kai;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>276</x>
+     <y>642</y>
     </hint>
     <hint type="destinationlabel">
      <x>260</x>
@@ -30242,8 +30245,8 @@ font: 11pt bebas kai;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>80</y>
+     <x>346</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30322,8 +30325,8 @@ font: 11pt bebas kai;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>141</x>
-     <y>80</y>
+     <x>187</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30338,12 +30341,12 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>134</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>119</x>
-     <y>77</y>
+     <x>134</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30354,12 +30357,12 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>248</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30370,12 +30373,12 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>430</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30390,8 +30393,8 @@ font: 11pt bebas kai;
      <y>71</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30402,12 +30405,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30418,12 +30421,12 @@ font: 11pt bebas kai;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30434,12 +30437,12 @@ font: 11pt bebas kai;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1080</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30450,12 +30453,12 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>82</y>
+     <x>238</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>82</y>
+     <x>426</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -30466,12 +30469,12 @@ font: 11pt bebas kai;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>82</y>
+     <x>583</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30482,12 +30485,12 @@ font: 11pt bebas kai;
    <slot>setRootPath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>82</y>
+     <x>238</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30498,12 +30501,12 @@ font: 11pt bebas kai;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>426</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>103</x>
-     <y>82</y>
+     <x>238</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -30514,8 +30517,8 @@ font: 11pt bebas kai;
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>77</y>
+     <x>136</x>
+     <y>164</y>
     </hint>
     <hint type="destinationlabel">
      <x>98</x>
@@ -30530,12 +30533,12 @@ font: 11pt bebas kai;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>82</y>
+     <x>238</x>
+     <y>95</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>82</y>
+     <x>426</x>
+     <y>95</y>
     </hint>
    </hints>
   </connection>
@@ -30546,12 +30549,12 @@ font: 11pt bebas kai;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1243</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>871</x>
-     <y>456</y>
+     <x>1638</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30562,12 +30565,12 @@ font: 11pt bebas kai;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1368</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>871</x>
-     <y>456</y>
+     <x>1638</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30578,12 +30581,12 @@ font: 11pt bebas kai;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1618</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>871</x>
-     <y>456</y>
+     <x>1638</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30594,12 +30597,12 @@ font: 11pt bebas kai;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1493</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>871</x>
-     <y>456</y>
+     <x>1638</x>
+     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30626,12 +30629,12 @@ font: 11pt bebas kai;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>82</y>
+     <x>988</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30642,12 +30645,12 @@ font: 11pt bebas kai;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>857</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30658,12 +30661,12 @@ font: 11pt bebas kai;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>751</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30674,12 +30677,12 @@ font: 11pt bebas kai;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>1084</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30690,12 +30693,12 @@ font: 11pt bebas kai;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>655</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>77</y>
+     <x>571</x>
+     <y>164</y>
     </hint>
    </hints>
   </connection>
@@ -30706,8 +30709,8 @@ font: 11pt bebas kai;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>559</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
      <x>441</x>
@@ -30722,12 +30725,12 @@ font: 11pt bebas kai;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>559</x>
+     <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>82</y>
+     <x>655</x>
+     <y>657</y>
     </hint>
    </hints>
   </connection>
@@ -30830,12 +30833,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
  </buttongroups>
 </ui>

@@ -1,10 +1,28 @@
 o<touch_off_x> sub
 
-#<x_offset_touch_position> = #1
+M70 (save modal state)
 
-G10 L1 P #5400 X [#<x_offset_touch_position>]  (5400 = tool number)
+#<x_offset_touch_value> = #1 (measured X value - diameter or radius depending on mode)
+#<_abs_x> = #2 (G53 machine position in radius)
+#<_lathe_diameter_mode> = #3 (=1) (1=diameter mode, 0=radius mode)
+
+(calculate new tool offset based on absolute position and touch position)
+(machine position and tool offsets are always stored in radius)
+o100 if [#<_lathe_diameter_mode> EQ 0]
+  (radius mode - input value is already radius)
+  #<workpiece_radius> = #<x_offset_touch_value>
+o100 else
+  (diameter mode - divide input by 2 to get radius)
+  #<workpiece_radius> = [#<x_offset_touch_value> / 2]
+o100 endif
+
+#<new_tool_offset> = [#<_abs_x> - #<workpiece_radius>]
+
+G10 L1 P #5400 X [#<new_tool_offset>]  (5400 = tool number)
 
 T #5400 G43 (enable tool length offset)
+
+M72 (restore modal state)
 
 o<touch_off_x> endsub
 
