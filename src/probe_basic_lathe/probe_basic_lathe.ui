@@ -10,8 +10,20 @@
     <x>0</x>
     <y>0</y>
     <width>1927</width>
-    <height>1106</height>
+    <height>1082</height>
    </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>1117</height>
+   </size>
   </property>
   <property name="font">
    <font>
@@ -79,6 +91,12 @@ bottom-margin: 0px;
             <horstretch>0</horstretch>
             <verstretch>0</verstretch>
            </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>16777215</width>
+            <height>680</height>
+           </size>
           </property>
           <property name="palette">
            <palette>
@@ -226,6 +244,12 @@ bottom-margin: 0px;
            <number>8</number>
           </property>
           <widget class="QWidget" name="main_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>MAIN</string>
            </attribute>
@@ -4556,6 +4580,12 @@ QPushButton:checked {
            </layout>
           </widget>
           <widget class="QWidget" name="file_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>FILE</string>
            </attribute>
@@ -5663,6 +5693,12 @@ color: white;</string>
            </layout>
           </widget>
           <widget class="QWidget" name="offsets_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>OFFSETS</string>
            </attribute>
@@ -7317,6 +7353,12 @@ padding-left: 5px;
            </layout>
           </widget>
           <widget class="QWidget" name="touch_off_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>TOUCH OFF</string>
            </attribute>
@@ -9062,7 +9104,7 @@ QTabWidget QTabBar::tab {
                     <number>7</number>
                    </property>
                    <property name="topMargin">
-                    <number>6</number>
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
@@ -9109,10 +9151,10 @@ padding-right: 10px;
                        <number>9</number>
                       </property>
                       <property name="topMargin">
-                       <number>15</number>
+                       <number>9</number>
                       </property>
                       <property name="bottomMargin">
-                       <number>15</number>
+                       <number>9</number>
                       </property>
                       <item>
                        <widget class="QWidget" name="widget_9" native="true">
@@ -9133,13 +9175,13 @@ padding-right: 10px;
                           <number>2</number>
                          </property>
                          <property name="topMargin">
-                          <number>6</number>
+                          <number>4</number>
                          </property>
                          <property name="rightMargin">
                           <number>2</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>6</number>
+                          <number>4</number>
                          </property>
                          <item>
                           <widget class="SubCallButton" name="touch_off_x">
@@ -9231,6 +9273,9 @@ padding-right: 10px;
                              <height>40</height>
                             </size>
                            </property>
+                           <property name="focusPolicy">
+                            <enum>Qt::ClickFocus</enum>
+                           </property>
                            <property name="styleSheet">
                             <string notr="true">VCPLineEdit {
     border-style: transparent;
@@ -9242,6 +9287,9 @@ padding-right: 10px;
 	font: 17pt &quot;Bebas Kai&quot;;
 }
 </string>
+                           </property>
+                           <property name="text">
+                            <string>0.0000</string>
                            </property>
                            <property name="alignment">
                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
@@ -9273,13 +9321,13 @@ padding-right: 10px;
                           <number>2</number>
                          </property>
                          <property name="topMargin">
-                          <number>6</number>
+                          <number>4</number>
                          </property>
                          <property name="rightMargin">
                           <number>2</number>
                          </property>
                          <property name="bottomMargin">
-                          <number>6</number>
+                          <number>4</number>
                          </property>
                          <item>
                           <widget class="SubCallButton" name="touch_off_z">
@@ -9341,15 +9389,77 @@ padding-right: 10px;
 }</string>
                            </property>
                            <property name="text">
-                            <string>TOUCH Z FACE</string>
+                            <string>TOUCH OFF  Z</string>
                            </property>
                            <property name="filename" stdset="0">
                             <string>touch_off_z.ngc</string>
                            </property>
                           </widget>
                          </item>
+                        </layout>
+                       </widget>
+                      </item>
+                      <item>
+                       <widget class="QWidget" name="widget_20" native="true">
+                        <layout class="QHBoxLayout" name="horizontalLayout_46">
+                         <property name="spacing">
+                          <number>0</number>
+                         </property>
+                         <property name="leftMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="topMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="rightMargin">
+                          <number>2</number>
+                         </property>
+                         <property name="bottomMargin">
+                          <number>12</number>
+                         </property>
                          <item>
-                          <widget class="VCPLineEdit" name="z_offset_touch_position">
+                          <widget class="QLabel" name="label_55">
+                           <property name="sizePolicy">
+                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                             <horstretch>1</horstretch>
+                             <verstretch>0</verstretch>
+                            </sizepolicy>
+                           </property>
+                           <property name="minimumSize">
+                            <size>
+                             <width>140</width>
+                             <height>33</height>
+                            </size>
+                           </property>
+                           <property name="maximumSize">
+                            <size>
+                             <width>16777215</width>
+                             <height>33</height>
+                            </size>
+                           </property>
+                           <property name="styleSheet">
+                            <string notr="true">QLabel{
+font: 16pt &quot;Bebas Kai&quot;;
+color: rgb(255, 255, 255);
+padding-right: 0px;
+padding-left: 0px;
+border-style: transparent;
+background-color: transparent;
+}</string>
+                           </property>
+                           <property name="text">
+                            <string>Z GAGE BLK HEIGHT</string>
+                           </property>
+                           <property name="alignment">
+                            <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                           </property>
+                           <property name="wordWrap">
+                            <bool>false</bool>
+                           </property>
+                          </widget>
+                         </item>
+                         <item>
+                          <widget class="VCPLineEdit" name="z_gage_block_height">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -9358,7 +9468,7 @@ padding-right: 10px;
                            </property>
                            <property name="minimumSize">
                             <size>
-                             <width>100</width>
+                             <width>80</width>
                              <height>40</height>
                             </size>
                            </property>
@@ -9367,6 +9477,9 @@ padding-right: 10px;
                              <width>16777215</width>
                              <height>40</height>
                             </size>
+                           </property>
+                           <property name="focusPolicy">
+                            <enum>Qt::ClickFocus</enum>
                            </property>
                            <property name="styleSheet">
                             <string notr="true">VCPLineEdit {
@@ -9380,6 +9493,9 @@ padding-right: 10px;
 }
 </string>
                            </property>
+                           <property name="text">
+                            <string>0.0000</string>
+                           </property>
                            <property name="alignment">
                             <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                            </property>
@@ -9390,9 +9506,6 @@ padding-right: 10px;
                          </item>
                         </layout>
                        </widget>
-                      </item>
-                      <item>
-                       <widget class="QWidget" name="widget_20" native="true"/>
                       </item>
                       <item>
                        <widget class="StatusLabel" name="tool_length_8">
@@ -9464,7 +9577,7 @@ padding-right: 10px;
                           <number>6</number>
                          </property>
                          <property name="topMargin">
-                          <number>12</number>
+                          <number>6</number>
                          </property>
                          <property name="rightMargin">
                           <number>6</number>
@@ -10225,6 +10338,9 @@ background-color: transparent;
                    </property>
                    <property name="leftMargin">
                     <number>7</number>
+                   </property>
+                   <property name="topMargin">
+                    <number>0</number>
                    </property>
                    <property name="rightMargin">
                     <number>0</number>
@@ -11006,6 +11122,12 @@ padding-right: 10px;
            </layout>
           </widget>
           <widget class="QWidget" name="tooling_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>TOOL TABLE</string>
            </attribute>
@@ -11166,72 +11288,6 @@ padding-right: 10px;
                      </property>
                      <property name="text">
                       <string>ADD TOOL</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="tool_table_import_tool_button">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>120</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>120</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>IMPORT TOOL</string>
-                     </property>
-                    </widget>
-                   </item>
-                   <item>
-                    <widget class="QPushButton" name="tool_table_export_tool_button">
-                     <property name="sizePolicy">
-                      <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                       <horstretch>0</horstretch>
-                       <verstretch>0</verstretch>
-                      </sizepolicy>
-                     </property>
-                     <property name="minimumSize">
-                      <size>
-                       <width>120</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="maximumSize">
-                      <size>
-                       <width>120</width>
-                       <height>33</height>
-                      </size>
-                     </property>
-                     <property name="focusPolicy">
-                      <enum>Qt::NoFocus</enum>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">QPushButton {
-   	font: 14pt &quot;Bebas Kai&quot;;
-}</string>
-                     </property>
-                     <property name="text">
-                      <string>EXPORT TOOL</string>
                      </property>
                     </widget>
                    </item>
@@ -12608,6 +12664,12 @@ background-color: transparent;
            </layout>
           </widget>
           <widget class="QWidget" name="probing_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>PROBING</string>
            </attribute>
@@ -15511,6 +15573,12 @@ QTabWidget QTabBar::tab {
            </layout>
           </widget>
           <widget class="QWidget" name="conversational_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>CONVERSATIONAL</string>
            </attribute>
@@ -21626,6 +21694,12 @@ border-image: url(:/images/Threading.png);
            </widget>
           </widget>
           <widget class="QWidget" name="settings_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>SETTINGS</string>
            </attribute>
@@ -22032,6 +22106,12 @@ QComboBox {
            </layout>
           </widget>
           <widget class="QWidget" name="status_tab">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>650</height>
+            </size>
+           </property>
            <attribute name="title">
             <string>STATUS</string>
            </attribute>
@@ -29877,8 +29957,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>86</y>
+     <x>94</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29909,8 +29989,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>86</y>
+     <x>99</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29941,12 +30021,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1618</x>
-     <y>159</y>
+     <x>1625</x>
+     <y>145</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1491</x>
-     <y>160</y>
+     <x>1501</x>
+     <y>146</y>
     </hint>
    </hints>
   </connection>
@@ -29957,8 +30037,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>86</y>
+     <x>74</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -29974,7 +30054,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1153</x>
-     <y>670</y>
+     <y>646</y>
     </hint>
     <hint type="destinationlabel">
      <x>60</x>
@@ -29989,8 +30069,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>94</y>
+     <x>100</x>
+     <y>131</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30006,7 +30086,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>543</x>
-     <y>642</y>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>507</x>
@@ -30022,7 +30102,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>409</x>
-     <y>642</y>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>410</x>
@@ -30053,8 +30133,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>86</y>
+     <x>91</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30069,8 +30149,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>82</x>
-     <y>86</y>
+     <x>74</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30089,8 +30169,8 @@ font: 11pt bebas kai;
      <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
-     <y>94</y>
+     <x>100</x>
+     <y>131</y>
     </hint>
    </hints>
   </connection>
@@ -30102,7 +30182,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>142</x>
-     <y>642</y>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>139</x>
@@ -30111,18 +30191,18 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>z_offset_touch_position</sender>
+   <sender>z_gage_block_height</sender>
    <signal>returnPressed()</signal>
    <receiver>touch_off_z</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1618</x>
-     <y>219</y>
+     <x>1625</x>
+     <y>254</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1491</x>
-     <y>220</y>
+     <x>1625</x>
+     <y>202</y>
     </hint>
    </hints>
   </connection>
@@ -30133,8 +30213,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>86</y>
+     <x>84</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30150,7 +30230,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>823</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30181,8 +30261,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>86</y>
+     <x>83</x>
+     <y>103</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30214,7 +30294,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1002</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30230,7 +30310,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>276</x>
-     <y>642</y>
+     <y>630</y>
     </hint>
     <hint type="destinationlabel">
      <x>260</x>
@@ -30246,7 +30326,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>346</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30326,7 +30406,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>187</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -30342,7 +30422,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>134</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>134</x>
@@ -30358,7 +30438,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>248</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -30374,7 +30454,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>430</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>136</x>
@@ -30550,7 +30630,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1243</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>1638</x>
@@ -30566,7 +30646,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1368</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>1638</x>
@@ -30582,7 +30662,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1618</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>1638</x>
@@ -30598,7 +30678,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1493</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>1638</x>
@@ -30614,7 +30694,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>505</x>
-     <y>798</y>
+     <y>774</y>
     </hint>
     <hint type="destinationlabel">
      <x>417</x>
@@ -30630,7 +30710,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>988</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>571</x>
@@ -30646,7 +30726,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>857</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>571</x>
@@ -30662,7 +30742,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>751</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>571</x>
@@ -30678,7 +30758,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1084</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>571</x>
@@ -30694,7 +30774,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>655</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>571</x>
@@ -30710,7 +30790,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>559</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>441</x>
@@ -30726,11 +30806,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>559</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
     <hint type="destinationlabel">
      <x>655</x>
-     <y>657</y>
+     <y>633</y>
     </hint>
    </hints>
   </connection>
@@ -30742,11 +30822,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1237</x>
-     <y>899</y>
+     <y>875</y>
     </hint>
     <hint type="destinationlabel">
      <x>1128</x>
-     <y>900</y>
+     <y>876</y>
     </hint>
    </hints>
   </connection>
@@ -30758,11 +30838,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1237</x>
-     <y>860</y>
+     <y>836</y>
     </hint>
     <hint type="destinationlabel">
      <x>1128</x>
-     <y>861</y>
+     <y>837</y>
     </hint>
    </hints>
   </connection>
@@ -30774,11 +30854,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1432</x>
-     <y>776</y>
+     <y>752</y>
     </hint>
     <hint type="destinationlabel">
      <x>1237</x>
-     <y>777</y>
+     <y>753</y>
     </hint>
    </hints>
   </connection>
@@ -30790,11 +30870,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1433</x>
-     <y>858</y>
+     <y>834</y>
     </hint>
     <hint type="destinationlabel">
      <x>1128</x>
-     <y>800</y>
+     <y>776</y>
     </hint>
    </hints>
   </connection>
@@ -30806,11 +30886,11 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>1433</x>
-     <y>920</y>
+     <y>896</y>
     </hint>
     <hint type="destinationlabel">
      <x>1128</x>
-     <y>798</y>
+     <y>774</y>
     </hint>
    </hints>
   </connection>
@@ -30834,11 +30914,11 @@ font: 11pt bebas kai;
  </designerdata>
  <buttongroups>
   <buttongroup name="rpmcontrolbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="sidebartabGroup"/>
  </buttongroups>
 </ui>

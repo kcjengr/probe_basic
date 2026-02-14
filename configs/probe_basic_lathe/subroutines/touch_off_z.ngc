@@ -1,10 +1,16 @@
 o<touch_off_z> sub
 
-#<z_offset_touch_position> = #1
-
-G10 L1 P #5400 Z [#<z_offset_touch_position>]  (5400 = tool number)
-
-T #5400 G43 (enable tool length offset)
+M70
+#<z_gage_block_height> = #1
+#2 = #<_abs_z>
+#<current_tool_number> = #5400
+#<new_tool_offset> = #<_abs_z>
+G10 L1 P #5400 Z [#<new_tool_offset> - #<z_gage_block_height>]  (5400 = tool number)
+M61 Q0
+G49
+G10 L0
+M72
+M61 Q#<current_tool_number> G43
 
 o<touch_off_z> endsub
 
