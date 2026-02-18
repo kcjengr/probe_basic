@@ -1,0 +1,63 @@
+o<touch_off_x_mt> sub
+
+M70
+#<x_offset_touch_value_mt> = #1 (=0.0000)
+#<master_tool_number> = #2
+#<current_tool_number> = #5400
+#<machine_position_radius> = #<_abs_x>
+#<diameter_mode> = #<_lathe_diameter_mode>
+
+(PRINT, === TOUCH OFF X MT START ===)
+(PRINT, Current Tool: #<current_tool_number>)
+(PRINT, Master Tool: #<master_tool_number>)
+(PRINT, Input Value: #<x_offset_touch_value_mt>)
+(PRINT, Machine Pos Radius: #<machine_position_radius>)
+(PRINT, Diameter Mode: #<diameter_mode>)
+
+(Convert entered value to radius)
+o100 if [#<diameter_mode> EQ 0]
+  #<workpiece_radius> = #<x_offset_touch_value_mt>
+o100 else
+  #<workpiece_radius> = [#<x_offset_touch_value_mt> / 2]
+o100 endif
+(PRINT, Workpiece Radius: #<workpiece_radius>)
+
+(Check if this is the master tool)
+o200 if [#<current_tool_number> EQ #<master_tool_number>]
+  (Master tool: Set tool offset to X0, adjust G54 work offset)
+  (PRINT, === MASTER TOOL PATH ===)
+  #<old_g54_x> = #5221
+  (PRINT, G54 X Before: #<old_g54_x>)
+  G8
+  G10 L1 P #<current_tool_number> X0
+  (G54 X offset = current machine position - workpiece radius)
+  #<new_g54_x> = [#<machine_position_radius> - #<workpiece_radius>]
+  (PRINT, New G54 X: #<new_g54_x>)
+  G10 L2 P1 X [#<new_g54_x>]
+  (PRINT, Master tool X set to 0, G54 X updated)
+o200 else
+  (Secondary tool: Set tool offset relative to master)
+  (PRINT, === SECONDARY TOOL PATH ===)
+  #<old_tool_offset_x> = #[5400 + 20 * #<current_tool_number> + 1]
+  #<current_g54_x> = #5221
+  (PRINT, Old Tool Offset X: #<old_tool_offset_x>)
+  (PRINT, Current G54 X: #<current_g54_x>)
+  (Tool offset = where this tool touches - where master touched)
+  #<new_tool_offset> = [#<machine_position_radius> - #<workpiece_radius> - #<current_g54_x>]
+  (PRINT, Calculated Offset: #<new_tool_offset>)
+  (PRINT, Formula: MachPos - WorkpieceRad - G54 = #<machine_position_radius> - #<workpiece_radius> - #<current_g54_x>)
+  G8
+  G10 L1 P #<current_tool_number> X [#<new_tool_offset>]
+  (PRINT, Secondary tool X offset set to #<new_tool_offset>)
+o200 endif
+
+M61 Q0
+G49
+G10 L0
+M72
+M61 Q#<current_tool_number> G43
+(PRINT, === TOUCH OFF X MT COMPLETE ===)
+
+o<touch_off_x_mt> endsub
+
+M2

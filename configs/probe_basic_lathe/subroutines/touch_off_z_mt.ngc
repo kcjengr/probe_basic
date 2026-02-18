@@ -1,0 +1,51 @@
+o<touch_off_z_mt> sub
+
+M70
+#<gage_thickness> = #1
+#<master_tool_number> = #2
+#<current_tool_number> = #5400
+#<machine_position_z> = #<_abs_z>
+
+(PRINT, === TOUCH OFF Z MT START ===)
+(PRINT, Current Tool: #<current_tool_number>)
+(PRINT, Master Tool: #<master_tool_number>)
+(PRINT, Gage Thickness: #<gage_thickness>)
+(PRINT, Machine Pos Z: #<machine_position_z>)
+
+(Check if this is the master tool)
+o100 if [#<current_tool_number> EQ #<master_tool_number>]
+  (Master tool: Set tool offset to Z0, adjust G54 work offset)
+  (PRINT, === MASTER TOOL PATH ===)
+  #<old_g54_z> = #5223
+  (PRINT, G54 Z Before: #<old_g54_z>)
+  G10 L1 P #<current_tool_number> Z0
+  (G54 Z offset = current machine position - gage thickness)
+  #<new_g54_z> = [#<machine_position_z> - #<gage_thickness>]
+  (PRINT, New G54 Z: #<new_g54_z>)
+  G10 L2 P1 Z [#<new_g54_z>]
+  (PRINT, Master tool Z set to 0, G54 Z updated)
+o100 else
+  (Secondary tool: Set tool offset relative to master)
+  (PRINT, === SECONDARY TOOL PATH ===)
+  #<old_tool_offset_z> = #[5400 + 20 * #<current_tool_number> + 3]
+  #<current_g54_z> = #5223
+  (PRINT, Old Tool Offset Z: #<old_tool_offset_z>)
+  (PRINT, Current G54 Z: #<current_g54_z>)
+  (Tool offset = where this tool touches - where master touched)
+  #<new_tool_offset> = [#<machine_position_z> - #<gage_thickness> - #<current_g54_z>]
+  (PRINT, Calculated Offset: #<new_tool_offset>)
+  (PRINT, Formula: MachPos - GageThick - G54 = #<machine_position_z> - #<gage_thickness> - #<current_g54_z>)
+  G10 L1 P #<current_tool_number> Z [#<new_tool_offset>]
+  (PRINT, Secondary tool Z offset set to #<new_tool_offset>)
+o100 endif
+
+M61 Q0
+G49
+G10 L0
+M72
+M61 Q#<current_tool_number> G43
+(PRINT, === TOUCH OFF Z MT COMPLETE ===)
+
+o<touch_off_z_mt> endsub
+
+M2

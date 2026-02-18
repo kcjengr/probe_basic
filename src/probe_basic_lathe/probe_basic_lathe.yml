@@ -195,14 +195,42 @@ settings:
     default_value: 0.0
     persistent: true
     min_value: 1
-    max_value: 9999
+    max_value: 99999
+
+  touch-parameters.master-tool-mode:
+    description: master tool mode.
+    default_value: 0.0
+    persistent: true
+    min_value: 0
+    max_value: 1
+
+  touch-parameters.mt-current-x-offset:
+    description: master tool current x offset.
+    default_value: 0.000000
+    persistent: true
+    min_value: -10000
+    max_value: 10000
+
+  touch-parameters.mt-current-z-offset:
+    description: master tool current z offset.
+    default_value: 0.000000
+    persistent: true
+    min_value: -10000
+    max_value: 10000
 
   touch-parameters.gage-thickness:
     description: gage thickness of touch off medium.
-    default_value: 0.0000
+    default_value: 0.000000
     persistent: true
     min_value: -1000
     max_value: 1000
+
+  touch-parameters.x-rad-diam-entry:
+    description: entry for x radius or diameter in touch off dialog.
+    default_value: 0.000000
+    persistent: false
+    min_value: -10000
+    max_value: 10000
 
   tool-change.use-tool-change-position:
     description: activates tool change position for m6 call.

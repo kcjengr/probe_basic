@@ -13,7 +13,7 @@ QStatusBar {
     font-size: 12pt;
 }
 
-QPushButton, QComboBox[editable="false"],
+QPushButton, VCPSettingsPushButton, SubCallButton, QComboBox[editable="false"],
 QComboBox[editable="true"]::drop-down {
     color: white;    
     border-color: black;
@@ -383,39 +383,6 @@ QMenu::indicator {
     width: 12px;
     height: 12px;
     padding-left:6px;
-}
-
-/*===========================================================================*/
-/*                             probe buttons                                 */
-/*===========================================================================*/
-
-SubCallButton {
-    border-color: black;
-    border-style: solid;
-    border-radius: 10px;
-    border-width: 2px;
-    background: qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #eaeaea, stop: 1.0 #b8b8b8);
-}
-
-SubCallButton:disabled {
-    border-color: gray;
-}
-
-SubCallButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #CFCDCA, stop: 1.0 #5C5959);
-}
-
-SubCallButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-SubCallButton:checked[option="true"] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-SubCallButton:checked[option="false"] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 
 /*===========================================================================*/

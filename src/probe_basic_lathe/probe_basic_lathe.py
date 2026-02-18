@@ -111,6 +111,21 @@ class ProbeBasicLathe(VCPMainWindow):
         idx = index_map.get((dro_display, lathe_type), 0)
         self.jog_button_stacked_widget.setCurrentIndex(idx)
 
+        # Set tool offset mode (absolute or master_tool) from INI file
+        master_tool_mode = INIFILE.find("DISPLAY", "MASTER_TOOL_OFFSET_MODE")
+        if master_tool_mode:
+            # Handle boolean-like values: true/True/1/yes = master mode, anything else = absolute
+            is_master_mode = str(master_tool_mode).strip().lower() in ('true', '1', 'yes')
+            mode_index = 1 if is_master_mode else 0
+            if hasattr(self, "tool_offset_stacked_widget"):
+                self.tool_offset_stacked_widget.setCurrentIndex(mode_index)
+                LOG.info(f"Tool offset mode set to: {'MASTER_TOOL' if is_master_mode else 'ABSOLUTE'}")
+        else:
+            # Default to absolute mode (index 0) if not specified
+            if hasattr(self, "tool_offset_stacked_widget"):
+                self.tool_offset_stacked_widget.setCurrentIndex(0)
+                LOG.info("MASTER_TOOL_OFFSET_MODE not found in INI, defaulting to ABSOLUTE mode")
+
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
         self._stored_tooltips = {}

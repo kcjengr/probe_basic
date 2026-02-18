@@ -1,11 +1,11 @@
 o<touch_off_z> sub
 
 M70
-#<z_gage_block_height> = #1
-#2 = #<_abs_z>
+#<gage_thickness> = #1
+#5 = #<_abs_z>
 #<current_tool_number> = #5400
-#<new_tool_offset> = #<_abs_z>
-G10 L1 P #5400 Z [#<new_tool_offset> - #<z_gage_block_height>]  (5400 = tool number)
+#<new_tool_offset> = [#<_abs_z> - #<gage_thickness>]
+G10 L1 P #5400 Z #<new_tool_offset>
 M61 Q0
 G49
 G10 L0
@@ -14,4 +14,4 @@ M61 Q#<current_tool_number> G43
 
 o<touch_off_z> endsub
 
-M2 (end program)
+M2
