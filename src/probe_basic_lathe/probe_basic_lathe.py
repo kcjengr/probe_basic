@@ -9,7 +9,7 @@ import linuxcnc
 from qtpy.QtCore import Slot, QRegExp
 from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
 from qtpyvcp.actions.machine_actions import issue_mdi
-from qtpy.QtWidgets import QAbstractButton
+from qtpy.QtWidgets import QAbstractButton, QMessageBox
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
@@ -125,6 +125,17 @@ class ProbeBasicLathe(VCPMainWindow):
             if hasattr(self, "tool_offset_stacked_widget"):
                 self.tool_offset_stacked_widget.setCurrentIndex(0)
                 LOG.info("MASTER_TOOL_OFFSET_MODE not found in INI, defaulting to ABSOLUTE mode")
+
+        # Master tool promotion handling
+        if hasattr(self, "master_tool_number"):
+            # Load saved master tool number from settings
+            saved_value = getSetting("touch-parameters.master-tool-number").getValue()
+            if saved_value:
+                self.master_tool_number.setText(str(int(saved_value)))
+            # Connect to both signals - flag prevents double-execution
+            self._master_tool_processing = False  # Flag to prevent double-execution
+            self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
+            self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
@@ -443,3 +454,254 @@ class ProbeBasicLathe(VCPMainWindow):
             # Normal cycle start - just run the program normally
             actions.program_actions.run()
             LOG.info("Normal cycle start")
+
+    # Master Tool Promotion Methods
+    def on_master_tool_editing_finished(self):
+        """Handle master tool number change with confirmation dialog."""
+        from qtpyvcp.plugins import getPlugin
+        
+        # Prevent double-execution from multiple signals
+        if self._master_tool_processing:
+            return
+        self._master_tool_processing = True
+        
+        try:
+            # Get new value from widget
+            try:
+                new_master = int(self.master_tool_number.text()) if self.master_tool_number.text() else None
+            except ValueError:
+                LOG.warning("Invalid master tool number entered")
+                return
+            
+            # Get current saved value
+            saved_value = getSetting("touch-parameters.master-tool-number").getValue()
+            current_master = int(saved_value) if saved_value else None
+            
+            # If no change, do nothing
+            if new_master == current_master:
+                return
+            
+            # If invalid, revert
+            if new_master is None:
+                if current_master is not None:
+                    self.master_tool_number.setText(str(current_master))
+                else:
+                    self.master_tool_number.setText("")
+                return
+            
+            # Show confirmation dialog
+            msg = QMessageBox(self)
+            msg.setIcon(QMessageBox.Question)
+            msg.setWindowTitle("Promote Tool to Master")
+            msg.setText(f"Promoting Tool {new_master} to Master Tool!")
+            msg.setInformativeText(
+                "This action will Recalculate all stored tool"
+                "offsets relative to the new master tool."
+                )
+            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
+            yes_btn = msg.button(QMessageBox.Yes)
+            yes_btn.setText("Yes, Promote New Tool")
+            cancel_btn = msg.button(QMessageBox.Cancel)
+            cancel_btn.setText("Cancel")
+            msg.setDefaultButton(QMessageBox.Cancel)
+            
+            result = msg.exec_()
+            
+            if result == QMessageBox.Yes:
+                # User confirmed - promote the tool
+                success = self.promote_tool_to_master(new_master, current_master)
+                
+                if success:
+                    # Save the new master tool number to settings
+                    setSetting("touch-parameters.master-tool-number", new_master)
+                    LOG.info(f"Saved master tool number: {new_master}")
+                    
+                    # Show confirmation
+                    confirm_msg = QMessageBox(self)
+                    confirm_msg.setIcon(QMessageBox.Information)
+                    confirm_msg.setWindowTitle("Master Tool Promoted")
+                    confirm_msg.setText(f"Tool {new_master} is now the Master Tool")
+                    confirm_msg.setInformativeText(
+                        "All tool offsets have been recalculated.\n"
+                        f"Tool {new_master} offset is now (X0, Z0)."
+                    )
+                    confirm_msg.setStandardButtons(QMessageBox.Ok)
+                    
+                    confirm_msg.exec_()
+                else:
+                    # Promotion failed - revert to original
+                    if current_master is not None:
+                        self.master_tool_number.setText(str(current_master))
+                    else:
+                        self.master_tool_number.setText("")
+                    LOG.warning("Tool promotion failed, reverted to original value")
+            else:
+                # User cancelled - revert to original master tool number
+                if current_master is not None:
+                    self.master_tool_number.setText(str(current_master))
+                else:
+                    self.master_tool_number.setText("")
+                LOG.info(f"Tool promotion cancelled, reverted to: {current_master}")
+        
+        finally:
+            # Reset flag after processing
+            self._master_tool_processing = False
+
+    def promote_tool_to_master(self, new_master_tool, old_master_tool):
+        """
+        Promote a secondary tool to become the new master tool.
+        Recalculates all tool offsets to maintain spatial relationships.
+        
+        Args:
+            new_master_tool (int): Tool number to promote to master
+            old_master_tool (int): Current master tool number (can be None)
+        
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        from qtpyvcp.plugins import getPlugin
+        
+        LOG.info(f"Promoting tool {new_master_tool} to master (was tool {old_master_tool})")
+        
+        try:
+            # Get tool table plugin
+            tooltable = getPlugin('tooltable')
+            if not tooltable:
+                LOG.error("Tool table plugin not found")
+                return False
+            
+            # Get current tool table
+            tool_table = tooltable.getToolTable()
+            if not tool_table:
+                LOG.error("Could not read tool table")
+                return False
+            
+            # Check if new master tool exists
+            if new_master_tool not in tool_table:
+                LOG.error(f"Tool {new_master_tool} not found in tool table")
+                return False
+            
+            # Get the offset of the tool being promoted
+            promoted_tool_data = tool_table[new_master_tool]
+            promoted_x_offset = promoted_tool_data.get('X', 0.0)
+            promoted_z_offset = promoted_tool_data.get('Z', 0.0)
+            
+            LOG.info(f"Promoted tool current offsets - X: {promoted_x_offset}, Z: {promoted_z_offset}")
+            
+            # Recalculate all tool offsets
+            for tool_num in tool_table.keys():
+                if tool_num == 0:  # Skip the "No Tool" entry
+                    continue
+                
+                tool_data = tool_table[tool_num]
+                old_x = tool_data.get('X', 0.0)
+                old_z = tool_data.get('Z', 0.0)
+                
+                # New offset = old offset - promoted tool offset
+                new_x = old_x - promoted_x_offset
+                new_z = old_z - promoted_z_offset
+                
+                # Update the tool data
+                tool_data['X'] = new_x
+                tool_data['Z'] = new_z
+                
+                LOG.info(f"Tool {tool_num}: X {old_x:.6f} -> {new_x:.6f}, Z {old_z:.6f} -> {new_z:.6f}")
+            
+            # Save the updated tool table with explicit zeros to prevent omission
+            self.save_tool_table_with_zeros(tooltable, tool_table)
+            
+            # Reload tool table in LinuxCNC
+            CMD = linuxcnc.command()
+            CMD.load_tool_table()
+            
+            # Reload in UI
+            tooltable.loadToolTable()
+            
+            LOG.info(f"Successfully promoted tool {new_master_tool} to master")
+            return True
+            
+        except Exception as e:
+            LOG.error(f"Error promoting tool to master: {e}", exc_info=True)
+            return False
+
+    def save_tool_table_with_zeros(self, tooltable, tool_table):
+        """
+        Save tool table ensuring zero values are explicitly written.
+        This prevents LinuxCNC from omitting columns with zero values.
+        """
+        import os
+        from qtpyvcp.utilities.info import Info
+        
+        INFO = Info()
+        tool_file = INFO.getToolTableFile()
+        
+        if not tool_file:
+            LOG.error("Could not determine tool table file path")
+            return
+        
+        # Get columns to write (typically XZDR for lathe)
+        columns = list(tooltable.columns) if hasattr(tooltable, 'columns') else ['T', 'P', 'X', 'Z', 'D', 'R']
+        
+        # Ensure P is in columns
+        if 'P' not in columns:
+            columns.insert(1, 'P')
+        
+        LOG.info(f"Saving tool table to: {tool_file}")
+        LOG.info(f"Columns: {columns}")
+        
+        try:
+            lines = []
+            
+            # Preserve header if it exists
+            if hasattr(tooltable, 'orig_header_lines') and tooltable.orig_header_lines:
+                lines.extend(tooltable.orig_header_lines)
+            
+            # Create table header
+            header_items = []
+            for col in columns:
+                if col == 'R':
+                    continue
+                if col in 'TPQ':
+                    w = 6 - (1 if col == columns[0] else 0)
+                else:
+                    w = 12 - (1 if col == columns[0] else 0)
+                col_label = tooltable.COLUMN_LABELS.get(col, col) if hasattr(tooltable, 'COLUMN_LABELS') else col
+                header_items.append('{:<{w}}'.format(col_label, w=w))
+            header_items.append('Remark')
+            lines.append(';' + ' '.join(header_items))
+            
+            # Write each tool with explicit zeros
+            for tool_num in sorted(tool_table.keys())[1:]:  # Skip tool 0
+                tool_data = tool_table[tool_num]
+                items = []
+                
+                for col in columns:
+                    if col == 'R':
+                        continue
+                    
+                    val = tool_data.get(col, 0.0 if col not in 'TPQ' else 0)
+                    
+                    if col in 'TPQ':
+                        # Integer columns
+                        items.append('{col}{val:<{w}}'.format(col=col, val=int(val), w=6))
+                    else:
+                        # Float columns - explicitly format zeros
+                        items.append('{col}{val:<+{w}.6f}'.format(col=col, val=val, w=12))
+                
+                # Add remark
+                comment = tool_data.get('R', '')
+                if comment:
+                    items.append('; ' + comment)
+                
+                lines.append(''.join(items))
+            
+            # Write to file
+            with open(tool_file, 'w') as f:
+                f.write('\n'.join(lines))
+                f.write('\n')  # Ensure final newline
+            
+            LOG.info(f"Tool table saved successfully with {len(tool_table)-1} tools")
+            
+        except Exception as e:
+            LOG.error(f"Error saving tool table: {e}", exc_info=True)
+            raise
