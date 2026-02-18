@@ -495,8 +495,7 @@ class ProbeBasicLathe(VCPMainWindow):
             msg.setWindowTitle("Promote Tool to Master")
             msg.setText(f"Promoting Tool {new_master} to Master Tool!")
             msg.setInformativeText(
-                "This action will Recalculate all stored tool"
-                "offsets relative to the new master tool."
+                "This action will Recalculate all stored tool offsets relative to the new master tool."
                 )
             msg.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
             yes_btn = msg.button(QMessageBox.Yes)

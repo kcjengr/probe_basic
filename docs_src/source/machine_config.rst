@@ -109,6 +109,21 @@ Step 3: Edit INI files
          #  has a back tool post, this will set the backplotter and x axis jog
          #  key functionality to use the back tool post for lathe machines.
 
+         MASTER_TOOL_OFFSET_MODE = true
+         #  Lathe Only: Enables Master Tool Offset Mode for tool management.
+         #  In this mode, one tool is designated as the "master" tool with X0/Z0
+         #  offsets, and all other tools are measured and stored relative to the
+         #  master tool rather than the machine coordinate system. This provides
+         #  several benefits:
+         #    * Simplified tool measurement workflow (measure relative to known tool)
+         #    * Ability to change master tool assignment without remeasuring all tools
+         #    * Master Tool Promotion: instantly promote any tool to master while
+         #      preserving all tool-to-tool spatial relationships
+         #  When enabled, use the touch_off_x_mt.ngc and touch_off_z_mt.ngc
+         #  subroutines for tool measurement, and access the Master Tool Promotion
+         #  feature from the "Master Tool Number" field in the Tool Offsets tab.
+         #  Set to true to enable, false or omit to use standard LinuxCNC tool offsets.
+
          MAX_FEED_OVERRIDE = 2.000000
          #  This sets the maximum feed override for the feed override slider
          

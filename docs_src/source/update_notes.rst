@@ -7,6 +7,7 @@ Overview of updates for MILL configurations
 
 Probe Basic and Probe Basic Lathe have just received major updates that will require users to make some changes to their configurations in order for Probe Basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:
 
+
 February 5, 2026 - Probe Basic Stable Release Version 0.6.2
 -----------------------------------------------------------
 
@@ -126,6 +127,44 @@ Previous Updates Notes
 
 Overview of updates for LATHE configurations
 --------------------------------------------
+
+February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature
+------------------------------------------------------------------
+
+Probe Basic Lathe now supports **Master Tool Promotion**, a powerful feature for machines using Master Tool Offset Mode. This allows you to promote any secondary tool to become the new master tool (offsets X0, Z0) while automatically preserving all tool-to-tool spatial relationships.
+
+**Why use Master Tool Promotion?**
+
+When using Master Tool Offset Mode on a lathe, one tool is designated as the "master" with X0/Z0 offsets, and all other tools are measured relative to it. If your master tool needs repair, replacement, or becomes damaged, you would normally need to re-measure all tools in your tool table. With Master Tool Promotion, you can instantly promote any secondary tool to become the new master, and all other tool offsets are automatically recalculated to maintain their physical positions.
+
+**How to use:**
+
+1. Ensure Master Tool Offset Mode is enabled in your INI file (see machine_config.rst)
+2. In the Tool Offsets tab, locate the "Master Tool Number" field
+3. Enter the tool number you wish to promote (e.g., change from T1 to T5)
+4. Press Enter - a confirmation dialog will appear showing the promotion details
+5. Click "Yes" to proceed - all tool offsets are instantly recalculated
+6. The promoted tool now has X0/Z0 offsets, all others adjusted accordingly
+
+**Example workflow:**
+
+- Your master tool (T1) breaks and needs replacement
+- Remove the broken T1 from the turret  
+- Promote a secondary tool (e.g., T5) to master: all offsets recalculated instantly
+- Install and measure your new/repaired tool in the T1 position
+- When ready, promote T1 back to master: all offsets are recalculated based on T1's newly measured position
+
+This feature maintains perfect precision - if you promote between tools without remeasuring (T1→T5→T1), you get exact original offsets with no accumulated error. When remeasuring tools between promotions, all offsets are accurately recalculated to preserve the spatial relationships with the newly measured tool. The tool table is automatically saved with explicit zero values to ensure LinuxCNC compatibility.
+
+**Configuration required:**
+
+Add the following to the `[DISPLAY]` section of your probe_basic_lathe.ini file:
+
+   .. code-block:: bash
+
+      MASTER_TOOL_OFFSET_MODE = true
+
+For detailed information about Master Tool Offset Mode, see the machine_config.rst documentation.
 
 Probe Basic Lathe received major updates that will require users to make some changes to their configurations in order for Probe Basic Lathe to properly function. The lathe user interface had been lagging pretty far behind and is now brought up to the same level as the mill UI in terms of features and functionality. These changes offer a variety of benefits at the cost of some initial configuration editing. The layout for lathe has changed slightly to accommodate the configurable functionality. Below is a list of changes being rolled out in this update:
 
