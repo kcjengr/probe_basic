@@ -1146,8 +1146,23 @@ QLabel[style=&quot;homing&quot;]{
        <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
+       <property name="referenceType" stdset="0">
+        <number>1</number>
+       </property>
        <property name="axisNumber" stdset="0">
-        <number>4</number>
+                <number>4</number>
+       </property>
+       <property name="inchFormat" stdset="0">
+        <string>%9.4f</string>
+       </property>
+       <property name="millimeterFormat" stdset="0">
+        <string>%10.3f</string>
+       </property>
+       <property name="degreeFormat" stdset="0">
+        <string>%10.2f</string>
+       </property>
+       <property name="latheMode" stdset="0">
+        <number>0</number>
        </property>
       </widget>
      </item>
@@ -1198,7 +1213,7 @@ QLabel[style=&quot;homing&quot;]{
         <number>0</number>
        </property>
        <property name="axisNumber" stdset="0">
-        <number>4</number>
+                <number>4</number>
        </property>
        <property name="inchFormat" stdset="0">
         <string>%9.4f</string>
@@ -1249,7 +1264,7 @@ QLabel[style=&quot;homing&quot;]{
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g92_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
@@ -1288,7 +1303,7 @@ QLabel[style=&quot;homing&quot;]{
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
@@ -1327,7 +1342,7 @@ QLabel[style=&quot;homing&quot;]{
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
@@ -1473,7 +1488,7 @@ QLabel[style=&quot;homing&quot;]{
         <number>1</number>
        </property>
        <property name="axisNumber" stdset="0">
-        <number>4</number>
+                <number>5</number>
        </property>
        <property name="inchFormat" stdset="0">
         <string>%9.4f</string>
@@ -1536,7 +1551,7 @@ QLabel[style=&quot;homing&quot;]{
         <number>0</number>
        </property>
        <property name="axisNumber" stdset="0">
-        <number>4</number>
+                <number>5</number>
        </property>
        <property name="inchFormat" stdset="0">
         <string>%9.4f</string>
@@ -1587,7 +1602,7 @@ QLabel[style=&quot;homing&quot;]{
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
@@ -1622,11 +1637,11 @@ QLabel[style=&quot;homing&quot;]{
 	font: 17pt &quot;Bebas Kai&quot;;
 }</string>
        </property>
-       <property name="alignment">
+    <property name="alignment">
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
@@ -1665,7 +1680,7 @@ QLabel[style=&quot;homing&quot;]{
         <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
-        <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][4])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+                <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
        </property>
       </widget>
      </item>
