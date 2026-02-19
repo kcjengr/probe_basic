@@ -2,6 +2,13 @@
 Update Release Notes
 ====================
 
+February 19, 2026 - Important DRO Update Notice
+-----------------------------------------------
+
+User DRO bug fixes were applied to the supplied `user_dro_display` files (axis mapping and zero/offset behavior corrections). Users should replace older DRO UI files in their machine config with the updated files from the latest sim config package to ensure proper functionality.
+
+The updated documentation and DRO files are available in the **develop** version build **0.6.5-10**.
+
 Overview of updates for MILL configurations
 -------------------------------------------
 
