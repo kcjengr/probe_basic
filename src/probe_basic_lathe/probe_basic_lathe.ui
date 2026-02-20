@@ -241,7 +241,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::South</enum>
           </property>
           <property name="currentIndex">
-           <number>8</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <property name="maximumSize">
@@ -30439,8 +30439,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>113</y>
+     <x>96</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30471,8 +30471,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>99</x>
-     <y>103</y>
+     <x>101</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30503,8 +30503,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>113</y>
+     <x>76</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30535,8 +30535,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30599,8 +30599,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>103</y>
+     <x>93</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30615,8 +30615,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>103</y>
+     <x>76</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30635,8 +30635,8 @@ font: 11pt bebas kai;
      <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>
@@ -30663,8 +30663,8 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>113</y>
+     <x>86</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30711,8 +30711,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>103</y>
+     <x>85</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -31367,12 +31367,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1466</x>
-     <y>94</y>
+     <x>1468</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1554</x>
-     <y>88</y>
+     <x>1478</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -31389,6 +31389,54 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>1527</x>
      <y>88</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>program_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>setViewProgram()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>821</x>
+     <y>237</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>956</x>
+     <y>206</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>machine_zoom_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>setViewMachine()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>848</x>
+     <y>292</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>902</x>
+     <y>286</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>path_button</sender>
+   <signal>clicked()</signal>
+   <receiver>vtkbackplot</receiver>
+   <slot>setViewPath()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>835</x>
+     <y>338</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>959</x>
+     <y>343</y>
     </hint>
    </hints>
   </connection>
@@ -31411,12 +31459,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="rpmcontrolbtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
  </buttongroups>
 </ui>

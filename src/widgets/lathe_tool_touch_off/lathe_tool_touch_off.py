@@ -15,7 +15,8 @@ ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 
 # end of Workarround
 
-from qtpy.QtCore import Signal, Slot, QUrl, QObject
+from qtpy.QtCore import Signal, Slot, QUrl, QObject, QTimer
+from qtpy.QtWidgets import QMessageBox
 from qtpy.QtQuickWidgets import QQuickWidget
 
 from qtpyvcp.plugins import getPlugin
@@ -24,6 +25,9 @@ from qtpyvcp.utilities import logger
 LOG = logger.getLogger(__name__)
 STATUS = getPlugin('status')
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
+ORIENTATION_ACK_DELAY_MS = 600
+ORIENTATION_ACK_POS_X = 550
+ORIENTATION_ACK_POS_Y = 250
 
 
 class LatheToolTouchOff(QQuickWidget):
@@ -38,6 +42,7 @@ class LatheToolTouchOff(QQuickWidget):
             return
 
         self.dm = getPlugin('persistent_data_manager')
+        self.tooltable = getPlugin('tooltable')
 
         self.stat = STATUS
         self.engine().rootContext().setContextProperty("handler", self)
@@ -53,6 +58,27 @@ class LatheToolTouchOff(QQuickWidget):
         # self.stat.tool_table.onValueChanged(self.update_tools)
 
         issue_mdi.bindOk(widget=self)
+
+    def _show_orientation_ack_dialog(self, tool_num, from_q, to_q):
+        msg = QMessageBox(self)
+        msg.setIcon(QMessageBox.Information)
+        msg.setWindowTitle("Tool Orientation Updated")
+        msg.setText(
+            f"Tool {tool_num} orientation changed from Q{from_q} to Q{to_q}.\n\n"
+            "This updates the tool table."
+        )
+        msg.setStandardButtons(QMessageBox.Ok)
+        msg.setDefaultButton(QMessageBox.Ok)
+        self._position_ack_dialog(msg)
+        msg.exec_()
+
+    def _position_ack_dialog(self, msg_box):
+        msg_box.adjustSize()
+        msg_box.move(int(ORIENTATION_ACK_POS_X), int(ORIENTATION_ACK_POS_Y))
+
+    def _show_ack_then_reset(self, tool_num, from_q, to_q):
+        self._show_orientation_ack_dialog(tool_num, from_q, to_q)
+        self.reset_tools()
 
     def update_tools(self, args):
 
@@ -84,13 +110,33 @@ class LatheToolTouchOff(QQuickWidget):
     def reset_tools(self):
         tool_num = self.stat.tool_in_spindle.getValue()
         self.tool_image.pop(tool_num, None)
+        self.current_group = ""
+        self.current_index = 0
         self.toolResetSig.emit()
 
     @Slot(str, int, int)
     def tool_select(self, group, index, orientation):
 
         tool_num = self.stat.tool_in_spindle.getValue()
+        previous_orientation = None
+
+        try:
+            if self.tooltable is not None:
+                table = self.tooltable.getToolTable() or {}
+                tool_data = table.get(tool_num, {})
+                previous_orientation = int(tool_data.get('Q', 0))
+        except Exception:
+            LOG.debug("Failed reading previous orientation for tool %s", tool_num, exc_info=True)
+
         issue_mdi("G10 L1 P{} Q{}".format(tool_num, orientation))
+
+        if previous_orientation is None:
+            previous_orientation = 0
 
         self.tool_image[tool_num] = [group, index]
         self.dm.setData('tool-touch-off.tool-image-table', self.tool_image)
+
+        QTimer.singleShot(
+            ORIENTATION_ACK_DELAY_MS,
+            lambda tn=tool_num, fq=previous_orientation, tq=orientation: self._show_ack_then_reset(tn, fq, tq)
+        )

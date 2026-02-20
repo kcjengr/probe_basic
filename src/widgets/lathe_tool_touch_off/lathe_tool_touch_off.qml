@@ -468,7 +468,9 @@ Rectangle {
             for (var j = 0; j < 7; j++){
                 right_tools.itemAt(j).state = "released"
             }
-            handler.tool_select(group, index, orientation)
+            if (tool_options === true) {
+                handler.tool_select(group, index, orientation)
+            }
 
             top_horizontal_dimensions.visible = false
             bottom_horizontal_dimensions.visible = false
@@ -515,7 +517,9 @@ Rectangle {
                     }
                 }
                 else{
-                    handler.tool_select(group, index, orientation)
+                    if (tool_options === true) {
+                        handler.tool_select(group, index, orientation)
+                    }
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = false
                     bottom_horizontal_dimensions.visible = true
@@ -540,7 +544,9 @@ Rectangle {
 
                 }
                 else{
-                    handler.tool_select(group, index, orientation)
+                    if (tool_options === true) {
+                        handler.tool_select(group, index, orientation)
+                    }
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = true
                     bottom_horizontal_dimensions.visible = false
@@ -581,7 +587,9 @@ Rectangle {
                 }
 
                 else if (index < 3){
-                    handler.tool_select(group, index, orientation)
+                    if (tool_options === true) {
+                        handler.tool_select(group, index, orientation)
+                    }
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = true
                     bottom_horizontal_dimensions.visible = false
@@ -590,7 +598,9 @@ Rectangle {
                 }
 
                 else if (index >= 3){
-                    handler.tool_select(group, index, orientation)
+                    if (tool_options === true) {
+                        handler.tool_select(group, index, orientation)
+                    }
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = false
                     bottom_horizontal_dimensions.visible = true
@@ -600,7 +610,9 @@ Rectangle {
 
 
                 else{
-                    handler.tool_select(group, index, orientation)
+                    if (tool_options === true) {
+                        handler.tool_select(group, index, orientation)
+                    }
                     tool.state  = "selected"
                     top_horizontal_dimensions.visible = true
                     bottom_horizontal_dimensions.visible = false

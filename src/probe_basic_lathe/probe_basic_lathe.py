@@ -24,6 +24,8 @@ from . import probe_basic_lathe_rc
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
+MASTER_TOOL_DIALOG_POS_X = 400
+MASTER_TOOL_DIALOG_POS_Y = 215
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -136,6 +138,10 @@ class ProbeBasicLathe(VCPMainWindow):
             self._master_tool_processing = False  # Flag to prevent double-execution
             self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
             self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
+
+    def _position_master_dialog(self, msg_box):
+        msg_box.adjustSize()
+        msg_box.move(int(MASTER_TOOL_DIALOG_POS_X), int(MASTER_TOOL_DIALOG_POS_Y))
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
@@ -503,6 +509,7 @@ class ProbeBasicLathe(VCPMainWindow):
             cancel_btn = msg.button(QMessageBox.Cancel)
             cancel_btn.setText("Cancel")
             msg.setDefaultButton(QMessageBox.Cancel)
+            self._position_master_dialog(msg)
             
             result = msg.exec_()
             
@@ -525,6 +532,7 @@ class ProbeBasicLathe(VCPMainWindow):
                         f"Tool {new_master} offset is now (X0, Z0)."
                     )
                     confirm_msg.setStandardButtons(QMessageBox.Ok)
+                    self._position_master_dialog(confirm_msg)
                     
                     confirm_msg.exec_()
                 else:
