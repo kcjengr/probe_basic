@@ -25,7 +25,8 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    :maxdepth: 2
    :caption: Update Release Notes:
 
-   update_notes
+   update_notes_stable
+   update_notes_develop
 
 .. toctree::
    :maxdepth: 2

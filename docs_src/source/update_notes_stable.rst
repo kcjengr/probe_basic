@@ -1,13 +1,26 @@
-====================
-Update Release Notes
-====================
+===========================
+Stable Update Release Notes
+===========================
 
-February 19, 2026 - Important DRO Update Notice
------------------------------------------------
+February 20, 2026 - 0.6.6 Stable Version Release Notes
+------------------------------------------------------
+
+**MDI Queue / Feedhold Recovery and Cycle Start Resume Fixes**
+
+This update includes stability and workflow fixes for MDI queue execution, in both mill and lathe versions for feedhold resume behavior, and release-note process updates across Probe Basic and QtPyVCP integration paths.
+
+- MDI history queue handling was hardened to prevent invalid selection/index edge-case failures.
+- Queue pause/resume interaction was improved with clearer state transitions.
+- Feedhold during queued MDI execution can now resume reliably from cycle start in the supported machine-state path.
+- Duplicate normal cycle-start dispatch in Probe Basic mill/lathe handlers was removed so cycle-start behavior is no longer double-invoked.
+- Internal running notes and split stable/develop release-note workflow were introduced to keep release documentation accurate by channel.
+
+
+**Important DRO Update Notice**
 
 User DRO bug fixes were applied to the supplied `user_dro_display` files (axis mapping and zero/offset behavior corrections). Users should replace older DRO UI files in their machine config with the updated files from the latest sim config package to ensure proper functionality.
 
-The updated documentation and DRO files are available in the **develop** version build **0.6.5-10**.
+The updated DRO files are available in the latest sim folder and will need to be copied to the user's machine config folder for use. Be sure to update your `USER_DROS_PATH` in the ini file to point to the correct location of the updated DRO files.
 
 Overview of updates for MILL configurations
 -------------------------------------------
