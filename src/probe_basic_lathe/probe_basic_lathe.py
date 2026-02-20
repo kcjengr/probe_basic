@@ -456,10 +456,7 @@ class ProbeBasicLathe(VCPMainWindow):
             finally:
                 # Auto-uncheck the button after running
                 self.run_from_line_Btn.setChecked(False)
-        else:
-            # Normal cycle start - just run the program normally
-            actions.program_actions.run()
-            LOG.info("Normal cycle start")
+        # Normal cycle start is handled by the button's bound actionName (program.run).
 
     # Master Tool Promotion Methods
     def on_master_tool_editing_finished(self):
