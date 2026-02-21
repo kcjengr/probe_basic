@@ -3,7 +3,7 @@ Develop Update Release Notes
 ============================
 
 February 20, 2026 - 0.6.5-14 Develop + NEW 0.6.6 Stable Version Release Notes
----------------------------------------------------------------------------------
+-----------------------------------------------------------------------------
 
 **MDI Queue / Feedhold Recovery and Cycle Start Resume Fixes**
 
@@ -147,7 +147,7 @@ Overview of updates for LATHE configurations
 --------------------------------------------
 
 February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature
-------------------------------------------------------------------
+-------------------------------------------------------------------
 
 Probe Basic Lathe now supports **Master Tool Promotion**, a powerful feature for machines using Master Tool Offset Mode. This allows you to promote any secondary tool to become the new master tool (offsets X0, Z0) while automatically preserving all tool-to-tool spatial relationships.
 

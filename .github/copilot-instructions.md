@@ -5,6 +5,11 @@ This file gives concise, actionable guidance for AI coding agents working in the
 Running notes rule
 ------------------
 - Keep running notes current for every meaningful Probe Basic or QtPyVCP change.
-- Update `docs_src/source/running_notes.rst` with release-note-ready entries.
+- Update `audit_reports/running_notes.rst` with release-note-ready entries.
 - Each entry should include: date, area, summary, changes, validation, and touched files.
 - Keep newest entries at the top.
+
+Docs and packaging hygiene
+-------------------------
+- Do not add standalone `.rst` files under `docs_src/source/` unless they are included in a toctree (for example via `docs_src/source/index.rst`).
+- Keep doc markup warning-free for Sphinx builds used by docs/deb packaging.
