@@ -1,6 +1,6 @@
-========================
-Probe Basic .deb Install
-========================
+=======================
+Probe Basic deb Install
+=======================
 
 
 **Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**
@@ -26,7 +26,7 @@ Important Requirements
 Download the Linux Debian 12 Bookworm ISO Image File
 ----------------------------------------------------
 
-    Download from: https://www.debian.org/download
+    Download from: https://www.debian.org/releases/bookworm/debian-installer/
 
     Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. You will need to make a bootable DVD or USB thumb drive depending on how you plan to install. The software below is extremely easy and works flawlessly with Linux Debian OS images:
 

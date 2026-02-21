@@ -15,11 +15,11 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
    :maxdepth: 2
    :caption: Installation:
 
-   stable_quick_start_apt
-   development_quick_start_apt
-   stable_develop_branch_change
-   quick_start
-   dev_install
+   probe_basic_apt_stable_install
+   probe_basic_apt_develop_install
+   probe_basic_stable_develop_change
+   probe_basic_deb_install
+   probe_basic_dev_install
 
 .. toctree::
    :maxdepth: 2

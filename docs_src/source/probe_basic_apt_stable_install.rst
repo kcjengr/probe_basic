@@ -25,7 +25,7 @@ Installation Steps
 1. Download the Linux Debian 12 Bookworm ISO Image File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    Download from: https://www.debian.org/download
+    Download from: https://www.debian.org/releases/bookworm/debian-installer/
 
     Select the Linux Debian 12 Bookworm Netinst CD ISO from the above link. You will need to make a bootable DVD or USB thumb drive depending on how you plan to install. The below software is extremely easy and works flawlessly with Linux Debian OS images:
 
