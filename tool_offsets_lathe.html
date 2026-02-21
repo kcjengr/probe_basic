@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Lathe Tool Offsets as of 0.6.5-7 Develop Version &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probing" href="probing.html" />
+    <link rel="prev" title="Probe Basic Lathe Interface" href="lathe_interface.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_develop.html">Develop Update Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Lathe Tool Offsets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#understanding-g7-g8-diameter-and-radius-modes">Understanding G7/G8 Diameter and Radius Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#traditional-tool-offset-setup-procedure">Traditional Tool Offset Setup Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#master-tool-offset-mode-setup-procedure">Master Tool Offset Mode Setup Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#master-tool-promotion">Master Tool Promotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#important-notes">Important Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#configuration-requirements">Configuration Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Lathe Tool Offsets as of 0.6.5-7 Develop Version</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/tool_offsets_lathe.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="lathe-tool-offsets-as-of-0-6-5-7-develop-version">
+<h1>Lathe Tool Offsets as of 0.6.5-7 Develop Version<a class="headerlink" href="#lathe-tool-offsets-as-of-0-6-5-7-develop-version" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Probe Basic Lathe provides comprehensive tool offset management for precision lathe operations. This guide covers the step-by-step procedures for setting up tool offsets using both traditional LinuxCNC tool offset mode and Probe Basic’s Master Tool Offset Mode.</p>
+</section>
+<section id="understanding-g7-g8-diameter-and-radius-modes">
+<h2>Understanding G7/G8 Diameter and Radius Modes<a class="headerlink" href="#understanding-g7-g8-diameter-and-radius-modes" title="Link to this heading"></a></h2>
+<p>LinuxCNC lathes operate in one of two modes that affect how X-axis positions and tool offsets are displayed and entered:</p>
+<dl class="simple">
+<dt><strong>G7 - Diameter Mode</strong></dt><dd><p>In diameter mode (G7), the X-axis DRO displays and accepts diameter values. This is the default mode for most lathe operations as it matches how parts are typically dimensioned. When G7 is active, tool offset inputs are interpreted as diameter values.</p>
+</dd>
+<dt><strong>G8 - Radius Mode</strong></dt><dd><p>In radius mode (G8), the X-axis DRO displays and accepts radius values (half of diameter). This mode is useful when working from drawings that specify radii.</p>
+</dd>
+</dl>
+<p><strong>Dynamic Button Labels</strong></p>
+<p>The Touch Off page features intelligent button labeling that changes based on the active mode:</p>
+<ul class="simple">
+<li><p>When <strong>G7 (Diameter Mode)</strong> is active: Buttons display “<strong>TOUCH X DIAM</strong>”</p></li>
+<li><p>When <strong>G8 (Radius Mode)</strong> is active: Buttons display “<strong>TOUCH X RAD</strong>”</p></li>
+</ul>
+<p>This visual feedback ensures you always know what type of value to enter. The touch-off subroutines automatically handle the conversion between diameter and radius as needed - tool offsets are always stored in radius mode internally, regardless of which mode you’re working in.</p>
+<p>To switch modes, use the G7/G8 buttons on the main DRO panel or include G7/G8 in your startup G-code.</p>
+</section>
+<section id="traditional-tool-offset-setup-procedure">
+<h2>Traditional Tool Offset Setup Procedure<a class="headerlink" href="#traditional-tool-offset-setup-procedure" title="Link to this heading"></a></h2>
+<p>This procedure is for machines using standard LinuxCNC tool offsets (when MASTER_TOOL_OFFSET_MODE is false or not set).</p>
+<p><strong>Step 1: Prepare Your Setup</strong></p>
+<ol class="arabic simple">
+<li><p>Load the tool you want to measure into the spindle</p></li>
+<li><p>Ensure your workpiece or reference stock is securely mounted in the chuck</p></li>
+<li><p>Verify the correct tool number is active (the tool table will highlight the current tool)</p></li>
+<li><p>Navigate to the <strong>Touch Off</strong> tab</p></li>
+</ol>
+<p><strong>Step 2: Set X-Axis Tool Offset</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Check Current Mode</strong>: Look at the touch button - it will show either “TOUCH X DIAM” or “TOUCH X RAD”</p>
+<ul class="simple">
+<li><p>If working in G7 (diameter mode): Button shows “TOUCH X DIAM”</p></li>
+<li><p>If working in G8 (radius mode): Button shows “TOUCH X RAD”</p></li>
+</ul>
+</li>
+<li><p><strong>Position the Tool</strong>: Jog the tool to touch the workpiece or skim pass the stock diameter (or radius reference surface)</p></li>
+<li><p><strong>Measure the Reference</strong>:</p>
+<ul class="simple">
+<li><p>If in DIAM mode: Use calipers or micrometer to measure the <em>diameter</em> of the workpiece where the tool is touching</p></li>
+<li><p>If in RAD mode: Measure and calculate the <em>radius</em> value for user input and measuring it is typicaly easier to perform these tasks in diameter mode.</p></li>
+</ul>
+</li>
+<li><p><strong>Enter the Value</strong>:</p>
+<ul class="simple">
+<li><p>Click in the “X Offset Touch Value” input field</p></li>
+<li><p>Enter the measured diameter (G7) or radius (G8) value</p></li>
+<li><p>The field accepts the value appropriate to the current mode</p></li>
+</ul>
+</li>
+<li><p><strong>Apply the Offset</strong>: Click the “TOUCH X DIAM” or “TOUCH X RAD” button (depending on active mode), or press ENTER</p>
+<ul class="simple">
+<li><p>The system automatically calculates the tool offset</p></li>
+<li><p>The tool table is updated with the X offset for the current tool</p></li>
+<li><p>The subroutine handles diameter/radius conversion automatically</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Step 3: Set Z-Axis Tool Offset</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Position the Tool</strong>: Jog the tool to touch the face of the workpiece (or use a tool setter/gage block)</p></li>
+<li><p><strong>Enter Gage Thickness</strong>: In the “Z Gage Thickness” field, enter:</p>
+<ul class="simple">
+<li><p>0.0 if touching the workpiece face directly</p></li>
+<li><p>The thickness of your gage block if using one</p></li>
+</ul>
+</li>
+<li><p><strong>Apply the Offset</strong>: Click the “TOUCH Z” button</p>
+<ul class="simple">
+<li><p>The system calculates the Z offset</p></li>
+<li><p>The tool table is updated with the Z offset for the current tool</p></li>
+<li><p>The updated tool length offset is then applied to the currently loaded tool.</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Step 4: Verify Offsets</strong></p>
+<ol class="arabic simple">
+<li><p>The X Axis DRO should now display the actual position of the newly measured tool while touching the workpiece</p></li>
+<li><p>The Z axis should now display the tools relation to the z axis machine absolute zero when touching the reference face.</p></li>
+<li><p>Verify the X and Z offset values for your tool are correct</p></li>
+<li><p>The offsets represent the distance from machine home to the tool tip when touching the reference surfaces</p></li>
+</ol>
+</section>
+<section id="master-tool-offset-mode-setup-procedure">
+<h2>Master Tool Offset Mode Setup Procedure<a class="headerlink" href="#master-tool-offset-mode-setup-procedure" title="Link to this heading"></a></h2>
+<p>When MASTER_TOOL_OFFSET_MODE is enabled in your INI file, one tool is designated as the “master” with X0/Z0 offsets, and all other tools are measured relative to the master tool. This method simplifies tool management and enables the Master Tool Promotion feature.</p>
+<p><strong>Step 1: Set Up Master Tool (Usually T1)</strong></p>
+<ol class="arabic simple">
+<li><p><strong>Navigate</strong>: Go to the <strong>Touch Off</strong> tab and physically load your master tool (typically T1)</p></li>
+<li><p><strong>Mount Reference Material/Stock</strong>: Ensure your workpiece or reference stock is securely mounted in the chuck - this same reference will be used for all tools</p></li>
+<li><p><strong>Set the Master Tool Number</strong>:</p>
+<ul class="simple">
+<li><p>On the <strong>Touch Off</strong> tab, locate the Master Tool number field (labeled “MT”)</p></li>
+<li><p>Enter your desired master tool number (e.g., 1)</p></li>
+<li><p>Press Enter</p></li>
+<li><p><strong>Important - First Time Setup</strong>: A confirmation dialog will appear asking if you want to promote this tool to master:</p>
+<ul>
+<li><p>The dialog shows: “Promoting Tool X to Master Tool!” with details about the promotion</p></li>
+<li><p>For first-time setup, click “Yes” to confirm the promotion</p></li>
+<li><p>This designates your tool as the master with X0/Z0 offsets and must be done before measuring any secondary tools</p></li>
+<li><p>If the tool table already has offsets, the system will recalculate all other tool offsets to maintain their spatial relationships</p></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p><strong>Touch Off X-Axis</strong>:</p>
+<ul class="simple">
+<li><p>Check the button label: it shows either “TOUCH X DIAM” (G7 mode) or “TOUCH X RAD” (G8 mode)</p></li>
+<li><p>Jog the tool to touch the workpiece diameter, or make a skim cut to true up the surface and do not move x axis after cutting</p></li>
+<li><p>Measure the diameter (if in G7 diameter mode) or radius (if in G8 radius mode) of the workpiece at the touch point with calipers</p></li>
+<li><p>Enter this measured value in the input field next to the “TOUCH X DIAM/RAD” button</p></li>
+<li><p>Press Enter or Click the “TOUCH X DIAM/RAD” button</p></li>
+<li><p>The master tool X offset in the tool table will be set to 0.0000, and the G54 work offset is adjusted to display the measured value at the touch point</p></li>
+</ul>
+</li>
+<li><p><strong>Touch Off Z-Axis</strong>:</p>
+<ul class="simple">
+<li><p>Jog the tool to touch the face of the workpiece or make a skim pass on the end of the stock face.  you can also use a gage block of known thickness between stock end and tool tip.</p></li>
+<li><p>Enter 0.0 in “Z Gage Block Thickness” if touching directly to stock, or enter the gage block thickness if the gage block is used</p></li>
+<li><p>Click the “TOUCH Z” button</p></li>
+<li><p>The master tool Z offset in the tool table will be set to 0.0000, and the G54 work offset is adjusted so that the Z axis DRO now shows 0.0000 when the tool is touching the reference face or the face position plus gage block thickness if used.</p></li>
+</ul>
+</li>
+<li><p><strong>Verify Master Tool Setup</strong>:</p>
+<ul class="simple">
+<li><p>Confirm the <strong>Master Tool Number</strong> field on the <strong>Touch Off</strong> tab shows your master tool number (e.g., 1)</p></li>
+<li><p>Navigate to the <strong>Tool Table</strong> tab and confirm the master tool shows X 0.0000 and Z 0.0000 offsets</p></li>
+</ul>
+</li>
+<li><p><strong>Important</strong>: The subroutine looks for the user set Master Tool Number and compares the currently loaded tool being measured to the Master Tool Number. If they are the same tool, the subroutine will simply set the work coordinate offsets.  additionally the user when setting up a job with the master tool loaded may perform these steps and use the work offset zero buttons for z axis, and enter the measured diameter or radius direectly in the main dro.</p></li>
+</ol>
+<p><strong>Step 2: Set Up Secondary Tools</strong></p>
+<p>For each additional tool in your library, the subroutine will see the tool being measured is NOT the master tool and will correctly calculated the relative offset to the master tool and write them to the tool table.</p>
+<ol class="arabic simple">
+<li><p><strong>Load and Activate</strong>: physically load the tool on the machine and load the tool in software by entering its tool number in the standard tool change input field next to the “T” Button. press enter or click the button to load the tool in software</p></li>
+<li><p><strong>Touch Off X-Axis</strong>:</p>
+<ul class="simple">
+<li><p>Jog to touch the <strong>same reference diameter</strong> that you used for the master tool - consistency is critical</p></li>
+<li><p>The previously entered X value should still be the same as when the master tool was measured - if not, re-enter the same value you used for the master tool</p></li>
+<li><p>Click “TOUCH X DIAM/RAD”</p></li>
+<li><p>The system calculates this tool’s offset <em>relative to the master tool</em> and stores it in the tool table. you should see the X axis main DRO now displaying the reference pieces measured diameter or radius value</p></li>
+</ul>
+</li>
+<li><p><strong>Touch Off Z-Axis</strong>:</p>
+<ul class="simple">
+<li><p>Jog to touch the <strong>same reference face</strong> used for the master tool</p></li>
+<li><p>Enter the gage block thickness in “Z Gage Block Thickness” or 0.0 if touching directly</p></li>
+<li><p>Click “TOUCH Z”</p></li>
+<li><p>The system calculates this tool’s Z offset <em>relative to the master tool</em> and stores it in the tool table</p></li>
+<li><p>the Z axis Main DRO should now show 0.0000</p></li>
+</ul>
+</li>
+</ol>
+<p><strong>Step 3: Verify Relationships</strong></p>
+<ol class="arabic simple">
+<li><p>Navigate to the <strong>Tool Table</strong> tab</p></li>
+<li><p>Master tool shows X0.0000, Z0.0000</p></li>
+<li><p>Each secondary tool shows offsets representing its physical position relative to the master tool</p></li>
+<li><p>These relationships are preserved even if you promote a different tool to be the master tool</p></li>
+</ol>
+<p><strong>Repeat for All Tools</strong>: Repeat the secondary tool setup procedure for each tool in your library, always using the same reference diameter and face as the master tool to ensure consistent offsets.</p>
+</section>
+<section id="master-tool-promotion">
+<h2>Master Tool Promotion<a class="headerlink" href="#master-tool-promotion" title="Link to this heading"></a></h2>
+<p>If your master tool needs repair or replacement, you can promote another tool to become the new master without remeasuring all tools.  This would be done to make the promoted master tool a “placeholder” which will recalculate all offsets relative to the promoted tool.  this is ueful when changing the physical position or replacing inserts of the original master tool.  it allows for the original master tool to be measured agains the promoted master tool as a secondary tool to create an updated spatial relationship for x and z offsets.  once the new offsets have been measured you can simple promotr the original master tool back to being the current master tool and you do not have to remeasure all other tools in your library.:</p>
+<ol class="arabic simple">
+<li><p>Navigate to the <strong>TOUCH OFF</strong> tab</p></li>
+<li><p>Locate the <strong>Master Tool Number</strong> field</p></li>
+<li><p>Enter the tool number you wish to promote (e.g., change from 1 to 5)</p></li>
+<li><p>Press Enter - a confirmation dialog appears</p></li>
+<li><p>Click “Yes” to proceed</p></li>
+<li><p>All tool offsets are instantly recalculated to preserve spatial relationships</p></li>
+<li><p>The promoted tool now shows X0/Z0 for its tool offsets and all other tools are adjusted accordingly</p></li>
+</ol>
+<p>For complete details, see the Master Tool Promotion Feature in the update_notes.rst documentation.</p>
+</section>
+<section id="important-notes">
+<h2>Important Notes<a class="headerlink" href="#important-notes" title="Link to this heading"></a></h2>
+<p><strong>Consistency is Critical</strong></p>
+<ul class="simple">
+<li><p>Always use the same reference surfaces (workpiece diameter and face) for all tools</p></li>
+<li><p>In Master Tool Mode, all secondary tools must be measured against the same reference as the master</p></li>
+<li><p>Mixed references will result in incorrect tool offsets</p></li>
+</ul>
+<p><strong>Tool Table Automatic Updates</strong></p>
+<ul class="simple">
+<li><p>Tool offsets are written to the tool table immediately upon touch-off</p></li>
+<li><p>No manual saving is required</p></li>
+<li><p>The active tool offset is automatically applied to the currently loaded tool during the touch off routine</p></li>
+</ul>
+<p><strong>Diameter vs. Radius Input</strong></p>
+<ul class="simple">
+<li><p>The touch buttons dynamically show whether you’re supposed to be inputting diameter or radius</p></li>
+<li><p>The subroutines handle all conversions automatically based off of those button labels</p></li>
+<li><p>Tool offsets are internally stored in radius mode regardless of input mode</p></li>
+<li><p>Watch the button label: “TOUCH X DIAM” means enter diameter, “TOUCH X RAD” means enter radius</p></li>
+</ul>
+<p><strong>G-Code Programs</strong></p>
+<ul class="simple">
+<li><p>G-code programs can use either G7 or G8</p></li>
+<li><p>Tool offsets work correctly in both modes</p></li>
+<li><p>The mode affects display and manual input only, not programmed moves</p></li>
+</ul>
+<p><strong>Switching Modes Mid-Operation</strong></p>
+<ul class="simple">
+<li><p>You can switch between G7 and G8 at any time</p></li>
+<li><p>Existing tool offsets remain valid</p></li>
+<li><p>DRO values and button labels update immediately</p></li>
+</ul>
+</section>
+<section id="configuration-requirements">
+<h2>Configuration Requirements<a class="headerlink" href="#configuration-requirements" title="Link to this heading"></a></h2>
+<p><strong>Version 0.6.5-7 Develop version or later is required for Master Tool Offset Mode and G7/G8 mode detection features.</strong></p>
+<p><strong>For Traditional Tool Offsets:</strong></p>
+<p>No special configuration required - this is the default Probe Basic behavior.</p>
+<p><strong>For Master Tool Offset Mode:</strong></p>
+<p>Add the following to the [DISPLAY] section of your probe_basic_lathe.ini file:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MASTER_TOOL_OFFSET_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+<p>For detailed information about this setting, see the machine_config.rst documentation.</p>
+<p><strong>Touch-Off Subroutines:</strong></p>
+<p>Ensure the following subroutines are in your config’s subroutines folder:</p>
+<ul class="simple">
+<li><p><strong>Traditional Mode</strong>: <code class="docutils literal notranslate"><span class="pre">touch_off_x.ngc</span></code>, <code class="docutils literal notranslate"><span class="pre">touch_off_z.ngc</span></code></p></li>
+<li><p><strong>Master Tool Mode</strong>: <code class="docutils literal notranslate"><span class="pre">touch_off_x_mt.ngc</span></code>, <code class="docutils literal notranslate"><span class="pre">touch_off_z_mt.ngc</span></code></p></li>
+</ul>
+<p>The correct subroutines are automatically called based on your MASTER_TOOL_OFFSET_MODE setting.</p>
+</section>
+<section id="troubleshooting">
+<h2>Troubleshooting<a class="headerlink" href="#troubleshooting" title="Link to this heading"></a></h2>
+<p><strong>Tool offset is half what I expected (or double)</strong></p>
+<p>This usually indicates a diameter/radius mode mismatch:</p>
+<ul class="simple">
+<li><p>Check if the button showed “DIAM” but you entered a radius value (or vice versa)</p></li>
+<li><p>G7 expects diameter input; G8 expects radius input</p></li>
+<li><p>Re-touch the tool using the correct value type</p></li>
+</ul>
+<p><strong>Tool offset is wrong after touching off</strong></p>
+<ul class="simple">
+<li><p>Verify you touched the reference surface properly (tool actually touching workpiece)</p></li>
+<li><p>Confirm you entered the correct workpiece dimension</p></li>
+<li><p>In Master Tool Mode: ensure you used the same reference surfaces as the master tool</p></li>
+</ul>
+<p><strong>Button doesn’t show DIAM or RAD label</strong></p>
+<ul class="simple">
+<li><p>The button label updates based on active G-code mode</p></li>
+<li><p>Issue MDI command <code class="docutils literal notranslate"><span class="pre">G7</span></code> for diameter mode or <code class="docutils literal notranslate"><span class="pre">G8</span></code> for radius mode</p></li>
+<li><p>Check that your INI file startup code includes G7 or G8</p></li>
+</ul>
+<p><strong>Master Tool Promotion doesn’t work</strong></p>
+<ul class="simple">
+<li><p>Verify MASTER_TOOL_OFFSET_MODE = true in INI file [DISPLAY] section</p></li>
+<li><p>Ensure you’re entering a valid tool number that exists in your tool table</p></li>
+<li><p>Check that the promoted tool has been properly measured (has non-zero offsets unless it was already the master)</p></li>
+</ul>
+</section>
+<section id="related-documentation">
+<h2>Related Documentation<a class="headerlink" href="#related-documentation" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><strong>machine_config.rst</strong>: MASTER_TOOL_OFFSET_MODE setting details</p></li>
+<li><p><strong>update_notes.rst</strong>: Master Tool Promotion feature documentation</p></li>
+<li><p><strong>lathe_interface.rst</strong>: Overview of lathe interface tabs and layout</p></li>
+<li><p><strong>probe_basic_parameters.rst</strong>: Parameter reference for touch-off values</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="lathe_interface.html" class="btn btn-neutral float-left" title="Probe Basic Lathe Interface" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="probing.html" class="btn btn-neutral float-right" title="Probing" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

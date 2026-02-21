@@ -1,0 +1,288 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Probe Basic &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probe Basic APT Stable Install" href="probe_basic_apt_stable_install.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="#" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_develop.html">Develop Update Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_offsets_lathe.html">Lathe Tool Offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="#">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="#" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Probe Basic</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/index.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <img alt="_images/icon.png" src="_images/icon.png" />
+<section id="probe-basic">
+<h1>Probe Basic<a class="headerlink" href="#probe-basic" title="Link to this heading"></a></h1>
+<p>ProbeBasic is a <a class="reference external" href="http://www.qtpyvcp.com/">QtPyVCP</a> based user interface
+for the <a class="reference external" href="http://linuxcnc.org/">LinuxCNC</a> machine control.</p>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_stable_install.html#important-requirements">Important Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_stable_install.html#installation-steps">Installation Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_stable_install.html#updating-and-configuration">Updating and Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_develop_install.html#important-requirements">Important Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_develop_install.html#installation-steps">Installation Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_apt_develop_install.html#updating-and-configuration">Updating and Configuration</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_stable_develop_change.html#probe-basic-stable-and-develop-version-information">Probe Basic STABLE and DEVELOP Version Information</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_stable_develop_change.html#step-by-step-guide-to-change-the-sources-list-for-stable-and-develop-apt-repository">Step-by-Step Guide to Change the Sources List for Stable and Develop APT Repository</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_stable_develop_change.html#troubleshooting-and-support">Troubleshooting and Support</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#important-requirements">Important Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#download-the-linux-debian-12-bookworm-iso-image-file">Download the Linux Debian 12 Bookworm ISO Image File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#installation-steps">Installation Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#installing-probe-basic">Installing Probe Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#installation-commands">Installation Commands</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_deb_install.html#uninstallation">Uninstallation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_dev_install.html#installation-steps">Installation Steps</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_dev_install.html#getting-started-with-probe-basic-development">Getting Started with Probe Basic DEVELOPMENT</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_dev_install.html#updating-qtpyvcp-and-probe-basic">Updating QtPyVCP and Probe Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_dev_install.html#uninstalling-qtpyvcp-and-probe-basic">Uninstalling QtPyVCP and Probe Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probe_basic_dev_install.html#note">Note</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#february-20-2026-0-6-6-stable-version-release-notes">February 20, 2026 - 0.6.6 Stable Version Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#overview-of-updates-for-mill-configurations">Overview of updates for MILL configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#february-5-2026-probe-basic-stable-release-version-0-6-2">February 5, 2026 - Probe Basic Stable Release Version 0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#previous-updates-notes">Previous Updates Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#overview-of-updates-for-lathe-configurations">Overview of updates for LATHE configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_stable.html#february-20-2026-probe-basic-lathe-master-tool-promotion-feature">February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_develop.html">Develop Update Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#february-20-2026-0-6-5-14-develop-new-0-6-6-stable-version-release-notes">February 20, 2026 - 0.6.5-14 Develop + NEW 0.6.6 Stable Version Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#overview-of-updates-for-mill-configurations">Overview of updates for MILL configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#february-5-2026-probe-basic-stable-release-version-0-6-2">February 5, 2026 - Probe Basic Stable Release Version 0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#previous-updates-notes">Previous Updates Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#overview-of-updates-for-lathe-configurations">Overview of updates for LATHE configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="update_notes_develop.html#february-20-2026-probe-basic-lathe-master-tool-promotion-feature">February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="machine_config.html#creating-a-working-machine-configuration-for-probe-basic">Creating a working Machine Configuration for Probe Basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="machine_config.html#launching-probe-basic">Launching Probe Basic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#main">Main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#file">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#atc">ATC</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#tool">Tool</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#offsets">Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#probing">Probing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#conversational">Conversational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="mill_interface.html#status">Status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#main">Main</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#file">File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#offsets">Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#touch-off">Touch Off</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#tool-table">Tool Table</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#probing">Probing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#conversational">Conversational</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#settings">Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="lathe_interface.html#status">Status</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tool_offsets_lathe.html">Lathe Tool Offsets</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#understanding-g7-g8-diameter-and-radius-modes">Understanding G7/G8 Diameter and Radius Modes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#traditional-tool-offset-setup-procedure">Traditional Tool Offset Setup Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#master-tool-offset-mode-setup-procedure">Master Tool Offset Mode Setup Procedure</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#master-tool-promotion">Master Tool Promotion</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#important-notes">Important Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#configuration-requirements">Configuration Requirements</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#troubleshooting">Troubleshooting</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_offsets_lathe.html#related-documentation">Related Documentation</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#probing-setup">Probing Setup</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#calibrating-your-touch-probe">Calibrating your Touch Probe</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#work-offsets">Work Offsets</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#parameters">Parameters</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#probe-results">Probe Results</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#probing-routines">Probing Routines</a></li>
+<li class="toctree-l2"><a class="reference internal" href="probing.html#help-tab">Help Tab</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="tool_length_setter.html#tool-touch-off-position">Tool Touch Off Position</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_length_setter.html#tool-touch-off-parameter-settings">Tool Touch Off Parameter Settings</a></li>
+<li class="toctree-l2"><a class="reference internal" href="tool_length_setter.html#measuring-tools">Measuring Tools</a></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="custom_ux_hacking.html#button-renaming-example">Button Renaming Example</a></li>
+</ul>
+</li>
+</ul>
+</div>
+</section>
+<section id="indices-and-tables">
+<h1>Indices and tables<a class="headerlink" href="#indices-and-tables" title="Link to this heading"></a></h1>
+<ul class="simple">
+<li><p><a class="reference internal" href="genindex.html"><span class="std std-ref">Index</span></a></p></li>
+<li><p><a class="reference internal" href="py-modindex.html"><span class="std std-ref">Module Index</span></a></p></li>
+<li><p><a class="reference internal" href="search.html"><span class="std std-ref">Search Page</span></a></p></li>
+</ul>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="probe_basic_apt_stable_install.html" class="btn btn-neutral float-right" title="Probe Basic APT Stable Install" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

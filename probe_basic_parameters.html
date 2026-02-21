@@ -1,0 +1,579 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Probe Basic Parameters &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Machine Configuration (INI, HAL, Files)" href="machine_config.html" />
+    <link rel="prev" title="Develop Update Release Notes" href="update_notes_develop.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_develop.html">Develop Update Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_offsets_lathe.html">Lathe Tool Offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Probe Basic Parameters</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/probe_basic_parameters.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="probe-basic-parameters">
+<h1>Probe Basic Parameters<a class="headerlink" href="#probe-basic-parameters" title="Link to this heading"></a></h1>
+<p><strong>Probe basic requires the following parameters be created in the var file</strong></p>
+<blockquote>
+<div><p>Probe Basic’s devlop version is now using the var file in the configs folder for storing parameters used in subroutines and other functions throughout linuxcnc. These are callable the same as all other parameters which allows them to be used in remap subroutines.  This will allow users a greater degree of flexibility in modifying and using features such as tool touch off during tool changes, programmable coolant, probing etc all while being able to make changes from the from within the probe basic user interfaces entry boxes.  Once changes to the entries are made they are recorded to the var file and are available immediately after the changes are made.  This allows users the ability to change vital settings to ensure their machines run optimally and reliably without major config modifications.</p>
+<p>The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine configuration for proper functionality.</p>
+</div></blockquote>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 4.5%" />
+<col style="width: 22.7%" />
+<col style="width: 4.5%" />
+<col style="width: 68.2%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Var #</p></th>
+<th class="head"><p>Used For</p></th>
+<th class="head"><p>Persistence</p></th>
+<th class="head"><p>Description of stored Variable</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>3000</p></td>
+<td><p>Programmed Coolant</p></td>
+<td><p>Persistent</p></td>
+<td><p>Activates programmable coolant option in subroutines</p></td>
+</tr>
+<tr class="row-odd"><td><p>3001</p></td>
+<td><p>Programmed Coolant</p></td>
+<td><p>Persistent</p></td>
+<td><p>Horizontal distance from spindle centerline to coolant nozzle rotation axis</p></td>
+</tr>
+<tr class="row-even"><td><p>3002</p></td>
+<td><p>Programmed Coolant</p></td>
+<td><p>Persistent</p></td>
+<td><p>Vertical distance from spindle gauge line to coolant nozzle rotation axis</p></td>
+</tr>
+<tr class="row-odd"><td><p>3003</p></td>
+<td><p>Programmed Coolant</p></td>
+<td><p>Persistent</p></td>
+<td><p>User input for desired offset of calculated angle of coolant nozzle rotational axis</p></td>
+</tr>
+<tr class="row-even"><td><p>3004</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Fast feed rate for initial tool setter probe search</p></td>
+</tr>
+<tr class="row-odd"><td><p>3005</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Slow feed rate for secondary tool setter probe search</p></td>
+</tr>
+<tr class="row-even"><td><p>3006</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Traverse feed rate for any tool setter motion that is non probing</p></td>
+</tr>
+<tr class="row-odd"><td><p>3007</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Z axis max probe search travel distance for probe search before error triggers</p></td>
+</tr>
+<tr class="row-even"><td><p>3008</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>X and Y axis max probe search travel distance for probe search before error triggers</p></td>
+</tr>
+<tr class="row-odd"><td><p>3009</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Retract Distance to move above tool setter trigger point after initial fast probe move</p></td>
+</tr>
+<tr class="row-even"><td><p>3010</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Spindle zero, spindle nose home position to tool setter trigger height (abs)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3011</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Tool Diameter Offset mode activation</p></td>
+</tr>
+<tr class="row-even"><td><p>3012</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Tool Diameter Probe mode activation (not yet implemented)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3013</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Tool diameter offset mode direction to offset tool during probing</p></td>
+</tr>
+<tr class="row-even"><td><p>3014</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Tool Number</p></td>
+</tr>
+<tr class="row-odd"><td><p>3015</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Slow Feedrate, secondary probing speed probing moves (single touch if set to 0)</p></td>
+</tr>
+<tr class="row-even"><td><p>3016</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Fast Feedrate, initial probing speed of touch probe used</p></td>
+</tr>
+<tr class="row-odd"><td><p>3017</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Traverse Feedrate, probing speed for traversing work piece to next probe position</p></td>
+</tr>
+<tr class="row-even"><td><p>3018</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Max XY Distance, XY probe motion distance before triggering an error (safety Feature)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3019</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>XY Clearance, XY retract distance after probe trigger event</p></td>
+</tr>
+<tr class="row-even"><td><p>3020</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Max Z Distance, Z probe motion distance before triggering an error (safety Feature)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3021</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Z Clearance, Z retract distance after probe trigger event</p></td>
+</tr>
+<tr class="row-even"><td><p>3022</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Extra Probe Depth, distance added to probe tip diameter to control z- probe depth</p></td>
+</tr>
+<tr class="row-odd"><td><p>3023</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Step Off Width, XY move distance from start probe position to clear work edge</p></td>
+</tr>
+<tr class="row-even"><td><p>3024</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Edge Width, Distance between edge probes when probing angle offset of a work piece</p></td>
+</tr>
+<tr class="row-odd"><td><p>3025</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Boss and Pocket Diameter Hint use to set rough probing motion distances</p></td>
+</tr>
+<tr class="row-even"><td><p>3026</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Boss and Pocket X Hint use to set rough probing motion distances</p></td>
+</tr>
+<tr class="row-odd"><td><p>3027</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Boss and Pocket Y Hint use to set rough probing motion distances</p></td>
+</tr>
+<tr class="row-even"><td><p>3028</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Ridge and Valley X Hint use to set rough probing motion distances</p></td>
+</tr>
+<tr class="row-odd"><td><p>3029</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Ridge and Valley Y Hint use to set rough probing motion distances</p></td>
+</tr>
+<tr class="row-even"><td><p>3030</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Mode, to switch between probing position only and setting wco</p></td>
+</tr>
+<tr class="row-odd"><td><p>3031</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>WCO rotation mode, sets rotation wco or probes to find angle of work only</p></td>
+</tr>
+<tr class="row-even"><td><p>3032</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>calibration offset for touch probe, used in probe subroutines</p></td>
+</tr>
+<tr class="row-odd"><td><p>3033</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Calibration Diameter</p></td>
+</tr>
+<tr class="row-even"><td><p>3034</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe X Calibration Width</p></td>
+</tr>
+<tr class="row-odd"><td><p>3035</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Probe Y Calibration Width</p></td>
+</tr>
+<tr class="row-even"><td><p>3036</p></td>
+<td><p>Touch Probe</p></td>
+<td><p>Persistent</p></td>
+<td><p>Square Calibration Axis Selection</p></td>
+</tr>
+<tr class="row-odd"><td><p>3037</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>Tool Breakage Tolerance</p></td>
+</tr>
+<tr class="row-even"><td><p>3038</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>User Setting 1 Tool Setter</p></td>
+</tr>
+<tr class="row-odd"><td><p>3039</p></td>
+<td><p>Tool Setting</p></td>
+<td><p>Persistent</p></td>
+<td><p>User Setting 2 Tool Setter</p></td>
+</tr>
+<tr class="row-even"><td><p>3973</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack Pocket Count</p></td>
+</tr>
+<tr class="row-odd"><td><p>3974</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC User Parameter 1</p></td>
+</tr>
+<tr class="row-even"><td><p>3975</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC User Parameter 2</p></td>
+</tr>
+<tr class="row-odd"><td><p>3976</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC User Parameter 3</p></td>
+</tr>
+<tr class="row-even"><td><p>3977</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC User Parameter 4</p></td>
+</tr>
+<tr class="row-odd"><td><p>3978</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC User Parameter 5</p></td>
+</tr>
+<tr class="row-even"><td><p>3979</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ID to determine ATC Mechanical Configuration</p></td>
+</tr>
+<tr class="row-odd"><td><p>3980</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack Traverse Speed</p></td>
+</tr>
+<tr class="row-even"><td><p>3981</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Load Height Spindle on Tool</p></td>
+</tr>
+<tr class="row-odd"><td><p>3982</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Safe Z Clearance Height for Tool</p></td>
+</tr>
+<tr class="row-even"><td><p>3983</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 1 X axis machine coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p>3984</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 1 Y axis machine coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p>3985</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 2 X axis machine coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p>3986</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 2 X axis machine coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p>3987</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 1 Clearance X axis machine coordinate</p></td>
+</tr>
+<tr class="row-odd"><td><p>3988</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Rack ATC Pocket 1 Clearance X axis machine coordinate</p></td>
+</tr>
+<tr class="row-even"><td><p>3989</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Volatile</p></td>
+<td><p>Used to track if the carousel is homed (M13) (volatile)</p></td>
+</tr>
+<tr class="row-odd"><td><p>3990</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Used to track the current tool pocket</p></td>
+</tr>
+<tr class="row-even"><td><p>3991</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>Used to track the current tool loaded in the spindle</p></td>
+</tr>
+<tr class="row-odd"><td><p>4000</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Volatile</p></td>
+<td><p>Used in the math to calculate the ATC Calculations</p></td>
+</tr>
+<tr class="row-even"><td><p>4001</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 1 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4002</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 2 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4003</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 3 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4004</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 4 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4005</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 5 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4006</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 6 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4007</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 7 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4008</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 8 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4009</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 9 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4010</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 10 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4011</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 11 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4012</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 12 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4013</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 13 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4014</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 14 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4015</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 15 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4016</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 16 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4017</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 17 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4018</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 18 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4019</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 19 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4020</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 20 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4021</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 21 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4022</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 22 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-even"><td><p>4023</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 23 Parameter where tool number is recorded</p></td>
+</tr>
+<tr class="row-odd"><td><p>4024</p></td>
+<td><p>ATC Tool Change</p></td>
+<td><p>Persistent</p></td>
+<td><p>ATC Pocket 24 Parameter where tool number is recorded</p></td>
+</tr>
+</tbody>
+</table>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="update_notes_develop.html" class="btn btn-neutral float-left" title="Develop Update Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="machine_config.html" class="btn btn-neutral float-right" title="Machine Configuration (INI, HAL, Files)" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
