@@ -1,6 +1,7 @@
 """Designer plugins for conversational widgets.
 
-These provide simplified placeholder versions that don't require LinuxCNC to be running.
+Tries to load real conversational widgets; falls back to lightweight placeholders
+for Designer or when dependencies are missing.
 """
 
 from PySide6.QtWidgets import QWidget, QLabel, QVBoxLayout
@@ -8,50 +9,35 @@ from PySide6.QtCore import Qt
 from qtpyvcp.widgets.qtdesigner import _DesignerPlugin
 
 
-class FacingWidget(QWidget):
-    """Placeholder for FacingWidget in Designer mode."""
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        layout = QVBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-        label = QLabel("Facing Widget\n(Conversational)")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(label)
-        self.setLayout(layout)
-        self.setMinimumSize(200, 150)
-        self.setStyleSheet("background-color: #3a3a3a; color: #cccccc;")
-
-    def setFilePath(self, path):
-        """Dummy method for UI connections."""
-        pass
+def _placeholder(label_text: str):
+    class _P(QWidget):
+        def __init__(self, parent=None):
+            super().__init__(parent)
+            layout = QVBoxLayout()
+            layout.setContentsMargins(0, 0, 0, 0)
+            label = QLabel(label_text)
+            label.setAlignment(Qt.AlignmentFlag.AlignCenter)
+            layout.addWidget(label)
+            self.setLayout(layout)
+            self.setMinimumSize(200, 150)
+            self.setStyleSheet("background-color: #3a3a3a; color: #cccccc;")
+    return _P
 
 
-class HoleCircleWidget(QWidget):
-    """Placeholder for HoleCircleWidget in Designer mode."""
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        layout = QVBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-        label = QLabel("Hole Circle Widget\n(Conversational)")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(label)
-        self.setLayout(layout)
-        self.setMinimumSize(200, 150)
-        self.setStyleSheet("background-color: #3a3a3a; color: #cccccc;")
+try:
+    from .facing import FacingWidget  # type: ignore
+except Exception:
+    FacingWidget = _placeholder("Facing Widget\n(Conversational)")
 
+try:
+    from .hole_circle import HoleCircleWidget  # type: ignore
+except Exception:
+    HoleCircleWidget = _placeholder("Hole Circle Widget\n(Conversational)")
 
-class XYCoordWidget(QWidget):
-    """Placeholder for XYCoordWidget in Designer mode."""
-    def __init__(self, parent=None):
-        super().__init__(parent)
-        layout = QVBoxLayout()
-        layout.setContentsMargins(0, 0, 0, 0)
-        label = QLabel("XY Coord Widget\n(Conversational)")
-        label.setAlignment(Qt.AlignmentFlag.AlignCenter)
-        layout.addWidget(label)
-        self.setLayout(layout)
-        self.setMinimumSize(200, 150)
-        self.setStyleSheet("background-color: #3a3a3a; color: #cccccc;")
+try:
+    from .xy_coord import XYCoordWidget  # type: ignore
+except Exception:
+    XYCoordWidget = _placeholder("XY Coord Widget\n(Conversational)")
 
 
 class FacingWidgetPlugin(_DesignerPlugin):
