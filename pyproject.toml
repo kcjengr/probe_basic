@@ -22,6 +22,8 @@ packages = [
 
 [tool.poetry.dependencies]
 python = "^3.7"
+PySide6 = {version = "^6.0", optional = true}
+qtpy = "^2.0"
 
 [tool.poetry.group.docs.dependencies]
 Sphinx = ">=4.0"
@@ -42,6 +44,10 @@ probe_basic_lathe = "probe_basic_lathe"
 
 [tool.poetry.plugins."qtpyvcp.widgets"]
 probe_basic_widgets = "widgets"
+
+
+[tool.poetry.extras]
+pyside6 = ["PySide6"]
 
 
 [tool.versioneer]

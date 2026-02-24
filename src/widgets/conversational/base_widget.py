@@ -6,21 +6,50 @@ from qtpy import uic
 from qtpy.QtCore import Qt, Slot
 from qtpy.QtWidgets import QWidget, QMessageBox
 
-from qtpyvcp.actions.program_actions import load as loadProgram
-from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
 
 from qtpyvcp.ops.gcode_file import GCodeFile
 
+from . import conversational_rc
+
 LOG = logger.getLogger(__name__)
 
-STATUS = getPlugin('status')
-TOOL_TABLE = getPlugin('tooltable')
+# Detect if we're running in Qt Designer
+IN_DESIGNER = os.getenv('DESIGNER', False)
 
-INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
-PROGRAM_PREFIX = os.path.expandvars(os.path.expanduser(INI_FILE.find('DISPLAY', 'PROGRAM_PREFIX') or '/tmp'))
-DEFAULT_SPINDLE_SPEED = float(INI_FILE.find('DISPLAY', 'DEFAULT_SPINDLE_SPEED') or 0.000)
-DEFAULT_LINEAR_VELOCITY = float(INI_FILE.find('DISPLAY', 'DEFAULT_LINEAR_VELOCITY') or 0.000)
+# Defer plugin imports to avoid issues in designer
+STATUS = None
+TOOL_TABLE = None
+
+def _get_status():
+    global STATUS
+    if STATUS is None:
+        from qtpyvcp.plugins import getPlugin
+        STATUS = getPlugin('status')
+    return STATUS
+
+def _get_tool_table():
+    global TOOL_TABLE
+    if TOOL_TABLE is None:
+        from qtpyvcp.plugins import getPlugin
+        TOOL_TABLE = getPlugin('tooltable')
+    return TOOL_TABLE
+
+def _get_load_program():
+    from qtpyvcp.actions.program_actions import load as loadProgram
+    return loadProgram
+
+# Initialize INI-dependent constants conditionally
+if IN_DESIGNER:
+    # Default values for designer mode
+    PROGRAM_PREFIX = '/tmp'
+    DEFAULT_SPINDLE_SPEED = 300.0
+    DEFAULT_LINEAR_VELOCITY = 10.0
+else:
+    INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
+    PROGRAM_PREFIX = os.path.expandvars(os.path.expanduser(INI_FILE.find('DISPLAY', 'PROGRAM_PREFIX') or '/tmp'))
+    DEFAULT_SPINDLE_SPEED = float(INI_FILE.find('DISPLAY', 'DEFAULT_SPINDLE_SPEED') or 0.000)
+    DEFAULT_LINEAR_VELOCITY = float(INI_FILE.find('DISPLAY', 'DEFAULT_LINEAR_VELOCITY') or 0.000)
 
 class ConversationalBaseWidget(QWidget):
     def __init__(self, parent=None, ui_file=''):
@@ -28,7 +57,7 @@ class ConversationalBaseWidget(QWidget):
         uic.loadUi(os.path.join(os.path.dirname(__file__), ui_file), self)
 
         self._tool_is_valid = False
-        self._tool_table = TOOL_TABLE
+        self._tool_table = _get_tool_table() if not IN_DESIGNER else None
 
         self._validators = [self._validate_z_heights,
                             self._validate_spindle_rpm,
@@ -74,23 +103,44 @@ class ConversationalBaseWidget(QWidget):
         self.z_feed_rate_input.editingFinished.connect(self._validate_z_feed_rate)
         self.retract_height_input.editingFinished.connect(self._validate_retract_height)
 
-        self._tool_table.tool_table_changed.connect(self._update_fields)
+        # Only connect to plugins if not in designer mode
+        if not IN_DESIGNER:
+            if self._tool_table is not None:
+                self._tool_table.tool_table_changed.connect(self._update_fields)
 
-        STATUS.g5x_index.onValueChanged(self.update_wcs)
-        STATUS.program_units.onValueChanged(self.update_selected_unit)
-        STATUS.tool_in_spindle.onValueChanged(self.update_tool_number)
+            status = _get_status()
+            if status is not None:
+                status.g5x_index.onValueChanged(self.update_wcs)
+                status.program_units.onValueChanged(self.update_selected_unit)
+                status.tool_in_spindle.onValueChanged(self.update_tool_number)
 
     def update_wcs(self):
-        self.wcs_input.setCurrentIndex(STATUS.g5x_index() - 1)
+        if not IN_DESIGNER:
+            status = _get_status()
+            if status is not None:
+                self.wcs_input.setCurrentIndex(status.g5x_index() - 1)
 
     def update_selected_unit(self):
-        self.unit_input.setCurrentIndex(STATUS.program_units() - 1)
+        if not IN_DESIGNER:
+            status = _get_status()
+            if status is not None:
+                self.unit_input.setCurrentIndex(status.program_units() - 1)
 
     def update_tool_number(self):
-        self.tool_number_input.setText('{}'.format(STATUS.tool_in_spindle))
-        self.set_tool_description_from_tool_num()
+        if not IN_DESIGNER:
+            status = _get_status()
+            if status is not None:
+                self.tool_number_input.setText('{}'.format(status.tool_in_spindle))
+                self.set_tool_description_from_tool_num()
 
     def set_tool_description_from_tool_num(self):
+        if IN_DESIGNER or self._tool_table is None:
+            # In designer mode, just set a placeholder
+            self.tool_description.setText('TOOL DESCRIPTION')
+            self.tool_description.setToolTip('TOOL DESCRIPTION')
+            self._tool_is_valid = True
+            return
+            
         tool_table = self._tool_table.getToolTable()
         tool_number = self.tool_number()
 
@@ -166,7 +216,7 @@ class ConversationalBaseWidget(QWidget):
 
             f.write_to_file(program_path)
             if self._confirm_action('Load GCode', 'Would you like to open the file in the viewer?'):
-                loadProgram(program_path)
+                _get_load_program()(program_path)
         else:
             self._show_error_msg('GCode Error', '\n'.join(errors))
 

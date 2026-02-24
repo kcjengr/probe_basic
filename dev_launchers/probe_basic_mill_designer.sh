@@ -1,5 +1,5 @@
 #!/bin/bash
 
-source ~/dev/venv/bin/activate
-cd ~/dev/
+source ~/Dev/venv/bin/activate
+cd ~/Dev/
 editvcp probe_basic

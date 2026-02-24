@@ -2,7 +2,7 @@ Source: probe-basic
 Section: cnc
 Priority: optional
 Maintainer: Kcjengr <kcjengr@gmail.com>
-Build-Depends: debhelper-compat (= 13), dh-python, pybuild-plugin-pyproject, python3-poetry-core, python3-qtpyvcp, python3-setuptools, python3-yaml, python3-pyqt5, python3-dbus.mainloop.pyqt5, python3-pyqt5.qtopengl, python3-pyqt5.qsci, python3-pyqt5.qtmultimedia, python3-pyqt5.qtquick, qml-module-qtquick-controls, gstreamer1.0-plugins-bad, libqt5multimedia5-plugins, pyqt5-dev-tools, python3-dev, python3-six, python3-docopt, python3-qtpy, python3-pyudev, python3-psutil, python3-markupsafe, python3-opengl, python3-vtk9, python3-pyqtgraph, python3-simpleeval, python3-jinja2, python3-deepdiff, python3-sqlalchemy, python3-serial, qml-module-qtquick-controls2, qml-module-qtquick2, qmlscene
+Build-Depends: debhelper-compat (= 13), dh-python, pybuild-plugin-pyproject, python3-poetry-core, python3-qtpyvcp, python3-setuptools, python3-yaml, python3-pyside6.qtcore, python3-pyside6.qtdbus, python3-pyside6.qtopengl, python3-pyside6.qtwidgets, python3-pyside6.qtmultimedia, python3-pyside6.qtquick, qml-module-qtquick-controls, gstreamer1.0-plugins-bad, libqt5multimedia5-plugins, pyside6-tools, python3-dev, python3-six, python3-docopt, python3-qtpy, python3-pyudev, python3-psutil, python3-markupsafe, python3-opengl, python3-vtk9, python3-pyqtgraph, python3-simpleeval, python3-jinja2, python3-deepdiff, python3-sqlalchemy, python3-serial, qml-module-qtquick-controls2, qml-module-qtquick2, qmlscene
 Standards-Version: 4.5.1
 Homepage: https://github.com/kcjengr/probe-basic
 Vcs-Git: https://github.com/kcjengr/probe-basic.git
@@ -13,7 +13,7 @@ Rules-Requires-Root: no
 Package: python3-probe-basic
 Architecture: amd64 arm64
 Description: probe-basic is a virtual control panel user interface for LinuxCNC machine control.
-Depends: ${python3:Depends}, ${misc:Depends}, python3-setuptools, python3-qtpyvcp, qml-module-qtquick-controls, qml-module-qtquick-layouts,  python3-yaml, python3-pyqt5, python3-dbus.mainloop.pyqt5, python3-pyqt5.qtopengl, python3-pyqt5.qsci, python3-serial, python3-docopt, python3-qtpy, python3-psutil, python3-pyudev, python3-vtk9, python3-deepdiff, python3-sqlalchemy, python3-pyqtgraph, python3-simpleeval, qml-module-qtquick-controls2, qml-module-qtquick2, qmlscene
+Depends: ${python3:Depends}, ${misc:Depends}, python3-setuptools, python3-qtpyvcp, qml-module-qtquick-controls, qml-module-qtquick-layouts,  python3-yaml, python3-pyside6.qtcore, python3-pyside6.qtdbus, python3-pyside6.qtopengl, python3-pyside6.qtwidgets, python3-serial, python3-docopt, python3-qtpy, python3-psutil, python3-pyudev, python3-vtk9, python3-deepdiff, python3-sqlalchemy, python3-pyqtgraph, python3-simpleeval, qml-module-qtquick-controls2, qml-module-qtquick2, qmlscene
 # Specify the postinst script
 # This will install the postinst script to /usr/lib/python3/dist-packages/python3-probe-basic
 # and automatically run it after installation

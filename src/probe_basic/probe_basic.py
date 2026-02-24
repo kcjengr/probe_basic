@@ -6,8 +6,8 @@ import importlib.util
 
 import linuxcnc
 
-from qtpy.QtCore import Slot, QRegExp, Qt
-from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
+from qtpy.QtCore import Slot, QRegularExpression, Qt, QEvent, QTimer
+from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QShowEvent
 from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
@@ -29,10 +29,14 @@ QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 class ProbeBasic(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
+        print("DEBUG: ProbeBasic __init__ starting...")
+        LOG.info("ProbeBasic __init__ starting...")
         super(ProbeBasic, self).__init__(*args, **kwargs)
+        print("DEBUG: ProbeBasic __init__ after super()")
+        LOG.info("ProbeBasic __init__ after super()")
         self.filesystemtable.sortByColumn(3, Qt.DescendingOrder)
         self.filesystemtable_2.sortByColumn(3, Qt.DescendingOrder)
-        self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
+        self.run_from_line_Num.setValidator(QRegularExpressionValidator(QRegularExpression("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
         self.btnMdiLeft_arrow.clicked.connect(self.mdiLeftArrow_clicked)
@@ -69,9 +73,14 @@ class ProbeBasic(VCPMainWindow):
 
         self.load_user_buttons()
         
-        self.load_user_dros()
-
-        self.load_offset_dro()
+        # Defer loading DROs until UI is fully loaded
+        print("DEBUG: About to call _load_dros_after_ui directly")
+        try:
+            self._load_dros_after_ui()
+        except Exception as e:
+            print(f"DEBUG: Error in _load_dros_after_ui: {e}")
+            import traceback
+            traceback.print_exc()
 
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
@@ -127,6 +136,10 @@ class ProbeBasic(VCPMainWindow):
             # Set the main tab widget to the correct tab at startup
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
+
+        LOG.info("ProbeBasic __init__ completed, calling DRO loading")
+        self.load_user_dros()
+        self.load_offset_dro()
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
@@ -289,6 +302,7 @@ class ProbeBasic(VCPMainWindow):
                 self.user_buttons_layout.addWidget( self.user_buttons[module_name])
 
     def load_user_dros(self):
+        LOG.info("Loading user DROs...")
         self.user_dros_modules = {}
         self.user_dros = {}
 
@@ -297,8 +311,10 @@ class ProbeBasic(VCPMainWindow):
             LOG.warning("No DRO_DISPLAY specified in INI.")
             return
         dro_type = dro_type.strip().lower()  # Normalize to lowercase
+        LOG.info(f"DRO type: {dro_type}")
 
         user_dros_paths = INIFILE.findall("DISPLAY", "USER_DROS_PATH")
+        LOG.info(f"User DROs paths: {user_dros_paths}")
 
         for user_dros_path in user_dros_paths:
             user_dros_path = os.path.expanduser(user_dros_path)
@@ -336,12 +352,34 @@ class ProbeBasic(VCPMainWindow):
             user_dros_path = os.path.expanduser(user_dros_path)
             dro_folder = f"{dro_type}_dros"
             offset_ui_file = f"offset_dros_{dro_type}.ui"
-            offset_ui_path = os.path.join(user_dros_path, dro_folder, offset_ui_file)
-            if os.path.isfile(offset_ui_path):
-                offset_widget = QWidget()
-                uic.loadUi(offset_ui_path, offset_widget)
-                self.offset_dro_layout.addWidget(offset_widget)
-                return  # Only load one offset DRO, then exit
+            offset_ui_py_file = f"offset_dros_{dro_type}_ui.py"
+            offset_ui_py_path = os.path.join(user_dros_path, dro_folder, offset_ui_py_file)
+            if os.path.isfile(offset_ui_py_path):
+                try:
+                    # Import the compiled UI module
+                    module_name = f"offset_dro_{dro_type}"
+                    spec = importlib.util.spec_from_file_location(module_name, offset_ui_py_path)
+                    module = importlib.util.module_from_spec(spec)
+                    spec.loader.exec_module(module)
+                    
+                    # Create the widget using the Ui class
+                    offset_widget = QWidget()
+                    ui_class_name = f"Ui_offset_dros_{dro_type}"
+                    ui_class = getattr(module, ui_class_name)
+                    ui_instance = ui_class()
+                    ui_instance.setupUi(offset_widget)
+                    
+                    self.offset_dro_layout.addWidget(offset_widget)
+                    return  # Only load one offset DRO, then exit
+                except Exception as e:
+                    LOG.error(f"Failed to load offset DRO {offset_ui_py_path}: {e}")
+                    # Fallback to loading raw UI file
+                    offset_ui_path = os.path.join(user_dros_path, dro_folder, offset_ui_file)
+                    if os.path.isfile(offset_ui_path):
+                        offset_widget = QWidget()
+                        uic.loadUi(offset_ui_path, offset_widget)
+                        self.offset_dro_layout.addWidget(offset_widget)
+                        return
 
     def load_user_tabs(self):
         self.user_tab_modules = {}
@@ -580,3 +618,145 @@ class ProbeBasic(VCPMainWindow):
             LOG.info(f"Scrolled to M6 line {line_num}")
         except Exception as e:
             LOG.error(f"Error scrolling to line {line_num}: {e}")
+
+    def load_user_buttons(self):
+        """Load user-defined buttons from the config directory."""
+        try:
+            # Get the config directory path from INI_FILE_NAME environment variable
+            ini_file_name = os.getenv("INI_FILE_NAME")
+            if not ini_file_name:
+                LOG.debug("No INI_FILE_NAME environment variable found")
+                return
+            config_dir = os.path.dirname(ini_file_name)
+            if not config_dir:  # If ini_file_name has no directory component
+                config_dir = os.getcwd()
+            
+            # Look for USER_BUTTONS_PATH in INI file
+            user_buttons_path = INIFILE.find("DISPLAY", "USER_BUTTONS_PATH")
+            if not user_buttons_path:
+                LOG.debug("No USER_BUTTONS_PATH found in INI file")
+                return
+                
+            # Resolve relative path if needed
+            if not os.path.isabs(user_buttons_path):
+                user_buttons_path = os.path.join(config_dir, user_buttons_path)
+            
+            if not os.path.exists(user_buttons_path):
+                LOG.debug(f"User buttons path does not exist: {user_buttons_path}")
+                return
+                
+            # Find subdirectories containing Python files
+            button_dirs = [d for d in os.listdir(user_buttons_path) 
+                          if os.path.isdir(os.path.join(user_buttons_path, d))]
+            
+            for button_dir in button_dirs:
+                dir_path = os.path.join(user_buttons_path, button_dir)
+                
+                # Find Python files in the subdirectory
+                button_files = [f for f in os.listdir(dir_path) 
+                              if f.endswith('.py') and not f.startswith('__')]
+                
+                for button_file in button_files:
+                    try:
+                        module_path = os.path.join(dir_path, button_file)
+                        module_name = button_file[:-3]  # Remove .py extension
+                        
+                        # Load the module
+                        spec = importlib.util.spec_from_file_location(module_name, module_path)
+                        if spec and spec.loader:
+                            module = importlib.util.module_from_spec(spec)
+                            spec.loader.exec_module(module)
+                            
+                            # Look for a class that inherits from QWidget
+                            for attr_name in dir(module):
+                                attr = getattr(module, attr_name)
+                                if (isinstance(attr, type) and 
+                                    issubclass(attr, QWidget) and 
+                                    attr != QWidget):
+                                    
+                                    # Create an instance and add to the layout
+                                    button_widget = attr()
+                                    self.user_buttons_layout.addWidget(button_widget)
+                                    LOG.info(f"Loaded user button: {attr_name} from {button_file}")
+                                    break
+                                    
+                    except Exception as e:
+                        LOG.error(f"Error loading user button from {button_file}: {e}")
+                        
+        except Exception as e:
+            LOG.error(f"Error in load_user_buttons: {e}")
+
+    def load_user_dros(self):
+        """Load user-defined DROs from the config directory."""
+        try:
+            # Get the config directory path from INI_FILE_NAME environment variable
+            ini_file_name = os.getenv("INI_FILE_NAME")
+            if not ini_file_name:
+                LOG.debug("No INI_FILE_NAME environment variable found")
+                return
+            config_dir = os.path.dirname(ini_file_name)
+            if not config_dir:  # If ini_file_name has no directory component
+                config_dir = os.getcwd()
+            
+            # Look for USER_DROS_PATH in INI file
+            user_dros_path = INIFILE.find("DISPLAY", "USER_DROS_PATH")
+            if not user_dros_path:
+                LOG.debug("No USER_DROS_PATH found in INI file")
+                return
+                
+            # Resolve relative path if needed
+            if not os.path.isabs(user_dros_path):
+                user_dros_path = os.path.join(config_dir, user_dros_path)
+            
+            if not os.path.exists(user_dros_path):
+                LOG.debug(f"User DROs path does not exist: {user_dros_path}")
+                return
+            
+            # Get DRO_DISPLAY to determine which DRO set to load
+            dro_display = INIFILE.find("DISPLAY", "DRO_DISPLAY")
+            if not dro_display:
+                LOG.debug("No DRO_DISPLAY found in INI file")
+                return
+                
+            # Convert to lowercase and create directory name
+            dro_dir_name = f"{dro_display.lower()}_dros"
+            dro_dir_path = os.path.join(user_dros_path, dro_dir_name)
+            
+            if not os.path.exists(dro_dir_path):
+                LOG.debug(f"DRO directory does not exist: {dro_dir_path}")
+                return
+                
+            # Find Python files in the DRO directory
+            dro_files = [f for f in os.listdir(dro_dir_path) 
+                        if f.endswith('.py') and not f.startswith('__')]
+            
+            for dro_file in dro_files:
+                try:
+                    module_path = os.path.join(dro_dir_path, dro_file)
+                    module_name = dro_file[:-3]  # Remove .py extension
+                    
+                    # Load the module
+                    spec = importlib.util.spec_from_file_location(module_name, module_path)
+                    if spec and spec.loader:
+                        module = importlib.util.module_from_spec(spec)
+                        spec.loader.exec_module(module)
+                        
+                        # Look for a class that inherits from QWidget
+                        for attr_name in dir(module):
+                            attr = getattr(module, attr_name)
+                            if (isinstance(attr, type) and 
+                                issubclass(attr, QWidget) and 
+                                attr != QWidget):
+                                
+                                # Create an instance and add to the layout
+                                dro_widget = attr()
+                                self.dro_display_layout.addWidget(dro_widget)
+                                LOG.info(f"Loaded user DRO: {attr_name} from {dro_file}")
+                                break
+                                
+                except Exception as e:
+                    LOG.error(f"Error loading user DRO from {dro_file}: {e}")
+                    
+        except Exception as e:
+            LOG.error(f"Error in load_user_dros: {e}")
+

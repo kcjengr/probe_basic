@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from PyQt5 import QtWidgets
+from qtpy import QtWidgets
 
 try:
     # Try to get version from package metadata (for installed packages)

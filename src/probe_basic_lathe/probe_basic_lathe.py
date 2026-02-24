@@ -6,8 +6,8 @@ import importlib.util
 
 import linuxcnc
 
-from qtpy.QtCore import Slot, QRegExp
-from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
+from qtpy.QtCore import Slot, QRegularExpression
+from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor
 from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpy.QtWidgets import QAbstractButton, QMessageBox
 from qtpy.QtWidgets import QAction, QWidget
@@ -34,7 +34,7 @@ class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
     def __init__(self, *args, **kwargs):
         super(ProbeBasicLathe, self).__init__(*args, **kwargs)
-        self.run_from_line_Num.setValidator(QRegExpValidator(QRegExp("[0-9]*")))
+        self.run_from_line_Num.setValidator(QRegularExpressionValidator(QRegularExpression("[0-9]*")))
         self.btnMdiBksp.clicked.connect(self.mdiBackSpace_clicked)
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
         self.btnMdiLeft_arrow.clicked.connect(self.mdiLeftArrow_clicked)
