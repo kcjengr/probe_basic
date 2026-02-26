@@ -14,7 +14,8 @@ ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 from qtpy.QtGui import QColor
 
 from qtpy.QtCore import Property, Signal, Slot, QUrl, QTimer
-from qtpy.QtQuickWidgets import QQuickWidget
+from qtpy.QtWidgets import QWidget, QVBoxLayout
+from PySide6.QtQuick import QQuickView
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
@@ -26,7 +27,7 @@ IN_DESIGNER = os.getenv('DESIGNER', False)
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
-class RackATC(QQuickWidget):
+class RackATC(QWidget):
     atcInitSig = Signal(int, arguments=['pockets'])
     
     resizeSig = Signal(int, int, arguments=["width", "height"])
@@ -50,29 +51,45 @@ class RackATC(QQuickWidget):
         self.homing = 0
         self.pocket_slots = int(INIFILE.find("ATC", "POCKETS") or 12)
         self.rotaion_duration = int(INIFILE.find("ATC", "STEP_TIME") or 1000)
-        
-        self.engine().rootContext().setContextProperty("rack_atc", self)
-        qml_path = os.path.join(WIDGET_PATH, "rack_atc.qml")
-        url = QUrl.fromLocalFile(qml_path)
 
-        self.setSource(url)  # Fixme fails on qtdesigner
+        self._view = None
+        self._container = None
 
         self.tool_table = None
         self.status_tool_table = None
         self.pockets = dict()
         self.tools = None
 
-        self.atcInitSig.emit(self.pocket_slots)
-
-#        for i in range(12):
-#            self.showToolSig.emit(i+1, 13)
-
         if not IN_DESIGNER:
-            for pocket in range(1, self.pocket_slots+1):
-                self.hideToolSig.emit(pocket)
+            self._setup_view()
+
+    def _setup_view(self):
+        qml_path = os.path.join(WIDGET_PATH, "rack_atc.qml")
+        LOG.info("[RackATC] loading QML via QQuickView: %s", qml_path)
+
+        self._view = QQuickView()
+        self._view.engine().rootContext().setContextProperty("rack_atc", self)
+        self._view.setResizeMode(QQuickView.SizeRootObjectToView)
+        self._view.setSource(QUrl.fromLocalFile(qml_path))
+
+        self._container = QWidget.createWindowContainer(self._view, self)
+        self._container.setFocusPolicy(self.focusPolicy())
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+        layout.addWidget(self._container)
+
+        QTimer.singleShot(0, self._init_qml_state)
+
+    def _init_qml_state(self):
+        self.atcInitSig.emit(self.pocket_slots)
+        for pocket in range(1, self.pocket_slots + 1):
+            self.hideToolSig.emit(pocket)
      
     def resizeEvent(self, event):
-        # self.resizeSig.emit(self.maximumWidth(), self.maximumHeight())
+        size = event.size()
+        self.resizeSig.emit(size.width(), size.height())
         super().resizeEvent(event)
 
     @Property(QColor)

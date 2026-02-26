@@ -5,16 +5,18 @@ class DrillWidgetBase(ConversationalBaseWidget):
     def __init__(self, ui, parent=None):
         super(DrillWidgetBase, self).__init__(ui, parent)
 
-        self.drill_retract_mode_input.addItem('G98')
-        self.drill_retract_mode_input.addItem('G99')
+        if self.drill_retract_mode_input.count() == 0:
+            self.drill_retract_mode_input.addItem('G98')
+            self.drill_retract_mode_input.addItem('G99')
 
-        self.drill_type_input.addItem('DRILL')
-        self.drill_type_input.addItem('PECK')
-        self.drill_type_input.addItem('BREAK')
-        self.drill_type_input.addItem('DWELL')
-        self.drill_type_input.addItem('TAP')
-        self.drill_type_input.addItem('RIGID TAP')
-        self.drill_type_input.addItem('MANUAL')
+        if self.drill_type_input.count() == 0:
+            self.drill_type_input.addItem('DRILL')
+            self.drill_type_input.addItem('PECK')
+            self.drill_type_input.addItem('BREAK')
+            self.drill_type_input.addItem('DWELL')
+            self.drill_type_input.addItem('TAP')
+            self.drill_type_input.addItem('RIGID TAP')
+            self.drill_type_input.addItem('MANUAL')
         self.drill_type_param_value.setVisible(False)
         self.drill_type_param_label.setVisible(False)
         self.drill_type_input.currentIndexChanged.connect(self.set_drill_type_params)

@@ -1,3 +1,11 @@
+import os
+# Force PySide6 before any Qt-touching import (qtpy defaults to PyQt5 if both are installed)
+os.environ.setdefault('QT_API', 'pyside6')
+# Force OpenGL RHI backend for Qt Quick before any Qt context is created.
+# Without this Qt6 defaults to Vulkan/Metal which causes a black screen +
+# white triangle error indicator when those backends are unavailable.
+os.environ.setdefault('QSG_RHI_BACKEND', 'opengl')
+
 try:
     # Try to get version from package metadata (for installed packages)
     from importlib.metadata import version, PackageNotFoundError
@@ -36,7 +44,6 @@ except ImportError:
     except Exception:
         __version__ = "0.0.0+unknown"
 
-import os
 import qtpyvcp
 
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
@@ -44,6 +51,16 @@ VCP_CONFIG_FILE = os.path.join(VCP_DIR, 'probe_basic.yml')
 
 
 def main(opts=None):
+
+    # Must be called BEFORE QApplication is created.
+    # Qt6 defaults to RHI/Vulkan which causes a black screen + white triangle
+    # on systems that don't have Vulkan; force OpenGL instead.
+    try:
+        from PySide6.QtQuick import QQuickWindow, QSGRendererInterface
+        QQuickWindow.setGraphicsApi(QSGRendererInterface.GraphicsApi.OpenGL)
+    except Exception as _e:
+        import sys
+        print(f"[probe_basic] WARNING: could not set OpenGL graphics API: {_e}", file=sys.stderr)
 
     if opts is None:
         from qtpyvcp.utilities.opt_parser import parse_opts

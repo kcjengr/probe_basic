@@ -3,7 +3,7 @@ import linuxcnc
 from pyqtgraph import Qt
 
 from qtpy import uic
-from qtpy.QtCore import Qt, Slot
+from qtpy.QtCore import Qt, Slot, QTimer
 from qtpy.QtWidgets import QWidget, QMessageBox
 
 from qtpyvcp.utilities import logger
@@ -68,26 +68,30 @@ class ConversationalBaseWidget(QWidget):
 
         self.save_file_path = None
 
-        self.wcs_input.addItem('G54')
-        self.wcs_input.addItem('G55')
-        self.wcs_input.addItem('G56')
-        self.wcs_input.addItem('G57')
-        self.wcs_input.addItem('G58')
-        self.wcs_input.addItem('G59')
-        self.wcs_input.addItem('G59.1')
-        self.wcs_input.addItem('G59.2')
-        self.wcs_input.addItem('G59.3')
+        if self.wcs_input.count() == 0:
+            self.wcs_input.addItem('G54')
+            self.wcs_input.addItem('G55')
+            self.wcs_input.addItem('G56')
+            self.wcs_input.addItem('G57')
+            self.wcs_input.addItem('G58')
+            self.wcs_input.addItem('G59')
+            self.wcs_input.addItem('G59.1')
+            self.wcs_input.addItem('G59.2')
+            self.wcs_input.addItem('G59.3')
 
-        self.unit_input.addItem('IN')
-        self.unit_input.addItem('MM')
+        if self.unit_input.count() == 0:
+            self.unit_input.addItem('IN')
+            self.unit_input.addItem('MM')
         self.update_selected_unit()
 
-        self.coolant_input.addItem('OFF')
-        self.coolant_input.addItem('MIST')
-        self.coolant_input.addItem('FLOOD')
+        if self.coolant_input.count() == 0:
+            self.coolant_input.addItem('OFF')
+            self.coolant_input.addItem('MIST')
+            self.coolant_input.addItem('FLOOD')
 
-        self.spindle_direction_input.addItem('CW')
-        self.spindle_direction_input.addItem('CCW')
+        if self.spindle_direction_input.count() == 0:
+            self.spindle_direction_input.addItem('CW')
+            self.spindle_direction_input.addItem('CCW')
 
         self.xy_feed_rate_input.setText('{0:.3f}'.format(DEFAULT_LINEAR_VELOCITY))
         self.spindle_rpm_input.setText('{0:.3f}'.format(DEFAULT_SPINDLE_SPEED))
@@ -96,12 +100,17 @@ class ConversationalBaseWidget(QWidget):
 
         self.tool_number_input.editingFinished.connect(self.set_tool_description_from_tool_num)
         self.tool_number_input.editingFinished.connect(self._validate_tool_number)
+        self.tool_number_input.textChanged.connect(self.set_tool_description_from_tool_num)
+        self.tool_number_input.textChanged.connect(self._validate_tool_number)
         self.z_start_input.editingFinished.connect(self._validate_z_heights)
         self.z_end_input.editingFinished.connect(self._validate_z_heights)
         self.spindle_rpm_input.editingFinished.connect(self._validate_spindle_rpm)
         self.xy_feed_rate_input.editingFinished.connect(self._validate_xy_feed_rate)
         self.z_feed_rate_input.editingFinished.connect(self._validate_z_feed_rate)
         self.retract_height_input.editingFinished.connect(self._validate_retract_height)
+
+        # Ensure tool description reflects the persisted tool number at startup
+        QTimer.singleShot(0, self.set_tool_description_from_tool_num)
 
         # Only connect to plugins if not in designer mode
         if not IN_DESIGNER:

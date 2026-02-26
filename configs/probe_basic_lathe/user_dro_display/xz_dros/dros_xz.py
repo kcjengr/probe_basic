@@ -1,7 +1,8 @@
 import os
 import sys
-sys.path.insert(0, "/usr/lib/python3/dist-packages/probe_basic")
-from probe_basic_rc import *
+import probe_basic_lathe as _pb_lathe_pkg
+sys.path.insert(0, os.path.dirname(os.path.abspath(_pb_lathe_pkg.__file__)))
+from probe_basic_lathe_rc import *
 import linuxcnc
 
 from qtpy import uic

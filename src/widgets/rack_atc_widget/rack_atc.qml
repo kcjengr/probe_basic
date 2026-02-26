@@ -44,7 +44,7 @@ Rectangle {
         console.log("Actual Rectangle width:", width)
         console.log("Parent width:", parent ? parent.width : "no parent")
         console.log("Container item width:", container.width)
-        console.log("Main window width:", window ? window.width : "no window")
+        console.log("Root item width:", main_rectangle.width)
     }
 
     // Add width change monitoring

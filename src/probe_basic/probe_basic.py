@@ -6,8 +6,9 @@ import importlib.util
 
 import linuxcnc
 
-from qtpy.QtCore import Slot, QRegularExpression, Qt, QEvent
-from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QShowEvent
+from qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot import VTKBackPlot
+from qtpy.QtCore import Slot, QRegularExpression, Qt, QObject
+from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor
 from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
@@ -18,7 +19,7 @@ from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
 sys.path.insert(0,'/usr/lib/python3/dist-packages/probe_basic')
-from . import probe_basic_rc
+from . import probe_basic_rc  # noqa: F401 - registers Qt resources
 
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
@@ -52,10 +53,10 @@ class ProbeBasic(VCPMainWindow):
         # M6 finder initialization
         self.m6_lines = []
         self.current_m6_index = 0
-        self.find_m6_button.clicked.connect(self.on_find_m6_clicked)
+        self.find_m6_button.clicked.connect(self._find_m6_clicked)
         
         # Cycle start button interception for run from line functionality
-        self.cycle_start_button.clicked.connect(self.on_cycle_start_clicked)
+        self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
 
         if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
@@ -63,12 +64,31 @@ class ProbeBasic(VCPMainWindow):
             self.tabWidget.removeTab(atc_tab_index)
 
         elif (1 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 1)):
+            LOG.info("[ATC] Loading carousel ATC")
             self.load_atc()
 
         else:
+            LOG.info("[ATC] Loading rack ATC")
             self.load_rack_atc()
-            
-        self.vtk.setViewMachine()
+
+        # Ensure the VTK backplot widget is present before using it
+        vtk_candidates = [obj for obj in self.findChildren(QObject) if "vtk" in (obj.objectName() or "").lower()]
+        LOG.debug("VTK candidates by name: %s", [obj.objectName() for obj in vtk_candidates])
+
+        # Prefer an existing VTKBackPlot; fall back to any widget named "vtk".
+        self.vtk = (
+            getattr(self, "vtk", None)
+            or self.findChild(VTKBackPlot)
+            or self.findChild(QWidget, "vtk")
+        )
+
+        if self.vtk is not None:
+            try:
+                self.vtk.setViewMachine()
+            except Exception:
+                LOG.exception("VTK widget 'vtk' found but failed to initialize")
+        else:
+            LOG.critical("VTK widget 'vtk' not found in UI; backplot disabled")
 
         if (getSetting("spindle-rpm-display.calculated-rpm").getValue()):
             self.spindle_rpm_source_widget.setCurrentIndex(self.spindle_calculated_rpm_button.property('page'))
@@ -111,6 +131,12 @@ class ProbeBasic(VCPMainWindow):
            self.main_load_gcode_button.setText("LOAD G-CODE") if x else None
         ))
 
+        # Ensure timer labels render as zero-padded integers (no decimals)
+        for _timer_label in ("timerhours", "timerminutes", "timerseconds"):
+            lbl = getattr(self, _timer_label, None)
+            if lbl is not None:
+                lbl.textFormat = "02.0f"
+
     def _load_dros_after_ui(self):
         """Load DROs after UI is fully initialized."""
         self.load_user_dros()
@@ -151,7 +177,7 @@ class ProbeBasic(VCPMainWindow):
             tooltip = widget.toolTip()
             if tooltip:  # Only store if a tooltip exists
                 self._stored_tooltips[widget] = tooltip
-                LOG.debug(f"Stored tooltip for {widget.objectName()}: {tooltip[:50]}...")
+        LOG.debug("Stored %d widget tooltips", len(self._stored_tooltips))
 
     def toggle_tooltips(self, enabled):
         """Show tooltips when Interactive Help is enabled, hide them otherwise."""
@@ -188,14 +214,41 @@ class ProbeBasic(VCPMainWindow):
                     
                 module_name = f"atc.{atc}"
                 module_file = os.path.join(atc_dir, f"{atc}.py")
+                LOG.info("[ATC] loading module %s from %s", module_name, module_file)
                 spec = importlib.util.spec_from_file_location(module_name, module_file)
                 self.atc_modules[module_name] = importlib.util.module_from_spec(spec)
                 sys.modules[module_name] = self.atc_modules[module_name]
-                spec.loader.exec_module(self.atc_modules[module_name])
-                
-                self.atc[module_name] = self.atc_modules[module_name].Atc()
-                
-                self.atc_layout.addWidget(self.atc[module_name])
+                try:
+                    spec.loader.exec_module(self.atc_modules[module_name])
+                except Exception as exc:
+                    LOG.exception("[ATC] failed to import %s: %s", module_name, exc)
+                    continue
+                try:
+                    self.atc[module_name] = self.atc_modules[module_name].Atc(parent=self)
+                    LOG.info("[ATC] instantiated %s", module_name)
+                except Exception as exc:
+                    LOG.exception("[ATC] failed to instantiate %s: %s", module_name, exc)
+                    continue
+
+                if getattr(self, "atc_layout", None) is None:
+                    LOG.error("[ATC] atc_layout not found on main window")
+                else:
+                    self.atc_layout.addWidget(self.atc[module_name])
+                    # QQuickWidget doesn't fully init its GL context in a hidden
+                    # tab. Force update every time the ATC tab is shown.
+                    atc_widget = self.atc[module_name]
+                    def _on_tab_changed(idx, _widget=atc_widget):
+                        from PySide6.QtCore import QTimer
+                        tab = getattr(self, 'atc_tab', None)
+                        if tab is not None and self.tabWidget.widget(idx) is tab:
+                            dynatc = getattr(_widget, 'dynatc', None)
+                            if dynatc is not None:
+                                QTimer.singleShot(0, dynatc.update)
+                    try:
+                        self.tabWidget.currentChanged.connect(_on_tab_changed)
+                        LOG.info("[ATC] connected tab change handler for QQuickWidget repaint")
+                    except Exception as exc:
+                        LOG.warning("[ATC] could not connect tab change handler: %s", exc)
 
                 if hasattr(self.atc[module_name], 'user_atc_buttons_layout'):
                     self.load_user_atc_buttons(self.atc[module_name].user_atc_buttons_layout)
@@ -438,7 +491,7 @@ class ProbeBasic(VCPMainWindow):
                 spec.loader.exec_module(self.user_tab_modules[module_name])
                 self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
                 if self.user_tabs[module_name].property("sidebar"):
-                    if sidebar_loaded == False:
+                    if not sidebar_loaded:
                         sidebar_loaded = True
                         self.user_tabs[module_name].setParent(self.sb_page_4)
                         self.user_sb_tab.setText(self.user_tabs[module_name].objectName().replace("_", " "))
@@ -448,7 +501,7 @@ class ProbeBasic(VCPMainWindow):
                 else:
                     self.tabWidget.addTab(self.user_tabs[module_name], self.user_tabs[module_name].objectName().replace("_", " "))
 
-        if sidebar_loaded == False:
+        if not sidebar_loaded:
             self.user_sb_tab.hide()
             self.plot_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
@@ -473,6 +526,7 @@ class ProbeBasic(VCPMainWindow):
         self.gcode_mdi.setCurrentIndex(button.property('page'))
 
     # Fwd/Back buttons off the stacked widget
+    @Slot()
     def on_probe_help_next_released(self):
         lastPage = 6
         currentIndex = self.probe_help_widget.currentIndex()
@@ -481,6 +535,7 @@ class ProbeBasic(VCPMainWindow):
         else:
             self.probe_help_widget.setCurrentIndex(currentIndex + 1)
 
+    @Slot()
     def on_probe_help_prev_released(self):
         lastPage = 6
         currentIndex = self.probe_help_widget.currentIndex()
@@ -491,11 +546,11 @@ class ProbeBasic(VCPMainWindow):
 
 
     @Slot(QAbstractButton)
-    def on_fileviewerbtnGroup_buttonClicked(self, button):
+    def _fileviewerbtnGroup_buttonClicked(self, button):
         self.file_viewer_widget.setCurrentIndex(button.property('page'))
 
     @Slot()
-    def on_cycle_start_clicked(self):
+    def _cycle_start_clicked(self):
         """Intercept cycle start to check if running from M6 line is enabled."""
         if self.run_from_line_Btn.isChecked():
             # Run from the queued M6 line
@@ -606,7 +661,7 @@ class ProbeBasic(VCPMainWindow):
         return m6_lines
 
     @Slot()
-    def on_find_m6_clicked(self):
+    def _find_m6_clicked(self):
         """Find next M6 command in the loaded G-code file and display line number."""
         # Re-extract M6 lines (in case file was reloaded)
         self.m6_lines = self.extract_m6_line_numbers()

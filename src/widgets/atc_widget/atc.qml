@@ -1,6 +1,6 @@
-import QtQuick 2.7
-import QtQuick.Controls 1.5
-import QtQuick.Layouts 1.3
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 
 Rectangle {
     id: rectangle
@@ -76,9 +76,9 @@ Rectangle {
                         y: parent.height / 2 - height / 2
                     }
 
-                    RotationAnimation{
-                        id:pocket_anim
-                        target:pocket_text
+                    RotationAnimator {
+                        id: pocket_anim
+                        target: pocket_text
                         direction: RotationAnimator.Shortest
                         duration: anim_duration
                         running: false
@@ -132,9 +132,9 @@ Rectangle {
                         y: parent.height / 2 - height / 2
                     }
 
-                    RotationAnimation {
+                    RotationAnimator {
                         id: tool_anim
-                        target:tool_text
+                        target: tool_text
                         direction: RotationAnimator.Shortest
                         duration: anim_duration
                         running: false
@@ -172,8 +172,11 @@ Rectangle {
         horizontalAlignment: Text.AlignHCenter
 
         Behavior on text {
-            FadeAnimation {
-                target: msg_text
+            // FadeAnimation was Qt5-only; use a fade-out/in sequence for Qt6
+            SequentialAnimation {
+                NumberAnimation { target: msg_text; property: "opacity"; to: 0; duration: 150; easing.type: Easing.InOutQuad }
+                PropertyAction  { target: msg_text; property: "text" }
+                NumberAnimation { target: msg_text; property: "opacity"; to: 1; duration: 150; easing.type: Easing.InOutQuad }
             }
         }
     }

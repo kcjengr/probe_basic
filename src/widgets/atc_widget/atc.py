@@ -2,20 +2,16 @@ import os
 
 import linuxcnc
 
-# Workarround for nvidia propietary drivers
-
+# Workaround for nvidia proprietary drivers
 import ctypes
 import ctypes.util
-
 ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
+# end of workaround
 
-# end of Workarround
-
-from qtpy.QtCore import Property, Slot
+from qtpy.QtCore import Property, Signal, Slot, QUrl, QTimer
 from qtpy.QtGui import QColor
-
-from qtpy.QtCore import Signal, Slot, QUrl, QTimer
-from qtpy.QtQuickWidgets import QQuickWidget
+from qtpy.QtWidgets import QWidget, QVBoxLayout
+from PySide6.QtQuick import QQuickView
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
@@ -27,51 +23,83 @@ IN_DESIGNER = os.getenv('DESIGNER', False)
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 
-class DynATC(QQuickWidget):
-    atcInitSig = Signal(int, int, arguments=['pockets', 'step_duration'])
-    
-    resizeSig = Signal(int, int, arguments=["width", "height"])
-    
-    rotateSig = Signal(int, int, arguments=['steps', 'direction'])
 
+class DynATC(QWidget):
+    """ATC carousel widget.
+
+    Uses QQuickView + createWindowContainer (the Qt6-recommended approach
+    for mixing QML and regular widgets) instead of QQuickWidget, which has
+    known compositing issues under Qt6 on X11.
+    """
+
+    atcInitSig  = Signal(int, int,   arguments=['pockets', 'step_duration'])
+    resizeSig   = Signal(int, int,   arguments=['width', 'height'])
+    rotateSig   = Signal(int, int,   arguments=['steps', 'direction'])
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
-    hideToolSig = Signal(float, arguments=['pocket'])
-
-    bgColorSig = Signal(QColor, arguments=["color"])
-    homeMsgSig = Signal(str, arguments=["message"])
+    hideToolSig = Signal(float,      arguments=['pocket'])
+    bgColorSig  = Signal(QColor,     arguments=['color'])
+    homeMsgSig  = Signal(str,        arguments=['message'])
 
     def __init__(self, parent=None):
         super(DynATC, self).__init__(parent)
 
-        # properties
         self._background_color = QColor(0, 0, 0)
-        
         self.atc_position = 0
         self.pocket = 1
         self.home = 0
         self.homing = 0
         self.pocket_slots = int(INIFILE.find("ATC", "POCKETS") or 12)
         self.rotaion_duration = int(INIFILE.find("ATC", "STEP_TIME") or 1000)
-        
-        self.engine().rootContext().setContextProperty("atc_spiner", self)
-        qml_path = os.path.join(WIDGET_PATH, "atc.qml")
-        url = QUrl.fromLocalFile(qml_path)
-
-        self.setSource(url)  # Fixme fails on qtdesigner
 
         self.tool_table = None
         self.status_tool_table = None
         self.pockets = dict()
         self.tools = None
 
-        self.atcInitSig.emit(self.pocket_slots, self.rotaion_duration)
-        
+        self._view = None
+        self._container = None
+
         if not IN_DESIGNER:
-            for pocket in range(1, self.pocket_slots+1):
-                self.hideToolSig.emit(pocket)
-     
+            self._setup_view()
+
+    def _setup_view(self):
+        qml_path = os.path.join(WIDGET_PATH, "atc.qml")
+        LOG.info("[DynATC] loading QML via QQuickView: %s", qml_path)
+
+        self._view = QQuickView()
+        self._view.engine().rootContext().setContextProperty("atc_spiner", self)
+        self._view.setResizeMode(QQuickView.SizeRootObjectToView)
+        self._view.setSource(QUrl.fromLocalFile(qml_path))
+
+        LOG.info("[DynATC] QQuickView status=%s  pockets=%s  step_time=%s",
+                 self._view.status(), self.pocket_slots, self.rotaion_duration)
+
+        # createWindowContainer wraps the QWindow in a QWidget so it sits
+        # cleanly inside the widget hierarchy without GL-compositing the
+        # entire parent window.
+        self._container = QWidget.createWindowContainer(self._view, self)
+        self._container.setFocusPolicy(self.focusPolicy())
+
+        self.setFixedSize(500, 500)
+
+        layout = QVBoxLayout(self)
+        layout.setContentsMargins(0, 0, 0, 0)
+        layout.setSpacing(0)
+        layout.addWidget(self._container)
+
+        # Defer signal emissions by one event-loop tick so the QML Connections
+        # objects are fully active before we send initialisation signals.
+        QTimer.singleShot(0, self._init_qml_state)
+
+    def _init_qml_state(self):
+        """Send initialisation signals to QML after the event loop has ticked."""
+        self.atcInitSig.emit(self.pocket_slots, self.rotaion_duration)
+        for pocket in range(1, self.pocket_slots + 1):
+            self.hideToolSig.emit(pocket)
+
     def resizeEvent(self, event):
-        self.resizeSig.emit(self.maximumWidth(), self.maximumHeight())
+        size = event.size()
+        self.resizeSig.emit(size.width(), size.height())
         super().resizeEvent(event)
 
     @Property(QColor)
@@ -84,10 +112,8 @@ class DynATC(QQuickWidget):
         self._background_color = color
 
     def load_tools(self):
-        # print("load_tools")
-        for i in range(1, self.pocket_slots+1):
+        for i in range(1, self.pocket_slots + 1):
             self.hideToolSig.emit(i)
-
         for pocket, tool in list(self.pockets.items()):
             if tool != 0:
                 self.showToolSig.emit(pocket, tool)
@@ -96,14 +122,9 @@ class DynATC(QQuickWidget):
 
     def store_tool(self, pocket, tool_num):
         self.pockets[pocket] = tool_num
-        #
-        # print(type(pocket), pocket)
-        # print(type(tool_num), tool_num)
         if tool_num != 0:
-            # print("show tool {} at pocket {}".format(tool_num, pocket))
             self.showToolSig.emit(pocket, tool_num)
         else:
-            # print("Hide tool at pocket {}".format(pocket))
             self.hideToolSig.emit(pocket)
 
     def atc_message(self, msg=""):

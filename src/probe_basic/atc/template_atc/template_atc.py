@@ -2,7 +2,6 @@ import os
 import linuxcnc
 
 from qtpy import uic
-from qtpy.QtCore import Qt
 from qtpy.QtWidgets import QWidget
 
 from qtpyvcp.plugins import getPlugin
@@ -14,6 +13,9 @@ STATUS = getPlugin('status')
 TOOL_TABLE = getPlugin('tooltable')
 
 INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
+
+# Pre-import DynATC so PySide6's QUiLoader can find it as a custom widget.
+from widgets.atc_widget.atc import DynATC  # noqa: F401
 
 
 class Atc(QWidget):
