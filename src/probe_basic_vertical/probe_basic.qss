@@ -128,7 +128,8 @@ GcodeBackplot {
 }
 
 GcodeEditor {
-    background-color: white;
+    background-color: palette(base);
+    color: palette(text);
     border-color: black;
     border-style: solid;
     border-width: 2px;
@@ -138,8 +139,15 @@ GcodeEditor {
 }
 
 GcodeTextEdit {
-    background-color: white;
+    background-color: palette(base);
+    color: palette(text);
     font: 12pt "Bebas Kai";
+    qproperty-currentLineBackground: palette(highlight);
+    qproperty-currentLineColor: palette(highlighted-text);
+    qproperty-marginBackground: palette(window);
+    qproperty-marginCurrentLineBackground: palette(highlight);
+    qproperty-marginColor: palette(text);
+    qproperty-marginCurrentLineColor: palette(highlighted-text);
 }
 
 QScrollArea {

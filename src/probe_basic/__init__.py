@@ -46,6 +46,9 @@ except ImportError:
 
 import qtpyvcp
 
+# Register Qt resources early so icons are available during plugin init.
+from . import probe_basic_rc  # noqa: F401
+
 VCP_DIR = os.path.realpath(os.path.dirname(__file__))
 VCP_CONFIG_FILE = os.path.join(VCP_DIR, 'probe_basic.yml')
 

@@ -20,7 +20,7 @@
    <string>rack_atc</string>
   </property>
   <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="leftMargin">
@@ -78,7 +78,7 @@
 }</string>
      </property>
      <property name="tabPosition">
-      <enum>QTabWidget::West</enum>
+      <enum>QTabWidget::TabPosition::West</enum>
      </property>
      <property name="currentIndex">
       <number>0</number>
@@ -171,7 +171,7 @@
                   </sizepolicy>
                  </property>
                  <property name="layoutDirection">
-                  <enum>Qt::LeftToRight</enum>
+                  <enum>Qt::LayoutDirection::LeftToRight</enum>
                  </property>
                  <property name="styleSheet">
                   <string notr="true">QTabWidget::pane {
@@ -214,10 +214,10 @@ QTabBar::tab:only-one {
 }</string>
                  </property>
                  <property name="tabPosition">
-                  <enum>QTabWidget::North</enum>
+                  <enum>QTabWidget::TabPosition::North</enum>
                  </property>
                  <property name="currentIndex">
-                  <number>0</number>
+                  <number>1</number>
                  </property>
                  <widget class="QWidget" name="program_tools_tab">
                   <attribute name="title">
@@ -237,7 +237,7 @@ QTabBar::tab:only-one {
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QWidget" name="widget_65" native="true">
+                    <widget class="QWidget" name="current_tools_widget" native="true">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>0</horstretch>
@@ -282,7 +282,7 @@ QTabBar::tab:only-one {
                        <number>14</number>
                       </property>
                       <item>
-                       <layout class="QHBoxLayout" name="horizontalLayout_176">
+                       <layout class="QHBoxLayout" name="current_tools_layout_top">
                         <property name="leftMargin">
                          <number>2</number>
                         </property>
@@ -296,7 +296,7 @@ QTabBar::tab:only-one {
                          <number>2</number>
                         </property>
                         <item>
-                         <widget class="QLabel" name="work_column_header_7">
+                         <widget class="QLabel" name="current_tools_header">
                           <property name="enabled">
                            <bool>true</bool>
                           </property>
@@ -330,13 +330,13 @@ QTabBar::tab:only-one {
 }</string>
                           </property>
                           <property name="frameShape">
-                           <enum>QFrame::NoFrame</enum>
+                           <enum>QFrame::Shape::NoFrame</enum>
                           </property>
                           <property name="text">
                            <string>CURRENT PROGRAM TOOLS</string>
                           </property>
                           <property name="alignment">
-                           <set>Qt::AlignCenter</set>
+                           <set>Qt::AlignmentFlag::AlignCenter</set>
                           </property>
                           <property name="wordWrap">
                            <bool>true</bool>
@@ -364,7 +364,7 @@ QTabBar::tab:only-one {
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>236</width>
+                           <width>86</width>
                            <height>811</height>
                           </rect>
                          </property>
@@ -677,10 +677,10 @@ QTabBar::tab:only-one {
                                 <string/>
                                </property>
                                <property name="textFormat">
-                                <enum>Qt::AutoText</enum>
+                                <enum>Qt::TextFormat::AutoText</enum>
                                </property>
                                <property name="alignment">
-                                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
                                </property>
                                <property name="wordWrap">
                                 <bool>true</bool>
@@ -735,7 +735,7 @@ QTabBar::tab:only-one {
                            </size>
                           </property>
                           <property name="focusPolicy">
-                           <enum>Qt::NoFocus</enum>
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="toolTip">
                            <string>M13 User Defined Macro Call from Subroutine Folder</string>
@@ -784,7 +784,7 @@ QTabBar::tab:only-one {
                     <number>0</number>
                    </property>
                    <item>
-                    <layout class="QVBoxLayout" name="user_atc_buttons_layout">
+                    <layout class="QVBoxLayout" name="user_rack_atc_buttons_layout">
                      <property name="spacing">
                       <number>0</number>
                      </property>
@@ -867,7 +867,7 @@ QTabBar::tab:only-one {
                       <number>3</number>
                      </property>
                      <item>
-                      <widget class="StatusLabel" name="tool_length_10">
+                      <widget class="StatusLabel" name="tool_information_rack">
                        <property name="sizePolicy">
                         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                          <horstretch>0</horstretch>
@@ -901,7 +901,7 @@ QTabBar::tab:only-one {
                         <string>No Tool Loaded</string>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                        <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                        </property>
                        <property name="wordWrap">
                         <bool>true</bool>
@@ -909,11 +909,11 @@ QTabBar::tab:only-one {
                        <property name="indent">
                         <number>4</number>
                        </property>
-                       <property name="rules" stdset="0">
-                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Tool Comment&quot;}]</string>
-                       </property>
                        <property name="format" stdset="0">
                         <string>{:.3f}</string>
+                       </property>
+                       <property name="rules" stdset="0">
+                        <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Tool Comment&quot;}]</string>
                        </property>
                       </widget>
                      </item>
@@ -954,7 +954,7 @@ QTabBar::tab:only-one {
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_4">
                    <item>
-                    <widget class="QWidget" name="widget_13" native="true">
+                    <widget class="QWidget" name="spacer_widget_left_rack" native="true">
                      <property name="styleSheet">
                       <string notr="true"/>
                      </property>
@@ -980,7 +980,7 @@ QTabBar::tab:only-one {
                        <height>16777215</height>
                       </size>
                      </property>
-                     <widget class="QLabel" name="label_89">
+                     <widget class="QLabel" name="spindle_image_label">
                       <property name="geometry">
                        <rect>
                         <x>1</x>
@@ -1050,13 +1050,13 @@ QTabBar::tab:only-one {
                        <string>T0</string>
                       </property>
                       <property name="alignment">
-                       <set>Qt::AlignCenter</set>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current tool&quot;}]</string>
+                       <set>Qt::AlignmentFlag::AlignCenter</set>
                       </property>
                       <property name="format" stdset="0">
                        <string>{:.3f}</string>
+                      </property>
+                      <property name="rules" stdset="0">
+                       <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current tool&quot;}]</string>
                       </property>
                       <property name="statusItem" stdset="0">
                        <string>tool_offset.3</string>
@@ -1065,7 +1065,7 @@ QTabBar::tab:only-one {
                     </widget>
                    </item>
                    <item>
-                    <widget class="QWidget" name="widget_12" native="true"/>
+                    <widget class="QWidget" name="spacer_widget_right_rack" native="true"/>
                    </item>
                   </layout>
                  </widget>
@@ -1083,7 +1083,7 @@ QTabBar::tab:only-one {
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="MDIEntry" name="mdi_entry_box_7">
+                    <widget class="MDIEntry" name="mdi_entry_box_rack_tab">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1100,13 +1100,12 @@ QTabBar::tab:only-one {
                       <font>
                        <family>Bebas Kai</family>
                        <pointsize>15</pointsize>
-                       <weight>50</weight>
                        <italic>false</italic>
                        <bold>false</bold>
                       </font>
                      </property>
                      <property name="focusPolicy">
-                      <enum>Qt::ClickFocus</enum>
+                      <enum>Qt::FocusPolicy::ClickFocus</enum>
                      </property>
                      <property name="placeholderText">
                       <string>MDI</string>
@@ -1135,7 +1134,7 @@ QTabBar::tab:only-one {
                  <number>0</number>
                 </property>
                 <item>
-                 <widget class="QFrame" name="frame_6">
+                 <widget class="QFrame" name="rack_atc_load_frame">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                     <horstretch>0</horstretch>
@@ -1164,7 +1163,7 @@ QTabBar::tab:only-one {
                     <number>18</number>
                    </property>
                    <item>
-                    <widget class="QLabel" name="machine_column_header_3">
+                    <widget class="QLabel" name="atc_loading_panel_header">
                      <property name="minimumSize">
                       <size>
                        <width>0</width>
@@ -1192,17 +1191,17 @@ QTabBar::tab:only-one {
                       <string>ATC AUTOMATIC CONTROL PANEL</string>
                      </property>
                      <property name="alignment">
-                      <set>Qt::AlignCenter</set>
+                      <set>Qt::AlignmentFlag::AlignCenter</set>
                      </property>
                     </widget>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_26">
+                    <layout class="QHBoxLayout" name="rack_load_tool_layout">
                      <property name="spacing">
                       <number>15</number>
                      </property>
                      <property name="sizeConstraint">
-                      <enum>QLayout::SetDefaultConstraint</enum>
+                      <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
                      </property>
                      <property name="leftMargin">
                       <number>4</number>
@@ -1237,13 +1236,13 @@ QTabBar::tab:only-one {
                         </size>
                        </property>
                        <property name="focusPolicy">
-                        <enum>Qt::ClickFocus</enum>
+                        <enum>Qt::FocusPolicy::ClickFocus</enum>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">font: 17pt;</string>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
                        </property>
                        <property name="placeholderText">
                         <string>0</string>
@@ -1315,12 +1314,12 @@ QPushButton:checked {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_14">
+                    <layout class="QHBoxLayout" name="rack_unload_layout">
                      <property name="spacing">
                       <number>0</number>
                      </property>
                      <property name="sizeConstraint">
-                      <enum>QLayout::SetDefaultConstraint</enum>
+                      <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
                      </property>
                      <property name="leftMargin">
                       <number>2</number>
@@ -1335,7 +1334,7 @@ QPushButton:checked {
                       <number>2</number>
                      </property>
                      <item>
-                      <widget class="SubCallButton" name="remove_tool">
+                      <widget class="SubCallButton" name="remove_tool_button">
                        <property name="minimumSize">
                         <size>
                          <width>125</width>
@@ -1396,7 +1395,7 @@ QPushButton:checked {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_21">
+                    <layout class="QHBoxLayout" name="rack_store_layout">
                      <property name="spacing">
                       <number>0</number>
                      </property>
@@ -1474,7 +1473,7 @@ QPushButton:checked {
                     </layout>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_134">
+                    <layout class="QHBoxLayout" name="rack_change_layout">
                      <property name="spacing">
                       <number>15</number>
                      </property>
@@ -1587,7 +1586,7 @@ QPushButton:checked {
                           </colorrole>
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
-                            <color alpha="255">
+                            <color alpha="128">
                              <red>0</red>
                              <green>0</green>
                              <blue>0</blue>
@@ -1670,7 +1669,7 @@ QPushButton:checked {
                           </colorrole>
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
-                            <color alpha="255">
+                            <color alpha="128">
                              <red>0</red>
                              <green>0</green>
                              <blue>0</blue>
@@ -1753,7 +1752,7 @@ QPushButton:checked {
                           </colorrole>
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
-                            <color alpha="255">
+                            <color alpha="128">
                              <red>0</red>
                              <green>0</green>
                              <blue>0</blue>
@@ -1767,16 +1766,15 @@ QPushButton:checked {
                         <font>
                          <family>Bebas Kai</family>
                          <pointsize>17</pointsize>
-                         <weight>50</weight>
                          <italic>false</italic>
                          <bold>false</bold>
                         </font>
                        </property>
                        <property name="focusPolicy">
-                        <enum>Qt::ClickFocus</enum>
+                        <enum>Qt::FocusPolicy::ClickFocus</enum>
                        </property>
                        <property name="contextMenuPolicy">
-                        <enum>Qt::NoContextMenu</enum>
+                        <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">font: 17pt;</string>
@@ -1788,7 +1786,7 @@ QPushButton:checked {
                         <bool>true</bool>
                        </property>
                        <property name="alignment">
-                        <set>Qt::AlignCenter</set>
+                        <set>Qt::AlignmentFlag::AlignCenter</set>
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
@@ -1860,7 +1858,7 @@ QPushButton:checked {
                     <widget class="QWidget" name="widget_2" native="true"/>
                    </item>
                    <item>
-                    <layout class="QHBoxLayout" name="horizontalLayout_23">
+                    <layout class="QHBoxLayout" name="racl_touch_off_layout">
                      <property name="spacing">
                       <number>0</number>
                      </property>
@@ -1897,7 +1895,7 @@ QPushButton:checked {
                         </size>
                        </property>
                        <property name="focusPolicy">
-                        <enum>Qt::NoFocus</enum>
+                        <enum>Qt::FocusPolicy::NoFocus</enum>
                        </property>
                        <property name="styleSheet">
                         <string notr="true">QPushButton {
@@ -1956,7 +1954,7 @@ QPushButton:checked {
            </widget>
           </item>
           <item>
-           <widget class="RackATC" name="rackatc">
+           <widget class="RackATC" name="rackatc" native="true">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -2019,7 +2017,7 @@ QPushButton:checked {
            <number>1</number>
           </property>
           <item>
-           <widget class="QWidget" name="widget_46" native="true">
+           <widget class="QWidget" name="rack_param_widget" native="true">
             <property name="sizePolicy">
              <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
               <horstretch>0</horstretch>
@@ -2054,7 +2052,7 @@ QPushButton:checked {
               <number>8</number>
              </property>
              <item>
-              <widget class="QLabel" name="work_column_header_11">
+              <widget class="QLabel" name="rack_param_header">
                <property name="enabled">
                 <bool>true</bool>
                </property>
@@ -2088,13 +2086,13 @@ QPushButton:checked {
 }</string>
                </property>
                <property name="frameShape">
-                <enum>QFrame::NoFrame</enum>
+                <enum>QFrame::Shape::NoFrame</enum>
                </property>
                <property name="text">
                 <string>RACK ATC PARAMETERS</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
                <property name="wordWrap">
                 <bool>true</bool>
@@ -2184,7 +2182,7 @@ color: white;
                      <string>ATC RACK ID</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="indent">
                      <number>0</number>
@@ -2215,13 +2213,12 @@ color: white;
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2229,7 +2226,7 @@ color: white;
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="readOnly">
                      <bool>true</bool>
@@ -2237,14 +2234,14 @@ color: white;
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.0f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.rack-id</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.0f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2300,7 +2297,7 @@ color: white;
                      <string>POCKET COUNT</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="indent">
                      <number>0</number>
@@ -2328,7 +2325,7 @@ color: white;
                      </size>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="readOnly">
                      <bool>true</bool>
@@ -2336,11 +2333,11 @@ color: white;
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="settingName" stdset="0">
-                     <string>rack-atc-setup.pocket-count</string>
-                    </property>
                     <property name="textFormat" stdset="0">
                      <string>{:.0f}</string>
+                    </property>
+                    <property name="settingName" stdset="0">
+                     <string>rack-atc-setup.pocket-count</string>
                     </property>
                    </widget>
                   </item>
@@ -2396,7 +2393,7 @@ color: white;
                      <string>ATC TRAVERSE FR</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="indent">
                      <number>0</number>
@@ -2430,13 +2427,12 @@ color: white;
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2444,19 +2440,19 @@ color: white;
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.0f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.rack-traverse-speed</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.0f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2497,7 +2493,7 @@ color: white;
                      </size>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
@@ -2505,7 +2501,7 @@ color: white;
 background-color: #929695;</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-param-1</string>
@@ -2539,13 +2535,12 @@ background-color: #929695;</string>
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2553,19 +2548,19 @@ background-color: #929695;</string>
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.4f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-1-param</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.4f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2612,7 +2607,7 @@ background-color: #929695;</string>
                      </size>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
@@ -2620,7 +2615,7 @@ color: white;
 background-color: #929695;</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-param-2</string>
@@ -2654,13 +2649,12 @@ background-color: #929695;</string>
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2668,19 +2662,19 @@ background-color: #929695;</string>
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.4f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-2-param</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.4f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2727,7 +2721,7 @@ background-color: #929695;</string>
                      </size>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
@@ -2735,7 +2729,7 @@ color: white;
 background-color: #929695;</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-param-3</string>
@@ -2769,13 +2763,12 @@ background-color: #929695;</string>
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2783,19 +2776,19 @@ background-color: #929695;</string>
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.4f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-3-param</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.4f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2842,7 +2835,7 @@ background-color: #929695;</string>
                      </size>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
@@ -2850,7 +2843,7 @@ color: white;
 background-color: #929695;</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-param-4</string>
@@ -2884,13 +2877,12 @@ background-color: #929695;</string>
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -2898,19 +2890,19 @@ background-color: #929695;</string>
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.4f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-4-param</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.4f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
@@ -2957,7 +2949,7 @@ background-color: #929695;</string>
                      </size>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
@@ -2965,7 +2957,7 @@ color: white;
 background-color: #929695;</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-param-5</string>
@@ -2999,13 +2991,12 @@ background-color: #929695;</string>
                      <font>
                       <family>bebas kai</family>
                       <pointsize>15</pointsize>
-                      <weight>50</weight>
                       <italic>false</italic>
                       <bold>false</bold>
                      </font>
                     </property>
                     <property name="focusPolicy">
-                     <enum>Qt::ClickFocus</enum>
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">VCPSettingsLineEdit {
@@ -3013,34 +3004,29 @@ background-color: #929695;</string>
 }</string>
                     </property>
                     <property name="alignment">
-                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                     </property>
                     <property name="placeholderText">
                      <string>0</string>
                     </property>
-                    <property name="rules" stdset="0">
-                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    <property name="textFormat" stdset="0">
+                     <string>{:.4f}</string>
                     </property>
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.user-5-param</string>
                     </property>
-                    <property name="textFormat" stdset="0">
-                     <string>{:.4f}</string>
+                    <property name="rules" stdset="0">
+                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
                    </widget>
                   </item>
                  </layout>
                 </item>
                 <item>
-                 <widget class="QWidget" name="widget_22" native="true"/>
+                 <widget class="QWidget" name="rack_param_bottom_spacer_widget" native="true"/>
                 </item>
                </layout>
-               <zorder></zorder>
-               <zorder></zorder>
-               <zorder></zorder>
-               <zorder></zorder>
-               <zorder>widget_22</zorder>
-               <zorder></zorder>
+               <zorder>rack_param_bottom_spacer_widget</zorder>
               </widget>
              </item>
              <item>
@@ -3085,7 +3071,7 @@ background-color: #929695;</string>
            <height>16777215</height>
           </size>
          </property>
-         <widget class="QLabel" name="label_14">
+         <widget class="QLabel" name="spindle_tool_graphic_label">
           <property name="geometry">
            <rect>
             <x>70</x>
@@ -3176,7 +3162,7 @@ background-color: #929695;</string>
               </size>
              </property>
              <property name="focusPolicy">
-              <enum>Qt::ClickFocus</enum>
+              <enum>Qt::FocusPolicy::ClickFocus</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">VCPSettingsLineEdit {
@@ -3190,24 +3176,24 @@ background-color: #929695;</string>
 }</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
              </property>
              <property name="placeholderText">
               <string>0</string>
              </property>
-             <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+             <property name="textFormat" stdset="0">
+              <string>{:.4f}</string>
              </property>
              <property name="settingName" stdset="0">
               <string>rack-atc-setup.safe-z-height</string>
              </property>
-             <property name="textFormat" stdset="0">
-              <string>{:.4f}</string>
+             <property name="rules" stdset="0">
+              <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
             </widget>
            </item>
            <item row="0" column="0">
-            <widget class="QLabel" name="label_33">
+            <widget class="QLabel" name="label_safe_z">
              <property name="sizePolicy">
               <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                <horstretch>0</horstretch>
@@ -3224,7 +3210,7 @@ background-color: #929695;</string>
               <string>SAFE Z</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -3259,7 +3245,7 @@ background-color: #929695;</string>
            <string>HOME Z AXIS ZERO POSITION</string>
           </property>
           <property name="alignment">
-           <set>Qt::AlignCenter</set>
+           <set>Qt::AlignmentFlag::AlignCenter</set>
           </property>
           <property name="wordWrap">
            <bool>true</bool>
@@ -3319,7 +3305,7 @@ background-color: #929695;</string>
               <string>LOAD HEIGHT</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -3350,7 +3336,7 @@ background-color: #929695;</string>
               </size>
              </property>
              <property name="focusPolicy">
-              <enum>Qt::ClickFocus</enum>
+              <enum>Qt::FocusPolicy::ClickFocus</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">VCPSettingsLineEdit {
@@ -3364,19 +3350,19 @@ background-color: #929695;</string>
 }</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+              <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
              </property>
              <property name="placeholderText">
               <string>0</string>
              </property>
-             <property name="rules" stdset="0">
-              <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+             <property name="textFormat" stdset="0">
+              <string>{:.4f}</string>
              </property>
              <property name="settingName" stdset="0">
               <string>rack-atc-setup.z-load-height</string>
              </property>
-             <property name="textFormat" stdset="0">
-              <string>{:.4f}</string>
+             <property name="rules" stdset="0">
+              <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
              </property>
             </widget>
            </item>
@@ -3396,10 +3382,10 @@ background-color: #929695;</string>
 color: white;</string>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
          </widget>
          <widget class="Line" name="line_2">
@@ -3416,13 +3402,13 @@ color: white;</string>
 color: white;</string>
           </property>
           <property name="frameShadow">
-           <enum>QFrame::Plain</enum>
+           <enum>QFrame::Shadow::Plain</enum>
           </property>
           <property name="orientation">
-           <enum>Qt::Vertical</enum>
+           <enum>Qt::Orientation::Vertical</enum>
           </property>
          </widget>
-         <zorder>label_14</zorder>
+         <zorder>spindle_tool_graphic_label</zorder>
          <zorder>label_35</zorder>
          <zorder>line</zorder>
          <zorder>line_2</zorder>
@@ -3493,7 +3479,7 @@ color: white;</string>
               <pixmap resource="../../probe_basic.qrc">:/images/fork_points.png</pixmap>
              </property>
             </widget>
-            <widget class="QWidget" name="widget_24" native="true">
+            <widget class="QWidget" name="rack_xy_widget" native="true">
              <property name="geometry">
               <rect>
                <x>18</x>
@@ -3509,7 +3495,7 @@ color: white;</string>
               </sizepolicy>
              </property>
              <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
+              <enum>Qt::LayoutDirection::RightToLeft</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">.QWidget {
@@ -3532,7 +3518,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_26" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_10">
                  <property name="leftMargin">
@@ -3548,7 +3534,7 @@ color: white;</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_40">
+                  <widget class="QLabel" name="rack_x_widget">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -3590,7 +3576,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -3604,19 +3590,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-1-x</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -3626,7 +3612,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_27" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_11">
                  <property name="leftMargin">
@@ -3642,7 +3628,7 @@ color: white;</string>
                   <number>0</number>
                  </property>
                  <item>
-                  <widget class="QLabel" name="label_41">
+                  <widget class="QLabel" name="rack_y_widget">
                    <property name="sizePolicy">
                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                      <horstretch>0</horstretch>
@@ -3650,7 +3636,7 @@ color: white;</string>
                     </sizepolicy>
                    </property>
                    <property name="layoutDirection">
-                    <enum>Qt::LeftToRight</enum>
+                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLabel {
@@ -3687,7 +3673,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -3701,19 +3687,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-1-y</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -3738,7 +3724,7 @@ color: white;</string>
               </sizepolicy>
              </property>
              <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
+              <enum>Qt::LayoutDirection::RightToLeft</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">.QWidget {
@@ -3761,7 +3747,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_28" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_12">
                  <property name="leftMargin">
@@ -3819,7 +3805,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -3833,19 +3819,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-1-x-clearance</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -3855,7 +3841,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_29" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_13">
                  <property name="leftMargin">
@@ -3879,7 +3865,7 @@ color: white;</string>
                     </sizepolicy>
                    </property>
                    <property name="layoutDirection">
-                    <enum>Qt::LeftToRight</enum>
+                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLabel {
@@ -3916,7 +3902,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -3930,19 +3916,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-1-y-clearance</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -3951,7 +3937,7 @@ color: white;</string>
               </item>
              </layout>
             </widget>
-            <widget class="QWidget" name="widget_26" native="true">
+            <widget class="QWidget" name="widget_32" native="true">
              <property name="geometry">
               <rect>
                <x>504</x>
@@ -3967,7 +3953,7 @@ color: white;</string>
               </sizepolicy>
              </property>
              <property name="layoutDirection">
-              <enum>Qt::RightToLeft</enum>
+              <enum>Qt::LayoutDirection::RightToLeft</enum>
              </property>
              <property name="styleSheet">
               <string notr="true">.QWidget {
@@ -3990,7 +3976,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_30" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_15">
                  <property name="leftMargin">
@@ -4048,7 +4034,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -4062,19 +4048,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-2-x</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -4084,7 +4070,7 @@ color: white;</string>
               <item>
                <widget class="QWidget" name="widget_31" native="true">
                 <property name="layoutDirection">
-                 <enum>Qt::LeftToRight</enum>
+                 <enum>Qt::LayoutDirection::LeftToRight</enum>
                 </property>
                 <layout class="QHBoxLayout" name="horizontalLayout_16">
                  <property name="leftMargin">
@@ -4108,7 +4094,7 @@ color: white;</string>
                     </sizepolicy>
                    </property>
                    <property name="layoutDirection">
-                    <enum>Qt::LeftToRight</enum>
+                    <enum>Qt::LayoutDirection::LeftToRight</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">QLabel {
@@ -4145,7 +4131,7 @@ color: white;</string>
                     </size>
                    </property>
                    <property name="focusPolicy">
-                    <enum>Qt::ClickFocus</enum>
+                    <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
                    <property name="styleSheet">
                     <string notr="true">VCPSettingsLineEdit {
@@ -4159,19 +4145,19 @@ color: white;</string>
 }</string>
                    </property>
                    <property name="alignment">
-                    <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+                    <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
                    <property name="placeholderText">
                     <string>0</string>
                    </property>
-                   <property name="rules" stdset="0">
-                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   <property name="textFormat" stdset="0">
+                    <string>{:.4f}</string>
                    </property>
                    <property name="settingName" stdset="0">
                     <string>rack-atc-setup.pocket-2-y</string>
                    </property>
-                   <property name="textFormat" stdset="0">
-                    <string>{:.4f}</string>
+                   <property name="rules" stdset="0">
+                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                    </property>
                   </widget>
                  </item>
@@ -4205,7 +4191,7 @@ color: white;</string>
               <string>P1 MACHINE POSITION</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -4236,7 +4222,7 @@ color: white;</string>
               <string>P1 CLEARANCE MACHINE POS</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -4267,7 +4253,7 @@ color: white;</string>
               <string>P2 MACHINE POSITION</string>
              </property>
              <property name="alignment">
-              <set>Qt::AlignCenter</set>
+              <set>Qt::AlignmentFlag::AlignCenter</set>
              </property>
              <property name="wordWrap">
               <bool>true</bool>
@@ -4292,7 +4278,7 @@ color: white;</string>
            </widget>
           </item>
           <item>
-           <widget class="MDIEntry" name="m">
+           <widget class="MDIEntry" name="rack_mdi_2">
             <property name="minimumSize">
              <size>
               <width>0</width>
@@ -4309,13 +4295,12 @@ color: white;</string>
              <font>
               <family>Bebas Kai</family>
               <pointsize>15</pointsize>
-              <weight>50</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::FocusPolicy::ClickFocus</enum>
             </property>
             <property name="placeholderText">
              <string>MDI</string>
@@ -4364,7 +4349,7 @@ color: white;</string>
   </customwidget>
   <customwidget>
    <class>RackATC</class>
-    <extends>QWidget</extends>
+   <extends>QWidget</extends>
    <header>widgets.rack_atc_widget.rack_atc</header>
   </customwidget>
  </customwidgets>

@@ -7,9 +7,9 @@ import importlib.util
 import linuxcnc
 
 from qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot import VTKBackPlot
-from qtpy.QtCore import Slot, QRegularExpression, Qt, QObject
-from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor
-from qtpy.QtWidgets import QAbstractButton
+from qtpy.QtCore import Slot, QRegularExpression, Qt, QObject, QTimer
+from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette
+from qtpy.QtWidgets import QAbstractButton, QApplication
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
@@ -24,6 +24,8 @@ from . import probe_basic_rc  # noqa: F401 - registers Qt resources
 LOG = logger.getLogger('QtPyVCP.' + __name__)
 VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
+LIGHT_STYLESHEET_FILE = "probe_basic_light.qss"
+DARK_STYLESHEET_FILE = "probe_basic_dark.qss"
 
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
@@ -99,9 +101,11 @@ class ProbeBasic(VCPMainWindow):
         self.load_user_tabs()
 
         self.load_user_buttons()
+
+        self._connect_theme_tracking()
+        self._apply_theme_stylesheet()
         
         # Defer loading DROs until UI is fully loaded
-        from PySide6.QtCore import QTimer
         QTimer.singleShot(100, self._load_dros_after_ui)
 
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
@@ -136,6 +140,42 @@ class ProbeBasic(VCPMainWindow):
             lbl = getattr(self, _timer_label, None)
             if lbl is not None:
                 lbl.textFormat = "02.0f"
+
+    def _is_dark_theme(self):
+        app = QApplication.instance()
+        if app is None:
+            return False
+        palette = app.palette()
+        window_lightness = palette.color(QPalette.Window).lightness()
+        base_lightness = palette.color(QPalette.Base).lightness()
+        return ((window_lightness + base_lightness) / 2) < 128
+
+    def _connect_theme_tracking(self):
+        app = QApplication.instance()
+        if app is None:
+            return
+        palette_changed = getattr(app, 'paletteChanged', None)
+        if palette_changed is not None:
+            try:
+                palette_changed.connect(self._on_palette_changed)
+            except Exception:
+                LOG.exception("Failed to connect paletteChanged signal")
+
+    def _on_palette_changed(self, *_args):
+        QTimer.singleShot(0, self._apply_theme_stylesheet)
+
+    def _apply_theme_stylesheet(self):
+        dark_theme = self._is_dark_theme()
+        stylesheet_file = DARK_STYLESHEET_FILE if dark_theme else LIGHT_STYLESHEET_FILE
+        stylesheet_path = os.path.join(VCP_DIR, stylesheet_file)
+        app = QApplication.instance()
+        if app is None:
+            return
+        try:
+            with open(stylesheet_path, 'r', encoding='utf-8') as style_file:
+                app.setStyleSheet(style_file.read())
+        except Exception:
+            LOG.exception("Failed to load theme stylesheet: %s", stylesheet_path)
 
     def _load_dros_after_ui(self):
         """Load DROs after UI is fully initialized."""

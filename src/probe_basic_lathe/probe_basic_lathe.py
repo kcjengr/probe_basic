@@ -7,9 +7,9 @@ import importlib.util
 import linuxcnc
 
 from qtpy.QtCore import Slot, QRegularExpression, QTimer
-from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor
+from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette
 from qtpyvcp.actions.machine_actions import issue_mdi
-from qtpy.QtWidgets import QAbstractButton, QMessageBox
+from qtpy.QtWidgets import QApplication, QAbstractButton, QMessageBox
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
@@ -26,6 +26,8 @@ VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 MASTER_TOOL_DIALOG_POS_X = 400
 MASTER_TOOL_DIALOG_POS_Y = 215
+LIGHT_STYLESHEET_FILE = "probe_basic_lathe_light.qss"
+DARK_STYLESHEET_FILE = "probe_basic_lathe_dark.qss"
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -62,6 +64,9 @@ class ProbeBasicLathe(VCPMainWindow):
         self.load_user_tabs()
         
         self.load_user_buttons()
+
+        self._connect_theme_tracking()
+        self._apply_theme_stylesheet()
 
         from PySide6.QtCore import QTimer
         QTimer.singleShot(100, self._load_dros_after_ui)
@@ -153,6 +158,42 @@ class ProbeBasicLathe(VCPMainWindow):
             self._master_tool_processing = False  # Flag to prevent double-execution
             self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
             self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
+
+    def _is_dark_theme(self):
+        app = QApplication.instance()
+        if app is None:
+            return False
+        palette = app.palette()
+        window_lightness = palette.color(QPalette.Window).lightness()
+        base_lightness = palette.color(QPalette.Base).lightness()
+        return ((window_lightness + base_lightness) / 2) < 128
+
+    def _connect_theme_tracking(self):
+        app = QApplication.instance()
+        if app is None:
+            return
+        palette_changed = getattr(app, 'paletteChanged', None)
+        if palette_changed is not None:
+            try:
+                palette_changed.connect(self._on_palette_changed)
+            except Exception:
+                LOG.exception("Failed to connect paletteChanged signal")
+
+    def _on_palette_changed(self, *_args):
+        QTimer.singleShot(0, self._apply_theme_stylesheet)
+
+    def _apply_theme_stylesheet(self):
+        dark_theme = self._is_dark_theme()
+        stylesheet_file = DARK_STYLESHEET_FILE if dark_theme else LIGHT_STYLESHEET_FILE
+        stylesheet_path = os.path.join(VCP_DIR, stylesheet_file)
+        app = QApplication.instance()
+        if app is None:
+            return
+        try:
+            with open(stylesheet_path, 'r', encoding='utf-8') as style_file:
+                app.setStyleSheet(style_file.read())
+        except Exception:
+            LOG.exception("Failed to load theme stylesheet: %s", stylesheet_path)
 
     def _position_master_dialog(self, msg_box):
         msg_box.adjustSize()

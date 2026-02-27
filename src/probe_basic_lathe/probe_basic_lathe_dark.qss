@@ -1,4 +1,4 @@
-VCPMainWindow {
+QMainWindow {
     background: #2e3436
 }
 
@@ -13,7 +13,7 @@ QStatusBar {
     font-size: 12pt;
 }
 
-QPushButton, QComboBox[editable="false"],
+QPushButton, VCPSettingsPushButton, SubCallButton, QComboBox[editable="false"],
 QComboBox[editable="true"]::drop-down {
     color: white;    
     border-color: black;
@@ -128,8 +128,8 @@ GcodeBackplot {
 }
 
 GcodeEditor {
-    background-color: palette(base);
-    color: palette(text);
+    background-color: rgb(147, 150, 149);
+    color: white;
     border-color: black;
     border-style: solid;
     border-width: 2px;
@@ -139,15 +139,15 @@ GcodeEditor {
 }
 
 GcodeTextEdit {
-    background-color: palette(base);
-    color: palette(text);
+    background-color: rgb(100, 100, 100);
+    color: white;
     font: 12pt "Bebas Kai";
-    qproperty-currentLineBackground: palette(highlight);
-    qproperty-currentLineColor: palette(highlighted-text);
-    qproperty-marginBackground: palette(window);
-    qproperty-marginCurrentLineBackground: palette(highlight);
-    qproperty-marginColor: palette(text);
-    qproperty-marginCurrentLineColor: palette(highlighted-text);
+    qproperty-currentLineBackground: rgb(62, 73, 179);
+    qproperty-currentLineColor: rgb(255, 255, 255);
+    qproperty-marginBackground: rgb(70, 70, 71);
+    qproperty-marginCurrentLineBackground: rgb(62, 73, 179);
+    qproperty-marginColor: rgb(255, 255, 255);
+    qproperty-marginCurrentLineColor: rgb(255, 255, 255);
 }
 
 QScrollArea {
@@ -326,27 +326,36 @@ QMenuBar::item:pressed {
 QMessageBox {
     color: white;
     background-color: #2e3436;
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 4px;
 }
 
 QMessageBox QLabel {
-    font: 12pt "Bebas Kai";
+    font: 14pt "Bebas Kai";
     color: white;
+}
+
+QMessageBox QLabel[text] {
+    padding-left: 0px;
+    padding-top: 10px;
+    padding-right: 10px;
+    padding-bottom: 5px;
+    margin: 0px;
+}
+
+QMessageBox QPushButton {
+    min-height: 40px;
+    max-height: 40px;
+    font: 14pt "Bebas Kai";
+    padding-left: 20px;
+    padding-right: 20px;
+    margin-top: 10px;
 }
 
 QDialog {
     background-color: #2e3436;
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 4px;
 }
 
 QDialog QLabel {
-    font: 12pt "Bebas Kai";
+    font: 13pt "Bebas Kai";
     color: white;
 }
 
@@ -394,143 +403,6 @@ QMenu::indicator {
 }
 
 /*===========================================================================*/
-/*                               vtkbuttons                                  */
-/*===========================================================================*/
-
-#vtk_control_buttons {
-    background:black;
-}
-
-#x_view_button,
-#y_view_button,
-#z_view_button,
-#z2_view_button,
-#iso_view_button,
-#clear_button,
-#zoom_in_button,
-#zoom_out_button,
-#ortho_button,
-#perspective_button,
-#path_button,
-#pan_button,
-#program_zoom_button,
-#machine_zoom_button {
-    color: white;
-    border-color: rgb(74, 77, 81);
-    border-style: solid;
-    border-radius: 5px;
-    border-width: 1px;
-    background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
-}
-
-#x_view_button,
-#y_view_button,
-#z_view_button,
-#z2_view_button,
-#iso_view_button,
-#clear_button,
-#zoom_in_button,
-#zoom_out_button,
-#ortho_button,
-#perspective_button,
-#path_button,
-#pan_button,
-#program_zoom_button,
-#machine_zoom_button {
-    font-family: "Bebas Kai";
-    font-size: 14pt
-}
-
-#x_view_button:disabled,
-#y_view_button:disabled,
-#z_view_button:disabled,
-#z2_view_button:disabled,
-#iso_view_button:disabled,
-#clear_button:disabled,
-#zoom_in_button:disabled,
-#zoom_out_button:disabled,
-#ortho_button:disabled,
-#perspective_button:disabled,
-#path_button:disabled,
-#pan_button:disabled,
-#program_zoom_button:disabled,
-#machine_zoom_button:disabled {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
-
-#x_view_button:hover,
-#y_view_button:hover,
-#z_view_button:hover,
-#z2_view_button:hover:hover,
-#iso_view_button:hover,
-#clear_button:hover,
-#zoom_in_button:hover,
-#zoom_out_button:hover,
-#ortho_button:hover,
-#perspective_button:hover,
-#path_button:hover,
-#pan_button:hover,
-#program_zoom_button:hover,
-#machine_zoom_button:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1, stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
-
-#x_view_button:pressed,
-#y_view_button:pressed,
-#z_view_button:pressed,
-#z2_view_button:pressed,
-#iso_view_button:pressed,
-#clear_button:pressed,
-#zoom_in_button:pressed,
-#zoom_out_button:pressed,
-#ortho_button:pressed,
-#perspective_button:pressed,
-#path_button:pressed,
-#pan_button:pressed,
-#program_zoom_button:pressed,
-#machine_zoom_button:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-#x_view_button:checked[option="true"],
-#y_view_button:checked[option="true"],
-#z_view_button:checked[option="true"],
-#z2_view_button:checked[option="true"],
-#iso_view_button:checked[option="true"],
-#clear_button:checked[option="true"],
-#zoom_in_button:checked[option="true"],
-#zoom_out_button:checked[option="true"],
-#ortho_button:checked[option="true"],
-#perspective_button:checked[option="true"],
-#path_button:checked[option="true"],
-#pan_button:checked[option="true"],
-#program_zoom_button[option="true"],
-#machine_zoom_button[option="true"] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-#x_view_button:checked[option="false"],
-#y_view_button:checked[option="false"],
-#z_view_button:checked[option="false"],
-#z2_view_button:checked[option="false"],
-#iso_view_button:checked[option="false"],
-#clear_button:checked[option="false"],
-#zoom_in_button:checked[option="false"],
-#zoom_out_button:checked[option="false"],
-#ortho_button:checked[option="false"],
-#perspective_button:checked[option="false"],
-#path_button:checked[option="false"],
-#pan_button:checked[option="false"],
-#program_zoom_button[option="false"],
-#machine_zoom_button[option="false"] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-#pan_button:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-/*===========================================================================*/
 /*                             tool and offset table                         */
 /*===========================================================================*/
 
@@ -539,6 +411,40 @@ QHeaderView {
     background-color: rgb(220, 220, 220);
     color: black;
     border: none;
+}
+
+FileSystemTable {
+    color: white;
+    border: 1px solid rgb(120, 120, 120);
+    background-color: rgb(100, 100, 100);
+    alternate-background-color: rgb(100, 100, 100);
+    selection-background-color: rgb(62, 73, 179);
+    selection-color: rgb(255, 255, 255);
+    gridline-color: rgb(120, 120, 120);
+    font: 11t;
+}
+
+FileSystemTable::item {
+    border: none;
+    padding: 2px 6px;
+}
+
+FileSystemTable::item:selected {
+    background-color: rgb(62, 73, 179);
+    color: rgb(255, 255, 255);
+}
+
+FileSystemTable::item:hover {
+    background-color: rgb(120, 130, 164);
+    color: rgb(255, 255, 255);
+}
+
+FileSystemTable QHeaderView,
+FileSystemTable QHeaderView::section {
+    background-color: rgb(73, 74, 75);
+    color: white;
+    border: none;
+    font: 13pt "Bebas Kai";
 }
 
 ToolTable, OffsetTable {
@@ -560,8 +466,9 @@ QToolTip {
     background-color: rgb(77, 77, 77);
     color: white;
     border: 3px solid rgb(177, 177, 177);
-    font: 14pt "Bebas Kai";
-}
+    font: 15pt "Bebas Kai";
+    padding: 5px;
+    }
 
 /* QFileDialog styling for Save As dialog */
 QFileDialog {
@@ -686,7 +593,7 @@ QFileDialog QSplitter::handle {
 
 QFileDialog QSplitter {
     margin: 10px;
-    border: 1px solid green !important;
+    border: 1px solid rgb(120, 120, 120) !important;
 }
 
 QFileDialog QTreeView::item,
@@ -764,3 +671,5 @@ QFileDialog QHeaderView::section {
     padding: 4px;
     font: 13pt "Bebas Kai";
 }
+
+

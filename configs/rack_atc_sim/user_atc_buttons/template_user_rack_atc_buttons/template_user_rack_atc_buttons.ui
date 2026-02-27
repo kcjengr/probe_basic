@@ -20,7 +20,7 @@
    <string>User Atc Buttons</string>
   </property>
   <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -39,7 +39,7 @@
     <number>0</number>
    </property>
    <item>
-    <widget class="QFrame" name="frame_64">
+    <widget class="QFrame" name="user_atc_buttons_frame">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -72,7 +72,7 @@
        <number>18</number>
       </property>
       <item>
-       <widget class="QLabel" name="work_column_header_8">
+       <widget class="QLabel" name="atc_rack_user_header">
         <property name="enabled">
          <bool>true</bool>
         </property>
@@ -106,13 +106,13 @@
 }</string>
         </property>
         <property name="frameShape">
-         <enum>QFrame::NoFrame</enum>
+         <enum>QFrame::Shape::NoFrame</enum>
         </property>
         <property name="text">
          <string>ATC MANUAL CONTROL PANEL</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
         <property name="wordWrap">
          <bool>true</bool>
@@ -123,7 +123,7 @@
        </widget>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_119" stretch="0,0">
+       <layout class="QHBoxLayout" name="user_buttons_row1_layout" stretch="0,0">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -140,7 +140,7 @@
          <number>2</number>
         </property>
         <item>
-         <widget class="MDIButton" name="reference_carousel_3">
+         <widget class="MDIButton" name="air_blast_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -160,7 +160,7 @@
            </size>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+           <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>M13 User Defined Macro Call from Subroutine Folder</string>
@@ -185,7 +185,7 @@
          </widget>
         </item>
         <item>
-         <widget class="MDIButton" name="reference_carousel_4">
+         <widget class="MDIButton" name="retract_dustboot_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -205,7 +205,7 @@
            </size>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+           <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>M13 User Defined Macro Call from Subroutine Folder</string>
@@ -232,7 +232,7 @@
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_117" stretch="0,0">
+       <layout class="QHBoxLayout" name="user_buttons_row2_layout" stretch="0,0">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -363,7 +363,7 @@ SubCallButton:pressed {
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_152" stretch="0,0">
+       <layout class="QHBoxLayout" name="user_buttons_row3_layout" stretch="0,0">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -380,7 +380,7 @@ SubCallButton:pressed {
          <number>2</number>
         </property>
         <item>
-         <widget class="SubCallButton" name="spindle_orientation">
+         <widget class="SubCallButton" name="spindle_orientation_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -436,7 +436,7 @@ SubCallButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="MDIButton" name="unlock_spindle">
+         <widget class="MDIButton" name="unlock_spindle_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -456,13 +456,13 @@ SubCallButton:pressed {
            </size>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+           <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>M112 User Defined Macro Call from Subroutine Folder</string>
           </property>
           <property name="layoutDirection">
-           <enum>Qt::RightToLeft</enum>
+           <enum>Qt::LayoutDirection::RightToLeft</enum>
           </property>
           <property name="styleSheet">
            <string notr="true">MDIButton {
@@ -486,7 +486,7 @@ SubCallButton:pressed {
        </layout>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_174" stretch="0,0">
+       <layout class="QHBoxLayout" name="user_buttons_row4_layout" stretch="0,0">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -503,7 +503,7 @@ SubCallButton:pressed {
          <number>2</number>
         </property>
         <item>
-         <widget class="SubCallButton" name="move_head_above_carousel_button">
+         <widget class="SubCallButton" name="move_head_up_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -556,7 +556,7 @@ SubCallButton:pressed {
          </widget>
         </item>
         <item>
-         <widget class="SubCallButton" name="move_tool_to_carousel_height_button">
+         <widget class="SubCallButton" name="move_head_down_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -614,7 +614,7 @@ SubCallButton:pressed {
        <widget class="QWidget" name="widget_10" native="true"/>
       </item>
       <item>
-       <layout class="QHBoxLayout" name="horizontalLayout_159">
+       <layout class="QHBoxLayout" name="user_buttons_row5_layout">
         <property name="spacing">
          <number>15</number>
         </property>
@@ -631,7 +631,7 @@ SubCallButton:pressed {
          <number>2</number>
         </property>
         <item>
-         <widget class="MDIButton" name="reference_carousel_2">
+         <widget class="MDIButton" name="Ref_rack_button">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
             <horstretch>1</horstretch>
@@ -651,7 +651,7 @@ SubCallButton:pressed {
            </size>
           </property>
           <property name="focusPolicy">
-           <enum>Qt::NoFocus</enum>
+           <enum>Qt::FocusPolicy::NoFocus</enum>
           </property>
           <property name="toolTip">
            <string>M13 User Defined Macro Call from Subroutine Folder</string>

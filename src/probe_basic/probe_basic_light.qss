@@ -139,15 +139,15 @@ GcodeEditor {
 }
 
 GcodeTextEdit {
-    background-color: palette(base);
-    color: palette(text);
+    background-color: white;
+    color: black;
     font: 12pt "Bebas Kai";
-    qproperty-currentLineBackground: palette(highlight);
-    qproperty-currentLineColor: palette(highlighted-text);
-    qproperty-marginBackground: palette(window);
-    qproperty-marginCurrentLineBackground: palette(highlight);
-    qproperty-marginColor: palette(text);
-    qproperty-marginCurrentLineColor: palette(highlighted-text);
+    qproperty-currentLineBackground: rgb(214, 214, 221);
+    qproperty-currentLineColor: rgb(0, 0, 0);
+    qproperty-marginBackground: rgb(146, 150, 149);
+    qproperty-marginCurrentLineBackground: rgb(110, 110, 110);
+    qproperty-marginColor: rgb(49, 49, 49);
+    qproperty-marginCurrentLineColor: rgb(255, 255, 255);
 }
 
 QScrollArea {
@@ -539,6 +539,40 @@ QHeaderView {
     background-color: rgb(220, 220, 220);
     color: black;
     border: none;
+}
+
+FileSystemTable {
+    color: black;
+    border: 1px solid rgb(120, 120, 120);
+    background-color: rgb(238, 238, 236);
+    alternate-background-color: rgb(228, 228, 226);
+    selection-background-color: rgb(65, 84, 255);
+    selection-color: rgb(255, 255, 255);
+    gridline-color: rgb(180, 180, 180);
+    font: 12pt "Bebas Kai";
+}
+
+FileSystemTable::item {
+    border: none;
+    padding: 2px 6px;
+}
+
+FileSystemTable::item:selected {
+    background-color: rgb(65, 84, 255);
+    color: rgb(255, 255, 255);
+}
+
+FileSystemTable::item:hover {
+    background-color: rgb(198, 198, 196);
+    color: rgb(0, 0, 0);
+}
+
+FileSystemTable QHeaderView,
+FileSystemTable QHeaderView::section {
+    background-color: rgb(220, 220, 220);
+    color: black;
+    border: none;
+    font: 13pt "Bebas Kai";
 }
 
 ToolTable, OffsetTable {
