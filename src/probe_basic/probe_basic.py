@@ -192,20 +192,17 @@ class ProbeBasic(VCPMainWindow):
         ))
 
         # --- Startup Tab Selection Logic (using tab text property) ---
-        startup_tab_text = getSetting("startup-settings.user-startup-tab").getValue()
+        startup_tab_value = getSetting("startup-settings.user-startup-tab").getValue()
         if hasattr(self, "tabWidget") and hasattr(self, "startup_tab_combobox"):
             # Populate ComboBox with current tab texts if not already set
             self.startup_tab_combobox.clear()
             for i in range(self.tabWidget.count()):
                 self.startup_tab_combobox.addItem(self.tabWidget.tabText(i))
-            # Set ComboBox to saved tab text, or default to first tab
-            idx = self.startup_tab_combobox.findText(startup_tab_text)
-            if idx != -1:
-                self.startup_tab_combobox.setCurrentIndex(idx)
-            else:
-                self.startup_tab_combobox.setCurrentIndex(0)
+            # Set ComboBox to saved tab index/text, or default to first tab
+            idx = self._resolve_startup_tab_index(startup_tab_value)
+            self.startup_tab_combobox.setCurrentIndex(idx if idx != -1 else 0)
             # Connect to save selection and switch tab on change
-            self.startup_tab_combobox.currentTextChanged.connect(self.on_startup_tab_combobox_changed)
+            self.startup_tab_combobox.currentIndexChanged.connect(self.on_startup_tab_combobox_changed)
             # Set the main tab widget to the correct tab at startup
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
@@ -324,10 +321,14 @@ class ProbeBasic(VCPMainWindow):
                 
                 self.atc_layout.addWidget(self.rack_atc[module_name])
                 
-                if hasattr(self.rack_atc[module_name], 'user_atc_buttons_layout'):
-                    self.load_user_atc_buttons(self.rack_atc[module_name].user_atc_buttons_layout)
+                rack_buttons_layout = getattr(self.rack_atc[module_name], 'user_rack_atc_buttons_layout', None)
+                if rack_buttons_layout is not None:
+                    self.load_user_atc_buttons(rack_buttons_layout)
                 else:
-                    LOG.warning(f"user_atc_buttons_layout not found in {module_name}. Unable to add ATC buttons.")
+                    LOG.warning(
+                        "user_rack_atc_buttons_layout not found in %s. Unable to add rack ATC buttons.",
+                        module_name,
+                    )
 
     def load_user_atc_buttons(self, layout):
         self.user_atc_button_modules = {}
@@ -671,9 +672,33 @@ class ProbeBasic(VCPMainWindow):
                     self.tabWidget.setCurrentIndex(i)
                     break
 
+    def _resolve_startup_tab_index(self, saved_value):
+        """Resolve saved startup-tab setting to a valid combobox index."""
+        if not hasattr(self, "startup_tab_combobox"):
+            return -1
+
+        item_count = self.startup_tab_combobox.count()
+        if item_count == 0:
+            return -1
+
+        value_text = "" if saved_value is None else str(saved_value).strip()
+        if not value_text:
+            return -1
+
+        if value_text.isdigit():
+            value_index = int(value_text)
+            if 0 <= value_index < item_count:
+                return value_index
+
+        for idx in range(item_count):
+            if self.startup_tab_combobox.itemText(idx).strip() == value_text:
+                return idx
+
+        return -1
+
     def on_startup_tab_combobox_changed(self, value):
         """Save ComboBox selection for startup, but do not change the current tab."""
-        setSetting("startup-settings.user-startup-tab", value)
+        setSetting("startup-settings.user-startup-tab", self.startup_tab_combobox.currentIndex())
         # Do not call self.set_startup_tab_by_text(value)
 
     def extract_m6_line_numbers(self):

@@ -20,7 +20,7 @@
    <string>offset_dros_xzc</string>
   </property>
   <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <property name="spacing">
@@ -55,7 +55,7 @@
         </size>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+        <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">MDIButton {
@@ -120,7 +120,7 @@
         <string>X</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -148,25 +148,18 @@
         <font>
          <family>Bebas Kai</family>
          <pointsize>17</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-    padding-right: 2px;
-    font: 17pt &quot;Bebas Kai&quot;;
-}</string>
+       <property name="focusPolicy">
+        <enum>Qt::FocusPolicy::ClickFocus</enum>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -190,28 +183,8 @@
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-    padding-right: 2px;
-}
-
-QLabel[style=&quot;unhomed&quot;]{
-   color: red;
-}
-
-QLabel[style=&quot;homing&quot;]{
-   color: rgb(196, 160, 0);
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="referenceType" stdset="0">
         <number>0</number>
@@ -230,6 +203,9 @@ QLabel[style=&quot;homing&quot;]{
        </property>
        <property name="latheMode" stdset="0">
         <number>0</number>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -253,22 +229,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -292,22 +260,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -331,22 +291,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:tool_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][0])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -381,7 +333,7 @@ QLabel[style=&quot;homing&quot;]{
         </size>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+        <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">MDIButton {
@@ -440,7 +392,7 @@ QLabel[style=&quot;homing&quot;]{
         <string>Z</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -468,28 +420,21 @@ QLabel[style=&quot;homing&quot;]{
         <font>
          <family>Bebas Kai</family>
          <pointsize>17</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-    padding-right: 2px;
-    font: 17pt &quot;Bebas Kai&quot;;
-}</string>
+       <property name="focusPolicy">
+        <enum>Qt::FocusPolicy::ClickFocus</enum>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="axisNumber" stdset="0">
         <number>2</number>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -513,28 +458,8 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-    padding-right: 2px;
-}
-
-QLabel[style=&quot;unhomed&quot;]{
-   color: red;
-}
-
-QLabel[style=&quot;homing&quot;]{
-   color: rgb(196, 160, 0);
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="referenceType" stdset="0">
         <number>0</number>
@@ -553,6 +478,9 @@ QLabel[style=&quot;homing&quot;]{
        </property>
        <property name="latheMode" stdset="0">
         <number>0</number>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -576,22 +504,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g5x_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -615,22 +535,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;trigger&quot;: true, &quot;type&quot;: &quot;tuple&quot;, &quot;url&quot;: &quot;status:g92_offset&quot;}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -654,22 +566,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][2])&quot;, &quot;name&quot;: &quot;tool offset&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -704,7 +608,7 @@ QLabel[style=&quot;homing&quot;]{
         </size>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::NoFocus</enum>
+        <enum>Qt::FocusPolicy::NoFocus</enum>
        </property>
        <property name="styleSheet">
         <string notr="true">MDIButton {
@@ -763,7 +667,7 @@ QLabel[style=&quot;homing&quot;]{
         <string>C</string>
        </property>
        <property name="alignment">
-        <set>Qt::AlignCenter</set>
+        <set>Qt::AlignmentFlag::AlignCenter</set>
        </property>
       </widget>
      </item>
@@ -791,28 +695,21 @@ QLabel[style=&quot;homing&quot;]{
         <font>
          <family>Bebas Kai</family>
          <pointsize>17</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLineEdit{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-    padding-right: 2px;
-    font: 17pt &quot;Bebas Kai&quot;;
-}</string>
+       <property name="focusPolicy">
+        <enum>Qt::FocusPolicy::ClickFocus</enum>
        </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="axisNumber" stdset="0">
         <number>5</number>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -836,28 +733,8 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">QLabel{
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-    padding-right: 2px;
-}
-
-QLabel[style=&quot;unhomed&quot;]{
-   color: red;
-}
-
-QLabel[style=&quot;homing&quot;]{
-   color: rgb(196, 160, 0);
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="referenceType" stdset="0">
         <number>0</number>
@@ -876,6 +753,9 @@ QLabel[style=&quot;homing&quot;]{
        </property>
        <property name="latheMode" stdset="0">
         <number>0</number>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -899,22 +779,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g5x_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -938,22 +810,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:g92_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>
@@ -977,22 +841,14 @@ QLabel[style=&quot;homing&quot;]{
          <height>38</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">StatusLabel{
-    border-style: transparant;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 17pt &quot;Bebas Kai&quot;;
-}</string>
-       </property>
        <property name="alignment">
-        <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
        </property>
        <property name="rules" stdset="0">
         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_offset&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;{:.4f}\&quot;.format(ch[0][5])&quot;, &quot;name&quot;: &quot;tool offset&quot;}]</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField17</string>
        </property>
       </widget>
      </item>

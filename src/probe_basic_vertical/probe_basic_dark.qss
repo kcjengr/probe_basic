@@ -86,6 +86,24 @@ QLineEdit:focus {
     border-color: qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 
+QLabel[themeRole="whiteField"],
+QLineEdit[themeRole="whiteField"],
+VCPLineEdit[themeRole="whiteField"] {
+    color: black;
+    background-color: white;
+}
+
+QLineEdit[themeRole="whiteField"],
+VCPLineEdit[themeRole="whiteField"] {
+    border-style: solid;
+    border-color: rgb(134, 136, 138);
+    border-width: 2px;
+    border-radius: 5px;
+    selection-color: white;
+    selection-background-color: rgb(65, 84, 255);
+    padding-right: 2px;
+}
+
 .QFrame {
     background-color: rgb(46, 52, 54);
     border-style: solid;
@@ -325,7 +343,7 @@ QMenuBar::item:pressed {
 
 QMessageBox {
     color: white;
-    background-color: #2e3436;
+    background-color: rgb(100, 100, 100);
     border-color: black;
     border-style: solid;
     border-width: 2px;
@@ -338,7 +356,8 @@ QMessageBox QLabel {
 }
 
 QDialog {
-    background-color: #2e3436;
+    background-color: rgb(100, 100, 100);
+    color: white;
     border-color: black;
     border-style: solid;
     border-width: 2px;
@@ -591,7 +610,7 @@ ToolTable, OffsetTable {
 }
 
 QToolTip {
-    background-color: rgb(77, 77, 77);
+    background-color: rgb(100, 100, 100);
     color: white;
     border: 3px solid rgb(177, 177, 177);
     font: 14pt "Bebas Kai";

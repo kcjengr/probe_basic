@@ -3,7 +3,7 @@
  <class>Dialog</class>
  <widget class="QDialog" name="Dialog">
   <property name="windowModality">
-   <enum>Qt::ApplicationModal</enum>
+   <enum>Qt::WindowModality::ApplicationModal</enum>
   </property>
   <property name="geometry">
    <rect>
@@ -52,10 +52,10 @@
 </string>
      </property>
      <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
+      <enum>QFrame::Shape::StyledPanel</enum>
      </property>
      <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
+      <enum>QFrame::Shadow::Raised</enum>
      </property>
      <layout class="QGridLayout" name="gridLayout">
       <property name="leftMargin">
@@ -87,28 +87,20 @@
           <height>60</height>
          </size>
         </property>
-        <property name="styleSheet">
-         <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 16pt &quot;Bebas Kai&quot;;
-}</string>
-        </property>
         <property name="frameShape">
-         <enum>QFrame::Box</enum>
+         <enum>QFrame::Shape::Box</enum>
         </property>
         <property name="frameShadow">
-         <enum>QFrame::Plain</enum>
+         <enum>QFrame::Shadow::Plain</enum>
         </property>
         <property name="text">
          <string>Remarks</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+         <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
+        </property>
+        <property name="styleSet" stdset="0">
+         <string>dataField17</string>
         </property>
        </widget>
       </item>
@@ -118,13 +110,15 @@
          <font>
           <family>Bebas Kai</family>
           <pointsize>18</pointsize>
+          <italic>false</italic>
+          <bold>false</bold>
          </font>
         </property>
         <property name="text">
          <string>Tool Change Requested, Insert tool</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
         </property>
        </widget>
       </item>
@@ -151,31 +145,25 @@
         <property name="font">
          <font>
           <family>Bebas Kai</family>
-          <pointsize>19</pointsize>
-          <weight>50</weight>
+          <pointsize>18</pointsize>
           <italic>false</italic>
           <bold>false</bold>
          </font>
         </property>
         <property name="styleSheet">
-         <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 19pt &quot;Bebas Kai&quot;;
-}</string>
+         <string notr="true"/>
         </property>
         <property name="frameShape">
-         <enum>QFrame::Box</enum>
+         <enum>QFrame::Shape::Box</enum>
         </property>
         <property name="text">
          <string>0</string>
         </property>
         <property name="alignment">
-         <set>Qt::AlignCenter</set>
+         <set>Qt::AlignmentFlag::AlignCenter</set>
+        </property>
+        <property name="styleSet" stdset="0">
+         <string>dataField17</string>
         </property>
        </widget>
       </item>

@@ -20,7 +20,7 @@
    <string>atc</string>
   </property>
   <property name="layoutDirection">
-   <enum>Qt::LeftToRight</enum>
+   <enum>Qt::LayoutDirection::LeftToRight</enum>
   </property>
   <layout class="QHBoxLayout" name="horizontalLayout">
    <property name="leftMargin">
@@ -72,7 +72,7 @@ QTabWidget QTabBar::tab {
 }</string>
        </property>
        <property name="tabPosition">
-        <enum>QTabWidget::North</enum>
+        <enum>QTabWidget::TabPosition::North</enum>
        </property>
        <property name="currentIndex">
         <number>0</number>
@@ -92,7 +92,7 @@ QTabWidget QTabBar::tab {
           <number>9</number>
          </property>
          <item>
-          <widget class="QWidget" name="widget_65" native="true">
+          <widget class="QFrame" name="frame_65">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
              <horstretch>0</horstretch>
@@ -110,15 +110,6 @@ QTabWidget QTabBar::tab {
              <width>300</width>
              <height>16777215</height>
             </size>
-           </property>
-           <property name="styleSheet">
-            <string notr="true">.QWidget {
-    background-color: rgb(51, 57, 59);
-    border-style: solid;
-    border-color: rgb(186, 189, 182);
-    border-width: 2px;
-    border-radius: 6px;
-}</string>
            </property>
            <layout class="QVBoxLayout" name="verticalLayout_65">
             <property name="spacing">
@@ -185,13 +176,13 @@ QTabWidget QTabBar::tab {
 }</string>
                 </property>
                 <property name="frameShape">
-                 <enum>QFrame::NoFrame</enum>
+                 <enum>QFrame::Shape::NoFrame</enum>
                 </property>
                 <property name="text">
                  <string>CURRENT PROGRAM TOOLS</string>
                 </property>
                 <property name="alignment">
-                 <set>Qt::AlignCenter</set>
+                 <set>Qt::AlignmentFlag::AlignCenter</set>
                 </property>
                 <property name="wordWrap">
                  <bool>true</bool>
@@ -219,7 +210,7 @@ QTabWidget QTabBar::tab {
                 <rect>
                  <x>0</x>
                  <y>0</y>
-                 <width>240</width>
+                 <width>236</width>
                  <height>811</height>
                 </rect>
                </property>
@@ -247,11 +238,11 @@ QTabWidget QTabBar::tab {
                     <verstretch>1</verstretch>
                    </sizepolicy>
                   </property>
+                  <property name="autoFillBackground">
+                   <bool>false</bool>
+                  </property>
                   <property name="styleSheet">
-                   <string notr="true">.QWidget {
-    border: none;
-    border-radius: 0px
-}</string>
+                   <string notr="true">background-color: rgb(46, 52, 54);</string>
                   </property>
                   <layout class="QHBoxLayout" name="horizontalLayout_33">
                    <property name="spacing">
@@ -532,10 +523,10 @@ QTabWidget QTabBar::tab {
                       <string/>
                      </property>
                      <property name="textFormat">
-                      <enum>Qt::AutoText</enum>
+                      <enum>Qt::TextFormat::AutoText</enum>
                      </property>
                      <property name="alignment">
-                      <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+                      <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignTop</set>
                      </property>
                      <property name="wordWrap">
                       <bool>true</bool>
@@ -590,7 +581,7 @@ QTabWidget QTabBar::tab {
                  </size>
                 </property>
                 <property name="focusPolicy">
-                 <enum>Qt::NoFocus</enum>
+                 <enum>Qt::FocusPolicy::NoFocus</enum>
                 </property>
                 <property name="toolTip">
                  <string>M13 User Defined Macro Call from Subroutine Folder</string>
@@ -670,16 +661,18 @@ QTabWidget QTabBar::tab {
         <font>
          <family>Bebas Kai</family>
          <pointsize>15</pointsize>
-         <weight>50</weight>
          <italic>false</italic>
          <bold>false</bold>
         </font>
        </property>
        <property name="focusPolicy">
-        <enum>Qt::ClickFocus</enum>
+        <enum>Qt::FocusPolicy::ClickFocus</enum>
        </property>
        <property name="placeholderText">
         <string>MDI</string>
+       </property>
+       <property name="styleSet" stdset="0">
+        <string>dataField15</string>
        </property>
       </widget>
      </item>
@@ -691,7 +684,7 @@ QTabWidget QTabBar::tab {
       <number>0</number>
      </property>
      <item>
-      <widget class="DynATC" name="dynatc">
+      <widget class="DynATC" name="dynatc" native="true">
        <property name="sizePolicy">
         <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
          <horstretch>0</horstretch>
@@ -810,22 +803,11 @@ QTabWidget QTabBar::tab {
                  <height>40</height>
                 </size>
                </property>
-               <property name="styleSheet">
-                <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 7px;
-    color: black;
-    background: white;
-	font: 75 13pt &quot;Bebas Kai&quot;;
-}</string>
-               </property>
                <property name="text">
                 <string>No Tool Loaded</string>
                </property>
                <property name="alignment">
-                <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+                <set>Qt::AlignmentFlag::AlignLeading|Qt::AlignmentFlag::AlignLeft|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
                <property name="wordWrap">
                 <bool>true</bool>
@@ -833,11 +815,14 @@ QTabWidget QTabBar::tab {
                <property name="indent">
                 <number>4</number>
                </property>
+               <property name="format" stdset="0">
+                <string>{:.3f}</string>
+               </property>
                <property name="rules" stdset="0">
                 <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Tool Comment&quot;}]</string>
                </property>
-               <property name="format" stdset="0">
-                <string>{:.3f}</string>
+               <property name="styleSet" stdset="0">
+                <string>dataField14</string>
                </property>
               </widget>
              </item>
@@ -933,31 +918,23 @@ QTabWidget QTabBar::tab {
              <height>30</height>
             </size>
            </property>
-           <property name="styleSheet">
-            <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: white;
-	font: 75 16pt &quot;Bebas Kai&quot;;
-}</string>
-           </property>
            <property name="text">
             <string>T0</string>
            </property>
            <property name="alignment">
-            <set>Qt::AlignCenter</set>
-           </property>
-           <property name="rules" stdset="0">
-            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current tool&quot;}]</string>
+            <set>Qt::AlignmentFlag::AlignCenter</set>
            </property>
            <property name="format" stdset="0">
             <string>{:.3f}</string>
            </property>
+           <property name="rules" stdset="0">
+            <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;status:tool_in_spindle?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'T' + ch[0]&quot;, &quot;name&quot;: &quot;current tool&quot;}]</string>
+           </property>
            <property name="statusItem" stdset="0">
             <string>tool_offset.3</string>
+           </property>
+           <property name="styleSet" stdset="0">
+            <string>dataField16</string>
            </property>
           </widget>
          </widget>
@@ -1055,18 +1032,20 @@ QTabWidget QTabBar::tab {
         </size>
        </property>
        <property name="styleSheet">
-        <string notr="true">.QFrame{
-    background-color: rgb(51, 57, 59);
-    padding-left: 10px;
-    padding-right: 10px;
-}</string>
+        <string notr="true"/>
        </property>
        <layout class="QVBoxLayout" name="verticalLayout_10">
         <property name="spacing">
          <number>5</number>
         </property>
+        <property name="leftMargin">
+         <number>19</number>
+        </property>
         <property name="topMargin">
          <number>9</number>
+        </property>
+        <property name="rightMargin">
+         <number>19</number>
         </property>
         <property name="bottomMargin">
          <number>9</number>
@@ -1117,7 +1096,7 @@ QTabWidget QTabBar::tab {
              <string>ATC AUTOMATIC CONTROL PANEL</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -1129,7 +1108,7 @@ QTabWidget QTabBar::tab {
            <number>15</number>
           </property>
           <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
+           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
           </property>
           <property name="leftMargin">
            <number>4</number>
@@ -1164,19 +1143,19 @@ QTabWidget QTabBar::tab {
              </size>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 17pt;</string>
+             <enum>Qt::FocusPolicy::ClickFocus</enum>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
             <property name="placeholderText">
              <string>0</string>
             </property>
             <property name="rules" stdset="0">
              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(0)&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
+            </property>
+            <property name="styleSet" stdset="0">
+             <string>dataField17</string>
             </property>
            </widget>
           </item>
@@ -1247,7 +1226,7 @@ QPushButton:checked {
            <number>0</number>
           </property>
           <property name="sizeConstraint">
-           <enum>QLayout::SetDefaultConstraint</enum>
+           <enum>QLayout::SizeConstraint::SetDefaultConstraint</enum>
           </property>
           <property name="leftMargin">
            <number>2</number>
@@ -1443,54 +1422,54 @@ QPushButton:checked {
                <colorrole role="WindowText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Button">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Text">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="ButtonText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Base">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Window">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1514,10 +1493,10 @@ QPushButton:checked {
                </colorrole>
                <colorrole role="PlaceholderText">
                 <brush brushstyle="SolidPattern">
-                 <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                 <color alpha="128">
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1526,54 +1505,54 @@ QPushButton:checked {
                <colorrole role="WindowText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Button">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Text">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="ButtonText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Base">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Window">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1597,10 +1576,10 @@ QPushButton:checked {
                </colorrole>
                <colorrole role="PlaceholderText">
                 <brush brushstyle="SolidPattern">
-                 <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                 <color alpha="128">
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1609,54 +1588,54 @@ QPushButton:checked {
                <colorrole role="WindowText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Button">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Text">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="ButtonText">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Base">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
                <colorrole role="Window">
                 <brush brushstyle="SolidPattern">
                  <color alpha="255">
-                  <red>255</red>
-                  <green>255</green>
-                  <blue>255</blue>
+                  <red>108</red>
+                  <green>108</green>
+                  <blue>108</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1680,10 +1659,10 @@ QPushButton:checked {
                </colorrole>
                <colorrole role="PlaceholderText">
                 <brush brushstyle="SolidPattern">
-                 <color alpha="255">
-                  <red>0</red>
-                  <green>0</green>
-                  <blue>0</blue>
+                 <color alpha="128">
+                  <red>255</red>
+                  <green>255</green>
+                  <blue>255</blue>
                  </color>
                 </brush>
                </colorrole>
@@ -1694,31 +1673,30 @@ QPushButton:checked {
              <font>
               <family>Bebas Kai</family>
               <pointsize>17</pointsize>
-              <weight>50</weight>
               <italic>false</italic>
               <bold>false</bold>
              </font>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::ClickFocus</enum>
+             <enum>Qt::FocusPolicy::ClickFocus</enum>
             </property>
             <property name="contextMenuPolicy">
-             <enum>Qt::NoContextMenu</enum>
-            </property>
-            <property name="styleSheet">
-             <string notr="true">font: 17pt;</string>
-            </property>
-            <property name="text">
-             <string>0</string>
+             <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
             </property>
             <property name="frame">
              <bool>true</bool>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignmentFlag::AlignCenter</set>
+            </property>
+            <property name="placeholderText">
+             <string>0</string>
             </property>
             <property name="rules" stdset="0">
              <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
+            </property>
+            <property name="styleSet" stdset="0">
+             <string>dataField17</string>
             </property>
            </widget>
           </item>
@@ -1806,19 +1784,18 @@ QPushButton:checked {
          <height>200</height>
         </size>
        </property>
-       <property name="styleSheet">
-        <string notr="true">.QFrame{
-    background-color: rgb(51, 57, 59);
-    padding-left: 10px;
-    padding-right: 10px;
-}</string>
-       </property>
        <layout class="QVBoxLayout" name="verticalLayout_6">
         <property name="spacing">
          <number>5</number>
         </property>
+        <property name="leftMargin">
+         <number>19</number>
+        </property>
         <property name="topMargin">
          <number>3</number>
+        </property>
+        <property name="rightMargin">
+         <number>19</number>
         </property>
         <property name="bottomMargin">
          <number>6</number>
@@ -1869,7 +1846,7 @@ QPushButton:checked {
              <string>ELECTRONIC TOOL SETTER</string>
             </property>
             <property name="alignment">
-             <set>Qt::AlignCenter</set>
+             <set>Qt::AlignmentFlag::AlignCenter</set>
             </property>
            </widget>
           </item>
@@ -1913,7 +1890,7 @@ QPushButton:checked {
              </size>
             </property>
             <property name="focusPolicy">
-             <enum>Qt::NoFocus</enum>
+             <enum>Qt::FocusPolicy::NoFocus</enum>
             </property>
             <property name="styleSheet">
              <string notr="true">QPushButton {

@@ -25,7 +25,7 @@ windows:
 
 application:
   kwargs:
-    stylesheet: {{ file.dir }}/probe_basic_light.qss
+    stylesheet: {{ file.dir }}/probe_basic_{{ ini_value('DISPLAY', 'THEME_COLOR', 'light')|lower }}.qss
     custom_fonts: {{ file.dir }}/fonts
     
 settings:
@@ -489,6 +489,265 @@ settings:
 
   startup-settings.usb-hide-show:
     description: hide or show usb file manager
+    persistent: true
+
+  # Conversational XY coordinate defaults
+
+  conv-xy-coord.tool-number:
+    description: default tool number for XY coord op
+    default_value: 0
+    persistent: true
+
+  conv-xy-coord.spindle-rpm:
+    description: default spindle RPM for XY coord op
+    default_value: 0
+    persistent: true
+
+  conv-xy-coord.xy-feed:
+    description: default XY feed rate for XY coord op
+    default_value: 0.0
+    persistent: true
+
+  conv-xy-coord.z-feed:
+    description: default Z feed rate for XY coord op
+    default_value: 0.0
+    persistent: true
+
+  conv-xy-coord.drill-type:
+    description: default drill type parameter value for XY coord op
+    default_value: 0.0000
+    persistent: true
+
+  conv-xy-coord.clearance-height:
+    description: default clearance height for XY coord op
+    default_value: 0.0000
+    persistent: true
+
+  # Conversational XY coordinate combo defaults
+
+  conv-xy-coord.wcs:
+    description: last used work coordinate system
+    default_value: 0   # index: G54
+    options:
+      - G54
+      - G55
+      - G56
+      - G57
+      - G58
+      - G59
+      - G59.1
+      - G59.2
+      - G59.3
+    persistent: true
+
+  conv-xy-coord.unit:
+    description: last used program unit
+    default_value: 0   # index: IN
+    options:
+      - IN
+      - MM
+    persistent: true
+
+  conv-xy-coord.drill-retract-mode:
+    description: last used drill retract mode
+    default_value: 0   # index: G98
+    options:
+      - G98
+      - G99
+    persistent: true
+
+  conv-xy-coord.coolant:
+    description: last used coolant mode
+    default_value: 0   # index: OFF
+    options:
+      - OFF
+      - MIST
+      - FLOOD
+    persistent: true
+
+  conv-xy-coord.drill-type-select:
+    description: last used drill type selection
+    default_value: 0   # index: DRILL
+    options:
+      - DRILL
+      - PECK
+      - BREAK
+      - DWELL
+      - TAP
+      - RIGID TAP
+      - MANUAL
+    persistent: true
+
+  conv-xy-coord.spindle-direction:
+    description: last used spindle direction
+    default_value: 0   # index: CW
+    options:
+      - CW
+      - CCW
+    persistent: true
+
+  # Conversational Hole Circle defaults
+
+  conv-hole.tool-number:
+    description: default tool number for hole circle op
+    default_value: 0
+    persistent: true
+
+  conv-hole.spindle-rpm:
+    description: default spindle RPM for hole circle op
+    default_value: 0
+    persistent: true
+
+  conv-hole.xy-feed:
+    description: default XY feed rate for hole circle op
+    default_value: 0.0
+    persistent: true
+
+  conv-hole.z-feed:
+    description: default Z feed rate for hole circle op
+    default_value: 0.0
+    persistent: true
+
+  conv-hole.drill-type:
+    description: default drill type parameter value for hole circle op
+    default_value: 0.0000
+    persistent: true
+
+  conv-hole.clearance-height:
+    description: default clearance height for hole circle op
+    default_value: 0.0000
+    persistent: true
+
+  # Conversational Hole Circle combo defaults
+
+  conv-hole.wcs:
+    description: last used work coordinate system for hole circle op
+    default_value: 0   # index: G54
+    options:
+      - G54
+      - G55
+      - G56
+      - G57
+      - G58
+      - G59
+      - G59.1
+      - G59.2
+      - G59.3
+    persistent: true
+
+  conv-hole.unit:
+    description: last used program unit for hole circle op
+    default_value: 0   # index: IN
+    options:
+      - IN
+      - MM
+    persistent: true
+
+  conv-hole.drill-retract-mode:
+    description: last used drill retract mode for hole circle op
+    default_value: 0   # index: G98
+    options:
+      - G98
+      - G99
+    persistent: true
+
+  conv-hole.coolant:
+    description: last used coolant mode for hole circle op
+    default_value: 0   # index: OFF
+    options:
+      - OFF
+      - MIST
+      - FLOOD
+    persistent: true
+
+  conv-hole.drill-type-select:
+    description: last used drill type selection for hole circle op
+    default_value: 0   # index: DRILL
+    options:
+      - DRILL
+      - PECK
+      - BREAK
+      - DWELL
+      - TAP
+      - RIGID TAP
+      - MANUAL
+    persistent: true
+
+  conv-hole.spindle-direction:
+    description: last used spindle direction for hole circle op
+    default_value: 0   # index: CW
+    options:
+      - CW
+      - CCW
+    persistent: true
+
+  # Conversational Facing defaults
+
+  conv-facing.tool-number:
+    description: default tool number for facing op
+    default_value: 0
+    persistent: true
+
+  conv-facing.spindle-rpm:
+    description: default spindle RPM for facing op
+    default_value: 0
+    persistent: true
+
+  conv-facing.xy-feed:
+    description: default XY feed rate for facing op
+    default_value: 0.0
+    persistent: true
+
+  conv-facing.z-feed:
+    description: default Z feed rate for facing op
+    default_value: 0.0
+    persistent: true
+
+  conv-facing.clearance-height:
+    description: default clearance height for facing op
+    default_value: 0.0000
+    persistent: true
+
+  # Conversational Facing combo defaults
+
+  conv-facing.wcs:
+    description: last used work coordinate system for facing op
+    default_value: 0   # index: G54
+    options:
+      - G54
+      - G55
+      - G56
+      - G57
+      - G58
+      - G59
+      - G59.1
+      - G59.2
+      - G59.3
+    persistent: true
+
+  conv-facing.unit:
+    description: last used program unit for facing op
+    default_value: 0   # index: IN
+    options:
+      - IN
+      - MM
+    persistent: true
+
+  conv-facing.coolant:
+    description: last used coolant mode for facing op
+    default_value: 0   # index: OFF
+    options:
+      - OFF
+      - MIST
+      - FLOOD
+    persistent: true
+
+  conv-facing.spindle-direction:
+    description: last used spindle direction for facing op
+    default_value: 0   # index: CW
+    options:
+      - CW
+      - CCW
     persistent: true
 
 dialogs:

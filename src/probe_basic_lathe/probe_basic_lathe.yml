@@ -26,7 +26,7 @@ windows:
 
 application:
   kwargs:
-    stylesheet: {{ file.dir }}/probe_basic_lathe_light.qss
+    stylesheet: {{ file.dir }}/probe_basic_lathe_{{ ini_value('DISPLAY', 'THEME_COLOR', 'light')|lower }}.qss
 
 settings:
   touch-probe.calibration-offset:
@@ -337,7 +337,7 @@ settings:
   startup-settings.usb-hide-show:
     description: hide or show usb file manager
     persistent: true
-    
+  
 dialogs:
   about_probebasic:
     provider: probe_basic_lathe.about_dialog:AboutDialog

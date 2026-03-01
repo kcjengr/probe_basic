@@ -217,7 +217,7 @@ QTabBar::tab:only-one {
                   <enum>QTabWidget::TabPosition::North</enum>
                  </property>
                  <property name="currentIndex">
-                  <number>1</number>
+                  <number>0</number>
                  </property>
                  <widget class="QWidget" name="program_tools_tab">
                   <attribute name="title">
@@ -237,7 +237,7 @@ QTabBar::tab:only-one {
                     <number>0</number>
                    </property>
                    <item>
-                    <widget class="QWidget" name="current_tools_widget" native="true">
+                    <widget class="QFrame" name="current_tools_frame">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                        <horstretch>0</horstretch>
@@ -255,15 +255,6 @@ QTabBar::tab:only-one {
                        <width>300</width>
                        <height>16777215</height>
                       </size>
-                     </property>
-                     <property name="styleSheet">
-                      <string notr="true">.QWidget {
-    background-color: rgb(51, 57, 59);
-    border-style: solid;
-    border-color: rgb(186, 189, 182);
-    border-width: 2px;
-    border-radius: 6px;
-}</string>
                      </property>
                      <layout class="QVBoxLayout" name="verticalLayout_65">
                       <property name="spacing">
@@ -364,8 +355,8 @@ QTabBar::tab:only-one {
                           <rect>
                            <x>0</x>
                            <y>0</y>
-                           <width>86</width>
-                           <height>811</height>
+                           <width>232</width>
+                           <height>783</height>
                           </rect>
                          </property>
                          <layout class="QVBoxLayout" name="verticalLayout_70">
@@ -393,10 +384,10 @@ QTabBar::tab:only-one {
                              </sizepolicy>
                             </property>
                             <property name="styleSheet">
-                             <string notr="true">.QWidget {
-    border: none;
-    border-radius: 0px
-}</string>
+                             <string notr="true">border: none;
+border-radius: 0px;
+background-color: rgb(46, 52, 54);
+</string>
                             </property>
                             <layout class="QHBoxLayout" name="horizontalLayout_33">
                              <property name="spacing">
@@ -661,12 +652,6 @@ QTabBar::tab:only-one {
                                  <verstretch>1</verstretch>
                                 </sizepolicy>
                                </property>
-                               <property name="styleSheet">
-                                <string notr="true">QLabel {
-    font: 17pt &quot;Bebas Kai&quot;;
-    color: white;
-}</string>
-                               </property>
                                <property name="lineWidth">
                                 <number>3</number>
                                </property>
@@ -886,17 +871,6 @@ QTabBar::tab:only-one {
                          <height>40</height>
                         </size>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 7px;
-    color: black;
-    background: white;
-	font: 75 13pt &quot;Bebas Kai&quot;;
-}</string>
-                       </property>
                        <property name="text">
                         <string>No Tool Loaded</string>
                        </property>
@@ -914,6 +888,9 @@ QTabBar::tab:only-one {
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?remark&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;ch[0]&quot;, &quot;name&quot;: &quot;Tool Comment&quot;}]</string>
+                       </property>
+                       <property name="styleSet" stdset="0">
+                        <string>dataField14</string>
                        </property>
                       </widget>
                      </item>
@@ -1035,17 +1012,6 @@ QTabBar::tab:only-one {
                         <height>30</height>
                        </size>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: white;
-	font: 75 16pt &quot;Bebas Kai&quot;;
-}</string>
-                      </property>
                       <property name="text">
                        <string>T0</string>
                       </property>
@@ -1060,6 +1026,9 @@ QTabBar::tab:only-one {
                       </property>
                       <property name="statusItem" stdset="0">
                        <string>tool_offset.3</string>
+                      </property>
+                      <property name="styleSet" stdset="0">
+                       <string>dataField16</string>
                       </property>
                      </widget>
                     </widget>
@@ -1109,6 +1078,9 @@ QTabBar::tab:only-one {
                      </property>
                      <property name="placeholderText">
                       <string>MDI</string>
+                     </property>
+                     <property name="styleSet" stdset="0">
+                      <string>dataField15</string>
                      </property>
                     </widget>
                    </item>
@@ -1238,9 +1210,6 @@ QTabBar::tab:only-one {
                        <property name="focusPolicy">
                         <enum>Qt::FocusPolicy::ClickFocus</enum>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">font: 17pt;</string>
-                       </property>
                        <property name="alignment">
                         <set>Qt::AlignmentFlag::AlignCenter</set>
                        </property>
@@ -1249,6 +1218,9 @@ QTabBar::tab:only-one {
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(0)&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
+                       </property>
+                       <property name="styleSet" stdset="0">
+                        <string>dataField17</string>
                        </property>
                       </widget>
                      </item>
@@ -1515,54 +1487,54 @@ QPushButton:checked {
                           <colorrole role="WindowText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Button">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Text">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="ButtonText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Base">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Window">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1587,9 +1559,9 @@ QPushButton:checked {
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="128">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1598,54 +1570,54 @@ QPushButton:checked {
                           <colorrole role="WindowText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Button">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Text">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="ButtonText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Base">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Window">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1670,9 +1642,9 @@ QPushButton:checked {
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="128">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1681,54 +1653,54 @@ QPushButton:checked {
                           <colorrole role="WindowText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Button">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Text">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="ButtonText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Base">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
                           <colorrole role="Window">
                            <brush brushstyle="SolidPattern">
                             <color alpha="255">
-                             <red>255</red>
-                             <green>255</green>
-                             <blue>255</blue>
+                             <red>108</red>
+                             <green>108</green>
+                             <blue>108</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1753,9 +1725,9 @@ QPushButton:checked {
                           <colorrole role="PlaceholderText">
                            <brush brushstyle="SolidPattern">
                             <color alpha="128">
-                             <red>0</red>
-                             <green>0</green>
-                             <blue>0</blue>
+                             <red>255</red>
+                             <green>255</green>
+                             <blue>255</blue>
                             </color>
                            </brush>
                           </colorrole>
@@ -1776,9 +1748,6 @@ QPushButton:checked {
                        <property name="contextMenuPolicy">
                         <enum>Qt::ContextMenuPolicy::NoContextMenu</enum>
                        </property>
-                       <property name="styleSheet">
-                        <string notr="true">font: 17pt;</string>
-                       </property>
                        <property name="text">
                         <string>0</string>
                        </property>
@@ -1790,6 +1759,9 @@ QPushButton:checked {
                        </property>
                        <property name="rules" stdset="0">
                         <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool?tool_number&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;str(ch[0])&quot;, &quot;name&quot;: &quot;update tool num&quot;}, {&quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_state?text&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;status:interp_state?text&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;ch[0] == 'On' and ch[1] == 'Idle'&quot;, &quot;name&quot;: &quot;enable/disable&quot;}]</string>
+                       </property>
+                       <property name="styleSet" stdset="0">
+                        <string>dataField17</string>
                        </property>
                       </widget>
                      </item>
@@ -2211,7 +2183,7 @@ color: white;
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2219,11 +2191,6 @@ color: white;
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2242,6 +2209,9 @@ color: white;
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2339,6 +2309,9 @@ color: white;
                     <property name="settingName" stdset="0">
                      <string>rack-atc-setup.pocket-count</string>
                     </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -2425,7 +2398,7 @@ color: white;
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2433,11 +2406,6 @@ color: white;
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2453,6 +2421,9 @@ color: white;
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2498,7 +2469,8 @@ color: white;
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-background-color: #929695;</string>
+background-color: #929695;
+border: none;</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2533,7 +2505,7 @@ background-color: #929695;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2541,11 +2513,6 @@ background-color: #929695;</string>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2561,6 +2528,9 @@ background-color: #929695;</string>
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2612,7 +2582,8 @@ background-color: #929695;</string>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-background-color: #929695;</string>
+background-color: #929695;
+border: none;</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2647,7 +2618,7 @@ background-color: #929695;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2655,11 +2626,6 @@ background-color: #929695;</string>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2675,6 +2641,9 @@ background-color: #929695;</string>
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2726,7 +2695,8 @@ background-color: #929695;</string>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-background-color: #929695;</string>
+background-color: #929695;
+border: none;</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2761,7 +2731,7 @@ background-color: #929695;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2769,11 +2739,6 @@ background-color: #929695;</string>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2789,6 +2754,9 @@ background-color: #929695;</string>
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2840,7 +2808,8 @@ background-color: #929695;</string>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-background-color: #929695;</string>
+background-color: #929695;
+border: none;</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2875,7 +2844,7 @@ background-color: #929695;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2883,11 +2852,6 @@ background-color: #929695;</string>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2903,6 +2867,9 @@ background-color: #929695;</string>
                     </property>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                    </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
                     </property>
                    </widget>
                   </item>
@@ -2954,7 +2921,8 @@ background-color: #929695;</string>
                     <property name="styleSheet">
                      <string notr="true">font: 15pt &quot;Bebas Kai&quot;;
 color: white;
-background-color: #929695;</string>
+background-color: #929695;
+border: none;</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -2989,7 +2957,7 @@ background-color: #929695;</string>
                     </property>
                     <property name="font">
                      <font>
-                      <family>bebas kai</family>
+                      <family>Bebas Kai</family>
                       <pointsize>15</pointsize>
                       <italic>false</italic>
                       <bold>false</bold>
@@ -2997,11 +2965,6 @@ background-color: #929695;</string>
                     </property>
                     <property name="focusPolicy">
                      <enum>Qt::FocusPolicy::ClickFocus</enum>
-                    </property>
-                    <property name="styleSheet">
-                     <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;bebas kai&quot;
-}</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -3018,6 +2981,9 @@ background-color: #929695;</string>
                     <property name="rules" stdset="0">
                      <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
                     </property>
+                    <property name="styleSet" stdset="0">
+                     <string>dataField15</string>
+                    </property>
                    </widget>
                   </item>
                  </layout>
@@ -3026,7 +2992,6 @@ background-color: #929695;</string>
                  <widget class="QWidget" name="rack_param_bottom_spacer_widget" native="true"/>
                 </item>
                </layout>
-               <zorder>rack_param_bottom_spacer_widget</zorder>
               </widget>
              </item>
              <item>
@@ -3164,17 +3129,6 @@ background-color: #929695;</string>
              <property name="focusPolicy">
               <enum>Qt::FocusPolicy::ClickFocus</enum>
              </property>
-             <property name="styleSheet">
-              <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-             </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
              </property>
@@ -3189,6 +3143,9 @@ background-color: #929695;</string>
              </property>
              <property name="rules" stdset="0">
               <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+             </property>
+             <property name="styleSet" stdset="0">
+              <string>dataField17</string>
              </property>
             </widget>
            </item>
@@ -3338,17 +3295,6 @@ background-color: #929695;</string>
              <property name="focusPolicy">
               <enum>Qt::FocusPolicy::ClickFocus</enum>
              </property>
-             <property name="styleSheet">
-              <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-             </property>
              <property name="alignment">
               <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
              </property>
@@ -3363,6 +3309,9 @@ background-color: #929695;</string>
              </property>
              <property name="rules" stdset="0">
               <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+             </property>
+             <property name="styleSet" stdset="0">
+              <string>dataField17</string>
              </property>
             </widget>
            </item>
@@ -3578,17 +3527,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -3603,6 +3541,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -3675,17 +3616,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -3700,6 +3630,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -3807,17 +3740,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -3832,6 +3754,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -3904,17 +3829,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -3929,6 +3843,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -4036,17 +3953,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -4061,6 +3967,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -4133,17 +4042,6 @@ color: white;</string>
                    <property name="focusPolicy">
                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                    </property>
-                   <property name="styleSheet">
-                    <string notr="true">VCPSettingsLineEdit {
-    border-style: transparent;
-    border-color: rgb(235, 235, 235);
-    border-width: 1px;
-    border-radius: 5px;
-    color: black;
-    background: rgb(235, 235, 235);
-	font: 75 17pt &quot;Bebas Kai&quot;;
-}</string>
-                   </property>
                    <property name="alignment">
                     <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                    </property>
@@ -4158,6 +4056,9 @@ color: white;</string>
                    </property>
                    <property name="rules" stdset="0">
                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                   </property>
+                   <property name="styleSet" stdset="0">
+                    <string>dataField17</string>
                    </property>
                   </widget>
                  </item>
@@ -4304,6 +4205,9 @@ color: white;</string>
             </property>
             <property name="placeholderText">
              <string>MDI</string>
+            </property>
+            <property name="styleSet" stdset="0">
+             <string>dataField15</string>
             </property>
            </widget>
           </item>
