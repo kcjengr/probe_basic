@@ -26,7 +26,7 @@ windows:
 
 application:
   kwargs:
-    stylesheet: {{ file.dir }}/probe_basic_lathe_{{ ini_value('DISPLAY', 'THEME_COLOR', 'light')|lower }}.qss
+    stylesheet: {{ file.dir }}/probe_basic_lathe_{{ effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') }}.qss
 
 settings:
   touch-probe.calibration-offset:

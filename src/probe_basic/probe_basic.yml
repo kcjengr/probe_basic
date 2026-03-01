@@ -25,7 +25,7 @@ windows:
 
 application:
   kwargs:
-    stylesheet: {{ file.dir }}/probe_basic_{{ ini_value('DISPLAY', 'THEME_COLOR', 'light')|lower }}.qss
+    stylesheet: {{ file.dir }}/probe_basic_{{ effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') }}.qss
     custom_fonts: {{ file.dir }}/fonts
     
 settings:

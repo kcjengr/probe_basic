@@ -9,7 +9,7 @@ import linuxcnc
 from qtpy.QtCore import Slot, QRegularExpression, QTimer
 from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette
 from qtpyvcp.actions.machine_actions import issue_mdi
-from qtpy.QtWidgets import QApplication, QAbstractButton, QMessageBox
+from qtpy.QtWidgets import QAbstractButton, QMessageBox, QApplication
 from qtpy.QtWidgets import QAction, QWidget
 from qtpy import uic
 
@@ -64,9 +64,9 @@ class ProbeBasicLathe(VCPMainWindow):
         self.load_user_tabs()
         
         self.load_user_buttons()
-
+        self._theme_preference_mode = self._theme_preference()
         self._connect_theme_tracking()
-        self._apply_theme_stylesheet()
+        self._apply_system_theme_stylesheet()
 
         from PySide6.QtCore import QTimer
         QTimer.singleShot(100, self._load_dros_after_ui)
@@ -156,6 +156,16 @@ class ProbeBasicLathe(VCPMainWindow):
             self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
             self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
 
+    def _position_master_dialog(self, msg_box):
+        msg_box.adjustSize()
+        msg_box.move(int(MASTER_TOOL_DIALOG_POS_X), int(MASTER_TOOL_DIALOG_POS_Y))
+
+    def _theme_preference(self):
+        theme_color = (INIFILE.find("DISPLAY", "THEME_COLOR") or "light").strip().lower()
+        if theme_color in ("light", "dark", "system"):
+            return theme_color
+        return "light"
+
     def _is_dark_theme(self):
         app = QApplication.instance()
         if app is None:
@@ -166,6 +176,8 @@ class ProbeBasicLathe(VCPMainWindow):
         return ((window_lightness + base_lightness) / 2) < 128
 
     def _connect_theme_tracking(self):
+        if self._theme_preference_mode != 'system':
+            return
         app = QApplication.instance()
         if app is None:
             return
@@ -177,9 +189,13 @@ class ProbeBasicLathe(VCPMainWindow):
                 LOG.exception("Failed to connect paletteChanged signal")
 
     def _on_palette_changed(self, *_args):
-        QTimer.singleShot(0, self._apply_theme_stylesheet)
+        if self._theme_preference_mode != 'system':
+            return
+        QTimer.singleShot(0, self._apply_system_theme_stylesheet)
 
-    def _apply_theme_stylesheet(self):
+    def _apply_system_theme_stylesheet(self):
+        if self._theme_preference_mode != 'system':
+            return
         dark_theme = self._is_dark_theme()
         stylesheet_file = DARK_STYLESHEET_FILE if dark_theme else LIGHT_STYLESHEET_FILE
         stylesheet_path = os.path.join(VCP_DIR, stylesheet_file)
@@ -191,10 +207,6 @@ class ProbeBasicLathe(VCPMainWindow):
                 app.setStyleSheet(style_file.read())
         except Exception:
             LOG.exception("Failed to load theme stylesheet: %s", stylesheet_path)
-
-    def _position_master_dialog(self, msg_box):
-        msg_box.adjustSize()
-        msg_box.move(int(MASTER_TOOL_DIALOG_POS_X), int(MASTER_TOOL_DIALOG_POS_Y))
 
     def _on_tab_changed_refresh_views(self, index):
         if hasattr(self, "tabWidget") and self.tabWidget.widget(index) is getattr(self, "main_tab", None):
