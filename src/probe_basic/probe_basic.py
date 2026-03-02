@@ -139,7 +139,8 @@ class ProbeBasic(VCPMainWindow):
         for _timer_label in ("timerhours", "timerminutes", "timerseconds"):
             lbl = getattr(self, _timer_label, None)
             if lbl is not None:
-                lbl.textFormat = "02.0f"
+                if hasattr(lbl, 'valueFormat'):
+                    lbl.valueFormat = "02.0f"
 
     def _theme_preference(self):
         theme_color = (INIFILE.find("DISPLAY", "THEME_COLOR") or "light").strip().lower()

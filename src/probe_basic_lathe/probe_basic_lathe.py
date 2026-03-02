@@ -230,7 +230,8 @@ class ProbeBasicLathe(VCPMainWindow):
         for _timer_label in ("timerhours", "timerminutes", "timerseconds"):
             lbl = getattr(self, _timer_label, None)
             if lbl is not None:
-                lbl.textFormat = "02.0f"
+                if hasattr(lbl, 'valueFormat'):
+                    lbl.valueFormat = "02.0f"
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
@@ -476,8 +477,14 @@ class ProbeBasicLathe(VCPMainWindow):
             parent.mdiEntry.deselect()
 
     @Slot(QAbstractButton)
+    @Slot(object)
     def on_spindlerpmsourcebtnGroup_buttonClicked(self, button):
-        self.spindle_rpm_source_widget.setCurrentIndex(button.property('page'))
+        if button is None or not hasattr(button, 'property'):
+            return
+        page = button.property('page')
+        if page is None:
+            return
+        self.spindle_rpm_source_widget.setCurrentIndex(int(page))
 
     def set_startup_tab_by_text(self, tab_text):
         """Set the main tab widget to the tab matching tab_text."""

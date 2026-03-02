@@ -587,56 +587,12 @@ QPushButton:checked {
                      </widget>
                     </item>
                     <item>
-                     <widget class="GcodeTextEdit" name="gcodetextedit_2">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                        <horstretch>0</horstretch>
-                        <verstretch>1</verstretch>
-                       </sizepolicy>
+                     <widget class="GCodeEditor" name="gcodeEditor">
+                      <property name="lineWidth">
+                       <number>1</number>
                       </property>
-                      <property name="styleSheet">
-                       <string notr="true"/>
-                      </property>
-                      <property name="syntaxHighlighting" stdset="0">
-                       <bool>false</bool>
-                      </property>
-                      <property name="currentLineBackground" stdset="0">
-                       <color>
-                        <red>108</red>
-                        <green>110</green>
-                        <blue>240</blue>
-                       </color>
-                      </property>
-                      <property name="marginBackground" stdset="0">
-                       <color>
-                        <red>80</red>
-                        <green>80</green>
-                        <blue>80</blue>
-                       </color>
-                      </property>
-                      <property name="marginCurrentLineBackground" stdset="0">
-                       <color>
-                        <red>62</red>
-                        <green>73</green>
-                        <blue>179</blue>
-                       </color>
-                      </property>
-                      <property name="marginColor" stdset="0">
-                       <color>
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                       </color>
-                      </property>
-                      <property name="marginCurrentLineColor" stdset="0">
-                       <color>
-                        <red>255</red>
-                        <green>255</green>
-                        <blue>255</blue>
-                       </color>
-                      </property>
-                      <property name="tabStopWidth" stdset="0">
-                       <number>100</number>
+                      <property name="centerOnScroll">
+                       <bool>true</bool>
                       </property>
                      </widget>
                     </item>
@@ -4470,7 +4426,7 @@ QPushButton:checked {
                     <property name="font">
                      <font>
                       <family>Bebas Kai</family>
-                      <pointsize>15</pointsize>
+                      <pointsize>14</pointsize>
                      </font>
                     </property>
                     <property name="focusPolicy">
@@ -4507,7 +4463,7 @@ QPushButton:checked {
                     <property name="font">
                      <font>
                       <family>Bebas Kai</family>
-                      <pointsize>15</pointsize>
+                      <pointsize>14</pointsize>
                      </font>
                     </property>
                     <property name="focusPolicy">
@@ -24990,7 +24946,7 @@ QComboBox {
                                   <string>[{&quot;channels&quot;: [{&quot;url&quot;: &quot;settings:machine.jog.linear-speed-percentage&quot;, &quot;trigger&quot;: true}], &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;%s%%\&quot; % ch[0]&quot;, &quot;name&quot;: &quot;New Rule&quot;}]</string>
                                  </property>
                                  <property name="styleSet" stdset="0">
-                                  <string/>
+                                  <string>dataField14</string>
                                  </property>
                                 </widget>
                                </item>
@@ -26865,6 +26821,9 @@ QPushButton[style='active']{
                  <property name="indent">
                   <number>2</number>
                  </property>
+                 <property name="valueFormat" stdset="0">
+                  <string>02.0f</string>
+                 </property>
                  <property name="pinType" stdset="0">
                   <string>u32</string>
                  </property>
@@ -26933,6 +26892,9 @@ QPushButton[style='active']{
                  <property name="indent">
                   <number>0</number>
                  </property>
+                 <property name="valueFormat" stdset="0">
+                  <string>02.0f</string>
+                 </property>
                  <property name="pinType" stdset="0">
                   <string>u32</string>
                  </property>
@@ -27000,6 +26962,9 @@ QPushButton[style='active']{
                  </property>
                  <property name="indent">
                   <number>2</number>
+                 </property>
+                 <property name="valueFormat" stdset="0">
+                  <string>02.0f</string>
                  </property>
                  <property name="pinType" stdset="0">
                   <string>u32</string>
@@ -28733,6 +28698,9 @@ QPushButton[style='active']{
                      <property name="alignment">
                       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                      </property>
+                     <property name="valueFormat" stdset="0">
+                      <string>.0f</string>
+                     </property>
                      <property name="pinType" stdset="0">
                       <string>float</string>
                      </property>
@@ -29853,6 +29821,11 @@ font: 11pt bebas kai;
   </action>
  </widget>
  <customwidgets>
+  <customwidget>
+   <class>GCodeEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>gcodeeditor.h</header>
+  </customwidget>
   <customwidget>
    <class>ActionButton</class>
    <extends>QPushButton</extends>
@@ -31045,12 +31018,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="sidebartabGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="lathecontrolpointbtngroup"/>
  </buttongroups>
 </ui>

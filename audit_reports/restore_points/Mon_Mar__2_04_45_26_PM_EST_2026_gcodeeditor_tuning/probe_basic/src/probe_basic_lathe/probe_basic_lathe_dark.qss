@@ -19,12 +19,12 @@ MDIEntry {
 
 MDIHistory {
     font: 16pt "Bebas Kai";
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(108, 108, 108);
     border-style: solid;
-    border-color: transparent;
+    border-color: rgb(116, 116, 116);
     border-width: 2px;
     border-radius: 6px;
-    color: black;
+    color: white;
 }
 
 QLabel#timerhours,
@@ -32,9 +32,9 @@ QLabel#timerminutes,
 QLabel#timerseconds,
 QLabel#timer_div,
 QLabel#timer_div1 {
-    color: black;
+    color: white;
     font: 16pt "Bebas Kai";
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(108, 108, 108);
 }
 
 QLabel#timerhours {
@@ -135,12 +135,12 @@ QLabel[styleSet="dataField14"],
 QLabel[styleSet="dataField15"],
 QLabel[styleSet="dataField16"],
 QLabel[styleSet="dataField17"] {
-    color: black;
-    background-color: rgb(223, 223, 223);
+    color: white;
+    background-color: rgb(108, 108, 108);
     border-style: solid;
-    border-color: transparent;
+    border-color: rgb(116, 116, 116);
     border-width: 1px;
-    border-radius: 5px;
+    border-radius: 4px;
 }
 
 QDoubleSpinBox[styleSet="dataField14"],
@@ -169,12 +169,12 @@ QLineEdit[styleSet="dataField14"],
 QLineEdit[styleSet="dataField15"],
 QLineEdit[styleSet="dataField16"],
 QLineEdit[styleSet="dataField17"] {
-    color: black;
-    background-color: rgb(223, 223, 223);
+    color: white;
+    background-color: rgb(108, 108, 108);
     border-style: solid;
-    border-color: transparent;
+    border-color: rgb(116, 116, 116);
     border-width: 1px;
-    border-radius: 5px;
+    border-radius: 4px;
     selection-color: white;
     selection-background-color: rgb(65, 84, 255);
     padding-right: 2px;
@@ -198,7 +198,7 @@ DROWidget {
     border-style: solid;
     border-width: 2px;
     border-radius: 4px;
-    background-color: rgb(223, 223, 223);
+    background-color: white;
 }
 
 QGroupBox {
@@ -226,31 +226,36 @@ GcodeBackplot {
 }
 
 GCodeEditor {
-    background-color: rgb(223, 223, 223);
-    color: black;
-    padding: 2px;
-    border-radius: 4px;
+    background-color: rgb(108, 108, 108);
+    color: white;
     font-family: "Bebas Kai";
     font-size: 13pt;
     font-style: normal;
     font-weight: 400;
+    border-style: solid;
+    border-color: black;
+    border-width: 2px;
+    border-radius: 4px;
+    padding: 6px;
+    margin: 0px;
+    min-height: 120px;
 
-    qproperty-gCodeHighlightEnabled: false;
-    qproperty-mCodeHighlightEnabled: false;
-    qproperty-parameterHighlightEnabled: false;
-    qproperty-numberHighlightEnabled: false;
-    qproperty-commentHighlightEnabled: false;
-    qproperty-stringHighlightEnabled: false;
+    qproperty-gCodeHighlightEnabled: true;
+    qproperty-mCodeHighlightEnabled: true;
+    qproperty-parameterHighlightEnabled: true;
+    qproperty-numberHighlightEnabled: true;
+    qproperty-commentHighlightEnabled: true;
+    qproperty-stringHighlightEnabled: true;
 
-    qproperty-gCodeColor: rgb(35, 85, 170);
-    qproperty-mCodeColor: rgb(135, 45, 130);
-    qproperty-parameterColor: rgb(30, 115, 30);
-    qproperty-numberColor: rgb(155, 35, 35);
-    qproperty-commentColor: rgb(55, 120, 55);
-    qproperty-stringColor: rgb(0, 120, 130);
+    qproperty-gCodeColor: rgb(120, 180, 255);
+    qproperty-mCodeColor: rgb(255, 150, 220);
+    qproperty-parameterColor: rgb(140, 220, 140);
+    qproperty-numberColor: rgb(255, 145, 145);
+    qproperty-commentColor: rgb(150, 200, 150);
+    qproperty-stringColor: rgb(130, 220, 220);
 
-    qproperty-lineNumberAreaBackground: rgb(205, 205, 205);
-    qproperty-lineNumberAreaColor: rgb(0, 0, 0);
+    qproperty-lineNumberAreaBackground: rgb(80, 80, 80);
+    qproperty-lineNumberAreaColor: rgb(255, 255, 255);
     qproperty-lineNumberFontFamily: "Bebas Kai";
     qproperty-lineNumberFontPointSize: 11;
     qproperty-lineNumberFontWeight: 400;
@@ -261,9 +266,32 @@ GCodeEditor {
     qproperty-currentLineColor: rgb(255, 255, 255);
 }
 
+GCodeEditor:focus {
+    border-color: rgb(108, 110, 240);
+}
+
+GCodeEditor:disabled {
+    color: rgb(180, 180, 180);
+    background-color: rgb(88, 88, 88);
+}
+
+GCodeEditor:read-only {
+    background-color: rgb(100, 100, 100);
+}
+
+GCodeEditor QScrollBar {
+    background: rgb(146, 150, 149);
+}
+
+GCodeEditor QScrollBar::handle {
+    background: rgb(108, 108, 108);
+    border: 3px solid rgb(146, 150, 149);
+    border-radius: 4px;
+}
+
 GcodeTextEdit {
-    background-color: rgb(223, 223, 223);
-    color: black;
+    background-color: rgb(108, 108, 108);
+    color: white;
     qproperty-lineHeightPercent: 140;
     qproperty-editorFontFamily: "Bebas Kai";
     qproperty-editorFontPointSize: 13;
@@ -296,7 +324,7 @@ QScrollBar:vertical {
 }
 
 QScrollBar::handle {
-    background: rgb(223, 223, 223);
+    background: rgb(108, 108, 108);
     border: 3px solid rgb(146, 150, 149);
     border-radius: 4px;
 }
@@ -489,8 +517,8 @@ QDialog QLabel {
 /*===========================================================================*/
 
 NotificationWidget QListView { 
-    background-color: rgb(223, 223, 223);
-    color: black;
+    background-color: rgb(108, 108, 108);
+    color: white; 
 }
 
 NotificationWidget QListView::item {
@@ -657,9 +685,9 @@ QTableView QTableCornerButton::section {
 }
 
 FileSystemTable {
-    color: black;
+    color: white;
     border: 1px solid rgb(120, 120, 120);
-    background-color: rgb(223, 223, 223);
+    background-color: rgb(108, 108, 108);
     alternate-background-color: rgb(100, 100, 100);
     selection-background-color: rgb(108, 110, 240);
     selection-color: rgb(255, 255, 255);
@@ -812,7 +840,7 @@ QFileDialog QWidget#buttonBox QPushButton:pressed {
 }
 
 QFileDialog QSplitter::handle {
-    width: 8px;
+    width: 10px;
 }
 
 QFileDialog QSplitter {
@@ -912,7 +940,7 @@ QSlider::sub-page:horizontal {
 }
 
 QSlider::add-page:horizontal {
-    background: rgb(223, 223, 223);
+    background: rgb(108, 108, 108);
     border: 1px transparent;
     height: 20px;
     border-radius: 3px;
@@ -969,7 +997,7 @@ QSlider::add-page:vertical {
 }
 
 QSlider::sub-page:vertical {
-    background: rgb(223, 223, 223);
+    background: rgb(108, 108, 108);
     border: 1px transparent;
     width: 20px;
     border-radius: 3px;
