@@ -139,7 +139,6 @@ Expected gain: **Substantial perceived load improvement**.
 - Reduce Python object churn in `draw_lines()`:
   - batch populate points/connectivity where possible,
   - avoid per-line allocations where VTK arrays can be pre-sized.
-- Add optional decimation/fast mode for initial preview, refine after first display.
 
 Expected gain: **Major reduction in backplot build time on large programs**.
 
@@ -222,8 +221,8 @@ Sprint 4:
 
 ## 7) Risks and Mitigations
 
-1. **Rendering correctness risk (VTK decimation/fast path).**  
-   Mitigation: keep full-precision mode default for validation, gate fast mode by setting.
+1. **Rendering correctness risk (VTK geometry optimization path).**  
+   Mitigation: keep validation datasets and verify full toolpath fidelity after changes.
 
 2. **Editor behavior differences for large-file fast path.**  
    Mitigation: apply threshold-based behavior, keep small/normal files unchanged.
