@@ -1,4 +1,5 @@
 from .base_widget import ConversationalBaseWidget
+from .base_widget import _is_qt_valid
 
 
 class DrillWidgetBase(ConversationalBaseWidget):
@@ -42,6 +43,15 @@ class DrillWidgetBase(ConversationalBaseWidget):
         return self.drill_retract_mode_input.currentText()
 
     def set_drill_type_params(self, _):
+        if not _is_qt_valid(getattr(self, 'drill_type_input', None)):
+            return
+        if not _is_qt_valid(getattr(self, 'drill_type_param_label', None)):
+            return
+        if not _is_qt_valid(getattr(self, 'drill_type_param_value', None)):
+            return
+        if not _is_qt_valid(getattr(self, 'z_feed_rate_input', None)):
+            return
+
         self.z_feed_rate_input.setEnabled(True)
         if self.drill_type() == 'DWELL':
             self.drill_type_param_label.setText('DWELL TIME (SEC.)')

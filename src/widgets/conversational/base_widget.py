@@ -12,6 +12,12 @@ from qtpyvcp.ops.gcode_file import GCodeFile
 
 from . import conversational_rc
 
+try:
+    from shiboken6 import isValid as _is_qt_valid
+except ImportError:
+    def _is_qt_valid(obj):
+        return obj is not None
+
 LOG = logger.getLogger(__name__)
 
 # Detect if we're running in Qt Designer
@@ -143,6 +149,11 @@ class ConversationalBaseWidget(QWidget):
                 self.set_tool_description_from_tool_num()
 
     def set_tool_description_from_tool_num(self):
+        if not _is_qt_valid(getattr(self, 'tool_description', None)):
+            return
+        if not _is_qt_valid(getattr(self, 'tool_number_input', None)):
+            return
+
         if IN_DESIGNER or self._tool_table is None:
             # In designer mode, just set a placeholder
             self.tool_description.setText('TOOL DESCRIPTION')

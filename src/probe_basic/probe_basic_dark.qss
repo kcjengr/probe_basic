@@ -220,15 +220,40 @@ GcodeBackplot {
     font: 12pt "Bebas Kai";
 }
 
-GcodeEditor {
+GCodeEditor {
     background-color: rgb(108, 108, 108);
     color: white;
-    border-color: black;
-    border-style: solid;
-    border-width: 2px;
-    border-radius: 4px;
     padding: 2px;
-    font: 12pt "Bebas Kai";
+    font-family: "Bebas Kai";
+    font-size: 13pt;
+    font-style: normal;
+    font-weight: 400;
+    border-radius: 4px;
+
+    qproperty-gCodeHighlightEnabled: false;
+    qproperty-mCodeHighlightEnabled: false;
+    qproperty-parameterHighlightEnabled: false;
+    qproperty-numberHighlightEnabled: false;
+    qproperty-commentHighlightEnabled: false;
+    qproperty-stringHighlightEnabled: false;
+
+    qproperty-gCodeColor: rgb(120, 180, 255);
+    qproperty-mCodeColor: rgb(255, 150, 220);
+    qproperty-parameterColor: rgb(140, 220, 140);
+    qproperty-numberColor: rgb(255, 145, 145);
+    qproperty-commentColor: rgb(150, 200, 150);
+    qproperty-stringColor: rgb(130, 220, 220);
+
+    qproperty-lineNumberAreaBackground: rgb(80, 80, 80);
+    qproperty-lineNumberAreaColor: rgb(255, 255, 255);
+    qproperty-lineNumberFontFamily: "Bebas Kai";
+    qproperty-lineNumberFontPointSize: 11;
+    qproperty-lineNumberFontWeight: 400;
+    qproperty-lineNumberFontItalic: false;
+
+    qproperty-currentLineHighlightEnabled: true;
+    qproperty-currentLineBackground: rgb(108, 110, 240);
+    qproperty-currentLineColor: rgb(255, 255, 255);
 }
 
 GcodeTextEdit {
