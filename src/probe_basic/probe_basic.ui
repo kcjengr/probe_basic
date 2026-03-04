@@ -5533,43 +5533,7 @@ color: white;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="GcodeTextEdit" name="gcodetextedit">
-                   <property name="currentLineBackground" stdset="0">
-                    <color>
-                     <red>108</red>
-                     <green>110</green>
-                     <blue>240</blue>
-                    </color>
-                   </property>
-                   <property name="marginBackground" stdset="0">
-                    <color>
-                     <red>80</red>
-                     <green>80</green>
-                     <blue>80</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineBackground" stdset="0">
-                    <color>
-                     <red>62</red>
-                     <green>73</green>
-                     <blue>179</blue>
-                    </color>
-                   </property>
-                   <property name="marginColor" stdset="0">
-                    <color>
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineColor" stdset="0">
-                    <color>
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
-                    </color>
-                   </property>
-                  </widget>
+                  <widget class="GCodeEditor" name="gcodeEditor_2"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_129">
@@ -30009,11 +29973,6 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
   </customwidget>
   <customwidget>
-   <class>GcodeTextEdit</class>
-   <extends>QTextEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
-  </customwidget>
-  <customwidget>
    <class>JogIncrementWidget</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
@@ -30518,22 +30477,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>81</x>
      <y>143</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1413</x>
-     <y>635</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1631</x>
-     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -31046,22 +30989,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>1613</x>
      <y>368</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>edit_gcode_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>EditorReadWrite(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1199</x>
-     <y>635</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1631</x>
-     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -31722,22 +31649,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>undo_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>undo()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1556</x>
-     <y>625</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1553</x>
-     <y>562</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>tool_setter_offset_direction_3013</sender>
    <signal>textChanged(QString)</signal>
    <receiver>update_tool_setter_params</receiver>
@@ -31750,22 +31661,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>245</x>
      <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_as_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFileAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1520</x>
-     <y>635</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1631</x>
-     <y>590</y>
     </hint>
    </hints>
   </connection>
@@ -31962,22 +31857,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>find_replace_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>findDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1306</x>
-     <y>635</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1631</x>
-     <y>590</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>offset_table_clear_selected_button</sender>
    <signal>clicked()</signal>
    <receiver>offset_table</receiver>
@@ -32044,18 +31923,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="settertabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="btngrpMdi"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probetabGroup"/>
  </buttongroups>
 </ui>
