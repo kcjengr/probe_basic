@@ -6,15 +6,15 @@ import importlib.util
 
 import linuxcnc
 
-from PySide6.QtCore import Slot, QRegularExpression, QTimer, QFile
+from PySide6.QtCore import Slot, QRegularExpression, QTimer
 from PySide6.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette, QAction
 from qtpyvcp.actions.machine_actions import issue_mdi
-from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication, QVBoxLayout
+from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication
 from PySide6.QtWidgets import QWidget
-from PySide6.QtUiTools import QUiLoader
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
+from qtpyvcp.utilities.runtime_ui_loader import load_ui as load_runtime_ui
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
@@ -31,70 +31,8 @@ DARK_STYLESHEET_FILE = "probe_basic_lathe_dark.qss"
 
 
 def _load_ui(ui_path, parent):
-    import importlib
-    import xml.etree.ElementTree as ET
+    return load_runtime_ui(ui_path, parent)
 
-    def _register_ui_custom_widgets(loader, path):
-        try:
-            tree = ET.parse(path)
-            root = tree.getroot()
-        except Exception:
-            LOG.exception("Unable to parse UI for custom widget registration: %s", path)
-            return
-
-        customwidgets = root.find('customwidgets')
-        if customwidgets is None:
-            return
-
-        for customwidget in customwidgets.findall('customwidget'):
-            class_name = customwidget.findtext('class')
-            header = customwidget.findtext('header')
-            if not class_name or not header:
-                continue
-
-            module_path = header.strip()
-            if module_path.endswith('.h'):
-                continue
-
-            try:
-                module = importlib.import_module(module_path)
-                widget_class = getattr(module, class_name, None)
-                if widget_class is not None:
-                    loader.registerCustomWidget(widget_class)
-            except Exception:
-                continue
-
-    ui_file = QFile(ui_path)
-    if not ui_file.open(QFile.ReadOnly):
-        raise RuntimeError(f"Unable to open UI file: {ui_path}")
-    try:
-        loader = QUiLoader()
-        _register_ui_custom_widgets(loader, ui_path)
-        loaded = loader.load(ui_file, parent)
-    finally:
-        ui_file.close()
-    if loaded is None:
-        raise RuntimeError(f"Unable to load UI file: {ui_path}")
-    return loaded
-
-
-def _load_ui_compat(ui_path, parent):
-    loaded = _load_ui(ui_path, parent)
-
-    if parent is None or loaded is None or loaded is parent:
-        return loaded
-
-    if isinstance(parent, QWidget) and isinstance(loaded, QWidget):
-        layout = parent.layout()
-        if layout is None:
-            layout = QVBoxLayout(parent)
-            layout.setContentsMargins(0, 0, 0, 0)
-            layout.setSpacing(0)
-
-        if layout.indexOf(loaded) < 0:
-            layout.addWidget(loaded)
-
-    return loaded
 
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
@@ -136,14 +74,6 @@ def _import_module_from_path(module_name: str, module_path: str):
 
     return module
 
-
-def _prepare_config_module(module):
-    if hasattr(module, "_load_ui"):
-        try:
-            module._load_ui = _load_ui_compat
-        except Exception:
-            LOG.debug("Unable to patch module _load_ui for %s", getattr(module, "__name__", module), exc_info=True)
-    return module
 
 class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
@@ -387,9 +317,7 @@ class ProbeBasicLathe(VCPMainWindow):
                     continue
                 module_name = "user_buttons." + os.path.basename(user_buttons_path) + "." + user_button
                 module_file = os.path.join(user_buttons_path, user_button, user_button + ".py")
-                self.user_button_modules[module_name] = _prepare_config_module(
-                    _import_module_from_path(module_name, module_file)
-                )
+                self.user_button_modules[module_name] = _import_module_from_path(module_name, module_file)
 
                 self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
                 layout.addWidget(self.user_buttons[module_name])
@@ -424,7 +352,7 @@ class ProbeBasicLathe(VCPMainWindow):
             dro_py_path = os.path.join(dro_folder_path, dro_py_file)
             if os.path.isfile(dro_py_path):
                 module_name = f"user_dros.{dro_folder}.{dro_py_file[:-3]}"
-                module = _prepare_config_module(_import_module_from_path(module_name, dro_py_path))
+                module = _import_module_from_path(module_name, dro_py_path)
                 if hasattr(module, "UserDRO"):
                     self.user_dros[module_name] = module.UserDRO()
                     layout.addWidget(self.user_dros[module_name])
@@ -479,9 +407,7 @@ class ProbeBasicLathe(VCPMainWindow):
 
                 module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tabs_path
                 module_file = os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py")
-                self.user_tab_modules[module_name] = _prepare_config_module(
-                    _import_module_from_path(module_name, module_file)
-                )
+                self.user_tab_modules[module_name] = _import_module_from_path(module_name, module_file)
                 self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
                 if self.user_tabs[module_name].property("sidebar"):
                     if sidebar_loaded == False:

@@ -5409,43 +5409,7 @@ color: white;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="GcodeTextEdit" name="gcodetextedit">
-                   <property name="currentLineBackground" stdset="0">
-                    <color>
-                     <red>108</red>
-                     <green>110</green>
-                     <blue>240</blue>
-                    </color>
-                   </property>
-                   <property name="marginBackground" stdset="0">
-                    <color>
-                     <red>80</red>
-                     <green>80</green>
-                     <blue>80</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineBackground" stdset="0">
-                    <color>
-                     <red>62</red>
-                     <green>73</green>
-                     <blue>179</blue>
-                    </color>
-                   </property>
-                   <property name="marginColor" stdset="0">
-                    <color>
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
-                    </color>
-                   </property>
-                   <property name="marginCurrentLineColor" stdset="0">
-                    <color>
-                     <red>255</red>
-                     <green>255</green>
-                     <blue>255</blue>
-                    </color>
-                   </property>
-                  </widget>
+                  <widget class="GCodeEditor" name="gcodeEditor_2"/>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_129">
@@ -29886,11 +29850,6 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
   </customwidget>
   <customwidget>
-   <class>GcodeTextEdit</class>
-   <extends>QTextEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_text_edit</header>
-  </customwidget>
-  <customwidget>
    <class>JogIncrementWidget</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.input_widgets.jog_increment</header>
@@ -30098,8 +30057,8 @@ font: 11pt bebas kai;
    <slot>setViewPath()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>835</x>
-     <y>338</y>
+     <x>948</x>
+     <y>361</y>
     </hint>
     <hint type="destinationlabel">
      <x>959</x>
@@ -30114,8 +30073,8 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>99</x>
-     <y>103</y>
+     <x>101</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30146,8 +30105,8 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30246,8 +30205,8 @@ font: 11pt bebas kai;
      <y>87</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1625</x>
-     <y>113</y>
+     <x>1478</x>
+     <y>87</y>
     </hint>
    </hints>
   </connection>
@@ -30294,8 +30253,8 @@ font: 11pt bebas kai;
      <y>657</y>
     </hint>
     <hint type="destinationlabel">
-     <x>100</x>
-     <y>131</y>
+     <x>102</x>
+     <y>94</y>
     </hint>
    </hints>
   </connection>
@@ -30322,12 +30281,12 @@ font: 11pt bebas kai;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>848</x>
-     <y>292</y>
+     <x>948</x>
+     <y>302</y>
     </hint>
     <hint type="destinationlabel">
-     <x>902</x>
-     <y>286</y>
+     <x>1662</x>
+     <y>314</y>
     </hint>
    </hints>
   </connection>
@@ -30354,8 +30313,8 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>91</x>
-     <y>103</y>
+     <x>93</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30402,8 +30361,8 @@ font: 11pt bebas kai;
    <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>821</x>
-     <y>237</y>
+     <x>948</x>
+     <y>253</y>
     </hint>
     <hint type="destinationlabel">
      <x>956</x>
@@ -30418,8 +30377,8 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>113</y>
+     <x>76</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30460,22 +30419,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>find_replace_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>findDialog()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1319</x>
-     <y>633</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1638</x>
-     <y>488</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>tool_table_reload_button</sender>
    <signal>released()</signal>
    <receiver>m6_tool_call_main_panel</receiver>
@@ -30498,8 +30441,8 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>103</y>
+     <x>76</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30536,22 +30479,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>238</x>
      <y>95</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>undo_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>undo()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1577</x>
-     <y>621</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1547</x>
-     <y>548</y>
     </hint>
    </hints>
   </connection>
@@ -30594,8 +30521,8 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>94</x>
-     <y>113</y>
+     <x>96</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -30700,22 +30627,6 @@ font: 11pt bebas kai;
    </hints>
   </connection>
   <connection>
-   <sender>save_as_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFileAs()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1531</x>
-     <y>633</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1638</x>
-     <y>488</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>filesystemtable_2</sender>
    <signal>atDeviceRoot(bool)</signal>
    <receiver>device_folder_up_button</receiver>
@@ -30738,28 +30649,12 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>113</y>
+     <x>86</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
      <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>save_button</sender>
-   <signal>clicked()</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>saveFile()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1425</x>
-     <y>633</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1638</x>
-     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30776,22 +30671,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>1178</x>
      <y>168</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>edit_gcode_button</sender>
-   <signal>toggled(bool)</signal>
-   <receiver>gcodetextedit</receiver>
-   <slot>EditorReadWrite(bool)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1213</x>
-     <y>633</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1638</x>
-     <y>488</y>
     </hint>
    </hints>
   </connection>
@@ -30946,8 +30825,8 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>103</y>
+     <x>85</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>240</x>
@@ -31003,6 +30882,86 @@ font: 11pt bebas kai;
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>edit_gcode_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gcodeEditor_2</receiver>
+    <slot>setEditable(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1196</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1202</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>find_replace_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+    <slot>find_replace()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1311</x>
+     <y>611</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1311</x>
+     <y>568</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+    <slot>save()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1386</x>
+     <y>611</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1393</x>
+     <y>573</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_as_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+    <slot>saveAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1491</x>
+     <y>612</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1485</x>
+     <y>543</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>undo_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>undo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1590</x>
+     <y>607</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1582</x>
+     <y>547</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <designerdata>
   <property name="gridDeltaX">
@@ -31022,12 +30981,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
  </buttongroups>
 </ui>

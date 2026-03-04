@@ -27,6 +27,22 @@ STATUS = None
 TOOL_TABLE = None
 
 
+class _UiLoader(QUiLoader):
+    def __init__(self, base_instance, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.base_instance = base_instance
+
+    def createWidget(self, class_name, parent=None, name=''):
+        if parent is None and self.base_instance is not None:
+            self.base_instance.setObjectName(name)
+            return self.base_instance
+
+        widget = super().createWidget(class_name, parent, name)
+        if self.base_instance is not None and name:
+            setattr(self.base_instance, name, widget)
+        return widget
+
+
 def _load_ui(ui_path, parent):
     import importlib
     import xml.etree.ElementTree as ET
@@ -77,9 +93,9 @@ def _load_ui(ui_path, parent):
     if not ui_file.open(QFile.ReadOnly):
         raise RuntimeError(f"Unable to open UI file: {ui_path}")
     try:
-        loader = QUiLoader()
+        loader = _UiLoader(parent)
         _register_ui_custom_widgets(loader, ui_path)
-        loaded = loader.load(ui_file, parent)
+        loaded = loader.load(ui_file)
     finally:
         ui_file.close()
     if loaded is None:

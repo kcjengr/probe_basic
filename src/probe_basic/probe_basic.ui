@@ -25,6 +25,12 @@
     <height>1080</height>
    </size>
   </property>
+  <property name="maximumSize">
+   <size>
+    <width>16777215</width>
+    <height>1082</height>
+   </size>
+  </property>
   <property name="font">
    <font>
     <family>Bebas Kai</family>
@@ -366,7 +372,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>1</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -672,7 +678,14 @@ QPushButton:checked {
                      </widget>
                     </item>
                     <item>
-                     <widget class="GCodeEditor" name="gcodeEditor"/>
+                     <widget class="GCodeEditor" name="gcodeEditor">
+                      <property name="sizePolicy">
+                       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                        <horstretch>0</horstretch>
+                        <verstretch>0</verstretch>
+                       </sizepolicy>
+                      </property>
+                     </widget>
                     </item>
                    </layout>
                   </widget>
@@ -5533,7 +5546,14 @@ color: white;</string>
                   </widget>
                  </item>
                  <item>
-                  <widget class="GCodeEditor" name="gcodeEditor_2"/>
+                  <widget class="GCodeEditor" name="gcodeEditor_2">
+                   <property name="sizePolicy">
+                    <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+                     <horstretch>0</horstretch>
+                     <verstretch>1</verstretch>
+                    </sizepolicy>
+                   </property>
+                  </widget>
                  </item>
                  <item>
                   <layout class="QHBoxLayout" name="horizontalLayout_129">
@@ -30072,7 +30092,7 @@ font: 11pt bebas kai;
    <hints>
     <hint type="sourcelabel">
      <x>463</x>
-     <y>763</y>
+     <y>762</y>
     </hint>
     <hint type="destinationlabel">
      <x>579</x>
@@ -30107,8 +30127,8 @@ font: 11pt bebas kai;
      <y>635</y>
     </hint>
     <hint type="destinationlabel">
-     <x>81</x>
-     <y>143</y>
+     <x>63</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>
@@ -30475,8 +30495,8 @@ font: 11pt bebas kai;
      <y>635</y>
     </hint>
     <hint type="destinationlabel">
-     <x>81</x>
-     <y>143</y>
+     <x>63</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>
@@ -30519,12 +30539,12 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>448</x>
-     <y>141</y>
+     <x>524</x>
+     <y>132</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1000</x>
-     <y>183</y>
+     <x>1139</x>
+     <y>289</y>
     </hint>
    </hints>
   </connection>
@@ -30567,12 +30587,12 @@ font: 11pt bebas kai;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>105</x>
+     <x>85</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>143</x>
-     <y>52</y>
+     <x>151</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -30583,7 +30603,7 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1544</x>
+     <x>1578</x>
      <y>558</y>
     </hint>
     <hint type="destinationlabel">
@@ -30599,7 +30619,7 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1544</x>
+     <x>1578</x>
      <y>636</y>
     </hint>
     <hint type="destinationlabel">
@@ -30731,7 +30751,7 @@ font: 11pt bebas kai;
      <y>292</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1633</x>
+     <x>1138</x>
      <y>451</y>
     </hint>
    </hints>
@@ -30919,7 +30939,7 @@ font: 11pt bebas kai;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
+     <x>102</x>
      <y>94</y>
     </hint>
     <hint type="destinationlabel">
@@ -31191,12 +31211,12 @@ font: 11pt bebas kai;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
+     <x>76</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>114</x>
-     <y>52</y>
+     <x>122</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31211,7 +31231,7 @@ font: 11pt bebas kai;
      <y>239</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1633</x>
+     <x>1138</x>
      <y>451</y>
     </hint>
    </hints>
@@ -31319,12 +31339,12 @@ font: 11pt bebas kai;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
+     <x>76</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>163</x>
-     <y>52</y>
+     <x>171</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31351,7 +31371,7 @@ font: 11pt bebas kai;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1544</x>
+     <x>1578</x>
      <y>597</y>
     </hint>
     <hint type="destinationlabel">
@@ -31415,12 +31435,12 @@ font: 11pt bebas kai;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
+     <x>96</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>320</x>
-     <y>52</y>
+     <x>328</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31515,8 +31535,8 @@ font: 11pt bebas kai;
      <y>635</y>
     </hint>
     <hint type="destinationlabel">
-     <x>81</x>
-     <y>143</y>
+     <x>63</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>
@@ -31579,7 +31599,7 @@ font: 11pt bebas kai;
      <y>187</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1633</x>
+     <x>1138</x>
      <y>451</y>
     </hint>
    </hints>
@@ -31591,12 +31611,12 @@ font: 11pt bebas kai;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
+     <x>93</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>238</x>
-     <y>52</y>
+     <x>246</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31627,8 +31647,8 @@ font: 11pt bebas kai;
      <y>635</y>
     </hint>
     <hint type="destinationlabel">
-     <x>81</x>
-     <y>143</y>
+     <x>63</x>
+     <y>125</y>
     </hint>
    </hints>
   </connection>
@@ -31707,7 +31727,7 @@ font: 11pt bebas kai;
      <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>110</x>
+     <x>102</x>
      <y>94</y>
     </hint>
    </hints>
@@ -31767,12 +31787,12 @@ font: 11pt bebas kai;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
+     <x>101</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>306</x>
-     <y>52</y>
+     <x>314</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31847,12 +31867,12 @@ font: 11pt bebas kai;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>106</x>
+     <x>86</x>
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>259</x>
-     <y>52</y>
+     <x>267</x>
+     <y>43</y>
     </hint>
    </hints>
   </connection>
@@ -31899,8 +31919,88 @@ font: 11pt bebas kai;
      <y>134</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1633</x>
+     <x>1138</x>
      <y>451</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>edit_gcode_button</sender>
+   <signal>toggled(bool)</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>EditorReadWrite(bool)</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1144</x>
+     <y>613</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1129</x>
+     <y>561</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>find_replace_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>findDialog()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1261</x>
+     <y>621</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1251</x>
+     <y>532</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>saveFile()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1389</x>
+     <y>617</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1383</x>
+     <y>556</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>save_as_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>saveFileAs()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1477</x>
+     <y>618</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1472</x>
+     <y>566</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>undo_button</sender>
+   <signal>clicked()</signal>
+   <receiver>gcodeEditor_2</receiver>
+   <slot>undo()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>1552</x>
+     <y>625</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>1553</x>
+     <y>551</y>
     </hint>
    </hints>
   </connection>
@@ -31923,18 +32023,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="probetabGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
   <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
  </buttongroups>
 </ui>
