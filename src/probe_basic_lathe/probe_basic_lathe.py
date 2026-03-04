@@ -9,7 +9,7 @@ import linuxcnc
 from PySide6.QtCore import Slot, QRegularExpression, QTimer, QFile
 from PySide6.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette, QAction
 from qtpyvcp.actions.machine_actions import issue_mdi
-from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication
+from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication, QVBoxLayout
 from PySide6.QtWidgets import QWidget
 from PySide6.QtUiTools import QUiLoader
 
@@ -77,6 +77,25 @@ def _load_ui(ui_path, parent):
         raise RuntimeError(f"Unable to load UI file: {ui_path}")
     return loaded
 
+
+def _load_ui_compat(ui_path, parent):
+    loaded = _load_ui(ui_path, parent)
+
+    if parent is None or loaded is None or loaded is parent:
+        return loaded
+
+    if isinstance(parent, QWidget) and isinstance(loaded, QWidget):
+        layout = parent.layout()
+        if layout is None:
+            layout = QVBoxLayout(parent)
+            layout.setContentsMargins(0, 0, 0, 0)
+            layout.setSpacing(0)
+
+        if layout.indexOf(loaded) < 0:
+            layout.addWidget(loaded)
+
+    return loaded
+
 # Add custom fonts
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
@@ -90,6 +109,41 @@ def _resolve_config_path(path_str: str):
     ini_file = os.getenv("INI_FILE_NAME")
     base_dir = os.path.dirname(ini_file) if ini_file else os.getcwd()
     return os.path.abspath(os.path.join(base_dir, expanded))
+
+
+def _import_module_from_path(module_name: str, module_path: str):
+    spec = importlib.util.spec_from_file_location(module_name, module_path)
+    if spec is None or spec.loader is None:
+        raise ImportError(f"Unable to create module spec for {module_name} from {module_path}")
+
+    module = importlib.util.module_from_spec(spec)
+    sys.modules[module_name] = module
+
+    module_dir = os.path.dirname(os.path.abspath(module_path))
+    added_to_path = False
+    if module_dir and module_dir not in sys.path:
+        sys.path.insert(0, module_dir)
+        added_to_path = True
+
+    try:
+        spec.loader.exec_module(module)
+    finally:
+        if added_to_path:
+            try:
+                sys.path.remove(module_dir)
+            except ValueError:
+                pass
+
+    return module
+
+
+def _prepare_config_module(module):
+    if hasattr(module, "_load_ui"):
+        try:
+            module._load_ui = _load_ui_compat
+        except Exception:
+            LOG.debug("Unable to patch module _load_ui for %s", getattr(module, "__name__", module), exc_info=True)
+    return module
 
 class ProbeBasicLathe(VCPMainWindow):
     """Main window class for the ProbeBasic VCP."""
@@ -332,13 +386,10 @@ class ProbeBasicLathe(VCPMainWindow):
                 if not os.path.isdir(os.path.join(user_buttons_path, user_button)):
                     continue
                 module_name = "user_buttons." + os.path.basename(user_buttons_path) + "." + user_button
-                spec = importlib.util.spec_from_file_location(
-                    module_name,
-                    os.path.join(user_buttons_path, user_button, user_button + ".py")
+                module_file = os.path.join(user_buttons_path, user_button, user_button + ".py")
+                self.user_button_modules[module_name] = _prepare_config_module(
+                    _import_module_from_path(module_name, module_file)
                 )
-                self.user_button_modules[module_name] = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = self.user_button_modules[module_name]
-                spec.loader.exec_module(self.user_button_modules[module_name])
 
                 self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
                 layout.addWidget(self.user_buttons[module_name])
@@ -373,10 +424,7 @@ class ProbeBasicLathe(VCPMainWindow):
             dro_py_path = os.path.join(dro_folder_path, dro_py_file)
             if os.path.isfile(dro_py_path):
                 module_name = f"user_dros.{dro_folder}.{dro_py_file[:-3]}"
-                spec = importlib.util.spec_from_file_location(module_name, dro_py_path)
-                module = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = module
-                spec.loader.exec_module(module)
+                module = _prepare_config_module(_import_module_from_path(module_name, dro_py_path))
                 if hasattr(module, "UserDRO"):
                     self.user_dros[module_name] = module.UserDRO()
                     layout.addWidget(self.user_dros[module_name])
@@ -430,10 +478,10 @@ class ProbeBasicLathe(VCPMainWindow):
                     continue
 
                 module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tabs_path
-                spec = importlib.util.spec_from_file_location(module_name, os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py"))
-                self.user_tab_modules[module_name] = importlib.util.module_from_spec(spec)
-                sys.modules[module_name] = self.user_tab_modules[module_name]
-                spec.loader.exec_module(self.user_tab_modules[module_name])
+                module_file = os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py")
+                self.user_tab_modules[module_name] = _prepare_config_module(
+                    _import_module_from_path(module_name, module_file)
+                )
                 self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
                 if self.user_tabs[module_name].property("sidebar"):
                     if sidebar_loaded == False:
