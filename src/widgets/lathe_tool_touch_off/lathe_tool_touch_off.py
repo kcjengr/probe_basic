@@ -1,5 +1,5 @@
 # required packages
-# sudo apt-get install python-pyqt5.qtquick qml-module-qtquick-controls
+# sudo apt-get install python3-pyside6.qtquick qml-module-qtquick-controls
 
 import os
 
@@ -15,8 +15,8 @@ ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 
 # end of Workarround
 
-from qtpy.QtCore import Signal, Slot, QUrl, QObject, QTimer
-from qtpy.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QApplication
+from PySide6.QtCore import Signal, Slot, QUrl, QObject, QTimer
+from PySide6.QtWidgets import QMessageBox, QWidget, QVBoxLayout, QApplication
 from PySide6.QtQuick import QQuickView
 
 from qtpyvcp.plugins import getPlugin

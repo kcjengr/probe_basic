@@ -1,6 +1,6 @@
-from qtpy.QtCore import Qt, QModelIndex
-from qtpy.QtGui import QStandardItemModel
-from qtpy.QtWidgets import QTableView, QStyledItemDelegate
+from PySide6.QtCore import Qt, QModelIndex
+from PySide6.QtGui import QStandardItemModel
+from PySide6.QtWidgets import QTableView, QStyledItemDelegate
 
 from qtpyvcp.ops.drill_ops import DrillOps
 from .drill_widget import DrillWidgetBase

@@ -1,10 +1,9 @@
 import os
 import linuxcnc
-from pyqtgraph import Qt
 
-from qtpy import uic
-from qtpy.QtCore import Qt, Slot, QTimer
-from qtpy.QtWidgets import QWidget, QMessageBox
+from PySide6.QtCore import Qt, Slot, QTimer, QFile, QObject
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QWidget, QMessageBox
 
 from qtpyvcp.utilities import logger
 
@@ -26,6 +25,72 @@ IN_DESIGNER = os.getenv('DESIGNER', False)
 # Defer plugin imports to avoid issues in designer
 STATUS = None
 TOOL_TABLE = None
+
+
+def _load_ui(ui_path, parent):
+    import importlib
+    import xml.etree.ElementTree as ET
+
+    def _register_ui_custom_widgets(loader, path):
+        try:
+            tree = ET.parse(path)
+            root = tree.getroot()
+        except Exception:
+            LOG.exception("Unable to parse UI for custom widget registration: %s", path)
+            return
+
+        customwidgets = root.find('customwidgets')
+        if customwidgets is None:
+            return
+
+        legacy_header_map = {
+            'widgets.int_line_edit': 'widgets.conversational.int_line_edit',
+            'widgets.float_line_edit': 'widgets.conversational.float_line_edit',
+        }
+
+        for customwidget in customwidgets.findall('customwidget'):
+            class_name = customwidget.findtext('class')
+            header = customwidget.findtext('header')
+            if not class_name or not header:
+                continue
+
+            module_path = header.strip()
+            if module_path.endswith('.h'):
+                continue
+
+            candidate_modules = [module_path]
+            mapped = legacy_header_map.get(module_path)
+            if mapped:
+                candidate_modules.append(mapped)
+
+            for candidate in candidate_modules:
+                try:
+                    module = importlib.import_module(candidate)
+                    widget_class = getattr(module, class_name, None)
+                    if widget_class is not None:
+                        loader.registerCustomWidget(widget_class)
+                        break
+                except Exception:
+                    continue
+
+    ui_file = QFile(ui_path)
+    if not ui_file.open(QFile.ReadOnly):
+        raise RuntimeError(f"Unable to open UI file: {ui_path}")
+    try:
+        loader = QUiLoader()
+        _register_ui_custom_widgets(loader, ui_path)
+        loaded = loader.load(ui_file, parent)
+    finally:
+        ui_file.close()
+    if loaded is None:
+        raise RuntimeError(f"Unable to load UI file: {ui_path}")
+
+    for child in loaded.findChildren(QObject):
+        name = child.objectName()
+        if name and not hasattr(parent, name):
+            setattr(parent, name, child)
+
+    return loaded
 
 def _get_status():
     global STATUS
@@ -60,7 +125,7 @@ else:
 class ConversationalBaseWidget(QWidget):
     def __init__(self, parent=None, ui_file=''):
         super(ConversationalBaseWidget, self).__init__(parent)
-        uic.loadUi(os.path.join(os.path.dirname(__file__), ui_file), self)
+        self.ui = _load_ui(os.path.join(os.path.dirname(__file__), ui_file), self)
 
         self._tool_is_valid = False
         self._tool_table = _get_tool_table() if not IN_DESIGNER else None

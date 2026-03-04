@@ -8,9 +8,9 @@ import ctypes.util
 ctypes.CDLL(ctypes.util.find_library("GL"), mode=ctypes.RTLD_GLOBAL)
 # end of workaround
 
-from qtpy.QtCore import Property, Signal, Slot, QUrl, QTimer
-from qtpy.QtGui import QColor
-from qtpy.QtWidgets import QWidget, QVBoxLayout
+from PySide6.QtCore import Property, Signal, Slot, QUrl, QTimer
+from PySide6.QtGui import QColor
+from PySide6.QtWidgets import QWidget, QVBoxLayout
 from PySide6.QtQuick import QQuickView
 
 from qtpyvcp.plugins import getPlugin

@@ -1,8 +1,9 @@
 import os
 import linuxcnc
 
-from qtpy import uic
-from qtpy.QtWidgets import QWidget
+from PySide6.QtCore import QFile
+from PySide6.QtUiTools import QUiLoader
+from PySide6.QtWidgets import QWidget
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
@@ -22,4 +23,14 @@ class Atc(QWidget):
     def __init__(self, parent=None):
         super(Atc, self).__init__(parent)
         ui_file = os.path.splitext(os.path.basename(__file__))[0] + ".ui"
-        uic.loadUi(os.path.join(os.path.dirname(__file__), ui_file), self)
+        ui_path = os.path.join(os.path.dirname(__file__), ui_file)
+        ui_file_handle = QFile(ui_path)
+        if not ui_file_handle.open(QFile.ReadOnly):
+            raise RuntimeError(f"Unable to open UI file: {ui_path}")
+        try:
+            loader = QUiLoader()
+            self.ui = loader.load(ui_file_handle, self)
+        finally:
+            ui_file_handle.close()
+        if self.ui is None:
+            raise RuntimeError(f"Unable to load UI file: {ui_path}")

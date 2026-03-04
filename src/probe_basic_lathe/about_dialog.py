@@ -1,7 +1,7 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from qtpy import QtWidgets
+from PySide6 import QtWidgets
 
 try:
     # Try to get version from package metadata (for installed packages)

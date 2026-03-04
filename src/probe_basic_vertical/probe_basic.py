@@ -2,9 +2,9 @@
 
 import os
 
-from qtpy.QtCore import QTimer
-from qtpy.QtGui import QPalette
-from qtpy.QtWidgets import QApplication
+from PySide6.QtCore import QTimer
+from PySide6.QtGui import QPalette
+from PySide6.QtWidgets import QApplication
 
 from qtpyvcp.utilities import logger
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow

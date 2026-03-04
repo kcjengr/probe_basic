@@ -1,6 +1,6 @@
-from qtpy.QtCore import Property
-from qtpy.QtGui import QDoubleValidator
-from qtpy.QtWidgets import QLineEdit
+from PySide6.QtCore import Property
+from PySide6.QtGui import QDoubleValidator
+from PySide6.QtWidgets import QLineEdit
 
 from qtpyvcp.widgets.input_widgets.line_edit import VCPLineEdit
 

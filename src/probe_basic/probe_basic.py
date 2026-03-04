@@ -7,11 +7,11 @@ import importlib.util
 import linuxcnc
 
 from qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot import VTKBackPlot
-from qtpy.QtCore import Slot, QRegularExpression, Qt, QObject, QTimer
-from qtpy.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette
-from qtpy.QtWidgets import QAbstractButton, QApplication
-from qtpy.QtWidgets import QAction, QWidget
-from qtpy import uic
+from PySide6.QtCore import Slot, QRegularExpression, Qt, QObject, QTimer, QFile
+from PySide6.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette, QAction
+from PySide6.QtWidgets import QAbstractButton, QApplication
+from PySide6.QtWidgets import QWidget
+from PySide6.QtUiTools import QUiLoader
 
 from qtpyvcp import actions
 from qtpyvcp.utilities import logger
@@ -26,6 +26,54 @@ VCP_DIR = os.path.abspath(os.path.dirname(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
 LIGHT_STYLESHEET_FILE = "probe_basic_light.qss"
 DARK_STYLESHEET_FILE = "probe_basic_dark.qss"
+
+
+def _load_ui(ui_path, parent):
+    import importlib
+    import xml.etree.ElementTree as ET
+
+    def _register_ui_custom_widgets(loader, path):
+        try:
+            tree = ET.parse(path)
+            root = tree.getroot()
+        except Exception:
+            LOG.exception("Unable to parse UI for custom widget registration: %s", path)
+            return
+
+        customwidgets = root.find('customwidgets')
+        if customwidgets is None:
+            return
+
+        for customwidget in customwidgets.findall('customwidget'):
+            class_name = customwidget.findtext('class')
+            header = customwidget.findtext('header')
+            if not class_name or not header:
+                continue
+
+            module_path = header.strip()
+            if module_path.endswith('.h'):
+                continue
+
+            try:
+                module = importlib.import_module(module_path)
+                widget_class = getattr(module, class_name, None)
+                if widget_class is not None:
+                    loader.registerCustomWidget(widget_class)
+            except Exception:
+                continue
+
+    ui_file = QFile(ui_path)
+    if not ui_file.open(QFile.ReadOnly):
+        raise RuntimeError(f"Unable to open UI file: {ui_path}")
+    try:
+        loader = QUiLoader()
+        _register_ui_custom_widgets(loader, ui_path)
+        loaded = loader.load(ui_file, parent)
+    finally:
+        ui_file.close()
+    if loaded is None:
+        raise RuntimeError(f"Unable to load UI file: {ui_path}")
+    return loaded
 
 QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
 
@@ -519,8 +567,7 @@ class ProbeBasic(VCPMainWindow):
             offset_ui_path = os.path.join(user_dros_path, dro_folder, offset_ui_file)
             LOG.info(f"[offset_dro] looking for {offset_ui_path}")
             if os.path.isfile(offset_ui_path):
-                offset_widget = QWidget()
-                uic.loadUi(offset_ui_path, offset_widget)
+                offset_widget = _load_ui(offset_ui_path, self)
                 layout.addWidget(offset_widget)
                 LOG.info(f"[offset_dro] added {offset_ui_path}")
                 return  # Only load one offset DRO, then exit
