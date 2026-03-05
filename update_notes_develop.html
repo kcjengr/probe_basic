@@ -1,0 +1,387 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Develop Update Release Notes &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Probe Basic Parameters" href="probe_basic_parameters.html" />
+    <link rel="prev" title="Stable Update Release Notes" href="update_notes_stable.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Develop Update Release Notes</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#february-20-2026-0-6-5-14-develop-new-0-6-6-stable-version-release-notes">February 20, 2026 - 0.6.5-14 Develop + NEW 0.6.6 Stable Version Release Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-updates-for-mill-configurations">Overview of updates for MILL configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#february-5-2026-probe-basic-stable-release-version-0-6-2">February 5, 2026 - Probe Basic Stable Release Version 0.6.2</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#previous-updates-notes">Previous Updates Notes</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-updates-for-lathe-configurations">Overview of updates for LATHE configurations</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#february-20-2026-probe-basic-lathe-master-tool-promotion-feature">February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_offsets_lathe.html">Lathe Tool Offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Develop Update Release Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/update_notes_develop.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="develop-update-release-notes">
+<h1>Develop Update Release Notes<a class="headerlink" href="#develop-update-release-notes" title="Link to this heading"></a></h1>
+<section id="february-20-2026-0-6-5-14-develop-new-0-6-6-stable-version-release-notes">
+<h2>February 20, 2026 - 0.6.5-14 Develop + NEW 0.6.6 Stable Version Release Notes<a class="headerlink" href="#february-20-2026-0-6-5-14-develop-new-0-6-6-stable-version-release-notes" title="Link to this heading"></a></h2>
+<p><strong>MDI Queue / Feedhold Recovery and Cycle Start Resume Fixes</strong></p>
+<p>This session includes stability and workflow fixes for MDI queue execution, feedhold resume behavior, and release-note process updates across Probe Basic and QtPyVCP integration paths.</p>
+<ul class="simple">
+<li><p>MDI history queue handling was hardened to prevent invalid selection/index edge-case failures.</p></li>
+<li><p>Queue pause/resume interaction was improved with clearer state transitions.</p></li>
+<li><p>Feedhold during queued MDI execution can now resume reliably from cycle start in the supported machine-state path.</p></li>
+<li><p>Duplicate normal cycle-start dispatch in Probe Basic mill/lathe handlers was removed so cycle-start behavior is no longer double-invoked.</p></li>
+<li><p>Internal running notes and split stable/develop release-note workflow were introduced to keep release documentation accurate by channel.</p></li>
+</ul>
+<p><strong>Important DRO Update Notice</strong></p>
+<p>User DRO bug fixes were applied to the supplied <cite>user_dro_display</cite> files (axis mapping and zero/offset behavior corrections). Users should replace older DRO UI files in their machine config with the updated files from the latest sim config package to ensure proper functionality.</p>
+</section>
+<section id="overview-of-updates-for-mill-configurations">
+<h2>Overview of updates for MILL configurations<a class="headerlink" href="#overview-of-updates-for-mill-configurations" title="Link to this heading"></a></h2>
+<p>Probe Basic and Probe Basic Lathe have just received major updates that will require users to make some changes to their configurations in order for Probe Basic to properly function. These changes offer a variety of benefits at the cost of some initial configuration editing. Below is a list of changes being rolled out in this update:</p>
+</section>
+<section id="february-5-2026-probe-basic-stable-release-version-0-6-2">
+<h2>February 5, 2026 - Probe Basic Stable Release Version 0.6.2<a class="headerlink" href="#february-5-2026-probe-basic-stable-release-version-0-6-2" title="Link to this heading"></a></h2>
+<p>Probe Basic has had a new stable release to version 0.6.2 in order to update to the latest stable release we have put it on a new repo and the sources list must be updated.  in order to install either the latest 0.6.2 stable or 0.6.2+ develop versions of Probe Basic, please use the ‘Changing &lt;-&gt; Develop Versions’ section of the documents.  you will need to uninstall your current versions of qtpyvcp and probe basic using the doc below and set the new sources list repo location in the sources.list.d/kcjengr.list file.  The doc below will walk you through how to go about this!  Please also see the other important updates below that will require some configuration changes to your existing machine configs in order for Probe Basic to function properly.</p>
+<blockquote>
+<div><p>Changing Stable &lt;-&gt; Develop Versions:</p>
+<blockquote>
+<div><p><a class="reference external" href="https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html">https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html</a></p>
+</div></blockquote>
+</div></blockquote>
+<ul>
+<li><p>Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. The main update comes from using the native LinuxCNC on_abort_command rather than msg or debug in the subroutines. This will allow the user to edit their on_abort.ngc file to best suit their needs. The bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state. Users will need to add the following line to their INI file under the [RS274NGC] section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ON_ABORT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>o&lt;on_abort&gt;<span class="w"> </span>call
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Run from M6 gcode line in a program. You can now easily button press through your program, finding each M6 gcode command line, and select the one from which you would like to run the program by checking the “SET QUE” button to blue (active) and then pressing the cycle start button. This will set the program to run from that M6 tool change line onward. This is useful for long programs where you may want to restart from a specific tool change without having to edit the gcode program file. The button will automatically “uncheck” itself after use to prevent accidental restarts from M6 lines.</p>
+<blockquote>
+<div><img alt="_images/runfromm6.gif" class="align-center" src="_images/runfromm6.gif" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</section>
+<section id="previous-updates-notes">
+<h2>Previous Updates Notes<a class="headerlink" href="#previous-updates-notes" title="Link to this heading"></a></h2>
+<ul>
+<li><p>User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the <cite>user_buttons</cite> folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the <cite>[DISPLAY]</cite> section of the ini:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_BUTTONS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_buttons/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>DRO Displays are now user configurable from the ini file with options for mill configs being xyz, xyza, xyzab, xyzac, xyzbc, xyzabc. A user template has been included with xyzabc DROs for users to easily edit and make changes to suit their machine builds. Using only the DROs required has significantly sped up probe basic where it is not having to track and query multiple hidden DROs as it previously was doing. The jog button display will also update based on the DRO display settings. Users will need to copy the <cite>user_dro_display</cite> folder from the sim config to their machine config and edit the ini file to set the appropriate DROs and jog buttons to display by adding the following lines to the <cite>[DISPLAY]</cite> section of the ini:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_DROS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_dro_display/
+
+<span class="nv">DRO_DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZ<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>JOG axis buttons received a preconfigured addition of xyzbc.</p></li>
+<li><p>Offset table column display now set in the ini file with the following line in <cite>[DISPLAY]</cite> section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OFFSET_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZ<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Tool table columns display now set in the ini file with the following line in <cite>[DISPLAY]</cite> section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">TOOL_TABLE_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZABCDQR<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Keyboard jog settings are now user configurable with the following ini file <cite>[DISPLAY]</cite> entries:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KEYBOARD_JOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+-<span class="w"> </span><span class="nb">true</span><span class="w"> </span>sets<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>active
+-<span class="w"> </span><span class="nb">false</span><span class="w"> </span>turns<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>off
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KEYBOARD_JOG_SAFETY_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+-<span class="w"> </span><span class="nb">true</span><span class="w"> </span>turns<span class="w"> </span>requirement<span class="w"> </span>of<span class="w"> </span>safety<span class="w"> </span>keys<span class="w"> </span>off<span class="w"> </span><span class="k">for</span><span class="w"> </span>KB<span class="w"> </span>jogging
+-<span class="w"> </span><span class="nb">false</span><span class="w"> </span>sets<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>safety<span class="w"> </span>keys<span class="w"> </span>active
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ATC updates: you can now set the desired ATC Tab Display Setting to hide the ATC tab, display carousel ATC, or display rack ATC from the ini <cite>[DISPLAY]</cite> section in the following line:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ATC_TAB_DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+-<span class="w"> </span><span class="m">0</span><span class="w"> </span>sets<span class="w"> </span>the<span class="w"> </span>ATC<span class="w"> </span>tab<span class="w"> </span>hidden
+-<span class="w"> </span><span class="m">1</span><span class="w"> </span>sets<span class="w"> </span>the<span class="w"> </span>ATC<span class="w"> </span>tab<span class="w"> </span>to<span class="w"> </span>display<span class="w"> </span>the<span class="w"> </span>carousel<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ATC
+-<span class="w"> </span><span class="m">2</span><span class="w"> </span>sets<span class="w"> </span>the<span class="w"> </span>ATC<span class="w"> </span>tab<span class="w"> </span>to<span class="w"> </span>display<span class="w"> </span>the<span class="w"> </span>new<span class="w"> </span>rack<span class="w"> </span><span class="nb">type</span><span class="w"> </span>ATC
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>ATC page received a user button widget. Users can now easily customize their required ATC buttons in this widget separate from the main UI so it will not be overwritten during future updates. The <cite>user_atc_buttons</cite> folder is located in the updated sim config folder and will need to be copied to the user’s machine config folder for use. User will need to add the following line to the <cite>[DISPLAY]</cite> section of the ini file to activate it:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_ATC_BUTTONS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_atc_buttons/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>User Tabs adds a main tab and a sidebar tab where the user can fully configure their own required widgets, buttons, line entries, etc., and have the UI file stored safely in their config folder so it will not be overwritten during updates. Add this feature by copying the <cite>user_tabs</cite> from the sim config folder to the user’s machine config folder and add the following lines to the <cite>[DISPLAY]</cite> section of the ini file:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_TABS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_tabs/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Custom config YAML file will require edits or the newly edited version in the sim config will need to be copied over for some of the above features to work. Be sure to do this or you will receive some errors.</p></li>
+<li><p>Probing Routine errors were fixed pertaining to using “hints”. The following files will need to be copied from the sim config subroutines folder to the user’s machine config subroutines folder. Below are the corrected file names for reference:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>-<span class="w"> </span>probe_valley_x.ngc
+-<span class="w"> </span>probe_valley_x_center_start.ngc
+-<span class="w"> </span>probe_valley_y.ngc
+-<span class="w"> </span>probe_valley_y_center_start.ngc
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Subroutine updates: Many other subroutines received important edits. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines.</p></li>
+<li><p>User Convenience settings were also added by request. These include a settings drop-down box to persistently set the active start-up tab that is displayed.</p></li>
+<li><p>The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.</p></li>
+</ul>
+</section>
+<section id="overview-of-updates-for-lathe-configurations">
+<h2>Overview of updates for LATHE configurations<a class="headerlink" href="#overview-of-updates-for-lathe-configurations" title="Link to this heading"></a></h2>
+</section>
+<section id="february-20-2026-probe-basic-lathe-master-tool-promotion-feature">
+<h2>February 20, 2026 - Probe Basic Lathe Master Tool Promotion Feature<a class="headerlink" href="#february-20-2026-probe-basic-lathe-master-tool-promotion-feature" title="Link to this heading"></a></h2>
+<p>Probe Basic Lathe now supports <strong>Master Tool Promotion</strong>, a powerful feature for machines using Master Tool Offset Mode. This allows you to promote any secondary tool to become the new master tool (offsets X0, Z0) while automatically preserving all tool-to-tool spatial relationships.</p>
+<p><strong>Why use Master Tool Promotion?</strong></p>
+<p>When using Master Tool Offset Mode on a lathe, one tool is designated as the “master” with X0/Z0 offsets, and all other tools are measured relative to it. If your master tool needs repair, replacement, or becomes damaged, you would normally need to re-measure all tools in your tool table. With Master Tool Promotion, you can instantly promote any secondary tool to become the new master, and all other tool offsets are automatically recalculated to maintain their physical positions.</p>
+<p><strong>How to use:</strong></p>
+<ol class="arabic simple">
+<li><p>Ensure Master Tool Offset Mode is enabled in your INI file (see machine_config.rst)</p></li>
+<li><p>In the Tool Offsets tab, locate the “Master Tool Number” field</p></li>
+<li><p>Enter the tool number you wish to promote (e.g., change from T1 to T5)</p></li>
+<li><p>Press Enter - a confirmation dialog will appear showing the promotion details</p></li>
+<li><p>Click “Yes” to proceed - all tool offsets are instantly recalculated</p></li>
+<li><p>The promoted tool now has X0/Z0 offsets, all others adjusted accordingly</p></li>
+</ol>
+<p><strong>Example workflow:</strong></p>
+<ul class="simple">
+<li><p>Your master tool (T1) breaks and needs replacement</p></li>
+<li><p>Remove the broken T1 from the turret</p></li>
+<li><p>Promote a secondary tool (e.g., T5) to master: all offsets recalculated instantly</p></li>
+<li><p>Install and measure your new/repaired tool in the T1 position</p></li>
+<li><p>When ready, promote T1 back to master: all offsets are recalculated based on T1’s newly measured position</p></li>
+</ul>
+<p>This feature maintains perfect precision - if you promote between tools without remeasuring (T1→T5→T1), you get exact original offsets with no accumulated error. When remeasuring tools between promotions, all offsets are accurately recalculated to preserve the spatial relationships with the newly measured tool. The tool table is automatically saved with explicit zero values to ensure LinuxCNC compatibility.</p>
+<p><strong>Configuration required:</strong></p>
+<p>Add the following to the <cite>[DISPLAY]</cite> section of your probe_basic_lathe.ini file:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">MASTER_TOOL_OFFSET_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>For detailed information about Master Tool Offset Mode, see the machine_config.rst documentation.</p>
+<p>Probe Basic Lathe received major updates that will require users to make some changes to their configurations in order for Probe Basic Lathe to properly function. The lathe user interface had been lagging pretty far behind and is now brought up to the same level as the mill UI in terms of features and functionality. These changes offer a variety of benefits at the cost of some initial configuration editing. The layout for lathe has changed slightly to accommodate the configurable functionality. Below is a list of changes being rolled out in this update:</p>
+<ul>
+<li><p>Updates to Subroutines have been updated to improve functionality and fix bugs. It is advised to compare the latest subroutine files with your machine config subroutines for any changes, or copy over the latest subroutine folder if you have not made any edits or customizations to your existing subroutines. the main update comes from using the native linuxcnc on_abort_command rather than msg or debug in the subroutines.  This will allow the user to edit their on_abort.ngc file to best suit their needs, the bug that this fixes is that the on_abort.ngc now packaged in the subroutines folder has an M2 at the end which will terminate the program and correct issues with Probe Basic being left in an incorrect state.  Users will need to add the following line to their INI file under the [RS274NGC] section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">ON_ABORT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>o&lt;on_abort&gt;<span class="w"> </span>call
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Tool Post location display (front or back) is now user configurable from the ini file, to display use one of the following lines under the <cite>[DISPLAY]</cite> section of the ini:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>front<span class="w"> </span>tool<span class="w"> </span>post<span class="w"> </span>machines<span class="o">)</span>
+
+<span class="nv">BACK_TOOL_LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">(</span><span class="k">for</span><span class="w"> </span>back<span class="w"> </span>tool<span class="w"> </span>post<span class="w"> </span>machines<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the <cite>user_buttons</cite> folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the <cite>[DISPLAY]</cite> section of the ini:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_BUTTONS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_buttons/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>DRO Displays are now user configurable from the ini file with options for lathe configs being xz, xzc, xyzc. A user template has been included also for custom DRO displays with xyzc DROs for users to easily edit and make changes to suit their machine builds. This also gives users using fewer axes some additional space for customizations specific to their machine right in the main lower panel DRO section. Using only the DROs required has significantly sped up probe basic where it is not having to track and query multiple hidden DROs as it previously was doing. The jog button display will also update based on the DRO display settings. Users will need to copy the <cite>user_dro_display</cite> folder from the sim config to their machine config and edit the ini file to set the appropriate DROs and jog buttons to display by adding the following lines to the <cite>[DISPLAY]</cite> section of the ini:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_DROS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_dro_display/
+
+<span class="nv">DRO_DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XZ<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>JOG axis buttons received a preconfigured addition of xyzc.</p></li>
+<li><p>Offset table column display now set in the ini file with the following line in <cite>[DISPLAY]</cite> section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">OFFSET_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XZ<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Tool table columns display now set in the ini file with the following line in <cite>[DISPLAY]</cite> section:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">TOOL_TABLE_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TXYZIJDQR<span class="w"> </span><span class="o">(</span>or<span class="w"> </span>desired<span class="w"> </span>configuration<span class="o">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Keyboard jog setting for lathe now uses arrows for X and Z and is now user configurable with the following ini file <cite>[DISPLAY]</cite> entries:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KEYBOARD_JOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+-<span class="w"> </span><span class="nb">true</span><span class="w"> </span>sets<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>active
+-<span class="w"> </span><span class="nb">false</span><span class="w"> </span>turns<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>off
+</pre></div>
+</div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">KEYBOARD_JOG_SAFETY_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+-<span class="w"> </span><span class="nb">true</span><span class="w"> </span>turns<span class="w"> </span>requirement<span class="w"> </span>of<span class="w"> </span>safety<span class="w"> </span>keys<span class="w"> </span>off<span class="w"> </span><span class="k">for</span><span class="w"> </span>KB<span class="w"> </span>jogging
+-<span class="w"> </span><span class="nb">false</span><span class="w"> </span>sets<span class="w"> </span>KB<span class="w"> </span>jog<span class="w"> </span>safety<span class="w"> </span>keys<span class="w"> </span>active
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>User Tabs adds a main tab and a sidebar tab where the user can fully configure their own required widgets, buttons, line entries, etc., and have the UI file stored safely in their config folder so it will not be overwritten during updates. Add this feature by copying the <cite>user_tabs</cite> from the sim config folder to the user’s machine config folder and add the following lines to the <cite>[DISPLAY]</cite> section of the ini file:</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">USER_TABS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_tabs/
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>Custom config YAML file will require edits or the newly edited version in the sim config will need to be copied over for some of the above features to work. Be sure to do this or you will receive some errors.</p></li>
+<li><p>User Convenience settings were also added by request, these are a settings drop down box to set persistently the active start up tab that is displayed.</p></li>
+<li><p>The File Tab now has buttons to hide or show the USB file manager on the left side, the setting is remembered and persistent through restarts.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="update_notes_stable.html" class="btn btn-neutral float-left" title="Stable Update Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="probe_basic_parameters.html" class="btn btn-neutral float-right" title="Probe Basic Parameters" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

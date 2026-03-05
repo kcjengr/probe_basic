@@ -1,0 +1,510 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Configuration (INI, HAL, Files) &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=03e43079" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Carousel ATC Setup" href="atc_setup.html" />
+    <link rel="prev" title="Probe Basic Parameters" href="probe_basic_parameters.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Installation:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_stable_install.html">Probe Basic APT Stable Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_apt_develop_install.html">Probe Basic APT Develop Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_stable_develop_change.html">Probe Basic Changing Stable &lt;-&gt; Develop Versions</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_deb_install.html">Probe Basic deb Install</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_dev_install.html">Probe Basic Development Installation</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Update Release Notes:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_stable.html">Stable Update Release Notes</a></li>
+<li class="toctree-l1"><a class="reference internal" href="update_notes_develop.html">Develop Update Release Notes</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Configuration:</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Machine Configuration (INI, HAL, Files)</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#creating-a-working-machine-configuration-for-probe-basic">Creating a working Machine Configuration for Probe Basic</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#step-1-create-a-basic-configuration">Step 1: Create a basic configuration</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-2-copy-required-files">Step 2: Copy required files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-3-edit-ini-files">Step 3: Edit INI files</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-4-modify-post-gui-hal-file">Step 4: Modify Post Gui Hal File</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#step-5-modify-hal-file">Step 5: Modify HAL file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#launching-probe-basic">Launching Probe Basic</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Interface:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="mill_interface.html">Mill</a></li>
+<li class="toctree-l1"><a class="reference internal" href="lathe_interface.html">Lathe</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_offsets_lathe.html">Lathe Tool Offsets</a></li>
+<li class="toctree-l1"><a class="reference internal" href="probing.html">Probing</a></li>
+<li class="toctree-l1"><a class="reference internal" href="tool_length_setter.html">Tool Length Setter</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Extending:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="user_tabs.html">User Tabs</a></li>
+<li class="toctree-l1"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Machine Configuration (INI, HAL, Files)</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/machine_config.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-configuration-ini-hal-files">
+<h1>Machine Configuration (INI, HAL, Files)<a class="headerlink" href="#machine-configuration-ini-hal-files" title="Link to this heading"></a></h1>
+<section id="creating-a-working-machine-configuration-for-probe-basic">
+<h2>Creating a working Machine Configuration for Probe Basic<a class="headerlink" href="#creating-a-working-machine-configuration-for-probe-basic" title="Link to this heading"></a></h2>
+<blockquote>
+<div><p>Probe Basic uses some different methods to offer its feature-rich user experience, which requires customized files and settings inside the HAL and INI files to function properly. Below is a guide to help create a working machine configuration for Probe Basic. This guide assumes a basic installation with manual tool changes. A future document will be available for more complex configurations with ATC and Coolant Cannon functionality.</p>
+</div></blockquote>
+<section id="step-1-create-a-basic-configuration">
+<h3>Step 1: Create a basic configuration<a class="headerlink" href="#step-1-create-a-basic-configuration" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Create a configuration for your machine using Pncconf or mesact/mesact2 from the LinuxCNC menu in the applications drop-down in the upper menu bar. In this example, we are using Pncconf.</p></li>
+<li><p>It is Recommended to use the Axis GUI display for this initial build.</p></li>
+<li><p>Have your machine’s wiring schematic premade to make filling in the required information fast, easy, and accurate in Pncconf.</p></li>
+<li><p>After completing the Pncconf configuration builder and creating a new machine configuration saved in the LinuxCNC config directory, start LinuxCNC using your new config to verify there are no errors.</p></li>
+<li><p>Test the machine to verify the base functionality is correct (e.g., jogging, spindle function, axis motion).</p></li>
+<li><p>Once completed and found to function correctly, proceed to step 2.</p></li>
+</ol>
+</div></blockquote>
+</section>
+<section id="step-2-copy-required-files">
+<h3>Step 2: Copy required files<a class="headerlink" href="#step-2-copy-required-files" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>In the LinuxCNC config folder, locate your new config folder and the “probe_basic_machine_config_setup_files” folder.</p></li>
+<li><p>Open two folder windows on the desktop: the new Pncconf folder created for your machine and the probe_basic_machine_config_setup_files folder.</p></li>
+<li><p>Clean up the Pncconf folder by removing unneeded files (see images below for reference).</p></li>
+<li><p>Copy the required files from the probe_basic_machine_config_setup_files folder to the Pncconf config folder.</p></li>
+</ol>
+<p><strong>*the latest DEVELOP version requires ALL folders and files to be copied over (newly added files may not be shown in the images below)!*</strong></p>
+<p><strong>As built pncconfig folder</strong></p>
+<img alt="_images/pb_instruction_1.png" class="align-center" src="_images/pb_instruction_1.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Unneeded pncconfig files highlighted</strong></p>
+<img alt="_images/pb_instruction_2.png" class="align-center" src="_images/pb_instruction_2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Cleaned up pncconfig folder</strong></p>
+<img alt="_images/pb_instruction_3.png" class="align-center" src="_images/pb_instruction_3.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Files to be Copied from probe_basic_machine_config_setup_files folder</strong></p>
+<img alt="_images/pb_instruction_4_2.png" class="align-center" src="_images/pb_instruction_4_2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<p><strong>Files Copied to pncconfig folder</strong></p>
+<img alt="Files Copied to pncconfig folder" class="align-center" src="_images/pb_instruction_5_2.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</section>
+<section id="step-3-edit-ini-files">
+<h3>Step 3: Edit INI files<a class="headerlink" href="#step-3-edit-ini-files" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Open the Pncconf “my_LinuxCNC_machine.ini” file side by side with the supplied “probe_basic_required_ini_items.ini” file in a text editor.</p></li>
+<li><p>Integrate the lines from “probe_basic_required_ini_items.ini” into your existing file:
+- If a line is present in your machine file, use the Probe Basic settings for that line.
+- If a line is not in your machine file, copy it to the appropriate section in “my_LinuxCNC_machine.ini”.</p></li>
+<li><p>Note that only ONE postgui HAL file can be called. Add any additional items to the existing probe_basic_postgui.hal file.</p></li>
+<li><p>Save the file and delete the “probe_basic_required_ini_items.ini” file from the folder.</p></li>
+</ol>
+<p><strong>Required ini file items for Probe Basic</strong></p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>DISPLAY<span class="o">]</span>
+<span class="nv">DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>probe_basic
+<span class="c1">#  This sets the display to use the probe basic interface</span>
+
+<span class="nv">OPEN_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>~/linuxcnc/nc_files/pb_examples/blank.ngc
+<span class="c1">#  This sets the default file to open when starting probe basic</span>
+
+<span class="nv">CONFIG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>custom_config.yml
+<span class="c1">#  This sets the custom config file to use for probe basic</span>
+<span class="c1">#  and is used to set the custom config settings for probe basic</span>
+<span class="c1">#  or to add persisten widget settings that users add to the</span>
+<span class="c1">#  interface in any of the user tabs or user button customizable</span>
+<span class="c1">#  ui files.</span>
+
+<span class="c1">#  If Lathe configuration is used, choose only one the following settings.</span>
+<span class="nv">LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="c1">#  This sets the lathe mode to on, if your machine is a lathe</span>
+<span class="c1">#  with front tool post setting active for correct backplotter</span>
+<span class="c1">#  and x axis jog key functionality.</span>
+
+<span class="nv">BACK_TOOL_LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="c1">#  This sets the lathe back tool post setting to on, if your machine</span>
+<span class="c1">#  has a back tool post, this will set the backplotter and x axis jog</span>
+<span class="c1">#  key functionality to use the back tool post for lathe machines.</span>
+
+<span class="nv">MASTER_TOOL_OFFSET_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="c1">#  Lathe Only: Enables Master Tool Offset Mode for tool management.</span>
+<span class="c1">#  In this mode, one tool is designated as the &quot;master&quot; tool with X0/Z0</span>
+<span class="c1">#  offsets, and all other tools are measured and stored relative to the</span>
+<span class="c1">#  master tool rather than the machine coordinate system. This provides</span>
+<span class="c1">#  several benefits:</span>
+<span class="c1">#    * Simplified tool measurement workflow (measure relative to known tool)</span>
+<span class="c1">#    * Ability to change master tool assignment without remeasuring all tools</span>
+<span class="c1">#    * Master Tool Promotion: instantly promote any tool to master while</span>
+<span class="c1">#      preserving all tool-to-tool spatial relationships</span>
+<span class="c1">#  When enabled, use the touch_off_x_mt.ngc and touch_off_z_mt.ngc</span>
+<span class="c1">#  subroutines for tool measurement, and access the Master Tool Promotion</span>
+<span class="c1">#  feature from the &quot;Master Tool Number&quot; field in the Tool Offsets tab.</span>
+<span class="c1">#  Set to true to enable, false or omit to use standard LinuxCNC tool offsets.</span>
+
+<span class="nv">MAX_FEED_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>.000000
+<span class="c1">#  This sets the maximum feed override for the feed override slider</span>
+
+<span class="nv">MAX_SPINDLE_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>.000000
+<span class="c1">#  This sets the maximum spindle override for the spindle override slider</span>
+
+<span class="nv">MIN_SPINDLE_OVERRIDE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.500000
+<span class="c1">#  This sets the minimum spindle override for the spindle override slider</span>
+<span class="c1">#  this is safest not set to zero to prevent spindle damage</span>
+
+<span class="nv">INTRO_GRAPHIC</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>pbsplash.png
+<span class="nv">INTRO_TIME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+<span class="c1">#  These settings set the splash screen graphic and</span>
+<span class="c1">#  the time in seconds to display it during startup.</span>
+
+<span class="nv">INCREMENTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>JOG<span class="w"> </span>.01in<span class="w"> </span>.001in<span class="w"> </span>.0001in
+<span class="c1">#  The recommended increments setting is</span>
+<span class="c1">#  JOG + 3 Increment Settings for best display</span>
+<span class="c1">#  appearance in the interface without button</span>
+<span class="c1">#  spacing becoming a problem.</span>
+
+<span class="nv">USER_TABS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_tabs/
+<span class="c1">#  This sets the path for the user tabs</span>
+<span class="c1">#  a main user tab and a sidebar user tab</span>
+<span class="c1">#  can be created in the user_tabs folder</span>
+<span class="c1">#  these tabs can be customized for adding</span>
+<span class="c1">#  any features or widgets from qtpyvcp</span>
+<span class="c1">#  in QT Designer and will not be overwritten</span>
+<span class="c1">#  during updates to probe basic.</span>
+
+<span class="nv">USER_BUTTONS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_buttons/
+<span class="c1">#  This sets the path for the user buttons to be</span>
+<span class="c1">#  loaded from the USER_BUTTONS folder, this ui file</span>
+<span class="c1">#  can be edited for customized button display in the</span>
+<span class="c1">#  lower left section of the main screen and the ui file</span>
+<span class="c1">#  will not be overwritten on update.</span>
+
+<span class="nv">USER_DROS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_dro_display/
+<span class="c1">#  This sets the poath for the dro sub ui files</span>
+<span class="c1">#  to be loaded from the DRO_DISPLAY setting below</span>
+
+<span class="nv">DRO_DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZ
+<span class="c1">#  This setting sets the Axes to display in the DRO</span>
+<span class="c1">#  Options for mill are:</span>
+<span class="c1">#      XYZ</span>
+<span class="c1">#      XYZA</span>
+<span class="c1">#      XYZAB</span>
+<span class="c1">#      XYZAC</span>
+<span class="c1">#      XYZBC</span>
+<span class="c1">#      USER (which contains XYZABC, and can be edited or customized)</span>
+<span class="c1">#  Options for lathe are:</span>
+<span class="c1">#      XZ</span>
+<span class="c1">#      XZC</span>
+<span class="c1">#      XYZC</span>
+<span class="c1">#      USER (which contains XYZABC, and can be edited or customized)</span>
+
+<span class="nv">GEOMETRY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZ
+<span class="c1">#  This setting is used by the backplotter to set axes translation</span>
+<span class="c1">#  and should match your machine configuration axes.</span>
+
+<span class="nv">OFFSET_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>XYZ
+<span class="c1">#  This setting sets the columns to display in the Offsets Table</span>
+<span class="c1">#  Typical settings for mill are: XYZR</span>
+<span class="c1">#  Typical settings for lathe are: XZ</span>
+<span class="c1">#  Options are:</span>
+<span class="c1">#      X = X Offset</span>
+<span class="c1">#      Y = Y Offset</span>
+<span class="c1">#      Z = Z Offset</span>
+<span class="c1">#      A = A Offset</span>
+<span class="c1">#      B = B Offset</span>
+<span class="c1">#      C = C Offset</span>
+<span class="c1">#      U = U Offset</span>
+<span class="c1">#      V = V Offset</span>
+<span class="c1">#      W = W Offset</span>
+<span class="c1">#      R = Rotation Offset</span>
+
+<span class="nv">TOOL_TABLE_COLUMNS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>TZDR
+<span class="c1">#  This setting sets the columns to display in the tool table</span>
+<span class="c1">#  Typical settings for mill are: TZDR</span>
+<span class="c1">#  Typical settings for lathe are: TXZIJDQR</span>
+<span class="c1">#  Options are:</span>
+<span class="c1">#      T = Tool Number</span>
+<span class="c1">#      P = Pocket Number</span>
+<span class="c1">#      X = Tool X Offset</span>
+<span class="c1">#      Y = Tool Y Offset</span>
+<span class="c1">#      Z = Tool Z Offset</span>
+<span class="c1">#      A = Tool A Offset</span>
+<span class="c1">#      B = Tool B Offset</span>
+<span class="c1">#      C = Tool C Offset</span>
+<span class="c1">#      U = Tool U Offset</span>
+<span class="c1">#      V = Tool V Offset</span>
+<span class="c1">#      W = Tool W Offset</span>
+<span class="c1">#      D = Tool Diameter Offset</span>
+<span class="c1">#      I = Front Angle (Lathe Only)</span>
+<span class="c1">#      J = Back Angle (Lathe Only)</span>
+<span class="c1">#      Q = Tool Orientation (Lathe Only)</span>
+<span class="c1">#      R = Remark or Tool Description</span>
+
+<span class="nv">KEYBOARD_JOG</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="c1">#  true =  keyboard jogging turned on</span>
+<span class="c1">#          defaults to keyboard jog safty active requiring ctrl+jog key</span>
+<span class="c1">#          ctrl+jog key speed adheres to config jog speed and jog speed slider</span>
+<span class="c1">#          ctrl+shift+jog key jogs at max linear velocity rapid speed</span>
+<span class="c1">#  false = keyboard jogging turned off</span>
+
+<span class="nv">KEYBOARD_JOG_SAFETY_OFF</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
+<span class="c1">#  true =  keyboard jog safty off, only jog key is needed for motion</span>
+<span class="c1">#          jog key speed adheres to config jog speed setting and jog speed slider</span>
+<span class="c1">#          shift+jog key jogs at max linear velocity rapid speed</span>
+<span class="c1">#  false = keyboard jog safty activeon</span>
+
+<span class="nv">ATC_TAB_DISPLAY</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>
+<span class="c1">#  ATC tab display options</span>
+<span class="c1">#      0 = Hide atc tab</span>
+<span class="c1">#      1 = Carousel atc display</span>
+<span class="c1">#      2 = Rack atc display</span>
+
+<span class="nv">USER_ATC_BUTTONS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>user_atc_buttons/
+<span class="c1">#  This can be commented out if not using ATC</span>
+<span class="c1">#  This sets the path for the user atc buttons to be</span>
+<span class="c1">#  loaded from the USER_ATC_BUTTONS folder, this ui file</span>
+<span class="c1">#  can be edited for customized button display in the</span>
+<span class="c1">#  MANUAL ATC tab in the ATC tab, the ui file will reside</span>
+<span class="c1">#  in the usrs config folder</span>
+
+<span class="c1">#  Non ATC machines use the following RS274NGC section.</span>
+<span class="o">[</span>RS274NGC<span class="o">]</span>
+<span class="nv">RS274NGC_STARTUP_CODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>F10<span class="w"> </span>S300<span class="w"> </span>G20<span class="w"> </span>G17<span class="w"> </span>G40<span class="w"> </span>G49<span class="w"> </span>G54<span class="w"> </span>G64<span class="w"> </span>P.001<span class="w"> </span>G80<span class="w"> </span>G90<span class="w"> </span>G91.1<span class="w"> </span>G92.1<span class="w"> </span>G94<span class="w"> </span>G97<span class="w"> </span>G98
+<span class="nv">PARAMETER_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>probe_basic.var
+<span class="nv">OWORD_NARGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">NO_DOWNCASE_OWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">SUBROUTINE_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>subroutines
+<span class="nv">ON_ABORT_COMMAND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>O&lt;on_abort&gt;<span class="w"> </span>CALL
+
+<span class="c1">#  ATC machines use the following PYTHON and RS274NGC section.</span>
+
+<span class="o">[</span>PYTHON<span class="o">]</span>
+<span class="nv">TOPLEVEL</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>./python/toplevel.py
+<span class="nv">PATH_APPEND</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>./python/
+
+<span class="o">[</span>RS274NGC<span class="o">]</span>
+<span class="nv">RS274NGC_STARTUP_CODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>F10<span class="w"> </span>S300<span class="w"> </span>G20<span class="w"> </span>G17<span class="w"> </span>G40<span class="w"> </span>G49<span class="w"> </span>G54<span class="w"> </span>G64<span class="w"> </span>P0.001<span class="w"> </span>G80<span class="w"> </span>G90<span class="w"> </span>G91.1<span class="w"> </span>G92.1<span class="w"> </span>G94<span class="w"> </span>G97<span class="w"> </span>G98
+<span class="nv">PARAMETER_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>probe_basic.var
+<span class="nv">OWORD_NARGS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">NO_DOWNCASE_OWORD</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<span class="nv">SUBROUTINE_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>subroutines
+<span class="nv">REMAP</span><span class="o">=</span>M6<span class="w">  </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">prolog</span><span class="o">=</span>change_prolog<span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>toolchange<span class="w"> </span><span class="nv">epilog</span><span class="o">=</span>change_epilog
+<span class="nv">REMAP</span><span class="o">=</span>M10<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">argspec</span><span class="o">=</span>P<span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m10
+<span class="nv">REMAP</span><span class="o">=</span>M11<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">argspec</span><span class="o">=</span>p<span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m11
+<span class="nv">REMAP</span><span class="o">=</span>M12<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">argspec</span><span class="o">=</span>p<span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m12
+<span class="nv">REMAP</span><span class="o">=</span>M13<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m13
+<span class="nv">REMAP</span><span class="o">=</span>M21<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m21
+<span class="nv">REMAP</span><span class="o">=</span>M22<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m22
+<span class="nv">REMAP</span><span class="o">=</span>M23<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m23
+<span class="nv">REMAP</span><span class="o">=</span>M24<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m24
+<span class="nv">REMAP</span><span class="o">=</span>M25<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m25
+<span class="nv">REMAP</span><span class="o">=</span>M26<span class="w"> </span><span class="nv">modalgroup</span><span class="o">=</span><span class="m">6</span><span class="w"> </span><span class="nv">ngc</span><span class="o">=</span>m26
+
+<span class="o">[</span>HAL<span class="o">]</span>
+<span class="nv">HALUI</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>halui
+<span class="nv">POSTGUI_HALFILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>probe_basic_postgui.hal
+<span class="nv">TWOPASS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>on
+
+<span class="o">[</span>TRAJ<span class="o">]</span>
+<span class="nv">AXES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">3</span>
+<span class="nv">COORDINATES</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>X<span class="w"> </span>Y<span class="w"> </span>Z
+</pre></div>
+</div>
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="step-4-modify-post-gui-hal-file">
+<h3>Step 4: Modify Post Gui Hal File<a class="headerlink" href="#step-4-modify-post-gui-hal-file" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>Modify the following lines by commenting them out, they are used for testing in probe basic sim only and will error in the real machine configs.  the spindle feedback line can be used if it is setup in the main hal and the hardware is on the machine to provide a spindle speed input to linuxcnc.</p>
+<blockquote>
+<div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>loadrt<span class="w"> </span><span class="nb">time</span>
+loadrt<span class="w"> </span>not
+
+addf<span class="w"> </span>time.0<span class="w"> </span>servo-thread
+addf<span class="w"> </span>not.0<span class="w"> </span>servo-thread
+net<span class="w"> </span>prog-running<span class="w"> </span>not.0.in<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span>halui.program.is-idle
+net<span class="w"> </span>prog-paused<span class="w"> </span>halui.program.is-paused<span class="w"> </span><span class="o">=</span>&gt;<span class="w"> </span>time.0.pause
+net<span class="w"> </span>cycle-timer<span class="w"> </span>time.0.start<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span>not.0.out
+net<span class="w"> </span>cycle-seconds<span class="w"> </span>qtpyvcp.timerseconds.in<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span>time.0.seconds
+net<span class="w"> </span>cycle-minutes<span class="w"> </span>qtpyvcp.timerminutes.in<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span>time.0.minutes
+net<span class="w"> </span>cycle-hours<span class="w"> </span>qtpyvcp.timerhours.in<span class="w"> </span>&lt;<span class="o">=</span><span class="w"> </span>time.0.hours
+<span class="c1"># *** Time items required for Probe Basic to run ***</span>
+
+<span class="c1">#  ---manual tool change signals---</span>
+net<span class="w"> </span>tool-change-request<span class="w">     </span><span class="o">=</span>&gt;<span class="w">  </span>qtpyvcp_manualtoolchange.change
+net<span class="w"> </span>tool-change-confirmed<span class="w">   </span>&lt;<span class="o">=</span><span class="w">  </span>qtpyvcp_manualtoolchange.changed
+net<span class="w"> </span>tool-number<span class="w">             </span><span class="o">=</span>&gt;<span class="w">  </span>qtpyvcp_manualtoolchange.number
+
+<span class="c1"># *** Probe graphic simulation trigger push probe tip ***</span>
+<span class="c1"># net probe-in  =&gt;  qtpyvcp.probe-in.out     &lt;----comment this line out&gt;</span>
+net<span class="w"> </span>probe-in<span class="w">  </span>&lt;<span class="o">=</span><span class="w">  </span>qtpyvcp.probe-led.on
+
+<span class="c1"># *** Set line below for actual spindle readout from your hal file ***</span>
+<span class="c1"># net spindle-rpm-filtered scale_to_rpm.out  =&gt;  qtpyvcp.spindle-encoder-rpm.in   &lt;----comment this line out or connect to your rpm net pin&gt;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</div></blockquote>
+</section>
+<section id="step-5-modify-hal-file">
+<h3>Step 5: Modify HAL file<a class="headerlink" href="#step-5-modify-hal-file" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><p>Add digital and analog IO to the HAL file by modifying the following line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loadrt</span> <span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">EMCMOT</span> <span class="n">servo_period_nsec</span><span class="o">=</span><span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">SERVO_PERIOD</span> <span class="n">num_joints</span><span class="o">=</span><span class="p">[</span><span class="n">KINS</span><span class="p">]</span><span class="n">JOINTS</span>
+</pre></div>
+</div>
+<p>Add this to the end of the line:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">num_dio</span><span class="o">=</span><span class="mi">6</span> <span class="n">num_aio</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+<p>The finished edit should look like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loadrt</span> <span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">EMCMOT</span> <span class="n">servo_period_nsec</span><span class="o">=</span><span class="p">[</span><span class="n">EMCMOT</span><span class="p">]</span><span class="n">SERVO_PERIOD</span> <span class="n">num_joints</span><span class="o">=</span><span class="p">[</span><span class="n">KINS</span><span class="p">]</span><span class="n">JOINTS</span> <span class="n">num_dio</span><span class="o">=</span><span class="mi">6</span> <span class="n">num_aio</span><span class="o">=</span><span class="mi">3</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<img alt="HAL file modification" class="align-center" src="_images/pb_instruction_8.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+<ol class="arabic simple" start="2">
+<li><p>Remove the red highlighted manual tool change dialog section from the bottom of the hal file as shown in the image below.  Probe basic uses its own built in dialog for manual tool changes which give the user better tool information and matches the ui visual theme more appropriately.</p></li>
+</ol>
+<img alt="Tool change section to remove" class="align-center" src="_images/pb_instruction_9.png" />
+<div class="line-block">
+<div class="line"><br /></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="launching-probe-basic">
+<h2>Launching Probe Basic<a class="headerlink" href="#launching-probe-basic" title="Link to this heading"></a></h2>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>Under the CNC section of the drop-down applications menu, find your machine configuration and select it to launch.</p></li>
+<li><p>Check the box at the bottom of the launch window to create a desktop icon for easier starts.</p></li>
+<li><p>To set the Probe Basic icon:
+- Right-click the desktop launcher and select “edit launcher”
+- Click the current icon image, this will open the icon folder
+- Find and select the icon named “probe_basic_mill”</p></li>
+</ol>
+<p>You should now be ready to use Probe Basic with your machine configuration.</p>
+</div></blockquote>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="probe_basic_parameters.html" class="btn btn-neutral float-left" title="Probe Basic Parameters" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="atc_setup.html" class="btn btn-neutral float-right" title="Carousel ATC Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
