@@ -547,14 +547,15 @@ class ProbeBasicLathe(VCPMainWindow):
     def extract_m6_line_numbers(self):
         """Extract line numbers containing M6 commands from the loaded G-code file."""
         m6_lines = []
-        if not hasattr(self, 'gcodetextedit_2'):
-            LOG.warning("gcodetextedit_2 not found")
+        editor = self._resolve_m6_editor()
+        if editor is None:
+            LOG.warning("No G-code editor widget found for M6 search")
             return m6_lines
         
         try:
-            text = self.gcodetextedit_2.toPlainText()
+            text = editor.toPlainText()
             if not text:
-                LOG.warning("No G-code loaded in gcodetextedit_2")
+                LOG.warning("No G-code loaded in editor")
                 return m6_lines
             
             for line_num, line in enumerate(text.split('\n'), start=1):
@@ -584,7 +585,7 @@ class ProbeBasicLathe(VCPMainWindow):
         self.run_from_line_Num.setText(str(line_num))
         LOG.info(f"M6 found at line {line_num}")
         
-        # Scroll and highlight the M6 line in gcodetextedit_2
+        # Scroll and highlight the M6 line in the active G-code editor.
         self.scroll_to_line_in_gcode(line_num)
         
         # Advance to next M6 for next button click (wrap around at end)
@@ -592,12 +593,13 @@ class ProbeBasicLathe(VCPMainWindow):
 
     def scroll_to_line_in_gcode(self, line_num):
         """Scroll and highlight a specific line in the G-code text editor."""
-        if not hasattr(self, 'gcodetextedit_2'):
+        editor = self._resolve_m6_editor()
+        if editor is None:
             return
         
         try:
             # Get the text cursor
-            cursor = self.gcodetextedit_2.textCursor()
+            cursor = editor.textCursor()
             
             # Move cursor to the beginning of the desired line
             # line_num is 1-based, so we need line_num - 1 blocks
@@ -610,14 +612,24 @@ class ProbeBasicLathe(VCPMainWindow):
             cursor.movePosition(QTextCursor.EndOfLine, QTextCursor.KeepAnchor)
             
             # Set the cursor (this will scroll the view to show the line)
-            self.gcodetextedit_2.setTextCursor(cursor)
+            editor.setTextCursor(cursor)
             
             # Ensure the line is visible in the center of the view
-            self.gcodetextedit_2.ensureCursorVisible()
+            editor.ensureCursorVisible()
             
             LOG.info(f"Scrolled to M6 line {line_num}")
         except Exception as e:
             LOG.error(f"Error scrolling to line {line_num}: {e}")
+
+    def _resolve_m6_editor(self):
+        """Return the primary editor used by the FIND M6 workflow."""
+        # Keep legacy fallback last for older UI variants that may still
+        # expose the old object name.
+        for name in ('gcodeEditor', 'gcodeEditor_2', 'gcodetextedit_2'):
+            editor = getattr(self, name, None)
+            if editor is not None:
+                return editor
+        return None
 
     @Slot()
     def _cycle_start_clicked(self):
