@@ -245,7 +245,7 @@ bottom-margin: 0px;
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>1</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <property name="maximumSize">
@@ -4488,7 +4488,7 @@ QPushButton:checked {
                 </widget>
                </item>
                <item>
-                <widget class="VTKBackPlot" name="vtkbackplot" native="true">
+                <widget class="VTKBackPlot" name="vtkbackplot">
                  <property name="sizePolicy">
                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
                    <horstretch>0</horstretch>
@@ -7323,7 +7323,7 @@ padding-left: 5px;
                    <number>0</number>
                   </property>
                   <item>
-                   <widget class="LatheToolTouchOff" name="lathetooltouchoff" native="true">
+                   <widget class="LatheToolTouchOff" name="lathetooltouchoff">
                     <property name="sizePolicy">
                      <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                       <horstretch>0</horstretch>
@@ -7597,6 +7597,9 @@ padding-right: 10px;
                                <width>16777215</width>
                                <height>40</height>
                               </size>
+                             </property>
+                             <property name="focusPolicy">
+                              <enum>Qt::FocusPolicy::ClickFocus</enum>
                              </property>
                              <property name="alignment">
                               <set>Qt::AlignmentFlag::AlignCenter</set>
@@ -29815,6 +29818,12 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
   </customwidget>
   <customwidget>
+   <class>VTKBackPlot</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.designer_plugins</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>NotificationWidget</class>
    <extends>QWidget</extends>
    <header>qtpyvcp.widgets.display_widgets.notification_widget</header>
@@ -29900,15 +29909,14 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
   <customwidget>
+   <class>LatheToolTouchOff</class>
+   <extends>QWidget</extends>
+   <header>widgets</header>
+  </customwidget>
+  <customwidget>
    <class>VCPMainWindow</class>
    <extends>QMainWindow</extends>
    <header>qtpyvcp.widgets.form_widgets.main_window</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>VTKBackPlot</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.vtk_backplot.vtk_backplot</header>
    <container>1</container>
   </customwidget>
   <customwidget>
@@ -29921,11 +29929,6 @@ font: 11pt bebas kai;
    <extends>QStackedWidget</extends>
    <header>qtpyvcp.widgets.containers.stack</header>
    <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>LatheToolTouchOff</class>
-   <extends>QWidget</extends>
-   <header>widgets.lathe_tool_touch_off.lathe_tool_touch_off</header>
   </customwidget>
  </customwidgets>
  <resources>
@@ -30981,12 +30984,12 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
+  <buttongroup name="lathecontrolpointbtngroup"/>
   <buttongroup name="rpmcontrolbtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="feedtypebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
  </buttongroups>
 </ui>
