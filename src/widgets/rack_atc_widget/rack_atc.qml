@@ -86,6 +86,8 @@ Rectangle {
             delegate: Item {
                 id: pocket_item
                 property string pocket_num: index + 1
+                property alias pocketRect: pocket_rectangle
+                property alias pocketLabel: pocket_text
 
                 Image {
                     id: fork_image
@@ -145,6 +147,8 @@ Rectangle {
                 
                 property int tool_num: index+1
                 state: "visible"
+                property alias toolRect: tool_rectangle
+                property alias toolLabel: tool_text
 
                 Rectangle {
                     id: tool_rectangle
@@ -225,6 +229,17 @@ Rectangle {
         function onShowToolSig(pocket, tool_num) {
             tool_slot.itemAt(pocket - 1).tool_num = tool_num;
             tool_slot.itemAt(pocket - 1).state = "visible";
+        }
+
+        function onHighlightPocketSig(pocket, highlight) {
+            var item = tool_slot.itemAt(pocket - 1);
+            if (!item) {
+                return;
+            }
+
+            item.toolRect.color = highlight ? "#2e7d32" : "white";
+            item.toolRect.border.color = highlight ? "#1b5e20" : "grey";
+            item.toolLabel.color = highlight ? "white" : "black";
         }
 
 

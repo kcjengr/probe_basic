@@ -48,6 +48,8 @@ Rectangle {
 
                 property string pocket_num: index+1
                 property var anim: pocket_anim
+                property alias pocketRect: pocket_rectangle
+                property alias pocketLabel: pocket_text
 
                 Rectangle {
                     id: pocket_rectangle
@@ -67,6 +69,7 @@ Rectangle {
                     Text {
                         id: pocket_text
                         text: "P" + pocket_item.pocket_num
+                        color: "black"
                         font.family: "Bebas Kai"
                         font.bold: false
                         verticalAlignment: Text.AlignVCenter
@@ -105,6 +108,8 @@ Rectangle {
 
                 property int tool_num: index+1
                 property var anim: tool_anim
+                property alias toolRect: tool_rectangle
+                property alias toolLabel: tool_text
 
                 Rectangle {
                     id: tool_rectangle
@@ -334,6 +339,17 @@ Rectangle {
         function onShowToolSig(pocket, tool_num) {
             tool_slot.itemAt(pocket - 1).tool_num = tool_num;
             tool_slot.itemAt(pocket - 1).state = "visible";
+        }
+
+        function onHighlightPocketSig(pocket, highlight) {
+            var item = tool_slot.itemAt(pocket - 1);
+            if (!item) {
+                return;
+            }
+
+            item.toolRect.color = highlight ? "#8381ff" : "white";
+            item.toolRect.border.color = highlight ? "gray" : "gray";
+            item.toolLabel.color = highlight ? "white" : "black";
         }
 
         function onRotateSig(steps, direction) {

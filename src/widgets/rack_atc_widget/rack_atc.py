@@ -23,6 +23,7 @@ from qtpyvcp.utilities import logger
 LOG = logger.getLogger(__name__)
 STATUS = getPlugin('status')
 TOOLTABLE = getPlugin('tooltable')
+GCODE_PROPERTIES = getPlugin('gcode_properties')
 IN_DESIGNER = os.getenv('DESIGNER', False)
 WIDGET_PATH = os.path.dirname(os.path.abspath(__file__))
 INIFILE = linuxcnc.ini(os.getenv("INI_FILE_NAME"))
@@ -34,6 +35,7 @@ class RackATC(QWidget):
     
     showToolSig = Signal(float, float, arguments=['pocket', 'tool_num'])
     hideToolSig = Signal(float, arguments=['pocket'])
+    highlightPocketSig = Signal(float, bool, arguments=['pocket', 'highlight'])
 
     bgColorSig = Signal(QColor, arguments=["color"])
 
@@ -59,9 +61,11 @@ class RackATC(QWidget):
         self.status_tool_table = None
         self.pockets = dict()
         self.tools = None
+        self.required_tools = set()
 
         if not IN_DESIGNER:
             self._setup_view()
+            self._connect_required_tool_signals()
 
     def _setup_view(self):
         qml_path = os.path.join(WIDGET_PATH, "rack_atc.qml")
@@ -86,6 +90,62 @@ class RackATC(QWidget):
         self.atcInitSig.emit(self.pocket_slots)
         for pocket in range(1, self.pocket_slots + 1):
             self.hideToolSig.emit(pocket)
+            self.highlightPocketSig.emit(pocket, False)
+
+    def _connect_required_tool_signals(self):
+        """Wire program tool updates to pocket highlight updates."""
+        try:
+            if GCODE_PROPERTIES is not None and hasattr(GCODE_PROPERTIES, 'tools'):
+                GCODE_PROPERTIES.tools.signal.connect(self._on_required_tools_changed)
+        except Exception:
+            LOG.exception("Failed to connect gcode_properties.tools signal")
+
+        try:
+            if STATUS is not None and hasattr(STATUS, 'tool_table'):
+                STATUS.tool_table.signal.connect(self._on_required_tools_changed)
+        except Exception:
+            LOG.exception("Failed to connect status.tool_table signal")
+
+        self._update_required_pocket_highlights()
+
+    def _resolve_required_tool_numbers(self):
+        required_tools = set()
+
+        if GCODE_PROPERTIES is None or not hasattr(GCODE_PROPERTIES, 'tools'):
+            return required_tools
+
+        try:
+            required_indices = GCODE_PROPERTIES.tools.getValue() or []
+        except Exception:
+            return required_tools
+
+        try:
+            tool_table = STATUS.tool_table.getValue() if STATUS is not None else []
+        except Exception:
+            tool_table = []
+
+        for idx in required_indices:
+            try:
+                tool_num = int(tool_table[int(idx)][0])
+            except Exception:
+                continue
+
+            if tool_num > 0:
+                required_tools.add(tool_num)
+
+        return required_tools
+
+    @Slot(object)
+    def _on_required_tools_changed(self, *_):
+        self._update_required_pocket_highlights()
+
+    def _update_required_pocket_highlights(self):
+        self.required_tools = self._resolve_required_tool_numbers()
+
+        for pocket in range(1, self.pocket_slots + 1):
+            tool_num = int(self.pockets.get(pocket, 0) or 0)
+            highlight = tool_num > 0 and tool_num in self.required_tools
+            self.highlightPocketSig.emit(pocket, highlight)
      
     def resizeEvent(self, event):
         size = event.size()
@@ -111,6 +171,7 @@ class RackATC(QWidget):
                 self.showToolSig.emit(pocket, tool)
             else:
                 self.hideToolSig.emit(pocket)
+        self._update_required_pocket_highlights()
 
     def store_tool(self, pocket, tool_num):
         self.pockets[pocket] = tool_num
@@ -123,4 +184,5 @@ class RackATC(QWidget):
         else:
             # print("Hide tool at pocket {}".format(pocket))
             self.hideToolSig.emit(pocket)
+        self._update_required_pocket_highlights()
 
