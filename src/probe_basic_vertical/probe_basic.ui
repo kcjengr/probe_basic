@@ -361,7 +361,7 @@ font: 14pt &quot;Bebas Kai&quot;;
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>5</number>
+           <number>1</number>
           </property>
           <widget class="QWidget" name="tab_2">
            <attribute name="title">
@@ -458,117 +458,7 @@ QComboBox QAbstractItemView{
              </widget>
             </item>
             <item>
-             <widget class="QWidget" name="widget_25" native="true">
-              <layout class="QVBoxLayout" name="verticalLayout_52">
-               <property name="leftMargin">
-                <number>10</number>
-               </property>
-               <property name="topMargin">
-                <number>3</number>
-               </property>
-               <property name="rightMargin">
-                <number>10</number>
-               </property>
-               <property name="bottomMargin">
-                <number>6</number>
-               </property>
-               <item>
-                <widget class="QSplitter" name="splitter">
-                 <property name="sizePolicy">
-                  <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                   <horstretch>0</horstretch>
-                   <verstretch>0</verstretch>
-                  </sizepolicy>
-                 </property>
-                 <property name="layoutDirection">
-                  <enum>Qt::LayoutDirection::LeftToRight</enum>
-                 </property>
-                 <property name="lineWidth">
-                  <number>2</number>
-                 </property>
-                 <property name="orientation">
-                  <enum>Qt::Orientation::Vertical</enum>
-                 </property>
-                 <property name="opaqueResize">
-                  <bool>true</bool>
-                 </property>
-                 <property name="handleWidth">
-                  <number>10</number>
-                 </property>
-                 <property name="childrenCollapsible">
-                  <bool>true</bool>
-                 </property>
-                 <widget class="GcodeBackplot" name="gcodebackplot" native="true">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="font">
-                   <font>
-                    <family>Bebas Kai</family>
-                   </font>
-                  </property>
-                  <property name="focusPolicy">
-                   <enum>Qt::FocusPolicy::NoFocus</enum>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">GcodeBackplot{
-    border-style: solid;
-    border-color: black;
-    border-width: 2px;
-    border-radius: 6px;
-    margin-left: 6px;
-    margin-right: 6px;
-}</string>
-                  </property>
-                  <property name="renderProgramAlpha" stdset="0">
-                   <bool>true</bool>
-                  </property>
-                  <property name="backgroundColor" stdset="0">
-                   <color>
-                    <red>0</red>
-                    <green>0</green>
-                    <blue>0</blue>
-                   </color>
-                  </property>
-                 </widget>
-                </widget>
-               </item>
-              </layout>
-             </widget>
-            </item>
-            <item>
-             <widget class="GcodeEditor" name="gcodeeditor">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="minimumSize">
-               <size>
-                <width>480</width>
-                <height>0</height>
-               </size>
-              </property>
-              <property name="font">
-               <font>
-                <family>Bebas Kai</family>
-                <pointsize>12</pointsize>
-               </font>
-              </property>
-              <property name="focusPolicy">
-               <enum>Qt::FocusPolicy::NoFocus</enum>
-              </property>
-              <property name="styleSheet">
-               <string notr="true">GcodeEditor{
-margin-left: 6px;
-margin-right: 6px;
-}</string>
-              </property>
-             </widget>
+             <widget class="VTKBackPlot" name="vtk"/>
             </item>
             <item>
              <widget class="QWidget" name="widget_21" native="true">
@@ -1495,33 +1385,7 @@ border-radius: 6px;
                    </layout>
                   </item>
                   <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_128">
-                    <item>
-                     <widget class="QPlainTextEdit" name="plainTextEdit">
-                      <property name="font">
-                       <font>
-                        <family>Bebas Kai</family>
-                        <pointsize>12</pointsize>
-                        <italic>false</italic>
-                        <bold>false</bold>
-                       </font>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QPlainTextEdit {
-	color: black;
-   	border: 4px;
-	border-color: rgb(120, 120, 120);
-	border-style: solid;
-	background-color: rgb(238, 238, 236);
-    font: 12pt &quot;Bebas Kai&quot;;
-}</string>
-                      </property>
-                      <property name="placeholderText">
-                       <string>Select a text file to preview</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
+                   <widget class="GCodeEditor" name="gcodeEditor"/>
                   </item>
                   <item>
                    <layout class="QHBoxLayout" name="horizontalLayout_129">
@@ -9204,40 +9068,6 @@ border-style: none;
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_24">
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_36">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">image: url(:/images/probe_corner_group_3d_images.png);</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                  <property name="indent">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QWidget" name="widget_16" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -9651,40 +9481,6 @@ border-style: none;
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_26">
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_35">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">image: url(:/images/inside_corners_3d_image.png);</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                  <property name="indent">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QWidget" name="widget_17" native="true">
                   <property name="sizePolicy">
                    <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
@@ -10024,43 +9820,6 @@ border-style: none;
                 <string>  BOSS AND POCKET  </string>
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_11">
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_31">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">image: url(:/images/boss_pocket_3d_image.png);</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                  <property name="alignment">
-                   <set>Qt::AlignmentFlag::AlignCenter</set>
-                  </property>
-                  <property name="indent">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QWidget" name="widget_18" native="true">
                   <property name="sizePolicy">
@@ -10534,40 +10293,6 @@ Background:transparent;
                 <string>  VALLEY AND RIDGE  </string>
                </attribute>
                <layout class="QVBoxLayout" name="verticalLayout_36">
-                <item alignment="Qt::AlignmentFlag::AlignHCenter">
-                 <widget class="QLabel" name="label_37">
-                  <property name="sizePolicy">
-                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                    <horstretch>0</horstretch>
-                    <verstretch>0</verstretch>
-                   </sizepolicy>
-                  </property>
-                  <property name="minimumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="maximumSize">
-                   <size>
-                    <width>351</width>
-                    <height>271</height>
-                   </size>
-                  </property>
-                  <property name="styleSheet">
-                   <string notr="true">image: url(:/images/ridge_and_valley_group.png);</string>
-                  </property>
-                  <property name="text">
-                   <string/>
-                  </property>
-                  <property name="scaledContents">
-                   <bool>true</bool>
-                  </property>
-                  <property name="indent">
-                   <number>0</number>
-                  </property>
-                 </widget>
-                </item>
                 <item alignment="Qt::AlignmentFlag::AlignHCenter">
                  <widget class="QWidget" name="widget_19" native="true">
                   <property name="sizePolicy">
@@ -23276,6 +23001,12 @@ font: 11pt bebas kai;
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
   </customwidget>
   <customwidget>
+   <class>VTKBackPlot</class>
+   <extends>QWidget</extends>
+   <header>qtpyvcp.widgets.display_widgets.designer_plugins</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>ActionSlider</class>
    <extends>QSlider</extends>
    <header>qtpyvcp.widgets.input_widgets.action_slider</header>
@@ -23284,6 +23015,11 @@ font: 11pt bebas kai;
    <class>FileSystemTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.file_system</header>
+  </customwidget>
+  <customwidget>
+   <class>GCodeEditor</class>
+   <extends>QPlainTextEdit</extends>
+   <header>gcodeeditor.h</header>
   </customwidget>
   <customwidget>
    <class>RemovableDeviceComboBox</class>
@@ -23315,18 +23051,6 @@ font: 11pt bebas kai;
    <class>ToolTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.tool_table</header>
-  </customwidget>
-  <customwidget>
-   <class>GcodeBackplot</class>
-   <extends>QWidget</extends>
-   <header>qtpyvcp.widgets.display_widgets.gcode_backplot.gcode_backplot</header>
-   <container>1</container>
-  </customwidget>
-  <customwidget>
-   <class>GcodeEditor</class>
-   <extends>QFrame</extends>
-   <header>qtpyvcp.widgets.input_widgets.gcode_editor</header>
-   <container>1</container>
   </customwidget>
   <customwidget>
    <class>LoadMeter</class>
@@ -23613,38 +23337,6 @@ font: 11pt bebas kai;
     <hint type="destinationlabel">
      <x>491</x>
      <y>97</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable</sender>
-   <signal>filePreviewText(QString)</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>setPlainText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1114</x>
-     <y>520</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1207</x>
-     <y>379</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>filesystemtable_2</sender>
-   <signal>filePreviewText(QString)</signal>
-   <receiver>plainTextEdit</receiver>
-   <slot>setPlainText(QString)</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>1050</x>
-     <y>459</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>1210</x>
-     <y>451</y>
     </hint>
    </hints>
   </connection>
