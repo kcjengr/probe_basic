@@ -1,0 +1,95 @@
+(author: Chris P)
+(version: 0.2)
+(date: 06/27/24)
+
+(Measure tool and set Z 0.000 in current WCO for new tool)
+
+o<toolsetter_wco> sub
+
+  (uses NGCGUI style arg spec)
+  (number after "=" in comment is default value)
+  
+  #<fast_probe_fr> = #3004    (set from probe screen fast probe feed rate)
+  #<slow_probe_fr> = #3005    (set from probe screen slow probe feedrate)
+  #<traverse_fr> = #3006    (set from probe screen traverse probe feedrate)
+  #<z_max_travel> = #3007    (max z distance the tool travels before erroring out if not contact is made)
+  #<xy_max_travel> = #3008    (max xy distance the tool travels before erroring out if not contact is made)
+  #<retract_distance> = #3009    (distance the tool retracts after making contact during fast feed mode)
+  #<spindle_zero_height> = #3010    (G53 distance from home to spindle nose triggering point on touch plate)
+  #<tool_diameter_probe_mode> = #3011    (activates the tool diameter probe subroutine section)
+  #<tool_diameter_offset_mode> = #3012    (activates the tool diameter offset position for probe subroutine section)
+  #<tool_diameter> = #5410    (current tool's diameter used for offseting probe position in x axis)
+ 
+  (start with an m6, do all the standard m6 stuff and then touch off -TMC)
+  M6
+
+  (Cancel G92 offsets)
+  G92.1
+
+  (Cancel Feedrate Override)
+  M50 P0
+
+  o100 if [2 EQ 2]
+  G49
+  o100 endif
+
+  G90    (set absolute coordinates)
+  G53 G1 F[#<traverse_fr>] Z0    (move to z0 home position)
+  G53 G1 F[#<traverse_fr>] X#<tool_touch_x_coords> Y#<tool_touch_y_coords>
+  
+  #<workspace_z> = #[5203 + [20 * #5220]]
+
+  (Current Z Position including offsets in current program units)
+  #<z> = #5422
+
+  (Initial Fast Z- Probe)
+  G91
+  F[#<probe_fast_fr>]
+  G38.2 Z-[#<max_z_distance>]
+  #<z_minus_probed> = #5063
+
+  (Probe Error check, #5070 will be 0 if failed)
+  o110 if [#5070 EQ 0]
+    (back to start point and feed)
+    G90
+    G1 F[#<traverse_fr>] Z#<z>
+    F[#<probe_fast_fr>]
+    (return from sub)
+    M50 P1
+    o<toolsetter_wco> return
+  o110 endif
+
+  (Move to z_clearance height for slow probe)
+  G90
+  G1 F[#<traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
+
+  (Slow Probe Rule, if Slow Probe FR is set to 0, Slow Probe is Bypassed)
+  o120 if [#<probe_slow_fr> GT 0]
+    (Initiate Slow Z- Probe)
+    G91
+    F[#<probe_slow_fr>]
+    G38.2 Z-[#<z_clearance> * 2]
+    #<z_minus_probed> = #5063
+    G90
+    G1 F[#<traverse_fr>] Z[#<z_minus_probed> + #<z_clearance>]
+  o120 endif
+
+  #<z_finish_height> = [#<z_minus_probed> + #<z_clearance>]
+
+  #<new_tool_wco_z> = [#<z_minus_probed> - #<tool_setter_height>]
+
+  (Record Z zero in selected WCO)
+  G10 L2 P#5220 Z[#<new_tool_wco_z> + #<workspace_z>]
+
+  (Move to Toolset location)
+  G53 G1 F[#<traverse_fr>] X#<dust_boot_x_coords> Y#<dust_boot_y_coords>
+  
+  (pause for dust boot)
+  M0 (replace the dust boot)
+
+  (Reinstate Feedrate Override)
+  M50 P1
+
+o<toolsetter_wco> endsub
+
+M2 (end program)

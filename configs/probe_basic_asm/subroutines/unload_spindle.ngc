@@ -1,0 +1,17 @@
+(author: Chris P)
+(version: 0.1)
+(date: 04/20/24)
+
+(unloads tool in spindle in software)
+; This is called form the ATC and tool pages
+
+o<unload_spindle> sub
+(PRINT, o<load_spindle_safety>)
+
+M61 Q0
+G49
+#3991 = 0
+
+o<unload_spindle> endsub
+
+M2 (end program)
