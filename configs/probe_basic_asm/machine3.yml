@@ -1,0 +1,34 @@
+ root:
+    id: "frame"
+    model: "machine/frame3.stl"
+    type: "table"
+    position: [0, 0, 0, 0, 0, 0]
+    origin: [0, 0, 0]
+    axis: null
+    joint: null
+    child_saddle:
+        id: "saddle"
+        model: "machine/saddle3.stl"
+        type: "linear"
+        position: [0, -8, 0, 0, 0, 0]
+        origin: [0, 0, 0]
+        axis: "y"
+        joint: 0
+        child_table:
+            id: "table"
+            model: "machine/table3.stl"
+            type: "linear"
+            position: [13, -8, 0, 0, 0, 0]
+            origin: [0, 0, 0]
+            axis: "x"
+            joint: 1
+
+    child_headstock:
+        id: "headstock"
+        model: "machine/headstock3.stl"
+        type: "linear"
+        position: [0, 0, 0, 0, 0, 0]
+        origin: [0, 0, 0]
+        axis: "z"
+        joint: 2
+    

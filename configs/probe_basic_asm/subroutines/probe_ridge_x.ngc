@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.2)
-(date: 06/27/24)
+(version: 0.3)
+(date: 01/28/26)
 
 (Probe Ridge in X Axis to find center and z 0 position)
 (Start probe position is over center of stock in the X axis)
@@ -38,9 +38,7 @@ o<probe_ridge_x> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
-      M50 P1
-      o<probe_ridge_x> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)

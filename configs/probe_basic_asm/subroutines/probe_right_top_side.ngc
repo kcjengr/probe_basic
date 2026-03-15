@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.4)
-(date: 06/27/24)
+(version: 0.5)
+(date: 01/28/26)
 
 (Probe right top side for x,z 0,0 position)
 (Start probe position is over right side edge of stock)
@@ -34,9 +34,7 @@ o<Probe_right_top_side> sub
 
   (Probe Tool Safety Check)
   o100 if [#5400 NE #<probe_tool_number>]
-      (DEBUG, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
-      M50 P1
-      o<Probe_right_top_side> return
+      (abort, Specified probe tool %d#<probe_tool_number> not in spindle, aborting)
   o100 endif
 
   (Probe Diameter)
@@ -64,9 +62,7 @@ o<Probe_right_top_side> sub
 
   (value returned safety check, aborts if no value returned)
   o110 if [#<probe_mode> EQ 1 AND #<_value_returned> NE 1]
-      (DEBUG, Missing X Sub returned edge parameter, aborting)
-      M50 P1
-      o<probe_right_top_side> return
+      (abort, Missing X Sub returned edge parameter, aborting)
   o110 endif
 
   (Probe Completion Move to Z Clearance Plane, and Y Zero)

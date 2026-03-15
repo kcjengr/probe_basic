@@ -1,0 +1,99 @@
+%
+( XYZ BOX + INSCRIBED FACE CIRCLES TEST )
+( Purpose: easy visual verification of 3D geometry in backplot/breadcrumbs )
+( Shape: 2.0in cube from X0..2, Y0..2, Z0..2 )
+( Circles: inscribed on +Z, +Y, +X faces, radius 0.8in )
+
+G20 G40 G49 G80 G90 G61
+G54
+M6 T8 G43 H8
+
+F120.0
+
+( --- Safe start --- )
+G0 X0.000 Y0.000 Z0.250
+
+( --- Draw cube wireframe --- )
+G1 Z0.000
+G1 X2.000 Y0.000 Z0.000
+G1 X2.000 Y2.000 Z0.000
+G1 X0.000 Y2.000 Z0.000
+G1 X0.000 Y0.000 Z0.000
+
+G0 X0.000 Y0.000 Z2.000
+G1 X2.000 Y0.000 Z2.000
+G1 X2.000 Y2.000 Z2.000
+G1 X0.000 Y2.000 Z2.000
+G1 X0.000 Y0.000 Z2.000
+
+G0 X0.000 Y0.000 Z0.000
+G1 X0.000 Y0.000 Z2.000
+G0 X2.000 Y0.000 Z0.000
+G1 X2.000 Y0.000 Z2.000
+G0 X2.000 Y2.000 Z0.000
+G1 X2.000 Y2.000 Z2.000
+G0 X0.000 Y2.000 Z0.000
+G1 X0.000 Y2.000 Z2.000
+
+( --- Circle on +Z face XY plane, center 1,1,2 --- )
+G17
+G0 X1.800 Y1.000 Z2.000
+G1 X1.800 Y1.000 Z2.000 F80.0
+G3 X0.200 Y1.000 I-0.800 J0.000
+G3 X1.800 Y1.000 I0.800 J0.000
+
+( --- Circle on +Y face XZ plane, center 1,2,1 --- )
+G18
+G0 X1.800 Y2.000 Z1.000
+G1 X1.800 Y2.000 Z1.000 F80.0
+G3 X0.200 Z1.000 I-0.800 K0.000
+G3 X1.800 Z1.000 I0.800 K0.000
+
+( --- Circle on +X face YZ plane, center 2,1,1 --- )
+G19
+G0 X2.000 Y1.800 Z1.000
+G1 X2.000 Y1.800 Z1.000 F80.0
+G3 Y0.200 Z1.000 J-0.800 K0.000
+G3 Y1.800 Z1.000 J0.800 K0.000
+
+( --- Mixed XYZ while A is tilted --- )
+G17
+G0 X2.000 Y2.000 Z2.000 A0.000 C0.000
+F360.0
+G1 A45.000
+G91
+G1 X1.600
+G1 Y1.600
+G1 X-1.600
+G1 Y-1.600
+G1 A0.000
+
+( --- Mixed XYZ while C is tilted --- )
+G90
+G17
+G0 X2.000 Y2.000 Z2.000 A0.000 C0.000
+F360.0
+G1 C45.000
+G91
+G1 X1.600
+G1 Y1.600
+G1 X-1.60
+G1 Y-1.600
+G90
+G1 C0.000
+
+( --- Combined A+C tilt with mixed XYZ --- )
+F360.0
+G1 A45.000 C45.000
+G91
+G1 X1.500
+G1 Y1.5000
+G1 X-1.500 
+G1 Y-1.500
+G1 A0.000 C0.000
+
+( --- Return --- )
+G17
+G0 X0.000 Y0.000 Z2.250
+M2
+%
