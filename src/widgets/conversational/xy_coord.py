@@ -2,9 +2,15 @@ from PySide6.QtCore import Qt, QModelIndex
 from PySide6.QtGui import QStandardItemModel
 from PySide6.QtWidgets import QTableView, QStyledItemDelegate
 
+from qtpyvcp.utilities import logger
+
 from qtpyvcp.ops.drill_ops import DrillOps
 from .drill_widget import DrillWidgetBase
 from .float_line_edit import FloatLineEdit
+from .base_widget import _is_qt_valid
+
+
+LOG = logger.getLogger(__name__)
 
 
 class XYCoordItemDelegate(QStyledItemDelegate):
@@ -95,6 +101,17 @@ class XYCoordWidget(DrillWidgetBase):
         self.delete_all_input.clicked.connect(self.deleteAll)
         self.delete_selected_input.clicked.connect(self.deleteSelected)
 
+    def _resolve_xy_coord_table(self):
+        table = getattr(self, 'xy_coord_input', None)
+        if not _is_qt_valid(table) and hasattr(self, 'findChild'):
+            table = self.findChild(QTableView, 'xy_coord_input')
+
+        if _is_qt_valid(table):
+            self.xy_coord_input = table
+            return table
+
+        return None
+
     def create_op(self):
         d = self.drill_op
         self._set_common_fields(d)
@@ -118,14 +135,45 @@ class XYCoordWidget(DrillWidgetBase):
         return op
 
     def deleteSelected(self):
-        for i in self.xy_coord_input.selectionModel().selectedIndexes():
-            if i.column() == 1:
-                self.xy_coord_input.model().deleteRow(i.row())
-        self.xy_coord_input.setFocus()
+        table = self._resolve_xy_coord_table()
+        if table is None:
+            LOG.debug("deleteSelected skipped: xy_coord_input not available")
+            return
+
+        try:
+            selection_model = table.selectionModel()
+            model = table.model()
+            if not _is_qt_valid(selection_model) or not _is_qt_valid(model):
+                return
+
+            selected_indexes = selection_model.selectedIndexes()
+            if selected_indexes:
+                for i in selected_indexes:
+                    if i.column() == 1:
+                        model.deleteRow(i.row())
+            else:
+                current = table.currentIndex()
+                if current.isValid():
+                    model.deleteRow(current.row())
+
+            table.setFocus()
+        except RuntimeError:
+            return
 
     def deleteAll(self):
+        table = self._resolve_xy_coord_table()
+        if table is None:
+            LOG.debug("deleteAll skipped: xy_coord_input not available")
+            return
+
         if len(self.drill_op.holes) > 0:
             if self._confirm_action('Delete All', 'Are you sure you want to delete all coordinates?'):
-                self.xy_coord_input.model().deleteAll()
-                self.xy_coord_input.selectRow(0)
-                self.xy_coord_input.setFocus()
+                try:
+                    model = table.model()
+                    if not _is_qt_valid(model):
+                        return
+                    model.deleteAll()
+                    table.selectRow(0)
+                    table.setFocus()
+                except RuntimeError:
+                    return
