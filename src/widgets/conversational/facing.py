@@ -48,13 +48,13 @@ class FacingWidget(ConversationalBaseWidget):
 
         if self.step_down() == 0:
             f.step_down = abs(self.z_end() - self.z_start())
-            self.step_down_input.setText('{0:.3f}'.format(f.step_down))
+            self.step_down_input.setText('{0:.4f}'.format(f.step_down))
         else:
             f.step_down = self.step_down()
 
         if self.step_over() == 0:
             f.step_over = self.tool_diameter() * 0.9
-            self.step_over_input.setText('{0:.3f}'.format(f.step_over))
+            self.step_over_input.setText('{0:.4f}'.format(f.step_over))
         else:
             f.step_over = self.step_over()
 

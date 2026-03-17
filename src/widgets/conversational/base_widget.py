@@ -3,7 +3,7 @@ import linuxcnc
 
 from PySide6.QtCore import Qt, Slot, QTimer, QFile, QObject
 from PySide6.QtUiTools import QUiLoader
-from PySide6.QtWidgets import QWidget, QMessageBox
+from PySide6.QtWidgets import QWidget, QMessageBox, QLabel, QLineEdit
 
 from qtpyvcp.utilities import logger
 
@@ -226,39 +226,82 @@ class ConversationalBaseWidget(QWidget):
         if not IN_DESIGNER:
             status = _get_status()
             if status is not None:
-                self.tool_number_input.setText('{}'.format(status.tool_in_spindle))
+                try:
+                    tool_in_spindle = status.tool_in_spindle()
+                except TypeError:
+                    tool_in_spindle = status.tool_in_spindle
+                self.tool_number_input.setText('{}'.format(tool_in_spindle))
                 self.set_tool_description_from_tool_num()
 
     def set_tool_description_from_tool_num(self):
-        if not _is_qt_valid(getattr(self, 'tool_description', None)):
-            return
-        if not _is_qt_valid(getattr(self, 'tool_number_input', None)):
+        if not _is_qt_valid(self):
             return
 
-        if IN_DESIGNER or self._tool_table is None:
-            # In designer mode, just set a placeholder
-            self.tool_description.setText('TOOL DESCRIPTION')
-            self.tool_description.setToolTip('TOOL DESCRIPTION')
-            self._tool_is_valid = True
-            return
-            
-        tool_table = self._tool_table.getToolTable()
-        tool_number = self.tool_number()
+        tool_label = getattr(self, 'tool_description', None)
+        if not _is_qt_valid(tool_label):
+            # Some conversational pages can have stale/missing attribute bindings; recover by object name lookup.
+            try:
+                tool_label = self.findChild(QLabel, 'tool_description')
+            except RuntimeError:
+                return
+            if _is_qt_valid(tool_label):
+                self.tool_description = tool_label
 
-        tool = tool_table.get(tool_number)
-        
-        if tool is not None:
-            desc = tool.get('R')
-            self.tool_description.setText((desc[:30] + '...') if len(desc) > 30 else desc)
-            self.tool_description.setToolTip(desc)
-            self._tool_is_valid = (tool_number > 0)
-        else:
+        tool_input = getattr(self, 'tool_number_input', None)
+
+        if not _is_qt_valid(tool_input):
             self._tool_is_valid = False
-            self.tool_description.setText('TOOL NOT IN TOOL TABLE')
-            self.tool_description.setToolTip('TOOL NOT IN TOOL TABLE')
+            return
+
+        if IN_DESIGNER:
+            self._tool_is_valid = True
+            if _is_qt_valid(tool_label):
+                # In designer mode, just set a placeholder
+                tool_label.setText('TOOL DESCRIPTION')
+                tool_label.setToolTip('TOOL DESCRIPTION')
+            return
+
+        tool_number = self.tool_number()
+        tool = self._get_tool_from_table(tool_number) if self._tool_table is not None else None
+        self._tool_is_valid = (tool is not None and tool_number > 0)
+
+        if not _is_qt_valid(tool_label):
+            return
+        
+        if tool_number <= 0:
+            tool_label.setText('NO TOOL SELECTED')
+            tool_label.setToolTip('NO TOOL SELECTED')
+            return
+
+        if tool is not None:
+            desc = tool.get('R') or ''
+            if not desc:
+                desc = 'TOOL {}'.format(tool_number)
+            tool_label.setText((desc[:30] + '...') if len(desc) > 30 else desc)
+            tool_label.setToolTip(desc)
+        else:
+            tool_label.setText('TOOL NOT IN TOOL TABLE')
+            tool_label.setToolTip('TOOL NOT IN TOOL TABLE')
 
     def name(self):
-        return self.name_input.text()
+        name_input = self._get_name_input_widget()
+        if not _is_qt_valid(name_input):
+            return ''
+        return name_input.text()
+
+    def _get_name_input_widget(self):
+        if not _is_qt_valid(self):
+            return None
+
+        name_input = getattr(self, 'name_input', None)
+        if not _is_qt_valid(name_input):
+            try:
+                name_input = self.findChild(QLineEdit, 'name_input')
+            except RuntimeError:
+                return None
+            if _is_qt_valid(name_input):
+                self.name_input = name_input
+        return name_input
 
     def wcs(self):
         return self.wcs_input.currentText()
@@ -267,16 +310,53 @@ class ConversationalBaseWidget(QWidget):
         return self.unit_input.currentText()
 
     def tool_number(self):
-        return self.tool_number_input.value()
+        try:
+            return int(self.tool_number_input.value())
+        except (TypeError, ValueError):
+            try:
+                return int(float(self.tool_number_input.text()))
+            except (TypeError, ValueError):
+                return 0
+
+    def _get_tool_from_table(self, tool_number):
+        if self._tool_table is None:
+            return None
+
+        tool_table = self._tool_table.getToolTable()
+        candidates = [tool_number]
+
+        try:
+            normalized = int(tool_number)
+            candidates.extend([normalized, str(normalized)])
+        except (TypeError, ValueError):
+            pass
+
+        for key in candidates:
+            tool = tool_table.get(key)
+            if tool is not None:
+                return tool
+
+        # Final fallback for mixed key types (e.g. numeric-like non-str/non-int keys)
+        try:
+            normalized = int(tool_number)
+        except (TypeError, ValueError):
+            return None
+
+        for key, tool in tool_table.items():
+            try:
+                if int(key) == normalized:
+                    return tool
+            except (TypeError, ValueError):
+                continue
+        return None
 
     def tool_diameter(self):
         if self._tool_is_valid:
-            
-            tool_table = self._tool_table.getToolTable()
-            tool = tool_table.get(self.tool_number())
+            tool = self._get_tool_from_table(self.tool_number())
+            if tool is None:
+                return 0.0
             dia = tool.get('D')
-            
-            return dia
+            return float(dia) if dia is not None else 0.0
         else:
             return 0.0
 
@@ -345,15 +425,20 @@ class ConversationalBaseWidget(QWidget):
         op.z_feed = self.z_feed_rate()
 
     def _get_next_available_file_name(self):
+        name_input = self._get_name_input_widget()
         if self.name() == '':
-            self.name_input.setText('Untitled')
+            if _is_qt_valid(name_input):
+                name_input.setText('Untitled')
+            program_name = 'Untitled'
+        else:
+            program_name = self.name()
 
         if self.save_file_path is not None:
             path = self.save_file_path
         else:
             path = PROGRAM_PREFIX
 
-        program_base = os.path.join(path, self.name())
+        program_base = os.path.join(path, program_name)
         program_path = program_base + '.ngc'
 
         i = 1
@@ -406,6 +491,9 @@ class ConversationalBaseWidget(QWidget):
             return False, error
 
     def _validate_tool_number(self):
+        # Recompute validity from current input value to avoid stale cached state.
+        self.set_tool_description_from_tool_num()
+
         if self._tool_is_valid:
             self.tool_number_input.setStyleSheet('')
             return True, None
@@ -429,13 +517,13 @@ class ConversationalBaseWidget(QWidget):
         msg = QMessageBox(QMessageBox.Question, title, message, QMessageBox.Yes | QMessageBox.No, self,
                           Qt.FramelessWindowHint)
 
-        return msg.exec_() == QMessageBox.Yes
+        return msg.exec() == QMessageBox.Yes
 
     def _show_error_msg(self, title, message):
         msg = QMessageBox(QMessageBox.Critical, title, message, QMessageBox.Ok, self,
                           Qt.FramelessWindowHint)
 
-        msg.exec_()
+        msg.exec()
 
     def _update_fields(self, tool_table):
         self.update_tool_number()

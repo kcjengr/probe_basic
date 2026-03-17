@@ -220,7 +220,7 @@ Rectangle {
                 z: 0
                 rotation: 0
                 state: "released"
-                source: "images/lathe_center_turning_rp_bs.png"
+                source: "images/lathe_turning_lh_8.png"
                 property real origin_x: 0.0
                 property real origin_y: 0.0
 
@@ -277,7 +277,7 @@ Rectangle {
                 z: 0
                 rotation: 0
                 state: "released"
-                source: "images/lathe_center_turning_fp_ts.png"
+                source: "images/lathe_turning_rh_6.png"
                 property real origin_x: 0.0
                 property real origin_y: 0.0
 
@@ -334,7 +334,7 @@ Rectangle {
                 z: 0
                 rotation: 0
                 state: "released"
-                source: "images/lathe_internal_threading_bs.png"
+                source: "images/lathe_internal_threading_lh_6.png"
                 property real origin_x: 0.0
                 property real origin_y: 0.0
 
@@ -384,29 +384,29 @@ Rectangle {
     Component.onCompleted: {
 
         var upper_tool_pics = [
-                    "images/lathe_lh_turning_rp_bs.png",
-                    "images/lathe_center_turning_rp_bs.png",
-                    "images/lathe_rh_turning_rp_bs.png",
-                    "images/lathe_lh_threading_rp_ts.png",
-                    "images/lathe_rh_parting_rp_bs.png"
+                    "images/lathe_turning_lh_4.png",
+                    "images/lathe_turning_lh_8.png",
+                    "images/lathe_turning_lh_3.png",
+                    "images/lathe_threading_lh_8.png",
+                    "images/lathe_parting_lh_8.png"
                 ];
 
         var lower_tool_pics = [
-                    "images/lathe_lh_turning_fp_ts.png",
-                    "images/lathe_center_turning_fp_ts.png",
-                    "images/lathe_rh_turning_fp_ts.png",
-                    "images/lathe_rh_threading_fp_ts.png",
-                    "images/lathe_parting_fp_ts.png"
+                    "images/lathe_turning_rh_1.png",
+                    "images/lathe_turning_rh_6.png",
+                    "images/lathe_turning_rh_2.png",
+                    "images/lathe_threading_rh_6.png",
+                    "images/lathe_parting_rh_6.png"
                 ];
 
         var right_tool_pics = [
-                    "images/lathe_rh_internal_grooving_bs.png",
-                    "images/lathe_internal_threading_bs.png",
-                    "images/lathe_internal_boring_bs.png",
-                    "images/lathe_internal_drilling_ts.png",
-                    "images/lathe_internal_boring_ts.png",
-                    "images/lathe_internal_threading_ts.png",
-                    "images/lathe_rh_internal_grooving.png"
+                    "images/lathe_internal_grooving_lh_6.png",
+                    "images/lathe_internal_threading_lh_6.png",
+                    "images/lathe_internal_boring_lh_2.png",
+                    "images/lathe_internal_drilling_center_9.png",
+                    "images/lathe_internal_boring_rh_3.png",
+                    "images/lathe_internal_threading_rh_8.png",
+                    "images/lathe_internal_grooving_rh_8.png"
                 ];
 
         var upper_tool_origins = [

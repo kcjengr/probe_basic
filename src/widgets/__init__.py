@@ -1,6 +1,6 @@
 import os as _os
 from qtpyvcp.widgets.qtdesigner import _DesignerPlugin
-from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QWidget, QLineEdit
 
 # In Designer mode, ALWAYS use placeholder widgets.
 # The real widgets (atc.py, rack_atc.py) load libGL via ctypes at module import
@@ -13,6 +13,32 @@ if _IN_DESIGNER:
         FacingWidget, XYCoordWidget, HoleCircleWidget
     )
 
+    try:
+        from widgets.conversational.int_line_edit import IntLineEdit
+    except Exception:
+        class IntLineEdit(QLineEdit):
+            def __init__(self, parent=None):
+                super().__init__(parent)
+
+            def value(self):
+                try:
+                    return int(self.text())
+                except ValueError:
+                    return 0
+
+    try:
+        from widgets.conversational.float_line_edit import FloatLineEdit
+    except Exception:
+        class FloatLineEdit(QLineEdit):
+            def __init__(self, parent=None):
+                super().__init__(parent)
+
+            def value(self):
+                try:
+                    return float(self.text())
+                except ValueError:
+                    return 0.0
+
     class LatheToolTouchOff(QWidget):
         def __init__(self, parent=None):
             super().__init__(parent)
@@ -22,14 +48,6 @@ if _IN_DESIGNER:
             super().__init__(parent)
 
     class RackATC(QWidget):
-        def __init__(self, parent=None):
-            super().__init__(parent)
-
-    class IntLineEdit(QWidget):
-        def __init__(self, parent=None):
-            super().__init__(parent)
-
-    class FloatLineEdit(QWidget):
         def __init__(self, parent=None):
             super().__init__(parent)
 

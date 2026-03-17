@@ -9,7 +9,7 @@ class FloatLineEdit(VCPLineEdit):
     def __init__(self, parent=None):
         super(FloatLineEdit, self).__init__(parent)
         self._default_value = 0.
-        self._format_string = "{0:.3f}"
+        self._format_string = "{0:.4f}"
         self.setValidator(QDoubleValidator())
         self.validator().setNotation(QDoubleValidator.StandardNotation)
 
