@@ -1,5 +1,4 @@
 from PySide6.QtCore import QTimer
-from PySide6.QtWidgets import QLabel, QLineEdit
 
 from qtpyvcp.utilities import logger
 
@@ -33,13 +32,6 @@ class DrillWidgetBase(ConversationalBaseWidget):
         self.drill_type_param_value.setVisible(False)
         self.drill_type_param_label.setVisible(False)
         self.drill_type_input.currentIndexChanged.connect(self.set_drill_type_params)
-        self.drill_type_input.currentIndexChanged.connect(self._log_drill_type_signal)
-
-        LOG.debug(
-            "drill_type_input class=%s object=%s",
-            type(self.drill_type_input).__name__,
-            self.drill_type_input.objectName(),
-        )
 
         self.z_feed_rate_input.setEnabled(True)
         self.set_drill_type_params(None)
@@ -89,7 +81,7 @@ class DrillWidgetBase(ConversationalBaseWidget):
     def _resolve_feed_per_rev_input(self):
         for name in ('feed_per_rev_input', 'xy_coord_feed_per_rev', 'hole_circle_feed_per_rev'):
             widget = getattr(self, name, None)
-            if widget is not None:
+            if _is_qt_valid(widget):
                 return widget
         return None
 
@@ -173,62 +165,19 @@ class DrillWidgetBase(ConversationalBaseWidget):
             self._on_z_feed_edited()
 
     def _resolve_drill_param_widgets(self):
-        label = getattr(self, 'drill_type_param_label', None)
-        value = getattr(self, 'drill_type_param_value', None)
-
-        # Cached references can become stale when Qt re-parents/rebuilds pages.
-        if not _is_qt_valid(label):
-            label = None
-        if not _is_qt_valid(value):
-            value = None
-
-        if label is None and hasattr(self, 'findChild'):
-            label = self.findChild(QLabel, 'drill_type_param_label')
-
-        if value is None and hasattr(self, 'findChild'):
-            value = self.findChild(QLineEdit, 'drill_type_param_value')
-
-        if not _is_qt_valid(label):
-            label = None
-        if not _is_qt_valid(value):
-            value = None
-
-        if label is not None:
-            self.drill_type_param_label = label
-        if value is not None:
-            self.drill_type_param_value = value
-
+        label = self._resolve_widget('drill_type_param_label')
+        value = self._resolve_widget('drill_type_param_value')
         return label, value
-
-    def _log_drill_type_signal(self, *_):
-        try:
-            LOG.info(
-                "drill_type signal idx=%s text=%s",
-                self.drill_type_input.currentIndex(),
-                self.drill_type_input.currentText(),
-            )
-        except Exception:
-            LOG.exception("Failed logging drill_type signal")
 
     def set_drill_type_params(self, _=None):
         if not _is_qt_valid(getattr(self, 'drill_type_input', None)):
-            LOG.debug("set_drill_type_params skipped: drill_type_input invalid")
             return
         label, value = self._resolve_drill_param_widgets()
         if label is None:
-            LOG.debug("set_drill_type_params skipped: drill_type_param_label not found")
             return
         if value is None:
-            LOG.debug("set_drill_type_params skipped: drill_type_param_value not found")
-            return
-        if not _is_qt_valid(label):
-            LOG.debug("set_drill_type_params skipped: drill_type_param_label invalid")
-            return
-        if not _is_qt_valid(value):
-            LOG.debug("set_drill_type_params skipped: drill_type_param_value invalid")
             return
         if not _is_qt_valid(getattr(self, 'z_feed_rate_input', None)):
-            LOG.debug("set_drill_type_params skipped: z_feed_rate_input invalid")
             return
 
         drill_type = str(self.drill_type()).strip().upper()
@@ -246,41 +195,28 @@ class DrillWidgetBase(ConversationalBaseWidget):
             }
             drill_type = drill_type_by_idx.get(drill_idx, drill_type)
 
-        try:
-            self.z_feed_rate_input.setEnabled(True)
-            if drill_type == 'DWELL':
-                label.setText('DWELL TIME (SEC.)')
-                value.setText('0.00')
-                value.setVisible(True)
-                label.setVisible(True)
-            elif drill_type == 'PECK':
-                label.setText('PECK DEPTH')
-                value.setText('0.0000')
-                value.setVisible(True)
-                label.setVisible(True)
-            elif drill_type == 'BREAK':
-                label.setText('BREAK DEPTH')
-                value.setText('0.0000')
-                value.setVisible(True)
-                label.setVisible(True)
-            elif drill_type in ['TAP', 'RIGID TAP']:
-                self.z_feed_rate_input.setEnabled(False)
-                label.setText('PITCH')
-                value.setText('0.0000')
-                value.setVisible(True)
-                label.setVisible(True)
-            else:
-                value.setVisible(False)
-                label.setVisible(False)
-        except RuntimeError:
-            LOG.debug("set_drill_type_params skipped: parameter widgets deleted during update")
-            return
-
-        LOG.debug(
-            "drill_type=%s idx=%s combo_class=%s param_visible=%s label_visible=%s",
-            drill_type,
-            drill_idx,
-            type(self.drill_type_input).__name__,
-            value.isVisible(),
-            label.isVisible(),
-        )
+        self.z_feed_rate_input.setEnabled(True)
+        if drill_type == 'DWELL':
+            label.setText('DWELL TIME (SEC.)')
+            value.setText('0.00')
+            value.setVisible(True)
+            label.setVisible(True)
+        elif drill_type == 'PECK':
+            label.setText('PECK DEPTH')
+            value.setText('0.0000')
+            value.setVisible(True)
+            label.setVisible(True)
+        elif drill_type == 'BREAK':
+            label.setText('BREAK DEPTH')
+            value.setText('0.0000')
+            value.setVisible(True)
+            label.setVisible(True)
+        elif drill_type in ['TAP', 'RIGID TAP']:
+            self.z_feed_rate_input.setEnabled(False)
+            label.setText('PITCH')
+            value.setText('0.0000')
+            value.setVisible(True)
+            label.setVisible(True)
+        else:
+            value.setVisible(False)
+            label.setVisible(False)

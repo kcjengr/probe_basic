@@ -1,6 +1,6 @@
 import os as _os
 from qtpyvcp.widgets.qtdesigner import _DesignerPlugin
-from PySide6.QtWidgets import QWidget, QLineEdit
+from PySide6.QtWidgets import QWidget
 
 # In Designer mode, ALWAYS use placeholder widgets.
 # The real widgets (atc.py, rack_atc.py) load libGL via ctypes at module import
@@ -12,32 +12,6 @@ if _IN_DESIGNER:
     from widgets.conversational.designer_plugins import (
         FacingWidget, XYCoordWidget, HoleCircleWidget
     )
-
-    try:
-        from widgets.conversational.int_line_edit import IntLineEdit
-    except Exception:
-        class IntLineEdit(QLineEdit):
-            def __init__(self, parent=None):
-                super().__init__(parent)
-
-            def value(self):
-                try:
-                    return int(self.text())
-                except ValueError:
-                    return 0
-
-    try:
-        from widgets.conversational.float_line_edit import FloatLineEdit
-    except Exception:
-        class FloatLineEdit(QLineEdit):
-            def __init__(self, parent=None):
-                super().__init__(parent)
-
-            def value(self):
-                try:
-                    return float(self.text())
-                except ValueError:
-                    return 0.0
 
     class LatheToolTouchOff(QWidget):
         def __init__(self, parent=None):
@@ -60,8 +34,6 @@ else:
         from widgets.conversational.facing import FacingWidget
         from widgets.conversational.xy_coord import XYCoordWidget
         from widgets.conversational.hole_circle import HoleCircleWidget
-        from widgets.conversational.int_line_edit import IntLineEdit
-        from widgets.conversational.float_line_edit import FloatLineEdit
     except (ImportError, AttributeError) as e:
         print(f"Warning: could not import probe_basic widgets: {e}")
 
@@ -79,16 +51,6 @@ class DynATC_Plugin(_DesignerPlugin):
 class RackATC_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return RackATC
-
-
-class FloatLineEditPlugin(_DesignerPlugin):
-    def pluginClass(self):
-        return FloatLineEdit
-
-
-class IntLineEditPlugin(_DesignerPlugin):
-    def pluginClass(self):
-        return IntLineEdit
 
 
 class HoleCircleWidgetPlugin(_DesignerPlugin):
