@@ -3,8 +3,8 @@ import linuxcnc
 
 from PySide6.QtWidgets import QWidget
 
-import template_user_buttons_ui
 from qtpyvcp.widgets.button_widgets.action_button import ActionButton
+from qtpyvcp.utilities.runtime_ui_loader import load_ui
 
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
@@ -21,8 +21,8 @@ INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
 class UserButton(QWidget):
     def __init__(self, parent=None):
         super(UserButton, self).__init__(parent)
-        self.ui = template_user_buttons_ui.Ui_USER_BUTTONS()
-        self.ui.setupUi(self)
+        ui_path = os.path.join(os.path.dirname(__file__), "template_user_buttons.ui")
+        load_ui(ui_path, self)
         self._bind_action_buttons()
 
     def _bind_action_buttons(self):
