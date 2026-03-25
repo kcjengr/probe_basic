@@ -11,17 +11,35 @@ class HoleCircleWidget(DrillWidgetBase):
 
         self._validators.extend([self._validate_num_holes, self._validate_diameter])
 
+    def _as_float(self, widget, default=0.0):
+        try:
+            return float(widget.value())
+        except (TypeError, ValueError, AttributeError):
+            try:
+                return float(widget.text())
+            except (TypeError, ValueError, AttributeError):
+                return default
+
     def circle_diameter(self):
-        return self.diameter_input.value()
+        return self._as_float(self.diameter_input)
 
     def num_holes(self):
-        return self.num_holes_input.value()
+        try:
+            return int(float(self.num_holes_input.value()))
+        except (TypeError, ValueError):
+            try:
+                return int(float(self.num_holes_input.text()))
+            except (TypeError, ValueError):
+                return 0
 
     def start_angle(self):
-        return self.start_angle_input.value()
+        return self._as_float(self.start_angle_input)
 
     def circle_center(self):
-        return [self.center_x_input.value(), self.center_y_input.value()]
+        return [
+            self._as_float(self.center_x_input),
+            self._as_float(self.center_y_input),
+        ]
 
     def create_op(self):
         d = DrillOps()
@@ -61,11 +79,20 @@ class HoleCircleWidget(DrillWidgetBase):
             return False, error
 
     def _validate_num_holes(self):
-        if self.num_holes() > 0:
+        try:
+            value = float(self.num_holes_input.value())
+        except (TypeError, ValueError):
+            try:
+                value = float(self.num_holes_input.text())
+            except (TypeError, ValueError):
+                value = -1
+
+        if value > 0 and value.is_integer():
             self.num_holes_input.setStyleSheet('')
+            self.num_holes_input.setText(str(int(value)))
             return True, None
         else:
             self.num_holes_input.setStyleSheet("background-color: rgb(205, 141, 123)")
-            error = 'Num holes must be greater than 0.'
+            error = 'Num holes must be a whole number greater than 0.'
             self.num_holes_input.setToolTip(error)
             return False, error

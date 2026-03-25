@@ -1,11 +1,12 @@
 import os
 import linuxcnc
 
-from PySide6.QtCore import Qt, Slot, QTimer, QFile, QObject
+from PySide6.QtCore import Qt, Slot, QFile, QObject
 from PySide6.QtUiTools import QUiLoader
 from PySide6.QtWidgets import QWidget, QMessageBox, QLabel, QLineEdit
 
 from qtpyvcp.utilities import logger
+from qtpyvcp.utilities.qt_safety import safe_qt_callback
 
 from qtpyvcp.ops.gcode_file import GCodeFile
 
@@ -32,18 +33,44 @@ class _UiLoader(QUiLoader):
         super().__init__(*args, **kwargs)
         self.base_instance = base_instance
 
+    def _bind_widget_attr(self, name, widget):
+        if self.base_instance is None or not name:
+            return
+
+        setattr(self.base_instance, name, widget)
+
+        # Clear stale python references when Qt deletes/rebuilds widgets.
+        try:
+            widget.destroyed.connect(
+                lambda *_, n=name, base=self.base_instance: setattr(base, n, None)
+            )
+        except Exception:
+            pass
+
     def createWidget(self, class_name, parent=None, name=''):
         if parent is None and self.base_instance is not None:
             self.base_instance.setObjectName(name)
             return self.base_instance
 
         widget = super().createWidget(class_name, parent, name)
-        if self.base_instance is not None and name:
-            setattr(self.base_instance, name, widget)
+        self._bind_widget_attr(name, widget)
         return widget
 
 
 def _load_ui(ui_path, parent):
+    def _bind_widget_attr(base_instance, name, widget):
+        if base_instance is None or not name:
+            return
+
+        setattr(base_instance, name, widget)
+
+        try:
+            widget.destroyed.connect(
+                lambda *_, n=name, base=base_instance: setattr(base, n, None)
+            )
+        except Exception:
+            pass
+
     import importlib
     import xml.etree.ElementTree as ET
 
@@ -59,11 +86,6 @@ def _load_ui(ui_path, parent):
         if customwidgets is None:
             return
 
-        legacy_header_map = {
-            'widgets.int_line_edit': 'widgets.conversational.int_line_edit',
-            'widgets.float_line_edit': 'widgets.conversational.float_line_edit',
-        }
-
         for customwidget in customwidgets.findall('customwidget'):
             class_name = customwidget.findtext('class')
             header = customwidget.findtext('header')
@@ -75,9 +97,6 @@ def _load_ui(ui_path, parent):
                 continue
 
             candidate_modules = [module_path]
-            mapped = legacy_header_map.get(module_path)
-            if mapped:
-                candidate_modules.append(mapped)
 
             for candidate in candidate_modules:
                 try:
@@ -103,8 +122,8 @@ def _load_ui(ui_path, parent):
 
     for child in loaded.findChildren(QObject):
         name = child.objectName()
-        if name and not hasattr(parent, name):
-            setattr(parent, name, child)
+        if name:
+            _bind_widget_attr(parent, name, child)
 
     return loaded
 
@@ -196,31 +215,54 @@ class ConversationalBaseWidget(QWidget):
         self.z_feed_rate_input.editingFinished.connect(self._validate_z_feed_rate)
         self.retract_height_input.editingFinished.connect(self._validate_retract_height)
 
-        # Ensure tool description reflects the persisted tool number at startup
-        QTimer.singleShot(0, self.set_tool_description_from_tool_num)
+        # Initialize description immediately to avoid deferred callbacks racing page teardown.
+        self.set_tool_description_from_tool_num()
 
         # Only connect to plugins if not in designer mode
         if not IN_DESIGNER:
             if self._tool_table is not None:
-                self._tool_table.tool_table_changed.connect(self._update_fields)
+                self._tool_table.tool_table_changed.connect(safe_qt_callback(self, self._update_fields))
 
             status = _get_status()
             if status is not None:
-                status.g5x_index.onValueChanged(self.update_wcs)
-                status.program_units.onValueChanged(self.update_selected_unit)
-                status.tool_in_spindle.onValueChanged(self.update_tool_number)
+                status.g5x_index.onValueChanged(safe_qt_callback(self, self.update_wcs))
+                status.program_units.onValueChanged(safe_qt_callback(self, self.update_selected_unit))
+                status.tool_in_spindle.onValueChanged(safe_qt_callback(self, self.update_tool_number))
+
+    def _resolve_widget(self, name, widget_type=None):
+        widget = getattr(self, name, None)
+        if _is_qt_valid(widget):
+            return widget
+
+        if not _is_qt_valid(self):
+            return None
+
+        try:
+            widget = self.findChild(widget_type or QObject, name)
+        except RuntimeError:
+            return None
+
+        if _is_qt_valid(widget):
+            setattr(self, name, widget)
+            return widget
+
+        return None
 
     def update_wcs(self):
         if not IN_DESIGNER:
             status = _get_status()
             if status is not None:
-                self.wcs_input.setCurrentIndex(status.g5x_index() - 1)
+                wcs_input = self._resolve_widget('wcs_input')
+                if _is_qt_valid(wcs_input):
+                    wcs_input.setCurrentIndex(status.g5x_index() - 1)
 
     def update_selected_unit(self):
         if not IN_DESIGNER:
             status = _get_status()
             if status is not None:
-                self.unit_input.setCurrentIndex(status.program_units() - 1)
+                unit_input = self._resolve_widget('unit_input')
+                if _is_qt_valid(unit_input):
+                    unit_input.setCurrentIndex(status.program_units() - 1)
 
     def update_tool_number(self):
         if not IN_DESIGNER:
@@ -230,24 +272,18 @@ class ConversationalBaseWidget(QWidget):
                     tool_in_spindle = status.tool_in_spindle()
                 except TypeError:
                     tool_in_spindle = status.tool_in_spindle
-                self.tool_number_input.setText('{}'.format(tool_in_spindle))
+                tool_input = self._resolve_widget('tool_number_input')
+                if not _is_qt_valid(tool_input):
+                    return
+                tool_input.setText('{}'.format(tool_in_spindle))
                 self.set_tool_description_from_tool_num()
 
     def set_tool_description_from_tool_num(self):
         if not _is_qt_valid(self):
             return
 
-        tool_label = getattr(self, 'tool_description', None)
-        if not _is_qt_valid(tool_label):
-            # Some conversational pages can have stale/missing attribute bindings; recover by object name lookup.
-            try:
-                tool_label = self.findChild(QLabel, 'tool_description')
-            except RuntimeError:
-                return
-            if _is_qt_valid(tool_label):
-                self.tool_description = tool_label
-
-        tool_input = getattr(self, 'tool_number_input', None)
+        tool_label = self._resolve_widget('tool_description', QLabel)
+        tool_input = self._resolve_widget('tool_number_input')
 
         if not _is_qt_valid(tool_input):
             self._tool_is_valid = False
@@ -290,18 +326,7 @@ class ConversationalBaseWidget(QWidget):
         return name_input.text()
 
     def _get_name_input_widget(self):
-        if not _is_qt_valid(self):
-            return None
-
-        name_input = getattr(self, 'name_input', None)
-        if not _is_qt_valid(name_input):
-            try:
-                name_input = self.findChild(QLineEdit, 'name_input')
-            except RuntimeError:
-                return None
-            if _is_qt_valid(name_input):
-                self.name_input = name_input
-        return name_input
+        return self._resolve_widget('name_input', QLineEdit)
 
     def wcs(self):
         return self.wcs_input.currentText()

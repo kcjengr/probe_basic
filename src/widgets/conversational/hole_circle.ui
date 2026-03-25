@@ -140,12 +140,18 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="diameter_input">
+        <widget class="VCPSettingsLineEdit" name="diameter_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>33</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -153,17 +159,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="default_value" stdset="0">
-          <double>0.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
          </property>
-         <property name="bottom" stdset="0">
-          <double>0.000000000000000</double>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.base-diameter</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -261,7 +270,13 @@ Holes</string>
         </widget>
        </item>
        <item>
-        <widget class="IntLineEdit" name="num_holes_input">
+        <widget class="VCPSettingsLineEdit" name="num_holes_input">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
          <property name="minimumSize">
           <size>
            <width>70</width>
@@ -274,17 +289,20 @@ Holes</string>
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="default_value" stdset="0">
-          <number>0</number>
+         <property name="placeholderText">
+          <string>0</string>
          </property>
-         <property name="bottom" stdset="0">
-          <number>1</number>
+         <property name="textFormat" stdset="0">
+          <string>{:.0f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.num-holes</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -382,11 +400,11 @@ ANGLE</string>
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="start_angle_input">
+        <widget class="VCPSettingsLineEdit" name="start_angle_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
@@ -401,17 +419,20 @@ ANGLE</string>
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="format_string" stdset="0">
-          <string>%.2f</string>
+         <property name="placeholderText">
+          <string>0.000</string>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="textFormat" stdset="0">
+          <string>{:.3f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.start-angle</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -508,11 +529,11 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="center_x_input">
+        <widget class="VCPSettingsLineEdit" name="center_x_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
          </property>
          <property name="minimumSize">
@@ -527,14 +548,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
+         </property>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.center-x</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -631,12 +658,18 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="center_y_input">
+        <widget class="VCPSettingsLineEdit" name="center_y_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>33</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -644,14 +677,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
+         </property>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.center-y</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -759,12 +798,18 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="retract_height_input">
+        <widget class="VCPSettingsLineEdit" name="retract_height_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>33</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -772,14 +817,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
+         </property>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.retract</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -876,12 +927,18 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="z_start_input">
+        <widget class="VCPSettingsLineEdit" name="z_start_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>33</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -889,14 +946,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
+         </property>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.z-start</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -993,12 +1056,18 @@ color: rgb(255, 255, 255);
         </widget>
        </item>
        <item>
-        <widget class="FloatLineEdit" name="z_end_input">
+        <widget class="VCPSettingsLineEdit" name="z_end_input">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-           <horstretch>70</horstretch>
-           <verstretch>33</verstretch>
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
           </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>70</width>
+           <height>33</height>
+          </size>
          </property>
          <property name="maximumSize">
           <size>
@@ -1006,14 +1075,20 @@ color: rgb(255, 255, 255);
            <height>33</height>
           </size>
          </property>
-         <property name="text">
-          <string>0.0000</string>
+         <property name="focusPolicy">
+          <enum>Qt::FocusPolicy::ClickFocus</enum>
          </property>
          <property name="alignment">
           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
          </property>
-         <property name="bottom" stdset="0">
-          <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+         <property name="placeholderText">
+          <string>0.0000</string>
+         </property>
+         <property name="textFormat" stdset="0">
+          <string>{:.4f}</string>
+         </property>
+         <property name="settingName" stdset="0">
+          <string>conv-hole.z-end</string>
          </property>
          <property name="styleSet" stdset="0">
           <string>dataField14</string>
@@ -1407,7 +1482,7 @@ color: rgb(255, 255, 255);
             <string> Untitled</string>
            </property>
            <property name="cursorPosition">
-            <number>0</number>
+            <number>9</number>
            </property>
            <property name="styleSet" stdset="0">
             <string>dataField14</string>
@@ -2174,11 +2249,6 @@ color: rgb(255, 255, 255);
  </widget>
  <customwidgets>
   <customwidget>
-   <class>VCPLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.line_edit</header>
-  </customwidget>
-  <customwidget>
    <class>VCPSettingsLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
@@ -2187,16 +2257,6 @@ color: rgb(255, 255, 255);
    <class>VCPSettingsComboBox</class>
    <extends>QComboBox</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
-  </customwidget>
-  <customwidget>
-   <class>FloatLineEdit</class>
-   <extends>VCPLineEdit</extends>
-   <header>widgets.conversational.float_line_edit</header>
-  </customwidget>
-  <customwidget>
-   <class>IntLineEdit</class>
-   <extends>VCPLineEdit</extends>
-   <header>widgets.conversational.int_line_edit</header>
   </customwidget>
  </customwidgets>
  <resources/>

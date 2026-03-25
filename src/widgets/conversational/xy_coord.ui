@@ -169,16 +169,23 @@ font: 14pt &quot;Bebas Kai&quot;;
                </item>
                <item>
                 <widget class="QTableView" name="xy_coord_input">
+                 <property name="mouseTracking">
+                  <bool>true</bool>
+                 </property>
+                 <property name="focusPolicy">
+                  <enum>Qt::FocusPolicy::ClickFocus</enum>
+                 </property>
                  <property name="styleSheet">
                   <string notr="true">QTableView,
 QHeaderView {
     font: 14pt &quot;Bebas Kai&quot;;
-	background-color: rgb(220, 220, 220);
-	color: black;
+    background-color: rgb(108, 108, 108);
+	color: white;
     border: none;
 }
 
 QTableView {
+    color: white;
    	border-top: 8px rgb(120, 120, 120);
 	border-left: 4px  rgb(120, 120, 120);
 	border-bottom: 5px rgb(120, 120, 120);
@@ -189,6 +196,11 @@ QTableView {
 	background-color: rgb(120, 120, 120);
     gridline-color: rgb(203, 203, 203);
 	alternate-background-color: rgb(90, 90, 90);
+}
+
+QTableView::item:selected {
+    background-color: rgb(87, 87, 238); 
+    color: white;
 }</string>
                  </property>
                  <attribute name="horizontalHeaderDefaultSectionSize">
@@ -219,6 +231,9 @@ QTableView {
                       <height>42</height>
                      </size>
                     </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
+                    </property>
                     <property name="styleSheet">
                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;</string>
                     </property>
@@ -240,6 +255,9 @@ QTableView {
                       <width>16777215</width>
                       <height>42</height>
                      </size>
+                    </property>
+                    <property name="focusPolicy">
+                     <enum>Qt::FocusPolicy::ClickFocus</enum>
                     </property>
                     <property name="styleSheet">
                      <string notr="true">font: 14pt &quot;Bebas Kai&quot;;</string>
@@ -397,12 +415,18 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="FloatLineEdit" name="retract_height_input">
+              <widget class="VCPSettingsLineEdit" name="retract_height_input">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>70</horstretch>
-                 <verstretch>33</verstretch>
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>70</width>
+                 <height>33</height>
+                </size>
                </property>
                <property name="maximumSize">
                 <size>
@@ -410,25 +434,20 @@ color: rgb(255, 255, 255);
                  <height>33</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <family>Bebas Kai</family>
-                 <pointsize>14</pointsize>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>0.0000</string>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::ClickFocus</enum>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
-               <property name="format_string" stdset="0">
-                <string>{0:.4f}</string>
+               <property name="placeholderText">
+                <string>0.0000</string>
                </property>
-               <property name="bottom" stdset="0">
-                <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+               <property name="textFormat" stdset="0">
+                <string>{:.4f}</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>conv-xy-coord.retract</string>
                </property>
                <property name="styleSet" stdset="0">
                 <string>dataField14</string>
@@ -525,12 +544,18 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="FloatLineEdit" name="z_end_input">
+              <widget class="VCPSettingsLineEdit" name="z_end_input">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>70</horstretch>
-                 <verstretch>33</verstretch>
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>70</width>
+                 <height>33</height>
+                </size>
                </property>
                <property name="maximumSize">
                 <size>
@@ -538,25 +563,20 @@ color: rgb(255, 255, 255);
                  <height>33</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <family>Bebas Kai</family>
-                 <pointsize>14</pointsize>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>0.0000</string>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::ClickFocus</enum>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
-               <property name="format_string" stdset="0">
-                <string>{0:.4f}</string>
+               <property name="placeholderText">
+                <string>0.0000</string>
                </property>
-               <property name="bottom" stdset="0">
-                <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+               <property name="textFormat" stdset="0">
+                <string>{:.4f}</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>conv-xy-coord.z-end</string>
                </property>
                <property name="styleSet" stdset="0">
                 <string>dataField14</string>
@@ -653,12 +673,18 @@ color: rgb(255, 255, 255);
               </widget>
              </item>
              <item>
-              <widget class="FloatLineEdit" name="z_start_input">
+              <widget class="VCPSettingsLineEdit" name="z_start_input">
                <property name="sizePolicy">
-                <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
-                 <horstretch>70</horstretch>
-                 <verstretch>33</verstretch>
+                <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
                 </sizepolicy>
+               </property>
+               <property name="minimumSize">
+                <size>
+                 <width>70</width>
+                 <height>33</height>
+                </size>
                </property>
                <property name="maximumSize">
                 <size>
@@ -666,25 +692,20 @@ color: rgb(255, 255, 255);
                  <height>33</height>
                 </size>
                </property>
-               <property name="font">
-                <font>
-                 <family>Bebas Kai</family>
-                 <pointsize>14</pointsize>
-                 <italic>false</italic>
-                 <bold>false</bold>
-                </font>
-               </property>
-               <property name="text">
-                <string>0.0000</string>
+               <property name="focusPolicy">
+                <enum>Qt::FocusPolicy::ClickFocus</enum>
                </property>
                <property name="alignment">
                 <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                </property>
-               <property name="format_string" stdset="0">
-                <string>{0:.4f}</string>
+               <property name="placeholderText">
+                <string>0.0000</string>
                </property>
-               <property name="bottom" stdset="0">
-                <double>-179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000000000000000</double>
+               <property name="textFormat" stdset="0">
+                <string>{:.4f}</string>
+               </property>
+               <property name="settingName" stdset="0">
+                <string>conv-xy-coord.z-start</string>
                </property>
                <property name="styleSet" stdset="0">
                 <string>dataField14</string>
@@ -1028,6 +1049,9 @@ color: rgb(255, 255, 255);
              <height>35</height>
             </size>
            </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
            </property>
@@ -1140,6 +1164,9 @@ color: rgb(255, 255, 255);
              <height>35</height>
             </size>
            </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
            </property>
@@ -1210,6 +1237,9 @@ color: rgb(255, 255, 255);
              <height>35</height>
             </size>
            </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
            </property>
@@ -1238,6 +1268,9 @@ color: rgb(255, 255, 255);
              <height>35</height>
             </size>
            </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
+           </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
            </property>
@@ -1265,6 +1298,9 @@ color: rgb(255, 255, 255);
              <width>100</width>
              <height>35</height>
             </size>
+           </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
            </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
@@ -1377,6 +1413,9 @@ color: rgb(255, 255, 255);
              <width>100</width>
              <height>35</height>
             </size>
+           </property>
+           <property name="mouseTracking">
+            <bool>true</bool>
            </property>
            <property name="styleSheet">
             <string notr="true">padding-left: 10px;</string>
@@ -1539,7 +1578,7 @@ color: rgb(255, 255, 255);
             <string>Untitled</string>
            </property>
            <property name="cursorPosition">
-            <number>0</number>
+            <number>8</number>
            </property>
            <property name="styleSet" stdset="0">
             <string>dataField14</string>
@@ -1548,6 +1587,9 @@ color: rgb(255, 255, 255);
          </item>
          <item row="3" column="3">
           <widget class="VCPSettingsLineEdit" name="drill_type_param_value">
+           <property name="enabled">
+            <bool>true</bool>
+           </property>
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -1565,6 +1607,9 @@ color: rgb(255, 255, 255);
              <width>100</width>
              <height>33</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1603,6 +1648,9 @@ color: rgb(255, 255, 255);
              <height>33</height>
             </size>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
+           </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
@@ -1639,6 +1687,9 @@ color: rgb(255, 255, 255);
              <width>100</width>
              <height>33</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1677,6 +1728,9 @@ color: rgb(255, 255, 255);
              <height>33</height>
             </size>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
+           </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
@@ -1713,6 +1767,9 @@ color: rgb(255, 255, 255);
              <width>100</width>
              <height>33</height>
             </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
            </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
@@ -1751,6 +1808,9 @@ color: rgb(255, 255, 255);
              <height>33</height>
             </size>
            </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
+           </property>
            <property name="alignment">
             <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
            </property>
@@ -1765,6 +1825,88 @@ color: rgb(255, 255, 255);
            </property>
            <property name="styleSet" stdset="0">
             <string>dataField14</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="3">
+          <widget class="VCPSettingsLineEdit" name="xy_coord_feed_per_rev">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>100</width>
+             <height>33</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>100</width>
+             <height>33</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::FocusPolicy::ClickFocus</enum>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <property name="placeholderText">
+            <string>0.0000</string>
+           </property>
+           <property name="textFormat" stdset="0">
+            <string>{:.4f}</string>
+           </property>
+           <property name="settingName" stdset="0">
+            <string>conv-xy-coord.fpr</string>
+           </property>
+           <property name="styleSet" stdset="0">
+            <string>dataField14</string>
+           </property>
+          </widget>
+         </item>
+         <item row="10" column="2">
+          <widget class="QLabel" name="label_177">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>115</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>115</width>
+             <height>35</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <family>Bebas Kai</family>
+             <pointsize>14</pointsize>
+             <italic>false</italic>
+             <bold>false</bold>
+            </font>
+           </property>
+           <property name="lineWidth">
+            <number>0</number>
+           </property>
+           <property name="text">
+            <string>FEED/REV</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+           </property>
+           <property name="indent">
+            <number>0</number>
            </property>
           </widget>
          </item>
@@ -1791,6 +1933,9 @@ color: rgb(255, 255, 255);
           <height>42</height>
          </size>
         </property>
+        <property name="focusPolicy">
+         <enum>Qt::FocusPolicy::ClickFocus</enum>
+        </property>
         <property name="text">
          <string>POST TO FILE</string>
         </property>
@@ -1803,11 +1948,6 @@ color: rgb(255, 255, 255);
  </widget>
  <customwidgets>
   <customwidget>
-   <class>VCPLineEdit</class>
-   <extends>QLineEdit</extends>
-   <header>qtpyvcp.widgets.input_widgets.line_edit</header>
-  </customwidget>
-  <customwidget>
    <class>VCPSettingsLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
@@ -1817,11 +1957,6 @@ color: rgb(255, 255, 255);
    <extends>QComboBox</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
   </customwidget>
-  <customwidget>
-   <class>FloatLineEdit</class>
-   <extends>VCPLineEdit</extends>
-   <header>widgets.conversational.float_line_edit</header>
-  </customwidget>
  </customwidgets>
  <tabstops>
   <tabstop>delete_selected_input</tabstop>
@@ -1830,7 +1965,6 @@ color: rgb(255, 255, 255);
   <tabstop>wcs_input</tabstop>
   <tabstop>unit_input</tabstop>
   <tabstop>coolant_input</tabstop>
-  <tabstop>retract_height_input</tabstop>
  </tabstops>
  <resources/>
  <connections/>
