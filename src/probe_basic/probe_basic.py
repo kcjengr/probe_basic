@@ -144,6 +144,7 @@ class ProbeBasic(VCPMainWindow):
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
 
         dro_display = dro_display.lower()
+        QTimer.singleShot(0, self._apply_jog_display_fallback)
         
         self.help_menu = self.menuBar().addMenu("Help")
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
@@ -173,6 +174,33 @@ class ProbeBasic(VCPMainWindow):
             if lbl is not None:
                 if hasattr(lbl, 'valueFormat'):
                     lbl.valueFormat = "02.0f"
+
+    def _apply_jog_display_fallback(self):
+        jog_widget = getattr(self, "jogDisplay", None)
+        if jog_widget is None:
+            return
+
+        geometry = (INIFILE.find("DISPLAY", "GEOMETRY") or "").strip().upper().replace(" ", "")
+        if not geometry:
+            geometry = (INIFILE.find("TRAJ", "COORDINATES") or "").strip().upper().replace(" ", "")
+
+        page_map = {
+            "XYZ": 0,
+            "XYZA": 1,
+            "XYZAB": 2,
+            "XYZAC": 3,
+            "XYZBC": 4,
+            "XYZABC": 5,
+        }
+
+        page_idx = page_map.get(geometry)
+        if page_idx is None:
+            LOG.debug("Jog display fallback skipped: unsupported geometry=%r", geometry)
+            return
+
+        if jog_widget.currentIndex() != page_idx:
+            jog_widget.setCurrentIndex(page_idx)
+            LOG.info("Jog display fallback applied: geometry=%s index=%s", geometry, page_idx)
 
     def _theme_preference(self):
         theme_color = (INIFILE.find("DISPLAY", "THEME_COLOR") or "light").strip().lower()

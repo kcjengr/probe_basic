@@ -8087,7 +8087,7 @@ QPushButton:checked {
                 </property>
                 <layout class="QVBoxLayout" name="verticalLayout_33">
                  <property name="spacing">
-                  <number>15</number>
+                  <number>6</number>
                  </property>
                  <property name="leftMargin">
                   <number>12</number>
@@ -8545,7 +8545,7 @@ QPushButton:checked {
                    <property name="minimumSize">
                     <size>
                      <width>0</width>
-                     <height>10</height>
+                     <height>1</height>
                     </size>
                    </property>
                   </widget>
@@ -23001,13 +23001,7 @@ color: white;
                          <item>
                           <widget class="VCPStackedWidget" name="jogDisplay">
                            <property name="currentIndex">
-                            <number>3</number>
-                           </property>
-                           <property name="rules" stdset="0">
-                            <string>[{&quot;name&quot;: &quot;axis_display_rule&quot;, &quot;property&quot;: &quot;currentIndex&quot;, &quot;expression&quot;: &quot;0 if ch[0] == 'XYZ' else (1 if ch[0] == 'XYZA' else (2 if ch[0] == 'XYZAB' else (3 if ch[0] == 'XYZAC' else (4 if ch[0] == 'XYZBC' else -1))))&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:axis_mask?string&quot;, &quot;trigger&quot;: true}]}]</string>
-                           </property>
-                           <property name="settingName" stdset="0">
-                            <string>jog-display.currentIndex</string>
+                            <number>4</number>
                            </property>
                            <widget class="QWidget" name="jog_xyz">
                             <layout class="QVBoxLayout" name="verticalLayout_69">
@@ -24565,7 +24559,7 @@ color: white;
                              </item>
                             </layout>
                            </widget>
-                           <widget class="QWidget" name="page">
+                           <widget class="QWidget" name="jog_xyzbc">
                             <layout class="QVBoxLayout" name="verticalLayout_4">
                              <item>
                               <layout class="QHBoxLayout" name="horizontalLayout_200">
@@ -24971,6 +24965,544 @@ color: white;
                                </item>
                                <item>
                                 <widget class="ActionButton" name="c_plus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/c_plus_jog_button.png</normaloff>:/images/c_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:c,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyzabc">
+                            <layout class="QVBoxLayout" name="verticalLayout_13">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_23">
+                               <item>
+                                <widget class="ActionButton" name="x_minus_jogbutton_10">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="x_plus_jogbutton_10">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_205">
+                               <item>
+                                <widget class="ActionButton" name="y_plus_jogbutton_10">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="y_minus_jogbutton_10">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_204">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_10">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_10">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_131">
+                               <item>
+                                <widget class="ActionButton" name="a_minus_jogbutton_7">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_minus_jog_button.png</normaloff>:/images/a_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="a_plus_jogbutton_7">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/a_plus_jog_button.png</normaloff>:/images/a_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:a,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_206">
+                               <item>
+                                <widget class="ActionButton" name="b_minus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="b_plus_jogbutton_4">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_207">
+                               <item>
+                                <widget class="ActionButton" name="c_minus_jogbutton_5">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/c_minus_jog_button.png</normaloff>:/images/c_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:c,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="c_plus_jogbutton_5">
                                  <property name="sizePolicy">
                                   <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                    <horstretch>0</horstretch>
@@ -32027,18 +32559,18 @@ font: 11pt bebas kai;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
