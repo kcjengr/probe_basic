@@ -1,0 +1,47 @@
+# set command type to MoveJointVel in deg/sec
+setp lcec.0.Meca500.vel-cmd-id 21
+setp lcec.0.Meca500.motion.set-point 1
+setp lcec.0.Meca500.motion.move-id 0
+
+net j0-pos-cmd  <= joint.0.motor-pos-cmd
+net j1-pos-cmd  <= joint.1.motor-pos-cmd
+net j2-pos-cmd  <= joint.2.motor-pos-cmd
+net j3-pos-cmd  <= joint.3.motor-pos-cmd
+net j4-pos-cmd  <= joint.4.motor-pos-cmd
+net j5-pos-cmd  <= joint.5.motor-pos-cmd
+
+net j0-pos-cmd => ddt.0.in
+net j1-pos-cmd => ddt.1.in
+net j2-pos-cmd => ddt.2.in
+net j3-pos-cmd => ddt.3.in
+net j4-pos-cmd => ddt.4.in
+net j5-pos-cmd => ddt.5.in
+
+net j0-vel-cmd  <= ddt.0.out
+net j1-vel-cmd  <= ddt.1.out
+net j2-vel-cmd  <= ddt.2.out
+net j3-vel-cmd  <= ddt.3.out
+net j4-vel-cmd  <= ddt.4.out
+net j5-vel-cmd  <= ddt.5.out
+
+net j0-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a1
+net j1-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a2
+net j2-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a3
+net j3-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a4
+net j4-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a5
+net j5-vel-cmd  =>	lcec.0.Meca500.vel-cmd.a6
+
+net j0-pos-fb  <= lcec.0.Meca500.status.target-a1
+net j1-pos-fb  <= lcec.0.Meca500.status.target-a2
+net j2-pos-fb  <= lcec.0.Meca500.status.target-a3
+net j3-pos-fb  <= lcec.0.Meca500.status.target-a4
+net j4-pos-fb  <= lcec.0.Meca500.status.target-a5
+net j5-pos-fb  <= lcec.0.Meca500.status.target-a6
+
+net j0-pos-fb  => joint.0.motor-pos-fb
+net j1-pos-fb  => joint.1.motor-pos-fb
+net j2-pos-fb  => joint.2.motor-pos-fb
+net j3-pos-fb  => joint.3.motor-pos-fb
+net j4-pos-fb  => joint.4.motor-pos-fb
+net j5-pos-fb  => joint.5.motor-pos-fb
+
