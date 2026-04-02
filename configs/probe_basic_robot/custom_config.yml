@@ -1,0 +1,132 @@
+# example of a machine specific settings
+windows:
+  mainwindow:
+    kwargs:
+      confirm_exit: false
+
+data_plugins:
+  status:
+    provider: qtpyvcp.plugins.status:Status
+    kwargs:
+      cycle_time: 30
+
+  clock:
+    provider: qtpyvcp.plugins.clock:Clock
+
+  tooltable:
+    provider: qtpyvcp.plugins.tool_table:ToolTable
+    kwargs:
+        columns: TXYZABCDR
+
+  persistent_data_manager:
+    provider: qtpyvcp.plugins.persistent_data_manager:PersistentDataManager
+    kwargs:
+      # serialization method to use: json or pickle
+      serialization_method: pickle
+      # persistence_file: .vcp_data.json
+
+  notifications:
+    provider: qtpyvcp.plugins.notifications:Notifications
+    kwargs:
+      # show notification popups
+      enabled: True
+      # "native" or "dbus"
+      mode: native
+      # max number of notifications to show
+      max_messages: 5
+      # whether to save messages on exit
+      persistent: True
+
+settings:
+  # VTK backplot view settings
+
+  backplot.show-grid:
+    default_value: false
+
+  backplot.show-program-bounds:
+    default_value: false
+
+  backplot.show-program-labels:
+    default_value: false
+
+  backplot.show-program-ticks:
+    default_value: false
+
+  backplot.show-machine-bounds:
+    default_value: false
+
+  backplot.show-machine-labels:
+    default_value: false
+
+  backplot.show-machine-ticks:
+    default_value: false
+
+  backplot.perspective-view:
+    default_value: false
+
+#  backplot.view:
+#    default_value: P
+#    options: ["X: Front View", "XZ: Lathe View", "XZ2: Lathe View", "Y: Front View", "Z: Top View", "Z2: Bottom View", "P: Isometric"]
+
+  backplot.multitool-colors:
+    default_value: true
+
+  # camera settings
+  
+  camera.device:
+    default_value: /dev/video0
+  
+  camera.gst-flag:
+    default_value: false
+  
+  camera.px-mm:
+    default_value: 1.0
+  
+  camera.calibration-file:
+    default_value: "calibration.yml"
+    
+  # croshair settings
+  
+  croshairs.vertical:
+    default_value: 0
+    
+  croshairs.horizontal:
+    default_value: 0
+    
+  croshairs.radious:
+    default_value: 25
+    
+  # edje detect settings
+    
+  edje.min-threshold:
+    default_value: 190
+    
+  edje.max-threshold:
+    default_value: 200
+    
+  # hole detect settings
+  
+  hole.dp:
+    default_value: 1
+     
+  hole.min-dist:
+    default_value: 20
+
+  hole.param1:
+    default_value: 40
+    
+  hole.param2:
+    default_value: 50
+    
+  hole.min-radious:
+    default_value: 1
+    
+  hole.max-radious:
+    default_value: 20
+    
+  # slot detect settings
+    
+    
+    
+    
+    
