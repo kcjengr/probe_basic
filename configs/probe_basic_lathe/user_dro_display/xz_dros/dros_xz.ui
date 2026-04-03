@@ -932,7 +932,7 @@ DROLabel[style=&quot;homing&quot;]{
         </property>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <property name="spacing">
-          <number>30</number>
+          <number>15</number>
          </property>
          <property name="leftMargin">
           <number>0</number>
@@ -947,7 +947,7 @@ DROLabel[style=&quot;homing&quot;]{
           <number>0</number>
          </property>
          <item>
-          <widget class="MDIButton" name="zero_all_button">
+          <widget class="MDIButton" name="g20_button">
            <property name="enabled">
             <bool>false</bool>
            </property>
@@ -965,7 +965,7 @@ DROLabel[style=&quot;homing&quot;]{
            </property>
            <property name="maximumSize">
             <size>
-             <width>16777215</width>
+             <width>110</width>
              <height>40</height>
             </size>
            </property>
@@ -981,11 +981,7 @@ DROLabel[style=&quot;homing&quot;]{
 }</string>
            </property>
            <property name="text">
-            <string>ALL</string>
-           </property>
-           <property name="icon">
-            <iconset resource="../../../../src/probe_basic/probe_basic.qrc">
-             <normaloff>:/images/zero.png</normaloff>:/images/zero.png</iconset>
+            <string>G20 INCH</string>
            </property>
            <property name="iconSize">
             <size>
@@ -1010,7 +1006,71 @@ DROLabel[style=&quot;homing&quot;]{
 ]</string>
            </property>
            <property name="MDICommand" stdset="0">
-            <string>G10 L20 P{ch[0]} X0.0 Z0.0</string>
+            <string>G20</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="MDIButton" name="g21_button">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>60</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>110</width>
+             <height>40</height>
+            </size>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::LeftToRight</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">MDIButton {
+   	font: 14pt &quot;Bebas Kai&quot;;
+}</string>
+           </property>
+           <property name="text">
+            <string>G21 MM</string>
+           </property>
+           <property name="iconSize">
+            <size>
+             <width>20</width>
+             <height>20</height>
+            </size>
+           </property>
+           <property name="rules" stdset="0">
+            <string>[
+    {
+        &quot;channels&quot;: [
+            {
+                &quot;url&quot;: &quot;status:g5x_index&quot;,
+                &quot;trigger&quot;: true,
+                &quot;type&quot;: &quot;int&quot;
+            }
+        ],
+        &quot;expression&quot;: &quot;&quot;,
+        &quot;name&quot;: &quot;G5x Index&quot;,
+        &quot;property&quot;: &quot;None&quot;
+    }
+]</string>
+           </property>
+           <property name="MDICommand" stdset="0">
+            <string>G21</string>
            </property>
           </widget>
          </item>
