@@ -9,7 +9,7 @@ root:
     axis: null
     joint: null
     root:
-        id: "table_1"
+        id: "table_2"
         color: [0.33, 0.33, 0.33]
         power: 3.0
         model: "models/arm_base.stl"
@@ -24,8 +24,8 @@ root:
             power: 3.0
             model: "models/arm_joint_0.stl"
             type: "angular"
-            position: [0, 0, 3, 0, 0, 0]
-            origin: [0, 0, 3]
+            position: [0, 0, 0, 0, 0, 0]
+            origin: [0, 0, 3.0]
             axis: "z"
             joint: 0
             child_r_l1:
@@ -34,8 +34,8 @@ root:
                 power: 3.0
                 model: "models/arm_joint_1.stl"
                 type: "angular"
-                position: [0, 0, 7, 0, 0, 0]
-                origin: [0, 0, 7]
+                position: [0, 0, 0, 0, 0, 0]
+                origin: [0, 0, 7.25]
                 axis: "x"
                 joint: 1
                 child_r_l2:
@@ -44,8 +44,8 @@ root:
                     power: 3.0
                     model: "models/arm_joint_2.stl"
                     type: "angular"
-                    position: [0, 0, 16, 0, 0, 0]
-                    origin: [0, 0, 16]
+                    position: [0, 0, 0, 0, 0, 0]
+                    origin: [0, 0, 16.25]
                     axis: "x"
                     joint: 2
                     child_r_l3:
@@ -54,9 +54,9 @@ root:
                         power: 3.0
                         model: "models/arm_joint_3.stl"
                         type: "angular"
-                        position: [0, -5, 16, 0, 0, 0]
-                        origin: [0, -5, 16]
-                        axis: "-z"
+                        position: [0, 0, 0, 0, 0, 0]
+                        origin: [0, -5, 16.25]
+                        axis: "y"
                         joint: 3
                         child_r_l4:
                             id: "joint_4"
@@ -64,8 +64,28 @@ root:
                             power: 3.0
                             model: "models/arm_joint_4.stl"
                             type: "angular"
-                            position: [0, -9, 16, 0, 0, 0]
-                            origin: [0, -9, 16]
+                            position: [0, 0, 0, 0, 0, 0]
+                            origin: [0, -9, 16.25]
                             axis: "x"
                             joint: 4
+                            child_r_l5:
+                                id: "joint_5"
+                                color: [0.33, 0.33, 0.33]
+                                power: 3.0
+                                model: "models/arm_joint_5.stl"
+                                type: "angular"
+                                position: [0, 0, 0, 0, 0, 0]
+                                origin: [0, -11.5, 16.25]
+                                axis: "y"
+                                joint: 5
+                                child_tool:
+                                    id: "spindle"
+                                    color: [0.33, 0.33, 0.33]
+                                    power: 3.0
+                                    model: "models/spindle.stl"
+                                    type: "head"
+                                    position: [0, 0, 0, 0, 0, 0]
+                                    origin: [0, -12, 16.25]
+                                    axis: "z"
+                                    joint: 5
 

@@ -1,4 +1,4 @@
-# Kinematic HAL config file for Mecademic Meca500 robot arm - 6 DOF
+# Kinematic HAL config file for probe basic robot arm - 6 DOF
 
 #            L4   j3   L5  j4   L6  j5  L7
 #   j2    *-------*--------*--------*-------|end_effector|
@@ -20,29 +20,33 @@
 # https://cdn.mecademic.com/uploads/docs/robot_arm-r3-programming-manual-8-4.pdf#subsubsection.1.1.1
 # https://cdn.mecademic.com/uploads/docs/robot_arm-robot-assembled-stp.zip
 #
+# Provisional first-pass values derived from:
+#   models/robot_arm_origin_offsets.csv
+# using the provided joint axis points/vectors (BRF).
+# Units: A/D in machine units (inch), ALPHA in radians.
 
-setp genserkins.ALPHA-0   0
-setp genserkins.ALPHA-1  -1.570796326
-setp genserkins.ALPHA-2   0
-setp genserkins.ALPHA-3  -1.570796326
-setp genserkins.ALPHA-4   1.570796326
-setp genserkins.ALPHA-5  -1.570796326
+setp genserkins.ALPHA-0   1.5707963268
+setp genserkins.ALPHA-1   0
+setp genserkins.ALPHA-2   1.5707963268
+setp genserkins.ALPHA-3   1.5707963268
+setp genserkins.ALPHA-4   1.5707963268
+setp genserkins.ALPHA-5   1.5707963268
 
 setp genserkins.A-0       0
-setp genserkins.A-1       0
-setp genserkins.A-2       135
-setp genserkins.A-3       38
+setp genserkins.A-1       9.0
+setp genserkins.A-2       0
+setp genserkins.A-3       0
 setp genserkins.A-4       0
 setp genserkins.A-5       0
 
-setp genserkins.D-0       135
+setp genserkins.D-0       4.25
 setp genserkins.D-1       0
 setp genserkins.D-2       0
-setp genserkins.D-3       120
+setp genserkins.D-3       -4.0
 setp genserkins.D-4       0
-setp genserkins.D-5       70
+setp genserkins.D-5       -0.5
 
-setp genserkins.max-iterations      0x00000128
+setp genserkins.max-iterations      0x00000400
 setp genserkins.unrotate-0          0
 setp genserkins.unrotate-1          0
 setp genserkins.unrotate-2          0
