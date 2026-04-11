@@ -32,7 +32,7 @@ def _load_ui(ui_path, parent):
     return load_runtime_ui(ui_path, parent)
 
 
-QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
+QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/ProbeBasicBebasMono.ttf'))
 
 def _resolve_config_path(path_str: str):
     """Resolve a config path relative to the INI directory if not absolute."""

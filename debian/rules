@@ -13,7 +13,13 @@ override_dh_auto_install:
 	# Create the truetype directory if it doesn't exist
 	mkdir -p debian/python3-probe-basic/usr/share/fonts/truetype/
 	# Install the font file
-	install -m 644 fonts/BebasKai.ttf debian/python3-probe-basic/usr/share/fonts/truetype/
+	install -m 644 fonts/ProbeBasicBebasMono.ttf debian/python3-probe-basic/usr/share/fonts/truetype/
+
+	# Install font license/notice files with the packaged font
+	mkdir -p debian/python3-probe-basic/usr/share/doc/python3-probe-basic/fonts/
+	install -m 644 fonts/OFL-1.1.txt debian/python3-probe-basic/usr/share/doc/python3-probe-basic/fonts/
+	install -m 644 fonts/ProbeBasicBebasMono-LICENSE.txt debian/python3-probe-basic/usr/share/doc/python3-probe-basic/fonts/
+	install -m 644 fonts/ProbeBasicBebasMono-MODIFICATIONS.txt debian/python3-probe-basic/usr/share/doc/python3-probe-basic/fonts/
 
 	# create icons directory if it doesn't exist
 	mkdir -p debian/python3-probe-basic/usr/share/icons/

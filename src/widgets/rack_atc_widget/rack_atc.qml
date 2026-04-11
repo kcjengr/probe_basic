@@ -119,7 +119,7 @@ Rectangle {
                             id: pocket_text
                             color: "white"
                             text: pocket_slots > 24 ? parent.parent.parent.pocket_num : "P" + parent.parent.parent.pocket_num  // Conditional P prefix
-                            font.family: "Bebas Kai"
+                            font.family: "Probe Basic Bebas Mono"
                             font.bold: true 
                             x: parent.width / 2 - width / 2
                             y: parent.height / 2 - height / 2
@@ -174,7 +174,7 @@ Rectangle {
                         id: tool_text
                         anchors.centerIn: parent
                         text: tool_item.tool_num  // Remove T prefix
-                        font.family: "Bebas Kai"
+                        font.family: "Probe Basic Bebas Mono"
                         font.bold: false
                         font.pixelSize: pocket_slots > 24 ? 20 : 22  // Size adjustment stays the same
                     }

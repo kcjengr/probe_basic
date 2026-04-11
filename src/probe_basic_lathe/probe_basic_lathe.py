@@ -35,7 +35,7 @@ def _load_ui(ui_path, parent):
 
 
 # Add custom fonts
-QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/BebasKai.ttf'))
+QFontDatabase.addApplicationFont(os.path.join(VCP_DIR, 'fonts/ProbeBasicBebasMono.ttf'))
 
 
 def _resolve_config_path(path_str: str):

@@ -60,3 +60,15 @@ codes, and the authors of this software can not, and do not, take
 any responsibility for such compliance.
 
 This software is released under the GPLv2.
+
+## Third-party Font License
+
+The bundled `ProbeBasicBebasMono.ttf` font is a third-party font by Dharma Type and is
+licensed under the SIL Open Font License 1.1 (OFL), separate from this
+project's GPL license.
+
+For details and redistribution requirements, see:
+
+* `fonts/OFL-1.1.txt`
+* `fonts/ProbeBasicBebasMono-LICENSE.txt`
+* `fonts/ProbeBasicBebasMono-MODIFICATIONS.txt`

@@ -70,7 +70,7 @@ Rectangle {
                         id: pocket_text
                         text: "P" + pocket_item.pocket_num
                         color: "black"
-                        font.family: "Bebas Kai"
+                        font.family: "Probe Basic Bebas Mono"
                         font.bold: false
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
@@ -128,7 +128,7 @@ Rectangle {
                     Text {
                         id: tool_text
                         text: "T" + tool_item.tool_num
-                        font.family: "Bebas Kai"
+                        font.family: "Probe Basic Bebas Mono"
                         font.bold: false
                         verticalAlignment: Text.AlignVCenter
                         horizontalAlignment: Text.AlignHCenter
@@ -171,7 +171,7 @@ Rectangle {
         visible: true
         font.capitalization: Font.AllUppercase
         font.pixelSize: 36
-        font.family: "Bebas Kai"
+        font.family: "Probe Basic Bebas Mono"
         fontSizeMode: Text.Fit
         verticalAlignment: Text.AlignVCenter
         horizontalAlignment: Text.AlignHCenter
