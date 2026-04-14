@@ -372,7 +372,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -2961,7 +2961,7 @@ QPushButton:checked {
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</iconset>
+                           <normaloff>../../../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -9537,10 +9537,7 @@ QTabBar::tab:only-one {
                           </widget>
                          </item>
                          <item>
-                          <widget class="VCPSettingsPushButton" name="probe_posn_only_Btn">
-                           <property name="enabled">
-                            <bool>false</bool>
-                           </property>
+                          <widget class="VCPVarPushButton" name="probe_posn_only_Btn_3030">
                            <property name="sizePolicy">
                             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                              <horstretch>0</horstretch>
@@ -9559,17 +9556,14 @@ QTabBar::tab:only-one {
                              <height>38</height>
                             </size>
                            </property>
-                           <property name="styleSheet">
-                            <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;</string>
-                           </property>
                            <property name="text">
                             <string>PROBE POSITION ONLY</string>
                            </property>
-                           <property name="settingName" stdset="0">
-                            <string>probe-parameters.probe-posn-btn</string>
+                           <property name="varParameterNumber" stdset="0">
+                            <number>3030</number>
                            </property>
-                           <property name="rules" stdset="0">
-                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                           <property name="outputAsInt" stdset="0">
+                            <bool>true</bool>
                            </property>
                           </widget>
                          </item>
@@ -9726,7 +9720,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_tool_number_3014">
+                        <widget class="VCPVarLineEdit" name="probe_tool_number_3014">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -9754,14 +9748,14 @@ color: white;
                          <property name="placeholderText">
                           <string>0</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.0f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.probe-tool-number</string>
+                         <property name="displayDecimals" stdset="0">
+                          <number>0</number>
                          </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3014</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -9815,7 +9809,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_slow_fr_3015">
+                        <widget class="VCPVarLineEdit" name="probe_slow_fr_3015">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -9843,14 +9837,14 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.1f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.probe-slow-fr</string>
+                         <property name="displayDecimals" stdset="0">
+                          <number>1</number>
                          </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3015</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -9933,7 +9927,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_traverse_fr_3017">
+                        <widget class="VCPVarLineEdit" name="probe_traverse_fr_3017">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -9961,14 +9955,14 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.1f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.probe-traverse-fr</string>
+                         <property name="displayDecimals" stdset="0">
+                          <number>1</number>
                          </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3017</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10016,7 +10010,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="probe_fast_fr_3016">
+                        <widget class="VCPVarLineEdit" name="probe_fast_fr_3016">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10044,14 +10038,14 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.1f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.probe-fast-fr</string>
+                         <property name="displayDecimals" stdset="0">
+                          <number>1</number>
                          </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3016</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10128,7 +10122,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="max_xy_distance_3018">
+                        <widget class="VCPVarLineEdit" name="max_xy_distance_3018">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10156,14 +10150,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.max-xy-distance</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3018</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10217,7 +10208,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="xy_clearance_3019">
+                        <widget class="VCPVarLineEdit" name="xy_clearance_3019">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10245,14 +10236,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.xy-clearance</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3019</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10329,7 +10317,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="max_z_distance_3020">
+                        <widget class="VCPVarLineEdit" name="max_z_distance_3020">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10357,14 +10345,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.max-z-distance</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3020</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10418,7 +10403,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="z_clearance_3021">
+                        <widget class="VCPVarLineEdit" name="z_clearance_3021">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10446,14 +10431,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.z-clearance</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3021</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10536,7 +10518,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="extra_probe_depth_3022">
+                        <widget class="VCPVarLineEdit" name="extra_probe_depth_3022">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10564,14 +10546,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.extra-probe-depth</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3022</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10625,7 +10604,7 @@ color: white;
                         </widget>
                        </item>
                        <item>
-                        <widget class="VCPSettingsLineEdit" name="step_off_width_3023">
+                        <widget class="VCPVarLineEdit" name="step_off_width_3023">
                          <property name="sizePolicy">
                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                            <horstretch>0</horstretch>
@@ -10653,14 +10632,11 @@ color: white;
                          <property name="placeholderText">
                           <string>0.0000</string>
                          </property>
-                         <property name="textFormat" stdset="0">
-                          <string>{:.4f}</string>
-                         </property>
-                         <property name="settingName" stdset="0">
-                          <string>probe-parameters.step-off-width</string>
-                         </property>
                          <property name="rules" stdset="0">
                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                         </property>
+                         <property name="varParameterNumber" stdset="0">
+                          <number>3023</number>
                          </property>
                          <property name="styleSet" stdset="0">
                           <string>dataField16</string>
@@ -10708,13 +10684,7 @@ color: white;
                        <number>0</number>
                       </property>
                       <item>
-                       <widget class="SubCallButton" name="update_probe_parameters_btn">
-                        <property name="sizePolicy">
-                         <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                          <horstretch>0</horstretch>
-                          <verstretch>0</verstretch>
-                         </sizepolicy>
-                        </property>
+                       <widget class="QLabel" name="label">
                         <property name="minimumSize">
                          <size>
                           <width>150</width>
@@ -10727,11 +10697,8 @@ color: white;
                           <height>27</height>
                          </size>
                         </property>
-                        <property name="focusPolicy">
-                         <enum>Qt::FocusPolicy::NoFocus</enum>
-                        </property>
                         <property name="styleSheet">
-                         <string notr="true">SubCallButton{
+                         <string notr="true">QLabel{
     border-style: solid;
     border-color: black;
     border-width: 2px;
@@ -10744,32 +10711,16 @@ color: white;
 	font: 14pt &quot;Probe Basic Bebas Mono&quot;;
 }
 
-.SubCallButton:disabled {
-    border-color: gray;
-}
 
-.SubCallButton:hover {
-    background:  qlineargradient(x1: 0, y1: 0, x2: 0, y2: 1,
-                                     stop: 0 #A19E9E, stop: 1.0 #5C5959);
-}
 
-.SubCallButton:pressed {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
 
-.SubCallButton:checked[option=&quot;true&quot;] {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}
-
-.SubCallButton:checked {
-    background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
-}</string>
+</string>
                         </property>
                         <property name="text">
-                         <string>UPDATE PROBE PARAMS</string>
+                         <string>PROBE RESULTS</string>
                         </property>
-                        <property name="filename" stdset="0">
-                         <string>touch_probe_param_update.ngc</string>
+                        <property name="alignment">
+                         <set>Qt::AlignmentFlag::AlignCenter</set>
                         </property>
                        </widget>
                       </item>
@@ -13950,7 +13901,7 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPSettingsLineEdit" name="diameter_hint_3025">
+                                     <widget class="VCPVarLineEdit" name="diameter_hint_3025">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -13978,14 +13929,11 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
-                                      </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.diameter-hint</string>
-                                      </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3025</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -14026,7 +13974,7 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPSettingsLineEdit" name="x_hint_boss_pocket_3026">
+                                     <widget class="VCPVarLineEdit" name="x_hint_boss_pocket_3026">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -14054,14 +14002,11 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
-                                      </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.x-hint-boss-pocket</string>
-                                      </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3026</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -14102,7 +14047,7 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPSettingsLineEdit" name="y_hint_boss_pocket_3027">
+                                     <widget class="VCPVarLineEdit" name="y_hint_boss_pocket_3027">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -14130,14 +14075,11 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
-                                      </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.y-hint-boss-pocket</string>
-                                      </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3027</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -14541,7 +14483,7 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPSettingsLineEdit" name="x_hint_ridge_valley_3028">
+                                     <widget class="VCPVarLineEdit" name="x_hint_ridge_valley_3028">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -14569,14 +14511,11 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
-                                      </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.x-hint-ridge-valley</string>
-                                      </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3028</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -14617,7 +14556,7 @@ padding-left: 5px;
                                      </widget>
                                     </item>
                                     <item>
-                                     <widget class="VCPSettingsLineEdit" name="y_hint_ridge_valley_3029">
+                                     <widget class="VCPVarLineEdit" name="y_hint_ridge_valley_3029">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -14645,14 +14584,11 @@ padding-left: 5px;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
-                                      </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.y-hint-ridge-valley</string>
-                                      </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3029</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -15173,10 +15109,7 @@ padding-left: 5px;
                                    <number>1</number>
                                   </property>
                                   <item>
-                                   <widget class="VCPSettingsPushButton" name="set_wco_offset_Btn">
-                                    <property name="enabled">
-                                     <bool>false</bool>
-                                    </property>
+                                   <widget class="VCPVarPushButton" name="set_wco_offset_Btn_3031">
                                     <property name="sizePolicy">
                                      <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
                                       <horstretch>0</horstretch>
@@ -15195,17 +15128,14 @@ padding-left: 5px;
                                       <height>40</height>
                                      </size>
                                     </property>
-                                    <property name="styleSheet">
-                                     <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;</string>
+                                    <property name="cursor">
+                                     <cursorShape>SizeHorCursor</cursorShape>
                                     </property>
                                     <property name="text">
                                      <string>SET ROTATION WCO</string>
                                     </property>
-                                    <property name="settingName" stdset="0">
-                                     <string>probe-parameters.rotation-wco-btn</string>
-                                    </property>
-                                    <property name="rules" stdset="0">
-                                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                    <property name="varParameterNumber" stdset="0">
+                                     <number>3031</number>
                                     </property>
                                    </widget>
                                   </item>
@@ -15282,7 +15212,7 @@ padding-left: 5px;
                                       </widget>
                                      </item>
                                      <item>
-                                      <widget class="VCPSettingsLineEdit" name="edge_width_3024">
+                                      <widget class="VCPVarLineEdit" name="edge_width_3024">
                                        <property name="sizePolicy">
                                         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                          <horstretch>0</horstretch>
@@ -15310,14 +15240,11 @@ padding-left: 5px;
                                        <property name="placeholderText">
                                         <string>0.0000</string>
                                        </property>
-                                       <property name="textFormat" stdset="0">
-                                        <string>{:.4f}</string>
-                                       </property>
-                                       <property name="settingName" stdset="0">
-                                        <string>probe-parameters.edge-width</string>
-                                       </property>
                                        <property name="rules" stdset="0">
                                         <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                       </property>
+                                       <property name="varParameterNumber" stdset="0">
+                                        <number>3024</number>
                                        </property>
                                        <property name="styleSet" stdset="0">
                                         <string>dataField16</string>
@@ -15441,7 +15368,7 @@ color: white;
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="VCPSettingsLineEdit" name="calibration_offset_3032">
+                                  <widget class="VCPVarLineEdit" name="calibration_offset_3032">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -15478,14 +15405,17 @@ color: white;
                                    <property name="clearButtonEnabled">
                                     <bool>false</bool>
                                    </property>
-                                   <property name="textFormat" stdset="0">
-                                    <string>{:.6f}</string>
+                                   <property name="highPrecisionStorage" stdset="0">
+                                    <bool>true</bool>
                                    </property>
-                                   <property name="settingName" stdset="0">
-                                    <string>probe-parameters.calibration-offset</string>
+                                   <property name="displayDecimals" stdset="0">
+                                    <number>6</number>
                                    </property>
                                    <property name="rules" stdset="0">
                                     <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   </property>
+                                   <property name="varParameterNumber" stdset="0">
+                                    <number>3032</number>
                                    </property>
                                    <property name="styleSet" stdset="0">
                                     <string>dataField16</string>
@@ -15762,7 +15692,7 @@ color: white;
                                      </widget>
                                     </item>
                                     <item row="1" column="1">
-                                     <widget class="VCPSettingsLineEdit" name="cal_diameter_3033">
+                                     <widget class="VCPVarLineEdit" name="cal_diameter_3033">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -15794,14 +15724,17 @@ margin-left: 14px;</string>
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
+                                      <property name="highPrecisionStorage" stdset="0">
+                                       <bool>true</bool>
                                       </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.cal-diameter</string>
+                                      <property name="displayDecimals" stdset="0">
+                                       <number>6</number>
                                       </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3033</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -15831,10 +15764,7 @@ margin-left: 14px;</string>
                                   <number>3</number>
                                  </property>
                                  <item>
-                                  <widget class="VCPSettingsPushButton" name="cal_avg_error">
-                                   <property name="enabled">
-                                    <bool>false</bool>
-                                   </property>
+                                  <widget class="VCPVarPushButton" name="cal_avg_error">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -15852,24 +15782,12 @@ margin-left: 14px;</string>
                                      <width>165</width>
                                      <height>37</height>
                                     </size>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON AVG XY ERROR</string>
                                    </property>
-                                   <property name="checked">
-                                    <bool>true</bool>
-                                   </property>
-                                   <property name="autoExclusive">
-                                    <bool>true</bool>
-                                   </property>
-                                   <property name="settingName" stdset="0">
-                                    <string>probe-parameters.cal-xy-btn</string>
-                                   </property>
-                                   <property name="rules" stdset="0">
-                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   <property name="varParameterNumber" stdset="0">
+                                    <number>3048</number>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -15877,10 +15795,7 @@ margin-left: 14px;</string>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="VCPSettingsPushButton" name="cal_x_error">
-                                   <property name="enabled">
-                                    <bool>false</bool>
-                                   </property>
+                                  <widget class="VCPVarPushButton" name="cal_x_error">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -15889,30 +15804,21 @@ margin-left: 14px;</string>
                                    </property>
                                    <property name="minimumSize">
                                     <size>
-                                     <width>140</width>
+                                     <width>165</width>
                                      <height>37</height>
                                     </size>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>140</width>
+                                     <width>165</width>
                                      <height>37</height>
                                     </size>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON X ERROR</string>
                                    </property>
-                                   <property name="autoExclusive">
-                                    <bool>true</bool>
-                                   </property>
-                                   <property name="settingName" stdset="0">
-                                    <string>probe-parameters.cal-x-btn</string>
-                                   </property>
-                                   <property name="rules" stdset="0">
-                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   <property name="varParameterNumber" stdset="0">
+                                    <number>3049</number>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -15920,10 +15826,7 @@ margin-left: 14px;</string>
                                   </widget>
                                  </item>
                                  <item>
-                                  <widget class="VCPSettingsPushButton" name="cal_y_error">
-                                   <property name="enabled">
-                                    <bool>false</bool>
-                                   </property>
+                                  <widget class="VCPVarPushButton" name="cal_y_error">
                                    <property name="sizePolicy">
                                     <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                      <horstretch>0</horstretch>
@@ -15932,30 +15835,21 @@ margin-left: 14px;</string>
                                    </property>
                                    <property name="minimumSize">
                                     <size>
-                                     <width>140</width>
+                                     <width>165</width>
                                      <height>37</height>
                                     </size>
                                    </property>
                                    <property name="maximumSize">
                                     <size>
-                                     <width>140</width>
+                                     <width>165</width>
                                      <height>37</height>
                                     </size>
-                                   </property>
-                                   <property name="styleSheet">
-                                    <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;</string>
                                    </property>
                                    <property name="text">
                                     <string>CAL ON Y ERROR</string>
                                    </property>
-                                   <property name="autoExclusive">
-                                    <bool>true</bool>
-                                   </property>
-                                   <property name="settingName" stdset="0">
-                                    <string>probe-parameters.cal-y-btn</string>
-                                   </property>
-                                   <property name="rules" stdset="0">
-                                    <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                   <property name="varParameterNumber" stdset="0">
+                                    <number>3050</number>
                                    </property>
                                    <attribute name="buttonGroup">
                                     <string notr="true">xycalbtnGroup</string>
@@ -16223,7 +16117,7 @@ color: white;
                                      </widget>
                                     </item>
                                     <item row="1" column="1">
-                                     <widget class="VCPSettingsLineEdit" name="x_cal_width_3034">
+                                     <widget class="VCPVarLineEdit" name="x_cal_width_3034">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -16251,14 +16145,17 @@ color: white;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
+                                      <property name="highPrecisionStorage" stdset="0">
+                                       <bool>true</bool>
                                       </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.x-cal-width</string>
+                                      <property name="displayDecimals" stdset="0">
+                                       <number>6</number>
                                       </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3034</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -16266,7 +16163,7 @@ color: white;
                                      </widget>
                                     </item>
                                     <item row="3" column="1">
-                                     <widget class="VCPSettingsLineEdit" name="y_cal_width_3035">
+                                     <widget class="VCPVarLineEdit" name="y_cal_width_3035">
                                       <property name="sizePolicy">
                                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                                         <horstretch>0</horstretch>
@@ -16294,14 +16191,17 @@ color: white;
                                       <property name="placeholderText">
                                        <string>0.0000</string>
                                       </property>
-                                      <property name="textFormat" stdset="0">
-                                       <string>{:.4f}</string>
+                                      <property name="highPrecisionStorage" stdset="0">
+                                       <bool>true</bool>
                                       </property>
-                                      <property name="settingName" stdset="0">
-                                       <string>probe-parameters.y-cal-width</string>
+                                      <property name="displayDecimals" stdset="0">
+                                       <number>6</number>
                                       </property>
                                       <property name="rules" stdset="0">
                                        <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                                      </property>
+                                      <property name="varParameterNumber" stdset="0">
+                                       <number>3035</number>
                                       </property>
                                       <property name="styleSet" stdset="0">
                                        <string>dataField16</string>
@@ -17173,7 +17073,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="spindle_zero_height_3010">
+                         <widget class="VCPVarLineEdit" name="spindle_zero_height_3010">
                           <property name="enabled">
                            <bool>false</bool>
                           </property>
@@ -17198,7 +17098,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -17206,25 +17106,20 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.spindle-nose-height</string>
+                          <property name="highPrecisionStorage" stdset="0">
+                           <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3010</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17303,7 +17198,7 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="x_tool_change_position">
+                         <widget class="VCPVarLineEdit" name="x_tool_change_position_5181">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17334,14 +17229,14 @@ padding-left: 5px;
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-change-position.x-tool-change-position</string>
+                          <property name="highPrecisionStorage" stdset="0">
+                           <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>5181</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17391,7 +17286,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="fast_probe_fr_3004">
+                         <widget class="VCPVarLineEdit" name="fast_probe_fr_3004">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17413,7 +17308,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -17421,25 +17316,20 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.1f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.fast-probe-fr</string>
+                          <property name="displayDecimals" stdset="0">
+                           <number>1</number>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3004</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17518,7 +17408,7 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="y_tool_change_position">
+                         <widget class="VCPVarLineEdit" name="y_tool_change_position_5182">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17549,14 +17439,17 @@ padding-left: 5px;
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-change-position.y-tool-change-position</string>
+                          <property name="highPrecisionStorage" stdset="0">
+                           <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>5182</number>
+                          </property>
+                          <property name="textFormat" stdset="0">
+                           <string>{:.4f}</string>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17606,7 +17499,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="slow_probe_fr_3005">
+                         <widget class="VCPVarLineEdit" name="slow_probe_fr_3005">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17628,7 +17521,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -17636,25 +17529,20 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.1f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.slow-probe-fr</string>
+                          <property name="displayDecimals" stdset="0">
+                           <number>1</number>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3005</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17733,7 +17621,7 @@ padding-left: 5px;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="z_tool_change_position">
+                         <widget class="VCPVarLineEdit" name="z_tool_change_position_5183">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17764,14 +17652,14 @@ padding-left: 5px;
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-change-position.z-tool-change-position</string>
+                          <property name="highPrecisionStorage" stdset="0">
+                           <bool>true</bool>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>5183</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -17821,7 +17709,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="traverse_fr_3006">
+                         <widget class="VCPVarLineEdit" name="traverse_fr_3006">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -17843,7 +17731,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -17851,25 +17739,20 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.1f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.traverse-fr</string>
+                          <property name="displayDecimals" stdset="0">
+                           <number>1</number>
                           </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3006</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18005,7 +17888,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="z_max_travel_3007">
+                         <widget class="VCPVarLineEdit" name="z_max_travel_3007">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18027,7 +17910,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -18035,25 +17918,17 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.z-max-travel</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3007</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18080,73 +17955,30 @@ color: white;
                          <number>1</number>
                         </property>
                         <item>
-                         <widget class="VCPSettingsPushButton" name="tool_diameter_probe_Btn">
-                          <property name="enabled">
-                           <bool>false</bool>
-                          </property>
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
+                         <widget class="VCPVarPushButton" name="tool_diameter_probe_Btn">
                           <property name="minimumSize">
                            <size>
-                            <width>150</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>150</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">font: 14pt &quot;Probe Basic Bebas Mono&quot;;</string>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="text">
                            <string>TOOL DIAM PROBE</string>
                           </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.diameter-probe</string>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3012</number>
                           </property>
-                          <property name="rules" stdset="0">
-                           <string>[]</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="VCPLineEdit" name="tool_diameter_probe_mode_3011">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="readOnly">
-                           <bool>true</bool>
-                          </property>
-                          <property name="rules" stdset="0">
-                           <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-probe&quot;, &quot;trigger&quot;: true}]}]</string>
-                          </property>
-                          <property name="styleSet" stdset="0">
-                           <string>dataField16</string>
+                          <property name="outputAsInt" stdset="0">
+                           <bool>false</bool>
                           </property>
                          </widget>
                         </item>
@@ -18193,7 +18025,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="xy_max_travel_3008">
+                         <widget class="VCPVarLineEdit" name="xy_max_travel_3008">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18215,7 +18047,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -18223,25 +18055,17 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.xy-max-travel</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3008</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18268,67 +18092,27 @@ color: white;
                          <number>1</number>
                         </property>
                         <item>
-                         <widget class="VCPSettingsPushButton" name="tool_diameter_offset_Btn">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
+                         <widget class="VCPVarPushButton" name="tool_diameter_offset_Btn">
                           <property name="minimumSize">
                            <size>
-                            <width>150</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
-                            <width>150</width>
+                            <width>185</width>
                             <height>38</height>
                            </size>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">font: 14pt &quot;Probe Basic Bebas Mono&quot;</string>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="text">
                            <string>TOOL DIAM OFFSET</string>
                           </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.diameter-offset</string>
-                          </property>
-                         </widget>
-                        </item>
-                        <item>
-                         <widget class="VCPLineEdit" name="tool_diameter_offset_mode_3012">
-                          <property name="sizePolicy">
-                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                            <horstretch>0</horstretch>
-                            <verstretch>0</verstretch>
-                           </sizepolicy>
-                          </property>
-                          <property name="minimumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="maximumSize">
-                           <size>
-                            <width>70</width>
-                            <height>31</height>
-                           </size>
-                          </property>
-                          <property name="alignment">
-                           <set>Qt::AlignmentFlag::AlignCenter</set>
-                          </property>
-                          <property name="readOnly">
-                           <bool>true</bool>
-                          </property>
-                          <property name="rules" stdset="0">
-                           <string>[{&quot;name&quot;: &quot;Tool diameter offset&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.diameter-offset&quot;, &quot;trigger&quot;: true}]}]</string>
-                          </property>
-                          <property name="styleSet" stdset="0">
-                           <string>dataField16</string>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3011</number>
                           </property>
                          </widget>
                         </item>
@@ -18375,7 +18159,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="retract_distance_3009">
+                         <widget class="VCPVarLineEdit" name="retract_distance_3009">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18397,7 +18181,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -18405,25 +18189,17 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.retract-distance</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3009</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18529,7 +18305,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="breakage_tolerance_3037">
+                         <widget class="VCPVarLineEdit" name="breakage_tolerance_3037">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18551,7 +18327,7 @@ color: white;
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -18559,25 +18335,17 @@ color: white;
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.breakage-tolerance</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3037</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18623,7 +18391,7 @@ color: white;
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsPushButton" name="tool_setter_offset_left_Btn_2">
+                         <widget class="VCPSettingsPushButton" name="tool_setter_offset_back_Btn">
                           <property name="enabled">
                            <bool>false</bool>
                           </property>
@@ -18644,6 +18412,9 @@ color: white;
                             <width>73</width>
                             <height>38</height>
                            </size>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="styleSheet">
                            <string notr="true">font: 14pt &quot;Probe Basic Bebas Mono&quot;</string>
@@ -18671,7 +18442,7 @@ color: white;
                            <string>tool-setter-probe.setter-offset-direction-back</string>
                           </property>
                           <property name="page" stdset="0">
-                           <number>0</number>
+                           <number>3</number>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">tooloffsetdirbtnGroup</string>
@@ -18738,7 +18509,7 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="user_setter_1_3038">
+                         <widget class="VCPVarLineEdit" name="user_setter_1_3038">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18760,7 +18531,7 @@ border: none;</string>
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -18768,25 +18539,17 @@ border: none;</string>
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.user-setter-1</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3038</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18835,6 +18598,9 @@ border: none;</string>
                             <height>38</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
+                          </property>
                           <property name="styleSheet">
                            <string notr="true">font: 14pt &quot;Probe Basic Bebas Mono&quot;</string>
                           </property>
@@ -18869,7 +18635,7 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPLineEdit" name="tool_setter_offset_direction_3013">
+                         <widget class="VCPVarLineEdit" name="tool_setter_offset_direction_3013">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -18879,17 +18645,20 @@ border: none;</string>
                           <property name="minimumSize">
                            <size>
                             <width>60</width>
-                            <height>35</height>
+                            <height>38</height>
                            </size>
                           </property>
                           <property name="maximumSize">
                            <size>
                             <width>60</width>
-                            <height>35</height>
+                            <height>38</height>
                            </size>
                           </property>
-                          <property name="layoutDirection">
-                           <enum>Qt::LayoutDirection::LeftToRight</enum>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
+                          </property>
+                          <property name="text">
+                           <string/>
                           </property>
                           <property name="cursorPosition">
                            <number>0</number>
@@ -18900,8 +18669,23 @@ border: none;</string>
                           <property name="readOnly">
                            <bool>true</bool>
                           </property>
+                          <property name="placeholderText">
+                           <string>0</string>
+                          </property>
+                          <property name="highPrecisionStorage" stdset="0">
+                           <bool>false</bool>
+                          </property>
+                          <property name="displayDecimals" stdset="0">
+                           <number>0</number>
+                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;Tool setter offset direction&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;2\&quot; if ch[1] else \&quot;3\&quot; if ch[2] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:tool-setter-probe.setter-offset-direction-right&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;settings:tool-setter-probe.setter-offset-direction-front&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;settings:tool-setter-probe.setter-offset-direction-back&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3013</number>
+                          </property>
+                          <property name="autoWriteEnabled" stdset="0">
+                           <bool>true</bool>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -18930,6 +18714,9 @@ border: none;</string>
                             <width>73</width>
                             <height>38</height>
                            </size>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="layoutDirection">
                            <enum>Qt::LayoutDirection::RightToLeft</enum>
@@ -19018,7 +18805,7 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsLineEdit" name="user_setter_2_3039">
+                         <widget class="VCPVarLineEdit" name="user_setter_2_3039">
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                             <horstretch>0</horstretch>
@@ -19040,7 +18827,7 @@ border: none;</string>
                           <property name="font">
                            <font>
                             <family>Probe Basic Bebas Mono</family>
-                            <pointsize>15</pointsize>
+                            <pointsize>16</pointsize>
                             <italic>false</italic>
                             <bold>false</bold>
                            </font>
@@ -19048,25 +18835,17 @@ border: none;</string>
                           <property name="focusPolicy">
                            <enum>Qt::FocusPolicy::ClickFocus</enum>
                           </property>
-                          <property name="styleSheet">
-                           <string notr="true">VCPSettingsLineEdit {
-    font: 15pt &quot;Probe Basic Bebas Mono&quot;
-}</string>
-                          </property>
                           <property name="alignment">
                            <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
                           <property name="placeholderText">
                            <string>0.0000</string>
                           </property>
-                          <property name="textFormat" stdset="0">
-                           <string>{:.4f}</string>
-                          </property>
-                          <property name="settingName" stdset="0">
-                           <string>tool-setter-probe.user-setter-2</string>
-                          </property>
                           <property name="rules" stdset="0">
                            <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3039</number>
                           </property>
                           <property name="styleSet" stdset="0">
                            <string>dataField16</string>
@@ -19112,7 +18891,7 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="VCPSettingsPushButton" name="tool_setter_offset_right_Btn_3">
+                         <widget class="VCPSettingsPushButton" name="tool_setter_offset_front_Btn">
                           <property name="enabled">
                            <bool>false</bool>
                           </property>
@@ -19133,6 +18912,9 @@ border: none;</string>
                             <width>73</width>
                             <height>38</height>
                            </size>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::NoFocus</enum>
                           </property>
                           <property name="layoutDirection">
                            <enum>Qt::LayoutDirection::LeftToRight</enum>
@@ -19160,7 +18942,7 @@ border: none;</string>
                            <string>tool-setter-probe.setter-offset-direction-front</string>
                           </property>
                           <property name="page" stdset="0">
-                           <number>1</number>
+                           <number>2</number>
                           </property>
                           <attribute name="buttonGroup">
                            <string notr="true">tooloffsetdirbtnGroup</string>
@@ -19178,16 +18960,19 @@ border: none;</string>
                          </widget>
                         </item>
                         <item>
-                         <widget class="SubCallButton" name="update_tool_setter_params">
+                         <widget class="VCPSettingsLineEdit" name="tool_setter_user_3_name">
+                          <property name="enabled">
+                           <bool>false</bool>
+                          </property>
                           <property name="sizePolicy">
                            <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                            <horstretch>1</horstretch>
+                            <horstretch>0</horstretch>
                             <verstretch>0</verstretch>
                            </sizepolicy>
                           </property>
                           <property name="minimumSize">
                            <size>
-                            <width>235</width>
+                            <width>0</width>
                             <height>38</height>
                            </size>
                           </property>
@@ -19197,16 +18982,68 @@ border: none;</string>
                             <height>38</height>
                            </size>
                           </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::ClickFocus</enum>
+                          </property>
                           <property name="styleSheet">
-                           <string notr="true">SubCallButton{
-    font: 14pt &quot;Probe Basic Bebas Mono&quot;;
-}</string>
+                           <string notr="true">font: 15pt &quot;Probe Basic Bebas Mono&quot;;
+color: white;
+background-color: #929695;
+border: none;</string>
                           </property>
-                          <property name="text">
-                           <string>UPDATE TOOL SETTER PARAMETERS</string>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                           </property>
-                          <property name="filename" stdset="0">
-                           <string>tool_setter_param_update.ngc</string>
+                          <property name="settingName" stdset="0">
+                           <string>tool-setter-probe.user-param-name-2</string>
+                          </property>
+                         </widget>
+                        </item>
+                        <item>
+                         <widget class="VCPVarLineEdit" name="user_setter_3_3040">
+                          <property name="sizePolicy">
+                           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                            <horstretch>0</horstretch>
+                            <verstretch>0</verstretch>
+                           </sizepolicy>
+                          </property>
+                          <property name="minimumSize">
+                           <size>
+                            <width>100</width>
+                            <height>31</height>
+                           </size>
+                          </property>
+                          <property name="maximumSize">
+                           <size>
+                            <width>100</width>
+                            <height>31</height>
+                           </size>
+                          </property>
+                          <property name="font">
+                           <font>
+                            <family>Probe Basic Bebas Mono</family>
+                            <pointsize>16</pointsize>
+                            <italic>false</italic>
+                            <bold>false</bold>
+                           </font>
+                          </property>
+                          <property name="focusPolicy">
+                           <enum>Qt::FocusPolicy::ClickFocus</enum>
+                          </property>
+                          <property name="alignment">
+                           <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
+                          </property>
+                          <property name="placeholderText">
+                           <string>0.0000</string>
+                          </property>
+                          <property name="rules" stdset="0">
+                           <string>[{&quot;name&quot;: &quot;enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;True if ch[0] else False&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:all_axes_homed&quot;, &quot;trigger&quot;: true}]}]</string>
+                          </property>
+                          <property name="varParameterNumber" stdset="0">
+                           <number>3040</number>
+                          </property>
+                          <property name="styleSet" stdset="0">
+                           <string>dataField16</string>
                           </property>
                          </widget>
                         </item>
@@ -21487,6 +21324,9 @@ QTabBar::tab:only-one {
             <item>
              <widget class="QWidget" name="widget_51" native="true">
               <layout class="QVBoxLayout" name="verticalLayout_6">
+               <property name="spacing">
+                <number>12</number>
+               </property>
                <property name="leftMargin">
                 <number>0</number>
                </property>
@@ -21603,7 +21443,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="activate_programmable_coolant_3000">
+                     <widget class="VCPVarLineEdit" name="activate_programmable_coolant_3000">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21622,17 +21462,20 @@ color: white;
                         <height>31</height>
                        </size>
                       </property>
+                      <property name="focusPolicy">
+                       <enum>Qt::FocusPolicy::StrongFocus</enum>
+                      </property>
                       <property name="alignment">
                        <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
                       </property>
                       <property name="placeholderText">
                        <string>0</string>
                       </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.1f}</string>
+                      <property name="displayDecimals" stdset="0">
+                       <number>0</number>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>programmable-coolant.activation</string>
+                      <property name="varParameterNumber" stdset="0">
+                       <number>3000</number>
                       </property>
                       <property name="styleSet" stdset="0">
                        <string>dataField15</string>
@@ -21690,7 +21533,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="horizontal_spindle_nozzle_dist_3001">
+                     <widget class="VCPVarLineEdit" name="horizontal_spindle_nozzle_dist_3001">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21726,11 +21569,8 @@ color: white;
                       <property name="placeholderText">
                        <string>0.0000</string>
                       </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.4f}</string>
-                      </property>
-                      <property name="settingName" stdset="0">
-                       <string>programmable-coolant.horizontal-distance</string>
+                      <property name="varParameterNumber" stdset="0">
+                       <number>3001</number>
                       </property>
                       <property name="styleSet" stdset="0">
                        <string>dataField15</string>
@@ -21788,7 +21628,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="vertical_spindle_nozzle_dist_3002">
+                     <widget class="VCPVarLineEdit" name="vertical_spindle_nozzle_dist_3002">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21813,11 +21653,8 @@ color: white;
                       <property name="placeholderText">
                        <string>0.0000</string>
                       </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.4f}</string>
-                      </property>
-                      <property name="settingName" stdset="0">
-                       <string>programmable-coolant.vertical-distance</string>
+                      <property name="varParameterNumber" stdset="0">
+                       <number>3002</number>
                       </property>
                       <property name="styleSet" stdset="0">
                        <string>dataField15</string>
@@ -21875,7 +21712,7 @@ color: white;
                      </widget>
                     </item>
                     <item>
-                     <widget class="VCPSettingsLineEdit" name="pc_angle_offset_3003">
+                     <widget class="VCPVarLineEdit" name="pc_angle_offset_3003">
                       <property name="sizePolicy">
                        <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                         <horstretch>0</horstretch>
@@ -21900,11 +21737,11 @@ color: white;
                       <property name="placeholderText">
                        <string>0.00</string>
                       </property>
-                      <property name="textFormat" stdset="0">
-                       <string>{:.2f}</string>
+                      <property name="displayDecimals" stdset="0">
+                       <number>2</number>
                       </property>
-                      <property name="settingName" stdset="0">
-                       <string>programmable-coolant.nozzle-offset</string>
+                      <property name="varParameterNumber" stdset="0">
+                       <number>3003</number>
                       </property>
                       <property name="styleSet" stdset="0">
                        <string>dataField15</string>
@@ -22089,28 +21926,6 @@ color: white;
                      </widget>
                     </item>
                    </layout>
-                  </item>
-                  <item>
-                   <widget class="SubCallButton" name="update_programmable_coolant_param">
-                    <property name="minimumSize">
-                     <size>
-                      <width>0</width>
-                      <height>35</height>
-                     </size>
-                    </property>
-                    <property name="maximumSize">
-                     <size>
-                      <width>16777215</width>
-                      <height>35</height>
-                     </size>
-                    </property>
-                    <property name="text">
-                     <string>UPDATE PARAMETER SETTINGS</string>
-                    </property>
-                    <property name="filename" stdset="0">
-                     <string>update_programmable_coolant_params.ngc</string>
-                    </property>
-                   </widget>
                   </item>
                  </layout>
                 </widget>
@@ -22524,263 +22339,6 @@ color: white;
 </string>
                     </property>
                    </widget>
-                  </item>
-                 </layout>
-                </widget>
-               </item>
-               <item>
-                <widget class="QFrame" name="frame_2">
-                 <property name="styleSheet">
-                  <string notr="true">.QFrame{
-    background-color: rgb(51, 57, 59);
-}</string>
-                 </property>
-                 <property name="frameShape">
-                  <enum>QFrame::Shape::StyledPanel</enum>
-                 </property>
-                 <property name="frameShadow">
-                  <enum>QFrame::Shadow::Raised</enum>
-                 </property>
-                 <layout class="QVBoxLayout" name="verticalLayout_25">
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_52">
-                    <item>
-                     <widget class="QLabel" name="label_111">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>150</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Probe Basic Bebas Mono&quot;;
-}</string>
-                      </property>
-                      <property name="lineWidth">
-                       <number>0</number>
-                      </property>
-                      <property name="text">
-                       <string>PROBE POS/WCO MODE</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                      </property>
-                      <property name="indent">
-                       <number>0</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="VCPLineEdit" name="probe_mode_3030">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[{&quot;name&quot;: &quot;probe_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.probe-posn-btn&quot;, &quot;trigger&quot;: true}]}]</string>
-                      </property>
-                      <property name="styleSet" stdset="0">
-                       <string>dataField15</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_53">
-                    <item>
-                     <widget class="QLabel" name="label_112">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>150</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Probe Basic Bebas Mono&quot;;
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Shape::NoFrame</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>0</number>
-                      </property>
-                      <property name="text">
-                       <string>WCO ROTATION MODE</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                      </property>
-                      <property name="indent">
-                       <number>0</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="VCPLineEdit" name="wco_rotation_3031">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[{&quot;name&quot;: &quot;wco_rotation_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;1\&quot; if ch[0] else \&quot;0\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.rotation-wco-btn&quot;, &quot;trigger&quot;: true}]}]</string>
-                      </property>
-                      <property name="styleSet" stdset="0">
-                       <string>dataField15</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
-                  </item>
-                  <item>
-                   <layout class="QHBoxLayout" name="horizontalLayout_59">
-                    <item>
-                     <widget class="QLabel" name="label_115">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>150</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>200</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="styleSheet">
-                       <string notr="true">QLabel{
-    color: white;
-	font: 14pt &quot;Probe Basic Bebas Mono&quot;;
-}</string>
-                      </property>
-                      <property name="frameShape">
-                       <enum>QFrame::Shape::NoFrame</enum>
-                      </property>
-                      <property name="lineWidth">
-                       <number>0</number>
-                      </property>
-                      <property name="text">
-                       <string>X and Y CAL AXIS SELECTION</string>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignRight|Qt::AlignmentFlag::AlignTrailing|Qt::AlignmentFlag::AlignVCenter</set>
-                      </property>
-                      <property name="indent">
-                       <number>0</number>
-                      </property>
-                     </widget>
-                    </item>
-                    <item>
-                     <widget class="VCPLineEdit" name="sq_cal_axis_3036">
-                      <property name="sizePolicy">
-                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                        <horstretch>0</horstretch>
-                        <verstretch>0</verstretch>
-                       </sizepolicy>
-                      </property>
-                      <property name="minimumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="maximumSize">
-                       <size>
-                        <width>60</width>
-                        <height>31</height>
-                       </size>
-                      </property>
-                      <property name="alignment">
-                       <set>Qt::AlignmentFlag::AlignCenter</set>
-                      </property>
-                      <property name="readOnly">
-                       <bool>true</bool>
-                      </property>
-                      <property name="rules" stdset="0">
-                       <string>[{&quot;name&quot;: &quot;calibration_mode&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;\&quot;0\&quot; if ch[0] else (\&quot;1\&quot; if ch[1] else \&quot;2\&quot;)&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;settings:probe-parameters.cal-xy-btn&quot;, &quot;trigger&quot;: true}, {&quot;url&quot;: &quot;settings:probe-parameters.cal-x-btn&quot;, &quot;trigger&quot;: true}]}]</string>
-                      </property>
-                      <property name="styleSet" stdset="0">
-                       <string>dataField15</string>
-                      </property>
-                     </widget>
-                    </item>
-                   </layout>
                   </item>
                  </layout>
                 </widget>
@@ -30270,7 +29828,7 @@ border-radius: 1px;
      <x>0</x>
      <y>0</y>
      <width>1920</width>
-     <height>26</height>
+     <height>25</height>
     </rect>
    </property>
    <property name="minimumSize">
@@ -30479,6 +30037,11 @@ font: 11pt Probe Basic Bebas Mono;
    <header>qtpyvcp.widgets.button_widgets.mdi_button</header>
   </customwidget>
   <customwidget>
+   <class>VCPVarPushButton</class>
+   <extends>QPushButton</extends>
+   <header>qtpyvcp.widgets.button_widgets.vcpvar_button</header>
+  </customwidget>
+  <customwidget>
    <class>StatusLabel</class>
    <extends>QLabel</extends>
    <header>qtpyvcp.widgets.display_widgets.status_label</header>
@@ -30565,6 +30128,11 @@ font: 11pt Probe Basic Bebas Mono;
    <header>qtpyvcp.widgets.input_widgets.recent_file_combobox</header>
   </customwidget>
   <customwidget>
+   <class>VCPVarLineEdit</class>
+   <extends>VCPLineEdit</extends>
+   <header>qtpyvcp.widgets.input_widgets.var_line_edit</header>
+  </customwidget>
+  <customwidget>
    <class>VCPSettingsLineEdit</class>
    <extends>QLineEdit</extends>
    <header>qtpyvcp.widgets.input_widgets.setting_slider</header>
@@ -30618,6 +30186,7 @@ font: 11pt Probe Basic Bebas Mono;
   <include location="probe_basic.qrc"/>
   <include location="probe_basic.qrc"/>
   <include location="probe_basic.qrc"/>
+  <include location="probe_basic.qrc"/>
  </resources>
  <connections>
   <connection>
@@ -30637,30 +30206,14 @@ font: 11pt Probe Basic Bebas Mono;
    </hints>
   </connection>
   <connection>
-   <sender>fast_probe_fr_3004</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>tool_table_delete_button</sender>
    <signal>clicked()</signal>
    <receiver>tool_table</receiver>
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>82</y>
+     <x>262</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>65</x>
@@ -30675,12 +30228,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>248</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -30691,12 +30244,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>303</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1179</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -30707,8 +30260,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>536</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>421</x>
@@ -30723,44 +30276,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>410</y>
+     <x>906</x>
+     <y>409</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
      <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>cal_diameter_3033</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>195</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_offset_mode_3012</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>80</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -30771,12 +30292,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>398</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1313</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -30787,44 +30308,28 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>84</y>
+     <x>560</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
   <connection>
-   <sender>x_cal_width_3034</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>152</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_right_Btn_3</sender>
+   <sender>tool_setter_offset_front_Btn</sender>
    <signal>clicked()</signal>
    <receiver>setter_diam_offset</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>74</y>
+     <x>175</x>
+     <y>591</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1446</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -30835,12 +30340,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>84</y>
+     <x>951</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -30855,40 +30360,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>66</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>user_setter_2_3039</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>extra_probe_depth_3022</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -30899,8 +30372,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>456</y>
+     <x>906</x>
+     <y>455</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -30915,8 +30388,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>594</y>
+     <x>906</x>
+     <y>593</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -30931,76 +30404,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>170</x>
      <y>84</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>spindle_zero_height_3010</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_slow_fr_3015</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_offset_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_diam_offset</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xy_max_travel_3008</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -31011,8 +30420,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>355</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -31027,8 +30436,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>82</y>
+     <x>716</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>65</x>
@@ -31047,24 +30456,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_posn_only_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>probe_back_left_top_corner</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>253</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>214</x>
-     <y>185</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -31075,28 +30468,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>632</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>traverse_fr_3006</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31107,60 +30484,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>85</x>
-     <y>86</y>
+     <x>84</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>151</x>
-     <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_mode_3030</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>114</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>sq_cal_axis_3036</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>114</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>y_hint_ridge_valley_3029</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>159</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31171,8 +30500,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setFilePath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -31187,12 +30516,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1061</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31203,28 +30532,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>272</y>
+     <x>906</x>
+     <y>271</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
      <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_fast_fr_3016</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>
@@ -31235,44 +30548,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>113</y>
     </hint>
     <hint type="destinationlabel">
-     <x>192</x>
-     <y>73</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>edge_width_3024</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>165</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>pc_angle_offset_3003</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>175</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>175</x>
-     <y>84</y>
+     <x>698</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31283,8 +30564,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPath()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>502</y>
+     <x>906</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -31299,28 +30580,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>640</y>
+     <x>906</x>
+     <y>639</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
      <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_traverse_fr_3017</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>
@@ -31331,28 +30596,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>110</y>
+     <x>1484</x>
+     <y>249</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>112</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>step_off_width_3023</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>1613</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -31363,12 +30612,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>410</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31379,12 +30628,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>255</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>73</y>
+     <x>1051</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31395,12 +30644,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>536</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
+     <x>632</x>
+     <y>637</y>
     </hint>
    </hints>
   </connection>
@@ -31411,12 +30660,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1057</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -31427,8 +30676,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>134</y>
+     <x>906</x>
+     <y>133</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -31437,18 +30686,18 @@ font: 11pt Probe Basic Bebas Mono;
    </hints>
   </connection>
   <connection>
-   <sender>tool_setter_offset_left_Btn_2</sender>
+   <sender>tool_setter_offset_back_Btn</sender>
    <signal>clicked()</signal>
    <receiver>setter_diam_offset</receiver>
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>74</y>
+     <x>175</x>
+     <y>496</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1446</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31459,12 +30708,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>94</y>
+     <x>100</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>66</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31475,44 +30724,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_clearance_3021</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_probe_Btn</sender>
-   <signal>clicked()</signal>
-   <receiver>setter_touch_position</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>160</x>
-     <y>74</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>192</x>
-     <y>73</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31523,12 +30740,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>110</y>
+     <x>1484</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>112</y>
+     <x>1613</x>
+     <y>367</y>
     </hint>
    </hints>
   </connection>
@@ -31539,12 +30756,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1057</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31555,12 +30772,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>350</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1179</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31575,8 +30792,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>66</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31591,24 +30808,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>x_hint_boss_pocket_3026</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31619,12 +30820,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>160</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>73</y>
+     <x>1051</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31635,12 +30836,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>195</x>
-     <y>74</y>
+     <x>216</x>
+     <y>306</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>73</y>
+     <x>877</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31651,28 +30852,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
      <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_diameter_probe_mode_3011</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>80</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -31683,28 +30868,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>animateClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>82</y>
+     <x>943</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>519</x>
      <y>766</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>diameter_hint_3025</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>
@@ -31715,12 +30884,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>74</y>
+     <x>255</x>
+     <y>544</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
+     <x>1446</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -31731,28 +30900,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
-     <y>86</y>
+     <x>74</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
-     <x>122</x>
-     <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>vertical_spindle_nozzle_dist_3002</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>175</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>175</x>
-     <y>84</y>
+     <x>130</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31763,8 +30916,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>226</y>
+     <x>906</x>
+     <y>225</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -31783,8 +30936,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31795,12 +30948,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>84</y>
+     <x>965</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31811,12 +30964,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>834</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -31827,8 +30980,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>548</y>
+     <x>906</x>
+     <y>547</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -31843,8 +30996,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>180</y>
+     <x>906</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
@@ -31859,44 +31012,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
-     <y>86</y>
+     <x>74</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
-     <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>x_hint_ridge_valley_3028</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>wco_rotation_3031</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>114</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>179</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31907,44 +31028,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>719</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
      <y>475</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>user_setter_1_3038</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>y_hint_boss_pocket_3027</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>145</x>
-     <y>76</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
     </hint>
    </hints>
   </connection>
@@ -31959,8 +31048,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>328</x>
-     <y>43</y>
+     <x>336</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31975,8 +31064,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>841</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>99</y>
+     <x>1572</x>
+     <y>638</y>
     </hint>
    </hints>
   </connection>
@@ -31987,12 +31076,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
+     <x>513</x>
+     <y>208</y>
     </hint>
     <hint type="destinationlabel">
-     <x>239</x>
-     <y>73</y>
+     <x>1051</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -32007,24 +31096,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>84</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>84</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>xy_clearance_3019</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -32035,8 +31108,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>82</y>
+     <x>489</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>65</x>
@@ -32051,60 +31124,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewP()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>938</x>
-     <y>88</y>
+     <x>906</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
      <x>948</x>
      <y>85</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>retract_distance_3009</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>max_z_distance_3020</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>horizontal_spindle_nozzle_dist_3001</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>175</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>175</x>
-     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -32119,24 +31144,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>246</x>
-     <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>y_cal_width_3035</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>152</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
+     <x>254</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -32147,44 +31156,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>82</y>
+     <x>943</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>65</x>
      <y>79</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>probe_tool_number_3014</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_setter_offset_direction_3013</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>70</x>
-     <y>71</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
     </hint>
    </hints>
   </connection>
@@ -32195,8 +31172,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>537</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -32211,12 +31188,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -32231,8 +31208,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>658</y>
     </hint>
     <hint type="destinationlabel">
-     <x>102</x>
-     <y>94</y>
+     <x>100</x>
+     <y>130</y>
     </hint>
    </hints>
   </connection>
@@ -32243,44 +31220,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>74</y>
+     <x>98</x>
+     <y>544</y>
     </hint>
     <hint type="destinationlabel">
-     <x>191</x>
-     <y>73</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>z_max_travel_3007</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>slow_probe_fr_3005</sender>
-   <signal>textChanged(QString)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
+     <x>1446</x>
+     <y>75</y>
     </hint>
    </hints>
   </connection>
@@ -32295,24 +31240,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>86</y>
     </hint>
     <hint type="destinationlabel">
-     <x>314</x>
-     <y>43</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>breakage_tolerance_3037</sender>
-   <signal>cursorPositionChanged(int,int)</signal>
-   <receiver>update_tool_setter_params</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>245</x>
-     <y>74</y>
+     <x>322</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -32323,12 +31252,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>84</y>
+     <x>951</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -32339,12 +31268,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>134</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>136</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -32355,12 +31284,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>728</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>548</x>
+     <y>165</y>
     </hint>
    </hints>
   </connection>
@@ -32371,12 +31300,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>86</y>
+     <x>85</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
-     <x>267</x>
-     <y>43</y>
+     <x>275</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -32387,44 +31316,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>82</y>
+     <x>173</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
      <y>475</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>max_xy_distance_3018</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_probe_parameters_btn</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>110</x>
-     <y>67</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>160</x>
-     <y>63</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>activate_programmable_coolant_3000</sender>
-   <signal>editingFinished()</signal>
-   <receiver>update_programmable_coolant_param</receiver>
-   <slot>click()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>175</x>
-     <y>80</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>175</x>
-     <y>84</y>
     </hint>
    </hints>
   </connection>
@@ -32435,12 +31332,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1199</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>1199</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -32451,12 +31348,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1306</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>1199</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -32467,12 +31364,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1413</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>1199</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -32483,12 +31380,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1520</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>1199</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -32499,12 +31396,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>undo()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>84</y>
+     <x>1627</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>79</y>
+     <x>1199</x>
+     <y>160</y>
     </hint>
    </hints>
   </connection>
@@ -32531,8 +31428,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>910</x>
-     <y>345</y>
+     <x>906</x>
+     <y>363</y>
     </hint>
     <hint type="destinationlabel">
      <x>1028</x>
@@ -32559,18 +31456,18 @@ font: 11pt Probe Basic Bebas Mono;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
   <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="probehelpGroup"/>
-  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
  </buttongroups>
 </ui>
