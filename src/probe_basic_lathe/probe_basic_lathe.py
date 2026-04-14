@@ -49,6 +49,18 @@ def _resolve_config_path(path_str: str):
     return os.path.abspath(os.path.join(base_dir, expanded))
 
 
+def _ini_bool(value, default=False):
+    if value is None:
+        return default
+
+    normalized = str(value).strip().lower()
+    if normalized in ("1", "true", "yes", "on", "y"):
+        return True
+    if normalized in ("0", "false", "no", "off", "n", ""):
+        return False
+    return default
+
+
 def _import_module_from_path(module_name: str, module_path: str):
     spec = importlib.util.spec_from_file_location(module_name, module_path)
     if spec is None or spec.loader is None:
@@ -133,15 +145,15 @@ class ProbeBasicLathe(VCPMainWindow):
         # Normalize DRO_DISPLAY value to lowercase so user can enter XZ, xz, etc.
         dro_display = dro_display.lower()
 
-        lathe_mode = INIFILE.find("DISPLAY", "LATHE") or False
-        lathe_back_mode = INIFILE.find("DISPLAY", "BACK_TOOL_LATHE") or False
+        lathe_mode = _ini_bool(INIFILE.find("DISPLAY", "LATHE"), default=False)
+        lathe_back_mode = _ini_bool(INIFILE.find("DISPLAY", "BACK_TOOL_LATHE"), default=False)
 
-        if lathe_mode:
-            lathe_type = "LATHE"
-            self.vtkbackplot.setViewXZ2()
-        elif lathe_back_mode:
+        if lathe_back_mode:
             lathe_type = "BACK_TOOL_LATHE"
             self.vtkbackplot.setViewXZ()
+        elif lathe_mode:
+            lathe_type = "LATHE"
+            self.vtkbackplot.setViewXZ2()
         else:
             lathe_type = "LATHE"
 
@@ -179,14 +191,65 @@ class ProbeBasicLathe(VCPMainWindow):
 
         # Master tool promotion handling
         if hasattr(self, "master_tool_number"):
-            # Load saved master tool number from settings
-            saved_value = getSetting("touch-parameters.master-tool-number").getValue()
-            if saved_value:
-                self.master_tool_number.setText(str(int(saved_value)))
+            # Master tool number now comes from LinuxCNC var storage.
+            # Keep manual control so confirmation occurs before committing.
+            if hasattr(self.master_tool_number, "autoWriteEnabled"):
+                self.master_tool_number.autoWriteEnabled = False
+
+            self._last_master_tool_value = self._read_master_tool_var_value()
+            if self._last_master_tool_value is not None:
+                self._set_master_tool_widget_value(self._last_master_tool_value)
+
             # Connect to both signals - flag prevents double-execution
             self._master_tool_processing = False  # Flag to prevent double-execution
             self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
             self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
+
+    def _read_master_tool_var_value(self):
+        if not hasattr(self, "master_tool_number"):
+            return None
+
+        try:
+            if hasattr(self.master_tool_number, "readParameterFromVarFile"):
+                value = self.master_tool_number.readParameterFromVarFile()
+            elif hasattr(self.master_tool_number, "value"):
+                value = self.master_tool_number.value()
+            else:
+                value = self.master_tool_number.text()
+
+            if value in (None, ""):
+                return None
+
+            return int(float(value))
+        except Exception:
+            LOG.exception("Failed to read master tool value from var storage")
+            return None
+
+    def _set_master_tool_widget_value(self, tool_number):
+        if not hasattr(self, "master_tool_number"):
+            return
+
+        if tool_number is None:
+            self.master_tool_number.setText("")
+            return
+
+        if hasattr(self.master_tool_number, "setValue"):
+            self.master_tool_number.setValue(float(tool_number))
+        else:
+            self.master_tool_number.setText(str(int(tool_number)))
+
+    def _write_master_tool_var_value(self, tool_number):
+        if not hasattr(self, "master_tool_number"):
+            return False
+
+        try:
+            self._set_master_tool_widget_value(tool_number)
+            if hasattr(self.master_tool_number, "writeToLinuxCNC"):
+                self.master_tool_number.writeToLinuxCNC(force=True)
+            return True
+        except Exception:
+            LOG.exception("Failed to write master tool value to var storage")
+            return False
 
     def _position_master_dialog(self, msg_box):
         msg_box.adjustSize()
@@ -650,8 +713,7 @@ class ProbeBasicLathe(VCPMainWindow):
     # Master Tool Promotion Methods
     def on_master_tool_editing_finished(self):
         """Handle master tool number change with confirmation dialog."""
-        from qtpyvcp.plugins import getPlugin
-        
+
         # Prevent double-execution from multiple signals
         if self._master_tool_processing:
             return
@@ -665,9 +727,10 @@ class ProbeBasicLathe(VCPMainWindow):
                 LOG.warning("Invalid master tool number entered")
                 return
             
-            # Get current saved value
-            saved_value = getSetting("touch-parameters.master-tool-number").getValue()
-            current_master = int(saved_value) if saved_value else None
+            # Get current saved value from LinuxCNC var storage
+            current_master = self._read_master_tool_var_value()
+            if current_master is None:
+                current_master = getattr(self, "_last_master_tool_value", None)
             
             # If no change, do nothing
             if new_master == current_master:
@@ -675,10 +738,7 @@ class ProbeBasicLathe(VCPMainWindow):
             
             # If invalid, revert
             if new_master is None:
-                if current_master is not None:
-                    self.master_tool_number.setText(str(current_master))
-                else:
-                    self.master_tool_number.setText("")
+                self._set_master_tool_widget_value(current_master)
                 return
             
             # Show confirmation dialog
@@ -704,9 +764,12 @@ class ProbeBasicLathe(VCPMainWindow):
                 success = self.promote_tool_to_master(new_master, current_master)
                 
                 if success:
-                    # Save the new master tool number to settings
-                    setSetting("touch-parameters.master-tool-number", new_master)
-                    LOG.info(f"Saved master tool number: {new_master}")
+                    # Save the new master tool number to LinuxCNC var storage
+                    if self._write_master_tool_var_value(new_master):
+                        self._last_master_tool_value = new_master
+                        LOG.info(f"Saved master tool number to var storage: {new_master}")
+                    else:
+                        LOG.warning("Master tool promoted but failed to persist var value")
                     
                     # Show confirmation
                     confirm_msg = QMessageBox(self)
@@ -723,17 +786,11 @@ class ProbeBasicLathe(VCPMainWindow):
                     confirm_msg.exec_()
                 else:
                     # Promotion failed - revert to original
-                    if current_master is not None:
-                        self.master_tool_number.setText(str(current_master))
-                    else:
-                        self.master_tool_number.setText("")
+                    self._set_master_tool_widget_value(current_master)
                     LOG.warning("Tool promotion failed, reverted to original value")
             else:
                 # User cancelled - revert to original master tool number
-                if current_master is not None:
-                    self.master_tool_number.setText(str(current_master))
-                else:
-                    self.master_tool_number.setText("")
+                self._set_master_tool_widget_value(current_master)
                 LOG.info(f"Tool promotion cancelled, reverted to: {current_master}")
         
         finally:
