@@ -2,6 +2,7 @@
 
 import os
 import sys
+import re
 import importlib.util
 
 import linuxcnc
@@ -75,14 +76,11 @@ def _import_module_from_path(module_name: str, module_path: str):
         sys.path.insert(0, module_dir)
         added_to_path = True
 
-    try:
-        spec.loader.exec_module(module)
-    finally:
-        if added_to_path:
-            try:
-                sys.path.remove(module_dir)
-            except ValueError:
-                pass
+    spec.loader.exec_module(module)
+
+    # Cleanup the temporary import path only after a successful import.
+    if added_to_path and module_dir in sys.path:
+        sys.path.remove(module_dir)
 
     return module
 
@@ -189,67 +187,314 @@ class ProbeBasicLathe(VCPMainWindow):
                 self.tool_offset_stacked_widget.setCurrentIndex(0)
                 LOG.info("MASTER_TOOL_OFFSET_MODE not found in INI, defaulting to ABSOLUTE mode")
 
-        # Master tool promotion handling
-        if hasattr(self, "master_tool_number"):
-            # Master tool number now comes from LinuxCNC var storage.
-            # Keep manual control so confirmation occurs before committing.
-            if hasattr(self.master_tool_number, "autoWriteEnabled"):
-                self.master_tool_number.autoWriteEnabled = False
+        self._initialize_master_tool_controls()
 
-            self._last_master_tool_value = self._read_master_tool_var_value()
-            if self._last_master_tool_value is not None:
-                self._set_master_tool_widget_value(self._last_master_tool_value)
+    # Master Tool Promotion Methods
+    def _initialize_master_tool_controls(self):
+        """Initialize strict master-tool widget behavior and signal wiring."""
+        master_tool_widget = self._master_tool_widget()
 
-            # Connect to both signals - flag prevents double-execution
-            self._master_tool_processing = False  # Flag to prevent double-execution
-            self.master_tool_number.returnPressed.connect(self.on_master_tool_editing_finished)
-            self.master_tool_number.editingFinished.connect(self.on_master_tool_editing_finished)
+        # Keep manual control so confirmation occurs before committing.
+        master_tool_widget.autoWriteEnabled = False
+
+        self._last_master_tool_value = self._read_master_tool_var_value()
+        if self._last_master_tool_value is not None:
+            self._set_master_tool_widget_value(self._last_master_tool_value)
+
+        # Connect to both signals; guard flag prevents double execution.
+        self._master_tool_processing = False
+        master_tool_widget.returnPressed.connect(self.on_master_tool_editing_finished)
+        master_tool_widget.editingFinished.connect(self.on_master_tool_editing_finished)
+
+    def _master_tool_widget(self):
+        widget = getattr(self, "master_tool_number_3100", None)
+        if widget is None:
+            raise AttributeError(
+                "Required widget 'master_tool_number_3100' not found in ProbeBasicLathe UI"
+            )
+        return widget
 
     def _read_master_tool_var_value(self):
-        if not hasattr(self, "master_tool_number"):
+        value = self._master_tool_widget().readParameterFromVarFile()
+
+        if value in (None, ""):
             return None
 
-        try:
-            if hasattr(self.master_tool_number, "readParameterFromVarFile"):
-                value = self.master_tool_number.readParameterFromVarFile()
-            elif hasattr(self.master_tool_number, "value"):
-                value = self.master_tool_number.value()
-            else:
-                value = self.master_tool_number.text()
+        parsed = self._parse_master_tool_number(value)
+        if parsed is None:
+            LOG.warning("Master tool var value is not integer-compatible: %s", value)
+        return parsed
 
-            if value in (None, ""):
+    def _parse_master_tool_number(self, raw_value):
+        """Parse widget/var input into a non-negative integer master tool number.
+
+        Accepts integer-like text such as "5" or "5.0000" and rejects fractional values.
+        """
+        if raw_value is None:
+            return None
+
+        if isinstance(raw_value, (int, float)):
+            numeric_value = float(raw_value)
+        elif isinstance(raw_value, str):
+            raw_text = raw_value.strip()
+            if raw_text == "":
                 return None
 
-            return int(float(value))
-        except Exception:
-            LOG.exception("Failed to read master tool value from var storage")
+            if not re.fullmatch(r"[+-]?\d+(\.\d+)?", raw_text):
+                return None
+
+            numeric_value = float(raw_text)
+        else:
             return None
 
-    def _set_master_tool_widget_value(self, tool_number):
-        if not hasattr(self, "master_tool_number"):
-            return
+        if numeric_value < 0:
+            return None
+
+        rounded_value = int(round(numeric_value))
+        if abs(numeric_value - rounded_value) > 1e-6:
+            return None
+
+        return rounded_value
+
+    def _set_master_tool_widget_value(self, tool_number, persist=False):
+        master_tool_widget = self._master_tool_widget()
 
         if tool_number is None:
-            self.master_tool_number.setText("")
+            master_tool_widget.setText("")
+        else:
+            master_tool_widget.setValue(float(tool_number))
+
+        if persist:
+            master_tool_widget.writeToLinuxCNC(force=True)
+
+    def on_master_tool_editing_finished(self):
+        """Handle master tool number change with confirmation dialog."""
+
+        # Prevent double-execution from multiple signals
+        if self._master_tool_processing:
+            return
+        self._master_tool_processing = True
+
+        master_tool_widget = self._master_tool_widget()
+        new_text = master_tool_widget.text()
+        new_master = self._parse_master_tool_number(new_text)
+
+        # Get current saved value from LinuxCNC var storage
+        current_master = self._read_master_tool_var_value()
+        if current_master is None:
+            current_master = getattr(self, "_last_master_tool_value", None)
+
+        # If no change, do nothing
+        if new_master == current_master:
+            self._master_tool_processing = False
             return
 
-        if hasattr(self.master_tool_number, "setValue"):
-            self.master_tool_number.setValue(float(tool_number))
+        if new_master is None:
+            if new_text.strip() != "":
+                LOG.warning("Invalid master tool number entered: %s", new_text)
+            self._set_master_tool_widget_value(current_master)
+            self._master_tool_processing = False
+            return
+
+        # Show confirmation dialog
+        msg = QMessageBox(self)
+        msg.setIcon(QMessageBox.Question)
+        msg.setWindowTitle("Promote Tool to Master")
+        msg.setText(f"Promoting Tool {new_master} to Master Tool!")
+        msg.setInformativeText(
+            "This action will Recalculate all stored tool offsets relative to the new master tool."
+            )
+        msg.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
+        yes_btn = msg.button(QMessageBox.Yes)
+        yes_btn.setText("Yes, Promote New Tool")
+        cancel_btn = msg.button(QMessageBox.Cancel)
+        cancel_btn.setText("Cancel")
+        msg.setDefaultButton(QMessageBox.Cancel)
+        self._position_master_dialog(msg)
+
+        result = msg.exec()
+
+        if result == QMessageBox.Yes:
+            # User confirmed - promote the tool
+            success = self.promote_tool_to_master(new_master, current_master)
+
+            if success:
+                # Save the new master tool number to LinuxCNC var storage
+                self._set_master_tool_widget_value(new_master, persist=True)
+                self._last_master_tool_value = new_master
+                LOG.info(f"Saved master tool number to var storage: {new_master}")
+
+                # Show confirmation
+                confirm_msg = QMessageBox(self)
+                confirm_msg.setIcon(QMessageBox.Information)
+                confirm_msg.setWindowTitle("Master Tool Promoted")
+                confirm_msg.setText(f"Tool {new_master} is now the Master Tool")
+                confirm_msg.setInformativeText(
+                    "All tool offsets have been recalculated.\n"
+                    f"Tool {new_master} offset is now (X0, Z0)."
+                )
+                confirm_msg.setStandardButtons(QMessageBox.Ok)
+                self._position_master_dialog(confirm_msg)
+
+                confirm_msg.exec()
+            else:
+                # Promotion failed - revert to original
+                self._set_master_tool_widget_value(current_master)
+                LOG.warning("Tool promotion failed, reverted to original value")
         else:
-            self.master_tool_number.setText(str(int(tool_number)))
+            # User cancelled - revert to original master tool number
+            self._set_master_tool_widget_value(current_master)
+            LOG.info(f"Tool promotion cancelled, reverted to: {current_master}")
 
-    def _write_master_tool_var_value(self, tool_number):
-        if not hasattr(self, "master_tool_number"):
+        self._master_tool_processing = False
+
+    def promote_tool_to_master(self, new_master_tool, old_master_tool):
+        """
+        Promote a secondary tool to become the new master tool.
+        Recalculates all tool offsets to maintain spatial relationships.
+
+        Args:
+            new_master_tool (int): Tool number to promote to master
+            old_master_tool (int): Current master tool number (can be None)
+
+        Returns:
+            bool: True if successful, False otherwise
+        """
+        from qtpyvcp.plugins import getPlugin
+
+        LOG.info(f"Promoting tool {new_master_tool} to master (was tool {old_master_tool})")
+
+        # Get tool table plugin
+        tooltable = getPlugin('tooltable')
+        if not tooltable:
+            LOG.error("Tool table plugin not found")
             return False
 
-        try:
-            self._set_master_tool_widget_value(tool_number)
-            if hasattr(self.master_tool_number, "writeToLinuxCNC"):
-                self.master_tool_number.writeToLinuxCNC(force=True)
-            return True
-        except Exception:
-            LOG.exception("Failed to write master tool value to var storage")
+        # Get current tool table
+        tool_table = tooltable.getToolTable()
+        if not tool_table:
+            LOG.error("Could not read tool table")
             return False
+
+        # Check if new master tool exists
+        if new_master_tool not in tool_table:
+            LOG.error(f"Tool {new_master_tool} not found in tool table")
+            return False
+
+        # Get the offset of the tool being promoted
+        promoted_tool_data = tool_table[new_master_tool]
+        promoted_x_offset = promoted_tool_data.get('X', 0.0)
+        promoted_z_offset = promoted_tool_data.get('Z', 0.0)
+
+        LOG.info(f"Promoted tool current offsets - X: {promoted_x_offset}, Z: {promoted_z_offset}")
+
+        # Recalculate all tool offsets
+        for tool_num in tool_table.keys():
+            if tool_num == 0:  # Skip the "No Tool" entry
+                continue
+
+            tool_data = tool_table[tool_num]
+            old_x = tool_data.get('X', 0.0)
+            old_z = tool_data.get('Z', 0.0)
+
+            # New offset = old offset - promoted tool offset
+            new_x = old_x - promoted_x_offset
+            new_z = old_z - promoted_z_offset
+
+            # Update the tool data
+            tool_data['X'] = new_x
+            tool_data['Z'] = new_z
+
+            LOG.info(f"Tool {tool_num}: X {old_x:.6f} -> {new_x:.6f}, Z {old_z:.6f} -> {new_z:.6f}")
+
+        # Save the updated tool table with explicit zeros to prevent omission
+        self.save_tool_table_with_zeros(tooltable, tool_table)
+
+        # Reload tool table in LinuxCNC
+        CMD = linuxcnc.command()
+        CMD.load_tool_table()
+
+        # Reload in UI
+        tooltable.loadToolTable()
+
+        LOG.info(f"Successfully promoted tool {new_master_tool} to master")
+        return True
+
+    def save_tool_table_with_zeros(self, tooltable, tool_table):
+        """
+        Save tool table ensuring zero values are explicitly written.
+        This prevents LinuxCNC from omitting columns with zero values.
+        """
+        import os
+        from qtpyvcp.utilities.info import Info
+
+        INFO = Info()
+        tool_file = INFO.getToolTableFile()
+
+        if not tool_file:
+            raise RuntimeError("Could not determine tool table file path")
+
+        # Get columns to write (typically XZDR for lathe)
+        columns = list(tooltable.columns)
+
+        # Ensure P is in columns
+        if 'P' not in columns:
+            columns.insert(1, 'P')
+
+        LOG.info(f"Saving tool table to: {tool_file}")
+        LOG.info(f"Columns: {columns}")
+
+        lines = []
+
+        # Preserve header if it exists
+        if tooltable.orig_header_lines:
+            lines.extend(tooltable.orig_header_lines)
+
+        # Create table header
+        header_items = []
+        for col in columns:
+            if col == 'R':
+                continue
+            if col in 'TPQ':
+                w = 6 - (1 if col == columns[0] else 0)
+            else:
+                w = 12 - (1 if col == columns[0] else 0)
+            col_label = tooltable.COLUMN_LABELS.get(col, col)
+            header_items.append('{:<{w}}'.format(col_label, w=w))
+        header_items.append('Remark')
+        lines.append(';' + ' '.join(header_items))
+
+        # Write each tool with explicit zeros
+        for tool_num in sorted(tool_table.keys())[1:]:  # Skip tool 0
+            tool_data = tool_table[tool_num]
+            items = []
+
+            for col in columns:
+                if col == 'R':
+                    continue
+
+                val = tool_data.get(col, 0.0 if col not in 'TPQ' else 0)
+
+                if col in 'TPQ':
+                    # Integer columns
+                    items.append('{col}{val:<{w}}'.format(col=col, val=int(val), w=6))
+                else:
+                    # Float columns - explicitly format zeros
+                    items.append('{col}{val:<+{w}.6f}'.format(col=col, val=val, w=12))
+
+            # Add remark
+            comment = tool_data.get('R', '')
+            if comment:
+                items.append('; ' + comment)
+
+            lines.append(''.join(items))
+
+        # Write to file
+        with open(tool_file, 'w') as f:
+            f.write('\n'.join(lines))
+            f.write('\n')  # Ensure final newline
+
+        LOG.info(f"Tool table saved successfully with {len(tool_table)-1} tools")
 
     def _position_master_dialog(self, msg_box):
         msg_box.adjustSize()
@@ -275,13 +520,9 @@ class ProbeBasicLathe(VCPMainWindow):
             return
         app = QApplication.instance()
         if app is None:
-            return
-        palette_changed = getattr(app, 'paletteChanged', None)
-        if palette_changed is not None:
-            try:
-                palette_changed.connect(self._on_palette_changed)
-            except Exception:
-                LOG.exception("Failed to connect paletteChanged signal")
+            raise RuntimeError("QApplication instance is required for system theme tracking")
+
+        app.paletteChanged.connect(self._on_palette_changed)
 
     def _on_palette_changed(self, *_args):
         if self._theme_preference_mode != 'system':
@@ -296,28 +537,21 @@ class ProbeBasicLathe(VCPMainWindow):
         stylesheet_path = os.path.join(VCP_DIR, stylesheet_file)
         app = QApplication.instance()
         if app is None:
-            return
-        try:
-            with open(stylesheet_path, 'r', encoding='utf-8') as style_file:
-                app.setStyleSheet(style_file.read())
-        except Exception:
-            LOG.exception("Failed to load theme stylesheet: %s", stylesheet_path)
+            raise RuntimeError("QApplication instance is required for stylesheet application")
+
+        with open(stylesheet_path, 'r', encoding='utf-8') as style_file:
+            app.setStyleSheet(style_file.read())
 
     def _on_tab_changed_refresh_views(self, index):
         if hasattr(self, "tabWidget") and self.tabWidget.widget(index) is getattr(self, "main_tab", None):
             QTimer.singleShot(0, self._refresh_vtk_view)
 
     def _refresh_vtk_view(self):
-        if not hasattr(self, "vtkbackplot"):
-            return
-        try:
-            if getattr(self, "_lathe_type", "LATHE") == "BACK_TOOL_LATHE":
-                self.vtkbackplot.setViewXZ()
-            else:
-                self.vtkbackplot.setViewXZ2()
-            self.vtkbackplot.update()
-        except Exception:
-            LOG.exception("Failed to refresh VTK backplot view")
+        if getattr(self, "_lathe_type", "LATHE") == "BACK_TOOL_LATHE":
+            self.vtkbackplot.setViewXZ()
+        else:
+            self.vtkbackplot.setViewXZ2()
+        self.vtkbackplot.update()
 
     def _load_dros_after_ui(self):
         self.load_user_dros()
@@ -611,24 +845,17 @@ class ProbeBasicLathe(VCPMainWindow):
         """Extract line numbers containing M6 commands from the loaded G-code file."""
         m6_lines = []
         editor = self._resolve_m6_editor()
-        if editor is None:
-            LOG.warning("No G-code editor widget found for M6 search")
+        text = editor.toPlainText()
+        if not text:
+            LOG.warning("No G-code loaded in editor")
             return m6_lines
-        
-        try:
-            text = editor.toPlainText()
-            if not text:
-                LOG.warning("No G-code loaded in editor")
-                return m6_lines
-            
-            for line_num, line in enumerate(text.split('\n'), start=1):
-                # Search for M6 (tool change command) - case insensitive
-                if 'M6' in line.upper():
-                    m6_lines.append(line_num)
-            
-            LOG.info(f"Found {len(m6_lines)} M6 commands in G-code")
-        except Exception as e:
-            LOG.error(f"Error extracting M6 line numbers: {e}")
+
+        for line_num, line in enumerate(text.split('\n'), start=1):
+            # Search for M6 (tool change command) - case insensitive
+            if 'M6' in line.upper():
+                m6_lines.append(line_num)
+
+        LOG.info(f"Found {len(m6_lines)} M6 commands in G-code")
         
         return m6_lines
 
@@ -657,301 +884,49 @@ class ProbeBasicLathe(VCPMainWindow):
     def scroll_to_line_in_gcode(self, line_num):
         """Scroll and highlight a specific line in the G-code text editor."""
         editor = self._resolve_m6_editor()
-        if editor is None:
-            return
-        
-        try:
-            # Get the text cursor
-            cursor = editor.textCursor()
-            
-            # Move cursor to the beginning of the desired line
-            # line_num is 1-based, so we need line_num - 1 blocks
-            cursor.movePosition(QTextCursor.Start)
-            for _ in range(line_num - 1):
-                cursor.movePosition(QTextCursor.Down)
-            
-            # Select the entire line
-            cursor.movePosition(QTextCursor.StartOfLine)
-            cursor.movePosition(QTextCursor.EndOfLine, QTextCursor.KeepAnchor)
-            
-            # Set the cursor (this will scroll the view to show the line)
-            editor.setTextCursor(cursor)
-            
-            # Ensure the line is visible in the center of the view
-            editor.ensureCursorVisible()
-            
-            LOG.info(f"Scrolled to M6 line {line_num}")
-        except Exception as e:
-            LOG.error(f"Error scrolling to line {line_num}: {e}")
+
+        # Get the text cursor
+        cursor = editor.textCursor()
+
+        # Move cursor to the beginning of the desired line
+        # line_num is 1-based, so we need line_num - 1 blocks
+        cursor.movePosition(QTextCursor.Start)
+        for _ in range(line_num - 1):
+            cursor.movePosition(QTextCursor.Down)
+
+        # Select the entire line
+        cursor.movePosition(QTextCursor.StartOfLine)
+        cursor.movePosition(QTextCursor.EndOfLine, QTextCursor.KeepAnchor)
+
+        # Set the cursor (this will scroll the view to show the line)
+        editor.setTextCursor(cursor)
+
+        # Ensure the line is visible in the center of the view
+        editor.ensureCursorVisible()
+
+        LOG.info(f"Scrolled to M6 line {line_num}")
 
     def _resolve_m6_editor(self):
         """Return the primary editor used by the FIND M6 workflow."""
-        # Keep legacy fallback last for older UI variants that may still
-        # expose the old object name.
-        for name in ('gcodeEditor', 'gcodeEditor_2', 'gcodetextedit_2'):
+        for name in ('gcodeEditor', 'gcodeEditor_2'):
             editor = getattr(self, name, None)
             if editor is not None:
                 return editor
-        return None
+        raise AttributeError("Required G-code editor widget not found (expected gcodeEditor or gcodeEditor_2)")
 
     @Slot()
     def _cycle_start_clicked(self):
         """Intercept cycle start to check if running from M6 line is enabled."""
         if self.run_from_line_Btn.isChecked():
-            # Run from the queued M6 line
-            try:
-                lineNum = int(self.run_from_line_Num.text())
-                actions.program_actions.run(lineNum)
-                LOG.info(f"Cycle started from M6 line {lineNum}")
-            except ValueError:
-                LOG.warning("No valid line number queued for run from line")
-            finally:
-                # Auto-uncheck the button after running
-                self.run_from_line_Btn.setChecked(False)
+            line_text = self.run_from_line_Num.text().strip()
+            # Auto-uncheck after this intercepted run attempt.
+            self.run_from_line_Btn.setChecked(False)
+
+            if not line_text.isdigit():
+                raise ValueError("No valid line number queued for run from line")
+
+            lineNum = int(line_text)
+            actions.program_actions.run(lineNum)
+            LOG.info(f"Cycle started from M6 line {lineNum}")
         # Normal cycle start is handled by the button's bound actionName (program.run).
 
-    # Master Tool Promotion Methods
-    def on_master_tool_editing_finished(self):
-        """Handle master tool number change with confirmation dialog."""
-
-        # Prevent double-execution from multiple signals
-        if self._master_tool_processing:
-            return
-        self._master_tool_processing = True
-        
-        try:
-            # Get new value from widget
-            try:
-                new_master = int(self.master_tool_number.text()) if self.master_tool_number.text() else None
-            except ValueError:
-                LOG.warning("Invalid master tool number entered")
-                return
-            
-            # Get current saved value from LinuxCNC var storage
-            current_master = self._read_master_tool_var_value()
-            if current_master is None:
-                current_master = getattr(self, "_last_master_tool_value", None)
-            
-            # If no change, do nothing
-            if new_master == current_master:
-                return
-            
-            # If invalid, revert
-            if new_master is None:
-                self._set_master_tool_widget_value(current_master)
-                return
-            
-            # Show confirmation dialog
-            msg = QMessageBox(self)
-            msg.setIcon(QMessageBox.Question)
-            msg.setWindowTitle("Promote Tool to Master")
-            msg.setText(f"Promoting Tool {new_master} to Master Tool!")
-            msg.setInformativeText(
-                "This action will Recalculate all stored tool offsets relative to the new master tool."
-                )
-            msg.setStandardButtons(QMessageBox.Yes | QMessageBox.Cancel)
-            yes_btn = msg.button(QMessageBox.Yes)
-            yes_btn.setText("Yes, Promote New Tool")
-            cancel_btn = msg.button(QMessageBox.Cancel)
-            cancel_btn.setText("Cancel")
-            msg.setDefaultButton(QMessageBox.Cancel)
-            self._position_master_dialog(msg)
-            
-            result = msg.exec_()
-            
-            if result == QMessageBox.Yes:
-                # User confirmed - promote the tool
-                success = self.promote_tool_to_master(new_master, current_master)
-                
-                if success:
-                    # Save the new master tool number to LinuxCNC var storage
-                    if self._write_master_tool_var_value(new_master):
-                        self._last_master_tool_value = new_master
-                        LOG.info(f"Saved master tool number to var storage: {new_master}")
-                    else:
-                        LOG.warning("Master tool promoted but failed to persist var value")
-                    
-                    # Show confirmation
-                    confirm_msg = QMessageBox(self)
-                    confirm_msg.setIcon(QMessageBox.Information)
-                    confirm_msg.setWindowTitle("Master Tool Promoted")
-                    confirm_msg.setText(f"Tool {new_master} is now the Master Tool")
-                    confirm_msg.setInformativeText(
-                        "All tool offsets have been recalculated.\n"
-                        f"Tool {new_master} offset is now (X0, Z0)."
-                    )
-                    confirm_msg.setStandardButtons(QMessageBox.Ok)
-                    self._position_master_dialog(confirm_msg)
-                    
-                    confirm_msg.exec_()
-                else:
-                    # Promotion failed - revert to original
-                    self._set_master_tool_widget_value(current_master)
-                    LOG.warning("Tool promotion failed, reverted to original value")
-            else:
-                # User cancelled - revert to original master tool number
-                self._set_master_tool_widget_value(current_master)
-                LOG.info(f"Tool promotion cancelled, reverted to: {current_master}")
-        
-        finally:
-            # Reset flag after processing
-            self._master_tool_processing = False
-
-    def promote_tool_to_master(self, new_master_tool, old_master_tool):
-        """
-        Promote a secondary tool to become the new master tool.
-        Recalculates all tool offsets to maintain spatial relationships.
-        
-        Args:
-            new_master_tool (int): Tool number to promote to master
-            old_master_tool (int): Current master tool number (can be None)
-        
-        Returns:
-            bool: True if successful, False otherwise
-        """
-        from qtpyvcp.plugins import getPlugin
-        
-        LOG.info(f"Promoting tool {new_master_tool} to master (was tool {old_master_tool})")
-        
-        try:
-            # Get tool table plugin
-            tooltable = getPlugin('tooltable')
-            if not tooltable:
-                LOG.error("Tool table plugin not found")
-                return False
-            
-            # Get current tool table
-            tool_table = tooltable.getToolTable()
-            if not tool_table:
-                LOG.error("Could not read tool table")
-                return False
-            
-            # Check if new master tool exists
-            if new_master_tool not in tool_table:
-                LOG.error(f"Tool {new_master_tool} not found in tool table")
-                return False
-            
-            # Get the offset of the tool being promoted
-            promoted_tool_data = tool_table[new_master_tool]
-            promoted_x_offset = promoted_tool_data.get('X', 0.0)
-            promoted_z_offset = promoted_tool_data.get('Z', 0.0)
-            
-            LOG.info(f"Promoted tool current offsets - X: {promoted_x_offset}, Z: {promoted_z_offset}")
-            
-            # Recalculate all tool offsets
-            for tool_num in tool_table.keys():
-                if tool_num == 0:  # Skip the "No Tool" entry
-                    continue
-                
-                tool_data = tool_table[tool_num]
-                old_x = tool_data.get('X', 0.0)
-                old_z = tool_data.get('Z', 0.0)
-                
-                # New offset = old offset - promoted tool offset
-                new_x = old_x - promoted_x_offset
-                new_z = old_z - promoted_z_offset
-                
-                # Update the tool data
-                tool_data['X'] = new_x
-                tool_data['Z'] = new_z
-                
-                LOG.info(f"Tool {tool_num}: X {old_x:.6f} -> {new_x:.6f}, Z {old_z:.6f} -> {new_z:.6f}")
-            
-            # Save the updated tool table with explicit zeros to prevent omission
-            self.save_tool_table_with_zeros(tooltable, tool_table)
-            
-            # Reload tool table in LinuxCNC
-            CMD = linuxcnc.command()
-            CMD.load_tool_table()
-            
-            # Reload in UI
-            tooltable.loadToolTable()
-            
-            LOG.info(f"Successfully promoted tool {new_master_tool} to master")
-            return True
-            
-        except Exception as e:
-            LOG.error(f"Error promoting tool to master: {e}", exc_info=True)
-            return False
-
-    def save_tool_table_with_zeros(self, tooltable, tool_table):
-        """
-        Save tool table ensuring zero values are explicitly written.
-        This prevents LinuxCNC from omitting columns with zero values.
-        """
-        import os
-        from qtpyvcp.utilities.info import Info
-        
-        INFO = Info()
-        tool_file = INFO.getToolTableFile()
-        
-        if not tool_file:
-            LOG.error("Could not determine tool table file path")
-            return
-        
-        # Get columns to write (typically XZDR for lathe)
-        columns = list(tooltable.columns) if hasattr(tooltable, 'columns') else ['T', 'P', 'X', 'Z', 'D', 'R']
-        
-        # Ensure P is in columns
-        if 'P' not in columns:
-            columns.insert(1, 'P')
-        
-        LOG.info(f"Saving tool table to: {tool_file}")
-        LOG.info(f"Columns: {columns}")
-        
-        try:
-            lines = []
-            
-            # Preserve header if it exists
-            if hasattr(tooltable, 'orig_header_lines') and tooltable.orig_header_lines:
-                lines.extend(tooltable.orig_header_lines)
-            
-            # Create table header
-            header_items = []
-            for col in columns:
-                if col == 'R':
-                    continue
-                if col in 'TPQ':
-                    w = 6 - (1 if col == columns[0] else 0)
-                else:
-                    w = 12 - (1 if col == columns[0] else 0)
-                col_label = tooltable.COLUMN_LABELS.get(col, col) if hasattr(tooltable, 'COLUMN_LABELS') else col
-                header_items.append('{:<{w}}'.format(col_label, w=w))
-            header_items.append('Remark')
-            lines.append(';' + ' '.join(header_items))
-            
-            # Write each tool with explicit zeros
-            for tool_num in sorted(tool_table.keys())[1:]:  # Skip tool 0
-                tool_data = tool_table[tool_num]
-                items = []
-                
-                for col in columns:
-                    if col == 'R':
-                        continue
-                    
-                    val = tool_data.get(col, 0.0 if col not in 'TPQ' else 0)
-                    
-                    if col in 'TPQ':
-                        # Integer columns
-                        items.append('{col}{val:<{w}}'.format(col=col, val=int(val), w=6))
-                    else:
-                        # Float columns - explicitly format zeros
-                        items.append('{col}{val:<+{w}.6f}'.format(col=col, val=val, w=12))
-                
-                # Add remark
-                comment = tool_data.get('R', '')
-                if comment:
-                    items.append('; ' + comment)
-                
-                lines.append(''.join(items))
-            
-            # Write to file
-            with open(tool_file, 'w') as f:
-                f.write('\n'.join(lines))
-                f.write('\n')  # Ensure final newline
-            
-            LOG.info(f"Tool table saved successfully with {len(tool_table)-1} tools")
-            
-        except Exception as e:
-            LOG.error(f"Error saving tool table: {e}", exc_info=True)
-            raise
