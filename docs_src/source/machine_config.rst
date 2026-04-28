@@ -181,8 +181,9 @@ Step 3: Edit INI files
          #      USER (which contains XYZABC, and can be edited or customized)
 
          GEOMETRY = XYZ
-         #  This setting is used by the backplotter to set axes translation
-         #  and should match your machine configuration axes.
+         #  Sets Jog Buttons to Display in the UI and is used by the
+         #  backplotter to set axes translation and should match your
+         #  machine configuration axes.
 
          OFFSET_COLUMNS = XYZ
          #  This setting sets the columns to display in the Offsets Table

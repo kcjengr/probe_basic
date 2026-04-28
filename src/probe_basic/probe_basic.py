@@ -6,7 +6,7 @@ import importlib.util
 
 import linuxcnc
 
-from qtpy.QtCore import Slot, QRegExp, Qt
+from qtpy.QtCore import Slot, QRegExp, Qt, QTimer
 from qtpy.QtGui import QFontDatabase, QRegExpValidator, QTextCursor
 from qtpy.QtWidgets import QAbstractButton
 from qtpy.QtWidgets import QAction, QWidget
@@ -73,10 +73,10 @@ class ProbeBasic(VCPMainWindow):
 
         self.load_offset_dro()
 
-        # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
-        dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
-
-        dro_display = dro_display.lower()
+        # Set jog display page from [DISPLAY] GEOMETRY in the INI.
+        self._lock_jog_display_to_ini_geometry()
+        self._apply_jog_display_from_geometry()
+        QTimer.singleShot(0, self._apply_jog_display_from_geometry)
         
         self.help_menu = self.menuBar().addMenu("Help")
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
@@ -127,6 +127,40 @@ class ProbeBasic(VCPMainWindow):
             # Set the main tab widget to the correct tab at startup
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
+
+    def _apply_jog_display_from_geometry(self):
+        if not hasattr(self, "jogDisplay"):
+            raise RuntimeError("jogDisplay widget is required but was not found")
+
+        geometry = (INIFILE.find("DISPLAY", "GEOMETRY") or "").strip().upper().replace(" ", "")
+        if not geometry:
+            raise ValueError("Missing required INI setting: [DISPLAY] GEOMETRY")
+
+        page_map = {
+            "XYZ": 0,
+            "XYZA": 1,
+            "XYZB": 2,
+            "XYZC": 3,
+            "XYZAB": 4,
+            "XYZAC": 5,
+            "XYZBC": 6,
+            "XYZABC": 7,
+        }
+
+        page_idx = page_map.get(geometry)
+        if page_idx is None:
+            raise ValueError(f"Unsupported [DISPLAY] GEOMETRY value: {geometry}")
+
+        if self.jogDisplay.currentIndex() != page_idx:
+            self.jogDisplay.setCurrentIndex(page_idx)
+            LOG.info("Jog display set from DISPLAY GEOMETRY: geometry=%s index=%s", geometry, page_idx)
+
+    def _lock_jog_display_to_ini_geometry(self):
+        if not hasattr(self, "jogDisplay"):
+            return
+        # Remove UI rule/settings-based overrides so INI GEOMETRY is authoritative.
+        self.jogDisplay.setProperty("rules", "[]")
+        self.jogDisplay.setProperty("settingName", "")
 
     def store_original_tooltips(self):
         """Store the original tooltips for all widgets to restore later."""
