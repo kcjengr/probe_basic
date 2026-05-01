@@ -94,6 +94,7 @@ class ProbeBasic(VCPMainWindow):
         
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
+        self._applying_external_program_selection = False
         self._install_gcode_run_from_line_context_menu()
         self._install_gcode_selected_line_sync()
 
@@ -890,9 +891,21 @@ class ProbeBasic(VCPMainWindow):
         if callable(file_notify):
             file_notify(lambda *_args: QTimer.singleShot(0, self._publish_selected_program_line_from_any_editor))
 
+        selected_line_channel = getattr(self._status_plugin, 'selected_program_line', None)
+        selected_line_notify = getattr(selected_line_channel, 'notify', None)
+        if callable(selected_line_notify):
+            selected_line_notify(lambda *_args: QTimer.singleShot(0, self._apply_selected_program_line_to_any_editor))
+
+        selected_lines_channel = getattr(self._status_plugin, 'selected_program_lines', None)
+        selected_lines_notify = getattr(selected_lines_channel, 'notify', None)
+        if callable(selected_lines_notify):
+            selected_lines_notify(lambda *_args: QTimer.singleShot(0, self._apply_selected_program_line_to_any_editor))
+
         QTimer.singleShot(0, self._publish_selected_program_line_from_any_editor)
 
     def _publish_selected_program_line_from_editor(self, editor):
+        if self._applying_external_program_selection:
+            return
         if not self._selected_line_sync_allowed():
             return
 
@@ -979,6 +992,123 @@ class ProbeBasic(VCPMainWindow):
         focused_editor = next((ed for ed in editors if ed is focus_widget), None)
         target_editor = focused_editor or editors[0]
         self._publish_selected_program_line_from_editor(target_editor)
+
+    def _selected_program_line_values_from_status(self):
+        status_plugin = getattr(self, '_status_plugin', None) or getPlugin('status')
+        selected_lines_channel = getattr(status_plugin, 'selected_program_lines', None)
+        selected_lines_raw = getattr(selected_lines_channel, 'value', None)
+        if isinstance(selected_lines_raw, (list, tuple, set)):
+            selected_lines = self._normalize_selected_lines(selected_lines_raw)
+            if selected_lines:
+                return selected_lines
+
+        selected_line_channel = getattr(status_plugin, 'selected_program_line', None)
+        selected_line_raw = getattr(selected_line_channel, 'value', None)
+        return self._normalize_selected_lines([selected_line_raw])
+
+    def _apply_selected_program_line_to_any_editor(self):
+        if self._applying_external_program_selection:
+            return
+        if not self._selected_line_sync_allowed():
+            return
+
+        selected_lines = self._selected_program_line_values_from_status()
+        if not selected_lines:
+            return
+
+        editors = list(self._iter_gcode_editors_for_line_sync())
+        if not editors:
+            return
+
+        focus_widget = QApplication.focusWidget()
+        focused_editor = next((ed for ed in editors if ed is focus_widget), None)
+        target_editor = focused_editor or editors[0]
+        self._apply_selected_program_lines_to_editor(target_editor, selected_lines)
+
+    def _apply_selected_program_lines_to_editor(self, editor, line_numbers):
+        normalized_lines = self._normalize_selected_lines(line_numbers)
+        if not normalized_lines:
+            return
+
+        start_line = normalized_lines[0]
+        end_line = normalized_lines[-1]
+        if start_line <= 0 or end_line < start_line:
+            return
+
+        self._applying_external_program_selection = True
+        try:
+            if self._apply_selected_program_lines_to_qsci_editor(editor, start_line, end_line):
+                return
+            self._apply_selected_program_lines_to_qtext_editor(editor, start_line, end_line)
+        finally:
+            self._applying_external_program_selection = False
+
+    @staticmethod
+    def _apply_selected_program_lines_to_qsci_editor(editor, start_line, end_line):
+        set_selection = getattr(editor, 'setSelection', None)
+        set_cursor_position = getattr(editor, 'setCursorPosition', None)
+        if not callable(set_selection) or not callable(set_cursor_position):
+            return False
+
+        start_zero = int(start_line) - 1
+        end_zero = int(end_line) - 1
+
+        end_col = 0
+        text_method = getattr(editor, 'text', None)
+        if callable(text_method):
+            try:
+                end_text = text_method(end_zero)
+                end_col = len(end_text) if isinstance(end_text, str) else 0
+            except Exception:
+                end_col = 0
+
+        try:
+            set_selection(start_zero, 0, end_zero, end_col)
+            set_cursor_position(start_zero, 0)
+            ensure_line_visible = getattr(editor, 'ensureLineVisible', None)
+            if callable(ensure_line_visible):
+                ensure_line_visible(start_zero)
+            ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
+            if callable(ensure_cursor_visible):
+                ensure_cursor_visible()
+            send_scintilla = getattr(editor, 'SendScintilla', None)
+            sci_vertical_center = getattr(type(editor), 'SCI_VERTICALCENTRECARET', None)
+            if callable(send_scintilla) and sci_vertical_center is not None:
+                send_scintilla(sci_vertical_center)
+            return True
+        except Exception:
+            return False
+
+    @staticmethod
+    def _apply_selected_program_lines_to_qtext_editor(editor, start_line, end_line):
+        get_cursor = getattr(editor, 'textCursor', None)
+        set_cursor = getattr(editor, 'setTextCursor', None)
+        get_document = getattr(editor, 'document', None)
+        if not callable(get_cursor) or not callable(set_cursor) or not callable(get_document):
+            return False
+
+        try:
+            document = get_document()
+            start_block = document.findBlockByNumber(int(start_line) - 1)
+            end_block = document.findBlockByNumber(int(end_line) - 1)
+            if not start_block.isValid() or not end_block.isValid():
+                return False
+
+            cursor = get_cursor()
+            cursor.setPosition(int(start_block.position()))
+            end_pos = int(end_block.position()) + max(0, int(end_block.length()) - 1)
+            cursor.setPosition(end_pos, QTextCursor.KeepAnchor)
+            set_cursor(cursor)
+
+            ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
+            if callable(ensure_cursor_visible):
+                ensure_cursor_visible()
+            center_cursor = getattr(editor, 'centerCursor', None)
+            if callable(center_cursor):
+                center_cursor()
+            return True
+        except Exception:
+            return False
 
     def _show_gcode_context_menu(self, editor, pos):
         cursor = editor.cursorForPosition(pos)
