@@ -13,6 +13,7 @@ from PySide6.QtWidgets import QAbstractButton, QApplication
 from PySide6.QtWidgets import QWidget
 
 from qtpyvcp import actions
+from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
 from qtpyvcp.utilities.runtime_ui_loader import load_ui as load_runtime_ui
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
@@ -94,6 +95,7 @@ class ProbeBasic(VCPMainWindow):
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
         self._install_gcode_run_from_line_context_menu()
+        self._install_gcode_selected_line_sync()
 
         if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
@@ -861,6 +863,122 @@ class ProbeBasic(VCPMainWindow):
                 continue
             editor.setContextMenuPolicy(Qt.CustomContextMenu)
             editor.customContextMenuRequested.connect(lambda pos, ed=editor: self._show_gcode_context_menu(ed, pos))
+
+    def _iter_gcode_editors_for_line_sync(self):
+        for name in ('gcodeEditor', 'gcodeEditor_2', 'gcodetextedit_2', 'gcodeeditor'):
+            editor = getattr(self, name, None)
+            if editor is not None:
+                yield editor
+
+    def _install_gcode_selected_line_sync(self):
+        self._status_plugin = getPlugin('status')
+        if self._status_plugin is None:
+            LOG.warning("Status plugin unavailable; cannot sync selected G-code line")
+            return
+
+        for editor in self._iter_gcode_editors_for_line_sync():
+            cursor_signal = getattr(editor, 'cursorPositionChanged', None)
+            if cursor_signal is None:
+                continue
+            cursor_signal.connect(lambda *args, ed=editor: self._publish_selected_program_line_from_editor(ed))
+            selection_signal = getattr(editor, 'selectionChanged', None)
+            if selection_signal is not None:
+                selection_signal.connect(lambda *args, ed=editor: self._publish_selected_program_line_from_editor(ed))
+
+        file_channel = getattr(self._status_plugin, 'file', None)
+        file_notify = getattr(file_channel, 'notify', None)
+        if callable(file_notify):
+            file_notify(lambda *_args: QTimer.singleShot(0, self._publish_selected_program_line_from_any_editor))
+
+        QTimer.singleShot(0, self._publish_selected_program_line_from_any_editor)
+
+    def _publish_selected_program_line_from_editor(self, editor):
+        if not self._selected_line_sync_allowed():
+            return
+
+        line_numbers = self._selected_line_numbers_from_editor(editor)
+        if not line_numbers:
+            return
+
+        self._set_selected_program_line_channels(line_numbers)
+
+    @staticmethod
+    def _normalize_selected_lines(line_numbers):
+        normalized = []
+        seen = set()
+        for raw in line_numbers:
+            try:
+                line_no = int(raw)
+            except Exception:
+                continue
+            if line_no <= 0 or line_no in seen:
+                continue
+            seen.add(line_no)
+            normalized.append(line_no)
+        normalized.sort()
+        return normalized
+
+    def _selected_line_numbers_from_editor(self, editor):
+        try:
+            cursor = editor.textCursor()
+        except Exception:
+            return []
+
+        try:
+            if not cursor.hasSelection():
+                return [int(cursor.blockNumber()) + 1]
+
+            start_pos = int(cursor.selectionStart())
+            end_pos = int(cursor.selectionEnd())
+            if end_pos < start_pos:
+                start_pos, end_pos = end_pos, start_pos
+
+            if end_pos > start_pos:
+                end_pos -= 1
+
+            document = editor.document()
+            start_line = int(document.findBlock(start_pos).blockNumber()) + 1
+            end_line = int(document.findBlock(end_pos).blockNumber()) + 1
+            if end_line < start_line:
+                start_line, end_line = end_line, start_line
+            return list(range(start_line, end_line + 1))
+        except Exception:
+            return [int(cursor.blockNumber()) + 1]
+
+    def _set_selected_program_line_channels(self, line_numbers):
+        status_plugin = getattr(self, '_status_plugin', None) or getPlugin('status')
+        normalized_lines = self._normalize_selected_lines(line_numbers)
+        if not normalized_lines:
+            return
+
+        selected_lines_channel = getattr(status_plugin, 'selected_program_lines', None)
+        set_lines = getattr(selected_lines_channel, 'setValue', None)
+        if callable(set_lines):
+            set_lines(normalized_lines)
+
+        selected_line_channel = getattr(status_plugin, 'selected_program_line', None)
+        set_value = getattr(selected_line_channel, 'setValue', None)
+        if callable(set_value):
+            set_value(normalized_lines[0])
+
+    def _selected_line_sync_allowed(self):
+        status_plugin = getattr(self, '_status_plugin', None) or getPlugin('status')
+        stat_obj = getattr(status_plugin, 'stat', None)
+        if stat_obj is None:
+            return True
+
+        interp_state = getattr(stat_obj, 'interp_state', None)
+        return interp_state in (linuxcnc.INTERP_IDLE, linuxcnc.INTERP_PAUSED)
+
+    def _publish_selected_program_line_from_any_editor(self):
+        editors = list(self._iter_gcode_editors_for_line_sync())
+        if not editors:
+            return
+
+        focus_widget = QApplication.focusWidget()
+        focused_editor = next((ed for ed in editors if ed is focus_widget), None)
+        target_editor = focused_editor or editors[0]
+        self._publish_selected_program_line_from_editor(target_editor)
 
     def _show_gcode_context_menu(self, editor, pos):
         cursor = editor.cursorForPosition(pos)
