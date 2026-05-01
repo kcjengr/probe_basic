@@ -14,14 +14,23 @@
 
 import os
 import sys
+from importlib.metadata import PackageNotFoundError, version as metadata_version
 
 import sphinx
 
 vcp_dir = os.path.join(os.path.abspath('.'), '..', '..', 'src')
 sys.path.insert(0, os.path.abspath(vcp_dir))
 
-import qtpyvcp
-import probe_basic
+
+def _package_version(*package_names, default="0.0.0+unknown"):
+    for package_name in package_names:
+        try:
+            return metadata_version(package_name)
+        except PackageNotFoundError:
+            continue
+        except Exception:
+            continue
+    return default
 
 # -- Project information -----------------------------------------------------
 
@@ -30,20 +39,16 @@ copyright = '2021, Chris Polanski'
 author = 'Chris Polanski'
 
 # The short X.Y version.
-qtpyvcp_version = qtpyvcp.__version__.split('+')[0]
-
-# The full version, including alpha/beta/rc tags.
-qtpyvcp_release = qtpyvcp.__version__
+qtpyvcp_release = _package_version("qtpyvcp")
+qtpyvcp_version = qtpyvcp_release.split('+')[0]
 
 # The short commit ID
 # qtpyvcp_commit = qtpyvcp.__version__.split('.')[2]  # unused
 
 
 # The short X.Y version.
-pb_version = probe_basic.__version__.split('+')[0]
-
-# The full version, including alpha/beta/rc tags.
-pb_release = probe_basic.__version__
+pb_release = _package_version("probe_basic", "probe-basic")
+pb_version = pb_release.split('+')[0]
 
 # Try to read version files, but use defaults if they don't exist
 qtpyvcp_dev_latest_version = qtpyvcp_version
