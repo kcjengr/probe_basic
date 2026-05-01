@@ -17,7 +17,7 @@ Important Requirements
 
     During installation, this screen below will appear, be sure to uncheck gnome and check xfce as pictured below. No other changes on this page are needed.
 
-    .. image:: images/xfce_check_doc.png
+    .. image:: ../../images/xfce_check_doc.png
        :align: center
 
     |

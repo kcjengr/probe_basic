@@ -1,6 +1,6 @@
-===============================
-Probe Basic APT Develop Install
-===============================
+==============================
+Probe Basic APT Stable Install
+==============================
 
 **Probe Basic APT Installation Guide for use with Debian 12 Bookworm and LinuxCNC version 2.9 or Later**
 
@@ -14,12 +14,13 @@ Important Requirements
 
     During installation, this screen below will appear, be sure to uncheck gnome and check xfce as pictured below. No other changes on this page are needed.
 
-    .. image:: images/xfce_check_doc.png
+    .. image:: ../../images/xfce_check_doc.png
         :align: center
 
 
 Installation Steps
 ------------------
+
 
 1. Download the Linux Debian 12 Bookworm ISO Image File
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -32,6 +33,7 @@ Installation Steps
 
     Once you have created your flash stick for LinuxCNC, proceed to install and boot the system. (Note: It is advised to have an ethernet cable internet connection during install). Select the graphical installation option. Follow the steps on screen to complete installation. When you are greeted by the Linux Desktop Selection Page, uncheck the GNOME option and check the XFCE4 option.
 
+
 2. Update the System
 ^^^^^^^^^^^^^^^^^^^^
 
@@ -43,17 +45,16 @@ Installation Steps
         
         
         sudo apt upgrade
-        
 
-3. Install LinuxCNC
-^^^^^^^^^^^^^^^^^^^
+
+3. Install LinuxCNC (if not already installed)
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
    Amd64 Deb (for PC's):
    
       https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-amd64/linuxcnc-uspace_2.9.8_amd64.deb
 
-
-
+   
    Arm64 Deb (for Pi 4/5)
 
       https://www.linuxcnc.org/dists/bookworm/2.9-uspace/binary-arm64/linuxcnc-uspace_2.9.8_arm64.deb
@@ -78,7 +79,7 @@ Installation Steps
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     **AMD64 for PC Installation Repository:**
-
+    
         Run the following commands in the main terminal one at a time:
 
         .. code-block:: bash
@@ -86,17 +87,19 @@ Installation Steps
             sudo apt install curl
 
 
-            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt bookworm-dev main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
+            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt bookworm main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
             gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
+
+
 
     
-    **NEW - ARM64 Raspberry Pi 4 and 5 Installation Repository:**
-
+    **ARM64 Raspberry Pi 4 and 5 Installation Repository:**
+    
         Run the following commands in the main terminal one at a time:
 
         .. code-block:: bash
@@ -104,13 +107,14 @@ Installation Steps
             sudo apt install curl
 
 
-            echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt bookworm-dev main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
+            echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt bookworm main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
 
 
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
             gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
+
 
 
 
@@ -121,19 +125,23 @@ Installation Steps
 
         sudo apt update
 
+
 6. Install QtPyVCP and Probe Basic
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
     .. code-block:: bash
+
 
         sudo apt install python3-qtpyvcp
 
 
         sudo apt install python3-probe-basic
 
-    You are now installed! You should be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.
+
+    Congratulations! You have now installed Probe Basic. You should be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.
+
 
 Updating and Configuration
 --------------------------
 
-    Updating of Probe Basic and QtPyVCP will occur when you run the normal "sudo apt update, sudo apt upgrade" commands. During updating, the Probe Basic sim configuration files will be overwritten. It is strongly recommended to create your machine configuration files with unique names to avoid having them overwritten during updates.
+    Updating of Probe Basic and QtPyVCP will occur when you run the normal "sudo apt update" and "sudo apt upgrade" commands. During updating, the Probe Basic sim configuration files will be overwritten. It is strongly recommended to create your machine configuration files with unique names to avoid having them overwritten during updates.

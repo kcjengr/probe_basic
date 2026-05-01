@@ -1,13 +1,13 @@
-============================
-Develop Update Release Notes
-============================
+===========================
+Stable Update Release Notes
+===========================
 
-February 20, 2026 - 0.6.5-14 Develop + NEW 0.6.6 Stable Version Release Notes
------------------------------------------------------------------------------
+February 20, 2026 - 0.6.6 Stable Version Release Notes
+------------------------------------------------------
 
 **MDI Queue / Feedhold Recovery and Cycle Start Resume Fixes**
 
-This session includes stability and workflow fixes for MDI queue execution, feedhold resume behavior, and release-note process updates across Probe Basic and QtPyVCP integration paths.
+This update includes stability and workflow fixes for MDI queue execution, in both mill and lathe versions for feedhold resume behavior, and release-note process updates across Probe Basic and QtPyVCP integration paths.
 
 - MDI history queue handling was hardened to prevent invalid selection/index edge-case failures.
 - Queue pause/resume interaction was improved with clearer state transitions.
@@ -15,10 +15,12 @@ This session includes stability and workflow fixes for MDI queue execution, feed
 - Duplicate normal cycle-start dispatch in Probe Basic mill/lathe handlers was removed so cycle-start behavior is no longer double-invoked.
 - Internal running notes and split stable/develop release-note workflow were introduced to keep release documentation accurate by channel.
 
+
 **Important DRO Update Notice**
 
 User DRO bug fixes were applied to the supplied `user_dro_display` files (axis mapping and zero/offset behavior corrections). Users should replace older DRO UI files in their machine config with the updated files from the latest sim config package to ensure proper functionality.
 
+The updated DRO files are available in the latest sim folder and will need to be copied to the user's machine config folder for use. Be sure to update your `USER_DROS_PATH` in the ini file to point to the correct location of the updated DRO files.
 
 Overview of updates for MILL configurations
 -------------------------------------------
@@ -32,8 +34,8 @@ February 5, 2026 - Probe Basic Stable Release Version 0.6.2
 Probe Basic has had a new stable release to version 0.6.2 in order to update to the latest stable release we have put it on a new repo and the sources list must be updated.  in order to install either the latest 0.6.2 stable or 0.6.2+ develop versions of Probe Basic, please use the 'Changing <-> Develop Versions' section of the documents.  you will need to uninstall your current versions of qtpyvcp and probe basic using the doc below and set the new sources list repo location in the sources.list.d/kcjengr.list file.  The doc below will walk you through how to go about this!  Please also see the other important updates below that will require some configuration changes to your existing machine configs in order for Probe Basic to function properly.
 
    Changing Stable <-> Develop Versions:
-   
-      https://kcjengr.github.io/probe_basic/stable_develop_branch_change.html
+
+      :doc:`/debian_12_bookworm/installation/probe_basic_stable_develop_change`
 
 
 
@@ -47,7 +49,7 @@ Probe Basic has had a new stable release to version 0.6.2 in order to update to 
 
 - Run from M6 gcode line in a program. You can now easily button press through your program, finding each M6 gcode command line, and select the one from which you would like to run the program by checking the "SET QUE" button to blue (active) and then pressing the cycle start button. This will set the program to run from that M6 tool change line onward. This is useful for long programs where you may want to restart from a specific tool change without having to edit the gcode program file. The button will automatically "uncheck" itself after use to prevent accidental restarts from M6 lines.
 
-   .. image:: images/runfromm6.gif
+   .. image:: ../../images/runfromm6.gif
       :align: center
 
    |

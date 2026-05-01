@@ -19,7 +19,7 @@ Step-by-Step Guide to Change the Sources List for Stable and Develop APT Reposit
 
        sudo nano /etc/apt/sources.list.d/kcjengr.list
 
-    .. image:: images/pb_sources_list.png
+    .. image:: ../../images/pb_sources_list.png
        :align: center
        :scale: 80%
 
@@ -30,13 +30,13 @@ Step-by-Step Guide to Change the Sources List for Stable and Develop APT Reposit
 
     Edit the source list line to set the apt repository for either STABLE or DEVELOP version of Probe Basic:
 
-    .. image:: images/bookworm_develop_main_image.png
+    .. image:: ../../images/bookworm_develop_main_image.png
        :align: center
        :scale: 80%
 
     |
 
-    .. image:: images/nano_sources_list_edited.png
+    .. image:: ../../images/nano_sources_list_edited.png
        :align: center
        :scale: 80%
 
@@ -47,13 +47,13 @@ Step-by-Step Guide to Change the Sources List for Stable and Develop APT Reposit
 
     Exit and save the changes by pressing CTRL + X, then Y, then ENTER:
 
-    .. image:: images/yes_nano_to_save.png
+    .. image:: ../../images/yes_nano_to_save.png
        :align: center
        :scale: 80%
 
     |
 
-    .. image:: images/enter_nano_file_save_name.png
+    .. image:: ../../images/enter_nano_file_save_name.png
        :align: center
        :scale: 80%
 

@@ -1,13 +1,11 @@
-======================
-Probe Basic Parameters
-======================
+=============================
+Probe Basic Parameters Trixie
+=============================
 
 **Probe basic requires the following parameters be created in the var file**
 
-   Probe Basic's devlop version is now using the var file in the configs folder for storing parameters used in subroutines and other functions throughout linuxcnc. These are callable the same as all other parameters which allows them to be used in remap subroutines.  This will allow users a greater degree of flexibility in modifying and using features such as tool touch off during tool changes, programmable coolant, probing etc all while being able to make changes from the from within the probe basic user interfaces entry boxes.  Once changes to the entries are made they are recorded to the var file and are available immediately after the changes are made.  This allows users the ability to change vital settings to ensure their machines run optimally and reliably without major config modifications.
-
-   The Probe Basic Sim Config Folder contains the sim.var file which has been updated with these now required parameters. please be sure to add them to your machine configuration for proper functionality.
-
+   Probe Basic's Debian 13 Trixie configuration uses these var file parameters
+   for subroutines and related functions.
 
 
 .. list-table::
@@ -61,7 +59,7 @@ Probe Basic Parameters
    * - 3010
      - Tool Setting
      - Persistent
-     - Spindle zero, spindle nose home position to tool setter trigger height (abs)
+     - Spindle zero, distance from spindle nose home position to tool setter trigger height (abs)
    * - 3011
      - Tool Setting
      - Persistent
@@ -74,6 +72,58 @@ Probe Basic Parameters
      - Tool Setting
      - Persistent
      - Tool diameter offset mode direction to offset tool during probing
+   * - 3037
+     - Tool Setting
+     - Persistent
+     - Tool Breakage Tolerance
+   * - 3038
+     - Tool Setting
+     - Persistent
+     - User Setting 1 Tool Setter
+   * - 3039
+     - Tool Setting
+     - Persistent
+     - User Setting 2 Tool Setter
+   * - 3040
+     - Tool Setting
+     - Persistent
+     - User Setting 3 Tool Setter
+   * - 3041
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position X
+   * - 3042
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position Y
+   * - 3043
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position Z
+   * - 3044
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position A
+   * - 3045
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position B
+   * - 3046
+     - Tool Setting
+     - Persistent
+     - Tool Touch Off Position C
+   * - 3100
+     - Tool Setting
+     - Persistent
+     - Master Tool Number
+   * - 3101
+     - Tool Setting
+     - Persistent
+     - Gage Block Height
+   * - 3102
+     - Tool Setting
+     - Persistent
+     - Touch X Rad-Diam
    * - 3014
      - Touch Probe
      - Persistent
@@ -81,7 +131,7 @@ Probe Basic Parameters
    * - 3015
      - Touch Probe
      - Persistent
-     - Probe Slow Feedrate, secondary probing speed probing moves (single touch if set to 0)
+     - Probe Slow Feedrate, secondary probing speed for final probing moves, (no secondary probing if set to 0.0
    * - 3016
      - Touch Probe
      - Persistent
@@ -89,55 +139,55 @@ Probe Basic Parameters
    * - 3017
      - Touch Probe
      - Persistent
-     - Probe Traverse Feedrate, probing speed for traversing work piece to next probe position
+     - Probe Traverse Feedrate, repositioning probing speed for traversing work piece to next initial probing position
    * - 3018
      - Touch Probe
      - Persistent
-     - Max XY Distance, XY probe motion distance before triggering an error (safety Feature)
+     - Max XY Distance, max distance in XY probing routine will move before stopping with error (safety Feature)
    * - 3019
      - Touch Probe
      - Persistent
-     - XY Clearance, XY retract distance after probe trigger event
+     - XY Clearance, distance in XY the probe after recording a probe event and between initial and secondary probes
    * - 3020
      - Touch Probe
      - Persistent
-     - Max Z Distance, Z probe motion distance before triggering an error (safety Feature)
+     - Max Z Distance, max distance in Z probing routine will move before stopping with error (safety Feature)
    * - 3021
      - Touch Probe
      - Persistent
-     - Z Clearance, Z retract distance after probe trigger event
+     - Z Clearance, distance in Z the probe after recording a probe event and between initial and secondary probes
    * - 3022
      - Touch Probe
      - Persistent
-     - Extra Probe Depth, distance added to probe tip diameter to control z- probe depth
+     - Extra Probe Depth, Additional Probe Depth added to the probe Z- move, Added to the Probe Tip's Diameter
    * - 3023
      - Touch Probe
      - Persistent
-     - Step Off Width, XY move distance from start probe position to clear work edge
+     - Step Off Width, Distance probe moves from the starting position in X and Y to clear work edge
    * - 3024
      - Touch Probe
      - Persistent
-     - Edge Width, Distance between edge probes when probing angle offset of a work piece
+     - Edge Width, Distance between edge probes when probing to find the angle offset of a work piece
    * - 3025
      - Touch Probe
      - Persistent
-     - Boss and Pocket Diameter Hint use to set rough probing motion distances
+     - Boss and Pocket Diameter Hint
    * - 3026
      - Touch Probe
      - Persistent
-     - Boss and Pocket X Hint use to set rough probing motion distances
+     - Boss and Pocket X Hint
    * - 3027
      - Touch Probe
      - Persistent
-     - Boss and Pocket Y Hint use to set rough probing motion distances
+     - Boss and Pocket Y Hint
    * - 3028
      - Touch Probe
      - Persistent
-     - Ridge and Valley X Hint use to set rough probing motion distances
+     - Ridge and Valley X Hint
    * - 3029
      - Touch Probe
      - Persistent
-     - Ridge and Valley Y Hint use to set rough probing motion distances
+     - Ridge and Valley Y Hint
    * - 3030
      - Touch Probe
      - Persistent
@@ -145,7 +195,7 @@ Probe Basic Parameters
    * - 3031
      - Touch Probe
      - Persistent
-     - WCO rotation mode, sets rotation wco or probes to find angle of work only
+     - wco rotation mode, for switching between setting rotational wco or to probe angle of probed work only
    * - 3032
      - Touch Probe
      - Persistent
@@ -165,19 +215,23 @@ Probe Basic Parameters
    * - 3036
      - Touch Probe
      - Persistent
-     - Square Calibration Axis Selection
-   * - 3037
-     - Tool Setting
+     - Future Use
+   * - 3048
+     - Touch Probe
      - Persistent
-     - Tool Breakage Tolerance
-   * - 3038
-     - Tool Setting
+     - Calibrate on Average XY Error
+   * - 3049
+     - Touch Probe
      - Persistent
-     - User Setting 1 Tool Setter
-   * - 3039
-     - Tool Setting
+     - Calibrate on X Error
+   * - 3050
+     - Touch Probe
      - Persistent
-     - User Setting 2 Tool Setter
+     - Calibrate on Y Error
+   * - 3972
+     - Tool Change
+     - Persistent
+     - Use G30 Tool Change Position for M6
    * - 3973
      - ATC Tool Change
      - Persistent
@@ -259,98 +313,98 @@ Probe Basic Parameters
      - Volatile
      - Used in the math to calculate the ATC Calculations
    * - 4001
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 1 Parameter where tool number is recorded
    * - 4002
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 2 Parameter where tool number is recorded
    * - 4003
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 3 Parameter where tool number is recorded
    * - 4004
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 4 Parameter where tool number is recorded
    * - 4005
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 5 Parameter where tool number is recorded
    * - 4006
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 6 Parameter where tool number is recorded
    * - 4007
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 7 Parameter where tool number is recorded
    * - 4008
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 8 Parameter where tool number is recorded
    * - 4009
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 9 Parameter where tool number is recorded
    * - 4010
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 10 Parameter where tool number is recorded
    * - 4011
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 11 Parameter where tool number is recorded
    * - 4012
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 12 Parameter where tool number is recorded
    * - 4013
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 13 Parameter where tool number is recorded
    * - 4014
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 14 Parameter where tool number is recorded
    * - 4015
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 15 Parameter where tool number is recorded
    * - 4016
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 16 Parameter where tool number is recorded
    * - 4017
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 17 Parameter where tool number is recorded
    * - 4018
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 18 Parameter where tool number is recorded
    * - 4019
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 19 Parameter where tool number is recorded
    * - 4020
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 20 Parameter where tool number is recorded
    * - 4021
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 21 Parameter where tool number is recorded
    * - 4022
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 22 Parameter where tool number is recorded
    * - 4023
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 23 Parameter where tool number is recorded
    * - 4024
-     - ATC Tool Change
+     - ATC Pockets
      - Persistent
      - ATC Pocket 24 Parameter where tool number is recorded

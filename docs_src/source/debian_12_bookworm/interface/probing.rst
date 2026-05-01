@@ -4,7 +4,7 @@ Probing
 
 Probe Basic has a number of included probing routines.
 
-.. image:: images/mill/06_Probing.png
+.. image:: ../../images/mill/06_Probing.png
    :align: center
 
 |
@@ -75,7 +75,7 @@ Calibrating your Touch Probe
 Work Offsets
 ------------
 
-   .. image:: images/mill/probe_00_work_offsets.png
+   .. image:: ../../images/mill/probe_00_work_offsets.png
       :align: center
 
    |
@@ -93,7 +93,7 @@ Work Offsets
 Parameters
 ----------
 
-   .. image:: images/mill/probe_00_parameters.png
+   .. image:: ../../images/mill/probe_00_parameters.png
       :align: center
 
    |
@@ -124,7 +124,7 @@ Parameters
 Probe Results
 -------------
 
-   .. image:: images/mill/probe_00_results_1.png
+   .. image:: ../../images/mill/probe_00_results_1.png
       :align: center
 
    |
@@ -140,7 +140,7 @@ Probing Routines
 Outside Corners
 ~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_01_outside_corners.png
+   .. image:: ../../images/mill/probe_01_outside_corners.png
       :align: center
 
    |
@@ -148,7 +148,7 @@ Outside Corners
 Inside Corners and Straight probes
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_02_inside_corners.png
+   .. image:: ../../images/mill/probe_02_inside_corners.png
       :align: center
 
    |
@@ -156,7 +156,7 @@ Inside Corners and Straight probes
 Boss and Pocket
 ~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_03_boss_and_pocket.png
+   .. image:: ../../images/mill/probe_03_boss_and_pocket.png
       :align: center
 
    |
@@ -164,7 +164,7 @@ Boss and Pocket
 Ridge and Valley
 ~~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_04_ridge_and_valley.png
+   .. image:: ../../images/mill/probe_04_ridge_and_valley.png
       :align: center
 
    |
@@ -172,7 +172,7 @@ Ridge and Valley
 Edge Angle
 ~~~~~~~~~~
 
-   .. image:: images/mill/probe_05_edge_angle.png
+   .. image:: ../../images/mill/probe_05_edge_angle.png
       :align: center
 
    |
@@ -180,7 +180,7 @@ Edge Angle
 Rotary Axis
 ~~~~~~~~~~~
 
-   .. image:: images/mill/probe_06_rotary_axis.png
+   .. image:: ../../images/mill/probe_06_rotary_axis.png
       :align: center
 
    |
@@ -188,7 +188,7 @@ Rotary Axis
 Calibrate
 ~~~~~~~~~
 
-   .. image:: images/mill/probe_07_calibrate.png
+   .. image:: ../../images/mill/probe_07_calibrate.png
       :align: center
 
    |
@@ -198,7 +198,7 @@ Help Tab
 
    .. _probe_help:
 
-   .. image:: images/mill/probe_08_probe_help.png
+   .. image:: ../../images/mill/probe_08_probe_help.png
       :align: center
 
    |
@@ -208,7 +208,7 @@ Help Tab
 Step Off Width
 ~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_01_step_off_width.png
+   .. image:: ../../images/mill/probe_help_01_step_off_width.png
       :align: center
 
    |
@@ -216,7 +216,7 @@ Step Off Width
 Extra Probing DEPTH
 ~~~~~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_02_extra_probe_depth.png
+   .. image:: ../../images/mill/probe_help_02_extra_probe_depth.png
       :align: center
 
    |
@@ -224,7 +224,7 @@ Extra Probing DEPTH
 Max Z Distance
 ~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_03_max_z_distance.png
+   .. image:: ../../images/mill/probe_help_03_max_z_distance.png
       :align: center
 
    |
@@ -232,7 +232,7 @@ Max Z Distance
 Max X/Y Distance
 ~~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_04_max_xy_distance.png
+   .. image:: ../../images/mill/probe_help_04_max_xy_distance.png
       :align: center
 
    |
@@ -240,7 +240,7 @@ Max X/Y Distance
 Z Clearance
 ~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_05_z_clearance.png
+   .. image:: ../../images/mill/probe_help_05_z_clearance.png
       :align: center
 
    |
@@ -248,7 +248,7 @@ Z Clearance
 XY Clearance
 ~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_06_xz_clearance.png
+   .. image:: ../../images/mill/probe_help_06_xz_clearance.png
       :align: center
 
    |
@@ -256,7 +256,7 @@ XY Clearance
 Hints for Probe Routines
 ~~~~~~~~~~~~~~~~~~~~~~~~
 
-   .. image:: images/mill/probe_help_07_hint.png
+   .. image:: ../../images/mill/probe_help_07_hint.png
       :align: center
 
    |

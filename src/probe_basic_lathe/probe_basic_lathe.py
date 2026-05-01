@@ -7,7 +7,7 @@ import importlib.util
 
 import linuxcnc
 
-from PySide6.QtCore import Slot, QRegularExpression, QTimer
+from PySide6.QtCore import Slot, QRegularExpression, QTimer, Qt
 from PySide6.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette, QAction
 from qtpyvcp.actions.machine_actions import issue_mdi
 from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication
@@ -102,6 +102,7 @@ class ProbeBasicLathe(VCPMainWindow):
         
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
+        self._install_gcode_run_from_line_context_menu()
         
         self.load_user_tabs()
         
@@ -913,6 +914,32 @@ class ProbeBasicLathe(VCPMainWindow):
             if editor is not None:
                 return editor
         raise AttributeError("Required G-code editor widget not found (expected gcodeEditor or gcodeEditor_2)")
+
+    def _install_gcode_run_from_line_context_menu(self):
+        for name in ('gcodeEditor', 'gcodeEditor_2'):
+            editor = getattr(self, name, None)
+            if editor is None:
+                continue
+            editor.setContextMenuPolicy(Qt.CustomContextMenu)
+            editor.customContextMenuRequested.connect(lambda pos, ed=editor: self._show_gcode_context_menu(ed, pos))
+
+    def _show_gcode_context_menu(self, editor, pos):
+        cursor = editor.cursorForPosition(pos)
+        if cursor is not None:
+            editor.setTextCursor(cursor)
+
+        line_num = editor.textCursor().blockNumber() + 1
+        menu = editor.createStandardContextMenu()
+        run_action = menu.addAction(f"Run from line {line_num}")
+        run_action.setEnabled(actions.program_actions.run_from_line.ok())
+        run_action.triggered.connect(lambda checked=False, ln=line_num: actions.program_actions.run(ln))
+
+        first_action = menu.actions()[0] if menu.actions() else None
+        if first_action is not None:
+            menu.insertAction(first_action, run_action)
+            menu.insertSeparator(first_action)
+
+        menu.exec(editor.mapToGlobal(pos))
 
     @Slot()
     def _cycle_start_clicked(self):

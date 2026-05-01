@@ -83,6 +83,8 @@ class ProbeBasic(VCPMainWindow):
         self.btnMdiSpace.clicked.connect(self.mdiSpace_clicked)
         self.btnMdiLeft_arrow.clicked.connect(self.mdiLeftArrow_clicked)
         self.btnMdiRight_arrow.clicked.connect(self.mdiRightArrow_clicked)
+        self.probe_help_next.released.connect(self._probe_help_next_released)
+        self.probe_help_prev.released.connect(self._probe_help_prev_released)
         
         # M6 finder initialization
         self.m6_lines = []
@@ -91,6 +93,7 @@ class ProbeBasic(VCPMainWindow):
         
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
+        self._install_gcode_run_from_line_context_menu()
 
         if (0 == int(INIFILE.find("DISPLAY", "ATC_TAB_DISPLAY") or 0)):
             atc_tab_index = self.tabWidget.indexOf(self.atc_tab)
@@ -140,11 +143,8 @@ class ProbeBasic(VCPMainWindow):
         # Defer loading DROs until UI is fully loaded
         QTimer.singleShot(100, self._load_dros_after_ui)
 
-        # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
-        dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()
-
-        dro_display = dro_display.lower()
-        QTimer.singleShot(0, self._apply_jog_display_fallback)
+        # Set jog display index strictly from [DISPLAY] GEOMETRY.
+        self._apply_jog_display_from_ini()
         
         self.help_menu = self.menuBar().addMenu("Help")
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
@@ -175,32 +175,39 @@ class ProbeBasic(VCPMainWindow):
                 if hasattr(lbl, 'valueFormat'):
                     lbl.valueFormat = "02.0f"
 
-    def _apply_jog_display_fallback(self):
+    def _apply_jog_display_from_ini(self):
         jog_widget = getattr(self, "jogDisplay", None)
         if jog_widget is None:
-            return
+            msg = "jogDisplay widget not found in UI"
+            LOG.critical(msg)
+            raise RuntimeError(msg)
 
         geometry = (INIFILE.find("DISPLAY", "GEOMETRY") or "").strip().upper().replace(" ", "")
         if not geometry:
-            geometry = (INIFILE.find("TRAJ", "COORDINATES") or "").strip().upper().replace(" ", "")
+            msg = "Missing [DISPLAY] GEOMETRY in INI; unable to determine jog display"
+            LOG.critical(msg)
+            raise RuntimeError(msg)
 
         page_map = {
             "XYZ": 0,
             "XYZA": 1,
-            "XYZAB": 2,
-            "XYZAC": 3,
-            "XYZBC": 4,
-            "XYZABC": 5,
+            "XYZB": 2,
+            "XYZC": 3,
+            "XYZAB": 4,
+            "XYZAC": 5,
+            "XYZBC": 6,
+            "XYZABC": 7,
         }
 
         page_idx = page_map.get(geometry)
         if page_idx is None:
-            LOG.debug("Jog display fallback skipped: unsupported geometry=%r", geometry)
-            return
+            msg = f"Unsupported [DISPLAY] GEOMETRY value for jog display: {geometry}"
+            LOG.critical(msg)
+            raise RuntimeError(msg)
 
         if jog_widget.currentIndex() != page_idx:
             jog_widget.setCurrentIndex(page_idx)
-            LOG.info("Jog display fallback applied: geometry=%s index=%s", geometry, page_idx)
+        LOG.info("Jog display set from INI: geometry=%s index=%s", geometry, page_idx)
 
     def _theme_preference(self):
         theme_color = (INIFILE.find("DISPLAY", "THEME_COLOR") or "light").strip().lower()
@@ -623,22 +630,26 @@ class ProbeBasic(VCPMainWindow):
 
     # Fwd/Back buttons off the stacked widget
     @Slot()
-    def on_probe_help_next_released(self):
-        lastPage = 6
-        currentIndex = self.probe_help_widget.currentIndex()
-        if currentIndex == lastPage:
+    def _probe_help_next_released(self):
+        last_page = self.probe_help_widget.count() - 1
+        if last_page < 0:
+            return
+        current_index = self.probe_help_widget.currentIndex()
+        if current_index >= last_page:
             self.probe_help_widget.setCurrentIndex(0)
         else:
-            self.probe_help_widget.setCurrentIndex(currentIndex + 1)
+            self.probe_help_widget.setCurrentIndex(current_index + 1)
 
     @Slot()
-    def on_probe_help_prev_released(self):
-        lastPage = 6
-        currentIndex = self.probe_help_widget.currentIndex()
-        if currentIndex == 0:
-            self.probe_help_widget.setCurrentIndex(lastPage)
+    def _probe_help_prev_released(self):
+        last_page = self.probe_help_widget.count() - 1
+        if last_page < 0:
+            return
+        current_index = self.probe_help_widget.currentIndex()
+        if current_index <= 0:
+            self.probe_help_widget.setCurrentIndex(last_page)
         else:
-            self.probe_help_widget.setCurrentIndex(currentIndex - 1)
+            self.probe_help_widget.setCurrentIndex(current_index - 1)
 
 
     @Slot(QAbstractButton)
@@ -842,3 +853,29 @@ class ProbeBasic(VCPMainWindow):
             if editor is not None:
                 return editor
         return None
+
+    def _install_gcode_run_from_line_context_menu(self):
+        for name in ('gcodeEditor', 'gcodeEditor_2', 'gcodetextedit_2'):
+            editor = getattr(self, name, None)
+            if editor is None:
+                continue
+            editor.setContextMenuPolicy(Qt.CustomContextMenu)
+            editor.customContextMenuRequested.connect(lambda pos, ed=editor: self._show_gcode_context_menu(ed, pos))
+
+    def _show_gcode_context_menu(self, editor, pos):
+        cursor = editor.cursorForPosition(pos)
+        if cursor is not None:
+            editor.setTextCursor(cursor)
+
+        line_num = editor.textCursor().blockNumber() + 1
+        menu = editor.createStandardContextMenu()
+        run_action = menu.addAction(f"Run from line {line_num}")
+        run_action.setEnabled(actions.program_actions.run_from_line.ok())
+        run_action.triggered.connect(lambda checked=False, ln=line_num: actions.program_actions.run(ln))
+
+        first_action = menu.actions()[0] if menu.actions() else None
+        if first_action is not None:
+            menu.insertAction(first_action, run_action)
+            menu.insertSeparator(first_action)
+
+        menu.exec(editor.mapToGlobal(pos))

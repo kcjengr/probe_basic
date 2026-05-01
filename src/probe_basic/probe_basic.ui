@@ -372,7 +372,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>0</number>
+           <number>8</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -22518,13 +22518,13 @@ color: white;
                       <number>22</number>
                      </property>
                      <property name="leftMargin">
-                      <number>9</number>
+                      <number>6</number>
                      </property>
                      <property name="topMargin">
                       <number>6</number>
                      </property>
                      <property name="rightMargin">
-                      <number>9</number>
+                      <number>6</number>
                      </property>
                      <property name="bottomMargin">
                       <number>12</number>
@@ -22559,7 +22559,7 @@ color: white;
                          <item>
                           <widget class="VCPStackedWidget" name="jogDisplay">
                            <property name="currentIndex">
-                            <number>4</number>
+                            <number>3</number>
                            </property>
                            <widget class="QWidget" name="jog_xyz">
                             <layout class="QVBoxLayout" name="verticalLayout_69">
@@ -23206,6 +23206,726 @@ color: white;
                                  </property>
                                  <property name="actionName" stdset="0">
                                   <string>machine.jog.axis:a,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyzb">
+                            <layout class="QVBoxLayout" name="verticalLayout_15">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_115">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_6">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_116">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_6">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_17">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton_6">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_6">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton_6">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_6">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;task_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_210">
+                               <item>
+                                <widget class="ActionButton" name="b_minus_jogbutton_5">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_minus_jog_button.png</normaloff>:/images/b_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="b_plus_jogbutton_5">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/b_plus_jog_button.png</normaloff>:/images/b_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:b,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                            </layout>
+                           </widget>
+                           <widget class="QWidget" name="jog_xyzc">
+                            <layout class="QVBoxLayout" name="verticalLayout_25">
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_213">
+                               <item>
+                                <widget class="ActionButton" name="z_plus_jogbutton_14">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_plus_jog_button.png</normaloff>:/images/z_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_214">
+                               <item>
+                                <widget class="ActionButton" name="z_minus_jogbutton_14">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/z_minus_jog_button.png</normaloff>:/images/z_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:z,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QGridLayout" name="gridLayout_24">
+                               <property name="horizontalSpacing">
+                                <number>0</number>
+                               </property>
+                               <property name="verticalSpacing">
+                                <number>15</number>
+                               </property>
+                               <item row="1" column="2">
+                                <widget class="ActionButton" name="x_plus_jogbutton_14">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_plus_jog_button.png</normaloff>:/images/x_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="1" column="0">
+                                <widget class="ActionButton" name="x_minus_jogbutton_14">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/x_minus_jog_button.png</normaloff>:/images/x_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:x,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="2" column="1">
+                                <widget class="ActionButton" name="y_minus_jogbutton_14">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_minus_jog_button.png</normaloff>:/images/y_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item row="0" column="1">
+                                <widget class="ActionButton" name="y_plus_jogbutton_14">
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/y_plus_jog_button.png</normaloff>:/images/y_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:y,pos</string>
+                                 </property>
+                                </widget>
+                               </item>
+                              </layout>
+                             </item>
+                             <item>
+                              <layout class="QHBoxLayout" name="horizontalLayout_216">
+                               <item>
+                                <widget class="ActionButton" name="c_minus_jogbutton_7">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/c_minus_jog_button.png</normaloff>:/images/c_minus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:c,neg</string>
+                                 </property>
+                                </widget>
+                               </item>
+                               <item>
+                                <widget class="ActionButton" name="c_plus_jogbutton_7">
+                                 <property name="sizePolicy">
+                                  <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+                                   <horstretch>0</horstretch>
+                                   <verstretch>0</verstretch>
+                                  </sizepolicy>
+                                 </property>
+                                 <property name="minimumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="maximumSize">
+                                  <size>
+                                   <width>56</width>
+                                   <height>56</height>
+                                  </size>
+                                 </property>
+                                 <property name="focusPolicy">
+                                  <enum>Qt::FocusPolicy::NoFocus</enum>
+                                 </property>
+                                 <property name="text">
+                                  <string/>
+                                 </property>
+                                 <property name="icon">
+                                  <iconset resource="probe_basic.qrc">
+                                   <normaloff>:/images/c_plus_jog_button.png</normaloff>:/images/c_plus_jog_button.png</iconset>
+                                 </property>
+                                 <property name="iconSize">
+                                  <size>
+                                   <width>48</width>
+                                   <height>48</height>
+                                  </size>
+                                 </property>
+                                 <property name="rules" stdset="0">
+                                  <string>[{&quot;name&quot;: &quot;taske_mode_enable&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0] != 1 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:task_mode&quot;, &quot;trigger&quot;: true}]}]</string>
+                                 </property>
+                                 <property name="actionName" stdset="0">
+                                  <string>machine.jog.axis:c,pos</string>
                                  </property>
                                 </widget>
                                </item>
@@ -30212,12 +30932,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>262</x>
-     <y>637</y>
+     <x>181</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
-     <y>79</y>
+     <x>67</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30228,12 +30948,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>248</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30244,12 +30964,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>303</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1179</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30260,12 +30980,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>421</x>
-     <y>79</y>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30276,12 +30996,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>409</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30292,12 +31012,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>398</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1313</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30308,12 +31028,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>560</x>
-     <y>96</y>
+     <x>131</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30324,12 +31044,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>591</y>
+     <x>83</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1446</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30340,12 +31060,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>951</x>
-     <y>96</y>
+     <x>61</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30357,11 +31077,11 @@ font: 11pt Probe Basic Bebas Mono;
    <hints>
     <hint type="sourcelabel">
      <x>72</x>
-     <y>86</y>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>376</x>
-     <y>42</y>
+     <x>370</x>
+     <y>65</y>
     </hint>
    </hints>
   </connection>
@@ -30372,12 +31092,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>455</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30388,12 +31108,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>593</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30404,12 +31124,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>406</x>
-     <y>96</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
      <x>170</x>
-     <y>84</y>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -30420,12 +31140,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>355</x>
-     <y>550</y>
+     <x>121</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
-     <y>475</y>
+     <y>474</y>
     </hint>
    </hints>
   </connection>
@@ -30436,12 +31156,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>716</x>
-     <y>637</y>
+     <x>181</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
-     <y>79</y>
+     <x>67</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30453,11 +31173,11 @@ font: 11pt Probe Basic Bebas Mono;
    <hints>
     <hint type="sourcelabel">
      <x>170</x>
-     <y>84</y>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>406</x>
-     <y>96</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -30468,12 +31188,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>632</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30484,8 +31204,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>84</x>
-     <y>102</y>
+     <x>86</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>159</x>
@@ -30500,8 +31220,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setFilePath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -30516,12 +31236,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1061</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30532,12 +31252,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>271</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30548,12 +31268,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>113</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>698</x>
-     <y>75</y>
+     <x>192</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30564,12 +31284,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPath()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>501</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30580,12 +31300,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>639</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30596,12 +31316,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1484</x>
-     <y>249</y>
+     <x>488</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1613</x>
-     <y>250</y>
+     <x>508</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -30612,12 +31332,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>410</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30628,12 +31348,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>255</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1051</x>
-     <y>75</y>
+     <x>239</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30644,12 +31364,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>536</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>632</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -30660,12 +31380,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1057</x>
-     <y>96</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -30676,12 +31396,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>133</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30692,12 +31412,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>175</x>
-     <y>496</y>
+     <x>83</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1446</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30708,12 +31428,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>100</x>
-     <y>130</y>
+     <x>102</x>
+     <y>93</y>
     </hint>
     <hint type="destinationlabel">
-     <x>376</x>
-     <y>42</y>
+     <x>370</x>
+     <y>65</y>
     </hint>
    </hints>
   </connection>
@@ -30724,12 +31444,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30740,12 +31460,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1484</x>
-     <y>366</y>
+     <x>488</x>
+     <y>109</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1613</x>
-     <y>367</y>
+     <x>508</x>
+     <y>111</y>
     </hint>
    </hints>
   </connection>
@@ -30756,12 +31476,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1057</x>
-     <y>96</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30772,12 +31492,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>350</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1179</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30789,11 +31509,11 @@ font: 11pt Probe Basic Bebas Mono;
    <hints>
     <hint type="sourcelabel">
      <x>72</x>
-     <y>86</y>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>376</x>
-     <y>42</y>
+     <x>370</x>
+     <y>65</y>
     </hint>
    </hints>
   </connection>
@@ -30808,8 +31528,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30820,12 +31540,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>160</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1051</x>
-     <y>75</y>
+     <x>239</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30836,12 +31556,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>216</x>
-     <y>306</y>
+     <x>195</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>877</x>
-     <y>75</y>
+     <x>239</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30852,8 +31572,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
@@ -30868,8 +31588,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>animateClick()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>943</x>
-     <y>637</y>
+     <x>181</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>519</x>
@@ -30884,12 +31604,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>255</x>
-     <y>544</y>
+     <x>83</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1446</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -30900,8 +31620,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>102</y>
+     <x>76</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -30916,12 +31636,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>225</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30933,11 +31653,11 @@ font: 11pt Probe Basic Bebas Mono;
    <hints>
     <hint type="sourcelabel">
      <x>170</x>
-     <y>84</y>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30948,12 +31668,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>965</x>
-     <y>637</y>
+     <x>146</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30964,12 +31684,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>834</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -30980,12 +31700,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>547</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -30996,12 +31716,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>179</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -31012,8 +31732,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>74</x>
-     <y>112</y>
+     <x>76</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>179</x>
@@ -31028,12 +31748,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>719</x>
-     <y>550</y>
+     <x>121</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
-     <y>475</y>
+     <y>474</y>
     </hint>
    </hints>
   </connection>
@@ -31044,8 +31764,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>96</x>
-     <y>86</y>
+     <x>98</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>336</x>
@@ -31064,8 +31784,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>841</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1572</x>
-     <y>638</y>
+     <x>349</x>
+     <y>98</y>
     </hint>
    </hints>
   </connection>
@@ -31076,12 +31796,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>513</x>
-     <y>208</y>
+     <x>110</x>
+     <y>66</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1051</x>
-     <y>75</y>
+     <x>239</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -31093,11 +31813,11 @@ font: 11pt Probe Basic Bebas Mono;
    <hints>
     <hint type="sourcelabel">
      <x>170</x>
-     <y>84</y>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>406</x>
-     <y>96</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
    </hints>
   </connection>
@@ -31108,12 +31828,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>489</x>
-     <y>637</y>
+     <x>181</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
-     <y>79</y>
+     <x>67</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31124,12 +31844,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewP()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>87</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>948</x>
-     <y>85</y>
+     <x>454</x>
+     <y>112</y>
     </hint>
    </hints>
   </connection>
@@ -31140,8 +31860,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>93</x>
-     <y>86</y>
+     <x>95</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>254</x>
@@ -31156,12 +31876,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>943</x>
-     <y>637</y>
+     <x>181</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
-     <x>65</x>
-     <y>79</y>
+     <x>67</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31172,12 +31892,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>537</x>
-     <y>550</y>
+     <x>121</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
-     <y>475</y>
+     <y>474</y>
     </hint>
    </hints>
   </connection>
@@ -31188,12 +31908,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31204,12 +31924,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>47</x>
-     <y>658</y>
+     <x>49</x>
+     <y>75</y>
     </hint>
     <hint type="destinationlabel">
-     <x>100</x>
-     <y>130</y>
+     <x>102</x>
+     <y>93</y>
     </hint>
    </hints>
   </connection>
@@ -31220,12 +31940,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>544</y>
+     <x>83</x>
+     <y>73</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1446</x>
-     <y>75</y>
+     <x>191</x>
+     <y>72</y>
     </hint>
    </hints>
   </connection>
@@ -31236,8 +31956,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>101</x>
-     <y>86</y>
+     <x>103</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>322</x>
@@ -31252,12 +31972,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>951</x>
-     <y>96</y>
+     <x>61</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31268,12 +31988,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>134</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>136</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31284,12 +32004,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>728</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>548</x>
-     <y>165</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31300,8 +32020,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>85</x>
-     <y>112</y>
+     <x>87</x>
+     <y>85</y>
     </hint>
     <hint type="destinationlabel">
      <x>275</x>
@@ -31316,12 +32036,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>173</x>
-     <y>550</y>
+     <x>121</x>
+     <y>81</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
-     <y>475</y>
+     <y>474</y>
     </hint>
    </hints>
   </connection>
@@ -31332,12 +32052,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1199</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1199</x>
-     <y>160</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31348,12 +32068,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1306</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1199</x>
-     <y>160</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31364,12 +32084,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1413</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1199</x>
-     <y>160</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31380,12 +32100,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1520</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1199</x>
-     <y>160</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31396,12 +32116,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>undo()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>1627</x>
-     <y>637</y>
+     <x>121</x>
+     <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1199</x>
-     <y>160</y>
+     <x>121</x>
+     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31412,12 +32132,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>903</x>
-     <y>291</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1026</x>
-     <y>318</y>
+     <x>454</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
@@ -31428,12 +32148,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>906</x>
-     <y>363</y>
+     <x>129</x>
+     <y>68</y>
     </hint>
     <hint type="destinationlabel">
-     <x>1028</x>
-     <y>347</y>
+     <x>454</x>
+     <y>335</y>
     </hint>
    </hints>
   </connection>
@@ -31456,18 +32176,18 @@ font: 11pt Probe Basic Bebas Mono;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="mainorthoperspbtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
   <buttongroup name="probetabGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="sidebartabGroup"/>
  </buttongroups>
 </ui>

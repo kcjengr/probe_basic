@@ -13,45 +13,15 @@ for the `LinuxCNC <http://linuxcnc.org/>`_ machine control.
 
 .. toctree::
    :maxdepth: 2
-   :caption: Installation:
+   :caption: Debian 12 Bookworm:
 
-   probe_basic_apt_stable_install
-   probe_basic_apt_develop_install
-   probe_basic_stable_develop_change
-   probe_basic_deb_install
-   probe_basic_dev_install
+   debian_12_bookworm/index
 
 .. toctree::
    :maxdepth: 2
-   :caption: Update Release Notes:
+   :caption: Debian 13 Trixie:
 
-   update_notes_stable
-   update_notes_develop
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Configuration:
-
-   probe_basic_parameters
-   machine_config
-   atc_setup
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Interface:
-
-   Mill <mill_interface>
-   Lathe <lathe_interface>
-   Lathe Tool Offsets <tool_offsets_lathe>
-   probing
-   tool_length_setter
-
-.. toctree::
-   :maxdepth: 2
-   :caption: Extending:
-
-   user_tabs
-   custom_ux_hacking
+   debian_13_trixie/index
 
 Indices and tables
 ==================
@@ -59,4 +29,3 @@ Indices and tables
 * :ref:`genindex`
 * :ref:`modindex`
 * :ref:`search`
-

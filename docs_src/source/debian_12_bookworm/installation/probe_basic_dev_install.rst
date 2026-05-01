@@ -1,5 +1,5 @@
 ====================================
-Probe Basic Development Installation
+Probe Basic Developer Installation
 ====================================
 
 

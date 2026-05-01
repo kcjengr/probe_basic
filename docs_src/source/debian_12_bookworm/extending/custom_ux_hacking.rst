@@ -11,7 +11,7 @@ Button Renaming Example
 
 In the following python example the **FLOOD** button is rename to **FOO** and the **MIST** button is renamed to **BAR**
 
-.. image:: images/custom_ux_labels.png
+.. image:: ../../images/custom_ux_labels.png
    :align: center
 
 To try out the following yourself, save the python below to a file called ``custom_probebasic.py`` under your machine config directory (``~/linuxcnc/configs/{my_machine}/custom_probebasic.py``).

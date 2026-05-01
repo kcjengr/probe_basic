@@ -30,7 +30,7 @@ Step 2: Copy required files
 
    **As built pncconfig folder**
 
-   .. image:: images/pb_instruction_1.png
+   .. image:: ../../images/pb_instruction_1.png
       :align: center
 
    |
@@ -38,7 +38,7 @@ Step 2: Copy required files
 
    **Unneeded pncconfig files highlighted**
 
-   .. image:: images/pb_instruction_2.png
+   .. image:: ../../images/pb_instruction_2.png
       :align: center
 
    |
@@ -46,7 +46,7 @@ Step 2: Copy required files
 
    **Cleaned up pncconfig folder**
    
-   .. image:: images/pb_instruction_3.png
+   .. image:: ../../images/pb_instruction_3.png
       :align: center
 
    |
@@ -54,7 +54,7 @@ Step 2: Copy required files
 
    **Files to be Copied from probe_basic_machine_config_setup_files folder**
 
-   .. image:: images/pb_instruction_4_2.png
+   .. image:: ../../images/pb_instruction_4_2.png
       :align: center
 
    |
@@ -62,7 +62,7 @@ Step 2: Copy required files
 
    **Files Copied to pncconfig folder**
 
-   .. image:: images/pb_instruction_5_2.png
+   .. image:: ../../images/pb_instruction_5_2.png
       :align: center
       :alt: Files Copied to pncconfig folder
 
@@ -351,7 +351,7 @@ Step 5: Modify HAL file
 
          loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
 
-   .. image:: images/pb_instruction_8.png
+   .. image:: ../../images/pb_instruction_8.png
       :align: center
       :alt: HAL file modification
 
@@ -359,7 +359,7 @@ Step 5: Modify HAL file
 
    2. Remove the red highlighted manual tool change dialog section from the bottom of the hal file as shown in the image below.  Probe basic uses its own built in dialog for manual tool changes which give the user better tool information and matches the ui visual theme more appropriately.
 
-   .. image:: images/pb_instruction_9.png
+   .. image:: ../../images/pb_instruction_9.png
       :align: center
       :alt: Tool change section to remove
 
