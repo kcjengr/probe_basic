@@ -104,6 +104,7 @@ class ProbeBasicLathe(VCPMainWindow):
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
         self._applying_external_program_selection = False
+        self._publishing_selected_program_selection = False
         self._install_gcode_run_from_line_context_menu()
         self._install_gcode_selected_line_sync()
         
@@ -932,6 +933,16 @@ class ProbeBasicLathe(VCPMainWindow):
             if editor is not None:
                 yield editor
 
+    @staticmethod
+    def _editor_or_child_has_focus(editor):
+        try:
+            focus_widget = QApplication.focusWidget()
+            if focus_widget is None:
+                return False
+            return editor is focus_widget or editor.isAncestorOf(focus_widget)
+        except Exception:
+            return False
+
     def _install_gcode_selected_line_sync(self):
         self._status_plugin = getPlugin('status')
         if self._status_plugin is None:
@@ -974,7 +985,15 @@ class ProbeBasicLathe(VCPMainWindow):
         if not line_numbers:
             return
 
-        self._set_selected_program_line_channels(line_numbers)
+        self._publishing_selected_program_selection = True
+        try:
+            self._set_selected_program_line_channels(line_numbers)
+        finally:
+            # Keep the guard up until queued notify callbacks run.
+            QTimer.singleShot(0, self._clear_selected_program_publish_guard)
+
+    def _clear_selected_program_publish_guard(self):
+        self._publishing_selected_program_selection = False
 
     @staticmethod
     def _normalize_selected_lines(line_numbers):
@@ -1025,6 +1044,8 @@ class ProbeBasicLathe(VCPMainWindow):
         if not normalized_lines:
             return
 
+        setattr(status_plugin, '_selected_program_line_source', 'editor')
+
         selected_lines_channel = getattr(status_plugin, 'selected_program_lines', None)
         set_lines = getattr(selected_lines_channel, 'setValue', None)
         if callable(set_lines):
@@ -1049,9 +1070,9 @@ class ProbeBasicLathe(VCPMainWindow):
         if not editors:
             return
 
-        focus_widget = QApplication.focusWidget()
-        focused_editor = next((ed for ed in editors if ed is focus_widget), None)
-        target_editor = focused_editor or editors[0]
+        focused_editor = next((ed for ed in editors if ed.isVisible() and self._editor_or_child_has_focus(ed)), None)
+        visible_editor = next((ed for ed in editors if ed.isVisible()), None)
+        target_editor = focused_editor or visible_editor or editors[0]
         self._publish_selected_program_line_from_editor(target_editor)
 
     def _selected_program_line_values_from_status(self):
@@ -1070,10 +1091,20 @@ class ProbeBasicLathe(VCPMainWindow):
     def _apply_selected_program_line_to_any_editor(self):
         if self._applying_external_program_selection:
             return
+        if self._publishing_selected_program_selection:
+            return
         if not self._selected_line_sync_allowed():
             return
 
-        selected_lines = self._selected_program_line_values_from_status()
+        status_plugin = getattr(self, '_status_plugin', None) or getPlugin('status')
+        if getattr(status_plugin, '_selected_program_line_source', None) != 'backplot':
+            return
+
+        selected_line_channel = getattr(status_plugin, 'selected_program_line', None)
+        selected_line_raw = getattr(selected_line_channel, 'value', None)
+        selected_lines = self._normalize_selected_lines([selected_line_raw])
+        if not selected_lines:
+            selected_lines = self._selected_program_line_values_from_status()
         if not selected_lines:
             return
 
@@ -1081,9 +1112,10 @@ class ProbeBasicLathe(VCPMainWindow):
         if not editors:
             return
 
-        focus_widget = QApplication.focusWidget()
-        focused_editor = next((ed for ed in editors if ed is focus_widget), None)
-        target_editor = focused_editor or editors[0]
+        focused_editor = next((ed for ed in editors if ed.isVisible() and self._editor_or_child_has_focus(ed)), None)
+        visible_editor = next((ed for ed in editors if ed.isVisible()), None)
+        target_editor = focused_editor or visible_editor or editors[0]
+
         self._apply_selected_program_lines_to_editor(target_editor, selected_lines)
 
     def _apply_selected_program_lines_to_editor(self, editor, line_numbers):
@@ -1106,25 +1138,13 @@ class ProbeBasicLathe(VCPMainWindow):
 
     @staticmethod
     def _apply_selected_program_lines_to_qsci_editor(editor, start_line, end_line):
-        set_selection = getattr(editor, 'setSelection', None)
         set_cursor_position = getattr(editor, 'setCursorPosition', None)
-        if not callable(set_selection) or not callable(set_cursor_position):
+        if not callable(set_cursor_position):
             return False
 
         start_zero = int(start_line) - 1
-        end_zero = int(end_line) - 1
-
-        end_col = 0
-        text_method = getattr(editor, 'text', None)
-        if callable(text_method):
-            try:
-                end_text = text_method(end_zero)
-                end_col = len(end_text) if isinstance(end_text, str) else 0
-            except Exception:
-                end_col = 0
 
         try:
-            set_selection(start_zero, 0, end_zero, end_col)
             set_cursor_position(start_zero, 0)
             ensure_line_visible = getattr(editor, 'ensureLineVisible', None)
             if callable(ensure_line_visible):
@@ -1151,14 +1171,11 @@ class ProbeBasicLathe(VCPMainWindow):
         try:
             document = get_document()
             start_block = document.findBlockByNumber(int(start_line) - 1)
-            end_block = document.findBlockByNumber(int(end_line) - 1)
-            if not start_block.isValid() or not end_block.isValid():
+            if not start_block.isValid():
                 return False
 
             cursor = get_cursor()
             cursor.setPosition(int(start_block.position()))
-            end_pos = int(end_block.position()) + max(0, int(end_block.length()) - 1)
-            cursor.setPosition(end_pos, QTextCursor.KeepAnchor)
             set_cursor(cursor)
 
             ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
