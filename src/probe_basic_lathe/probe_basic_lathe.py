@@ -109,6 +109,7 @@ class ProbeBasicLathe(VCPMainWindow):
         self._install_gcode_selected_line_sync()
         
         self.load_user_tabs()
+        self.load_conversational_tab()
         
         self.load_user_buttons()
         self._theme_preference_mode = self._theme_preference()
@@ -725,6 +726,17 @@ class ProbeBasicLathe(VCPMainWindow):
         if sidebar_loaded == False:
             self.user_sb_tab.hide()
             self.dro_tab.setStyleSheet(self.user_sb_tab.styleSheet())
+
+    def load_conversational_tab(self):
+        try:
+            from lathe_conversational import LatheConv
+            widget = LatheConv(parent=self)
+            self.tabWidget.addTab(widget, "CONVERSATIONAL")
+            LOG.info("Loaded lathe_conversational addon tab")
+        except ImportError:
+            LOG.debug("lathe_conversational not installed — conversational tab not loaded")
+        except Exception:
+            LOG.exception("Error loading lathe_conversational tab")
 
     @Slot()
     def on_use_tcp_clicked(self):
