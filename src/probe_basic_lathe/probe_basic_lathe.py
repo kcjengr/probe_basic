@@ -186,12 +186,12 @@ class ProbeBasicLathe(VCPMainWindow):
             mode_index = 1 if is_master_mode else 0
             if hasattr(self, "tool_offset_stacked_widget"):
                 self.tool_offset_stacked_widget.setCurrentIndex(mode_index)
-                LOG.info(f"Tool offset mode set to: {'MASTER_TOOL' if is_master_mode else 'ABSOLUTE'}")
+                LOG.debug(f"Tool offset mode set to: {'MASTER_TOOL' if is_master_mode else 'ABSOLUTE'}")
         else:
             # Default to absolute mode (index 0) if not specified
             if hasattr(self, "tool_offset_stacked_widget"):
                 self.tool_offset_stacked_widget.setCurrentIndex(0)
-                LOG.info("MASTER_TOOL_OFFSET_MODE not found in INI, defaulting to ABSOLUTE mode")
+                LOG.debug("MASTER_TOOL_OFFSET_MODE not found in INI, defaulting to ABSOLUTE mode")
 
         self._initialize_master_tool_controls()
 
@@ -579,7 +579,7 @@ class ProbeBasicLathe(VCPMainWindow):
 
     def toggle_tooltips(self, enabled):
         """Show tooltips when Interactive Help is enabled, hide them otherwise."""
-        LOG.info(f"Toggle tooltips: enabled={enabled}")
+        LOG.debug(f"Toggle tooltips: enabled={enabled}")
         count = 0
         for widget, original_tooltip in self._stored_tooltips.items():
             if enabled:
@@ -590,7 +590,7 @@ class ProbeBasicLathe(VCPMainWindow):
             else:
                 # Interactive Help OFF: Clear tooltip to avoid distractions
                 widget.setToolTip("")
-        LOG.info(f"Toggled {count} tooltips")
+        LOG.debug(f"Toggled {count} tooltips")
 
     def load_user_buttons(self):
         self.user_button_modules = {}
