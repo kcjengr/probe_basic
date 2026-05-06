@@ -1,0 +1,524 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Machine Sim Graphics &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Carousel ATC Setup" href="atc_setup.html" />
+    <link rel="prev" title="Machine Configuration (INI, HAL, Files)" href="machine_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Debian 12 Bookworm:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Debian 12 Bookworm</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes/index.html">Update Release Notes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="probe_basic_parameters.html">Probe Basic Parameters Bookworm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Machine Sim Graphics</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#start-here-vtk-settings">Start Here: VTK Settings</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#road-map-complete-example-first">Road Map: Complete Example First</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#quick-rules">Quick Rules</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#node-schema">Node Schema</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#supported-axis-tokens">Supported Axis Tokens</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-to-build-any-combination">How To Build Any Combination</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#combination-templates">Combination Templates</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#ini-vtk-axis-ownership">INI [VTK] Axis Ownership</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#troubleshooting-checklist">Troubleshooting Checklist</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#reference-examples-in-this-repository">Reference Examples In This Repository</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../interface/index.html">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/index.html">Extending</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debian 13 Trixie:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../debian_13_trixie/index.html">Debian 13 Trixie</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Debian 12 Bookworm</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Configuration</a></li>
+      <li class="breadcrumb-item active">Machine Sim Graphics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/debian_12_bookworm/configuration/machine_parts_yaml.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="machine-sim-graphics">
+<h1>Machine Sim Graphics<a class="headerlink" href="#machine-sim-graphics" title="Link to this heading"></a></h1>
+<section id="start-here-vtk-settings">
+<h2>Start Here: VTK Settings<a class="headerlink" href="#start-here-vtk-settings" title="Link to this heading"></a></h2>
+<p>Set your INI <code class="docutils literal notranslate"><span class="pre">[VTK]</span></code> section first so users know where the YAML filename is
+declared and how axis ownership is called.</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">MACHINE_PARTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">machine.yml</span>
+<span class="na">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">head</span>
+<span class="na">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+</pre></div>
+</div>
+<p>At minimum, <code class="docutils literal notranslate"><span class="pre">MACHINE_PARTS</span></code> must point to your YAML file. Axis ownership
+(<code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">table</span></code>) should match your real machine kinematics.</p>
+<p>After VTK is configured, build the <code class="docutils literal notranslate"><span class="pre">MACHINE_PARTS</span></code> YAML.</p>
+<p>This guide shows how to build a <code class="docutils literal notranslate"><span class="pre">MACHINE_PARTS</span></code> YAML file for common machine
+kinematic combinations used by the VTK backplot machine simulation.</p>
+<p>The YAML describes a machine as a parent-child assembly tree. Each moving node is
+configured as either:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">linear</span></code> (translates)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">angular</span></code> (rotates)</p></li>
+</ul>
+</section>
+<section id="road-map-complete-example-first">
+<h2>Road Map: Complete Example First<a class="headerlink" href="#road-map-complete-example-first" title="Link to this heading"></a></h2>
+<p>Start with this full working example, then use the rest of the guide to break it
+down section by section.</p>
+<p>This roadmap example is an <code class="docutils literal notranslate"><span class="pre">XYZAC</span></code> table-rotary style machine.</p>
+<p>Start with the full <code class="docutils literal notranslate"><span class="pre">[VTK]</span></code> mapping first so axis ownership is clear before
+reading the YAML tree:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">MACHINE_PARTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">machine.yml</span>
+<span class="na">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">head</span>
+<span class="na">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+</pre></div>
+</div>
+<p>Then read the <code class="docutils literal notranslate"><span class="pre">MACHINE_PARTS</span></code> YAML that this mapping points to:</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">root</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;frame&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/frame.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">   </span><span class="nt">child_saddle</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;saddle&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/saddle.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;y&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">child_table</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span>
+<span class="w">        </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/table.stl&quot;</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">        </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="w">        </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">        </span><span class="nt">child_a_axis</span><span class="p">:</span>
+<span class="w">           </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a_axis&quot;</span>
+<span class="w">           </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/a_axis.stl&quot;</span>
+<span class="w">           </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">           </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">           </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">           </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
+<span class="w">           </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">           </span><span class="nt">child_c_axis</span><span class="p">:</span>
+<span class="w">              </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c_axis&quot;</span>
+<span class="w">              </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/c_axis.stl&quot;</span>
+<span class="w">              </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">              </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">              </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c&quot;</span>
+<span class="w">              </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+<span class="w">   </span><span class="nt">child_headstock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;headstock&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/headstock.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+<p>Section map for this document:</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Quick</span> <span class="pre">Rules</span></code>: high-level checks before editing.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Node</span> <span class="pre">Schema</span></code>: meaning of each field in the roadmap example.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Supported</span> <span class="pre">Axis</span> <span class="pre">Tokens</span></code>: valid <code class="docutils literal notranslate"><span class="pre">axis</span></code> values used in the roadmap.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">How</span> <span class="pre">To</span> <span class="pre">Build</span> <span class="pre">Any</span> <span class="pre">Combination</span></code>: method to adapt the roadmap to your machine.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Combination</span> <span class="pre">Templates</span></code>: focused variants derived from the roadmap pattern.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">INI</span> <span class="pre">[VTK]</span> <span class="pre">Axis</span> <span class="pre">Ownership</span></code> and <code class="docutils literal notranslate"><span class="pre">Troubleshooting</span> <span class="pre">Checklist</span></code>: final validation.</p></li>
+</ol>
+</section>
+<section id="quick-rules">
+<h2>Quick Rules<a class="headerlink" href="#quick-rules" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Keep one top-level key (normally <code class="docutils literal notranslate"><span class="pre">root</span></code>).</p></li>
+<li><p>Every part node is a mapping (dictionary).</p></li>
+<li><p>Child nodes can use any key name, but <code class="docutils literal notranslate"><span class="pre">child_*</span></code> naming is recommended for readability.</p></li>
+<li><p>Use <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">linear</span></code> or <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">angular</span></code> for moving parts.</p></li>
+<li><p>Keep <code class="docutils literal notranslate"><span class="pre">axis</span></code> aligned to supported axis tokens.</p></li>
+<li><p>For rotary parts, set <code class="docutils literal notranslate"><span class="pre">origin</span></code> to the true pivot point.</p></li>
+</ol>
+</section>
+<section id="node-schema">
+<h2>Node Schema<a class="headerlink" href="#node-schema" title="Link to this heading"></a></h2>
+<p>Typical part node (one piece of the roadmap example):</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">some_node</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/table.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">color</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0.9</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.9</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0.9</span><span class="p p-Indicator">]</span><span class="w">   </span><span class="c1"># optional</span>
+<span class="w">   </span><span class="nt">power</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5.0</span><span class="w">               </span><span class="c1"># optional</span>
+</pre></div>
+</div>
+<p>Field meanings:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">id</span></code>: Human-readable part identifier.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">model</span></code>: STL path for this part.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">type</span></code>: Motion behavior.
+- <code class="docutils literal notranslate"><span class="pre">linear</span></code> for X/Y/Z translation
+- <code class="docutils literal notranslate"><span class="pre">angular</span></code> for A/B/C rotation
+- other values are treated as static by motion updates</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">position</span></code>: Base transform as <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z,</span> <span class="pre">rx,</span> <span class="pre">ry,</span> <span class="pre">rz]</span></code>.
+- translation uses machine units
+- rotation uses degrees</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">origin</span></code>: Rotation pivot point <code class="docutils literal notranslate"><span class="pre">[x,</span> <span class="pre">y,</span> <span class="pre">z]</span></code>.
+- for <code class="docutils literal notranslate"><span class="pre">angular</span></code> parts this is critical
+- if omitted or <code class="docutils literal notranslate"><span class="pre">null</span></code>, transform falls back to <code class="docutils literal notranslate"><span class="pre">position</span></code> for pivot</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">axis</span></code>: Motion token (see next section).</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">joint</span></code>: LinuxCNC joint index metadata.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">color</span></code>: Optional diffuse color <code class="docutils literal notranslate"><span class="pre">[r,</span> <span class="pre">g,</span> <span class="pre">b]</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">power</span></code>: Optional specular power.</p></li>
+</ul>
+</section>
+<section id="supported-axis-tokens">
+<h2>Supported Axis Tokens<a class="headerlink" href="#supported-axis-tokens" title="Link to this heading"></a></h2>
+<p>For <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">linear</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">x</span></code>, <code class="docutils literal notranslate"><span class="pre">y</span></code>, <code class="docutils literal notranslate"><span class="pre">z</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-x</span></code>, <code class="docutils literal notranslate"><span class="pre">-y</span></code>, <code class="docutils literal notranslate"><span class="pre">-z</span></code></p></li>
+</ul>
+<p>For <code class="docutils literal notranslate"><span class="pre">type:</span> <span class="pre">angular</span></code>:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>, <code class="docutils literal notranslate"><span class="pre">b</span></code>, <code class="docutils literal notranslate"><span class="pre">c</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">-a</span></code>, <code class="docutils literal notranslate"><span class="pre">-b</span></code>, <code class="docutils literal notranslate"><span class="pre">-c</span></code></p></li>
+</ul>
+<p>Notes:</p>
+<ul class="simple">
+<li><p>Use lowercase axis tokens in YAML.</p></li>
+<li><p>If <code class="docutils literal notranslate"><span class="pre">axis</span></code> does not match a supported token for the selected <code class="docutils literal notranslate"><span class="pre">type</span></code>, that
+part will not move as expected.</p></li>
+</ul>
+</section>
+<section id="how-to-build-any-combination">
+<h2>How To Build Any Combination<a class="headerlink" href="#how-to-build-any-combination" title="Link to this heading"></a></h2>
+<p>Use the roadmap example above as a baseline, then adapt it with the sequence below.</p>
+<ol class="arabic simple">
+<li><p>Start with a static base/root.</p></li>
+<li><p>Add linear axis chain(s) in physical order.</p></li>
+<li><p>Add rotary axis nodes where the real machine rotates.</p></li>
+<li><p>Set each rotary <code class="docutils literal notranslate"><span class="pre">origin</span></code> to the mechanical center of rotation.</p></li>
+<li><p>Add matching <code class="docutils literal notranslate"><span class="pre">[VTK]</span></code> axis ownership in the INI (<code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">table</span></code>).</p></li>
+<li><p>Run and verify each axis independently.</p></li>
+</ol>
+</section>
+<section id="combination-templates">
+<h2>Combination Templates<a class="headerlink" href="#combination-templates" title="Link to this heading"></a></h2>
+<p>These are targeted variations of the roadmap pattern, not replacements for the
+schema/rules above.</p>
+<section id="axis-mill-xyz">
+<h3>3-axis mill (XYZ)<a class="headerlink" href="#axis-mill-xyz" title="Link to this heading"></a></h3>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">root</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;frame&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/frame.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">null</span>
+<span class="w">   </span><span class="nt">child_saddle</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;saddle&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/saddle.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;y&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">      </span><span class="nt">child_table</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;table&quot;</span>
+<span class="w">        </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/table.stl&quot;</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">        </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="w">        </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">   </span><span class="nt">child_headstock</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;headstock&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/headstock.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</section>
+<section id="axis-table-rotary-xyza-or-xyzb">
+<h3>4-axis table rotary (XYZA or XYZB)<a class="headerlink" href="#axis-table-rotary-xyza-or-xyzb" title="Link to this heading"></a></h3>
+<p>Add a rotary node under the table branch.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">child_a_axis</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a_axis&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/a_axis.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span><span class="w">   </span><span class="c1"># use &quot;b&quot; for B-axis machine</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</pre></div>
+</div>
+</section>
+<section id="axis-head-rotary-xyz-head-a-b-c">
+<h3>4-axis head rotary (XYZ + head A/B/C)<a class="headerlink" href="#axis-head-rotary-xyz-head-a-b-c" title="Link to this heading"></a></h3>
+<p>Add the rotary node under the head branch instead of table branch.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">child_headstock</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;headstock&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/headstock.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z&quot;</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<span class="w">   </span><span class="nt">child_a_head</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a_head&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/a_head.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+</pre></div>
+</div>
+</section>
+<section id="axis-trunnion-style-xyzac">
+<h3>5-axis trunnion style XYZAC<a class="headerlink" href="#axis-trunnion-style-xyzac" title="Link to this heading"></a></h3>
+<p>Add A then C on the table branch (nested rotary stages).</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">child_a_axis</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a_axis&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/a_axis.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;a&quot;</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">   </span><span class="nt">child_c_axis</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c_axis&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/c_axis.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+</pre></div>
+</div>
+</section>
+<section id="axis-trunnion-style-xyzbc">
+<h3>5-axis trunnion style XYZBC<a class="headerlink" href="#axis-trunnion-style-xyzbc" title="Link to this heading"></a></h3>
+<p>Same as above, but use B then C.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">child_b_axis</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;b_axis&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/b_axis.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;b&quot;</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<span class="w">   </span><span class="nt">child_c_axis</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c_axis&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/c_axis.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">-18</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">4</span>
+</pre></div>
+</div>
+</section>
+<section id="lathe-style-xzc-example-pattern">
+<h3>Lathe-style XZC (example pattern)<a class="headerlink" href="#lathe-style-xzc-example-pattern" title="Link to this heading"></a></h3>
+<p>Use X and Z as linear, with C as angular on the spindle/table side.</p>
+<div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">child_x</span><span class="p">:</span>
+<span class="w">   </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x_slide&quot;</span>
+<span class="w">   </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/x_slide.stl&quot;</span>
+<span class="w">   </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">   </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">   </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;x&quot;</span>
+<span class="w">   </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="w">   </span><span class="nt">child_z</span><span class="p">:</span>
+<span class="w">      </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z_slide&quot;</span>
+<span class="w">      </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/z_slide.stl&quot;</span>
+<span class="w">      </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;linear&quot;</span>
+<span class="w">      </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">      </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;z&quot;</span>
+<span class="w">      </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="w">      </span><span class="nt">child_c</span><span class="p">:</span>
+<span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c_spindle&quot;</span>
+<span class="w">        </span><span class="nt">model</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;machine/c_spindle.stl&quot;</span>
+<span class="w">        </span><span class="nt">type</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;angular&quot;</span>
+<span class="w">        </span><span class="nt">position</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">origin</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">0</span><span class="p p-Indicator">]</span>
+<span class="w">        </span><span class="nt">axis</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;c&quot;</span>
+<span class="w">        </span><span class="nt">joint</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="ini-vtk-axis-ownership">
+<h2>INI [VTK] Axis Ownership<a class="headerlink" href="#ini-vtk-axis-ownership" title="Link to this heading"></a></h2>
+<p>Set ownership for active machine axes in the INI.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">head</span></code>: axis motion belongs to spindle/head side</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">table</span></code>: axis motion belongs to table/workholding side</p></li>
+</ul>
+<p>Example for XYZAC trunnion:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">MACHINE_PARTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">machine.yml</span>
+<span class="na">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">head</span>
+<span class="na">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">C</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+</pre></div>
+</div>
+<p>Example for head rotary A:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[VTK]</span>
+<span class="na">MACHINE_PARTS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">machine_head_a.yml</span>
+<span class="na">X</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Y</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">table</span>
+<span class="na">Z</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">head</span>
+<span class="na">A</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">head</span>
+</pre></div>
+</div>
+<p>Use only <code class="docutils literal notranslate"><span class="pre">head</span></code> or <code class="docutils literal notranslate"><span class="pre">table</span></code> values.</p>
+</section>
+<section id="troubleshooting-checklist">
+<h2>Troubleshooting Checklist<a class="headerlink" href="#troubleshooting-checklist" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Part does not move: check <code class="docutils literal notranslate"><span class="pre">type</span></code> and <code class="docutils literal notranslate"><span class="pre">axis</span></code> token pair, then verify the
+axis is active in machine coordinates.</p></li>
+<li><p>Rotary appears to orbit incorrectly: correct the part <code class="docutils literal notranslate"><span class="pre">origin</span></code> pivot point.</p></li>
+<li><p>Warning about missing machine axes in <code class="docutils literal notranslate"><span class="pre">MACHINE_PARTS</span></code>: add YAML nodes for
+all active axes (X/Y/Z/A/B/C as applicable).</p></li>
+<li><p>Warning about table rotary missing origin: define <code class="docutils literal notranslate"><span class="pre">origin</span></code> for each
+table-owned rotary axis.</p></li>
+<li><p>VTK ownership mismatch warnings: align INI <code class="docutils literal notranslate"><span class="pre">[VTK]</span></code> axis ownership with the
+actual machine design.</p></li>
+</ol>
+</section>
+<section id="reference-examples-in-this-repository">
+<h2>Reference Examples In This Repository<a class="headerlink" href="#reference-examples-in-this-repository" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/machine3.yml</span></code> (3-axis)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/machine.yml</span></code> (XYZAC)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/machine_b.yml</span></code> (XYZBC)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/probe_basic.ini</span></code> (INI mapping example)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/probe_basic_xyzac.ini</span></code> (INI mapping example)</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">configs/probe_basic_asm/probe_basic_xyzbc.ini</span></code> (INI mapping example)</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="machine_config.html" class="btn btn-neutral float-left" title="Machine Configuration (INI, HAL, Files)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="atc_setup.html" class="btn btn-neutral float-right" title="Carousel ATC Setup" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
