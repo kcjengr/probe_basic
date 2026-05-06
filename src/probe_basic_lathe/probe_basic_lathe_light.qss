@@ -133,6 +133,7 @@ QDoubleSpinBox[styleSet="dataField14"],
 QSpinBox[styleSet="dataField14"],
 QLabel[styleSet="dataField14"],
 QLabel[styleSet="dataField15"],
+QLabel[styleSet="dataField15s"],
 QLabel[styleSet="dataField16"],
 QLabel[styleSet="dataField17"] {
     color: black;
@@ -151,11 +152,15 @@ QLineEdit[styleSet="dataField14"] {
 }
 
 QLabel[styleSet="dataField15"],
+QLabel[styleSet="dataField15s"],
 QLineEdit[styleSet="dataField15"] {
     font: 15pt "Probe Basic Bebas Mono";
 }
 
-QLabel[styleSet="dataField16"],
+QComboBox[styleSet="dataField15"],
+QComboBox[styleSet="dataField15s"],
+QLineEdit[styleSet="dataField14"],
+QLineEdit[styleSet="dataField15"],
 QLineEdit[styleSet="dataField16"] {
     font: 16pt "Probe Basic Bebas Mono";
 }
@@ -165,6 +170,16 @@ QLineEdit[styleSet="dataField17"] {
     font: 17pt "Probe Basic Bebas Mono";
 }
 
+QComboBox[styleSet="dataField15"] {
+    padding-left: 27px;
+}
+
+QComboBox[styleSet="dataField15s"] {
+    padding-left: 30px;
+}
+
+QComboBox[styleSet="dataField15"],
+QComboBox[styleSet="dataField15s"],
 QLineEdit[styleSet="dataField14"],
 QLineEdit[styleSet="dataField15"],
 QLineEdit[styleSet="dataField16"],
@@ -957,5 +972,15 @@ QSlider::add-page:vertical:disabled {
 QSlider::handle:vertical:disabled {
     background: #eee;
     border: 1px solid #aaa;
+    border-radius: 4px;
+}
+
+/* Conversational parameter highlight (set via convHighlight property) */
+QLineEdit[convHighlight="true"],
+QDoubleSpinBox[convHighlight="true"],
+QSpinBox[convHighlight="true"],
+QComboBox[convHighlight="true"] {
+    border: 3px solid #0026ff;
+    background-color: #959af3;
     border-radius: 4px;
 }

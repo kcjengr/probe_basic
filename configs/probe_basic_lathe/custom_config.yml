@@ -42,3 +42,87 @@ settings:
 
   backplot.perspective-view:
     default_value: false
+    
+  # Clean-slate runtime syntax toggle (single source path only).
+  gcode-syntax.on-off:
+    description: on off setting for using gcode syntax highlighting in gcode editor
+    default_value: true
+    persistent: true
+
+# Global editor style defaults moved from QSS.
+# Runtime should apply these values so QSS no longer owns editor defaults.
+gcode_editor_style_defaults:
+  background_color: "{{ '#6c6c6c' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#dfdfdf' }}"
+  text_color: "{{ '#ffffff' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#000000' }}"
+  padding: 2
+  font_family: "Probe Basic Bebas Mono"
+  font_point_size: 13
+  font_style: normal
+  font_weight: 400
+  letter_spacing: 0.5
+  word_spacing: 2
+  border_radius: 4
+
+  line_number_area_background: "{{ '#505050' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#cdcdcd' }}"
+  line_number_area_color: "{{ '#ffffff' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#000000' }}"
+  line_number_font_family: "Probe Basic Bebas Mono"
+  line_number_font_point_size: 11
+  line_number_font_weight: 400
+  line_number_font_italic: false
+
+  current_line_highlight_enabled: true
+  current_line_background: "#6c6ef0"
+  current_line_color: "#ffffff"
+  find_highlight_background: "#2848b9"
+  find_highlight_text: "#ffffff"
+  find_error_background: "#ff0000"
+  find_error_text: "#ffffff"
+  find_status_background: "#5a5a5a"
+  find_status_text: "#ffffff"
+  find_status_border: "#5f5f5f"
+
+# Runtime-applied syntax profile.
+# Single source of truth for token-group highlighting.
+# Tokens not listed in syntax_styles use the editor default text color.
+gcode_syntax_profile:
+  version: 4
+  model: flat-token-groups
+  source_of_truth: syntax_styles
+  note: "Flat color mapping. Add/remove tokens per style; unknown tokens use editor default color."
+  default_color: "{{ '#ffffff' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#000000' }}"
+  precedence:
+    - syntax_styles
+  color_resolution_order:
+    - group.color
+    - setting.default_value
+  syntax_styles:
+    - id: Syntax_style_1
+      setting: gcode-syntax.user-color-1
+      color: "{{ '#f0ddb8' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#1a5c9e' }}"
+      tokens: [G]
+
+    - id: Syntax_style_2
+      setting: gcode-syntax.user-color-2
+      color: "{{ '#cce7f8' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#2d5e78' }}"
+      tokens: [M]
+
+    - id: Syntax_style_3
+      setting: gcode-syntax.user-color-3
+      color: "{{ '#ffffff' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#1a1a1a' }}"
+      tokens: [X, Y, Z, A, B, C, U, V, W, I, J, K, R, Q, P, F]
+
+    - id: Syntax_style_4
+      setting: gcode-syntax.user-color-4
+      color: "{{ '#d0f2ff' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#2a6890' }}"
+      tokens: [number]
+
+    - id: Syntax_style_5
+      setting: gcode-syntax.user-color-5
+      color: "{{ '#d4dce2' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#8a9898' }}"
+      tokens: [semicolon, parenthesis, comment]
+
+    - id: Syntax_style_6
+      setting: gcode-syntax.user-color-6
+      color: "{{ '#a8cce0' if effective_theme_color('DISPLAY', 'THEME_COLOR', 'light') == 'dark' else '#2a5a7a' }}"
+      tokens: [S, H, T, single_quote, double_quote, string]
+
