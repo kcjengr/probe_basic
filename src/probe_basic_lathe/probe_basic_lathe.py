@@ -161,6 +161,10 @@ class ProbeBasicLathe(VCPMainWindow):
         else:
             lathe_type = "LATHE"
 
+        self._last_backplot_fit_signature = None
+
+        self._enable_backplot_program_view_on_load()
+
 
         index_map = {
             ("xz", "LATHE"): 0,
@@ -177,6 +181,7 @@ class ProbeBasicLathe(VCPMainWindow):
         if hasattr(self, "tabWidget") and hasattr(self, "main_tab"):
             self.tabWidget.currentChanged.connect(self._on_tab_changed_refresh_views)
         QTimer.singleShot(0, self._refresh_vtk_view)
+        QTimer.singleShot(0, lambda: self._maybe_fit_backplot_program("startup"))
 
         # Set tool offset mode (absolute or master_tool) from INI file
         master_tool_mode = INIFILE.find("DISPLAY", "MASTER_TOOL_OFFSET_MODE")
@@ -551,6 +556,41 @@ class ProbeBasicLathe(VCPMainWindow):
     def _on_tab_changed_refresh_views(self, index):
         if hasattr(self, "tabWidget") and self.tabWidget.widget(index) is getattr(self, "main_tab", None):
             QTimer.singleShot(0, self._refresh_vtk_view)
+            QTimer.singleShot(0, lambda: self._maybe_fit_backplot_program("main tab activated"))
+
+    def _is_main_tab_active(self):
+        if not hasattr(self, "tabWidget") or not hasattr(self, "main_tab"):
+            return True
+        return self.tabWidget.currentWidget() is self.main_tab
+
+    def _current_program_file(self):
+        fname = str(self._status_plugin.file)
+        return fname if fname else None
+
+    def _program_file_signature(self, fname):
+        if not fname:
+            return None
+        stat_info = os.stat(fname)
+        return (os.path.abspath(fname), stat_info.st_mtime_ns, stat_info.st_size)
+
+    def _maybe_fit_backplot_program(self, reason=""):
+        if not self._is_main_tab_active():
+            return
+
+        fname = self._current_program_file()
+        sig = self._program_file_signature(fname)
+        if sig is None:
+            return
+
+        if sig == self._last_backplot_fit_signature:
+            return
+
+        self.vtkbackplot.setViewProgram('p')
+        self.vtkbackplot.update()
+        self._last_backplot_fit_signature = sig
+
+    def _on_program_file_changed(self, _fname):
+        QTimer.singleShot(0, lambda: self._maybe_fit_backplot_program("program file changed"))
 
     def _refresh_vtk_view(self):
         if getattr(self, "_lathe_type", "LATHE") == "BACK_TOOL_LATHE":
@@ -558,6 +598,11 @@ class ProbeBasicLathe(VCPMainWindow):
         else:
             self.vtkbackplot.setViewXZ2()
         self.vtkbackplot.update()
+
+    def _enable_backplot_program_view_on_load(self):
+        """Enable automatic setViewProgram when a new program is loaded."""
+        self.vtkbackplot.setProgramViewWhenLoadingProgram(True)
+        self._status_plugin.file.notify(self._on_program_file_changed)
 
     def _load_dros_after_ui(self):
         self.load_user_dros()
@@ -728,15 +773,16 @@ class ProbeBasicLathe(VCPMainWindow):
             self.dro_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
     def load_conversational_tab(self):
-        try:
-            from lathe_conversational import LatheConv
-            widget = LatheConv(parent=self)
-            self.tabWidget.addTab(widget, "CONVERSATIONAL")
-            LOG.info("Loaded lathe_conversational addon tab")
-        except ImportError:
-            LOG.debug("lathe_conversational not installed — conversational tab not loaded")
-        except Exception:
-            LOG.exception("Error loading lathe_conversational tab")
+        module_name = "lathe_conversational"
+        if importlib.util.find_spec(module_name) is None:
+            LOG.info("lathe_conversational addon not installed; skipping conversational tab")
+            return
+
+        addon_module = importlib.import_module(module_name)
+        widget_class = getattr(addon_module, "LatheConv")
+        widget = widget_class(parent=self)
+        self.tabWidget.addTab(widget, "CONVERSATIONAL")
+        LOG.info("Loaded lathe_conversational addon tab")
 
     @Slot()
     def on_use_tcp_clicked(self):
@@ -947,13 +993,10 @@ class ProbeBasicLathe(VCPMainWindow):
 
     @staticmethod
     def _editor_or_child_has_focus(editor):
-        try:
-            focus_widget = QApplication.focusWidget()
-            if focus_widget is None:
-                return False
-            return editor is focus_widget or editor.isAncestorOf(focus_widget)
-        except Exception:
+        focus_widget = QApplication.focusWidget()
+        if focus_widget is None:
             return False
+        return editor is focus_widget or editor.isAncestorOf(focus_widget)
 
     def _install_gcode_selected_line_sync(self):
         self._status_plugin = getPlugin('status')
@@ -1012,10 +1055,7 @@ class ProbeBasicLathe(VCPMainWindow):
         normalized = []
         seen = set()
         for raw in line_numbers:
-            try:
-                line_no = int(raw)
-            except Exception:
-                continue
+            line_no = int(raw)
             if line_no <= 0 or line_no in seen:
                 continue
             seen.add(line_no)
@@ -1024,31 +1064,25 @@ class ProbeBasicLathe(VCPMainWindow):
         return normalized
 
     def _selected_line_numbers_from_editor(self, editor):
-        try:
-            cursor = editor.textCursor()
-        except Exception:
-            return []
+        cursor = editor.textCursor()
 
-        try:
-            if not cursor.hasSelection():
-                return [int(cursor.blockNumber()) + 1]
-
-            start_pos = int(cursor.selectionStart())
-            end_pos = int(cursor.selectionEnd())
-            if end_pos < start_pos:
-                start_pos, end_pos = end_pos, start_pos
-
-            if end_pos > start_pos:
-                end_pos -= 1
-
-            document = editor.document()
-            start_line = int(document.findBlock(start_pos).blockNumber()) + 1
-            end_line = int(document.findBlock(end_pos).blockNumber()) + 1
-            if end_line < start_line:
-                start_line, end_line = end_line, start_line
-            return list(range(start_line, end_line + 1))
-        except Exception:
+        if not cursor.hasSelection():
             return [int(cursor.blockNumber()) + 1]
+
+        start_pos = int(cursor.selectionStart())
+        end_pos = int(cursor.selectionEnd())
+        if end_pos < start_pos:
+            start_pos, end_pos = end_pos, start_pos
+
+        if end_pos > start_pos:
+            end_pos -= 1
+
+        document = editor.document()
+        start_line = int(document.findBlock(start_pos).blockNumber()) + 1
+        end_line = int(document.findBlock(end_pos).blockNumber()) + 1
+        if end_line < start_line:
+            start_line, end_line = end_line, start_line
+        return list(range(start_line, end_line + 1))
 
     def _set_selected_program_line_channels(self, line_numbers):
         status_plugin = getattr(self, '_status_plugin', None) or getPlugin('status')
@@ -1156,21 +1190,18 @@ class ProbeBasicLathe(VCPMainWindow):
 
         start_zero = int(start_line) - 1
 
-        try:
-            set_cursor_position(start_zero, 0)
-            ensure_line_visible = getattr(editor, 'ensureLineVisible', None)
-            if callable(ensure_line_visible):
-                ensure_line_visible(start_zero)
-            ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
-            if callable(ensure_cursor_visible):
-                ensure_cursor_visible()
-            send_scintilla = getattr(editor, 'SendScintilla', None)
-            sci_vertical_center = getattr(type(editor), 'SCI_VERTICALCENTRECARET', None)
-            if callable(send_scintilla) and sci_vertical_center is not None:
-                send_scintilla(sci_vertical_center)
-            return True
-        except Exception:
-            return False
+        set_cursor_position(start_zero, 0)
+        ensure_line_visible = getattr(editor, 'ensureLineVisible', None)
+        if callable(ensure_line_visible):
+            ensure_line_visible(start_zero)
+        ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
+        if callable(ensure_cursor_visible):
+            ensure_cursor_visible()
+        send_scintilla = getattr(editor, 'SendScintilla', None)
+        sci_vertical_center = getattr(type(editor), 'SCI_VERTICALCENTRECARET', None)
+        if callable(send_scintilla) and sci_vertical_center is not None:
+            send_scintilla(sci_vertical_center)
+        return True
 
     @staticmethod
     def _apply_selected_program_lines_to_qtext_editor(editor, start_line, end_line):
@@ -1180,25 +1211,22 @@ class ProbeBasicLathe(VCPMainWindow):
         if not callable(get_cursor) or not callable(set_cursor) or not callable(get_document):
             return False
 
-        try:
-            document = get_document()
-            start_block = document.findBlockByNumber(int(start_line) - 1)
-            if not start_block.isValid():
-                return False
-
-            cursor = get_cursor()
-            cursor.setPosition(int(start_block.position()))
-            set_cursor(cursor)
-
-            ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
-            if callable(ensure_cursor_visible):
-                ensure_cursor_visible()
-            center_cursor = getattr(editor, 'centerCursor', None)
-            if callable(center_cursor):
-                center_cursor()
-            return True
-        except Exception:
+        document = get_document()
+        start_block = document.findBlockByNumber(int(start_line) - 1)
+        if not start_block.isValid():
             return False
+
+        cursor = get_cursor()
+        cursor.setPosition(int(start_block.position()))
+        set_cursor(cursor)
+
+        ensure_cursor_visible = getattr(editor, 'ensureCursorVisible', None)
+        if callable(ensure_cursor_visible):
+            ensure_cursor_visible()
+        center_cursor = getattr(editor, 'centerCursor', None)
+        if callable(center_cursor):
+            center_cursor()
+        return True
 
     def _show_gcode_context_menu(self, editor, pos):
         cursor = editor.cursorForPosition(pos)
