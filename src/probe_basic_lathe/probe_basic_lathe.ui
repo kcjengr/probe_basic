@@ -30,7 +30,7 @@
   </property>
   <property name="windowIcon">
    <iconset>
-    <normaloff>../../../../../../icons/probe_basic_icon_lathe.png</normaloff>../../../../../../icons/probe_basic_icon_lathe.png</iconset>
+    <normaloff>../../../../../../../../../../icons/probe_basic_icon_lathe.png</normaloff>../../../../../../../../../../icons/probe_basic_icon_lathe.png</iconset>
   </property>
   <property name="toolTipDuration">
    <number>-1</number>
@@ -233,7 +233,7 @@
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>6</number>
+           <number>0</number>
           </property>
           <widget class="QWidget" name="main_tab">
            <property name="maximumSize">
@@ -1231,7 +1231,7 @@ QPushButton:checked {
                          </property>
                          <property name="icon">
                           <iconset>
-                           <normaloff>../../../../../../../../../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../../../../../../../../../Desktop/images/left_arrow.png</iconset>
+                           <normaloff>../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</normaloff>../../../../../../../../../../../../../../../../../../Desktop/images/left_arrow.png</iconset>
                          </property>
                          <property name="iconSize">
                           <size>
@@ -22821,6 +22821,12 @@ font: 11pt Probe Basic Bebas Mono;
    <header>widgets</header>
   </customwidget>
   <customwidget>
+   <class>VCPStackedWidget</class>
+   <extends>QStackedWidget</extends>
+   <header>qtpyvcp.widgets.containers.stack</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
    <class>VCPMainWindow</class>
    <extends>QMainWindow</extends>
    <header>qtpyvcp.widgets.form_widgets.main_window</header>
@@ -22830,12 +22836,6 @@ font: 11pt Probe Basic Bebas Mono;
    <class>ToolTable</class>
    <extends>QTableView</extends>
    <header>qtpyvcp.widgets.input_widgets.tool_table</header>
-  </customwidget>
-  <customwidget>
-   <class>VCPStackedWidget</class>
-   <extends>QStackedWidget</extends>
-   <header>qtpyvcp.widgets.containers.stack</header>
-   <container>1</container>
   </customwidget>
  </customwidgets>
  <resources>
@@ -22847,6 +22847,8 @@ font: 11pt Probe Basic Bebas Mono;
   <include location="probe_basic_lathe.qrc"/>
   <include location="probe_basic_lathe.qrc"/>
   <include location="probe_basic_lathe.qrc"/>
+  <include location="probe_basic_lathe.qrc"/>
+  <include location="../../../pb_lathe_conv/src/lathe_conversational/lathe_conv.qrc"/>
   <include location="probe_basic_lathe.qrc"/>
  </resources>
  <connections>
@@ -23877,12 +23879,12 @@ font: 11pt Probe Basic Bebas Mono;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="btngrpMdi"/>
-  <buttongroup name="gcodemdibtnGroup"/>
   <buttongroup name="lathecontrolpointbtngroup"/>
-  <buttongroup name="feedtypebtnGroup"/>
   <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="feedtypebtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="rpmcontrolbtnGroup"/>
  </buttongroups>
 </ui>
