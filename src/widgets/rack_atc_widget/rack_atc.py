@@ -60,6 +60,7 @@ class RackATC(QWidget):
         self.tool_table = None
         self.status_tool_table = None
         self.pockets = dict()
+        self._rendered_tools = {}
         self.tools = None
         self.required_tools = set()
 
@@ -162,27 +163,25 @@ class RackATC(QWidget):
         self._background_color = color
 
     def load_tools(self):
-        # print("load_tools")
-        for i in range(1, self.pocket_slots+1):
-            self.hideToolSig.emit(i)
-
-        for pocket, tool in list(self.pockets.items()):
-            if tool != 0:
-                self.showToolSig.emit(pocket, tool)
-            else:
-                self.hideToolSig.emit(pocket)
+        for pocket in range(1, self.pocket_slots + 1):
+            tool_num = int(self.pockets.get(pocket, 0) or 0)
+            self._apply_tool_render_state(pocket, tool_num)
         self._update_required_pocket_highlights()
 
     def store_tool(self, pocket, tool_num):
+        tool_num = int(tool_num or 0)
         self.pockets[pocket] = tool_num
-        #
-        # print(type(pocket), pocket)
-        # print(type(tool_num), tool_num)
-        if tool_num != 0:
-            # print("show tool {} at pocket {}".format(tool_num, pocket))
+        self._apply_tool_render_state(pocket, tool_num)
+        self._update_required_pocket_highlights()
+
+    def _apply_tool_render_state(self, pocket, tool_num):
+        prev_tool_num = self._rendered_tools.get(pocket)
+        if prev_tool_num == tool_num:
+            return
+
+        self._rendered_tools[pocket] = tool_num
+        if tool_num > 0:
             self.showToolSig.emit(pocket, tool_num)
         else:
-            # print("Hide tool at pocket {}".format(pocket))
             self.hideToolSig.emit(pocket)
-        self._update_required_pocket_highlights()
 

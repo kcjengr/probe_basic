@@ -3,7 +3,8 @@ o<m12> sub
 ; Move tool carousel CCW Parameter P number of steps
 ; Without parameter one step CCW.
 ; Parameter #3989 is used to track if the carousel is homed (M13) (volatile)
-; Parameter #3990 is used to track the current tool pocket (persistently)
+; Runtime variable #<_my_current_pocket> tracks the current pocket during execution.
+; Parameter #3990 is retained as a legacy fallback/initial value.
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 (PRINT, o<m12> P#<p>)
 
@@ -25,6 +26,11 @@ o120 else
     (tells the atc widget move 1 step reverse)
 o120 endif
 
+#<current_pocket_runtime> = #3990
+o125 if [EXISTS[#<_my_current_pocket>]]
+    #<current_pocket_runtime> = #<_my_current_pocket>
+o125 endif
+
 (tells the atc widget how many steps to move and start moving reverse)
 (DEBUG, EVAL[vcp.getWidget{"dynatc"}.rotate{#<steps_to_move>, "ccw"}])
 
@@ -36,13 +42,13 @@ o130 do
         M65 P3 ; Stop atc motor
         (abort, Failed to get rotation index)
     o131 endif
-    #3990 = [[[#3990-2] MOD #<number_of_pockets>]+1] ; Pocket is no.1-#<number_of_pockets>
+    #<current_pocket_runtime> = [[[#<current_pocket_runtime>-2] MOD #<number_of_pockets>]+1] ; Pocket is no.1-#<number_of_pockets>
     #<steps_to_move> = [#<steps_to_move>-1]
 o130 while [#<steps_to_move> GT 0]
 
 M65 P3 ; Stop motor
 
-#<_my_current_pocket> = #3990
+#<_my_current_pocket> = #<current_pocket_runtime>
 
 (PRINT, o<m12> endsub)
 o<m12> endsub [1]

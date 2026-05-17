@@ -352,21 +352,6 @@ class ProbeBasic(VCPMainWindow):
                     LOG.error("[ATC] atc_layout not found on main window")
                 else:
                     self.atc_layout.addWidget(self.atc[module_name])
-                    # QQuickWidget doesn't fully init its GL context in a hidden
-                    # tab. Force update every time the ATC tab is shown.
-                    atc_widget = self.atc[module_name]
-                    def _on_tab_changed(idx, _widget=atc_widget):
-                        from PySide6.QtCore import QTimer
-                        tab = getattr(self, 'atc_tab', None)
-                        if tab is not None and self.tabWidget.widget(idx) is tab:
-                            dynatc = getattr(_widget, 'dynatc', None)
-                            if dynatc is not None:
-                                QTimer.singleShot(0, dynatc.update)
-                    try:
-                        self.tabWidget.currentChanged.connect(_on_tab_changed)
-                        LOG.info("[ATC] connected tab change handler for QQuickWidget repaint")
-                    except Exception as exc:
-                        LOG.warning("[ATC] could not connect tab change handler: %s", exc)
 
                 if hasattr(self.atc[module_name], 'user_atc_buttons_layout'):
                     self.load_user_atc_buttons(self.atc[module_name].user_atc_buttons_layout)

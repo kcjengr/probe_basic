@@ -19,15 +19,17 @@ Rectangle {
         y: parent.height / 2 - height / 2
         antialiasing: true
         z: 0
-        rotation: 0
+        rotation: rectangle.carousel_angle
         transformOrigin: Item.Center
         source: "images/carousel_"+pocket_slots+".png"
 
 
-        RotationAnimator {
+        NumberAnimation {
             id: atc_anim
-            target: atc_holder
+            target: rectangle
+            property: "carousel_angle"
             duration: anim_duration
+            easing.type: Easing.Linear
             running: false
         }
 
@@ -47,7 +49,6 @@ Rectangle {
                 y: 0
 
                 property string pocket_num: index+1
-                property var anim: pocket_anim
                 property alias pocketRect: pocket_rectangle
                 property alias pocketLabel: pocket_text
 
@@ -77,14 +78,7 @@ Rectangle {
                         font.pixelSize: 24
                         x: parent.width / 2 - width / 2
                         y: parent.height / 2 - height / 2
-                    }
-
-                    RotationAnimator {
-                        id: pocket_anim
-                        target: pocket_text
-                        direction: RotationAnimator.Shortest
-                        duration: anim_duration
-                        running: false
+                        rotation: -rectangle.carousel_angle
                     }
                 }
             }
@@ -107,7 +101,6 @@ Rectangle {
                 state: "visible"
 
                 property int tool_num: index+1
-                property var anim: tool_anim
                 property alias toolRect: tool_rectangle
                 property alias toolLabel: tool_text
 
@@ -135,14 +128,7 @@ Rectangle {
                         font.pixelSize: 24
                         x: parent.width / 2 - width / 2
                         y: parent.height / 2 - height / 2
-                    }
-
-                    RotationAnimator {
-                        id: tool_anim
-                        target: tool_text
-                        direction: RotationAnimator.Shortest
-                        duration: anim_duration
-                        running: false
+                        rotation: -rectangle.carousel_angle
                     }
                 }
 
@@ -195,14 +181,6 @@ Rectangle {
         anim.restart();
     }
 
-    function rotate_tool(widget, duration, from, to) {
-
-        widget.anim.duration = duration;
-        widget.anim.from = from;
-        widget.anim.to = to;
-        widget.anim.restart();
-    }
-
     // carousel size
     property int widget_width: 500
     property int widget_height: 500
@@ -211,8 +189,8 @@ Rectangle {
     property color bg_color: "grey"
 
     // Animation Properties
-    property int anim_from: 0;
-    property int anim_to: 0;
+    property real carousel_angle: 0;
+    property real anim_to: 0;
     property int anim_duration: 0;
 
     // Carousel Properties
@@ -228,44 +206,19 @@ Rectangle {
 
 
     function rotate(steps, direction) {
-
-        //        console.log("ROTATE")
-
-        // console.log("ATC STEPS " + steps)
+        var step_angle = (360 / pocket_slots) * steps;
+        var current_angle = rectangle.carousel_angle;
 
         if (direction === 1)
-            anim_to = anim_from + (360/pocket_slots * steps);
+            anim_to = current_angle + step_angle;
         else if (direction === -1)
-            anim_to = anim_from - (360/pocket_slots * steps);
+            anim_to = current_angle - step_angle;
+        else
+            return;
 
-        anim_duration = rotation_duration * Math.abs(steps);
-        
-        // console.log("ROTATE ATC FROM " + anim_from + " TO " + anim_to);
-        rotate_atc(atc_anim, anim_duration, anim_from, anim_to);
+        anim_duration = Math.max(1, rotation_duration * Math.abs(steps));
 
-        //        console.log("ROTATE TOOLS");
-
-        for (var i = 0; i < (tool_slot.count); i++) {
-
-            var tool_from = -anim_from;
-            var tool_to = -anim_to;
-
-            // console.log("ROTATE TOOL FROM " + tool_from + " TO " + tool_to);
-            rotate_tool(tool_slot.itemAt(i), anim_duration, tool_from, tool_to);
-        }
-
-        // console.log("ROTATE POCKET SLOTS");
-
-        for (var j = 0; j < pocket_slot.count; j++) {
-
-            var pocket_from = -anim_from;
-            var pocket_to = -anim_to;
-
-            // console.log("ROTATE POCKET SLOT FROM " + pocket_from + " TO " + pocket_to);
-            rotate_tool(pocket_slot.itemAt(j), anim_duration, pocket_from, pocket_to);
-        }
-
-        anim_from = anim_to;
+        rotate_atc(atc_anim, anim_duration, current_angle, anim_to);
     }
 
     Connections {
@@ -273,6 +226,8 @@ Rectangle {
 
         function onAtcInitSig(pockets, step_duration) {
             rotation_duration = step_duration;
+            carousel_angle = 0;
+            anim_to = 0;
 
             pocket_slots = pockets;
             if (pocket_slots == 8) {

@@ -33,27 +33,6 @@ Rectangle {
     property real availableSpace: widget_width - usedWidth
     property real spacing: availableSpace / (pocket_slots - 1)
 
-    // Debug output
-    Component.onCompleted: {
-        console.log("Widget width:", widget_width)
-        console.log("Min total width needed:", minTotalWidth)
-        console.log("Scale factor:", scaleFactor)
-        console.log("Scaled image width:", scaledImageWidth)
-        console.log("Total used width:", usedWidth + (spacing * (pocket_slots - 1)))
-        console.log("Spacing between:", spacing)
-        console.log("Actual Rectangle width:", width)
-        console.log("Parent width:", parent ? parent.width : "no parent")
-        console.log("Container item width:", container.width)
-        console.log("Root item width:", main_rectangle.width)
-    }
-
-    // Add width change monitoring
-    onWidthChanged: {
-        console.log("Widget width changed to:", width)
-        console.log("Parent width:", parent ? parent.width : "no parent")
-        console.log("Container width:", container.width)
-    }
-
     // Layout container
     Item {
         id: container
@@ -68,16 +47,6 @@ Rectangle {
         property real scaleToFit: Math.min(1.0, width / fullContentWidth)
         property real scaledWidth: imageSpace * scaleToFit
         property real spaceBetween: (width - (scaledWidth * pocket_slots)) / (pocket_slots - 1)
-
-        onWidthChanged: {
-            console.log("Container width:", width)
-            console.log("Full content width:", fullContentWidth)
-            console.log("Scale:", scaleToFit)
-            console.log("Item width:", scaledWidth)
-            console.log("Space between:", spaceBetween)
-            console.log("Total used:", (scaledWidth * pocket_slots) + (spaceBetween * (pocket_slots - 1)))
-            console.log("Container height:", height)
-        }
 
         // Fork images
         Repeater {
@@ -219,7 +188,6 @@ Rectangle {
 
         function onAtcInitSig(pockets) {
             pocket_slots = pockets
-            console.log(pockets)
         }
 
         function onHideToolSig(pocket) {

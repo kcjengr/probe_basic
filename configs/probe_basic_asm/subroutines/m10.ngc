@@ -2,7 +2,8 @@ o<m10> sub
 
 ; Move tool carousel best direction to pocket P
 ; Parameter #3989 is used to track if the carousel is homed (M13) (volatile)
-; Parameter #3990 is used to track the current tool pocket (persistently)
+; Runtime variable #<_my_current_pocket> tracks the current pocket during execution.
+; Parameter #3990 is retained as a legacy fallback/initial value.
 ; #<number_of_pockets>: The number of pockets in the ATC is automaticity pulled from the INI via #<_ini[atc]pockets>
 (PRINT, o<m10> P#<p>)
 
@@ -16,7 +17,12 @@ o110 if [EXISTS[#<_ini[atc]pockets>]]
     #<number_of_pockets> = #<_ini[atc]pockets>
 o110 endif
 
-#<steps> = [#3990 - #<p>]
+#<current_pocket_runtime> = #3990
+o115 if [EXISTS[#<_my_current_pocket>]]
+    #<current_pocket_runtime> = #<_my_current_pocket>
+o115 endif
+
+#<steps> = [#<current_pocket_runtime> - #<p>]
 (PRINT, o<m10> P#<p>, steps=#<steps>)
 o120 if [#<steps> GT [#<number_of_pockets> / 2]]
     #<steps>=[#<steps> - #<number_of_pockets>]
