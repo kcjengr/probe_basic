@@ -96,11 +96,19 @@ def prepare_epilog(self, **words):
 def change_prolog(self, **words):
     try:
         # this is relevant only when using iocontrol-v2.
-        if self.params[5600] > 0.0:
-            if self.params[5601] < 0.0:
-                self.set_errormsg("Toolchanger hard fault %d" % (int(self.params[5601])))
+        hard_fault_flag = 0.0
+        hard_fault_code = 0.0
+        try:
+            hard_fault_flag = float(self.params[5600])
+            hard_fault_code = float(self.params[5601])
+        except KeyError:
+            pass
+
+        if hard_fault_flag > 0.0:
+            if hard_fault_code < 0.0:
+                self.set_errormsg("Toolchanger hard fault %d" % (int(hard_fault_code)))
                 return INTERP_ERROR
-            print("change_prolog: Toolchanger soft fault %d" % int(self.params[5601]))
+            print("change_prolog: Toolchanger soft fault %d" % int(hard_fault_code))
 
         if self.selected_pocket < 0:
             self.set_errormsg("M6: no tool prepared")
@@ -125,11 +133,19 @@ def change_epilog(self, **words):
                              % (r.name,r.remap_ngc if r.remap_ngc else r.remap_py))
             yield INTERP_ERROR
         # this is relevant only when using iocontrol-v2.
-        if self.params[5600] > 0.0:
-            if self.params[5601] < 0.0:
-                self.set_errormsg("Toolchanger hard fault %d" % (int(self.params[5601])))
+        hard_fault_flag = 0.0
+        hard_fault_code = 0.0
+        try:
+            hard_fault_flag = float(self.params[5600])
+            hard_fault_code = float(self.params[5601])
+        except KeyError:
+            pass
+
+        if hard_fault_flag > 0.0:
+            if hard_fault_code < 0.0:
+                self.set_errormsg("Toolchanger hard fault %d" % (int(hard_fault_code)))
                 yield INTERP_ERROR
-            print("change_epilog: Toolchanger soft fault %d" % int(self.params[5601]))
+            print("change_epilog: Toolchanger soft fault %d" % int(hard_fault_code))
 
         if self.blocks[self.remap_level].builtin_used:
             #print "---------- M6 builtin recursion, nothing to do"
