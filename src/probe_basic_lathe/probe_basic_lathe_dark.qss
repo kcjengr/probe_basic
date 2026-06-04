@@ -82,6 +82,16 @@ QComboBox QAbstractItemView {
     color: rgb(255, 255, 255);
 }
 
+QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(108, 110, 240);
+    color: rgb(255, 255, 255);
+}
+
+QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(124, 126, 255);
+    color: rgb(255, 255, 255);
+}
+
 QComboBox#recentfilecombobox {
 	border: 1px solid black;
     border-radius: 3px;
@@ -702,6 +712,96 @@ ToolTable, OffsetTable {
     alternate-background-color: rgb(90, 90, 90);
     color: white;
     font: 15pt "Probe Basic Bebas Mono";
+}
+
+QTableWidget#tool_table_widget,
+QTableWidget#tableWidget {
+    selection-background-color: rgb(108, 110, 240);
+    selection-color: rgb(255, 255, 255);
+}
+
+QTableWidget#tool_table_widget::item,
+QTableWidget#tableWidget::item {
+    border: none;
+    padding: 0px 4px;
+}
+
+QTableWidget#tool_table_widget::item:selected,
+QTableWidget#tableWidget::item:selected {
+    background-color: rgb(108, 110, 240);
+    color: rgb(255, 255, 255);
+    border: none;
+    padding: 0px 4px;
+}
+
+QTableWidget#tool_table_widget::item:focus,
+QTableWidget#tableWidget::item:focus {
+    outline: 0;
+}
+
+/* Tool-library table in-cell combo editors only */
+QTableWidget#tool_table_widget QComboBox,
+QTableWidget#tableWidget QComboBox {
+    color: white;
+    font: 15pt "Probe Basic Bebas Mono";
+    border: none;
+    padding: 0px;
+    background-color: rgb(108, 110, 240);
+}
+
+QTableWidget#tool_table_widget QComboBox::drop-down,
+QTableWidget#tableWidget QComboBox::drop-down {
+    width: 0px;
+    border: none;
+    background: transparent;
+}
+
+QTableWidget#tool_table_widget QComboBox::down-arrow,
+QTableWidget#tableWidget QComboBox::down-arrow {
+    width: 0px;
+    height: 0px;
+    image: none;
+}
+
+QTableWidget#tool_table_widget QComboBox QAbstractItemView,
+QTableWidget#tableWidget QComboBox QAbstractItemView {
+    background-color: rgb(90, 90, 90);
+    color: rgb(255, 255, 255);
+    selection-background-color: rgb(108, 110, 240);
+    selection-color: rgb(255, 255, 255);
+    font: 12pt "Probe Basic Bebas Mono";
+}
+
+QTableWidget#tool_table_widget QComboBox QAbstractItemView::item:selected,
+QTableWidget#tableWidget QComboBox QAbstractItemView::item:selected {
+    background-color: rgb(108, 110, 240);
+    color: rgb(255, 255, 255);
+}
+
+QTableWidget#tool_table_widget QComboBox QAbstractItemView::item:hover,
+QTableWidget#tableWidget QComboBox QAbstractItemView::item:hover {
+    background-color: rgb(124, 126, 255);
+    color: rgb(255, 255, 255);
+}
+
+QListView#toolLibraryComboPopup {
+    background-color: rgb(90, 90, 90);
+    color: rgb(255, 255, 255);
+    selection-background-color: rgb(108, 110, 240);
+    selection-color: rgb(255, 255, 255);
+    outline: none;
+}
+
+QListView#toolLibraryComboPopup::item:selected,
+QListView#toolLibraryComboPopup::item:selected:active,
+QListView#toolLibraryComboPopup::item:selected:!active {
+    background-color: rgb(108, 110, 240);
+    color: rgb(255, 255, 255);
+}
+
+QListView#toolLibraryComboPopup::item:hover {
+    background-color: rgb(124, 126, 255);
+    color: rgb(255, 255, 255);
 }
 
 /*===========================================================================*/

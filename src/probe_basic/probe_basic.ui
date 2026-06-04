@@ -372,7 +372,7 @@ QTabWidget QTabBar::tab {
            <enum>QTabWidget::TabPosition::South</enum>
           </property>
           <property name="currentIndex">
-           <number>8</number>
+           <number>0</number>
           </property>
           <property name="usesScrollButtons">
            <bool>false</bool>
@@ -6256,7 +6256,7 @@ color: white;</string>
                     </widget>
                    </item>
                    <item>
-                    <widget class="QPushButton" name="tool_table_reload_button">
+                    <widget class="QPushButton" name="tool_table_reload_buttonold">
                      <property name="sizePolicy">
                       <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                        <horstretch>0</horstretch>
@@ -6285,6 +6285,33 @@ color: white;</string>
                      </property>
                      <property name="text">
                       <string>RELOAD TABLE</string>
+                     </property>
+                    </widget>
+                   </item>
+                   <item>
+                    <widget class="MDIButton" name="update_tool_after_reload">
+                     <property name="minimumSize">
+                      <size>
+                       <width>160</width>
+                       <height>33</height>
+                      </size>
+                     </property>
+                     <property name="maximumSize">
+                      <size>
+                       <width>160</width>
+                       <height>33</height>
+                      </size>
+                     </property>
+                     <property name="styleSheet">
+                      <string notr="true">QPushButton {
+   	font: 14pt &quot;Probe Basic Bebas Mono&quot;;
+}</string>
+                     </property>
+                     <property name="text">
+                      <string>UPDATE LOADED TOOL</string>
+                     </property>
+                     <property name="MDICommand" stdset="0">
+                      <string>M61 Q#5400 G43</string>
                      </property>
                     </widget>
                    </item>
@@ -30929,8 +30956,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteSelectedTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>81</y>
+     <x>224</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>67</x>
@@ -30945,12 +30972,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>246</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -30961,8 +30988,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -30977,8 +31004,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>536</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>421</x>
@@ -30993,12 +31020,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewProgram()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>409</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31009,8 +31036,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -31025,12 +31052,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>viewParentDirectory()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>131</x>
-     <y>83</y>
+     <x>560</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31041,8 +31068,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>73</y>
+     <x>175</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -31057,12 +31084,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>83</y>
+     <x>951</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31077,8 +31104,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>65</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31089,12 +31116,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewMachine()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>455</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31105,12 +31132,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewOrtho()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>593</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31121,8 +31148,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>ejectDevice()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
      <x>170</x>
@@ -31137,8 +31164,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>81</y>
+     <x>353</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -31153,8 +31180,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveToolTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>81</y>
+     <x>602</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>67</x>
@@ -31173,8 +31200,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>83</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -31185,12 +31212,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>632</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31201,8 +31228,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeAll()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>86</x>
-     <y>85</y>
+     <x>84</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>159</x>
@@ -31217,8 +31244,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setFilePath(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
      <x>738</x>
@@ -31233,12 +31260,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>rename()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1061</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31249,12 +31276,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>enable_panning(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>271</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31265,8 +31292,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>192</x>
@@ -31281,12 +31308,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPath()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>501</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31297,12 +31324,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewPersp()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>639</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31313,12 +31340,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>109</y>
+     <x>1484</x>
+     <y>249</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>111</y>
+     <x>1613</x>
+     <y>250</y>
     </hint>
    </hints>
   </connection>
@@ -31329,12 +31356,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>doFileTransfer()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>410</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31345,8 +31372,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>239</x>
@@ -31361,12 +31388,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setHidden(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>536</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>83</y>
+     <x>632</x>
+     <y>637</y>
     </hint>
    </hints>
   </connection>
@@ -31377,12 +31404,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setEnabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1057</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -31393,12 +31420,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewX()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>133</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31409,8 +31436,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>73</y>
+     <x>175</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -31425,12 +31452,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>submit()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>102</x>
-     <y>93</y>
+     <x>100</x>
+     <y>130</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>65</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31441,12 +31468,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31457,12 +31484,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>488</x>
-     <y>109</y>
+     <x>1484</x>
+     <y>366</y>
     </hint>
     <hint type="destinationlabel">
-     <x>508</x>
-     <y>111</y>
+     <x>1613</x>
+     <y>367</y>
     </hint>
    </hints>
   </connection>
@@ -31473,12 +31500,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadSelectedFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1057</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31489,8 +31516,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -31509,8 +31536,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>85</y>
     </hint>
     <hint type="destinationlabel">
-     <x>370</x>
-     <y>65</y>
+     <x>376</x>
+     <y>42</y>
     </hint>
    </hints>
   </connection>
@@ -31525,8 +31552,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>80</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31537,8 +31564,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>239</x>
@@ -31569,28 +31596,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setDisabled(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
      <x>129</x>
      <y>80</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_reload_button</sender>
-   <signal>released()</signal>
-   <receiver>m6_tool_call_button_main_panel</receiver>
-   <slot>animateClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>181</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>519</x>
-     <y>766</y>
     </hint>
    </hints>
   </connection>
@@ -31601,8 +31612,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>83</x>
-     <y>73</y>
+     <x>255</x>
+     <y>86</y>
     </hint>
     <hint type="destinationlabel">
      <x>191</x>
@@ -31617,8 +31628,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>removeSelectedItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
-     <y>85</y>
+     <x>74</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>130</x>
@@ -31633,12 +31644,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewZ()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>225</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31653,8 +31664,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31665,12 +31676,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFolder()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>146</x>
-     <y>83</y>
+     <x>965</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31681,12 +31692,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>newFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>834</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31697,12 +31708,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearLivePlot()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>547</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31713,12 +31724,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewY()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>179</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31729,8 +31740,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runFromSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>76</x>
-     <y>85</y>
+     <x>74</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>179</x>
@@ -31745,8 +31756,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>loadOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>81</y>
+     <x>717</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -31761,8 +31772,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>copySelectionToGcodeEditor()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>98</x>
-     <y>85</y>
+     <x>96</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>336</x>
@@ -31781,8 +31792,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>841</y>
     </hint>
     <hint type="destinationlabel">
-     <x>349</x>
-     <y>98</y>
+     <x>1572</x>
+     <y>638</y>
     </hint>
    </hints>
   </connection>
@@ -31793,8 +31804,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>110</x>
-     <y>66</y>
+     <x>513</x>
+     <y>79</y>
     </hint>
     <hint type="destinationlabel">
      <x>239</x>
@@ -31813,8 +31824,8 @@ font: 11pt Probe Basic Bebas Mono;
      <y>83</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>83</y>
+     <x>406</x>
+     <y>96</y>
     </hint>
    </hints>
   </connection>
@@ -31825,8 +31836,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>addTool()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>181</x>
-     <y>81</y>
+     <x>413</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
      <x>67</x>
@@ -31841,12 +31852,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>setViewP()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>87</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
-     <y>112</y>
+     <x>1312</x>
+     <y>166</y>
     </hint>
    </hints>
   </connection>
@@ -31857,28 +31868,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>clearQueue()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>95</x>
-     <y>85</y>
+     <x>93</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>254</x>
      <y>42</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>tool_table_reload_button</sender>
-   <signal>clicked()</signal>
-   <receiver>tool_table</receiver>
-   <slot>loadToolTable()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>181</x>
-     <y>81</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>67</x>
-     <y>78</y>
     </hint>
    </hints>
   </connection>
@@ -31889,8 +31884,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveOffsetTable()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>81</y>
+     <x>535</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -31905,12 +31900,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>transferFile(QString)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31921,12 +31916,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>click()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>49</x>
-     <y>75</y>
+     <x>59</x>
+     <y>660</y>
     </hint>
     <hint type="destinationlabel">
-     <x>102</x>
-     <y>93</y>
+     <x>100</x>
+     <y>130</y>
     </hint>
    </hints>
   </connection>
@@ -31953,8 +31948,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>toggleQueue(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>103</x>
-     <y>85</y>
+     <x>102</x>
+     <y>102</y>
     </hint>
     <hint type="destinationlabel">
      <x>322</x>
@@ -31969,12 +31964,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>update()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>61</x>
-     <y>83</y>
+     <x>951</x>
+     <y>96</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -31985,12 +31980,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>134</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>134</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -32001,12 +31996,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteItem()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>728</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>546</x>
+     <y>137</y>
     </hint>
    </hints>
   </connection>
@@ -32017,8 +32012,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>runSelection()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>87</x>
-     <y>85</y>
+     <x>85</x>
+     <y>112</y>
     </hint>
     <hint type="destinationlabel">
      <x>275</x>
@@ -32033,8 +32028,8 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>deleteSelectedOffset()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>81</y>
+     <x>171</x>
+     <y>550</y>
     </hint>
     <hint type="destinationlabel">
      <x>121</x>
@@ -32049,12 +32044,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>EditorReadWrite(bool)</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1199</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>1197</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -32065,12 +32060,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>findDialog()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1306</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>1197</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -32081,12 +32076,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFile()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1413</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>1197</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -32097,12 +32092,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>saveFileAs()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1520</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>1197</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -32113,12 +32108,12 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>undo()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>121</x>
-     <y>83</y>
+     <x>1627</x>
+     <y>637</y>
     </hint>
     <hint type="destinationlabel">
-     <x>121</x>
-     <y>78</y>
+     <x>1197</x>
+     <y>132</y>
     </hint>
    </hints>
   </connection>
@@ -32129,11 +32124,11 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>zoomIn()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>317</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
+     <x>1312</x>
      <y>335</y>
     </hint>
    </hints>
@@ -32145,12 +32140,44 @@ font: 11pt Probe Basic Bebas Mono;
    <slot>zoomOut()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>129</x>
-     <y>68</y>
+     <x>906</x>
+     <y>363</y>
     </hint>
     <hint type="destinationlabel">
-     <x>454</x>
+     <x>1312</x>
      <y>335</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_reload_buttonold</sender>
+   <signal>clicked()</signal>
+   <receiver>tool_table</receiver>
+   <slot>loadToolTable()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>754</x>
+     <y>637</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>67</x>
+     <y>78</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>tool_table_reload_buttonold</sender>
+   <signal>released()</signal>
+   <receiver>update_tool_after_reload</receiver>
+   <slot>click()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>770</x>
+     <y>620</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>830</x>
+     <y>618</y>
     </hint>
    </hints>
   </connection>
@@ -32173,18 +32200,18 @@ font: 11pt Probe Basic Bebas Mono;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="xycalbtnGroup"/>
-  <buttongroup name="settertabGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="probetabGroup"/>
   <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
+  <buttongroup name="settertabGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="proberoutinebtnGroup"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="customwcsbtnGroup"/>
  </buttongroups>
 </ui>
