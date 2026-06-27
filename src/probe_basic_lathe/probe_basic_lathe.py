@@ -778,11 +778,11 @@ class ProbeBasicLathe(VCPMainWindow):
             LOG.info("lathe_conversational addon not installed; skipping conversational tab")
             return
 
-        addon_module = importlib.import_module(module_name)
-        widget_class = getattr(addon_module, "LatheConv")
         try:
+            addon_module = importlib.import_module(module_name)
+            widget_class = getattr(addon_module, "LatheConv")
             widget = widget_class(parent=None)
-        except RuntimeError as exc:
+        except (ImportError, RuntimeError) as exc:
             LOG.warning(f"lathe_conversational license invalid: {exc}")
             return
         widget.setParent(self)
