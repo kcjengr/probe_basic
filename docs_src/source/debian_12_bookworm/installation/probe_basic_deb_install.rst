@@ -126,24 +126,10 @@ Installation Commands
 Uninstallation
 --------------
 
-    To completely remove Probe Basic, QtPyVCP, and their dependencies from your system, run the following steps in order.
-
-1. Remove the packages
-^^^^^^^^^^^^^^^^^^^^^^
+    To completely remove Probe Basic, QtPyVCP, and their dependencies from your system, run:
 
     .. code-block:: bash
 
-        sudo dpkg -P python3-probe-basic
-
-        sudo dpkg -P python3-qtpyvcp
-
-        sudo dpkg -P python3-hiyapyco
-
-2. Remove leftover dependencies
-^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
-
-    .. code-block:: bash
-
-        sudo apt autoremove
+        sudo uninstall-probe-basic
 
     Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.
