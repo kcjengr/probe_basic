@@ -83,3 +83,57 @@ Updating and Configuration
 
         sudo apt update
         sudo apt upgrade
+
+
+Uninstallation
+--------------
+
+    To completely remove Probe Basic, QtPyVCP, and the APT repository from your system, run the following steps in order.
+
+1. Remove the packages
+^^^^^^^^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        sudo dpkg -P python3-probe-basic
+
+        sudo dpkg -P python3-qtpyvcp
+
+2. Remove leftover dependencies
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        sudo apt autoremove
+
+3. Remove the APT source list entry
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        sudo rm /etc/apt/sources.list.d/kcjengr.list
+
+4. Remove the GPG keyring file
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        sudo rm /etc/apt/trusted.gpg.d/kcjengr.gpg
+
+5. Remove the GPG key from your personal keyring
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        gpg --delete-key 2DEC041F290DF85A
+
+    If prompted, type ``y`` and press Enter to confirm deletion.
+
+6. Refresh APT
+^^^^^^^^^^^^^^^
+
+    .. code-block:: bash
+
+        sudo apt update
+
+    Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.

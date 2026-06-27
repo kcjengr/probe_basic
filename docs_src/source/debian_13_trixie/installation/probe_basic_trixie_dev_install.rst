@@ -61,6 +61,10 @@ Installation Steps
 Uninstall
 ---------
 
+    Since this is a virtual environment (venv) run-in-place install, uninstalling is simply a matter of deleting the dev folder. Run the following command in terminal:
+
     .. code-block:: bash
 
         rm -rf ~/dev
+
+    Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.
