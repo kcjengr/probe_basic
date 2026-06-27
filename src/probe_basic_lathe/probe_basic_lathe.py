@@ -781,10 +781,11 @@ class ProbeBasicLathe(VCPMainWindow):
         addon_module = importlib.import_module(module_name)
         widget_class = getattr(addon_module, "LatheConv")
         try:
-            widget = widget_class(parent=self)
+            widget = widget_class(parent=None)
         except RuntimeError as exc:
             LOG.warning(f"lathe_conversational license invalid: {exc}")
             return
+        widget.setParent(self)
         self.tabWidget.addTab(widget, "CONVERSATIONAL")
         LOG.info("Loaded lathe_conversational addon tab")
 
