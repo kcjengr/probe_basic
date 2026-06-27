@@ -33,6 +33,10 @@ override_dh_auto_install:
 	cp -r configs debian/python3-probe-basic/usr/share/
 
 
+	# Install uninstall script
+	mkdir -p debian/python3-probe-basic/usr/bin/
+	install -m 755 scripts/uninstall-probe-basic debian/python3-probe-basic/usr/bin/uninstall-probe-basic
+
 override_dh_install:
 	dh_install
 	qcompile debian/python3-probe-basic
