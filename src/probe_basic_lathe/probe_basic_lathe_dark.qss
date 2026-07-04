@@ -725,7 +725,7 @@ FileSystemTable QHeaderView::section {
     font: 13pt "Probe Basic Bebas Mono";
 }
 
-ToolTable, OffsetTable {
+ToolTable, LatheToolTable, OffsetTable {
     border-top: 5px rgb(90, 90, 90);
     border-left: 4px  rgb(90, 90, 90);
     border-bottom: 5px rgb(90, 90, 90);
@@ -738,6 +738,12 @@ ToolTable, OffsetTable {
     alternate-background-color: rgb(90, 90, 90);
     color: white;
     font: 15pt "Probe Basic Bebas Mono";
+}
+
+/* One point smaller than the shared ToolTable/OffsetTable size above --
+   overrides just the font, keeping border/color/etc. from the shared rule. */
+LatheToolTable {
+    font: 14pt "Probe Basic Bebas Mono";
 }
 
 QTableWidget#tool_table_widget,
