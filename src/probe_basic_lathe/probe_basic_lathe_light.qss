@@ -703,6 +703,57 @@ LatheToolTable {
     font: 14pt "Probe Basic Bebas Mono";
 }
 
+/* In-cell combo editors (Type/Insert Shape/Holder/... columns) -- blend
+   into the plain-text cells around them instead of looking like a
+   standalone form control dropped into the table (no border, no drop-down
+   arrow button). Double-clicking still pops the selection list open via
+   LatheItemDelegate._popOpenOnceShown; this only hides the embedded
+   editor's own box/arrow chrome while it's active. */
+LatheToolTable QComboBox[editable="false"],
+LatheToolTable QComboBox[editable="true"] {
+    border: none;
+    border-radius: 0px;
+    padding: 0px 0px 0px 4px;
+    background-color: rgb(108, 110, 240);
+    color: white;
+    font: 14pt "Probe Basic Bebas Mono";
+}
+
+LatheToolTable QComboBox QLineEdit {
+    border: none;
+    background: transparent;
+    color: white;
+    padding: 0px;
+}
+
+LatheToolTable QComboBox::drop-down {
+    width: 0px;
+    border: none;
+    background: transparent;
+}
+
+LatheToolTable QComboBox::down-arrow {
+    width: 0px;
+    height: 0px;
+    image: none;
+}
+
+LatheToolTable QComboBox QAbstractItemView {
+    background-color: rgb(20, 30, 70);
+    color: rgb(255, 255, 255);
+    selection-background-color: rgb(108, 110, 240);
+    selection-color: rgb(255, 255, 255);
+    font: 14pt "Probe Basic Bebas Mono";
+    padding: 4px 2px 4px 2px;
+}
+
+/* Per-item spacing (touch-friendly hit targets, and visible
+   separation between adjacent options -- distinct from the
+   popup-wide padding above). */
+LatheToolTable QComboBox QAbstractItemView::item {
+    padding: 6px 4px;
+}
+
 /*===========================================================================*/
 /*                             Tool tip pop ups                              */
 /*===========================================================================*/

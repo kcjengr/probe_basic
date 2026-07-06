@@ -49,6 +49,10 @@ class AddColumnDialog(QDialog):
         layout.addWidget(buttons)
         self.setLayout(layout)
 
+        # Placeholder text (e.g. "e.g. vendor_part_no") was getting clipped
+        # at the dialog's natural width -- double it for breathing room.
+        self.resize(self.sizeHint().width() * 2, self.sizeHint().height())
+
     def _onAccept(self):
         name = self.name_edit.text().strip()
         if not name:
