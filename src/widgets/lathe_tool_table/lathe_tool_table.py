@@ -25,6 +25,7 @@ from .lathe_tool_model import (LatheToolModel, TEXT_EXTRAS, CUSTOM_PREFIX,
                                STRICT_ENUM_OPTIONS, OPEN_VOCAB_SEED_OPTIONS,
                                FLOAT_DECIMALS)
 from .add_column_dialog import AddColumnDialog
+from .parameter_names_dialog import parameter_entries, ParameterNamesDialog
 
 LOG = getLogger(__name__)
 
@@ -328,6 +329,11 @@ class LatheToolTable(QTableView):
         header.setContextMenuPolicy(Qt.CustomContextMenu)
         header.customContextMenuRequested.connect(self._onHeaderContextMenu)
 
+        # cell context menu: copyable G-code/Rules access names for the
+        # clicked cell's column (tool_data.ngc params, Rules channel)
+        self.setContextMenuPolicy(Qt.CustomContextMenu)
+        self.customContextMenuRequested.connect(self._onCellContextMenu)
+
         self._updateLastColumnStretch()
 
     def resizeEvent(self, event):
@@ -452,6 +458,35 @@ class LatheToolTable(QTableView):
             return
 
         self._refreshDelegate()
+
+    def _onCellContextMenu(self, position):
+        index = self.indexAt(position)
+        if not index.isValid():
+            return
+        menu = QMenu(self)
+        params_action = menu.addAction('Parameter Names (G-code / Rules)...')
+        if menu.exec(self.viewport().mapToGlobal(position)) is params_action:
+            source = self.proxy_model.mapToSource(index)
+            self._showParameterNamesDialog(
+                source.row(),
+                self.tool_model.visibleColumns()[source.column()])
+
+    def _showParameterNamesDialog(self, source_row, col_key):
+        """Copyable access names for one cell -- what to paste into a
+        subroutine (tool_data.ngc params) or a widget rule."""
+        group = self.tool_model.columnGroup(col_key)
+        if group == 'custom':
+            is_text = (self.tool_model._custom_value_types.get(col_key)
+                       == 'text')
+        else:
+            is_text = col_key in TEXT_EXTRAS or col_key == 'R'
+        tool_no = self.tool_model.toolDataFromRow(source_row)['T']
+        entries, note = parameter_entries(col_key, group, is_text, tool_no)
+        dialog = ParameterNamesDialog(
+            'Access Names -- %s (T%s)' % (self.tool_model.columnLabel(col_key),
+                                          tool_no),
+            entries, note, self)
+        dialog.exec()
 
     @Slot()
     def showAddColumnDialog(self):

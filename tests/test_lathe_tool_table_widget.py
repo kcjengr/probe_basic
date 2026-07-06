@@ -310,6 +310,78 @@ def main():
     expect('invalid field name rejected before touching the DB',
            dlg3.result() != AddColumnDialog.DialogCode.Accepted and len(warnings) >= 2)
 
+    # The machine key doubles as the G-code parameter name (#<_tool_<key>>
+    # in the generated tool_data.ngc), one flat namespace shared with the
+    # extras columns -- so a colliding key must be rejected at creation.
+    dlg4 = AddColumnDialog(model2.tt, None)
+    dlg4.name_edit.setText('groove_width')  # collides with an extras column
+    dlg4.type_combo.setCurrentText('float')
+    dlg4._onAccept()
+    expect('key colliding with a built-in tool parameter name rejected '
+           '(would shadow #<_tool_groove_width> in G-code)',
+           dlg4.result() != AddColumnDialog.DialogCode.Accepted and len(warnings) >= 3)
+
+    # ------------------------------ access-name preview + copyable names
+    # Chris: typing the machine key should preview, live, the parameter
+    # names the column will provide ("a glimpse of what they may need");
+    # and right-clicking any cell should offer copyable access names for
+    # pasting into subroutines. Both render the same naming scheme the
+    # qtpyvcp tool_data_sub generator owns.
+    dlg5 = AddColumnDialog(model2.tt, None)
+    dlg5.name_edit.setText('coating_cycles')
+    dlg5.type_combo.setCurrentText('float')
+    expect('Add Column dialog previews G-code + Rules access names live',
+           '#<_current_tool_coating_cycles>' in dlg5.preview.text() and
+           '#<_tool_5_coating_cycles>' in dlg5.preview.text() and
+           'custom:coating_cycles' in dlg5.preview.text())
+    dlg5.type_combo.setCurrentText('text')
+    expect('preview switches to Rules-only (with the reason) for text type',
+           '#<_current_tool_' not in dlg5.preview.text() and
+           'custom:coating_cycles' in dlg5.preview.text())
+    dlg5.name_edit.setText('9bad')
+    expect('preview shows guidance, not bogus params, for an invalid key',
+           '#<' not in dlg5.preview.text())
+
+    from widgets.lathe_tool_table.parameter_names_dialog import (
+        parameter_entries, ParameterNamesDialog)
+
+    entries, note = parameter_entries('groove_width', 'extras', False, 5)
+    snippets = [s for _c, s in entries]
+    expect('cell access names: numeric extras column lists all three '
+           'G-code namespaces, the call line, and the Rules syntax',
+           '#<_tool_5_groove_width>' in snippets and
+           '#<_current_tool_groove_width>' in snippets and
+           '#<_tool_groove_width>' in snippets and
+           'o<tool_data> call [#5400]' in snippets and
+           'tooltable:current_tool?groove_width' in snippets)
+
+    entries_c, _note_c = parameter_entries('custom:weight', 'custom', False, 7)
+    snippets_c = [s for _c, s in entries_c]
+    expect('custom column access names use the bare machine key + tool number',
+           '#<_tool_7_weight>' in snippets_c and
+           'tooltable:current_tool?custom:weight' in snippets_c)
+
+    entries_t, note_t = parameter_entries('type', 'extras', True, 5)
+    expect('text extras column offers Rules access only, explaining why',
+           all('#<' not in s for _c, s in entries_t) and 'string' in note_t)
+
+    entries_d, note_d = parameter_entries('D', 'core', False, 5)
+    expect("core column points at LinuxCNC's own live parameter (#5410), "
+           'not a tool_data.ngc copy',
+           '#5410' in [s for _c, s in entries_d] and 'tool_data' in note_d)
+
+    from PySide6.QtWidgets import QApplication as _QApp
+    dlg6 = ParameterNamesDialog('Access Names -- test', entries, note)
+    dlg6.copy_buttons[0].click()
+    expect('Copy button puts the access name on the clipboard',
+           _QApp.clipboard().text() == entries[0][1])
+    expect('dialogs give buttons 3px padding and rows breathing room '
+           '(theme defaults cramped both)',
+           'padding: 3px' in dlg6.styleSheet() and
+           dlg6.grid.verticalSpacing() == 10 and
+           'padding: 3px' in dlg5.styleSheet() and
+           dlg5.form.verticalSpacing() == 10)
+
     # ------------------------------------------------- column visibility + removal
     # Regression coverage for a real crash: toggling a custom column's
     # visibility off (shrinking _visible_columns) while a QSortFilterProxyModel
@@ -325,6 +397,8 @@ def main():
     qInstallMessageHandler(lambda mode, ctx, msg: qt_warnings.append(msg))
 
     table = LatheToolTable()
+    expect('cells have the custom context menu wired (Parameter Names)',
+           table.contextMenuPolicy() == Qt.ContextMenuPolicy.CustomContextMenu)
     model2.tt.addCustomField('vendor', 'Vendor', 'text')  # after the widget/proxy exist
     table.tool_model.setVisibleColumns(table.tool_model.allColumns())
     expect('new custom field visible through a live widget+proxy',
