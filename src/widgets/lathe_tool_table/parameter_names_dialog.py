@@ -1,16 +1,25 @@
 # coding=utf-8
-"""Copyable access names for one tool-table cell (plan §6 Phase 3
-follow-up, Chris 2026-07-06).
+"""Copyable access names for one tool-table cell (plan §6 Phase 3/6
+follow-up, Chris 2026-07-06/08).
 
 Right-clicking a cell offers "Parameter Names" -- a dialog listing every
-way that cell's data can be reached from G-code/subroutines (the
-generated ``tool_data.ngc`` parameters) and from other widgets (the
-``tooltable:current_tool`` Rules channel), each in a read-only line edit
-with a Copy button, ready to paste into a subroutine.
+way that cell's data can be reached from G-code/subroutines and from
+other widgets (the ``tooltable:current_tool`` Rules channel), each in a
+read-only line edit with a Copy button, ready to paste into a
+subroutine.
 
-``parameter_entries()`` is a pure function (no Qt) so the content -- the
-part that must stay in lockstep with qtpyvcp's tool_data_sub generator
-naming scheme -- is testable without exec'ing a modal dialog.
+The G-code parameter (``#<_current_tool_<key>>``) is written directly by
+probe_basic's M6 remap epilog (configs/probe_basic_lathe/python/
+stdglue.py: refresh_current_tool_params(), called from change_epilog
+right after the tool-change commit) -- not by a generated subroutine
+that needs calling. It runs inside the interpreter process itself, so
+the parameter is correct from the instant a tool change commits,
+unconditionally; there is no manual call, and no gap, not even for a
+program that changes tools mid-run and reads the value later in that
+same run.
+
+``parameter_entries()`` is a pure function (no Qt) so the content is
+testable without exec'ing a modal dialog.
 """
 
 from PySide6.QtCore import Qt
@@ -20,9 +29,9 @@ from PySide6.QtWidgets import (QDialog, QGridLayout, QVBoxLayout, QLabel,
 from .lathe_tool_model import CUSTOM_PREFIX
 
 # Loaded-tool numbered parameters LinuxCNC itself maintains for the core
-# columns. Core is deliberately NOT mirrored into tool_data.ngc (a copy
-# could go stale after a mid-run G10/touch-off), so for core cells the
-# right answer is LinuxCNC's own live parameter.
+# columns. Core is deliberately NOT mirrored into #<_current_tool_*> (a
+# copy could go stale after a mid-run G10/touch-off), so for core cells
+# the right answer is LinuxCNC's own live parameter.
 CORE_LCNC_PARAMS = {
     'T': '#5400', 'X': '#5401', 'Y': '#5402', 'Z': '#5403', 'A': '#5404',
     'B': '#5405', 'C': '#5406', 'U': '#5407', 'V': '#5408', 'W': '#5409',
@@ -65,21 +74,21 @@ def parameter_entries(col_key, group, is_text, tool_no):
             ('Tool in spindle (LinuxCNC built-in)', lcnc_param),
             rules_row,
         ], ('Core column: LinuxCNC exposes this live for the loaded tool. '
-            'It is deliberately not duplicated in tool_data.ngc, where a '
-            'copy could go stale after a G10/touch-off.')
+            'It is deliberately not duplicated in #<_current_tool_*>, '
+            'where a copy could go stale after a G10/touch-off.')
 
     if is_text:
         return [rules_row], TEXT_NOTE
 
     return [
-        ('This tool (T%s)' % tool_no, '#<_tool_%s_%s>' % (tool_no, key)),
         ('Tool in spindle', '#<_current_tool_%s>' % key),
-        ('Selected tool (from the call argument)', '#<_tool_%s>' % key),
-        ('Run first, to load the values', 'o<tool_data> call [#5400]'),
         rules_row,
-    ], ('G-code parameters hold values as of the last o<tool_data> call '
-        '(pass a tool number, e.g. [7], to select a different tool into '
-        '#<_tool_%s>).' % key)
+    ], ('#<_current_tool_%s> always describes the currently LOADED tool, '
+        'not necessarily T%s -- there is no by-tool-number lookup (only '
+        'the loaded tool\'s data is published to G-code). Written '
+        'directly by the M6 remap the instant a tool change commits, so '
+        'it is always correct -- no call needed anywhere, ever, '
+        'including mid-program tool changes.' % (key, tool_no))
 
 
 class ParameterNamesDialog(QDialog):

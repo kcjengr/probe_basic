@@ -85,7 +85,9 @@ class AddColumnDialog(QDialog):
     def _updatePreview(self, *_args):
         """Live preview of the access names this column will provide,
         keyed off whatever is currently typed -- kept in lockstep with
-        qtpyvcp's tool_data_sub naming scheme."""
+        probe_basic's M6 remap epilog (configs/probe_basic_lathe/python/
+        stdglue.py: refresh_current_tool_params), which is what actually
+        writes the G-code parameter."""
         name = self.name_edit.text().strip()
         if not _is_valid_key(name):
             self.preview.setText(
@@ -100,10 +102,8 @@ class AddColumnDialog(QDialog):
                 '    tooltable:current_tool?custom:%s' % name)
             return
         self.preview.setText(
-            'Access preview (in G-code, after "o<tool_data> call"):\n'
-            '    #<_current_tool_%(key)s>    (tool in spindle)\n'
-            '    #<_tool_%(key)s>    (tool selected by the call argument)\n'
-            '    #<_tool_5_%(key)s>    (tool 5; one of these per tool)\n'
+            'Access preview (in G-code, always live, no call needed):\n'
+            '    #<_current_tool_%(key)s>    (the tool in the spindle)\n'
             'Widget rules:\n'
             '    tooltable:current_tool?custom:%(key)s' % {'key': name})
 
