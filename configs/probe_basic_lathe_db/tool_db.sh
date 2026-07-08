@@ -4,7 +4,7 @@
 #
 # Runs the qtpyvcp tool_db_backend against tool_table.db in this config dir —
 # the same file the DBToolTable GUI plugin opens (single source of truth).
-# Seed the database first:  python3 ~/dev/qtpyvcp/tests/seed_db_from_tbl.py
+# Seed the database first:  python3 ~/dev/scratch/qtpyvcp/tests/seed_db_from_tbl.py
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 

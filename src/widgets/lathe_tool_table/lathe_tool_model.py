@@ -16,7 +16,7 @@ regardless of whether LinuxCNC's own interpreter happens to consume that
 particular column.
 """
 
-from PySide6.QtCore import Qt, QModelIndex
+from PySide6.QtCore import Qt, QModelIndex, Signal
 from PySide6.QtGui import QStandardItemModel, QColor, QBrush
 
 from qtpyvcp.utilities.logger import getLogger
@@ -159,8 +159,11 @@ MAX_COLUMNS = 200  # generous fixed capacity; mirrors the row model's
 
 class LatheToolModel(QStandardItemModel):
 
+    dirtyChanged = Signal(bool)
+
     def __init__(self, parent=None):
         super(LatheToolModel, self).__init__(parent)
+        self._dirty = False
 
         if IN_DESIGNER:
             self._initEmptyStub()
@@ -387,6 +390,7 @@ class LatheToolModel(QStandardItemModel):
         self.beginResetModel()
         self._tool_table = table
         self.endResetModel()
+        self._set_dirty(False)
         LOG.debug("LatheToolModel reload: tools=%s", len(table) - 1)
 
     def _onExtrasChanged(self, tool_no):
@@ -499,7 +503,18 @@ class LatheToolModel(QStandardItemModel):
         key = self._visible_columns[index.column()]
         tnum = self._tool_no_for_row(index.row())
         self._tool_table[tnum][key] = value
+        self._set_dirty(True)
         return True
+
+    def _set_dirty(self, dirty):
+        """Track unsaved edits staged in memory since the last save/reload;
+        emits only on an actual state change so listeners (the Save button's
+        color indicator) aren't hit on every single keystroke."""
+        dirty = bool(dirty)
+        if dirty == self._dirty:
+            return
+        self._dirty = dirty
+        self.dirtyChanged.emit(self._dirty)
 
     # ------------------------------------------------------------ actions
 

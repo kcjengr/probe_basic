@@ -253,6 +253,7 @@ class LatheItemDelegate(QStyledItemDelegate):
 
 class LatheToolTable(QTableView):
     toolSelected = Signal(int)
+    dirtyChanged = Signal(bool)
 
     def __init__(self, parent=None):
         super(LatheToolTable, self).__init__(parent)
@@ -261,6 +262,7 @@ class LatheToolTable(QTableView):
         self.doubleClicked.connect(self.onDoubleClick)
 
         self.tool_model = LatheToolModel(self)
+        self.tool_model.dirtyChanged.connect(self.dirtyChanged.emit)
 
         if not IN_DESIGNER and self.tool_model.tt is not None:
             self.tool_model.tt.tool_table_changed.connect(self._onToolTableChanged)
