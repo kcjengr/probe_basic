@@ -53,15 +53,10 @@ sim/*.old
 
 dev_launchers/probe_basic_lathe_launcher.sh
 
-configs/probe_basic_lathe/core.253805
-
-configs/probe_basic_lathe/core.254526
-
-configs/probe_basic_lathe/core.256190
-
-configs/probe_basic_lathe/core.260971
-
-configs/probe_basic_lathe/core.261771
+# crash artifacts (core dumps land in the config dir the app ran from;
+# park keepers in tests/scratch/, delete the rest)
+configs/*/core.*
+configs/*/*crash*.log
 
 # generated from the tool database at every table change (see qtpyvcp
 # lib/db_tool/tool_data_sub.py) -- per-machine data, like tool_table.db

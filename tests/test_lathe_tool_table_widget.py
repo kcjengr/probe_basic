@@ -76,7 +76,11 @@ def main():
 
     real_db = os.path.expanduser(
         '~/dev/probe_basic/configs/probe_basic_lathe/tool_table.db')
-    scratch_db = os.path.join(HERE, 'widget_test_scratch.db')
+    # test-generated files live in the central dev scratch area outside
+    # the repo (~/dev/scratch/README.md) -- disposable, recreated per run
+    scratch_dir = os.path.expanduser('~/dev/scratch/probe_basic')
+    os.makedirs(scratch_dir, exist_ok=True)
+    scratch_db = os.path.join(scratch_dir, 'widget_test_scratch.db')
     for suffix in ('', '-wal', '-shm'):
         p = scratch_db + suffix
         if os.path.exists(p):
