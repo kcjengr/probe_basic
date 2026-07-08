@@ -1,0 +1,3534 @@
+{
+  "version": 1,
+  "operations": {
+    "facing_001": {
+      "id": "facing_001",
+      "type": "facing",
+      "name": "Facing",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 0.0,
+        "z_start_position": 0.0,
+        "z_end_position": -0.1,
+        "corner_radius": 0.0,
+        "taper_angle_from_z_axis_degrees": 0.0,
+        "finish_step_depth": 0.01,
+        "rough_step_depth": 0.1,
+        "wcs": 54.0,
+        "tool_number": 12,
+        "units_mode": 20.0,
+        "coolant_mode": 9.0,
+        "feed_mode": 95.0,
+        "finish_feedrate": 0.01,
+        "rough_feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 1000,
+        "rough_surface_speed": 200,
+        "finish_surface_speed": 200,
+        "spindle_direction": 3.0,
+        "safety_clearance": 0.05,
+        "set_z_zero_facing": false
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.0,
+              -0.005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.1,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_facing",
+              "description": "End Diameter",
+              "tab": "facing_tab",
+              "widget_name": "x_end_diam_facing"
+            },
+            "2": {
+              "parameter": "z_end_facing",
+              "description": "Face Depth",
+              "tab": "facing_tab",
+              "widget_name": "z_end_facing"
+            }
+          },
+          "operation_type": "facing",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
+    "drill_002": {
+      "id": "drill_002",
+      "type": "drill",
+      "name": "Drill",
+      "enabled": true,
+      "params": {
+        "z_start": 0.0,
+        "z_end": -1.45,
+        "tool_clearance": 0.05,
+        "retract_dist": 0.1,
+        "full_retract": false,
+        "true_bore_depth": true,
+        "peck_depth": 0.2,
+        "tip_angle": 118.0,
+        "bottom_dwell": 0.0,
+        "wcs": 54.0,
+        "tool_number": 10,
+        "units_mode": 20.0,
+        "coolant_mode": 8.0,
+        "feed_mode": 95.0,
+        "feedrate": 0.01,
+        "retract_feed": 0.01,
+        "rpm": 1000,
+        "spindle_dir": 3.0,
+        "drill_diameter": 0.4531
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.45,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.5861249732406937,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.22655,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.45,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.5861249732406937,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "z_end_drill",
+              "description": "Drill Depth",
+              "tab": "drill_tab",
+              "widget_name": "z_end_drill"
+            },
+            "2": {
+              "parameter": "tip_angle_drill",
+              "description": "Tip Angle",
+              "tab": "drill_tab",
+              "widget_name": "tip_angle_drill"
+            }
+          },
+          "operation_type": "drill"
+        }
+      }
+    },
+    "id_turning_001": {
+      "id": "id_turning_001",
+      "type": "id_turning",
+      "name": "ID Turning",
+      "enabled": true,
+      "params": {
+        "x_min_position": 0.5,
+        "x_max_position": 0.682,
+        "z_start_position": 0.0,
+        "z_end_position": -0.8,
+        "corner_radius": 0.0,
+        "taper_angle_from_z_axis_degrees": 0.0,
+        "finish_step_depth": 0.01,
+        "rough_step_depth": 0.1,
+        "wcs": 54.0,
+        "tool_number": 9,
+        "units_mode": 20.0,
+        "coolant_mode": 9.0,
+        "feed_mode": 95.0,
+        "finish_feedrate": 0.01,
+        "rough_feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 1000,
+        "rough_surface_speed": 200,
+        "finish_surface_speed": 200,
+        "spindle_direction": 3.0,
+        "z_safe_clearance": 0.05,
+        "x_safe_retract": 0.01
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.341,
+              -0.005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.005,
+              -0.8,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_turn_id",
+              "description": "Bore Diameter",
+              "tab": "id_turning_tab",
+              "widget_name": "x_end_diam_turn_id"
+            },
+            "2": {
+              "parameter": "z_end_turn_id",
+              "description": "Bore End",
+              "tab": "id_turning_tab",
+              "widget_name": "z_end_turn_id"
+            }
+          },
+          "operation_type": "id_turning",
+          "coordinate_system": "id_axial",
+          "geometry_type": "1a_straight"
+        }
+      }
+    },
+    "grooving_id_001": {
+      "id": "grooving_id_001",
+      "type": "grooving_id",
+      "name": "Grooving ID",
+      "enabled": true,
+      "params": {
+        "x_start_diam": 0.4531,
+        "x_end_diam": 0.8,
+        "z_start": -0.69,
+        "z_width_groove": 0.12,
+        "z_end": -0.8099999999999999,
+        "x_safe_retract": 0.01,
+        "clearance": 0.05,
+        "tool_width": 0.0788,
+        "peck_dist": 0.0,
+        "retract": 0.0,
+        "edgebreak": 0.05,
+        "corner_radius": 0.01,
+        "rough_step_depth": 0.1,
+        "finish_step_depth": 0.01,
+        "wcs": 54.0,
+        "tool_number": 16,
+        "units_mode": 20.0,
+        "coolant_mode": 9.0,
+        "feed_mode": 95.0,
+        "rough_feedrate": 0.01,
+        "finish_feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 1000,
+        "rough_surface_speed": 200,
+        "finish_surface_speed": 200,
+        "spindle_direction": 3.0,
+        "operation_type": "grooving_id",
+        "tool_orientation": 2
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.22655,
+              -0.6399999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.27655,
+              -0.69,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.39,
+              -0.69,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.4,
+              -0.7,
+              0.39,
+              -0.7,
+              0.01
+            ],
+            [
+              "line",
+              0.4,
+              -0.7999999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.39,
+              -0.8099999999999999,
+              0.39,
+              -0.7999999999999999,
+              0.01
+            ],
+            [
+              "line",
+              0.27655,
+              -0.8099999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.86,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.6399999999999999,
+              0,
+              0,
+              0
+            ]
+          ],
+          "warnings": [],
+          "finish_step_effective": 0.01,
+          "operation_type": "grooving_id"
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.22655,
+              -0.6399999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.27655,
+              -0.69,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.39,
+              -0.69,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.4,
+              -0.7,
+              0.39,
+              -0.7,
+              0.01
+            ],
+            [
+              "line",
+              0.4,
+              -0.7999999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.39,
+              -0.8099999999999999,
+              0.39,
+              -0.7999999999999999,
+              0.01
+            ],
+            [
+              "line",
+              0.27655,
+              -0.8099999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.86,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.6399999999999999,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edgebreak_groove_id",
+              "description": "Groove Edge Break (Start)",
+              "tab": "groove_id",
+              "widget_name": "edgebreak_groove_id"
+            },
+            "2": {
+              "parameter": "z_start_groove_id",
+              "description": "Groove Start Z",
+              "tab": "groove_id",
+              "widget_name": "z_start_groove_id"
+            },
+            "3": {
+              "parameter": "corner_radius_groove_id",
+              "description": "Groove Corner Radius (Start)",
+              "tab": "groove_id",
+              "widget_name": "corner_radius_groove_id"
+            },
+            "4": {
+              "parameter": "x_end_diam_groove_id",
+              "description": "Groove Depth Diameter",
+              "tab": "groove_id",
+              "widget_name": "x_end_diam_groove_id"
+            },
+            "5": {
+              "parameter": "corner_radius_groove_id",
+              "description": "Groove Corner Radius (End)",
+              "tab": "groove_id",
+              "widget_name": "corner_radius_groove_id"
+            },
+            "6": {
+              "parameter": "z_width_groove_id",
+              "description": "Groove Width",
+              "tab": "groove_id",
+              "widget_name": "z_width_groove_id"
+            },
+            "7": {
+              "parameter": "edgebreak_groove_id",
+              "description": "Groove Edge Break (End)",
+              "tab": "groove_id",
+              "widget_name": "edgebreak_groove_id"
+            }
+          },
+          "operation_type": "grooving_id",
+          "coordinate_system": "id_radial",
+          "geometry_type": "1r_straight",
+          "warnings": []
+        }
+      }
+    },
+    "tap_001": {
+      "id": "tap_001",
+      "type": "tap",
+      "name": "Tap",
+      "enabled": true,
+      "params": {
+        "wcs": 54.0,
+        "units_mode": 20.0,
+        "tool_number": 15,
+        "coolant_mode": 9.0,
+        "rpm": 500,
+        "spindle_direction": 3.0,
+        "z_start": 0.0,
+        "z_end": -1.4,
+        "tool_clearance": 0.15000000000000002,
+        "pitch": 0.05,
+        "tpi": 20.0,
+        "peck_depth": 0.0,
+        "retract_dist": 0.0,
+        "tap_size": "1/2-20",
+        "tap_drill": "29/64",
+        "hole_diam": 0.4531
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.22655,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.025,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.05,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.07500000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.15000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.17500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.2,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.225,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.275,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.3,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.325,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.39999999999999997,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.425,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.44999999999999996,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.475,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.49999999999999994,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.5249999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.5499999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.575,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.6,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.65,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.675,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.7000000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.7250000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.7500000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.7750000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.8000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.8250000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.8500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.8750000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.9000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.9250000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.9500000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.9750000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.0000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.0250000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.0500000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.0750000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.1000000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.1250000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.1500000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.1750000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.2000000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.2250000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.2500000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.2750000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.3000000000000005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.3250000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.3500000000000005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.3750000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.4,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.4,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.22655,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.025,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.05,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.07500000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.15000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.17500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.2,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.225,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.275,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.3,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.325,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.39999999999999997,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.425,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.44999999999999996,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.475,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.49999999999999994,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.5249999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.5499999999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.575,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.6,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.65,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.675,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.7000000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.7250000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.7500000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.7750000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.8000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.8250000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.8500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.8750000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.9000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.9250000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.9500000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -0.9750000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.0000000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.0250000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.0500000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.0750000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.1000000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.1250000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.1500000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.1750000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.2000000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.2250000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.2500000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.2750000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.3000000000000005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.3250000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.3500000000000005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.25405,
+              -1.3750000000000004,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.4,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "2": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "3": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "4": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "5": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "6": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "7": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "8": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "9": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "10": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "11": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "12": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "13": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "14": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "15": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "16": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "17": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "18": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "19": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "20": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "21": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "22": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "23": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "24": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "25": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "26": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "27": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "28": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "29": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "30": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "31": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "32": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "33": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "34": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "35": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "36": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "37": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "38": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "39": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "40": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "41": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "42": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "43": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "44": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "45": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "46": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "47": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "48": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "49": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "50": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "51": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "52": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "53": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "54": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "55": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            },
+            "56": {
+              "parameter": "pitch_thread_tap",
+              "description": "Tap Thread Pitch/Profile",
+              "tab": "tap",
+              "widget_name": "pitch_thread_tap"
+            }
+          },
+          "operation_type": "tap",
+          "coordinate_system": "id_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
+    "thread_int_001": {
+      "id": "thread_int_001",
+      "type": "thread_int",
+      "name": "Thread Internal",
+      "enabled": true,
+      "params": {
+        "thread_kind": "internal",
+        "right_hand": true,
+        "wcs": 54.0,
+        "units_mode": 20.0,
+        "tool_number": 17,
+        "coolant_mode": 8.0,
+        "rpm": 500,
+        "spindle_direction": 3.0,
+        "pass_count": 3,
+        "spring_passes": 1,
+        "pitch": 0.0625,
+        "tpi": 16.0,
+        "x_start_diam": 0.682,
+        "x_end_diam": 0.75,
+        "x_clearance": 0.01,
+        "z_start": -0.1,
+        "z_end": -0.75,
+        "depth_of_cut": 0.0227,
+        "lead_length": 0.1,
+        "taper": 0.0,
+        "size": "3/4-16",
+        "diam_rad_mode": 7
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.341,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.13125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.1625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.19375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.225,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.25625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.2875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.31875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.38125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.4125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.44375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.475,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.50625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.5375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.56875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.6,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.63125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.6625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.69375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.725,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.75,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.75,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.1,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.341,
+              -0.1,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.13125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.1625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.19375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.225,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.25625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.2875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.31875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.38125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.4125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.44375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.475,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.50625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.5375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.56875,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.6,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.63125,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.6625,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.69375,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.725,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.375,
+              -0.75,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "2": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "3": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "4": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "5": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "6": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "7": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "8": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "9": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "10": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "11": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "12": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "13": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "14": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "15": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "16": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "17": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "18": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "19": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "20": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            },
+            "21": {
+              "parameter": "pitch_thread_int",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_int"
+            }
+          },
+          "operation_type": "threading",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
+    "od_turning_001": {
+      "id": "od_turning_001",
+      "type": "od_turning",
+      "name": "OD Turning",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 1.4981,
+        "z_start_position": 0.0,
+        "z_end_position": -0.99,
+        "corner_radius": 0.0,
+        "taper_angle_from_z_axis_degrees": 0.0,
+        "finish_step_depth": 0.01,
+        "rough_step_depth": 0.1,
+        "wcs": 54.0,
+        "tool_number": 2,
+        "units_mode": 20.0,
+        "coolant_mode": 8.0,
+        "feed_mode": 95.0,
+        "finish_feedrate": 0.01,
+        "rough_feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 1000,
+        "rough_surface_speed": 200,
+        "finish_surface_speed": 200,
+        "spindle_direction": 3.0,
+        "safety_clearance": 0.05
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.99,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.99,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.74905,
+              -0.005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.99,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.992,
+              -0.99,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_turn_od",
+              "description": "Finish Diameter",
+              "tab": "od_turning_tab",
+              "widget_name": "x_end_diam_turn_od"
+            },
+            "2": {
+              "parameter": "z_end_turn_od",
+              "description": "Cut End",
+              "tab": "od_turning_tab",
+              "widget_name": "z_end_turn_od"
+            }
+          },
+          "operation_type": "od_turning",
+          "coordinate_system": "od_axial",
+          "geometry_type": "1a_straight"
+        }
+      }
+    },
+    "grooving_od_002": {
+      "id": "grooving_od_002",
+      "type": "grooving_od",
+      "name": "Grooving OD",
+      "enabled": true,
+      "params": {
+        "x_start_diam": 2.0,
+        "x_end_diam": 1.36,
+        "z_start": -0.87,
+        "z_width_groove": 0.14,
+        "z_end": -1.01,
+        "x_safe_retract": 0.0,
+        "clearance": 0.05,
+        "tool_width": 0.0788,
+        "peck_dist": 0.0,
+        "retract": 0.0,
+        "edgebreak": 0.03,
+        "corner_radius": 0.02,
+        "rough_step_depth": 0.1,
+        "finish_step_depth": 0.01,
+        "wcs": 54.0,
+        "tool_number": 12,
+        "units_mode": 20.0,
+        "coolant_mode": 9.0,
+        "feed_mode": 95.0,
+        "rough_feedrate": 0.01,
+        "finish_feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 1000,
+        "rough_surface_speed": 200,
+        "finish_surface_speed": 200,
+        "spindle_direction": 3.0,
+        "operation_type": "grooving_od",
+        "tool_orientation": 2
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              -0.84,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -0.87,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.7000000000000001,
+              -0.87,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.68,
+              -0.89,
+              0.7000000000000001,
+              -0.89,
+              0.02
+            ],
+            [
+              "line",
+              0.68,
+              -0.99,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.7000000000000001,
+              -1.01,
+              0.7000000000000001,
+              -0.99,
+              0.02
+            ],
+            [
+              "line",
+              0.97,
+              -1.01,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.04,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.84,
+              0,
+              0,
+              0
+            ]
+          ],
+          "warnings": [],
+          "finish_step_effective": 0.01,
+          "operation_type": "grooving_od"
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              1.0,
+              -0.84,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -0.87,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.7000000000000001,
+              -0.87,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.68,
+              -0.89,
+              0.7000000000000001,
+              -0.89,
+              0.02
+            ],
+            [
+              "line",
+              0.68,
+              -0.99,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.7000000000000001,
+              -1.01,
+              0.7000000000000001,
+              -0.99,
+              0.02
+            ],
+            [
+              "line",
+              0.97,
+              -1.01,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.04,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.84,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edgebreak_groove_od",
+              "description": "Groove Edge Break (Start)",
+              "tab": "groove_od",
+              "widget_name": "edgebreak_groove_od"
+            },
+            "2": {
+              "parameter": "z_start_groove_od",
+              "description": "Groove Start Z",
+              "tab": "groove_od",
+              "widget_name": "z_start_groove_od"
+            },
+            "3": {
+              "parameter": "corner_radius_groove_od",
+              "description": "Groove Corner Radius (Start)",
+              "tab": "groove_od",
+              "widget_name": "corner_radius_groove_od"
+            },
+            "4": {
+              "parameter": "x_end_diam_groove_od",
+              "description": "Groove Depth Diameter",
+              "tab": "groove_od",
+              "widget_name": "x_end_diam_groove_od"
+            },
+            "5": {
+              "parameter": "corner_radius_groove_od",
+              "description": "Groove Corner Radius (End)",
+              "tab": "groove_od",
+              "widget_name": "corner_radius_groove_od"
+            },
+            "6": {
+              "parameter": "z_width_groove_od",
+              "description": "Groove Width",
+              "tab": "groove_od",
+              "widget_name": "z_width_groove_od"
+            },
+            "7": {
+              "parameter": "edgebreak_groove_od",
+              "description": "Groove Edge Break (End)",
+              "tab": "groove_od",
+              "widget_name": "edgebreak_groove_od"
+            }
+          },
+          "operation_type": "grooving_od",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight",
+          "warnings": []
+        }
+      }
+    },
+    "thread_ext_001": {
+      "id": "thread_ext_001",
+      "type": "thread_ext",
+      "name": "Thread External",
+      "enabled": true,
+      "params": {
+        "thread_kind": "external",
+        "right_hand": true,
+        "wcs": 54.0,
+        "units_mode": 20.0,
+        "tool_number": 8,
+        "coolant_mode": 9.0,
+        "rpm": 500,
+        "spindle_direction": 3.0,
+        "pass_count": 3,
+        "spring_passes": 1,
+        "pitch": 0.0833,
+        "tpi": 12.0,
+        "x_start_diam": 1.4981,
+        "x_end_diam": 1.3959,
+        "x_clearance": 0.1,
+        "z_start": 0.0,
+        "z_end": -0.9,
+        "depth_of_cut": 0.0341,
+        "lead_length": 0.24999999899999997,
+        "taper": 0.0,
+        "size": "1-1/2-12",
+        "diam_rad_mode": 7
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.74905,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.04165,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.0833,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.12495,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.1666,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.20825,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.2499,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.29155000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.3332,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.37485,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.4165,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.45815,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.49979999999999997,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.54145,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.5831,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.6247499999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.6664,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.70805,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.7497,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.79135,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.8330000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.87465,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.9,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.9,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.74905,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.04165,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.0833,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.12495,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.1666,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.20825,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.2499,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.29155000000000003,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.3332,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.37485,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.4165,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.45815,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.49979999999999997,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.54145,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.5831,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.6247499999999999,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.6664,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.70805,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.7497,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.79135,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.8330000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.69795,
+              -0.87465,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.74905,
+              -0.9,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "2": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "3": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "4": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "5": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "6": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "7": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "8": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "9": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "10": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "11": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "12": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "13": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "14": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "15": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "16": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "17": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "18": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "19": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "20": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "21": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            },
+            "22": {
+              "parameter": "pitch_thread_ext",
+              "description": "Thread Pitch/Profile",
+              "tab": "thread",
+              "widget_name": "pitch_thread_ext"
+            }
+          },
+          "operation_type": "threading",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
+    "parting_001": {
+      "id": "parting_001",
+      "type": "parting",
+      "name": "Parting",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 0.0,
+        "z_start_position": -1.85,
+        "edge_break_parting": 0.03,
+        "tool_width_parting": 0.1,
+        "safe_clearance_parting": 0.1,
+        "wcs": 54.0,
+        "tool_number": 12,
+        "units_mode": 20.0,
+        "coolant_mode": 9.0,
+        "feed_mode": 95.0,
+        "feedrate": 0.01,
+        "spindle_mode": 96.0,
+        "constant_rpm": 500,
+        "max_rpm_limit": 200,
+        "surface_speed": 200,
+        "spindle_direction": 3.0,
+        "peck_distance": 0.0,
+        "retract_distance": 0.1,
+        "tool_orientation": 2
+      },
+      "preview_snapshot": {
+        "snapshot_version": 1,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              -1.82,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.82,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.995,
+              -1.82,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.965,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.995,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edge_break_parting",
+              "description": "Edge Break Chamfer",
+              "tab": "parting_tab",
+              "widget_name": "edge_break_parting"
+            },
+            "2": {
+              "parameter": "z_start_parting",
+              "description": "Parting Z Position",
+              "tab": "parting_tab",
+              "widget_name": "z_start_parting"
+            },
+            "3": {
+              "parameter": "x_end_diam_parting",
+              "description": "End Diameter",
+              "tab": "parting_tab",
+              "widget_name": "x_end_diam_parting"
+            },
+            "4": {
+              "parameter": "tool_width_parting",
+              "description": "Tool Width",
+              "tab": "parting_tab",
+              "widget_name": "tool_width_parting"
+            }
+          },
+          "operation_type": "parting",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    }
+  },
+  "operation_order": [
+    "facing_001",
+    "drill_002",
+    "id_turning_001",
+    "grooving_id_001",
+    "tap_001",
+    "thread_int_001",
+    "od_turning_001",
+    "grooving_od_002",
+    "thread_ext_001",
+    "parting_001"
+  ]
+}

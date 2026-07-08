@@ -1,0 +1,33 @@
+(author: Chris P)
+(date: 2026-07-08)
+
+(General-purpose M6 ngc= procedure -- the safe default for any machine)
+(without a real automatic turret or carousel -- most probe_basic lathe)
+(users, doing a manual tool change. Calling M6 again from inside the)
+(M6 remap's own ngc= procedure is LinuxCNC's documented mechanism for)
+(use-the-builtin-behavior -- see LinuxCNC's own gmoccapy reference)
+(config, configs/sim/gmoccapy/macros/change.ngc: manual tool change)
+(prompts the operator and waits exactly as it always did with no remap)
+(at all -- a random-toolchanger setup gets its own stock handling too.)
+(change_prolog and change_epilog in stdglue.py still run around this)
+(call -- that is what publishes #<_current_tool_*> after every tool)
+(change, regardless of tool-change hardware.)
+
+(Machines with a REAL automatic tool changer should point)
+([RS274NGC] REMAP=M6 ... ngc= at toolchange instead of)
+(toolchange_manual -- that file implements actual carousel or turret)
+(indexing, rotate, clamp, unclamp, position-sensor checks, and is NOT)
+(a safe default for a manual machine.)
+
+o<toolchange_manual> sub
+
+o100 if [#<_task> EQ 0]
+    (PRINT, o<toolchange_manual>: task is null)
+    o<toolchange_manual> return [999]
+o100 endif
+
+M6
+
+o<toolchange_manual> endsub [1]
+
+M2

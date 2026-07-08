@@ -53,12 +53,35 @@ sim/*.old
 
 dev_launchers/probe_basic_lathe_launcher.sh
 
-configs/probe_basic_lathe/core.253805
+# crash artifacts (core dumps land in the config dir the app ran from;
+# park keepers in ~/dev/scratch/probe_basic/, delete the rest)
+configs/*/core.*
+configs/*/*crash*.log
 
-configs/probe_basic_lathe/core.254526
-
-configs/probe_basic_lathe/core.256190
-
-configs/probe_basic_lathe/core.260971
-
-configs/probe_basic_lathe/core.261771
+# AI assistant rule/config files -- machine-local only, never shared
+# (Claude Code, GitHub Copilot, OpenAI Codex/agents.md, Cursor, Windsurf,
+# Continue, Aider, Kilo Code, Cline, Roo Code, Codeium, Gemini CLI, etc.)
+.claude/
+CLAUDE.md
+.github/copilot-instructions.md
+AGENTS.md
+.cursor/
+.cursorrules
+.windsurf/
+.windsurfrules
+.continue/
+.aider*
+.kilocode/
+.kilocodemodes
+.clinerules
+.clinerules/
+.roo/
+.roorules
+.roomodes
+.codeium/
+.qodo/
+.junie/
+.amazonq/
+.trae/
+GEMINI.md
+.gemini/

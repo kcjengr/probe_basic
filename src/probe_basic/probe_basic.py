@@ -91,6 +91,25 @@ class ProbeBasic(VCPMainWindow):
         self.m6_lines = []
         self.current_m6_index = 0
         self.find_m6_button.clicked.connect(self._find_m6_clicked)
+
+        # Tool table Save button: color its text to flag unsaved edits.
+        # probe_basic's tool_table is qtpyvcp's generic ToolTable widget
+        # (mill), not LatheToolTable -- it has no dirtyChanged signal, so
+        # this only activates on configs where a LatheToolTable happens to
+        # be promoted in under this same object name.
+        if (hasattr(self, 'tool_table') and hasattr(self, 'tool_table_save_button')
+                and hasattr(self.tool_table, 'dirtyChanged')):
+            self._tool_table_save_btn_base_stylesheet = self.tool_table_save_button.styleSheet()
+            self.tool_table.dirtyChanged.connect(self._on_tool_table_dirty_changed)
+        # Reload Table button: color it after a Save, as a reminder that the
+        # tool data published to the running program (#<_current_tool_*>,
+        # refreshed via the M6 epilog this button also re-triggers) is only
+        # updated once Reload Table is actually clicked -- saving alone
+        # doesn't push it to a tool already loaded in the spindle.
+        if hasattr(self, 'tool_table_save_button') and hasattr(self, 'tool_table_reload_button'):
+            self._tool_table_reload_btn_base_stylesheet = self.tool_table_reload_button.styleSheet()
+            self.tool_table_save_button.clicked.connect(self._on_tool_table_saved)
+            self.tool_table_reload_button.clicked.connect(self._on_tool_table_reloaded)
         
         # Cycle start button interception for run from line functionality
         self.cycle_start_button.clicked.connect(self._cycle_start_clicked)
@@ -780,6 +799,33 @@ class ProbeBasic(VCPMainWindow):
             LOG.error(f"Error extracting M6 line numbers: {e}")
         
         return m6_lines
+
+    @staticmethod
+    def _styled_with_reminder_color(base_style, active):
+        """Return base_style unchanged, or with the reminder text color
+        injected -- inside the selector block if base_style uses one
+        (`QPushButton { ... }`), else appended as a bare declaration."""
+        if not active:
+            return base_style
+        if '{' in base_style:
+            idx = base_style.rfind('}')
+            return base_style[:idx] + '\ncolor: rgb(0, 255, 133);\n' + base_style[idx:]
+        return f"{base_style}\ncolor: rgb(0, 255, 133);"
+
+    def _on_tool_table_dirty_changed(self, dirty):
+        """Reflect unsaved tool-table edits on the Save button's text color."""
+        self.tool_table_save_button.setStyleSheet(
+            self._styled_with_reminder_color(self._tool_table_save_btn_base_stylesheet, dirty))
+
+    def _on_tool_table_saved(self):
+        """After Save, remind the operator Reload Table still needs a click
+        to push fresh data to a tool already loaded in the spindle."""
+        self.tool_table_reload_button.setStyleSheet(
+            self._styled_with_reminder_color(self._tool_table_reload_btn_base_stylesheet, True))
+
+    def _on_tool_table_reloaded(self):
+        """Clear the Reload Table reminder once it's actually been clicked."""
+        self.tool_table_reload_button.setStyleSheet(self._tool_table_reload_btn_base_stylesheet)
 
     @Slot()
     def _find_m6_clicked(self):
