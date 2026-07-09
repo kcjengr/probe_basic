@@ -5,15 +5,33 @@ G90
 G53 G0 Z0
 G0 X0 Y0
 
-o100 if [EXISTS[#<_ini[traj]axes>]]
-    #<geometry> = #<_ini[traj]axes>
+#<has_a> = 0
+#<has_b> = 0
+#<has_c> = 0
+
+o100 if [EXISTS[#<_ini[axis_a]max_limit>]]
+    #<has_a> = 1
 o100 endif
 
-o110 if [#<geometry> EQ 4]
-    G0 A0
-o110 else if [#<geometry> EQ 5]
-    G0 A0 C0
+o110 if [EXISTS[#<_ini[axis_b]max_limit>]]
+    #<has_b> = 1
 o110 endif
+
+o120 if [EXISTS[#<_ini[axis_c]max_limit>]]
+    #<has_c> = 1
+o120 endif
+
+o130 if [[#<has_a> EQ 1] AND [#<has_c> EQ 1]]
+    G0 A0 C0
+o130 else if [[#<has_b> EQ 1] AND [#<has_c> EQ 1]]
+    G0 B0 C0
+o130 else if [#<has_a> EQ 1]
+    G0 A0
+o130 else if [#<has_b> EQ 1]
+    G0 B0
+o130 else if [#<has_c> EQ 1]
+    G0 C0
+o130 endif
 
 o<go_to_zero> endsub
 
