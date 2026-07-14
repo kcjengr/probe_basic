@@ -757,32 +757,40 @@ class ProbeBasicLathe(VCPMainWindow):
     def load_user_tabs(self):
         self.user_tab_modules = {}
         self.user_tabs = {}
-        sidebar_loaded = False
-        user_tabs_paths = INIFILE.findall("DISPLAY", "USER_TABS_PATH")
+        sidebar_tab_claimed = False
 
-        for user_tabs_path in user_tabs_paths:
-            user_tabs_path = os.path.expanduser(user_tabs_path)
-            user_tab_folders = os.listdir(user_tabs_path)
-            for user_tab in user_tab_folders:
-                if not os.path.isdir(os.path.join(user_tabs_path, user_tab)):
+        for user_tabs_path in INIFILE.findall("DISPLAY", "USER_TABS_PATH"):
+            user_tabs_path = _resolve_config_path(user_tabs_path)
+            if not user_tabs_path or not os.path.isdir(user_tabs_path):
+                continue
+
+            for tab_name in sorted(os.listdir(user_tabs_path)):
+                tab_dir = os.path.join(user_tabs_path, tab_name)
+                if not os.path.isdir(tab_dir):
                     continue
 
-                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + user_tabs_path
-                module_file = os.path.join(os.path.dirname(user_tabs_path), user_tab, user_tab + ".py")
-                self.user_tab_modules[module_name] = _import_module_from_path(module_name, module_file)
-                self.user_tabs[module_name] = self.user_tab_modules[module_name].UserTab()
-                if self.user_tabs[module_name].property("sidebar"):
-                    if sidebar_loaded == False:
-                        sidebar_loaded = True
-                        self.user_tabs[module_name].setParent(self.sb_page_4)
-                        self.user_sb_tab.setText(self.user_tabs[module_name].objectName().replace("_", " "))
-                    else:
-                        # can not load more than one sidebar widget
-                        pass
-                else:
-                    self.tabWidget.addTab(self.user_tabs[module_name], self.user_tabs[module_name].objectName().replace("_", " "))
+                module_file = os.path.join(tab_dir, tab_name + ".py")
+                if not os.path.isfile(module_file):
+                    LOG.warning(f"Skipping user tab '{tab_name}': no {tab_name}.py found in {tab_dir}")
+                    continue
 
-        if sidebar_loaded == False:
+                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + tab_name
+                self.user_tab_modules[module_name] = _import_module_from_path(module_name, module_file)
+                tab_widget = self.user_tab_modules[module_name].UserTab()
+                self.user_tabs[module_name] = tab_widget
+                tab_label = tab_widget.objectName().replace("_", " ")
+
+                if tab_widget.property("sidebar"):
+                    if sidebar_tab_claimed:
+                        LOG.warning(f"Ignoring sidebar user tab '{tab_name}': a sidebar tab is already loaded")
+                        continue
+                    sidebar_tab_claimed = True
+                    tab_widget.setParent(self.sb_page_4)
+                    self.user_sb_tab.setText(tab_label)
+                else:
+                    self.tabWidget.addTab(tab_widget, tab_label)
+
+        if not sidebar_tab_claimed:
             self.user_sb_tab.hide()
             self.dro_tab.setStyleSheet(self.user_sb_tab.styleSheet())
 
