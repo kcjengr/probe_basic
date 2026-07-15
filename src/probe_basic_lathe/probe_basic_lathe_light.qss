@@ -462,6 +462,23 @@ QDialog QLabel {
     color: white;
 }
 
+/* General dialog-button sizing rule (ratified 2026-07-15): every button in
+   every dialog gets a uniform 37px height, 13pt text, and 6px of breathing
+   room on each side of the label so the border never crowds the text.
+   QDialog matches subclasses too, so this covers QMessageBox and all the
+   app's custom dialogs in one rule; its 2-type specificity beats the bare
+   QPushButton base rule regardless of order. The QFileDialog button block
+   further down keeps its own !important sizing (it fights the file
+   dialog's internal styling) -- keep its values in step with this rule. */
+QDialog QPushButton {
+    font-size: 13pt;
+    /* 33px content box + 2px border top/bottom = 37px total button height
+       (Qt QSS min/max-height excludes borders -- verified by measurement) */
+    min-height: 33px;
+    max-height: 33px;
+    padding: 0px 6px;
+}
+
 /*===========================================================================*/
 /*                         Notifications Widget                              */
 /*===========================================================================*/
@@ -829,15 +846,16 @@ QFileDialog QDialogButtonBox * QPushButton,
 QFileDialog QWidget#buttonBox QPushButton {
     color: white !important;
     font-family: "Probe Basic Bebas Mono" !important;
-    font-size: 15pt !important;
+    /* sizing kept in step with the general QDialog QPushButton rule */
+    font-size: 13pt !important;
     background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255)) !important;
     border: 2px solid black !important;
     border-radius: 5px !important;
     margin: 8px !important;
-    padding: 0px 10px !important;
-    min-height: 40px !important;
+    padding: 0px 6px !important;
+    min-height: 33px !important;
     min-width: 100px !important;
-    max-height: 40px !important;
+    max-height: 33px !important;
 }
 
 QFileDialog QDialogButtonBox {

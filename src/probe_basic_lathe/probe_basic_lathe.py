@@ -17,6 +17,7 @@ from qtpyvcp import actions
 from qtpyvcp.plugins import getPlugin
 from qtpyvcp.utilities import logger
 from qtpyvcp.utilities.runtime_ui_loader import load_ui as load_runtime_ui
+from qtpyvcp.widgets.dialogs import showDialog
 from qtpyvcp.widgets.form_widgets.main_window import VCPMainWindow
 from qtpyvcp.utilities.settings import getSetting, setSetting
 
@@ -156,6 +157,20 @@ class ProbeBasicLathe(VCPMainWindow):
         self.help_menu.addAction(self.interactive_help_action)
         self.store_original_tooltips()
         self.toggle_tooltips(False)  # Hide tooltips by default
+
+        self.tools_menu = self.menuBar().addMenu("Tools")
+        self.import_legacy_tbl_action = QAction("Import Legacy Tool Table (.tbl)...", self)
+        self.import_legacy_tbl_action.triggered.connect(
+            lambda: showDialog('import_legacy_tbl'))
+        self.tools_menu.addAction(self.import_legacy_tbl_action)
+        self.import_fusion_tools_action = QAction("Import Fusion 360 Tool Library (.tools/.json)...", self)
+        self.import_fusion_tools_action.triggered.connect(
+            lambda: showDialog('import_fusion_tools'))
+        self.tools_menu.addAction(self.import_fusion_tools_action)
+        self.import_merged_tools_action = QAction("Import + Merge .tbl and Fusion Library...", self)
+        self.import_merged_tools_action.triggered.connect(
+            lambda: showDialog('import_merged_tools'))
+        self.tools_menu.addAction(self.import_merged_tools_action)
 
         # Set jog_button_stacked_widget index based on DRO_DISPLAY and LATHE/BACK_TOOL_LATHE presence
         dro_display = (INIFILE.find("DISPLAY", "DRO_DISPLAY") or "").strip().lower()

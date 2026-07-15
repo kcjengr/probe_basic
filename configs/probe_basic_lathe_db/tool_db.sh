@@ -2,9 +2,21 @@
 # LinuxCNC tool database program wrapper (tooldb interface).
 # Referenced by probe_basic_lathe_db.ini: [EMCIO] DB_PROGRAM = ./tool_db.sh
 #
-# Runs the qtpyvcp tool_db_backend against tool_table.db in this config dir —
-# the same file the DBToolTable GUI plugin opens (single source of truth).
-# Seed the database first:  python3 ~/dev/scratch/qtpyvcp/tests/seed_db_from_tbl.py
+# Runs the qtpyvcp tool_db_backend against a tool database file in this
+# config dir -- the same file the DBToolTable GUI plugin opens (single
+# source of truth, see db_tool_table.py's _default_db_path -- kept in sync
+# with the INI lookup here on purpose, or the GUI and this backend could
+# silently disagree about which file is "live").
+#
+# WHICH FILE: [EMCIO] TOOL_DB_FILE in the ini if set, else "tool_table.db"
+# in this same folder. This is deliberately a SEPARATE ini line from
+# DB_PROGRAM, not an argument tacked onto it -- keep as many named .db
+# files as you want in this folder (backups, per-job tool sets, etc.);
+# switching which one loads is one line + a restart, and nothing is ever
+# "the" database except by that one explicit reference, so nothing here
+# can silently clobber another file.
+#
+# Seed a new database from a legacy .tbl file with: tbl2db old.tbl NAME.db
 #
 # Deliberately does NOT just exec a bare "python3": LinuxCNC's own launcher
 # puts /usr/bin ahead of an active dev venv in PATH for the processes it
@@ -18,6 +30,35 @@
 # hardcoded, so this config folder stays copyable to any machine as-is.
 
 DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# First value for KEY within [SECTION] of an ini file, LinuxCNC ini
+# conventions (# starts a comment, values may carry a trailing comment).
+ini_get() {
+    awk -F= -v section="[$1]" -v key="$2" '
+        $0 == section { in_section=1; next }
+        /^\[/ { in_section=0 }
+        in_section && $1 ~ "^[ \t]*" key "[ \t]*$" {
+            sub(/^[^=]*=[ \t]*/, "")
+            sub(/[ \t]*#.*$/, "")
+            sub(/[ \t]*$/, "")
+            print
+            exit
+        }
+    ' "$3"
+}
+
+DB_FILE="tool_table.db"
+if [ -n "$INI_FILE_NAME" ] && [ -f "$INI_FILE_NAME" ]; then
+    configured="$(ini_get EMCIO TOOL_DB_FILE "$INI_FILE_NAME")"
+    if [ -n "$configured" ]; then
+        DB_FILE="$configured"
+    fi
+fi
+
+case "$DB_FILE" in
+    /*) DB_PATH="$DB_FILE" ;;
+    *)  DB_PATH="$DIR/$DB_FILE" ;;
+esac
 
 python3_bin=""
 IFS=':' read -ra path_dirs <<< "$PATH"
@@ -34,4 +75,4 @@ if [ -z "$python3_bin" ]; then
     exit 1
 fi
 
-exec "$python3_bin" -m qtpyvcp.tools.tool_db_backend "$DIR/tool_table.db" debug
+exec "$python3_bin" -m qtpyvcp.tools.tool_db_backend "$DB_PATH" debug
