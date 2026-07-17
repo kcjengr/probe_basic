@@ -13,3 +13,12 @@ net cycle-hours qtpyvcp.timerhours.in <= time.0.hours
 
 # *** Set line below for actual spindle readout from your hal file ***
 net spindle-vel => qtpyvcp.spindle-encoder-rpm.in
+
+# *** Manual tool change dialog for the M6 remap manual fallback ***
+# toolchange.ngc raises motion.digital-out-05 (M64 P5) to show the Probe Basic
+# manual tool change dialog, then waits on motion.digital-in-06 (M66 P6) for the
+# operator to press the resume button on the dialog.
+# The dialog tool number readout follows the last prepared (Tn) tool.
+net mtc-request    motion.digital-out-05  =>  qtpyvcp_manualtoolchange.change
+net mtc-confirmed  qtpyvcp_manualtoolchange.changed  =>  motion.digital-in-06
+net mtc-tool-num   iocontrol.0.tool-prep-number  =>  qtpyvcp_manualtoolchange.number

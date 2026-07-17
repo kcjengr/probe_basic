@@ -19,6 +19,79 @@ Z 16"
 
 Both machines have the X and Y home in the center of travel.
 
+## Manual tool change fallback
+
+The M6 remap (macros_sim/toolchange.ngc) falls back to a manual tool change with the
+Probe Basic manual tool change dialog instead of aborting when:
+
+- the requested tool is not stored in any carousel pocket (manual load)
+- the tool in the spindle has nowhere to go, carousel full (manual removal)
+- the tool involved is a manual only tool (manual load and removal)
+
+Tools stored in the carousel are always put away and fetched automatically with the
+existing carousel macros, the dialog only appears when a hand swap is unavoidable.
+A tool is "manual only" (never stored into or fetched from the carousel) when its ATC
+column in the tool table is unchecked - for oversize tools that do not physically fit
+between carousel pockets. This requires the database tool table variant below (the ATC
+column lives in the tool database); change_prolog (python/stdglue.py) looks up the flag
+per tool and passes it to the M6 macro. With the classic file-based tool table (no ATC
+column) every tool is treated as storable, exactly as before.
+
+The dialog handshake uses motion.digital-out-05 (request, M64/M65 P5) and
+motion.digital-in-06 (confirmed, M66 P6), wired to the qtpyvcp_manualtoolchange
+component in probe_basic_postgui.hal (num_dio=8 is set in vmc.hal for this).
+The iocontrol tool-prepare/tool-change loopbacks are unchanged, automatic tool
+changes never show the dialog.
+
+Optional INI keys [ATC]MANUAL_CHANGE_X / MANUAL_CHANGE_Y (machine coords) move the
+head to a convenient spot for manual changes, otherwise only Z moves to clearance.
+
+On a manual REMOVAL the dialog prompt turns into a bright red warning naming the
+cause (non storable tool, or carousel full) so it cannot be mistaken for a routine
+dialog: pressing resume without actually removing the tool would let a later store
+attempt crash an oversize tool into the carousel. The optional INI key
+[ATC]DRAWBAR_MONITOR_PIN hardens this into an interlock: name a HAL pin or signal
+that reflects drawbar actuation (button input pin or solenoid drive signal) and the
+resume button stays disabled until the drawbar has been pressed and released while
+the dialog is up - physical evidence the tool came out. The pin is read with
+hal.get_value (no HAL wiring needed), the HAL change_button path is gated the same
+way, and a misconfigured pin name fails open (logged, button enabled) so a typo can
+never strand the operator mid-change. Manual loads are not gated. The sim INIs
+carry a commented example using the unconnected motion.digital-in-07, which can be
+poked with halcmd setp to exercise the gate.
+
+UI buttons outside the dialog cannot help mid-change: MDI and action buttons are
+blocked while the remap macro is executing, and the modal dialog blocks clicks
+anyway - HAL, however, keeps running, so physical buttons wired in HAL (and halcmd
+from a second terminal) always work. A stuck manual change is always recoverable
+from a second terminal: "halcmd setp halui.program.abort 1" (then 0) aborts the
+change and on_abort.ngc puts the dialog away. (The dialog also wires an optional
+QPushButton named btnAbortChange to program abort if a config's ui file provides
+one - not populated in the shipped ui.)
+
+## Database tool table variant
+
+vmc_index_inch_db.ini runs the same machine with the unified database tool table
+instead of tool_inch.tbl ([EMCIO] DB_PROGRAM = ./tool_db.sh, TOOL_DB_FILE =
+tool_table.db, custom_config_db.yml wires the DBToolTable plugin with the mill
+extras table). The tool page gains the unified table editor: core columns, the
+Mill Extras group, and user-defined custom columns (right-click the header).
+
+Mill Extras currently holds one column, ATC: a per-tool True/False for whether
+the tool is physically storable in the ATC carousel. Tools default to True; set
+it False for oversize tools that do not fit between carousel pockets. When a tool
+is ATC=False the M6 macro never stores it into, or fetches it from, the carousel -
+it uses the manual tool change dialog instead (change_prolog looks the flag up per
+tool and passes #<spindle_tool_atc> / #<selected_tool_atc> to toolchange.ngc). A
+tool with no saved extras row reads as True (storable). The current spindle tool's
+flag is also published to G-code as #<_current_tool_atc> by the M6 epilog for any
+program that wants to read it.
+
+tool_table.db ships seeded from tool_inch.tbl. To re-seed:
+    tbl2db tool_inch.tbl tool_table.db --units inch
+(or python3 -m qtpyvcp.lib.db_tool.import_legacy_tbl). To try a different
+database file, point [EMCIO] TOOL_DB_FILE at it and restart.
+
 
 ## Original Vismach Readme
 This is a Vismach simulator config intended for testing out tool-changer configurations

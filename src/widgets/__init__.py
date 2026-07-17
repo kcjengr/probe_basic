@@ -25,10 +25,12 @@ if _IN_DESIGNER:
         def __init__(self, parent=None):
             super().__init__(parent)
 
-    # LatheToolTable is a plain QTableView (no GL/linuxcnc module-level
-    # imports), so unlike the widgets above it doesn't need a placeholder --
-    # its own LatheToolModel already no-ops correctly under IN_DESIGNER.
+    # LatheToolTable/MillToolTable are plain QTableViews (no GL/linuxcnc
+    # module-level imports), so unlike the widgets above they don't need a
+    # placeholder -- their LatheToolModel already no-ops correctly under
+    # IN_DESIGNER.
     from widgets.lathe_tool_table import LatheToolTable
+    from widgets.mill_tool_table import MillToolTable
 
 else:
     # Runtime: import the real widgets
@@ -40,6 +42,7 @@ else:
         from widgets.conversational.xy_coord import XYCoordWidget
         from widgets.conversational.hole_circle import HoleCircleWidget
         from widgets.lathe_tool_table import LatheToolTable
+        from widgets.mill_tool_table import MillToolTable
     except (ImportError, AttributeError) as e:
         print(f"Warning: could not import probe_basic widgets: {e}")
 
@@ -77,3 +80,8 @@ class FacingWidgetPlugin(_DesignerPlugin):
 class LatheToolTable_Plugin(_DesignerPlugin):
     def pluginClass(self):
         return LatheToolTable
+
+
+class MillToolTable_Plugin(_DesignerPlugin):
+    def pluginClass(self):
+        return MillToolTable

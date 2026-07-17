@@ -291,7 +291,24 @@ Step 3: Edit INI files
          AXES = 3
          COORDINATES = X Y Z
 
+         #  OPTIONAL: Database tool table machines use the following EMCIO
+         #  items in place of TOOL_TABLE. See the Database Tool Table doc
+         #  page for the full setup guide.
+         [EMCIO]
+         DB_PROGRAM = ./tool_db.sh
+         #  LinuxCNC reads and writes all tool data through this bundled
+         #  backend (LinuxCNC tool database interface) instead of a .tbl
+         #  file. TOOL_TABLE is not used when DB_PROGRAM is set, comment
+         #  it out.
+
+         TOOL_DB_FILE = tool_table.db
+         #  Which database file in the config folder is live. Omit to
+         #  default to tool_table.db. Requires DB_PROGRAM above, and
+         #  CONFIG_FILE = custom_config_db.yml in the [DISPLAY] section.
+
       |
+
+   For the database tool table setup guide see :doc:`db_tool_table`.
 
 
    

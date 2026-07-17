@@ -24,6 +24,13 @@
 
 # update INI backups
 sim/*.old
+# ini backups written by the tool database import dialogs before editing
+# TOOL_DB_FILE (see db_tool_table.set_tool_db_file)
+*.pre-tool-db-file-edit-*.bak
+
+# sqlite runtime sidecar files (present while the tool database is open)
+*.db-shm
+*.db-wal
 
 # sphinx
 /docs_src/build

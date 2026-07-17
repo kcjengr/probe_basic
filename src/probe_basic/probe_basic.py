@@ -93,10 +93,10 @@ class ProbeBasic(VCPMainWindow):
         self.find_m6_button.clicked.connect(self._find_m6_clicked)
 
         # Tool table Save button: color its text to flag unsaved edits.
-        # probe_basic's tool_table is qtpyvcp's generic ToolTable widget
-        # (mill), not LatheToolTable -- it has no dirtyChanged signal, so
-        # this only activates on configs where a LatheToolTable happens to
-        # be promoted in under this same object name.
+        # probe_basic's tool_table is MillToolTable (the mill flavor of the
+        # unified lathe/mill tool table widget), which has dirtyChanged;
+        # the hasattr guard keeps this harmless if a config ever promotes
+        # a plain widget back in under this same object name.
         if (hasattr(self, 'tool_table') and hasattr(self, 'tool_table_save_button')
                 and hasattr(self.tool_table, 'dirtyChanged')):
             self._tool_table_save_btn_base_stylesheet = self.tool_table_save_button.styleSheet()

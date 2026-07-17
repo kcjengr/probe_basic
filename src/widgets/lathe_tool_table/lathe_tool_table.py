@@ -21,9 +21,7 @@ from qtpyvcp.actions.machine_actions import issue_mdi
 from qtpyvcp.utilities.logger import getLogger
 from qtpyvcp.actions import IN_DESIGNER
 
-from .lathe_tool_model import (LatheToolModel, TEXT_EXTRAS, CUSTOM_PREFIX,
-                               STRICT_ENUM_OPTIONS, OPEN_VOCAB_SEED_OPTIONS,
-                               FLOAT_DECIMALS)
+from .lathe_tool_model import LatheToolModel, CUSTOM_PREFIX, FLOAT_DECIMALS
 from .add_column_dialog import AddColumnDialog
 from .parameter_names_dialog import parameter_entries, ParameterNamesDialog
 
@@ -87,18 +85,30 @@ class LatheItemDelegate(QStyledItemDelegate):
         key = self._model._visible_columns[index.column()]
         group = self._model.columnGroup(key)
 
-        if key in STRICT_ENUM_OPTIONS:
+        if key in self._model.STRICT_ENUM_OPTIONS:
             # DB CHECK-constrained: a strict pick-list, not editable free
             # text -- the user cannot enter a value the database would
             # reject on save.
             editor = QComboBox(parent)
             editor.setFrame(False)
             editor.setMaxVisibleItems(COMBO_MAX_VISIBLE_ITEMS)
-            editor.addItems(STRICT_ENUM_OPTIONS[key])
+            editor.addItems(self._model.STRICT_ENUM_OPTIONS[key])
             self._popOpenOnceShown(editor)
             return editor
 
-        if key in OPEN_VOCAB_SEED_OPTIONS:
+        if key in self._model.BOOL_EXTRAS:
+            # Boolean extras (e.g. the mill ATC storable flag): same
+            # owned-round-trip True/False combo as bool custom fields --
+            # see BOOL_EDITOR_PROP for why this isn't a bare checkbox
+            # relying on Qt's QVariant(bool) marshaling.
+            editor = QComboBox(parent)
+            editor.setFrame(False)
+            editor.addItems(['True', 'False'])
+            editor.setProperty(BOOL_EDITOR_PROP, True)
+            self._popOpenOnceShown(editor)
+            return editor
+
+        if key in self._model.OPEN_VOCAB_SEED_OPTIONS:
             # Open vocabulary in practice (mixes ISO letters with descriptive
             # codes depending on tool type) -- editable combo, but *which*
             # choices are offered is discriminated by this row's own `type`
@@ -182,7 +192,7 @@ class LatheItemDelegate(QStyledItemDelegate):
             editor.setFrame(False)
             return editor
 
-        if key == 'R' or key in TEXT_EXTRAS:
+        if key == 'R' or key in self._model.TEXT_EXTRAS:
             editor = QLineEdit(parent)
             editor.setFrame(False)
             return editor
@@ -255,13 +265,18 @@ class LatheToolTable(QTableView):
     toolSelected = Signal(int)
     dirtyChanged = Signal(bool)
 
+    # Machine variants subclass and point this at their model (see
+    # widgets.mill_tool_table.MillToolTable) -- everything else in this
+    # widget consults the model's own class attributes.
+    MODEL_CLASS = LatheToolModel
+
     def __init__(self, parent=None):
         super(LatheToolTable, self).__init__(parent)
 
         self.clicked.connect(self.onClick)
         self.doubleClicked.connect(self.onDoubleClick)
 
-        self.tool_model = LatheToolModel(self)
+        self.tool_model = self.MODEL_CLASS(self)
         self.tool_model.dirtyChanged.connect(self.dirtyChanged.emit)
 
         if not IN_DESIGNER and self.tool_model.tt is not None:
@@ -418,12 +433,14 @@ class LatheToolTable(QTableView):
         for key in self.tool_model.allColumns():
             sections[self.tool_model.columnGroup(key)].append(key)
 
+        group_labels = dict(GROUP_LABELS,
+                            extras=self.tool_model.EXTRAS_GROUP_LABEL)
         toggles = {}
         for group in ('core', 'extras', 'custom'):
             keys = sections[group]
             if not keys:
                 continue
-            section_menu = menu.addMenu(GROUP_LABELS[group])
+            section_menu = menu.addMenu(group_labels[group])
             for key in keys:
                 action = section_menu.addAction(self.tool_model.columnLabel(key))
                 action.setCheckable(True)
@@ -481,7 +498,7 @@ class LatheToolTable(QTableView):
             is_text = (self.tool_model._custom_value_types.get(col_key)
                        == 'text')
         else:
-            is_text = col_key in TEXT_EXTRAS or col_key == 'R'
+            is_text = col_key in self.tool_model.TEXT_EXTRAS or col_key == 'R'
         tool_no = self.tool_model.toolDataFromRow(source_row)['T']
         entries, note = parameter_entries(col_key, group, is_text, tool_no)
         dialog = ParameterNamesDialog(

@@ -159,6 +159,28 @@ MAX_COLUMNS = 200  # generous fixed capacity; mirrors the row model's
 
 class LatheToolModel(QStandardItemModel):
 
+    # Machine-flavor configuration, hoisted to class attributes so a
+    # machine variant is a subclass overriding data, not a fork of the
+    # logic (see widgets.mill_tool_table.MillToolModel). The module-level
+    # constants above stay as the lathe values; these class attributes are
+    # what the model methods (and LatheItemDelegate, via self._model)
+    # actually consult.
+    EXTRAS_LABELS = EXTRAS_LABELS            # column key -> header label, in display order
+    TEXT_EXTRAS = TEXT_EXTRAS                # extras rendered/edited as free text
+    BOOL_EXTRAS = frozenset()                # extras rendered/edited as True/False
+    EXTRAS_DEFAULTS = {}                     # value shown when a tool has no extras row
+    DEFAULT_VISIBLE_EXTRAS = DEFAULT_VISIBLE_EXTRAS
+    STRICT_ENUM_OPTIONS = STRICT_ENUM_OPTIONS
+    OPEN_VOCAB_SEED_OPTIONS = OPEN_VOCAB_SEED_OPTIONS
+    EXTRAS_GROUP_LABEL = 'Lathe Extras'      # header-menu section title
+    # Core columns forced to render AFTER extras/custom instead of in their
+    # normal core position -- for the wide free-text Remark, so machine
+    # extras sit between the numeric offsets and it. Empty by default (the
+    # lathe keeps Remark in its ratified core position); the mill sets
+    # ('R',) so ATC lands just before Remark. Membership only -- these stay
+    # 'core' for grouping; only their column position moves.
+    TRAILING_CORE_COLUMNS = ()
+
     dirtyChanged = Signal(bool)
 
     def __init__(self, parent=None):
@@ -207,9 +229,9 @@ class LatheToolModel(QStandardItemModel):
 
             self._core_columns = list(self.tt.columns)
             self._core_labels = dict(self.tt.COLUMN_LABELS)
-            if self._db_backed:
-                self._extras_columns = list(EXTRAS_ORDER)
-                self._extras_labels = dict(EXTRAS_LABELS)
+            if self._db_backed and self._pluginServesOurExtras():
+                self._extras_columns = list(self.EXTRAS_LABELS)
+                self._extras_labels = dict(self.EXTRAS_LABELS)
             else:
                 self._extras_columns = []
                 self._extras_labels = {}
@@ -303,18 +325,51 @@ class LatheToolModel(QStandardItemModel):
 
     # ------------------------------------------------------------ columns
 
+    def _pluginServesOurExtras(self):
+        """True when the DB plugin's configured extras table carries every
+        column this model wants to show. A mismatch (e.g. this .ui promotes
+        the mill widget but the config's yaml left the plugin on
+        `extras: lathe`) would otherwise stage edits into attributes the
+        plugin never persists -- silently. Hide the extras columns and say
+        so instead; core and custom columns keep working either way."""
+        plugin_extras = getattr(self.tt, '_EXTRAS_COLUMNS', [])
+        missing = [c for c in self.EXTRAS_LABELS if c not in plugin_extras]
+        if missing:
+            LOG.error(
+                "The 'tooltable' plugin serves extras columns %s, but this "
+                "widget (%s) renders %s -- missing %s. Check the config "
+                "yaml's data_plugins.tooltable.kwargs.extras matches the "
+                "promoted tool table widget. Hiding the extras columns.",
+                plugin_extras, type(self).__name__,
+                list(self.EXTRAS_LABELS), missing)
+            return False
+        return True
+
     def _refresh_custom_columns(self):
         defs = self.tt.getCustomFieldDefs()
         self._custom_columns = [CUSTOM_PREFIX + d['name'] for d in defs]
         self._custom_labels = {CUSTOM_PREFIX + d['name']: d['label'] for d in defs}
         self._custom_value_types = {CUSTOM_PREFIX + d['name']: d['value_type'] for d in defs}
 
+    def _order_columns(self, cols):
+        """Move any TRAILING_CORE_COLUMNS to the end (after extras/custom),
+        preserving their relative order -- everything else keeps its order.
+        No-op when TRAILING_CORE_COLUMNS is empty (the lathe)."""
+        if not self.TRAILING_CORE_COLUMNS:
+            return list(cols)
+        trailing = [c for c in cols if c in self.TRAILING_CORE_COLUMNS]
+        head = [c for c in cols if c not in self.TRAILING_CORE_COLUMNS]
+        return head + trailing
+
     def _default_visible_columns(self):
-        extras = [c for c in DEFAULT_VISIBLE_EXTRAS if c in self._extras_columns]
-        return list(self._core_columns) + extras
+        extras = [c for c in self.DEFAULT_VISIBLE_EXTRAS if c in self._extras_columns]
+        return self._order_columns(list(self._core_columns) + extras)
 
     def allColumns(self):
-        """Every known column key, grouped: core, then extras, then custom.
+        """Every known column key, in display order: core, then extras, then
+        custom -- with any TRAILING_CORE_COLUMNS (e.g. Remark on the mill)
+        moved to the very end so "Show All Columns" and the default order
+        agree.
 
         Capped at MAX_COLUMNS -- the model's real (fixed) column count; see
         setVisibleColumns. An overflow here would mean ~150+ custom fields
@@ -322,7 +377,9 @@ class LatheToolModel(QStandardItemModel):
         rather than crashing; raising MAX_COLUMNS is the fix if that's ever
         a real shop's use case.
         """
-        cols = list(self._core_columns) + list(self._extras_columns) + list(self._custom_columns)
+        cols = self._order_columns(
+            list(self._core_columns) + list(self._extras_columns)
+            + list(self._custom_columns))
         return cols[:MAX_COLUMNS]
 
     def visibleColumns(self):
@@ -381,7 +438,13 @@ class LatheToolModel(QStandardItemModel):
             if tnum != 0 and self._db_backed:
                 extras = self.tt.getToolExtras(tnum) or {}
                 for key in self._extras_columns:
-                    row[key] = extras.get(key)
+                    value = extras.get(key)
+                    if value is None:
+                        # no extras row yet (or an unset cell): show the
+                        # machine flavor's default (e.g. mill atc = True)
+                        # instead of a blank that reads as "no value".
+                        value = self.EXTRAS_DEFAULTS.get(key)
+                    row[key] = value
                 values = self.tt.getCustomFieldValues(tnum)
                 for key in self._custom_columns:
                     row[key] = values.get(key[len(CUSTOM_PREFIX):])
@@ -480,9 +543,9 @@ class LatheToolModel(QStandardItemModel):
                 value_type = self._custom_value_types.get(key)
                 return CUSTOM_FIELD_ALIGNMENT.get(
                     value_type, Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignLeft)
-            if key in ('R',) or key in TEXT_EXTRAS:
+            if key in ('R',) or key in self.TEXT_EXTRAS:
                 return Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignLeft
-            elif key in ('T', 'P', 'Q'):
+            elif key in ('T', 'P', 'Q') or key in self.BOOL_EXTRAS:
                 return Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignCenter
             else:
                 return Qt.AlignmentFlag.AlignVCenter | Qt.AlignmentFlag.AlignRight
@@ -625,7 +688,7 @@ class LatheToolModel(QStandardItemModel):
         self.beginInsertRows(QModelIndex(), row, row)
         new_row = self.tt.newTool(tnum=tnum)
         for key in self._extras_columns:
-            new_row.setdefault(key, None)
+            new_row.setdefault(key, self.EXTRAS_DEFAULTS.get(key))
         for key in self._custom_columns:
             new_row.setdefault(key, None)
         self._tool_table[tnum] = new_row

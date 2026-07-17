@@ -1,6 +1,6 @@
 (author: Chris P)
-(version: 0.3)
-(date: 01/28/26)
+(version: 0.5)
+(date: 07/16/26)
 
 o<toolchange> sub
 
@@ -12,6 +12,31 @@ o<toolchange> sub
 ; #<number_of_pockets>: The number of pockets the ATC platter has, This is user set in the INI file via #<_ini[atc]pockets>
 ; #<atc_z_tool_change_height> The Z height your spindle needs to be at to clamp/unclamp a tool from the ATC platter (Set via INI [ATC]Z_TOOL_CHANGE_HEIGHT)
 ; #<atc_z_tool_clearance_height> The Z clearance height in machine coordinates that your spindle needs to be at to clear the tools during carousel rotation (Set via INI [ATC]Z_TOOL_CLEARANCE_HEIGHT)
+
+; MANUAL TOOL CHANGES:
+; If the requested tool is not stored in the carousel, or the tool in the spindle can not be
+; put away (carousel full, or the tool is a manual only tool), the macro no longer aborts.
+; Instead it parks the carousel home, shows the Probe Basic manual tool change dialog and waits
+; for the operator to swap the tool and press the resume button on the dialog.
+; Tools stored in the carousel are always put away and fetched automatically with the existing
+; carousel macros, the dialog only appears when a hand swap is unavoidable.
+; A tool is "manual only" (never stored into or fetched from the carousel) when its ATC column
+; in the tool table is unchecked (database atc = 0) - for oversize tools that do not physically
+; fit between carousel pockets. change_prolog (python/stdglue.py) looks up that flag per tool
+; and passes it in as #<spindle_tool_atc> (tool being removed) and #<selected_tool_atc> (tool
+; being loaded); both default to 1 (storable) when there is no tool database or the tool has no
+; ATC value set, so file-based (non database) configs behave as all-tools-storable.
+; The dialog is driven by motion.digital-out-05 (request, M64/M65 P5) and motion.digital-in-06
+; (confirmed, M66 P6), wired to qtpyvcp_manualtoolchange in probe_basic_postgui.hal
+; The dialog readout follows the last prepared (Tn) tool, so the removal branch prepares the
+; tool being removed - ToolChangeDialogPB sees prepared == spindle tool and shows a REMOVE
+; prompt, while the hand-load branch prepares the new tool and gets the INSERT prompt
+; [ATC]MANUAL_CHANGE_X and [ATC]MANUAL_CHANGE_Y (machine coords) can optionally be set in the
+; INI to move the head to a convenient position for manual tool changes, if they are not set
+; the head only moves up to the Z clearance height
+; [ATC]DRAWBAR_MONITOR_PIN (optional) names a HAL pin/signal reflecting drawbar actuation;
+; when set, the dialog resume button stays disabled during a manual REMOVAL until the drawbar
+; has been pressed and released, so the change cannot be confirmed with the tool still clamped
 
 (PRINT, o<toolchange> selected_tool: #<selected_tool>, tool_in_spindle: #<tool_in_spindle>, selected_pocket: #<selected_pocket>, current_pocket: #<current_pocket>, task: #<_task>)
 
@@ -34,6 +59,23 @@ o120 endif
 o130 if [EXISTS[#<_ini[atc]z_tool_clearance_height>]]
     #<atc_z_tool_clearance_height> = #<_ini[atc]z_tool_clearance_height>
 o130 endif
+
+; a tool whose ATC column is unchecked (database atc = 0) is manual only: it does not fit in
+; the carousel and is always swapped by hand via the manual tool change dialog. The per tool
+; flags come from change_prolog (#<spindle_tool_atc> / #<selected_tool_atc>); guard with EXISTS
+; so an older stdglue that does not pass them defaults to storable instead of erroring mid change
+#<spindle_tool_manual> = 0
+#<selected_tool_manual> = 0
+o132 if [EXISTS[#<spindle_tool_atc>]]
+    o133 if [[#<tool_in_spindle> GT 0] AND [#<spindle_tool_atc> EQ 0]]
+        #<spindle_tool_manual> = 1
+    o133 endif
+o132 endif
+o134 if [EXISTS[#<selected_tool_atc>]]
+    o135 if [[#<selected_tool> GT 0] AND [#<selected_tool_atc> EQ 0]]
+        #<selected_tool_manual> = 1
+    o135 endif
+o134 endif
 
 ; assign the variables passed by M6 change_prolog to some parameters
 #100 = #<selected_tool>
@@ -71,8 +113,8 @@ o160 do
     #130 = [#130 - 1]
 o160 while [#130 GT 0]
 
-o170 if [#<next_pocket> EQ 0] ; if tool is not found, aborts and sends a message
-    (abort, Tool T%d#<selected_tool> not found in carousel)
+o170 if [#<next_pocket> EQ 0 AND #<selected_tool> GT 0] ; if tool is not found it will be hand loaded further down
+    (PRINT, Tool T%d#<selected_tool> not found in carousel, manual load required)
 o170 endif
 
 ; now we know which pocket the next tool is sitting in
@@ -80,47 +122,113 @@ o170 endif
 ; or if there is not tool in the spindle
 
 o180 if [#<tool_in_spindle> GT 0] ; checks if there is a valid tool in the spindle
-    o181 if [#<open_pocket> EQ 0] ; If there is a tool in the spindle, checks if there is an open pocket
-        (abort, Carousel is full, cant put away tool T#<tool_in_spindle> in into carousel)
+    o181 if [[#<spindle_tool_manual> EQ 1] OR [#<open_pocket> EQ 0]] ; manual only tools and a full carousel must be removed by hand
+        o182 if [#<spindle_tool_manual> EQ 1]
+            (PRINT, Tool T%d#<tool_in_spindle> is a manual only tool, manual removal required)
+        o182 else
+            (PRINT, Carousel is full, manual removal of tool T%d#<tool_in_spindle> required)
+        o182 endif
+        M5 M9
+        G90
+        G0 G53 Z#<atc_z_tool_clearance_height> ; move z to clear height
+        M65 P2 ; deactive drawbar
+        M65 P0 ; make sure ATC out solenoid is off
+        M64 P1 ; move carousel home so the operator has clear access to the spindle
+        M66 P0 L3 Q4 ; check carousel in position sensor
+        o183 if [#5399 LT 0]
+            M65 P1 ; turn off the solenoid to send atc home
+            (abort, Failed to send carousel home) ; abort if the sensor does not activate in 4 seconds
+        o183 endif
+        M65 P1
+        o184 if [EXISTS[#<_ini[atc]manual_change_x>] AND EXISTS[#<_ini[atc]manual_change_y>]]
+            G0 G53 X#<_ini[atc]manual_change_x> Y#<_ini[atc]manual_change_y> ; move the head to the manual tool change position
+        o184 endif
+        T#<tool_in_spindle> ; prepare the tool being removed so the manual tool change dialog names it and shows the remove prompt
+        (PRINT, Remove tool T%d#<tool_in_spindle> from the spindle, then press resume on the dialog)
+        M64 P5 ; show the manual tool change dialog
+        M66 P6 L3 Q3600 ; wait up to 1 hour for the operator to confirm the change
+        o185 if [#5399 LT 0]
+            M65 P5 ; put the dialog away
+            (abort, Manual tool change timed out)
+        o185 endif
+        M65 P5 ; put the dialog away
+        M66 P6 L4 Q2 ; wait for the dialog confirmation to reset before continuing
+        o186 if [#5399 LT 0]
+            (abort, Manual tool change dialog did not reset)
+        o186 endif
+        M61 Q0
+        G49
+        #3991 = 0 ; empty tool in the spindle
+    o181 else
+        M10 P[#<open_pocket>] ; move carousel to an open pocket
+        M21 ; puts the tool in spindle away into the open pocket
+        (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<tool_in_spindle>}])
+        #140 = #<open_pocket>
+        #[4000 + #140] = #<tool_in_spindle> ; save tool number in pocket
+        #3991 = 0 ; empty tool in the spindle
+        M61 Q0
+        G49
     o181 endif
-    M10 P[#<open_pocket>] ; move carousel to an open pocket
-    M21 ; puts the tool in spindle away into the open pocket
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<open_pocket>, #<tool_in_spindle>}])
-    #140 = #<open_pocket>
-    #[4000 + #140] = #<tool_in_spindle> ; save tool number in pocket
-    #3991 = 0 ; empty tool in the spindle
-    M61 Q0
-    G49
 o180 endif
 
 G90
 G0 G53 Z#<atc_z_tool_clearance_height> ; move z to clear height
 
 o190 if [#<selected_tool> GT 0] ; selected tool is not tool0
-    M10 P#<next_pocket> ; set the carousel to move to the right pocket for the selected tool
-    M65 P1
-    M64 P0
-    M66 P1 L3 Q5 ; check carousel out position sensor
-    o191 if [#5399 LT 0]
-        M65 P0 ; turn off the solenoid to send atc to tool change
-        (abort, Failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
-    o191 endif
-    M65 P0
+    o191 if [[#<next_pocket> GT 0] AND [#<selected_tool_manual> EQ 0]] ; the requested tool is stored in the carousel and is not manual only
+        M10 P#<next_pocket> ; set the carousel to move to the right pocket for the selected tool
+        M65 P1
+        M64 P0
+        M66 P1 L3 Q5 ; check carousel out position sensor
+        o192 if [#5399 LT 0]
+            M65 P0 ; turn off the solenoid to send atc to tool change
+            (abort, Failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
+        o192 endif
+        M65 P0
 
-    (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<next_pocket>, 0}])
-    M22 ; Carousel out
-    #150 = #<next_pocket>
-    #[4000 + #150] = 0 ; empty the pocket
-    #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
+        (DEBUG, EVAL[vcp.getWidget{"dynatc"}.store_tool{#<next_pocket>, 0}])
+        M22 ; Carousel out
+        #150 = #<next_pocket>
+        #[4000 + #150] = 0 ; empty the pocket
+        #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
+    o191 else ; the requested tool is not stored in the carousel or is manual only, hand load it
+        M5 M9
+        M65 P2 ; deactive drawbar
+        M65 P0 ; make sure ATC out solenoid is off
+        M64 P1 ; move carousel home so the operator has clear access to the spindle
+        M66 P0 L3 Q4 ; check carousel in position sensor
+        o193 if [#5399 LT 0]
+            M65 P1 ; turn off the solenoid to send atc home
+            (abort, Failed to send carousel home) ; abort if the sensor does not activate in 4 seconds
+        o193 endif
+        M65 P1
+        o194 if [EXISTS[#<_ini[atc]manual_change_x>] AND EXISTS[#<_ini[atc]manual_change_y>]]
+            G0 G53 X#<_ini[atc]manual_change_x> Y#<_ini[atc]manual_change_y> ; move the head to the manual tool change position
+        o194 endif
+        T#<selected_tool> ; prepare the tool so the manual tool change dialog reads the tool to load
+        (PRINT, Load tool T%d#<selected_tool> into the spindle, then press resume on the dialog)
+        M64 P5 ; show the manual tool change dialog
+        M66 P6 L3 Q3600 ; wait up to 1 hour for the operator to confirm the change
+        o195 if [#5399 LT 0]
+            M65 P5 ; put the dialog away
+            (abort, Manual tool change timed out)
+        o195 endif
+        M65 P5 ; put the dialog away
+        M66 P6 L4 Q2 ; wait for the dialog confirmation to reset before continuing
+        o196 if [#5399 LT 0]
+            (abort, Manual tool change dialog did not reset)
+        o196 endif
+        #3991 = #<selected_tool> ; Set persistent variable to remember tool in spindle after power cycle
+    o191 endif
 o190 else
     M65 P2 ; deactive drawbar
     M65 P0 ; make sure ATC out solenoid is off
     M64 P1 ; move carousel home
     M66 P0 L3 Q4 ; check carousel in position sensor
-    o192 if [#5399 LT 0]
+    o197 if [#5399 LT 0]
         M65 P1 ; turn off the solenoid to send atc home
         (abort, Failed to send carousel home) ; abort if the sensor does not activate in 5 seconds
-    o192 endif
+    o197 endif
     M65 P1
 o190 endif
 

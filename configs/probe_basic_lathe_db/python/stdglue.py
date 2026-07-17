@@ -115,25 +115,37 @@ def prepare_epilog(self, **words):
 
 def _resolve_tool_db_path():
     """Same DB file qtpyvcp's DBToolTable plugin resolves (see
-    qtpyvcp.plugins.db_tool_table._default_db_path): [EMCIO] DB_PROGRAM's
-    first non-flag argument, else <config dir>/tool_table.db. Resolved
-    independently here (this runs inside milltask, a separate process
-    from the GUI) via INI_FILE_NAME + linuxcnc.ini() -- the same
-    environment variable NGC's own #<_ini[...]> syntax relies on, always
-    exported by the linuxcnc launcher script before milltask starts."""
+    qtpyvcp.plugins.db_tool_table._default_db_path): [EMCIO] TOOL_DB_FILE
+    if set, else a DB_PROGRAM argument, else <config dir>/tool_table.db.
+    TOOL_DB_FILE must be checked FIRST, exactly like the plugin and
+    tool_db.sh do -- this config's live database is named by TOOL_DB_FILE
+    (lathe_conv_sim_tools.db) while an unrelated tool_table.db also sits
+    in the same folder, so the old DB_PROGRAM-then-default order silently
+    published parameters from the wrong file. Resolved independently here
+    (this runs inside milltask, a separate process from the GUI) via
+    INI_FILE_NAME + linuxcnc.ini() -- the same environment variable NGC's
+    own #<_ini[...]> syntax relies on, always exported by the linuxcnc
+    launcher script before milltask starts."""
     ini_path = os.environ.get('INI_FILE_NAME')
     if not ini_path:
         return None
     config_dir = os.path.dirname(os.path.abspath(ini_path))
     ini = linuxcnc.ini(ini_path)
+
+    def _resolve(value):
+        if not os.path.isabs(value):
+            value = os.path.join(config_dir, value)
+        return os.path.abspath(os.path.expanduser(value))
+
+    tool_db_file = ini.find('EMCIO', 'TOOL_DB_FILE')
+    if tool_db_file:
+        return _resolve(tool_db_file)
     db_program = ini.find('EMCIO', 'DB_PROGRAM')
     if db_program:
         for arg in db_program.split()[1:]:
             if arg.lower() in ('debug', '-d', '--debug'):
                 continue
-            if not os.path.isabs(arg):
-                arg = os.path.join(config_dir, arg)
-            return os.path.abspath(os.path.expanduser(arg))
+            return _resolve(arg)
     return os.path.join(config_dir, 'tool_table.db')
 
 

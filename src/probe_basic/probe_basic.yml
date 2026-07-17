@@ -561,6 +561,15 @@ dialogs:
       ui_file: {{ file.dir }}/about.ui
 
   toolchange:
-    provider: qtpyvcp.widgets.dialogs.toolchange_dialog:ToolChangeDialog
+    provider: probe_basic.toolchange_dialog_pb:ToolChangeDialogPB
     kwargs:
       ui_file: {{ file.dir }}/toolchange_dialog_pb.ui
+
+  import_legacy_tbl:
+    provider: probe_basic.import_tool_dialog:ImportLegacyToolTableDialog
+
+  import_fusion_tools:
+    provider: probe_basic.import_tool_dialog:ImportFusionToolLibraryDialog
+
+  import_merged_tools:
+    provider: probe_basic.import_tool_dialog:ImportMergedToolDataDialog

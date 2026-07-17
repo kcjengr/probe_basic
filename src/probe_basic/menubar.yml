@@ -154,6 +154,24 @@ menubar:
       - title: Classicladder PLC
         action: tool.classicladder
 
+      - separator
+
+      # NOTE: menu titles are Jinja-interpolated by hiyapyco with '(' / ')'
+      # as the variable delimiters (see qtpyvcp config_loader), so a literal
+      # '(' in a title is parsed as a template expression and crashes config
+      # load. Use square brackets for the file-extension hints, never parens.
+      - title: "Import Legacy Tool Table [.tbl] ..."
+        action: win.showDialog
+        args: [import_legacy_tbl]
+
+      - title: "Import Fusion 360 Tool Library [.tools/.json] ..."
+        action: win.showDialog
+        args: [import_fusion_tools]
+
+      - title: "Import + Merge .tbl and Fusion Library ..."
+        action: win.showDialog
+        args: [import_merged_tools]
+
   - title: About
     items:
       - title: About Probe Basic

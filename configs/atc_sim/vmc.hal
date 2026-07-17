@@ -3,7 +3,9 @@
 
 loadrt [KINS]KINEMATICS
 # motion controller, get name and thread periods from ini file
-loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=6 num_aio=3
+# num_dio=8: dio 00-05 are used by the toolchange_gray/index HAL files,
+# dout-05/din-06 drive the manual tool change dialog (see probe_basic_postgui.hal)
+loadrt [EMCMOT]EMCMOT servo_period_nsec=[EMCMOT]SERVO_PERIOD num_joints=[KINS]JOINTS num_dio=8 num_aio=3
 
 addf motion-command-handler servo-thread
 addf motion-controller servo-thread
