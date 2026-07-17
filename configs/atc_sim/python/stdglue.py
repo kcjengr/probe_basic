@@ -99,7 +99,7 @@ def prepare_epilog(self, **words):
 
 # ---------------------------------------------------------------------------
 # Unified tool database: #<_current_tool_*> G-code parameters (mill flavor of
-# the lathe db config's mechanism -- see configs/probe_basic_lathe_db/python/
+# the lathe config's mechanism -- see configs/probe_basic_lathe/python/
 # stdglue.py). Written directly into self.params from INSIDE change_epilog --
 # this runs in the interpreter process itself, with direct parameter-table
 # write access, so the parameters are correct from the instant a tool change

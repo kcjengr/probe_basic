@@ -1,5 +1,8 @@
 #!/bin/bash
 
 source ~/dev/venv/bin/activate
-cd ~/dev/probe_basic/configs/atc_sim
-linuxcnc vmc_index_metric.ini
+
+# $1 is an ini path relative to configs/, e.g. atc_sim/vmc_index_metric.ini
+INI="${1:-atc_sim/vmc_index_metric.ini}"
+cd ~/dev/probe_basic/configs/"$(dirname "$INI")"
+linuxcnc "$(basename "$INI")"

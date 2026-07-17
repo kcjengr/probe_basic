@@ -7,6 +7,25 @@ Imperial and Metric version
 vmc_index_inch.ini
 vmc_index_metric.ini
 
+## Tool table
+
+All four variants here run the unified database tool table
+([EMCIO] DB_PROGRAM = ./tool_db.sh, TOOL_DB_FILE = atc_inch_tool_table.db or
+atc_metric_tool_table.db, custom_config.yml wires the DBToolTable plugin with
+the mill extras table) instead of a flat-file .tbl -- LinuxCNC and the tool
+page both read/write the same SQLite file, so they can never disagree. The
+inch index and inch graycode variants share atc_inch_tool_table.db (same
+tool data, different carousel HAL encoding); the metric variants likewise
+share atc_metric_tool_table.db.
+
+The tool page gets the unified table editor: core columns, the Mill Extras
+group, and user-defined custom columns (right-click the header).
+
+To re-seed a database from a .tbl file:
+    python3 -m qtpyvcp.lib.db_tool.import_legacy_tbl old.tbl new.db --units inch
+(or use the Tools menu importers with Probe Basic running). To try a
+different database file, point [EMCIO] TOOL_DB_FILE at it and restart.
+
 Metric Machine Size
 X 600mm
 Y 200mm
@@ -69,13 +88,7 @@ change and on_abort.ngc puts the dialog away. (The dialog also wires an optional
 QPushButton named btnAbortChange to program abort if a config's ui file provides
 one - not populated in the shipped ui.)
 
-## Database tool table variant
-
-vmc_index_inch_db.ini runs the same machine with the unified database tool table
-instead of tool_inch.tbl ([EMCIO] DB_PROGRAM = ./tool_db.sh, TOOL_DB_FILE =
-tool_table.db, custom_config_db.yml wires the DBToolTable plugin with the mill
-extras table). The tool page gains the unified table editor: core columns, the
-Mill Extras group, and user-defined custom columns (right-click the header).
+## Mill Extras: the ATC column
 
 Mill Extras currently holds one column, ATC: a per-tool True/False for whether
 the tool is physically storable in the ATC carousel. Tools default to True; set
@@ -86,12 +99,6 @@ tool and passes #<spindle_tool_atc> / #<selected_tool_atc> to toolchange.ngc). A
 tool with no saved extras row reads as True (storable). The current spindle tool's
 flag is also published to G-code as #<_current_tool_atc> by the M6 epilog for any
 program that wants to read it.
-
-tool_table.db ships seeded from tool_inch.tbl. To re-seed:
-    tbl2db tool_inch.tbl tool_table.db --units inch
-(or python3 -m qtpyvcp.lib.db_tool.import_legacy_tbl). To try a different
-database file, point [EMCIO] TOOL_DB_FILE at it and restart.
-
 
 ## Original Vismach Readme
 This is a Vismach simulator config intended for testing out tool-changer configurations

@@ -6,9 +6,10 @@ windows:
 
 data_plugins:
   tooltable:
-    provider: qtpyvcp.plugins.tool_table:ToolTable
+    provider: qtpyvcp.plugins.db_tool_table:DBToolTable
     kwargs:
       columns: {{ ini.DISPLAY.tool_table_columns }}
+      extras: mill
 
   offsettable:
     provider: qtpyvcp.plugins.offset_table:OffsetTable

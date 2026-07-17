@@ -27,8 +27,12 @@ What the database version adds over the ``.tbl`` file:
 - Keep as many named ``.db`` files as you like in the config folder (backups,
   per-job tool sets); which one is live is a single INI line.
 
-The classic ``.tbl`` workflow remains fully supported - the database version
-is opt-in per machine configuration.
+This is the standard tool table for every mill and lathe sim config Probe
+Basic ships (``atc_sim``, ``rack_atc_sim``, ``probe_basic``, and
+``probe_basic_lathe``) - new machine configs built from one of those as a
+starting point inherit it automatically. The classic ``.tbl`` workflow still
+works for a hand-built machine config that wants it; see "Switching back to
+the ``.tbl`` file" below.
 
 How it works
 ------------
@@ -40,9 +44,11 @@ Two halves, both pointed at the same file:
   backend (``qtpyvcp.tools.tool_db_backend``). LinuxCNC talks to it over the
   standard tooldb protocol for every tool lookup, offset update, and tool
   change. When ``DB_PROGRAM`` is set, the ``TOOL_TABLE`` entry is not used.
-- **Probe Basic side:** ``[DISPLAY] CONFIG_FILE = custom_config_db.yml``
-  loads the database tool table plugin (with the mill extras table) instead
-  of the file-based one, which drives the unified editor on the tool page.
+- **Probe Basic side:** ``[DISPLAY] CONFIG_FILE`` points at a ``custom_config.yml``
+  whose ``tooltable`` data plugin is ``qtpyvcp.plugins.db_tool_table:DBToolTable``
+  (with ``extras: mill`` for mill configs, ``extras: lathe`` -- the plugin
+  default -- for lathe configs) instead of the file-based ``ToolTable``
+  plugin. This drives the unified editor on the tool page.
 
 Both halves resolve the database file the same way: ``[EMCIO] TOOL_DB_FILE``
 if set, otherwise ``tool_table.db`` in the config folder.
@@ -50,10 +56,13 @@ if set, otherwise ``tool_table.db`` in the config folder.
 Enabling it in a machine config
 -------------------------------
 
-The atc_sim configuration ships a complete working reference:
-``configs/atc_sim/vmc_index_inch_db.ini``.
+Every shipped sim config (``configs/atc_sim/``, ``configs/rack_atc_sim/``,
+``configs/probe_basic/``, ``configs/probe_basic_lathe/``) is a complete
+working reference - copy ``tool_db.sh`` and ``custom_config.yml`` from
+whichever one is the closer match (mill vs lathe) into your machine config
+folder as a starting point.
 
-1. Copy ``tool_db.sh`` and ``custom_config_db.yml`` from the atc_sim config
+1. Copy ``tool_db.sh`` and ``custom_config.yml`` from a shipped sim config
    folder into your machine config folder. Make sure the script stays
    executable (``chmod +x tool_db.sh``).
 
@@ -62,9 +71,8 @@ The atc_sim configuration ships a complete working reference:
    .. code-block:: bash
 
       [DISPLAY]
-      CONFIG_FILE = custom_config_db.yml
+      CONFIG_FILE = custom_config.yml
       #  loads the database tool table plugin in Probe Basic
-      #  (replaces the custom_config.yml line)
 
       [EMCIO]
       #TOOL_TABLE = tool.tbl
@@ -98,7 +106,9 @@ The atc_sim configuration ships a complete working reference:
      you - the INI is backed up first, and the change takes effect on the
      next restart.
 
-   - **Command line:** ``tbl2db my_old_table.tbl my_machine_tools.db``
+   - **Command line:** ``tbl2db my_old_table.tbl my_machine_tools.db`` (or,
+     if the console-script shim isn't on ``PATH``:
+     ``python3 -m qtpyvcp.lib.db_tool.import_legacy_tbl my_old_table.tbl my_machine_tools.db --units inch``)
 
    - **Start empty:** skip seeding entirely; the database file is created
      on first launch and tools can be added in the editor.
@@ -111,8 +121,11 @@ Switching back to the ``.tbl`` file
 -----------------------------------
 
 Reverting is the mirror of step 2: uncomment ``TOOL_TABLE``, comment out
-``DB_PROGRAM`` and ``TOOL_DB_FILE``, and point ``CONFIG_FILE`` back at
-``custom_config.yml``. The ``.db`` file stays in the folder untouched, so you
+``DB_PROGRAM`` and ``TOOL_DB_FILE``, and point ``CONFIG_FILE`` at a
+``custom_config.yml`` whose ``tooltable`` plugin is
+``qtpyvcp.plugins.tool_table:ToolTable`` instead (build a new file, or copy
+one from a version of the config folder predating the DB conversion, e.g.
+from git history). The ``.db`` file stays in the folder untouched, so you
 can switch back and forth while trying it out. Note that offset changes made
 in one mode do not flow into the other - the ``.tbl`` and ``.db`` files are
 independent once created.

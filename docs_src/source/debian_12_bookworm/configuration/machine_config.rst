@@ -304,7 +304,7 @@ Step 3: Edit INI files
          TOOL_DB_FILE = tool_table.db
          #  Which database file in the config folder is live. Omit to
          #  default to tool_table.db. Requires DB_PROGRAM above, and
-         #  CONFIG_FILE = custom_config_db.yml in the [DISPLAY] section.
+         #  CONFIG_FILE = custom_config.yml (wired for the DB tool table plugin) in the [DISPLAY] section.
 
       |
 

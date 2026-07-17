@@ -19,6 +19,21 @@ Z 16"
 
 Both machines have the X and Y home in the center of travel.
 
+## Tool table
+
+Both variants run the unified database tool table ([EMCIO] DB_PROGRAM =
+./tool_db.sh, TOOL_DB_FILE = rack_inch_tool_table.db or
+rack_metric_tool_table.db, custom_config.yml wires the DBToolTable plugin
+with the mill extras table) instead of a flat-file .tbl -- LinuxCNC and the
+tool page both read/write the same SQLite file, so they can never disagree.
+The tool page gets the unified table editor: core columns, the Mill Extras
+group, and user-defined custom columns (right-click the header).
+
+To re-seed a database from a .tbl file:
+    python3 -m qtpyvcp.lib.db_tool.import_legacy_tbl old.tbl new.db --units inch
+(or use the Tools menu importers with Probe Basic running). To try a
+different database file, point [EMCIO] TOOL_DB_FILE at it and restart.
+
 
 ## Original Vismach Readme
 This is a Vismach simulator config intended for testing out tool-changer configurations

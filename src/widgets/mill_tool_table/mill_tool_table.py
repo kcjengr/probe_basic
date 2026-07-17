@@ -1,12 +1,16 @@
 # coding=utf-8
-"""MillToolTable -- mill flavor of the unified tool table widget.
+"""MillToolTable -- mill flavor of qtpyvcp's unified tool table editor.
 
 The same editing surface as LatheToolTable (core tool-table columns +
 machine extras + user-defined custom columns, one Save action), with the
-lathe-specific configuration -- insert/holder vocabularies, the tool_lathe
-extras set -- swapped for the mill's. All the logic lives in
-widgets.lathe_tool_table; this module only overrides the machine-flavor
-class attributes those classes consult.
+lathe-specific configuration swapped for the mill's. All the mechanism
+lives in qtpyvcp's ``tool_table_editor.ToolTableEditorModel``/
+``ToolTableEditor``; this module only overrides the machine-flavor class
+attributes those classes consult. A sibling of LatheToolModel/LatheToolTable
+(not a subclass of them) -- the mill has no use for the lathe's
+insert/holder vocabulary or its OPEN_VOCAB_SEED_OPTIONS-driven combo
+lookups, so it inherits directly from the generic base instead of dragging
+lathe-only methods along unused.
 
 Mill extras today is a single column, ATC (tool_mill.atc, schema v3 --
 qtpyvcp migrations/003_tool_mill.sql): a per-tool boolean for whether the
@@ -34,11 +38,11 @@ no extras/custom -- same editing behavior the stock qtpyvcp ToolTable
 widget gave, so promoting it in probe_basic.ui is safe for all configs.
 """
 
-from widgets.lathe_tool_table.lathe_tool_model import LatheToolModel
-from widgets.lathe_tool_table.lathe_tool_table import LatheToolTable
+from qtpyvcp.widgets.input_widgets.tool_table_editor import (
+    ToolTableEditorModel, ToolTableEditor)
 
 
-class MillToolModel(LatheToolModel):
+class MillToolModel(ToolTableEditorModel):
 
     EXTRAS_LABELS = {'atc': 'ATC'}
     TEXT_EXTRAS = frozenset()
@@ -49,14 +53,12 @@ class MillToolModel(LatheToolModel):
     # unchecked, a blank cell never silently means "manual only".
     EXTRAS_DEFAULTS = {'atc': True}
     DEFAULT_VISIBLE_EXTRAS = ['atc']
-    STRICT_ENUM_OPTIONS = {}
-    OPEN_VOCAB_SEED_OPTIONS = frozenset()
     EXTRAS_GROUP_LABEL = 'Mill Extras'
     # Remark renders last, so ATC (and any future mill extras) sit between
     # the numeric offset columns and the wide free-text Remark column.
     TRAILING_CORE_COLUMNS = ('R',)
 
 
-class MillToolTable(LatheToolTable):
+class MillToolTable(ToolTableEditor):
 
     MODEL_CLASS = MillToolModel

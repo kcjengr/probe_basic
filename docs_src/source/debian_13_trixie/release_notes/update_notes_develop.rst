@@ -12,10 +12,19 @@ July 17, 2026 - Develop Update Release Notes
 Mill configurations can now store tool data in a SQLite database instead of the classic ``.tbl`` file, using LinuxCNC's native tool database interface. LinuxCNC and the Probe Basic tool table editor read and write the same database file, so the GUI and the machine can never disagree about tool data.
 
 - Unified tool table editor on the tool page: core offset columns plus mill extras stored per tool, including a new **ATC column** marking whether each tool is storable in the ATC carousel.
-- Enabled per config with ``[EMCIO] DB_PROGRAM = ./tool_db.sh`` and ``TOOL_DB_FILE``, plus ``CONFIG_FILE = custom_config_db.yml`` in ``[DISPLAY]``. The classic ``.tbl`` workflow is unchanged for configs that do not opt in.
+- Enabled per config with ``[EMCIO] DB_PROGRAM = ./tool_db.sh`` and ``TOOL_DB_FILE``, plus ``CONFIG_FILE = custom_config.yml`` (wired for the DB tool table plugin) in ``[DISPLAY]``. The classic ``.tbl`` workflow remains available for a hand-built machine config that wants it.
 - New import tools in the **Tools** menu seed a database from existing tool data: legacy ``.tbl`` files, Fusion 360 tool library exports (``.tools``/``.json``), or both merged by tool number. Importers write to a standalone file (never the live database) and offer to point the INI at the result, with an automatic INI backup.
-- New reference sim config: ``configs/atc_sim/vmc_index_inch_db.ini``.
+- New reference sim config: ``configs/atc_sim/vmc_index_inch.ini``.
 - New documentation page: :doc:`/debian_13_trixie/configuration/db_tool_table`.
+
+**Database Tool Table Is Now the Standard for All Sim Configs**
+
+Every sim config that ships a ``.desktop`` launcher (``atc_sim`` - all four inch/metric/index/graycode variants, ``rack_atc_sim``, ``probe_basic``, and ``probe_basic_lathe``) now runs the database tool table by default. The ``_db``-suffixed filenames used while this was an opt-in variant (``vmc_index_inch_db.ini``, ``custom_config_db.yml``) are gone - there is no longer a non-database sibling to distinguish them from, so the plain names (``custom_config.yml``, etc.) are the database-backed configs.
+
+- ``probe_basic_lathe_db`` (the separate database-backed lathe folder) has been folded into ``probe_basic_lathe`` - it is no longer a separate directory. The classic ``.tbl``-based lathe config it replaces has been removed.
+- ``rack_atc_sim`` and ``probe_basic`` (the base mill, no ATC) gained the database tool table for the first time as part of this change.
+- The legacy ``.tbl`` files backing these sim configs were deleted; the database files they seeded remain in each config folder.
+- ``probe_basic_asm`` and ``probe_basic_robot`` are unaffected - neither ships a launcher today.
 
 **Manual Tool Change Fallback for Carousel ATC Machines**
 
