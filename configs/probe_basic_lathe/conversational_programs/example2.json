@@ -1,0 +1,1337 @@
+{
+  "version": 1,
+  "operations": {
+    "facing_001": {
+      "id": "facing_001",
+      "type": "facing",
+      "name": "Facing",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 0.0,
+        "z_start_position": 0.0,
+        "z_end_position": -0.03,
+        "corner_radius": null,
+        "taper_angle_from_z_axis_degrees": null,
+        "finish_step_depth": 0.006,
+        "rough_step_depth": 0.03,
+        "wcs": "1",
+        "tool_number": 4,
+        "rough_tool_number": 1,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "finish_feedrate": 0.003,
+        "rough_feedrate": 0.0084,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD",
+        "safety_clearance": 0.05,
+        "set_z_zero_facing": false
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.0,
+              -0.005,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.03,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_facing",
+              "description": "End Diameter",
+              "tab": "facing_tab",
+              "widget_name": "x_end_diam_facing"
+            },
+            "2": {
+              "parameter": "z_end_facing",
+              "description": "Face Depth",
+              "tab": "facing_tab",
+              "widget_name": "z_end_facing"
+            }
+          },
+          "operation_type": "facing",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
+    "drill_001": {
+      "id": "drill_001",
+      "type": "drill",
+      "name": "Drill",
+      "enabled": true,
+      "params": {
+        "z_start": -0.03,
+        "z_end": -1.45,
+        "tool_clearance": 0.05,
+        "retract_dist": 0.1,
+        "full_retract": false,
+        "true_bore_depth": true,
+        "peck_depth": 0.2,
+        "tip_angle": 118.0,
+        "bottom_dwell": 0.5,
+        "wcs": "1",
+        "tool_number": 20,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "feedrate": 0.0045,
+        "retract_feed": 0.012,
+        "rpm": 1200,
+        "spindle_direction": "FWD",
+        "drill_diameter": 0.4531
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.45,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.5861249732406937,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.22655,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.22655,
+              -1.45,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.5861249732406937,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "z_end_drill",
+              "description": "Drill Depth",
+              "tab": "drill_tab",
+              "widget_name": "z_end_drill"
+            },
+            "2": {
+              "parameter": "tip_angle_drill",
+              "description": "Tip Angle",
+              "tab": "drill_tab",
+              "widget_name": "tip_angle_drill"
+            }
+          },
+          "operation_type": "drill"
+        }
+      }
+    },
+    "id_turning_001": {
+      "id": "id_turning_001",
+      "type": "id_turning",
+      "name": "ID Turning",
+      "enabled": true,
+      "params": {
+        "x_min_position": 0.5,
+        "x_max_position": 0.682,
+        "z_start_position": -0.03,
+        "z_end_position": -0.8,
+        "corner_radius": 0.05,
+        "taper_angle_from_z_axis_degrees": 0.0,
+        "finish_step_depth": 0.006,
+        "rough_step_depth": 0.03,
+        "wcs": "1",
+        "tool_number": 17,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "finish_feedrate": 0.003,
+        "rough_feedrate": 0.0084,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "rough_tool_number": 17,
+        "spindle_direction": "FWD",
+        "z_safe_clearance": 0.05,
+        "x_safe_retract": 0.01
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.0,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.29100000000000004,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.341,
+              -0.75,
+              0.29100000000000004,
+              -0.75,
+              0.05
+            ],
+            [
+              "line",
+              0.341,
+              -0.03,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.341,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.75,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.29100000000000004,
+              -0.8,
+              0.29100000000000004,
+              -0.75,
+              0.05
+            ],
+            [
+              "line",
+              0.005,
+              -0.8,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_turn_id",
+              "description": "Bore Diameter",
+              "tab": "id_turning_tab",
+              "widget_name": "x_end_diam_turn_id"
+            },
+            "2": {
+              "parameter": "corner_radius_turn_id",
+              "description": "Corner Radius",
+              "tab": "id_turning_tab",
+              "widget_name": "corner_radius_turn_id"
+            },
+            "3": {
+              "parameter": "z_end_turn_id",
+              "description": "End Position (Feedout)",
+              "tab": "id_turning_tab",
+              "widget_name": "z_end_turn_id"
+            }
+          },
+          "operation_type": "id_turning",
+          "coordinate_system": "id_axial",
+          "geometry_type": "2a_corner"
+        }
+      }
+    },
+    "chamfer_001": {
+      "id": "chamfer_001",
+      "type": "chamfer",
+      "name": "Chamfer",
+      "enabled": true,
+      "params": {
+        "x_diam": 0.682,
+        "z_face": -0.03,
+        "stock_od": 2.0,
+        "z_safe_clearance": 0.05,
+        "x_safe_retract": 0.01,
+        "ext_front": 0.0,
+        "int_front": 0.08,
+        "ext_back": 0.0,
+        "width": 0.08,
+        "ext_front_btn": false,
+        "int_front_btn": true,
+        "ext_back_btn": false,
+        "rough_step_depth": 0.0396,
+        "finish_step_depth": 0.009,
+        "wcs": "1",
+        "tool_number": 18,
+        "rough_tool_number": 18,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "rough_feedrate": 0.0084,
+        "finish_feedrate": 0.003,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD"
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": []
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.42100000000000004,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.11,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "int_front",
+              "description": "INT FRONT Chamfer",
+              "tab": "chamfer_tab",
+              "widget_name": "chamfer_width"
+            }
+          },
+          "operation_type": "chamfer"
+        },
+        "id_removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.341,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.11,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.42100000000000004,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.03,
+              0,
+              0,
+              0
+            ]
+          ]
+        }
+      }
+    },
+    "grooving_id_001": {
+      "id": "grooving_id_001",
+      "type": "grooving_id",
+      "name": "Grooving ID",
+      "enabled": true,
+      "params": {
+        "x_start_diam": 0.682,
+        "x_end_diam": 0.85,
+        "z_start": -0.35,
+        "z_width_groove": 0.2,
+        "z_end": -0.55,
+        "x_safe_retract": 0.01,
+        "clearance": 0.05,
+        "tool_width": 0.0394,
+        "peck_dist": 0.0,
+        "retract": 0.0,
+        "edgebreak": 0.02,
+        "corner_radius": 0.02,
+        "rough_step_depth": 0.0396,
+        "finish_step_depth": 0.009,
+        "wcs": "1",
+        "tool_number": 15,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "rough_feedrate": 0.0084,
+        "finish_feedrate": 0.003,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD",
+        "operation_type": "grooving_id",
+        "rough_tool_number": 15,
+        "rough_tool_width": 0.03937,
+        "tool_orientation": 2
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.341,
+              -0.32999999999999996,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.36100000000000004,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.40499999999999997,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.425,
+              -0.37,
+              0.40499999999999997,
+              -0.37,
+              0.02
+            ],
+            [
+              "line",
+              0.425,
+              -0.53,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.40499999999999997,
+              -0.55,
+              0.40499999999999997,
+              -0.53,
+              0.02
+            ],
+            [
+              "line",
+              0.36100000000000004,
+              -0.55,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.5700000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.32999999999999996,
+              0,
+              0,
+              0
+            ]
+          ],
+          "warnings": [],
+          "finish_step_effective": 0.009,
+          "operation_type": "grooving_id"
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.341,
+              -0.32999999999999996,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.36100000000000004,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.40499999999999997,
+              -0.35,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.425,
+              -0.37,
+              0.40499999999999997,
+              -0.37,
+              0.02
+            ],
+            [
+              "line",
+              0.425,
+              -0.53,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.40499999999999997,
+              -0.55,
+              0.40499999999999997,
+              -0.53,
+              0.02
+            ],
+            [
+              "line",
+              0.36100000000000004,
+              -0.55,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.5700000000000001,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.341,
+              -0.32999999999999996,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edgebreak_groove_id",
+              "description": "Groove Edge Break (Start)",
+              "tab": "groove_id",
+              "widget_name": "edgebreak_groove_id"
+            },
+            "2": {
+              "parameter": "z_start_groove_id",
+              "description": "Groove Start Z",
+              "tab": "groove_id",
+              "widget_name": "z_start_groove_id"
+            },
+            "3": {
+              "parameter": "corner_radius_groove_id",
+              "description": "Groove Corner Radius (Start)",
+              "tab": "groove_id",
+              "widget_name": "corner_radius_groove_id"
+            },
+            "4": {
+              "parameter": "x_end_diam_groove_id",
+              "description": "Groove Depth Diameter",
+              "tab": "groove_id",
+              "widget_name": "x_end_diam_groove_id"
+            },
+            "5": {
+              "parameter": "corner_radius_groove_id",
+              "description": "Groove Corner Radius (End)",
+              "tab": "groove_id",
+              "widget_name": "corner_radius_groove_id"
+            },
+            "6": {
+              "parameter": "z_width_groove_id",
+              "description": "Groove Width",
+              "tab": "groove_id",
+              "widget_name": "z_width_groove_id"
+            },
+            "7": {
+              "parameter": "edgebreak_groove_id",
+              "description": "Groove Edge Break (End)",
+              "tab": "groove_id",
+              "widget_name": "edgebreak_groove_id"
+            }
+          },
+          "operation_type": "grooving_id",
+          "coordinate_system": "id_radial",
+          "geometry_type": "1r_straight",
+          "warnings": []
+        }
+      }
+    },
+    "od_turning_001": {
+      "id": "od_turning_001",
+      "type": "od_turning",
+      "name": "OD Turning",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 1.6,
+        "z_start_position": -0.03,
+        "z_end_position": -0.8,
+        "corner_radius": 0.06,
+        "taper_angle_from_z_axis_degrees": 0.0,
+        "finish_step_depth": 0.006,
+        "rough_step_depth": 0.03,
+        "wcs": "1",
+        "tool_number": 4,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "finish_feedrate": 0.003,
+        "rough_feedrate": 0.0084,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "rough_tool_number": 1,
+        "spindle_direction": "FWD",
+        "safety_clearance": 0.05
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              0.0,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8600000000000001,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8,
+              -0.74,
+              0.8600000000000001,
+              -0.74,
+              0.06
+            ],
+            [
+              "line",
+              0.8,
+              0.0,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.8,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8,
+              -0.74,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8600000000000001,
+              -0.8,
+              0.8600000000000001,
+              -0.74,
+              0.06
+            ],
+            [
+              "line",
+              0.992,
+              -0.8,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "x_end_diam_turn_od",
+              "description": "Finish Diameter",
+              "tab": "od_turning_tab",
+              "widget_name": "x_end_diam_turn_od"
+            },
+            "2": {
+              "parameter": "corner_radius_turn_od",
+              "description": "Corner Radius",
+              "tab": "od_turning_tab",
+              "widget_name": "corner_radius_turn_od"
+            },
+            "3": {
+              "parameter": "z_end_turn_od",
+              "description": "End Position",
+              "tab": "od_turning_tab",
+              "widget_name": "z_end_turn_od"
+            }
+          },
+          "operation_type": "od_turning",
+          "coordinate_system": "od_axial",
+          "geometry_type": "2a_corner"
+        }
+      }
+    },
+    "radius_001": {
+      "id": "radius_001",
+      "type": "radius",
+      "name": "Radius",
+      "enabled": true,
+      "params": {
+        "x_diam": 2.0,
+        "z_face": -0.8,
+        "stock_od": 2.0,
+        "z_safe_clearance": 0.05,
+        "x_safe_retract": 0.01,
+        "ext_front": 0.06,
+        "int_front": 0.0,
+        "ext_back": 0.0,
+        "radius": 0.06,
+        "ext_front_btn": true,
+        "int_front_btn": false,
+        "ext_back_btn": false,
+        "rough_step_depth": 0.0396,
+        "finish_step_depth": 0.009,
+        "wcs": "1",
+        "tool_number": 4,
+        "rough_tool_number": 1,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "rough_feedrate": 0.0084,
+        "finish_feedrate": 0.003,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD"
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.94,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              1.0,
+              -0.8600000000000001,
+              0.94,
+              -0.8600000000000001,
+              0.06
+            ],
+            [
+              "line",
+              1.0,
+              -0.8,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.94,
+              -0.8,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              1.0,
+              -0.8600000000000001,
+              0.94,
+              -0.8600000000000001,
+              0.06
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "ext_front",
+              "description": "EXT FRONT Radius",
+              "tab": "radius_tab",
+              "widget_name": "radius_width"
+            }
+          },
+          "operation_type": "radius"
+        }
+      }
+    },
+    "chamfer_002": {
+      "id": "chamfer_002",
+      "type": "chamfer",
+      "name": "Chamfer",
+      "enabled": true,
+      "params": {
+        "x_diam": 1.6,
+        "z_face": -0.03,
+        "stock_od": 2.0,
+        "z_safe_clearance": 0.05,
+        "x_safe_retract": 0.01,
+        "ext_front": 0.08,
+        "int_front": 0.0,
+        "ext_back": 0.0,
+        "width": 0.08,
+        "ext_front_btn": true,
+        "int_front_btn": false,
+        "ext_back_btn": false,
+        "rough_step_depth": 0.0396,
+        "finish_step_depth": 0.009,
+        "wcs": "1",
+        "tool_number": 4,
+        "rough_tool_number": 1,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "rough_feedrate": 0.0084,
+        "finish_feedrate": 0.003,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD"
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              0.8,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.7200000000000001,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8,
+              -0.11,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8,
+              -0.03,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.7200000000000001,
+              -0.03,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8,
+              -0.11,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "ext_front",
+              "description": "EXT FRONT Chamfer",
+              "tab": "chamfer_tab",
+              "widget_name": "chamfer_width"
+            }
+          },
+          "operation_type": "chamfer"
+        }
+      }
+    },
+    "grooving_od_001": {
+      "id": "grooving_od_001",
+      "type": "grooving_od",
+      "name": "Grooving OD",
+      "enabled": true,
+      "params": {
+        "x_start_diam": 2.0,
+        "x_end_diam": 1.6,
+        "z_start": -1.25,
+        "z_width_groove": 0.25,
+        "z_end": -1.5,
+        "x_safe_retract": 0.0,
+        "clearance": 0.05,
+        "tool_width": 0.0787,
+        "peck_dist": 0.0,
+        "retract": 0.0,
+        "edgebreak": 0.03,
+        "corner_radius": 0.03,
+        "rough_step_depth": 0.0396,
+        "finish_step_depth": 0.009,
+        "wcs": "1",
+        "tool_number": 11,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "rough_feedrate": 0.0084,
+        "finish_feedrate": 0.003,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200,
+        "max_rpm_limit": 1200,
+        "rough_surface_speed": 716,
+        "finish_surface_speed": 842,
+        "spindle_direction": "FWD",
+        "operation_type": "grooving_od",
+        "rough_tool_number": 11,
+        "rough_tool_width": 0.07874,
+        "tool_orientation": 2
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              -1.22,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -1.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8300000000000001,
+              -1.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8,
+              -1.28,
+              0.8300000000000001,
+              -1.28,
+              0.03
+            ],
+            [
+              "line",
+              0.8,
+              -1.47,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8300000000000001,
+              -1.5,
+              0.8300000000000001,
+              -1.47,
+              0.03
+            ],
+            [
+              "line",
+              0.97,
+              -1.5,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.53,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.22,
+              0,
+              0,
+              0
+            ]
+          ],
+          "warnings": [],
+          "finish_step_effective": 0.009,
+          "operation_type": "grooving_od"
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              1.0,
+              -1.22,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -1.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.8300000000000001,
+              -1.25,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8,
+              -1.28,
+              0.8300000000000001,
+              -1.28,
+              0.03
+            ],
+            [
+              "line",
+              0.8,
+              -1.47,
+              0,
+              0,
+              0
+            ],
+            [
+              "arc",
+              0.8300000000000001,
+              -1.5,
+              0.8300000000000001,
+              -1.47,
+              0.03
+            ],
+            [
+              "line",
+              0.97,
+              -1.5,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.53,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.22,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edgebreak_groove_od",
+              "description": "Groove Edge Break (Start)",
+              "tab": "groove_od",
+              "widget_name": "edgebreak_groove_od"
+            },
+            "2": {
+              "parameter": "z_start_groove_od",
+              "description": "Groove Start Z",
+              "tab": "groove_od",
+              "widget_name": "z_start_groove_od"
+            },
+            "3": {
+              "parameter": "corner_radius_groove_od",
+              "description": "Groove Corner Radius (Start)",
+              "tab": "groove_od",
+              "widget_name": "corner_radius_groove_od"
+            },
+            "4": {
+              "parameter": "x_end_diam_groove_od",
+              "description": "Groove Depth Diameter",
+              "tab": "groove_od",
+              "widget_name": "x_end_diam_groove_od"
+            },
+            "5": {
+              "parameter": "corner_radius_groove_od",
+              "description": "Groove Corner Radius (End)",
+              "tab": "groove_od",
+              "widget_name": "corner_radius_groove_od"
+            },
+            "6": {
+              "parameter": "z_width_groove_od",
+              "description": "Groove Width",
+              "tab": "groove_od",
+              "widget_name": "z_width_groove_od"
+            },
+            "7": {
+              "parameter": "edgebreak_groove_od",
+              "description": "Groove Edge Break (End)",
+              "tab": "groove_od",
+              "widget_name": "edgebreak_groove_od"
+            }
+          },
+          "operation_type": "grooving_od",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight",
+          "warnings": []
+        }
+      }
+    }
+  },
+  "operation_order": [
+    "facing_001",
+    "drill_001",
+    "id_turning_001",
+    "chamfer_001",
+    "grooving_id_001",
+    "od_turning_001",
+    "radius_001",
+    "chamfer_002",
+    "grooving_od_001"
+  ]
+}

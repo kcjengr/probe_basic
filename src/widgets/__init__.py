@@ -25,13 +25,6 @@ if _IN_DESIGNER:
         def __init__(self, parent=None):
             super().__init__(parent)
 
-    # LatheToolTable/MillToolTable are plain QTableViews (no GL/linuxcnc
-    # module-level imports), so unlike the widgets above they don't need a
-    # placeholder -- their LatheToolModel already no-ops correctly under
-    # IN_DESIGNER.
-    from widgets.lathe_tool_table import LatheToolTable
-    from widgets.mill_tool_table import MillToolTable
-
 else:
     # Runtime: import the real widgets
     try:
@@ -41,8 +34,6 @@ else:
         from widgets.conversational.facing import FacingWidget
         from widgets.conversational.xy_coord import XYCoordWidget
         from widgets.conversational.hole_circle import HoleCircleWidget
-        from widgets.lathe_tool_table import LatheToolTable
-        from widgets.mill_tool_table import MillToolTable
     except (ImportError, AttributeError) as e:
         print(f"Warning: could not import probe_basic widgets: {e}")
 
@@ -76,12 +67,8 @@ class FacingWidgetPlugin(_DesignerPlugin):
     def pluginClass(self):
         return FacingWidget
 
-
-class LatheToolTable_Plugin(_DesignerPlugin):
-    def pluginClass(self):
-        return LatheToolTable
-
-
-class MillToolTable_Plugin(_DesignerPlugin):
-    def pluginClass(self):
-        return MillToolTable
+# LatheToolTable/MillToolTable's Designer-plugin registration now lives in
+# qtpyvcp itself (qtpyvcp.widgets.input_widgets.designer_plugins) -- these
+# widgets are qtpyvcp's own reference lathe/mill tool table presentation,
+# not probe_basic-specific; registering them here too would just duplicate
+# the same class in Designer's widget box.
