@@ -1,0 +1,233 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="./">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Template: Debian Docs Split File Structure &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="_static/jquery.js?v=5d32c60e"></script>
+      <script src="_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Debian 12 Bookworm:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="debian_12_bookworm/index.html">Debian 12 Bookworm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debian 13 Trixie:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="debian_13_trixie/index.html">Debian 13 Trixie</a></li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">Template: Debian Docs Split File Structure</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="_sources/debian_docs_structure_template.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="template-debian-docs-split-file-structure">
+<h1>Template: Debian Docs Split File Structure<a class="headerlink" href="#template-debian-docs-split-file-structure" title="Link to this heading"></a></h1>
+<section id="purpose">
+<h2>Purpose<a class="headerlink" href="#purpose" title="Link to this heading"></a></h2>
+<p>This template defines a clean and maintainable docs structure that separates
+Debian 12 Bookworm and Debian 13 Trixie into dedicated sections.</p>
+</section>
+<section id="design-goals">
+<h2>Design Goals<a class="headerlink" href="#design-goals" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Keep navigation OS-first: Debian 12 and Debian 13 at top level.</p></li>
+<li><p>Keep all editable content inside the OS directory it belongs to.</p></li>
+<li><p>Keep one canonical source file per topic (no duplicated editable content).</p></li>
+<li><p>Allow Bookworm and Trixie to evolve independently for install, release notes, and parameters.</p></li>
+</ul>
+</section>
+<section id="proposed-target-structure">
+<h2>Proposed Target Structure<a class="headerlink" href="#proposed-target-structure" title="Link to this heading"></a></h2>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>docs_src/source/
+|- index.rst
+|
+|- debian_12_bookworm/
+|  |- index.rst
+|  |- installation/
+|  |  |- index.rst
+|  |  |- probe_basic_apt_stable_install.rst
+|  |  |- probe_basic_apt_develop_install.rst
+|  |  |- probe_basic_stable_develop_change.rst
+|  |  |- probe_basic_deb_install.rst
+|  |  |- probe_basic_dev_install.rst
+|  |- release_notes/
+|  |  |- index.rst
+|  |  |- update_notes_stable.rst
+|  |  |- update_notes_develop.rst
+|  |- configuration/
+|  |  |- index.rst
+|  |  |- probe_basic_parameters.rst
+|  |  |- machine_config.rst
+|  |  |- atc_setup.rst
+|  |- interface/
+|  |  |- index.rst
+|  |  |- mill_interface.rst
+|  |  |- lathe_interface.rst
+|  |  |- tool_offsets_lathe.rst
+|  |  |- probing.rst
+|  |  |- tool_length_setter.rst
+|  |- extending/
+|  |  |- index.rst
+|  |  |- user_tabs.rst
+|  |  |- custom_ux_hacking.rst
+|
+|- debian_13_trixie/
+|  |- index.rst
+|  |- installation/
+|  |  |- index.rst
+|  |  |- probe_basic_trixie_apt_develop_install.rst
+|  |  |- probe_basic_trixie_dev_install.rst
+|  |- release_notes/
+|  |  |- index.rst
+|  |  |- update_notes_stable.rst
+|  |  |- update_notes_develop.rst
+|  |- configuration/
+|  |  |- index.rst
+|  |  |- probe_basic_parameters_trixie.rst
+|  |  |- pb_var_parameter_trixie.csv
+|  |  |- machine_config.rst
+|  |  |- atc_setup.rst
+|  |- interface/
+|  |  |- index.rst
+|  |  |- mill_interface.rst
+|  |  |- lathe_interface.rst
+|  |  |- tool_offsets_lathe.rst
+|  |  |- probing.rst
+|  |  |- tool_length_setter.rst
+|  |- extending/
+|  |  |- index.rst
+|  |  |- user_tabs.rst
+|  |  |- custom_ux_hacking.rst
+</pre></div>
+</div>
+</section>
+<section id="canonical-content-rules">
+<h2>Canonical Content Rules<a class="headerlink" href="#canonical-content-rules" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p>Canonical content lives inside <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/</span></code> or <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/</span></code>.</p></li>
+<li><p>Root-level docs contain only the main docs hub (<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>) and planning/template docs.</p></li>
+<li><p>If two OS pages are identical, use a shared include source to avoid copy/paste drift.</p></li>
+</ul>
+</section>
+<section id="template-navigation-model">
+<h2>Template Navigation Model<a class="headerlink" href="#template-navigation-model" title="Link to this heading"></a></h2>
+<p>Root index (<code class="docutils literal notranslate"><span class="pre">index.rst</span></code>):</p>
+<ul class="simple">
+<li><p>Debian 12 Bookworm -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/index</span></code></p></li>
+<li><p>Debian 13 Trixie -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/index</span></code></p></li>
+</ul>
+<p>Debian 12 index:</p>
+<ul class="simple">
+<li><p>Installation -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/installation/index</span></code></p></li>
+<li><p>Update Release Notes -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/release_notes/index</span></code></p></li>
+<li><p>Configuration -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/configuration/index</span></code></p></li>
+<li><p>Interface -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/interface/index</span></code></p></li>
+<li><p>Extending -&gt; <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/extending/index</span></code></p></li>
+</ul>
+<p>Debian 13 index:</p>
+<ul class="simple">
+<li><p>Installation -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/installation/index</span></code></p></li>
+<li><p>Update Release Notes -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/release_notes/index</span></code></p></li>
+<li><p>Configuration -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/configuration/index</span></code></p></li>
+<li><p>Interface -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/interface/index</span></code></p></li>
+<li><p>Extending -&gt; <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/extending/index</span></code></p></li>
+</ul>
+</section>
+<section id="implementation-checklist">
+<h2>Implementation Checklist<a class="headerlink" href="#implementation-checklist" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Create full section trees under <code class="docutils literal notranslate"><span class="pre">debian_12_bookworm/</span></code> and <code class="docutils literal notranslate"><span class="pre">debian_13_trixie/</span></code>.</p></li>
+<li><p>Move canonical pages into their OS directories.</p></li>
+<li><p>Wire root <code class="docutils literal notranslate"><span class="pre">index.rst</span></code> to OS hub pages only.</p></li>
+<li><p>Run <code class="docutils literal notranslate"><span class="pre">make</span> <span class="pre">clean</span> <span class="pre">&amp;&amp;</span> <span class="pre">make</span> <span class="pre">html</span></code> and verify zero new warnings.</p></li>
+</ol>
+</section>
+<section id="decision-notes">
+<h2>Decision Notes<a class="headerlink" href="#decision-notes" title="Link to this heading"></a></h2>
+<p>This model intentionally keeps all real content under OS directories.
+No compatibility wrapper layer is used in this clean update model.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

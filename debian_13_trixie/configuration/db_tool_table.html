@@ -1,0 +1,269 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Database Tool Table &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Machine Sim Graphics" href="machine_parts_yaml.html" />
+    <link rel="prev" title="Machine Configuration (INI, HAL, Files)" href="machine_config.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Debian 12 Bookworm:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../debian_12_bookworm/index.html">Debian 12 Bookworm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debian 13 Trixie:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Debian 13 Trixie</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../release_notes/index.html">Update Release Notes</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Configuration</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="probe_basic_parameters_trixie.html">Probe Basic Parameters Trixie</a></li>
+<li class="toctree-l3"><a class="reference internal" href="machine_config.html">Machine Configuration (INI, HAL, Files)</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Database Tool Table</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#how-it-works">How it works</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#enabling-it-in-a-machine-config">Enabling it in a machine config</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#switching-back-to-the-tbl-file">Switching back to the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#notes">Notes</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="machine_parts_yaml.html">Machine Sim Graphics</a></li>
+<li class="toctree-l3"><a class="reference internal" href="atc_setup.html">Carousel ATC Setup</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../interface/index.html">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/index.html">Extending</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Debian 13 Trixie</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Configuration</a></li>
+      <li class="breadcrumb-item active">Database Tool Table</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/debian_13_trixie/configuration/db_tool_table.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="database-tool-table">
+<h1>Database Tool Table<a class="headerlink" href="#database-tool-table" title="Link to this heading"></a></h1>
+<section id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Link to this heading"></a></h2>
+<p>Probe Basic mill configurations can now store tool data in a SQLite database
+file (<code class="docutils literal notranslate"><span class="pre">.db</span></code>) instead of the classic LinuxCNC tool table file (<code class="docutils literal notranslate"><span class="pre">.tbl</span></code>).
+This uses LinuxCNC’s native tool database interface: LinuxCNC itself reads and
+writes tools through a small backend program, and Probe Basic’s tool table
+editor opens the very same database file, so the GUI and the machine can never
+disagree about tool data - one file is the single source of truth.</p>
+<p>What the database version adds over the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file:</p>
+<ul class="simple">
+<li><p>A unified tool table editor on the tool page with the core offset columns
+plus mill extras stored per tool.</p></li>
+<li><p>An <strong>ATC column</strong> (checkbox) marking whether each tool is storable in the
+ATC carousel. Unchecking it makes a tool “manual only” - the carousel M6
+remap will never try to store or fetch it, and instead walks the operator
+through a hand swap with the manual tool change dialog. This is meant for
+oversize tools that physically do not fit between carousel pockets. See
+<a class="reference internal" href="atc_setup.html"><span class="doc">Carousel ATC Setup</span></a> for how manual-only tools behave during tool changes.</p></li>
+<li><p>Import tools in the <strong>Tools</strong> menu to seed a database from your existing
+<code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file and/or a Fusion 360 tool library export.</p></li>
+<li><p>Keep as many named <code class="docutils literal notranslate"><span class="pre">.db</span></code> files as you like in the config folder (backups,
+per-job tool sets); which one is live is a single INI line.</p></li>
+</ul>
+<p>This is the standard tool table for every mill and lathe sim config Probe
+Basic ships (<code class="docutils literal notranslate"><span class="pre">atc_sim</span></code>, <code class="docutils literal notranslate"><span class="pre">rack_atc_sim</span></code>, <code class="docutils literal notranslate"><span class="pre">probe_basic</span></code>, and
+<code class="docutils literal notranslate"><span class="pre">probe_basic_lathe</span></code>) - new machine configs built from one of those as a
+starting point inherit it automatically. The classic <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> workflow still
+works for a hand-built machine config that wants it; see “Switching back to
+the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file” below.</p>
+</section>
+<section id="how-it-works">
+<h2>How it works<a class="headerlink" href="#how-it-works" title="Link to this heading"></a></h2>
+<p>Two halves, both pointed at the same file:</p>
+<ul class="simple">
+<li><p><strong>LinuxCNC side:</strong> <code class="docutils literal notranslate"><span class="pre">[EMCIO]</span> <span class="pre">DB_PROGRAM</span> <span class="pre">=</span> <span class="pre">./tool_db.sh</span></code> tells LinuxCNC to
+start the bundled wrapper script, which runs qtpyvcp’s tool database
+backend (<code class="docutils literal notranslate"><span class="pre">qtpyvcp.tools.tool_db_backend</span></code>). LinuxCNC talks to it over the
+standard tooldb protocol for every tool lookup, offset update, and tool
+change. When <code class="docutils literal notranslate"><span class="pre">DB_PROGRAM</span></code> is set, the <code class="docutils literal notranslate"><span class="pre">TOOL_TABLE</span></code> entry is not used.</p></li>
+<li><p><strong>Probe Basic side:</strong> <code class="docutils literal notranslate"><span class="pre">[DISPLAY]</span> <span class="pre">CONFIG_FILE</span></code> points at a <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code>
+whose <code class="docutils literal notranslate"><span class="pre">tooltable</span></code> data plugin is <code class="docutils literal notranslate"><span class="pre">qtpyvcp.plugins.db_tool_table:DBToolTable</span></code>
+(with <code class="docutils literal notranslate"><span class="pre">extras:</span> <span class="pre">mill</span></code> for mill configs, <code class="docutils literal notranslate"><span class="pre">extras:</span> <span class="pre">lathe</span></code> – the plugin
+default – for lathe configs) instead of the file-based <code class="docutils literal notranslate"><span class="pre">ToolTable</span></code>
+plugin. This drives the unified editor on the tool page.</p></li>
+</ul>
+<p>Both halves resolve the database file the same way: <code class="docutils literal notranslate"><span class="pre">[EMCIO]</span> <span class="pre">TOOL_DB_FILE</span></code>
+if set, otherwise <code class="docutils literal notranslate"><span class="pre">tool_table.db</span></code> in the config folder.</p>
+</section>
+<section id="enabling-it-in-a-machine-config">
+<h2>Enabling it in a machine config<a class="headerlink" href="#enabling-it-in-a-machine-config" title="Link to this heading"></a></h2>
+<p>Every shipped sim config (<code class="docutils literal notranslate"><span class="pre">configs/atc_sim/</span></code>, <code class="docutils literal notranslate"><span class="pre">configs/rack_atc_sim/</span></code>,
+<code class="docutils literal notranslate"><span class="pre">configs/probe_basic/</span></code>, <code class="docutils literal notranslate"><span class="pre">configs/probe_basic_lathe/</span></code>) is a complete
+working reference - copy <code class="docutils literal notranslate"><span class="pre">tool_db.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> from
+whichever one is the closer match (mill vs lathe) into your machine config
+folder as a starting point.</p>
+<ol class="arabic">
+<li><p>Copy <code class="docutils literal notranslate"><span class="pre">tool_db.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> from a shipped sim config
+folder into your machine config folder. Make sure the script stays
+executable (<code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">tool_db.sh</span></code>).</p></li>
+<li><p>Edit your machine INI:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>DISPLAY<span class="o">]</span>
+<span class="nv">CONFIG_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>custom_config.yml
+<span class="c1">#  loads the database tool table plugin in Probe Basic</span>
+
+<span class="o">[</span>EMCIO<span class="o">]</span>
+<span class="c1">#TOOL_TABLE = tool.tbl</span>
+<span class="c1">#  comment out: TOOL_TABLE is not used when DB_PROGRAM is set</span>
+
+<span class="nv">DB_PROGRAM</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>./tool_db.sh
+<span class="c1">#  LinuxCNC starts this backend and reads/writes all tool data</span>
+<span class="c1">#  through it (LinuxCNC tool database interface)</span>
+
+<span class="nv">TOOL_DB_FILE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>my_machine_tools.db
+<span class="c1">#  which database file in this config folder is live; omit to</span>
+<span class="c1">#  default to tool_table.db. Switching tool sets is this one</span>
+<span class="c1">#  line plus a restart.</span>
+</pre></div>
+</div>
+</li>
+<li><p>Seed the database from your existing tool data (pick one):</p>
+<ul>
+<li><p><strong>Tools menu importers</strong> (recommended): with Probe Basic running, use
+the entries in the <strong>Tools</strong> menu:</p>
+<ul class="simple">
+<li><p><em>Import Legacy Tool Table [.tbl]</em> - your classic <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file, core
+columns only.</p></li>
+<li><p><em>Import Fusion 360 Tool Library [.tools/.json]</em> - tool numbers,
+cutting diameters and descriptions from a Fusion library export.</p></li>
+<li><p><em>Import + Merge .tbl and Fusion Library</em> - machine data (offsets,
+pocket) from the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code>, tool identity (diameter, description) from
+Fusion, merged by tool number.</p></li>
+</ul>
+<p>The importers write to a standalone destination file (never the live
+database), so they are safe to run at any time. After a successful
+import the dialog offers to point <code class="docutils literal notranslate"><span class="pre">TOOL_DB_FILE</span></code> at the new file for
+you - the INI is backed up first, and the change takes effect on the
+next restart.</p>
+</li>
+<li><p><strong>Command line:</strong> <code class="docutils literal notranslate"><span class="pre">tbl2db</span> <span class="pre">my_old_table.tbl</span> <span class="pre">my_machine_tools.db</span></code> (or,
+if the console-script shim isn’t on <code class="docutils literal notranslate"><span class="pre">PATH</span></code>:
+<code class="docutils literal notranslate"><span class="pre">python3</span> <span class="pre">-m</span> <span class="pre">qtpyvcp.lib.db_tool.import_legacy_tbl</span> <span class="pre">my_old_table.tbl</span> <span class="pre">my_machine_tools.db</span> <span class="pre">--units</span> <span class="pre">inch</span></code>)</p></li>
+<li><p><strong>Start empty:</strong> skip seeding entirely; the database file is created
+on first launch and tools can be added in the editor.</p></li>
+</ul>
+</li>
+<li><p>Restart LinuxCNC / Probe Basic and verify the tool page shows your tools.
+Every imported tool starts with the ATC column checked (storable); uncheck
+it for oversize tools that must never enter the carousel.</p></li>
+</ol>
+</section>
+<section id="switching-back-to-the-tbl-file">
+<h2>Switching back to the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file<a class="headerlink" href="#switching-back-to-the-tbl-file" title="Link to this heading"></a></h2>
+<p>Reverting is the mirror of step 2: uncomment <code class="docutils literal notranslate"><span class="pre">TOOL_TABLE</span></code>, comment out
+<code class="docutils literal notranslate"><span class="pre">DB_PROGRAM</span></code> and <code class="docutils literal notranslate"><span class="pre">TOOL_DB_FILE</span></code>, and point <code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span></code> at a
+<code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code> whose <code class="docutils literal notranslate"><span class="pre">tooltable</span></code> plugin is
+<code class="docutils literal notranslate"><span class="pre">qtpyvcp.plugins.tool_table:ToolTable</span></code> instead (build a new file, or copy
+one from a version of the config folder predating the DB conversion, e.g.
+from git history). The <code class="docutils literal notranslate"><span class="pre">.db</span></code> file stays in the folder untouched, so you
+can switch back and forth while trying it out. Note that offset changes made
+in one mode do not flow into the other - the <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> and <code class="docutils literal notranslate"><span class="pre">.db</span></code> files are
+independent once created.</p>
+</section>
+<section id="notes">
+<h2>Notes<a class="headerlink" href="#notes" title="Link to this heading"></a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">tool_db.sh</span></code> finds a Python interpreter with qtpyvcp installed by
+walking <code class="docutils literal notranslate"><span class="pre">PATH</span></code> itself, so the same config folder works unchanged on a
+machine with an apt install or a development install - nothing
+machine-specific is hardcoded in the config.</p></li>
+<li><p>The database is plain SQLite: back it up by copying the <code class="docutils literal notranslate"><span class="pre">.db</span></code> file while
+the machine is shut down.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="machine_config.html" class="btn btn-neutral float-left" title="Machine Configuration (INI, HAL, Files)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="machine_parts_yaml.html" class="btn btn-neutral float-right" title="Machine Sim Graphics" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>

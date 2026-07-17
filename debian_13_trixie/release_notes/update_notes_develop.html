@@ -1,0 +1,159 @@
+
+
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Trixie Develop Release Notes &mdash; ProbeBasic  documentation</title>
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
+
+  
+      <script src="../../_static/jquery.js?v=5d32c60e"></script>
+      <script src="../../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+      <script src="../../_static/documentation_options.js?v=5929fcd5"></script>
+      <script src="../../_static/doctools.js?v=fd6eb6e6"></script>
+      <script src="../../_static/sphinx_highlight.js?v=6ffebe34"></script>
+    <script src="../../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Configuration" href="../configuration/index.html" />
+    <link rel="prev" title="Trixie Stable Release Notes" href="update_notes_stable.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../../index.html" class="icon icon-home">
+            ProbeBasic
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Debian 12 Bookworm:</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../debian_12_bookworm/index.html">Debian 12 Bookworm</a></li>
+</ul>
+<p class="caption" role="heading"><span class="caption-text">Debian 13 Trixie:</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Debian 13 Trixie</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../installation/index.html">Installation</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Update Release Notes</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="update_notes_stable.html">Trixie Stable Release Notes</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Trixie Develop Release Notes</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#july-17-2026-develop-update-release-notes">July 17, 2026 - Develop Update Release Notes</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../interface/index.html">Interface</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../extending/index.html">Extending</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">ProbeBasic</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../../index.html" class="icon icon-home" aria-label="Home"></a></li>
+          <li class="breadcrumb-item"><a href="../index.html">Debian 13 Trixie</a></li>
+          <li class="breadcrumb-item"><a href="index.html">Update Release Notes</a></li>
+      <li class="breadcrumb-item active">Trixie Develop Release Notes</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../_sources/debian_13_trixie/release_notes/update_notes_develop.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="trixie-develop-release-notes">
+<h1>Trixie Develop Release Notes<a class="headerlink" href="#trixie-develop-release-notes" title="Link to this heading"></a></h1>
+<p>This section tracks Debian 13 Trixie develop release updates for Probe Basic and related packages.</p>
+<section id="july-17-2026-develop-update-release-notes">
+<h2>July 17, 2026 - Develop Update Release Notes<a class="headerlink" href="#july-17-2026-develop-update-release-notes" title="Link to this heading"></a></h2>
+<p><strong>Database Tool Table for Mill Configurations</strong></p>
+<p>Mill configurations can now store tool data in a SQLite database instead of the classic <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> file, using LinuxCNC’s native tool database interface. LinuxCNC and the Probe Basic tool table editor read and write the same database file, so the GUI and the machine can never disagree about tool data.</p>
+<ul class="simple">
+<li><p>Unified tool table editor on the tool page: core offset columns plus mill extras stored per tool, including a new <strong>ATC column</strong> marking whether each tool is storable in the ATC carousel.</p></li>
+<li><p>Enabled per config with <code class="docutils literal notranslate"><span class="pre">[EMCIO]</span> <span class="pre">DB_PROGRAM</span> <span class="pre">=</span> <span class="pre">./tool_db.sh</span></code> and <code class="docutils literal notranslate"><span class="pre">TOOL_DB_FILE</span></code>, plus <code class="docutils literal notranslate"><span class="pre">CONFIG_FILE</span> <span class="pre">=</span> <span class="pre">custom_config.yml</span></code> (wired for the DB tool table plugin) in <code class="docutils literal notranslate"><span class="pre">[DISPLAY]</span></code>. The classic <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> workflow remains available for a hand-built machine config that wants it.</p></li>
+<li><p>New import tools in the <strong>Tools</strong> menu seed a database from existing tool data: legacy <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> files, Fusion 360 tool library exports (<code class="docutils literal notranslate"><span class="pre">.tools</span></code>/<code class="docutils literal notranslate"><span class="pre">.json</span></code>), or both merged by tool number. Importers write to a standalone file (never the live database) and offer to point the INI at the result, with an automatic INI backup.</p></li>
+<li><p>New reference sim config: <code class="docutils literal notranslate"><span class="pre">configs/atc_sim/vmc_index_inch.ini</span></code>.</p></li>
+<li><p>New documentation page: <a class="reference internal" href="../configuration/db_tool_table.html"><span class="doc">Database Tool Table</span></a>.</p></li>
+</ul>
+<p><strong>Database Tool Table Is Now the Standard for All Sim Configs</strong></p>
+<p>Every sim config that ships a <code class="docutils literal notranslate"><span class="pre">.desktop</span></code> launcher (<code class="docutils literal notranslate"><span class="pre">atc_sim</span></code> - all four inch/metric/index/graycode variants, <code class="docutils literal notranslate"><span class="pre">rack_atc_sim</span></code>, <code class="docutils literal notranslate"><span class="pre">probe_basic</span></code>, and <code class="docutils literal notranslate"><span class="pre">probe_basic_lathe</span></code>) now runs the database tool table by default. The <code class="docutils literal notranslate"><span class="pre">_db</span></code>-suffixed filenames used while this was an opt-in variant (<code class="docutils literal notranslate"><span class="pre">vmc_index_inch_db.ini</span></code>, <code class="docutils literal notranslate"><span class="pre">custom_config_db.yml</span></code>) are gone - there is no longer a non-database sibling to distinguish them from, so the plain names (<code class="docutils literal notranslate"><span class="pre">custom_config.yml</span></code>, etc.) are the database-backed configs.</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">probe_basic_lathe_db</span></code> (the separate database-backed lathe folder) has been folded into <code class="docutils literal notranslate"><span class="pre">probe_basic_lathe</span></code> - it is no longer a separate directory. The classic <code class="docutils literal notranslate"><span class="pre">.tbl</span></code>-based lathe config it replaces has been removed.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">rack_atc_sim</span></code> and <code class="docutils literal notranslate"><span class="pre">probe_basic</span></code> (the base mill, no ATC) gained the database tool table for the first time as part of this change.</p></li>
+<li><p>The legacy <code class="docutils literal notranslate"><span class="pre">.tbl</span></code> files backing these sim configs were deleted; the database files they seeded remain in each config folder.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">probe_basic_asm</span></code> and <code class="docutils literal notranslate"><span class="pre">probe_basic_robot</span></code> are unaffected - neither ships a launcher today.</p></li>
+</ul>
+<p><strong>Manual Tool Change Fallback for Carousel ATC Machines</strong></p>
+<p>The carousel M6 remap no longer aborts when a change cannot be completed automatically - it parks the carousel, shows the manual tool change dialog, and waits for the operator to swap the tool by hand. This covers tools not stored in the carousel, a full carousel, and tools flagged manual only.</p>
+<ul class="simple">
+<li><p>Unchecking a tool’s ATC column in the database tool table makes it <strong>manual only</strong>: it is never stored into or fetched from the carousel - for oversize tools that do not fit between carousel pockets.</p></li>
+<li><p>The dialog now words the prompt for what the operator actually has to do. Manual removals show a bright red warning naming the cause (tool flagged non storable, or carousel full) instead of a routine-looking “insert tool” prompt, since confirming a removal without actually removing the tool could crash an oversize tool into the carousel on a later store attempt. An optional warning icon on the dialog is supported via the <code class="docutils literal notranslate"><span class="pre">toolchange_dialog_pb.ui</span></code> file, and terminal recovery commands for ending a manual change are documented in the Carousel ATC Setup page.</p></li>
+<li><p>Optional drawbar interlock: set <code class="docutils literal notranslate"><span class="pre">[ATC]</span> <span class="pre">DRAWBAR_MONITOR_PIN</span></code> to a HAL pin or signal reflecting drawbar actuation and the dialog resume button stays disabled during a manual removal until the drawbar has been pressed and released - physical evidence the tool came out. Fails open (button enables, error logged) if the pin cannot be read, so a misconfiguration can never strand the operator mid-change.</p></li>
+<li><p>Optional <code class="docutils literal notranslate"><span class="pre">[ATC]</span> <span class="pre">MANUAL_CHANGE_X</span></code> / <code class="docutils literal notranslate"><span class="pre">MANUAL_CHANGE_Y</span></code> move the head to a convenient position for hand swaps.</p></li>
+<li><p>Documented in <a class="reference internal" href="../configuration/atc_setup.html"><span class="doc">Carousel ATC Setup</span></a>.</p></li>
+</ul>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="update_notes_stable.html" class="btn btn-neutral float-left" title="Trixie Stable Release Notes" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="../configuration/index.html" class="btn btn-neutral float-right" title="Configuration" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2021, Chris Polanski.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
