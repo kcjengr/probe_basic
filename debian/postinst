@@ -2,19 +2,25 @@
 
 set -e
 
-# Define a variable for the target user's home directory
-TARGET_HOME="/home/${SUDO_USER:-$USER}/"
+# Only seed per-user config/icons when there's a real invoking user to
+# target (i.e. this was run via "sudo apt install ..." at a desktop
+# terminal) and sudo is actually present -- skip gracefully otherwise
+# (minimal installs, containers, CI) instead of failing the whole
+# package install.
+if [ -n "${SUDO_USER:-}" ] && command -v sudo >/dev/null 2>&1; then
+    # Define a variable for the target user's home directory
+    TARGET_HOME="/home/${SUDO_USER}/"
 
+    # Create the linuxcnc directory if it doesn't exist
+    sudo -u "${SUDO_USER}" mkdir -p "${TARGET_HOME}linuxcnc"
 
-# Create the linuxcnc directory if it doesn't exist
-sudo -u ${SUDO_USER:-$USER} mkdir -p "${TARGET_HOME}linuxcnc"
+    # Create the icons directory if it doesn't exist
+    sudo -u "${SUDO_USER}" mkdir -p "${TARGET_HOME}.local/usr/share/icons"
 
-# Create the icons directory if it doesn't exist
-sudo -u ${SUDO_USER:-$USER} mkdir -p "${TARGET_HOME}.local/usr/share/icons"
+    # Copy the probe_basic_sims directory to the target directory
+    sudo -u "${SUDO_USER}" cp -r /usr/share/configs "${TARGET_HOME}linuxcnc/"
 
-# Copy the probe_basic_sims directory to the target directory
-sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/configs "${TARGET_HOME}linuxcnc/"
-
-# Copy the probe_basic icons directory to the target directory
-sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon.png "${TARGET_HOME}.local/usr/share/icons/"
-sudo -u ${SUDO_USER:-$USER} cp -r /usr/share/icons/probe_basic_icon_lathe.png "${TARGET_HOME}.local/usr/share/icons/"
+    # Copy the probe_basic icons directory to the target directory
+    sudo -u "${SUDO_USER}" cp -r /usr/share/icons/probe_basic_icon.png "${TARGET_HOME}.local/usr/share/icons/"
+    sudo -u "${SUDO_USER}" cp -r /usr/share/icons/probe_basic_icon_lathe.png "${TARGET_HOME}.local/usr/share/icons/"
+fi
