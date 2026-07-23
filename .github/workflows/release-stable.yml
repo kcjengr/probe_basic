@@ -44,7 +44,10 @@ jobs:
 
       - name: Install package build-deps
         working-directory: source
-        run: apt-get build-dep -y .
+        run: |
+          apt-get build-dep -y .
+          # Not declared in debian/control, but pyproject.toml's build-backend needs it.
+          pip install --break-system-packages "poetry-dynamic-versioning>=1.0.0,<2.0.0"
 
       - name: Create changelog entry
         working-directory: source
