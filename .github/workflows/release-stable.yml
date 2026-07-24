@@ -92,27 +92,34 @@ jobs:
       - name: Import GPG signing key
         run: echo "${{ secrets.APT_GPG_PRIVATE_KEY }}" | base64 -d | gpg --batch --import
 
-      - name: Copy packages into pool
-        run: |
-          mkdir -p apt-repo/apt/pool/main/trixie
-          cp debs/*.deb apt-repo/apt/pool/main/trixie/
-
-      - name: Publish trixie suite
+      - name: Publish suite(s) and push (retries on concurrent-publish races)
         working-directory: apt-repo
         env:
           GPG_KEY_ID: 2DEC041F290DF85A
-        run: ./scripts/publish-suite.sh trixie trixie amd64 arm64
-
-      - name: Commit and push
-        working-directory: apt-repo
         run: |
           set -euo pipefail
           git config user.name "kcjengr-bot"
           git config user.email "actions@github.com"
-          git add -A
-          if git diff --cached --quiet; then
-            echo "no changes to publish"
-            exit 0
-          fi
-          git commit -m "Publish probe-basic ${GITHUB_REF_NAME} (trixie)"
-          git push
+          for attempt in 1 2 3 4 5; do
+            mkdir -p "apt/pool/main/trixie"
+            cp ../debs/*.deb "apt/pool/main/trixie/"
+            ./scripts/publish-suite.sh trixie trixie amd64 arm64
+
+            git add -A
+            if git diff --cached --quiet; then
+              echo "no changes to publish"
+              exit 0
+            fi
+            git commit -m "Publish probe-basic ${GITHUB_REF_NAME} (trixie)"
+            if git push; then
+              echo "published on attempt ${attempt}"
+              exit 0
+            fi
+            echo "push rejected (attempt ${attempt}/5) -- another repo published to kcjengr/apt at the same time, re-syncing and retrying"
+            branch="$(git rev-parse --abbrev-ref HEAD)"
+            git fetch origin "$branch"
+            git reset --hard "origin/$branch"
+            sleep $(( (RANDOM % 8) + attempt * 2 ))
+          done
+          echo "::error::failed to push to kcjengr/apt after 5 attempts"
+          exit 1
