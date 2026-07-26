@@ -1283,12 +1283,24 @@ class ProbeBasicLathe(VCPMainWindow):
         return True
 
     def _show_gcode_context_menu(self, editor, pos):
-        cursor = editor.cursorForPosition(pos)
-        if cursor is not None:
-            editor.setTextCursor(cursor)
+        # pos arrives in viewport coordinates, which is what cursorForPosition
+        # and the popup placement both need.
+        click_cursor = editor.cursorForPosition(pos)
+        line_num = click_cursor.blockNumber() + 1
 
-        line_num = editor.textCursor().blockNumber() + 1
+        # Only move the caret when the click lands outside an existing
+        # selection. Replacing the cursor unconditionally clears the
+        # selection, which leaves Cut/Copy/Delete disabled in the standard
+        # menu built below.
+        current = editor.textCursor()
+        if not (current.hasSelection()
+                and current.selectionStart() <= click_cursor.position() <= current.selectionEnd()):
+            editor.setTextCursor(click_cursor)
+
         menu = editor.createStandardContextMenu()
+        if menu is None:
+            return
+
         run_action = menu.addAction(f"Run from line {line_num}")
         run_action.setEnabled(actions.program_actions.run_from_line.ok())
         run_action.triggered.connect(lambda checked=False, ln=line_num: actions.program_actions.run(ln))
@@ -1298,7 +1310,7 @@ class ProbeBasicLathe(VCPMainWindow):
             menu.insertAction(first_action, run_action)
             menu.insertSeparator(first_action)
 
-        menu.exec(editor.mapToGlobal(pos))
+        menu.exec(editor.viewport().mapToGlobal(pos))
 
     @Slot()
     def _cycle_start_clicked(self):
