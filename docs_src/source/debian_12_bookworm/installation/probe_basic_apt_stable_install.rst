@@ -4,33 +4,34 @@ Probe Basic APT Stable Install
 
 .. warning::
 
-   **Seeing a "Missing key" error? Fix it here first.**
+   **Seeing a "Missing key" warning or error when you update? Start here.**
 
    Older versions of these instructions installed the wrong signing key.
    If ``sudo apt update`` shows a line like this::
 
        Missing key 50F874571F20C5B0BA225E2F0CDFCCE0388CFA48, which is needed to verify signature.
 
-   **Step 1 - copy this, paste it into a terminal, press Enter:**
+   If you are trying to update and are seeing this warning/error message,
+   the following line will correct the situation by completely removing and
+   reinstalling Probe Basic and its required keyrings cleanly, to resolve the
+   issue going forward.
+
+   **Please be sure any of your configuration files are backed up
+   before running it** -- installing rewrites the configs shipped with
+   Probe Basic in ``~/linuxcnc/configs/``, so any edits you have made to the
+   core Probe Basic shipped configs will be overwritten.
+
+   Copy this, paste it into a terminal, and press Enter:
 
    .. code-block:: bash
 
-       curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
+       curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh && curl -fsSL https://repository.qtpyvcp.com/install.sh | sudo sh && sudo apt install -y python3-probe-basic
 
-   This line will completely remove and purge all aspects of Probe Basic
-   and QtPyVCP, leaving a clean slate for a fresh installation. Other
-   software on your machine is not touched, and your LinuxCNC configs in
-   ``~/linuxcnc`` are left alone.
-
-   **Step 2 - check that it worked:**
-
-   .. code-block:: bash
-
-       sudo apt update
-
-   The "Missing key" message should be gone.
-
-   **Step 3 - carry on with the normal installation below.**
+   Only Probe Basic, QtPyVCP and the packages installed alongside them are
+   affected. When it finishes, ``sudo apt update`` will no longer show the
+   "Missing key" message, Probe Basic is installed and up to date -- you do
+   not need to follow the steps below -- and it will update with new
+   releases cleanly going forward.
 
 
 **Probe Basic APT Installation Guide for use with Debian 12 Bookworm and LinuxCNC version 2.9 or Later**
@@ -188,7 +189,7 @@ Uninstallation
 
     This works even if ``apt update`` is currently failing. It removes only
     this repository's packages, sources and keys -- other repositories on
-    your machine, and your LinuxCNC configs in ``~/linuxcnc``, are left
+    your machine, and your LinuxCNC configs in ``~/linuxcnc/configs/``, are left
     untouched.
 
     To reinstall afterwards:
