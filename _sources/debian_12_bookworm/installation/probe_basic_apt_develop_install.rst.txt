@@ -77,40 +77,35 @@ Installation Steps
 4. Add the APT Repository for the Installation type
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
 
-    **AMD64 for PC Installation Repository:**
+    Run the following command. It detects your Debian release and
+    architecture (AMD64 or ARM64) and configures the correct repository and
+    signing key for you:
 
-        Run the following commands in the main terminal one at a time:
+    .. code-block:: bash
+
+        curl -fsSL https://repository.qtpyvcp.com/install.sh | sudo sh
+
+    .. note::
+
+        Do not add the repository by hand. Adding the wrong suite for your
+        Debian release installs packages built for the wrong Qt version,
+        and putting the signing key in the wrong place causes
+        ``apt update`` to fail with a "Missing key" error.
+
+    .. warning::
+
+        If ``apt update`` already reports a ``Missing key
+        50F874571F20C5B0BA225E2F0CDFCCE0388CFA48`` error, your machine has
+        an old or incomplete repository configuration. Clear it out first,
+        then run the install command above:
 
         .. code-block:: bash
 
-            sudo apt install curl
+            curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
 
-
-            echo 'deb [arch=amd64] https://repository.qtpyvcp.com/apt bookworm-dev main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
-
-
-            curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-            gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
-
-    
-    **NEW - ARM64 Raspberry Pi 4 and 5 Installation Repository:**
-
-        Run the following commands in the main terminal one at a time:
-
-        .. code-block:: bash
-
-            sudo apt install curl
-
-
-            echo 'deb [arch=arm64] https://repository.qtpyvcp.com/apt bookworm-dev main' | sudo tee /etc/apt/sources.list.d/kcjengr.list
-
-
-            curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-            gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
+        This removes only this repository's configuration, keys and
+        packages. Other repositories and your LinuxCNC configs in
+        ``~/linuxcnc`` are left untouched.
 
 
 
@@ -142,10 +137,23 @@ Updating and Configuration
 Uninstallation
 --------------
 
-    To completely remove Probe Basic, QtPyVCP, and the APT repository from your system, run:
+    To completely remove QtPyVCP and all VCPs (Probe Basic, TurboNC,
+    MonoKrom), along with the APT repository and its signing key, run:
 
     .. code-block:: bash
 
-        sudo uninstall-probe-basic
+        curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
+
+    This works even if ``apt update`` is currently failing. It removes only
+    this repository's packages, sources and keys -- other repositories on
+    your machine, and your LinuxCNC configs in ``~/linuxcnc``, are left
+    untouched.
+
+    To reinstall afterwards:
+
+    .. code-block:: bash
+
+        curl -fsSL https://repository.qtpyvcp.com/install.sh | sudo sh
+        sudo apt install python3-probe-basic
 
     Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.

@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Probe Basic APT Develop Install &mdash; ProbeBasic  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
@@ -165,38 +165,32 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 <section id="add-the-apt-repository-for-the-installation-type">
 <h3>4. Add the APT Repository for the Installation type<a class="headerlink" href="#add-the-apt-repository-for-the-installation-type" title="Link to this heading"></a></h3>
 <blockquote>
-<div><p><strong>AMD64 for PC Installation Repository:</strong></p>
-<blockquote>
-<div><p>Run the following commands in the main terminal one at a time:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl
-
-
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;deb [arch=amd64] https://repository.qtpyvcp.com/apt bookworm-dev main&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/kcjengr.list
-
-
-curl<span class="w"> </span>-sS<span class="w"> </span>https://repository.qtpyvcp.com/repo/kcjengr.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-gpg<span class="w"> </span>--keyserver<span class="w"> </span>keys.openpgp.org<span class="w"> </span>--recv-key<span class="w"> </span>2DEC041F290DF85A
+<div><p>Run the following command. It detects your Debian release and
+architecture (AMD64 or ARM64) and configures the correct repository and
+signing key for you:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
 </pre></div>
 </div>
-</div></blockquote>
-<p><strong>NEW - ARM64 Raspberry Pi 4 and 5 Installation Repository:</strong></p>
-<blockquote>
-<div><p>Run the following commands in the main terminal one at a time:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>curl
-
-
-<span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;deb [arch=arm64] https://repository.qtpyvcp.com/apt bookworm-dev main&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/sources.list.d/kcjengr.list
-
-
-curl<span class="w"> </span>-sS<span class="w"> </span>https://repository.qtpyvcp.com/repo/kcjengr.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-gpg<span class="w"> </span>--keyserver<span class="w"> </span>keys.openpgp.org<span class="w"> </span>--recv-key<span class="w"> </span>2DEC041F290DF85A
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>Do not add the repository by hand. Adding the wrong suite for your
+Debian release installs packages built for the wrong Qt version,
+and putting the signing key in the wrong place causes
+<code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> to fail with a “Missing key” error.</p>
+</div>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>If <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> already reports a <code class="docutils literal notranslate"><span class="pre">Missing</span> <span class="pre">key</span>
+<span class="pre">50F874571F20C5B0BA225E2F0CDFCCE0388CFA48</span></code> error, your machine has
+an old or incomplete repository configuration. Clear it out first,
+then run the install command above:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
 </pre></div>
 </div>
-</div></blockquote>
+<p>This removes only this repository’s configuration, keys and
+packages. Other repositories and your LinuxCNC configs in
+<code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code> are left untouched.</p>
+</div>
 </div></blockquote>
 </section>
 <section id="update-the-repositories">
@@ -229,8 +223,18 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <section id="uninstallation">
 <h2>Uninstallation<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h2>
 <blockquote>
-<div><p>To completely remove Probe Basic, QtPyVCP, and the APT repository from your system, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>uninstall-probe-basic
+<div><p>To completely remove QtPyVCP and all VCPs (Probe Basic, TurboNC,
+MonoKrom), along with the APT repository and its signing key, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<p>This works even if <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> is currently failing. It removes only
+this repository’s packages, sources and keys – other repositories on
+your machine, and your LinuxCNC configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code>, are left
+untouched.</p>
+<p>To reinstall afterwards:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-probe-basic
 </pre></div>
 </div>
 <p>Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.</p>

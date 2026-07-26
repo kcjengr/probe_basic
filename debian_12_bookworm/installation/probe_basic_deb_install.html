@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Probe Basic deb Install &mdash; ProbeBasic  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
@@ -178,9 +178,9 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 </div></blockquote>
 <p>Once you have installed LinuxCNC, open it and start the axis sim briefly and then shut it down to ensure the installation was successful.</p>
 <p>Download the following files:</p>
-<pre class="literal-block"><a class="reference external" href="https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_1.0.1-84.dev_amd64.deb">https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_1.0.1-84.dev_amd64.deb</a>
+<pre class="literal-block"><a class="reference external" href="https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_0.0.0.dev_amd64.deb">https://repository.qtpyvcp.com/repo/probe-basic-dev/python3-probe-basic_0.0.0.dev_amd64.deb</a>
 
-<a class="reference external" href="https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_6.0.3-50.dev_amd64.deb">https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_6.0.3-50.dev_amd64.deb</a>
+<a class="reference external" href="https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_0.0.0.dev_amd64.deb">https://repository.qtpyvcp.com/repo/qtpyvcp-dev/python3-qtpyvcp_0.0.0.dev_amd64.deb</a>
 
 <a class="reference external" href="https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb">https://repository.qtpyvcp.com/repo/hiyapyco/python3-hiyapyco_0.5.1-1_all.deb</a></pre>
 </div></blockquote>
@@ -197,8 +197,8 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">dpkg</span> <span class="o">-</span><span class="n">i</span> <span class="n">python3</span><span class="o">-</span><span class="n">hiyapyco_0</span><span class="mf">.5.1</span><span class="o">-</span><span class="mi">1</span><span class="n">_all</span><span class="o">.</span><span class="n">deb</span>
 </pre></div>
 </div>
-<pre class="literal-block">sudo dpkg -i python3-qtpyvcp_6.0.3-50.dev_amd64.deb</pre>
-<pre class="literal-block">sudo dpkg -i python3-probe-basic_1.0.1-84.dev_amd64.deb</pre>
+<pre class="literal-block">sudo dpkg -i python3-qtpyvcp_0.0.0.dev_amd64.deb</pre>
+<pre class="literal-block">sudo dpkg -i python3-probe-basic_0.0.0.dev_amd64.deb</pre>
 <p>You should now be able to launch the Probe Basic sim from within the LinuxCNC applications dropdown menu.</p>
 <p>Note: When updating/installing the latest .deb files, the Probe Basic sim configuration files will be overwritten. It is strongly recommended to create your machine configuration files with unique names to avoid having them overwritten during updates.</p>
 <p>To build your own machine configuration, please follow the Machine Config section of the docs.</p>
@@ -207,8 +207,18 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 <section id="uninstallation">
 <h2>Uninstallation<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h2>
 <blockquote>
-<div><p>To completely remove Probe Basic, QtPyVCP, and their dependencies from your system, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>uninstall-probe-basic
+<div><p>To completely remove QtPyVCP and all VCPs (Probe Basic, TurboNC,
+MonoKrom), along with the APT repository and its signing key, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<p>This works even if <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> is currently failing. It removes only
+this repository’s packages, sources and keys – other repositories on
+your machine, and your LinuxCNC configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code>, are left
+untouched.</p>
+<p>To reinstall afterwards:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-probe-basic
 </pre></div>
 </div>
 <p>Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.</p>

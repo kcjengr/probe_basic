@@ -7,7 +7,7 @@
 
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Probe Basic APT Stable Install &mdash; ProbeBasic  documentation</title>
-      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../../_static/pygments.css?v=03e43079" />
       <link rel="stylesheet" type="text/css" href="../../_static/css/theme.css?v=9edc463e" />
 
   
@@ -175,9 +175,6 @@ sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </spa
 
 
 curl<span class="w"> </span>-sS<span class="w"> </span>https://repository.qtpyvcp.com/repo/kcjengr.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-gpg<span class="w"> </span>--keyserver<span class="w"> </span>keys.openpgp.org<span class="w"> </span>--recv-key<span class="w"> </span>2DEC041F290DF85A
 </pre></div>
 </div>
 </div></blockquote>
@@ -191,9 +188,6 @@ gpg<span class="w"> </span>--keyserver<span class="w"> </span>keys.openpgp.org<s
 
 
 curl<span class="w"> </span>-sS<span class="w"> </span>https://repository.qtpyvcp.com/repo/kcjengr.key<span class="w"> </span><span class="p">|</span><span class="w"> </span>gpg<span class="w"> </span>--dearmor<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>tee<span class="w"> </span>/etc/apt/trusted.gpg.d/kcjengr.gpg
-
-
-gpg<span class="w"> </span>--keyserver<span class="w"> </span>keys.openpgp.org<span class="w"> </span>--recv-key<span class="w"> </span>2DEC041F290DF85A
 </pre></div>
 </div>
 </div></blockquote>
@@ -229,8 +223,18 @@ sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> <
 <section id="uninstallation">
 <h2>Uninstallation<a class="headerlink" href="#uninstallation" title="Link to this heading"></a></h2>
 <blockquote>
-<div><p>To completely remove Probe Basic, QtPyVCP, and the APT repository from your system, run:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>uninstall-probe-basic
+<div><p>To completely remove QtPyVCP and all VCPs (Probe Basic, TurboNC,
+MonoKrom), along with the APT repository and its signing key, run:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+</pre></div>
+</div>
+<p>This works even if <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> is currently failing. It removes only
+this repository’s packages, sources and keys – other repositories on
+your machine, and your LinuxCNC configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code>, are left
+untouched.</p>
+<p>To reinstall afterwards:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>python3-probe-basic
 </pre></div>
 </div>
 <p>Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.</p>
