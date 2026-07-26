@@ -17,8 +17,9 @@ Probe Basic APT Develop Install
 
        curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
 
-   This removes the old repository and its keys. It does not touch any
-   other software on your machine, and your LinuxCNC configs in
+   This line will completely remove and purge all aspects of Probe Basic
+   and QtPyVCP, leaving a clean slate for a fresh installation. Other
+   software on your machine is not touched, and your LinuxCNC configs in
    ``~/linuxcnc`` are left alone.
 
    **Step 2 - check that it worked:**
