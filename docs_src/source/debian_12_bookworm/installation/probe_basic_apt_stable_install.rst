@@ -93,7 +93,6 @@ Installation Steps
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
-            gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
 
 
 
@@ -113,7 +112,6 @@ Installation Steps
             curl -sS https://repository.qtpyvcp.com/repo/kcjengr.key | gpg --dearmor | sudo tee /etc/apt/trusted.gpg.d/kcjengr.gpg
 
 
-            gpg --keyserver keys.openpgp.org --recv-key 2DEC041F290DF85A
 
 
 
