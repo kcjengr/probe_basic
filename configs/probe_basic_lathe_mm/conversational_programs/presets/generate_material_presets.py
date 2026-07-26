@@ -16,6 +16,14 @@ This is a starting-point heuristic, not a rigorous physics derivation:
   tier's already-tuned values from the aluminum/steel/stainless anchor
   presets wholesale.
 
+Each operation is emitted twice: `params` in inch and `params_mm` in
+metric, so a metric machine never has to read inch numbers out of a preset
+(the scale button in pb_lathe_conv picks the slot matching the machine's
+lathe-conv.machine-units setting). Surface speeds in the metric slot come
+straight off the same FreeCAD m/min source rather than being converted back
+out of SFM; the length-derived values have no metric source, so those are
+converted from the inch anchors.
+
 Run from this directory: python3 generate_material_presets.py
 """
 import json
@@ -24,6 +32,7 @@ import re
 import sys
 
 SFM_PER_M_MIN = 3.28084
+MM_PER_INCH = 25.4
 SURFACE_SPEED_SCALE = 0.65
 ROUGH_TO_FINISH_RATIO = 0.85
 
@@ -79,6 +88,21 @@ RPM_CEILING_KEYS = {
 
 TIER_RPM_LIMIT = {'soft': 1500, 'medium': 2200, 'hard': 1800}
 
+# Length-derived keys -- feed per rev/min, depth of cut, clearance. These
+# only exist in the inch anchors, so the metric slot converts them. Every
+# other numeric key is unit-neutral (RPM, tip angle, dwell seconds, pass
+# counts) or a surface speed, which is sourced natively in m/min instead.
+LENGTH_KEYS = {
+    'rough_feedrate', 'finish_feedrate',
+    'rough_step_depth', 'finish_step_depth',
+    'rough_feed_axial', 'rough_feed_radial',
+    'finish_feed_axial', 'finish_feed_radial',
+    'rough_step_axial', 'rough_step_radial',
+    'finish_step_axial', 'finish_step_radial',
+    'feedrate', 'retract_feed',
+    'z_stock_face', 'z_clearance', 'x_clearance',
+}
+
 
 def tier_for_kp(kp):
     if kp < 1.0:
@@ -111,14 +135,43 @@ def load_whitelist_fn():
 
 
 def compute_surface_speeds(m_per_min):
-    baseline_sfm = m_per_min * SFM_PER_M_MIN * SURFACE_SPEED_SCALE
-    finish_sfm = round(baseline_sfm, 1)
-    rough_sfm = round(baseline_sfm * ROUGH_TO_FINISH_RATIO, 1)
-    return rough_sfm, finish_sfm
+    """Return ((rough_sfm, finish_sfm), (rough_smm, finish_smm)).
+
+    Both pairs derive from the same FreeCAD m/min figure -- the metric one
+    just skips the SFM conversion rather than converting back out of it.
+    """
+    baseline_smm = m_per_min * SURFACE_SPEED_SCALE
+    baseline_sfm = baseline_smm * SFM_PER_M_MIN
+    inch_pair = (round(baseline_sfm * ROUGH_TO_FINISH_RATIO, 1), round(baseline_sfm, 1))
+    metric_pair = (round(baseline_smm * ROUGH_TO_FINISH_RATIO, 1), round(baseline_smm, 1))
+    return inch_pair, metric_pair
+
+
+def to_metric_params(inch_params, rough_smm, finish_smm):
+    """Return the metric equivalent of one operation's inch params.
+
+    Surface speeds are replaced with the natively-metric values; length
+    values are converted; unit-neutral values (RPM, angles, dwell, counts)
+    and mode strings are copied through unchanged, apart from units_mode
+    itself, which is what drives G20/G21 downstream.
+    """
+    metric_params = {}
+    for key, value in inch_params.items():
+        if key == 'units_mode':
+            metric_params[key] = 'MM'
+        elif key in ROUGH_SFM_KEYS or key in SINGLE_SFM_ROUGH_LIKE_KEYS:
+            metric_params[key] = rough_smm
+        elif key in FINISH_SFM_KEYS:
+            metric_params[key] = finish_smm
+        elif key in LENGTH_KEYS:
+            metric_params[key] = round(float(value) * MM_PER_INCH, 4)
+        else:
+            metric_params[key] = value
+    return metric_params
 
 
 def build_preset(label, m_per_min, kp, tier_data, whitelist_fn):
-    rough_sfm, finish_sfm = compute_surface_speeds(m_per_min)
+    (rough_sfm, finish_sfm), (rough_smm, finish_smm) = compute_surface_speeds(m_per_min)
     tier = tier_for_kp(kp)
     anchor = tier_data[tier]
     rpm_limit = TIER_RPM_LIMIT[tier]
@@ -146,6 +199,7 @@ def build_preset(label, m_per_min, kp, tier_data, whitelist_fn):
             'name': op_entry['name'],
             'enabled': op_entry.get('enabled', True),
             'params': new_params,
+            'params_mm': to_metric_params(new_params, rough_smm, finish_smm),
             'preview_snapshot': {
                 'snapshot_version': 2,
                 'removal': {'geometry_table': []},
@@ -153,8 +207,9 @@ def build_preset(label, m_per_min, kp, tier_data, whitelist_fn):
             },
         }
 
+    # version 2 adds the params_mm slot alongside the inch params.
     return {
-        'version': 1,
+        'version': 2,
         'operations': operations,
         'operation_order': list(anchor['operation_order']),
     }
