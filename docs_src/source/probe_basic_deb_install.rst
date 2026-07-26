@@ -3,6 +3,36 @@ Probe Basic deb Install
 =======================
 
 
+.. warning::
+
+   **Seeing a "Missing key" error? Fix it here first.**
+
+   Older versions of these instructions installed the wrong signing key.
+   If ``sudo apt update`` shows a line like this::
+
+       Missing key 50F874571F20C5B0BA225E2F0CDFCCE0388CFA48, which is needed to verify signature.
+
+   **Step 1 - copy this, paste it into a terminal, press Enter:**
+
+   .. code-block:: bash
+
+       curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
+
+   This removes the old repository and its keys. It does not touch any
+   other software on your machine, and your LinuxCNC configs in
+   ``~/linuxcnc`` are left alone.
+
+   **Step 2 - check that it worked:**
+
+   .. code-block:: bash
+
+       sudo apt update
+
+   The "Missing key" message should be gone.
+
+   **Step 3 - carry on with the normal installation below.**
+
+
 **Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later**
 
 
