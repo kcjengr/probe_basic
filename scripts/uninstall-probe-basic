@@ -1,4 +1,13 @@
 #!/bin/bash
+#
+# Completely removes QtPyVCP and all its VCPs (Probe Basic, TurboNC,
+# MonoKrom) along with the kcjengr APT repository configuration and its
+# signing keys.
+#
+# Deliberately does NOT touch:
+#   * any other APT repository or key on the machine
+#   * your LinuxCNC configs in ~/linuxcnc
+#
 set -e
 
 # Re-exec from /tmp so package removal doesn't kill this script mid-run
@@ -8,19 +17,119 @@ if [[ "$0" != "/tmp/uninstall-probe-basic" ]]; then
     exec bash /tmp/uninstall-probe-basic "$@"
 fi
 
-echo "Removing Probe Basic and QtPyVCP..."
-sudo apt purge -y python3-probe-basic python3-qtpyvcp
+if [ "$(id -u)" -eq 0 ]; then
+    SUDO=""
+elif command -v sudo >/dev/null 2>&1; then
+    SUDO="sudo"
+else
+    echo "Please run this as root: sudo uninstall-probe-basic" >&2
+    exit 1
+fi
+
+# This repository's signing key, and the older key some configs reference.
+# Used to identify which keyrings are ours, so other repositories on the
+# machine are left alone.
+KEY_LONG_ID="0CDFCCE0388CFA48"
+KEY_LEGACY_ID="2DEC041F290DF85A"
+
+# Remove the APT configuration BEFORE purging packages. If anything
+# interrupts this script (a broken pipe, an apt error under `set -e`),
+# a machine left with packages removed but a stale source/keyring still
+# present is exactly the state that produces "Missing key" errors on
+# the next apt update. Cleaning config first makes that outcome
+# impossible; a leftover installed package is harmless by comparison.
+echo "Removing APT repository..."
+FOUND_SRC=0
+for f in /etc/apt/sources.list /etc/apt/sources.list.d/*.list /etc/apt/sources.list.d/*.sources \
+         /etc/apt/sources.list.d/*.list.disabled /etc/apt/sources.list.d/*.sources.disabled; do
+    [ -f "$f" ] || continue
+    grep -qi 'repository\.qtpyvcp\.com' "$f" 2>/dev/null || continue
+    FOUND_SRC=1
+    case "$f" in
+        /etc/apt/sources.list)
+            # Never delete the main sources.list -- only strip our lines.
+            $SUDO sed -i.qtpyvcp-bak '/repository\.qtpyvcp\.com/d' "$f"
+            echo "  stripped our entries from $f"
+            ;;
+        *)
+            $SUDO rm -f "$f"
+            echo "  removed $f"
+            ;;
+    esac
+done
+if [ "$FOUND_SRC" -eq 0 ]; then echo "  (none found)"; fi
+
+echo "Removing signing keys..."
+FOUND_KEY=0
+for kr in /etc/apt/keyrings/* /etc/apt/trusted.gpg.d/* /usr/share/keyrings/*; do
+    [ -f "$kr" ] || continue
+    MATCH=""
+    if gpg --show-keys --with-colons "$kr" 2>/dev/null \
+         | grep -Eq "$KEY_LONG_ID|$KEY_LEGACY_ID"; then
+        MATCH="contains our signing key"
+    else
+        # Catches stale keyrings left by older instructions that hold some
+        # other or expired key.
+        case "$(basename "$kr")" in
+            *qtpyvcp*|*kcjengr*) MATCH="named for this repository" ;;
+        esac
+    fi
+    if [ -n "$MATCH" ]; then
+        $SUDO rm -f "$kr"
+        echo "  removed $kr ($MATCH)"
+        FOUND_KEY=1
+    fi
+done
+
+# apt-key era: keys added with "apt-key add" land in this legacy keyring.
+if [ -f /etc/apt/trusted.gpg ]; then
+    for kid in "$KEY_LONG_ID" "$KEY_LEGACY_ID"; do
+        if $SUDO gpg --no-default-keyring --keyring /etc/apt/trusted.gpg \
+             --list-keys "$kid" >/dev/null 2>&1; then
+            $SUDO gpg --no-default-keyring --keyring /etc/apt/trusted.gpg \
+                 --batch --yes --delete-key "$kid" >/dev/null 2>&1 || true
+            echo "  removed $kid from legacy /etc/apt/trusted.gpg"
+            FOUND_KEY=1
+        fi
+    done
+fi
+
+# Older instructions also imported the key into the invoking user's personal
+# keyring, where APT never looks. Clean that up too.
+for kid in "$KEY_LONG_ID" "$KEY_LEGACY_ID"; do
+    gpg --batch --yes --delete-key "$kid" >/dev/null 2>&1 || true
+done
+if [ "$FOUND_KEY" -eq 0 ]; then echo "  (none found)"; fi
+
+echo "Removing QtPyVCP and VCP packages..."
+PKGS="python3-qtpyvcp python3-qtpyvcp-dbgsym python3-probe-basic python3-turbonc python3-monokrom"
+INSTALLED=""
+for p in $PKGS; do
+    if dpkg-query -W -f='${Status}' "$p" 2>/dev/null \
+         | grep -q 'install ok installed\|deinstall ok config-files'; then
+        INSTALLED="$INSTALLED $p"
+    fi
+done
+if [ -n "$INSTALLED" ]; then
+    $SUDO apt-get purge -y $INSTALLED
+else
+    echo "  (none installed)"
+fi
 
 echo "Removing unused dependencies..."
-sudo apt autoremove -y
-
-echo "Removing APT repository and GPG keys..."
-sudo rm -f /etc/apt/sources.list.d/kcjengr.list
-sudo rm -f /etc/apt/trusted.gpg.d/kcjengr.gpg
-gpg --batch --yes --delete-key 2DEC041F290DF85A 2>/dev/null || true
+$SUDO apt-get autoremove -y
 
 echo "Refreshing APT..."
-sudo apt update
+$SUDO apt-get update
 
-echo "Probe Basic has been fully removed. Your LinuxCNC installation is unaffected."
+cat <<'EOF'
+
+Probe Basic, QtPyVCP and the APT repository have been fully removed.
+Your LinuxCNC installation and your configs in ~/linuxcnc are unaffected.
+
+To install again:
+  curl -fsSL https://repository.qtpyvcp.com/install.sh | sudo sh
+  sudo apt install python3-probe-basic
+EOF
+
 rm -f /tmp/uninstall-probe-basic
