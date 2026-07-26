@@ -1,0 +1,95 @@
+name: Docs
+
+# Builds the documentation and publishes it to the gh-pages branch, which
+# is what https://kcjengr.github.io/probe_basic serves.
+#
+# Only the pyside6 branch publishes: its docs_src covers both
+# debian_12_bookworm (PyQt5) and debian_13_trixie (PySide6), and it is the
+# structure the live site and its URLs are built around. Building main here
+# too would overwrite the site with a different layout.
+
+on:
+  push:
+    branches: [pyside6]
+    paths:
+      - 'docs_src/**'
+      - 'docs_requirements.txt'
+      - '.github/workflows/docs.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: docs-pages
+  cancel-in-progress: false
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-24.04
+    steps:
+      - name: Checkout source
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Install documentation dependencies
+        run: pip install -r docs_requirements.txt
+
+      - name: Build documentation
+        run: sphinx-build -b html docs_src/source _site
+
+      - name: Sanity-check the build before publishing
+        # Sphinx reports success even when pages come out empty or missing,
+        # so verify the build actually produced the site before it replaces
+        # what is live. Failing here leaves the published docs untouched.
+        run: |
+          set -euo pipefail
+          fail() { echo "::error::$1"; exit 1; }
+
+          pages=$(find _site -name '*.html' | wc -l)
+          echo "built pages: $pages"
+          [ "$pages" -ge 40 ] || fail "only $pages HTML pages built, expected 40+ -- refusing to publish a truncated site"
+
+          for p in \
+            _site/index.html \
+            _site/debian_13_trixie/installation/probe_basic_trixie_apt_develop_install.html \
+            _site/debian_12_bookworm/installation/probe_basic_apt_develop_install.html
+          do
+            [ -f "$p" ] || fail "expected page missing from build: $p"
+          done
+
+          # The install pages must carry the current instructions, not the
+          # old hand-written repo setup with the wrong signing key.
+          install_page=_site/debian_13_trixie/installation/probe_basic_trixie_apt_develop_install.html
+          grep -q 'repository.qtpyvcp.com/install.sh' "$install_page" \
+            || fail "install page is missing the install.sh instructions"
+          if grep -q '2DEC041F290DF85A' "$install_page"; then
+            fail "install page still references the wrong signing key (2DEC041F290DF85A)"
+          fi
+
+      - name: Publish to gh-pages
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+
+          git fetch origin gh-pages
+          git worktree add ../pages origin/gh-pages
+          # Replace the published tree with the fresh build, preserving .git.
+          find ../pages -mindepth 1 -maxdepth 1 -not -name '.git' -exec rm -rf {} +
+          cp -a _site/. ../pages/
+
+          cd ../pages
+          git add -A
+          if git diff --cached --quiet; then
+            echo "documentation unchanged, nothing to publish"
+            exit 0
+          fi
+          git commit -m "Deploy docs from ${GITHUB_SHA}"
+          git push origin HEAD:gh-pages
