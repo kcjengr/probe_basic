@@ -100,10 +100,23 @@ Updating and Configuration
 Uninstallation
 --------------
 
-    To completely remove Probe Basic, QtPyVCP, and the APT repository from your system, run:
+    To completely remove QtPyVCP and all VCPs (Probe Basic, TurboNC,
+    MonoKrom), along with the APT repository and its signing key, run:
 
     .. code-block:: bash
 
-        sudo uninstall-probe-basic
+        curl -fsSL https://repository.qtpyvcp.com/uninstall.sh | sudo sh
+
+    This works even if ``apt update`` is currently failing. It removes only
+    this repository's packages, sources and keys -- other repositories on
+    your machine, and your LinuxCNC configs in ``~/linuxcnc``, are left
+    untouched.
+
+    To reinstall afterwards:
+
+    .. code-block:: bash
+
+        curl -fsSL https://repository.qtpyvcp.com/install.sh | sudo sh
+        sudo apt install python3-probe-basic
 
     Probe Basic and QtPyVCP are now fully removed. Your LinuxCNC installation is unaffected.
