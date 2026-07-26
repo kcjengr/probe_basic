@@ -103,26 +103,29 @@
 <h1>Probe Basic deb Install<a class="headerlink" href="#probe-basic-deb-install" title="Link to this heading"></a></h1>
 <div class="admonition warning">
 <p class="admonition-title">Warning</p>
-<p><strong>Seeing a “Missing key” error? Fix it here first.</strong></p>
+<p><strong>Seeing a “Missing key” warning or error when you update? Start here.</strong></p>
 <p>Older versions of these instructions installed the wrong signing key.
 If <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> shows a line like this:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Missing</span> <span class="n">key</span> <span class="mi">50</span><span class="n">F874571F20C5B0BA225E2F0CDFCCE0388CFA48</span><span class="p">,</span> <span class="n">which</span> <span class="ow">is</span> <span class="n">needed</span> <span class="n">to</span> <span class="n">verify</span> <span class="n">signature</span><span class="o">.</span>
 </pre></div>
 </div>
-<p><strong>Step 1 - copy this, paste it into a terminal, press Enter:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
+<p>If you are trying to update and are seeing this warning/error message,
+the following line will correct the situation by completely removing and
+reinstalling Probe Basic and its required keyrings cleanly, to resolve the
+issue going forward.</p>
+<p><strong>Please be sure any of your configuration files are backed up
+before running it</strong> – installing rewrites the configs shipped with
+Probe Basic in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/</span></code>, so any edits you have made to the
+core Probe Basic shipped configs will be overwritten.</p>
+<p>Copy this, paste it into a terminal, and press Enter:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/uninstall.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>python3-probe-basic
 </pre></div>
 </div>
-<p>This line will completely remove and purge all aspects of Probe Basic
-and QtPyVCP, leaving a clean slate for a fresh installation. Other
-software on your machine is not touched, and your LinuxCNC configs in
-<code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code> are left alone.</p>
-<p><strong>Step 2 - check that it worked:</strong></p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo<span class="w"> </span>apt<span class="w"> </span>update
-</pre></div>
-</div>
-<p>The “Missing key” message should be gone.</p>
-<p><strong>Step 3 - carry on with the normal installation below.</strong></p>
+<p>Only Probe Basic, QtPyVCP and the packages installed alongside them are
+affected. When it finishes, <code class="docutils literal notranslate"><span class="pre">sudo</span> <span class="pre">apt</span> <span class="pre">update</span></code> will no longer show the
+“Missing key” message, Probe Basic is installed and up to date – you do
+not need to follow the steps below – and it will update with new
+releases cleanly going forward.</p>
 </div>
 <p><strong>Probe Basic .deb Installation Guide for use with Debian Bookworm and LinuxCNC version 2.9 or Later</strong></p>
 <section id="important-requirements">
@@ -237,7 +240,7 @@ MonoKrom), along with the APT repository and its signing key, run:</p>
 </div>
 <p>This works even if <code class="docutils literal notranslate"><span class="pre">apt</span> <span class="pre">update</span></code> is currently failing. It removes only
 this repository’s packages, sources and keys – other repositories on
-your machine, and your LinuxCNC configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc</span></code>, are left
+your machine, and your LinuxCNC configs in <code class="docutils literal notranslate"><span class="pre">~/linuxcnc/configs/</span></code>, are left
 untouched.</p>
 <p>To reinstall afterwards:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://repository.qtpyvcp.com/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>sh
