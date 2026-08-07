@@ -75,9 +75,15 @@ resume button stays disabled until the drawbar has been pressed and released whi
 the dialog is up - physical evidence the tool came out. The pin is read with
 hal.get_value (no HAL wiring needed), the HAL change_button path is gated the same
 way, and a misconfigured pin name fails open (logged, button enabled) so a typo can
-never strand the operator mid-change. Manual loads are not gated. The sim INIs
-carry a commented example using the unconnected motion.digital-in-07, which can be
-poked with halcmd setp to exercise the gate.
+never strand the operator mid-change. Manual loads are not gated.
+
+The sim has no panel drawbar button to satisfy that interlock, so the toolchange
+HAL files net the unused motion.digital-in-07 to a signal named drawbar-button and
+hand it to the sim_pin window that already carries the carousel jog buttons. It is
+a momentary button (sim_pin mode=Hold: 1 while pressed, 0 on release), so a
+simulated manual removal runs exactly like a real one - press and release
+drawbar-button, then press resume on the dialog. The interlock is enabled in all
+four sim INIs; comment DRAWBAR_MONITOR_PIN out to run the sim without it.
 
 UI buttons outside the dialog cannot help mid-change: MDI and action buttons are
 blocked while the remap macro is executing, and the modal dialog blocks clicks
