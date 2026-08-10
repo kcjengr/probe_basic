@@ -194,13 +194,13 @@ Probe Basic Lathe received major updates that will require users to make some ch
 
          ON_ABORT_COMMAND = o<on_abort> call
 
-- Tool Post location display (front or back) is now user configurable from the ini file, to display use one of the following lines under the `[DISPLAY]` section of the ini:
-  
+- Tool Post location display (front or back) is now user configurable from the ini file. `LATHE = 1` is required on every lathe, and `BACK_TOOL_LATHE = 1` is added on top of it for a rear tool post rather than used in place of it. Set these under the `[DISPLAY]` section of the ini:
+
       .. code-block:: bash
 
-         LATHE = 1 (for front tool post machines)
+         LATHE = 1 (required on every lathe, front or back tool post)
 
-         BACK_TOOL_LATHE = 1 (for back tool post machines)
+         BACK_TOOL_LATHE = 1 (add this line as well for back tool post machines)
 
 - User Buttons (cyclestart, stop, feedhold etc) are now user configurable from template in config folder. A user template has been included also for custom buttons for users to easily edit and make changes to suit their machine builds. Users will need to copy the `user_buttons` folder from the sim config to their machine config and edit the ini file to set the appropriate path by adding the following lines to the `[DISPLAY]` section of the ini:
   
