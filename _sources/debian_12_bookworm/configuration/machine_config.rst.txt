@@ -98,16 +98,21 @@ Step 3: Edit INI files
          #  interface in any of the user tabs or user button customizable
          #  ui files.
 
-         #  If Lathe configuration is used, choose only one the following settings.
+         #  If Lathe configuration is used, LATHE = 1 is always required.
+         #  BACK_TOOL_LATHE is an addition to it, not a replacement for it,
+         #  so a back tool lathe sets both lines.
          LATHE = 1
-         #  This sets the lathe mode to on, if your machine is a lathe
-         #  with front tool post setting active for correct backplotter
-         #  and x axis jog key functionality.
+         #  Required on every lathe, front or back tool post. This sets the
+         #  lathe mode to on, for correct backplotter view, x axis jog key
+         #  functionality, and diameter mode (G7) handling in the DROs.
+         #  With this line missing the interface runs as a mill, and the X
+         #  DRO will show half of any value entered while G7 is active.
 
          BACK_TOOL_LATHE = 1
-         #  This sets the lathe back tool post setting to on, if your machine
-         #  has a back tool post, this will set the backplotter and x axis jog
-         #  key functionality to use the back tool post for lathe machines.
+         #  Add this line in addition to LATHE = 1 above, if your machine
+         #  has a back tool post. It inverts the backplotter view and the
+         #  x axis jog key direction for back tool post lathe machines.
+         #  Leave it out, or comment it out, for a front tool post machine.
 
          MASTER_TOOL_OFFSET_MODE = true
          #  Lathe Only: Enables Master Tool Offset Mode for tool management.

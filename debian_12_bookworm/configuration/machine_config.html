@@ -179,16 +179,21 @@
 <span class="c1">#  interface in any of the user tabs or user button customizable</span>
 <span class="c1">#  ui files.</span>
 
-<span class="c1">#  If Lathe configuration is used, choose only one the following settings.</span>
+<span class="c1">#  If Lathe configuration is used, LATHE = 1 is always required.</span>
+<span class="c1">#  BACK_TOOL_LATHE is an addition to it, not a replacement for it,</span>
+<span class="c1">#  so a back tool lathe sets both lines.</span>
 <span class="nv">LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="c1">#  This sets the lathe mode to on, if your machine is a lathe</span>
-<span class="c1">#  with front tool post setting active for correct backplotter</span>
-<span class="c1">#  and x axis jog key functionality.</span>
+<span class="c1">#  Required on every lathe, front or back tool post. This sets the</span>
+<span class="c1">#  lathe mode to on, for correct backplotter view, x axis jog key</span>
+<span class="c1">#  functionality, and diameter mode (G7) handling in the DROs.</span>
+<span class="c1">#  With this line missing the interface runs as a mill, and the X</span>
+<span class="c1">#  DRO will show half of any value entered while G7 is active.</span>
 
 <span class="nv">BACK_TOOL_LATHE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<span class="c1">#  This sets the lathe back tool post setting to on, if your machine</span>
-<span class="c1">#  has a back tool post, this will set the backplotter and x axis jog</span>
-<span class="c1">#  key functionality to use the back tool post for lathe machines.</span>
+<span class="c1">#  Add this line in addition to LATHE = 1 above, if your machine</span>
+<span class="c1">#  has a back tool post. It inverts the backplotter view and the</span>
+<span class="c1">#  x axis jog key direction for back tool post lathe machines.</span>
+<span class="c1">#  Leave it out, or comment it out, for a front tool post machine.</span>
 
 <span class="nv">MASTER_TOOL_OFFSET_MODE</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">true</span>
 <span class="c1">#  Lathe Only: Enables Master Tool Offset Mode for tool management.</span>
