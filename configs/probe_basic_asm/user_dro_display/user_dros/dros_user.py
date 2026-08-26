@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.insert(0, "/usr/lib/python3/dist-packages/probe_basic")
+import probe_basic as _pb_pkg
+sys.path.insert(0, os.path.dirname(os.path.abspath(_pb_pkg.__file__)))
 from probe_basic_rc import *
 import linuxcnc
 

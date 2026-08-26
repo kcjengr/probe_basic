@@ -1,6 +1,7 @@
 import os
 import sys
-sys.path.insert(0, "/usr/lib/python3/dist-packages/probe_basic")
+import probe_basic as _pb_pkg
+sys.path.insert(0, os.path.dirname(os.path.abspath(_pb_pkg.__file__)))
 from probe_basic_rc import *
 import linuxcnc
 
@@ -13,10 +14,26 @@ from qtpyvcp.utilities.runtime_ui_loader import load_ui as load_runtime_ui
 
 LOG = logger.getLogger(__name__)
 
-STATUS = getPlugin('status')
-TOOL_TABLE = getPlugin('tooltable')
+# Detect if we're running in Qt Designer
+IN_DESIGNER = os.getenv('DESIGNER', False)
 
-INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME'))
+# Defer plugin imports to avoid issues in designer
+STATUS = None
+TOOL_TABLE = None
+
+def _get_status():
+    global STATUS
+    if STATUS is None:
+        STATUS = getPlugin('status')
+    return STATUS
+
+def _get_tool_table():
+    global TOOL_TABLE
+    if TOOL_TABLE is None:
+        TOOL_TABLE = getPlugin('tooltable')
+    return TOOL_TABLE
+
+INI_FILE = linuxcnc.ini(os.getenv('INI_FILE_NAME')) if not IN_DESIGNER else None
 
 
 def _load_ui(ui_path, parent):

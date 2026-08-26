@@ -1,8 +1,9 @@
 #!/usr/bin/env python
 
+import io
 import os
-import sys
 import re
+import sys
 import importlib.util
 
 import linuxcnc
@@ -84,6 +85,60 @@ def _import_module_from_path(module_name: str, module_path: str):
         sys.path.remove(module_dir)
 
     return module
+
+
+# A user tab written on a PyQt (Bookworm) machine cannot simply be dropped into
+# this PySide6 application. Importing PyQt widgets here does not raise -- PyQt5
+# is present on every LinuxCNC install -- it calls qFatal and aborts the whole
+# process ("QWidget: Must construct a QApplication before a QWidget"), which is
+# not catchable from Python. So such files are rejected before they are imported.
+_PYQT_IMPORT_RE = re.compile(r"^\s*(?:from|import)\s+PyQt[456]\b", re.MULTILINE)
+
+
+def _imports_pyqt(module_path: str) -> bool:
+    try:
+        with io.open(module_path, encoding="utf-8", errors="replace") as fh:
+            return _PYQT_IMPORT_RE.search(fh.read()) is not None
+    except OSError:
+        return False
+
+
+def _pyqt_importing_files(folder: str):
+    """Every .py in a user folder that imports PyQt directly.
+
+    The whole folder is checked, not just the entry module, because resource
+    modules count: pyrcc5 output begins with "from PyQt5 import QtCore", so a
+    tab whose own imports look clean still aborts the process the moment it
+    does "import my_icons_rc".
+    """
+    offenders = []
+    for root, dirs, files in os.walk(folder):
+        dirs[:] = [d for d in dirs if d != "__pycache__"]
+        for name in sorted(files):
+            if name.endswith(".py"):
+                path = os.path.join(root, name)
+                if _imports_pyqt(path):
+                    offenders.append(path)
+    return offenders
+
+
+def _user_widget_identity(widget):
+    """Return (is_sidebar, label) for a user tab widget.
+
+    Tabs written against PyQt's uic.loadUi(path, self) carry the .ui root
+    widget's objectName and dynamic properties on themselves. Tabs written
+    against PySide6's QUiLoader nest a separate root widget inside the wrapper
+    instead, leaving the wrapper blank, so fall back to the nested child.
+    """
+    source = widget
+    if not widget.objectName() and widget.property("sidebar") is None:
+        nested = getattr(widget, "ui", None)
+        if not isinstance(nested, QWidget):
+            nested = next((c for c in widget.children() if isinstance(c, QWidget)), None)
+        if nested is not None:
+            source = nested
+    return bool(source.property("sidebar")), source.objectName().replace("_", " ")
+
 
 
 class ProbeBasicLathe(VCPMainWindow):
@@ -677,11 +732,27 @@ class ProbeBasicLathe(VCPMainWindow):
             for user_button in user_button_folders:
                 if not os.path.isdir(os.path.join(user_buttons_path, user_button)):
                     continue
+                button_dir = os.path.join(user_buttons_path, user_button)
                 module_name = "user_buttons." + os.path.basename(user_buttons_path) + "." + user_button
-                module_file = os.path.join(user_buttons_path, user_button, user_button + ".py")
-                self.user_button_modules[module_name] = _import_module_from_path(module_name, module_file)
+                module_file = os.path.join(button_dir, user_button + ".py")
+                if not os.path.isfile(module_file):
+                    LOG.warning(f"[user_buttons] skipping '{user_button}': no {user_button}.py in {button_dir}")
+                    continue
 
-                self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
+                pyqt_files = _pyqt_importing_files(button_dir)
+                if pyqt_files:
+                    LOG.error(f"[user_buttons] skipping '{user_button}': imports PyQt directly - "
+                              f"{', '.join(pyqt_files)}. see the User Tabs page in the Probe Basic docs to refresh the loader.")
+                    continue
+
+                try:
+                    self.user_button_modules[module_name] = _import_module_from_path(module_name, module_file)
+                    self.user_buttons[module_name] = self.user_button_modules[module_name].UserButton()
+                except Exception:
+                    LOG.exception(f"[user_buttons] skipping '{user_button}': {module_file} failed to load")
+                    self.user_button_modules.pop(module_name, None)
+                    continue
+
                 layout.addWidget(self.user_buttons[module_name])
 
     def load_user_dros(self):
@@ -713,11 +784,24 @@ class ProbeBasicLathe(VCPMainWindow):
             dro_folder_path = os.path.join(user_dros_path, dro_folder)
             dro_py_path = os.path.join(dro_folder_path, dro_py_file)
             if os.path.isfile(dro_py_path):
+                pyqt_files = _pyqt_importing_files(dro_folder_path)
+                if pyqt_files:
+                    LOG.error(f"[user_dros] skipping '{dro_folder}': imports PyQt directly - "
+                              f"{', '.join(pyqt_files)}. see the User Tabs page in the Probe Basic docs to refresh the loader.")
+                    return
+
                 module_name = f"user_dros.{dro_folder}.{dro_py_file[:-3]}"
-                module = _import_module_from_path(module_name, dro_py_path)
-                if hasattr(module, "UserDRO"):
+                try:
+                    module = _import_module_from_path(module_name, dro_py_path)
+                    if not hasattr(module, "UserDRO"):
+                        LOG.warning(f"[user_dros] UserDRO class not found in {dro_py_path}")
+                        return
                     self.user_dros[module_name] = module.UserDRO()
-                    layout.addWidget(self.user_dros[module_name])
+                except Exception:
+                    LOG.exception(f"[user_dros] skipping '{dro_folder}': {dro_py_path} failed to load")
+                    return
+
+                layout.addWidget(self.user_dros[module_name])
                 return  # Only load one DRO, then exit
 
     def load_offset_dro(self):
@@ -774,21 +858,40 @@ class ProbeBasicLathe(VCPMainWindow):
                     LOG.warning(f"Skipping user tab '{tab_name}': no {tab_name}.py found in {tab_dir}")
                     continue
 
-                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + tab_name
-                self.user_tab_modules[module_name] = _import_module_from_path(module_name, module_file)
-                tab_widget = self.user_tab_modules[module_name].UserTab()
-                self.user_tabs[module_name] = tab_widget
-                tab_label = tab_widget.objectName().replace("_", " ")
+                pyqt_files = _pyqt_importing_files(tab_dir)
+                if pyqt_files:
+                    LOG.error(
+                        f"Skipping user tab '{tab_name}': these files import PyQt directly - "
+                        f"{', '.join(pyqt_files)}. This VCP runs on PySide6, and loading PyQt "
+                        f"into it aborts the application. Change the imports to PySide6 (or to "
+                        f"qtpy, which follows QT_API); rebuild any .qrc resources with "
+                        f"pyside6-rcc instead of pyrcc5."
+                    )
+                    continue
 
-                if tab_widget.property("sidebar"):
+                module_name = "user_tab." + os.path.basename(user_tabs_path) + "." + tab_name
+                try:
+                    self.user_tab_modules[module_name] = _import_module_from_path(module_name, module_file)
+                    tab_widget = self.user_tab_modules[module_name].UserTab()
+                except Exception:
+                    LOG.exception(f"Skipping user tab '{tab_name}': {module_file} failed to load")
+                    self.user_tab_modules.pop(module_name, None)
+                    continue
+
+                self.user_tabs[module_name] = tab_widget
+                is_sidebar, tab_label = _user_widget_identity(tab_widget)
+
+                if is_sidebar:
                     if sidebar_tab_claimed:
                         LOG.warning(f"Ignoring sidebar user tab '{tab_name}': a sidebar tab is already loaded")
                         continue
                     sidebar_tab_claimed = True
                     tab_widget.setParent(self.sb_page_4)
                     self.user_sb_tab.setText(tab_label)
+                    LOG.info(f"[user_tabs] added '{tab_name}' to the sidebar as '{tab_label}'")
                 else:
                     self.tabWidget.addTab(tab_widget, tab_label)
+                    LOG.info(f"[user_tabs] added '{tab_name}' as main tab '{tab_label}'")
 
         if not sidebar_tab_claimed:
             self.user_sb_tab.hide()
