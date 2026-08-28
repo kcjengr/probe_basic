@@ -19,7 +19,7 @@
     <script src="../../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Customisation with Python" href="custom_ux_hacking.html" />
+    <link rel="next" title="Debian 13 Trixie" href="../../debian_13_trixie/index.html" />
     <link rel="prev" title="Extending" href="index.html" /> 
 </head>
 
@@ -50,8 +50,12 @@
 <li class="toctree-l2"><a class="reference internal" href="../configuration/index.html">Configuration</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../interface/index.html">Interface</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="index.html">Extending</a><ul class="current">
-<li class="toctree-l3 current"><a class="current reference internal" href="#">User Tabs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="custom_ux_hacking.html">Customisation with Python</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">User Tabs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#creating-a-user-tab">Creating a User Tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#naming-the-tab">Naming the Tab</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#when-a-tab-does-not-appear">When a Tab Does Not Appear</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -90,8 +94,106 @@
              
   <section id="user-tabs">
 <h1>User Tabs<a class="headerlink" href="#user-tabs" title="Link to this heading"></a></h1>
-<p>TODO:</p>
-<p><a class="reference external" href="https://github.com/kcjengr/probe_basic/pull/84">https://github.com/kcjengr/probe_basic/pull/84</a></p>
+<p>A user tab is your own page inside Probe Basic, laid out in Qt Designer.</p>
+<p>Each one is a folder holding two files:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 20.0%" />
+<col style="width: 60.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>File</p></th>
+<th class="head"><p>Whose</p></th>
+<th class="head"><p>What it is</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;.ui</span></code></p></td>
+<td><p><strong>Yours</strong></p></td>
+<td><p>The layout. Edit it in Qt Designer.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">&lt;name&gt;.py</span></code></p></td>
+<td><p><strong>Ours</strong></p></td>
+<td><p>A small loader that finds and loads the <code class="docutils literal notranslate"><span class="pre">.ui</span></code>. Do not edit it.</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition important">
+<p class="admonition-title">Important</p>
+<p>Edit the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> in Qt Designer. Leave the <code class="docutils literal notranslate"><span class="pre">.py</span></code> alone. It is generic –
+it works out the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> filename from its own name – so the same file
+works in every folder. If you modify it you are on your own, and a future
+Probe Basic update may overwrite it.</p>
+</div>
+<p>Everything a normal tab needs is available in Designer. Widgets such as
+<code class="docutils literal notranslate"><span class="pre">ActionButton</span></code>, <code class="docutils literal notranslate"><span class="pre">MDIButton</span></code>, <code class="docutils literal notranslate"><span class="pre">HalButton</span></code> and <code class="docutils literal notranslate"><span class="pre">HalLabel</span></code> are wired up
+entirely through their properties, with no Python at all.</p>
+<section id="creating-a-user-tab">
+<h2>Creating a User Tab<a class="headerlink" href="#creating-a-user-tab" title="Link to this heading"></a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">USER_TABS_PATH</span></code> is commented out in the shipped INI files. Uncomment it, or
+add it, pointing at a folder that holds your tabs:</p>
+<div class="highlight-ini notranslate"><div class="highlight"><pre><span></span><span class="k">[DISPLAY]</span>
+<span class="na">USER_TABS_PATH</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s">user_tabs/</span>
+</pre></div>
+</div>
+<p>Copy one of the shipped templates and rename it. <strong>The folder, the .py and
+the .ui must all share the same name</strong>:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>user_tabs/
+    shop_page/
+        shop_page.py      &lt;- copied from template_main.py, renamed
+        shop_page.ui      &lt;- copied from template_main.ui, renamed
+</pre></div>
+</div>
+<p>Use <code class="docutils literal notranslate"><span class="pre">template_main</span></code> for a full page and <code class="docutils literal notranslate"><span class="pre">template_sidebar</span></code> for the narrow
+panel beside the plot.</p>
+</section>
+<section id="naming-the-tab">
+<h2>Naming the Tab<a class="headerlink" href="#naming-the-tab" title="Link to this heading"></a></h2>
+<p>Open the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> in Designer and select the <strong>root widget</strong> – the top entry in
+the Object Inspector, not one of its children. Two of its properties control
+how the tab appears:</p>
+<table class="docutils align-default">
+<colgroup>
+<col style="width: 20.0%" />
+<col style="width: 80.0%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>Property</p></th>
+<th class="head"><p>Effect</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><code class="docutils literal notranslate"><span class="pre">objectName</span></code></p></td>
+<td><p>The text shown on the tab. Underscores become spaces, so
+<code class="docutils literal notranslate"><span class="pre">SHOP_PAGE</span></code> shows as <code class="docutils literal notranslate"><span class="pre">SHOP</span> <span class="pre">PAGE</span></code>. The built-in tabs are uppercase,
+so use uppercase if you want yours to match.</p></td>
+</tr>
+<tr class="row-odd"><td><p><code class="docutils literal notranslate"><span class="pre">sidebar</span></code></p></td>
+<td><p><code class="docutils literal notranslate"><span class="pre">false</span></code> puts the tab on the main tab strip. <code class="docutils literal notranslate"><span class="pre">true</span></code> puts it in the
+sidebar beside the plot. Only one sidebar tab can be loaded.</p></td>
+</tr>
+</tbody>
+</table>
+<p><code class="docutils literal notranslate"><span class="pre">sidebar</span></code> is a dynamic property, at the bottom of Designer’s property panel.
+The templates already have it set.</p>
+<p>Both shipped templates name their root widget <code class="docutils literal notranslate"><span class="pre">USER</span></code>, so rename yours as
+soon as you copy it – otherwise every tab you add is labelled <code class="docutils literal notranslate"><span class="pre">USER</span></code>.</p>
+</section>
+<section id="when-a-tab-does-not-appear">
+<h2>When a Tab Does Not Appear<a class="headerlink" href="#when-a-tab-does-not-appear" title="Link to this heading"></a></h2>
+<p>Check that the folder, the <code class="docutils literal notranslate"><span class="pre">.py</span></code> and the <code class="docutils literal notranslate"><span class="pre">.ui</span></code> are all named the same, and
+that <code class="docutils literal notranslate"><span class="pre">USER_TABS_PATH</span></code> is uncommented in the INI file you are running.</p>
+<p>A <code class="docutils literal notranslate"><span class="pre">.ui</span></code> on its own does not make a tab. Qt Designer only writes <code class="docutils literal notranslate"><span class="pre">.ui</span></code>
+files; the <code class="docutils literal notranslate"><span class="pre">.py</span></code> has to be copied from a template.</p>
+<div class="admonition warning">
+<p class="admonition-title">Warning</p>
+<p>A user tab that cannot be loaded will stop Probe Basic from starting, not
+just hide that one tab. If Probe Basic will not open after you add a tab,
+comment out <code class="docutils literal notranslate"><span class="pre">USER_TABS_PATH</span></code> to get back in, then check the folder and
+file names.</p>
+</div>
+</section>
 </section>
 
 
@@ -99,7 +201,7 @@
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="index.html" class="btn btn-neutral float-left" title="Extending" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="custom_ux_hacking.html" class="btn btn-neutral float-right" title="Customisation with Python" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="../../debian_13_trixie/index.html" class="btn btn-neutral float-right" title="Debian 13 Trixie" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>
