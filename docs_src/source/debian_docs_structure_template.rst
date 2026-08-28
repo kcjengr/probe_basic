@@ -54,7 +54,6 @@ Proposed Target Structure
    |  |- extending/
    |  |  |- index.rst
    |  |  |- user_tabs.rst
-   |  |  |- custom_ux_hacking.rst
    |
    |- debian_13_trixie/
    |  |- index.rst
@@ -82,7 +81,6 @@ Proposed Target Structure
    |  |- extending/
    |  |  |- index.rst
    |  |  |- user_tabs.rst
-   |  |  |- custom_ux_hacking.rst
 
 Canonical Content Rules
 -----------------------
