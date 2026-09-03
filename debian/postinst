@@ -20,6 +20,24 @@ if [ -n "${SUDO_USER:-}" ] && command -v sudo >/dev/null 2>&1; then
     # Copy the probe_basic_sims directory to the target directory
     sudo -u "${SUDO_USER}" cp -r /usr/share/configs "${TARGET_HOME}linuxcnc/"
 
+    # The copied .ui files reference their .qrc resource file by a path
+    # relative to a full git checkout (../../../../src/.../foo.qrc), which
+    # only resolves inside that checkout. Here there is no src/ tree, so
+    # Qt Designer can't find it and prompts the user to locate it by hand
+    # every time they open one of their own config .ui files. Point the
+    # reference at the actual installed .qrc instead, wherever apt put it.
+    QRC_MILL=$(python3 -c "import os, probe_basic; print(os.path.join(os.path.dirname(probe_basic.__file__), 'probe_basic.qrc'))" 2>/dev/null || true)
+    QRC_LATHE=$(python3 -c "import os, probe_basic_lathe; print(os.path.join(os.path.dirname(probe_basic_lathe.__file__), 'probe_basic_lathe.qrc'))" 2>/dev/null || true)
+
+    if [ -n "${QRC_MILL}" ] && [ -f "${QRC_MILL}" ]; then
+        find "${TARGET_HOME}linuxcnc/configs" -name '*.ui' -print0 \
+            | xargs -0 -r sed -i "s|\.\./\.\./\.\./\.\./src/probe_basic/probe_basic\.qrc|${QRC_MILL}|g"
+    fi
+    if [ -n "${QRC_LATHE}" ] && [ -f "${QRC_LATHE}" ]; then
+        find "${TARGET_HOME}linuxcnc/configs" -name '*.ui' -print0 \
+            | xargs -0 -r sed -i "s|\.\./\.\./\.\./\.\./src/probe_basic_lathe/probe_basic_lathe\.qrc|${QRC_LATHE}|g"
+    fi
+
     # Copy the probe_basic icons directory to the target directory
     sudo -u "${SUDO_USER}" cp -r /usr/share/icons/probe_basic_icon.png "${TARGET_HOME}.local/usr/share/icons/"
     sudo -u "${SUDO_USER}" cp -r /usr/share/icons/probe_basic_icon_lathe.png "${TARGET_HOME}.local/usr/share/icons/"
