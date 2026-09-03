@@ -24,10 +24,10 @@
         "finish_feedrate": 0.003,
         "rough_feedrate": 0.0084,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
         "spindle_direction": "FWD",
         "safety_clearance": 0.05,
         "set_z_zero_facing": false
@@ -146,16 +146,16 @@
         "full_retract": false,
         "true_bore_depth": true,
         "peck_depth": 0.2,
-        "tip_angle": 118.0,
+        "tip_angle": 118,
         "bottom_dwell": 0.5,
         "wcs": "1",
-        "tool_number": 20,
+        "tool_number": 25,
         "units_mode": "INCH",
         "coolant_mode": "FLOOD",
         "feed_mode": "F/REV",
         "feedrate": 0.0045,
         "retract_feed": 0.012,
-        "rpm": 1200,
+        "rpm": 1200.0,
         "spindle_direction": "FWD",
         "drill_diameter": 0.4531
       },
@@ -257,18 +257,18 @@
         "finish_step_depth": 0.006,
         "rough_step_depth": 0.03,
         "wcs": "1",
-        "tool_number": 17,
+        "tool_number": 18,
         "units_mode": "INCH",
         "coolant_mode": "FLOOD",
         "feed_mode": "F/REV",
         "finish_feedrate": 0.003,
         "rough_feedrate": 0.0084,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
-        "rough_tool_number": 17,
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
+        "rough_tool_number": 18,
         "spindle_direction": "FWD",
         "z_safe_clearance": 0.05,
         "x_safe_retract": 0.01
@@ -409,11 +409,17 @@
         "rough_feedrate": 0.0084,
         "finish_feedrate": 0.003,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
-        "spindle_direction": "FWD"
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
+        "spindle_direction": "FWD",
+        "tool_chamfer_ext_front": 4,
+        "tool_rough_chamfer_ext_front": 4,
+        "tool_chamfer_int_front": 18,
+        "tool_rough_chamfer_int_front": 18,
+        "tool_chamfer_ext_back": 7,
+        "tool_rough_chamfer_ext_back": 5
       },
       "preview_snapshot": {
         "snapshot_version": 2,
@@ -515,10 +521,10 @@
         "rough_feedrate": 0.0084,
         "finish_feedrate": 0.003,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
         "spindle_direction": "FWD",
         "operation_type": "grooving_id",
         "rough_tool_number": 15,
@@ -732,6 +738,163 @@
         }
       }
     },
+    "parting_001": {
+      "id": "parting_001",
+      "type": "parting",
+      "name": "Parting",
+      "enabled": true,
+      "params": {
+        "x_max_position": 2.0,
+        "x_min_position": 0.0,
+        "z_start_position": -1.85,
+        "edge_break_parting": 0.03,
+        "tool_width_parting": 0.1,
+        "safe_clearance_parting": 0.05,
+        "wcs": "1",
+        "tool_number": 12,
+        "units_mode": "INCH",
+        "coolant_mode": "FLOOD",
+        "feed_mode": "F/REV",
+        "feedrate": 0.0036,
+        "spindle_mode": "CSS",
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "surface_speed": 716.0,
+        "spindle_direction": "FWD",
+        "peck_distance": 0.0,
+        "retract_distance": 0.1,
+        "tool_orientation": 2,
+        "rough_tool_number": 0
+      },
+      "preview_snapshot": {
+        "snapshot_version": 2,
+        "removal": {
+          "geometry_table": [
+            [
+              "line",
+              1.0,
+              -1.82,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.97,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              1.0,
+              -1.82,
+              0,
+              0,
+              0
+            ]
+          ]
+        },
+        "finish_boundary": {
+          "finish_boundary_table": [
+            [
+              "line",
+              0.995,
+              -1.82,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.965,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.85,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.0,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ],
+            [
+              "line",
+              0.995,
+              -1.9500000000000002,
+              0,
+              0,
+              0
+            ]
+          ],
+          "parameter_map": {
+            "1": {
+              "parameter": "edge_break_parting",
+              "description": "Edge Break Chamfer",
+              "tab": "parting_tab",
+              "widget_name": "edge_break_parting"
+            },
+            "2": {
+              "parameter": "z_start_parting",
+              "description": "Parting Z Position",
+              "tab": "parting_tab",
+              "widget_name": "z_start_parting"
+            },
+            "3": {
+              "parameter": "x_end_diam_parting",
+              "description": "End Diameter",
+              "tab": "parting_tab",
+              "widget_name": "x_end_diam_parting"
+            },
+            "4": {
+              "parameter": "tool_width_parting",
+              "description": "Tool Width",
+              "tab": "parting_tab",
+              "widget_name": "tool_width_parting"
+            }
+          },
+          "operation_type": "parting",
+          "coordinate_system": "od_radial",
+          "geometry_type": "1r_straight"
+        }
+      }
+    },
     "od_turning_001": {
       "id": "od_turning_001",
       "type": "od_turning",
@@ -754,10 +917,10 @@
         "finish_feedrate": 0.003,
         "rough_feedrate": 0.0084,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
         "rough_tool_number": 1,
         "spindle_direction": "FWD",
         "safety_clearance": 0.05
@@ -898,11 +1061,17 @@
         "rough_feedrate": 0.0084,
         "finish_feedrate": 0.003,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
-        "spindle_direction": "FWD"
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
+        "spindle_direction": "FWD",
+        "tool_radius_ext_front": 4,
+        "tool_rough_radius_ext_front": 1,
+        "tool_radius_int_front": 18,
+        "tool_rough_radius_int_front": 18,
+        "tool_radius_ext_back": 7,
+        "tool_rough_radius_ext_back": 5
       },
       "preview_snapshot": {
         "snapshot_version": 2,
@@ -1002,11 +1171,17 @@
         "rough_feedrate": 0.0084,
         "finish_feedrate": 0.003,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
-        "spindle_direction": "FWD"
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
+        "spindle_direction": "FWD",
+        "tool_chamfer_ext_front": 4,
+        "tool_rough_chamfer_ext_front": 4,
+        "tool_chamfer_int_front": 18,
+        "tool_rough_chamfer_int_front": 18,
+        "tool_chamfer_ext_back": 7,
+        "tool_rough_chamfer_ext_back": 5
       },
       "preview_snapshot": {
         "snapshot_version": 2,
@@ -1105,10 +1280,10 @@
         "rough_feedrate": 0.0084,
         "finish_feedrate": 0.003,
         "spindle_mode": "CSS",
-        "constant_rpm": 1200,
-        "max_rpm_limit": 1200,
-        "rough_surface_speed": 716,
-        "finish_surface_speed": 842,
+        "constant_rpm": 1200.0,
+        "max_rpm_limit": 1200.0,
+        "rough_surface_speed": 716.0,
+        "finish_surface_speed": 842.4,
         "spindle_direction": "FWD",
         "operation_type": "grooving_od",
         "rough_tool_number": 11,
@@ -1329,6 +1504,7 @@
     "id_turning_001",
     "chamfer_001",
     "grooving_id_001",
+    "parting_001",
     "od_turning_001",
     "radius_001",
     "chamfer_002",

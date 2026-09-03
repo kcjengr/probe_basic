@@ -186,7 +186,19 @@ class ProbeBasicLathe(VCPMainWindow):
         self._apply_system_theme_stylesheet()
 
         from PySide6.QtCore import QTimer
-        QTimer.singleShot(100, self._load_dros_after_ui)
+
+        # User DROs are built here, synchronously, rather than from a timer.
+        # The qtpyvcp widgets inside a DRO .ui only get their HAL pins from
+        # VCPApplication.initialiseWidgets(), which sweeps the widget tree
+        # after this window is constructed and before hal_comp.ready() seals
+        # the component. A widget created once the event loop is running
+        # misses that sweep, so its pins are never made -- and POSTGUI_HALFILE,
+        # loaded immediately after ready(), could not net them even if it were.
+        self.load_user_dros()
+        self.load_offset_dro()
+
+        # The rest of the post-UI wiring can still wait for the event loop.
+        QTimer.singleShot(100, self._finish_ui_setup)
 
         # --- Startup Tab Selection Logic (using tab text property) ---
         startup_tab_value = getSetting("startup-settings.user-startup-tab").getValue()
@@ -673,9 +685,8 @@ class ProbeBasicLathe(VCPMainWindow):
         self.vtkbackplot.setProgramViewWhenLoadingProgram(True)
         self._status_plugin.file.notify(self._on_program_file_changed)
 
-    def _load_dros_after_ui(self):
-        self.load_user_dros()
-        self.load_offset_dro()
+    def _finish_ui_setup(self):
+        """Post-UI wiring that is safe to run once the event loop is up."""
         for _timer_label in ("timerhours", "timerminutes", "timerseconds"):
             lbl = getattr(self, _timer_label, None)
             if lbl is not None:

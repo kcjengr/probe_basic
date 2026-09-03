@@ -218,8 +218,18 @@ class ProbeBasic(VCPMainWindow):
         self._connect_theme_tracking()
         self._apply_system_theme_stylesheet()
         
-        # Defer loading DROs until UI is fully loaded
-        QTimer.singleShot(100, self._load_dros_after_ui)
+        # User DROs are built here, synchronously, rather than from a timer.
+        # The qtpyvcp widgets inside a DRO .ui only get their HAL pins from
+        # VCPApplication.initialiseWidgets(), which sweeps the widget tree
+        # after this window is constructed and before hal_comp.ready() seals
+        # the component. A widget created once the event loop is running
+        # misses that sweep, so its pins are never made -- and POSTGUI_HALFILE,
+        # loaded immediately after ready(), could not net them even if it were.
+        self.load_user_dros()
+        self.load_offset_dro()
+
+        # The rest of the post-UI wiring can still wait for the event loop.
+        QTimer.singleShot(100, self._finish_ui_setup)
 
         # Set jog display index strictly from [DISPLAY] GEOMETRY.
         self._apply_jog_display_from_ini()
@@ -335,10 +345,8 @@ class ProbeBasic(VCPMainWindow):
         except Exception:
             LOG.exception("Failed to load theme stylesheet: %s", stylesheet_path)
 
-    def _load_dros_after_ui(self):
-        """Load DROs after UI is fully initialized."""
-        self.load_user_dros()
-        self.load_offset_dro()
+    def _finish_ui_setup(self):
+        """Post-UI wiring that is safe to run once the event loop is up."""
 
         self.main_load_gcode_button.clicked.connect(lambda: ( 
             self.main_load_gcode_button.setText("LOAD G-CODE") if self.main_load_gcode_button.text() == 'SELECT FOLDER' else None
