@@ -27414,16 +27414,20 @@ QPushButton:checked {
    	font: 17pt &quot;Probe Basic Bebas Mono&quot;;
 }
 
-QPushButton[style='inactive']{
-    border-color: black;
+QPushButton[style='active']{
+	background:  qlineargradient(spread:pad, x1:0, y1:0, x2:0, y2:1, stop:0 rgba(85, 85, 238, 255), stop:0.544974 rgba(90, 91, 239, 255), stop:1 rgba(126, 135, 243, 255));
 }
 
-QPushButton[style='active']{
-	border-color: rgb(16, 37, 255);
-}</string>
+QPushButton[style='active'][flashState='false']{
+	background: qlineargradient(spread:pad, x1:0, y1:1, x2:0, y2:0, stop:0 rgba(213, 218, 216, 255), stop:0.169312 rgba(82, 82, 83, 255), stop:0.328042 rgba(72, 70, 73, 255), stop:0.492063 rgba(78, 77, 79, 255), stop:0.703704 rgba(72, 70, 73, 255), stop:0.86 rgba(82, 82, 83, 255), stop:1 rgba(213, 218, 216, 255));
+}
+</string>
              </property>
              <property name="text">
               <string>CYCLE START</string>
+             </property>
+             <property name="flashOnStyleClass" stdset="0">
+              <string>active</string>
              </property>
              <property name="rules" stdset="0">
               <string>[{&quot;name&quot;: &quot;probe_safety_lockout&quot;, &quot;property&quot;: &quot;Enable&quot;, &quot;expression&quot;: &quot;False if ch[0]['T'] == 99 else True&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;tooltable:current_tool&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program&quot;, &quot;property&quot;: &quot;Text&quot;, &quot;expression&quot;: &quot;'RESUME FEED' if ch[0] else 'CYCLE START'&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}, {&quot;name&quot;: &quot;resume_program_style&quot;, &quot;property&quot;: &quot;Style Class&quot;, &quot;expression&quot;: &quot;\&quot;active\&quot; if ch[0] else \&quot;inactive\&quot;&quot;, &quot;channels&quot;: [{&quot;url&quot;: &quot;status:paused&quot;, &quot;trigger&quot;: true}]}]</string>
@@ -32196,18 +32200,18 @@ font: 11pt Probe Basic Bebas Mono;
   </property>
  </designerdata>
  <buttongroups>
-  <buttongroup name="sidebartabGroup"/>
-  <buttongroup name="gcodemdibtnGroup"/>
-  <buttongroup name="probepagewcsbtnGroup"/>
-  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="mainorthoperspbtnGroup"/>
   <buttongroup name="settertabGroup"/>
-  <buttongroup name="probetabGroup"/>
-  <buttongroup name="btngrpMdi"/>
-  <buttongroup name="proberoutinebtnGroup"/>
-  <buttongroup name="probehelpGroup"/>
-  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="spindlerpmsourcebtnGroup"/>
   <buttongroup name="xycalbtnGroup"/>
+  <buttongroup name="btngrpMdi"/>
+  <buttongroup name="probehelpGroup"/>
+  <buttongroup name="sidebartabGroup"/>
+  <buttongroup name="probetabGroup"/>
+  <buttongroup name="tooloffsetdirbtnGroup"/>
+  <buttongroup name="proberoutinebtnGroup"/>
   <buttongroup name="customwcsbtnGroup"/>
+  <buttongroup name="probepagewcsbtnGroup"/>
+  <buttongroup name="gcodemdibtnGroup"/>
  </buttongroups>
 </ui>
