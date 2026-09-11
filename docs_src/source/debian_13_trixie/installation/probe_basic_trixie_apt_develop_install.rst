@@ -51,7 +51,7 @@ Installation Steps
 
     Download from:
 
-    https://www.linuxcnc.org/iso/linuxcnc_2.9.8-amd64.hybrid.iso
+    https://www.linuxcnc.org/iso/linuxcnc_2.9.10-amd64.hybrid.iso
 
     This Debian 13 Trixie ISO installs Debian with the required PREEMPT-RT kernel and LinuxCNC uspace package.
 
