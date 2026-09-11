@@ -6,11 +6,11 @@
 
 ### installation
 
-https://kcjengr.github.io/probe_basic/quick_start.html
+[https://kcjengr.github.io/probe_basic/quick_start.html](https://kcjengr.github.io/probe_basic/debian_13_trixie/installation/probe_basic_trixie_apt_develop_install.html)
 
 ### Development installation
 
-https://kcjengr.github.io/probe_basic/dev_install.html
+[https://kcjengr.github.io/probe_basic/dev_install.html](https://kcjengr.github.io/probe_basic/debian_13_trixie/installation/probe_basic_trixie_dev_install.html)
 
 ### QtPyVCP use documentation
 
