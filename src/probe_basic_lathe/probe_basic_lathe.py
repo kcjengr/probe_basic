@@ -11,7 +11,7 @@ import linuxcnc
 from PySide6.QtCore import Slot, QRegularExpression, QTimer, Qt
 from PySide6.QtGui import QFontDatabase, QRegularExpressionValidator, QTextCursor, QPalette, QAction
 from qtpyvcp.actions.machine_actions import issue_mdi
-from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication
+from PySide6.QtWidgets import QAbstractButton, QMessageBox, QApplication, QButtonGroup
 from PySide6.QtWidgets import QWidget
 
 from qtpyvcp import actions
@@ -215,6 +215,22 @@ class ProbeBasicLathe(VCPMainWindow):
             # Set the main tab widget to the correct tab at startup
             self.set_startup_tab_by_text(self.startup_tab_combobox.currentText())
         # --- End Startup Tab Selection Logic ---
+
+        # --- Startup Sidebar Tab Selection Logic ---
+        # Filled from the sidebar buttons rather than the .ui's static items:
+        # the USER button takes the loaded user tab's own label, and is hidden
+        # when no sidebar user tab exists, so a fixed list would go stale.
+        # load_user_tabs() has already run by this point, so both are final.
+        if hasattr(self, "sidebar_widget") and hasattr(self, "startup_sb_tab_combobox"):
+            self._populate_startup_sb_tab_combobox()
+            sb_setting = getSetting("startup-settings.user-startup-sb-tab")
+            sb_saved = sb_setting.getValue() if sb_setting is not None else None
+            sb_idx = self._resolve_startup_sb_tab_index(sb_saved)
+            self.startup_sb_tab_combobox.setCurrentIndex(sb_idx if sb_idx != -1 else 0)
+            self.startup_sb_tab_combobox.currentIndexChanged.connect(
+                self.on_startup_sb_tab_combobox_changed)
+            self.set_startup_sb_tab(self.startup_sb_tab_combobox.currentData())
+        # --- End Startup Sidebar Tab Selection Logic ---
 
         self.help_menu = self.menuBar().addMenu("Help")
         self.interactive_help_action = QAction("Interactive Help", self, checkable=True)
@@ -1007,6 +1023,65 @@ class ProbeBasicLathe(VCPMainWindow):
         if page is None:
             return
         self.spindle_rpm_source_widget.setCurrentIndex(int(page))
+
+    def _sidebar_tab_buttons(self):
+        """The sidebar page buttons, in page order."""
+        group = getattr(self, "sidebartabGroup", None)
+        if group is None:
+            group = self.findChild(QButtonGroup, "sidebartabGroup")
+        if group is None:
+            return []
+        buttons = [b for b in group.buttons() if b.property('page') is not None]
+        return sorted(buttons, key=lambda b: int(b.property('page')))
+
+    def _populate_startup_sb_tab_combobox(self):
+        """List the sidebar buttons, with each item carrying its page index.
+
+        isHidden() rather than isVisible(): the window has not been shown yet
+        at this point, so isVisible() is False for every button, whereas
+        isHidden() is True only for one explicitly hidden -- the USER button
+        when no sidebar user tab loaded.
+        """
+        combo = self.startup_sb_tab_combobox
+        combo.clear()
+        for button in self._sidebar_tab_buttons():
+            if button.isHidden():
+                continue
+            combo.addItem(button.text(), int(button.property('page')))
+
+    def _resolve_startup_sb_tab_index(self, saved_value):
+        """Saved sidebar setting -> combobox index, by page number or label."""
+        combo = self.startup_sb_tab_combobox
+        if combo.count() == 0:
+            return -1
+        value_text = "" if saved_value is None else str(saved_value).strip()
+        if not value_text:
+            return -1
+        if value_text.isdigit():
+            idx = combo.findData(int(value_text))
+            if idx != -1:
+                return idx
+        for idx in range(combo.count()):
+            if combo.itemText(idx).strip().upper() == value_text.upper():
+                return idx
+        return -1
+
+    def on_startup_sb_tab_combobox_changed(self, index):
+        """Save the sidebar selection for next startup; leave the current page alone."""
+        page = self.startup_sb_tab_combobox.itemData(index)
+        if page is not None:
+            setSetting("startup-settings.user-startup-sb-tab", int(page))
+
+    def set_startup_sb_tab(self, page):
+        """Show a sidebar page and check its button so the group agrees."""
+        if page is None or not hasattr(self, "sidebar_widget"):
+            return
+        page = int(page)
+        for button in self._sidebar_tab_buttons():
+            if int(button.property('page')) == page:
+                button.setChecked(True)
+                break
+        self.sidebar_widget.setCurrentIndex(page)
 
     def set_startup_tab_by_text(self, tab_text):
         """Set the main tab widget to the tab matching tab_text."""
