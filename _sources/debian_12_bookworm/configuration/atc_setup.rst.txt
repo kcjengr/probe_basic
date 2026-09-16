@@ -45,13 +45,34 @@ INI options ([ATC] section)
 .. code-block:: bash
 
    [ATC]
+   POCKETS = 12
+   #  Number of pockets in the carousel. Carousel graphics are drawn for
+   #  8, 10, 12, 14, 16, 18, 20, 21 and 24 pockets.
+   #  Default if omitted: 12.
+
+   Z_TOOL_CHANGE_HEIGHT = -3.9000
+   #  The Z height in machine coordinates where the spindle clamps and
+   #  unclamps a tool at the carousel. Set this for your machine: with the
+   #  key missing the macros fall back to -3.9000, which is the sim's
+   #  value.
+
+   Z_TOOL_CLEARANCE_HEIGHT = 0.0000
+   #  The Z height in machine coordinates the spindle must reach to clear
+   #  the tools while the carousel turns.
+   #  Default if omitted: [AXIS_Z]MAX_LIMIT minus 0.01.
+
+   STEP_TIME = 500
+   #  How long the carousel takes to move one pocket, in milliseconds.
+   #  This only sets the speed of the carousel graphic on the ATC tab, it
+   #  does not change the machine. Default if omitted: 1000.
+
    #MANUAL_CHANGE_X = 0.0000
    #MANUAL_CHANGE_Y = 0.0000
    #  Optional position (machine coords) the head moves to for manual tool
    #  changes. BOTH must be set or the head only moves up to the Z
    #  clearance height.
 
-   #DRAWBAR_MONITOR_PIN = motion.digital-in-07
+   DRAWBAR_MONITOR_PIN = drawbar-button
    #  Optional drawbar interlock for manual removals: name a HAL pin or
    #  signal that reflects drawbar actuation (the drawbar button input pin
    #  or the solenoid drive signal) and the dialog resume button stays
@@ -74,13 +95,13 @@ Drawbar interlock notes
   is logged and the resume button enables - a typo in the INI must never
   strand the operator mid-change.
 - Manual loads are not gated, only removals.
-- In the sim configs the commented example points at the unconnected
-  ``motion.digital-in-07``, which can be exercised from a second terminal:
-
-  .. code-block:: bash
-
-     halcmd setp motion.digital-in-07 1    # press
-     halcmd setp motion.digital-in-07 0    # release -> resume enables
+- The sim configs set ``DRAWBAR_MONITOR_PIN = drawbar-button``. Both ATC
+  toolchange HAL files net that signal to ``motion.digital-in-07`` and hand
+  it to ``sim_pin`` as a momentary button, so a simulated removal is
+  completed the same way a real one is: press and release
+  ``drawbar-button`` in the sim_pin window, then press resume on the
+  dialog. No terminal needed. Comment the INI key out to run the sim
+  without the interlock.
 
 - **Recovery reference:** a manual change waiting on the dialog can always
   be ended from a second terminal, since HAL stays live no matter what the

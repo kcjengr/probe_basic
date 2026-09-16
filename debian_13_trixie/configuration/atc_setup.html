@@ -129,13 +129,34 @@ optional warning icon (a QLabel named <code class="docutils literal notranslate"
 <section id="ini-options-atc-section">
 <h3>INI options ([ATC] section)<a class="headerlink" href="#ini-options-atc-section" title="Link to this heading"></a></h3>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="o">[</span>ATC<span class="o">]</span>
+<span class="nv">POCKETS</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">12</span>
+<span class="c1">#  Number of pockets in the carousel. Carousel graphics are drawn for</span>
+<span class="c1">#  8, 10, 12, 14, 16, 18, 20, 21 and 24 pockets.</span>
+<span class="c1">#  Default if omitted: 12.</span>
+
+<span class="nv">Z_TOOL_CHANGE_HEIGHT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>-3.9000
+<span class="c1">#  The Z height in machine coordinates where the spindle clamps and</span>
+<span class="c1">#  unclamps a tool at the carousel. Set this for your machine: with the</span>
+<span class="c1">#  key missing the macros fall back to -3.9000, which is the sim's</span>
+<span class="c1">#  value.</span>
+
+<span class="nv">Z_TOOL_CLEARANCE_HEIGHT</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span>.0000
+<span class="c1">#  The Z height in machine coordinates the spindle must reach to clear</span>
+<span class="c1">#  the tools while the carousel turns.</span>
+<span class="c1">#  Default if omitted: [AXIS_Z]MAX_LIMIT minus 0.01.</span>
+
+<span class="nv">STEP_TIME</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">500</span>
+<span class="c1">#  How long the carousel takes to move one pocket, in milliseconds.</span>
+<span class="c1">#  This only sets the speed of the carousel graphic on the ATC tab, it</span>
+<span class="c1">#  does not change the machine. Default if omitted: 1000.</span>
+
 <span class="c1">#MANUAL_CHANGE_X = 0.0000</span>
 <span class="c1">#MANUAL_CHANGE_Y = 0.0000</span>
 <span class="c1">#  Optional position (machine coords) the head moves to for manual tool</span>
 <span class="c1">#  changes. BOTH must be set or the head only moves up to the Z</span>
 <span class="c1">#  clearance height.</span>
 
-<span class="c1">#DRAWBAR_MONITOR_PIN = motion.digital-in-07</span>
+<span class="nv">DRAWBAR_MONITOR_PIN</span><span class="w"> </span><span class="o">=</span><span class="w"> </span>drawbar-button
 <span class="c1">#  Optional drawbar interlock for manual removals: name a HAL pin or</span>
 <span class="c1">#  signal that reflects drawbar actuation (the drawbar button input pin</span>
 <span class="c1">#  or the solenoid drive signal) and the dialog resume button stays</span>
@@ -160,13 +181,13 @@ drives.</p></li>
 is logged and the resume button enables - a typo in the INI must never
 strand the operator mid-change.</p></li>
 <li><p>Manual loads are not gated, only removals.</p></li>
-<li><p>In the sim configs the commented example points at the unconnected
-<code class="docutils literal notranslate"><span class="pre">motion.digital-in-07</span></code>, which can be exercised from a second terminal:</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>halcmd<span class="w"> </span>setp<span class="w"> </span>motion.digital-in-07<span class="w"> </span><span class="m">1</span><span class="w">    </span><span class="c1"># press</span>
-halcmd<span class="w"> </span>setp<span class="w"> </span>motion.digital-in-07<span class="w"> </span><span class="m">0</span><span class="w">    </span><span class="c1"># release -&gt; resume enables</span>
-</pre></div>
-</div>
-</li>
+<li><p>The sim configs set <code class="docutils literal notranslate"><span class="pre">DRAWBAR_MONITOR_PIN</span> <span class="pre">=</span> <span class="pre">drawbar-button</span></code>. Both ATC
+toolchange HAL files net that signal to <code class="docutils literal notranslate"><span class="pre">motion.digital-in-07</span></code> and hand
+it to <code class="docutils literal notranslate"><span class="pre">sim_pin</span></code> as a momentary button, so a simulated removal is
+completed the same way a real one is: press and release
+<code class="docutils literal notranslate"><span class="pre">drawbar-button</span></code> in the sim_pin window, then press resume on the
+dialog. No terminal needed. Comment the INI key out to run the sim
+without the interlock.</p></li>
 <li><p><strong>Recovery reference:</strong> a manual change waiting on the dialog can always
 be ended from a second terminal, since HAL stays live no matter what the
 interpreter or the GUI are doing. To abort the change entirely (the
