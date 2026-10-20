@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+import re
 import os
 import sys
 import importlib.util
@@ -380,9 +381,12 @@ class ProbeBasicLathe(VCPMainWindow):
                 LOG.warning("No G-code loaded in gcodetextedit_2")
                 return m6_lines
             
+            m6_word = re.compile(r'(?<![A-Z_])M0*6(?![0-9.])')
             for line_num, line in enumerate(text.split('\n'), start=1):
-                # Search for M6 (tool change command) - case insensitive
-                if 'M6' in line.upper():
+                # a real M6 word only: comments stripped, and M61/M66/M60
+                # (which contain "M6") do not count
+                code = re.sub(r'\([^)]*\)|<[^>]*>', '', line.split(';', 1)[0]).upper()
+                if m6_word.search(re.sub(r'\s+', '', code)):
                     m6_lines.append(line_num)
             
             LOG.info(f"Found {len(m6_lines)} M6 commands in G-code")
@@ -395,7 +399,10 @@ class ProbeBasicLathe(VCPMainWindow):
     def on_find_m6_clicked(self):
         """Find next M6 command in the loaded G-code file and display line number."""
         # Re-extract M6 lines (in case file was reloaded)
-        self.m6_lines = self.extract_m6_line_numbers()
+        lines = self.extract_m6_line_numbers()
+        if lines != self.m6_lines:      # another file (or an edited one): start at its first M6
+            self.current_m6_index = 0
+        self.m6_lines = lines
         
         if not self.m6_lines:
             LOG.warning("No M6 commands found in G-code file")
@@ -403,6 +410,7 @@ class ProbeBasicLathe(VCPMainWindow):
             return
         
         # Display the current M6 line number
+        self.current_m6_index %= len(self.m6_lines)
         line_num = self.m6_lines[self.current_m6_index]
         self.run_from_line_Num.setText(str(line_num))
         LOG.info(f"M6 found at line {line_num}")
